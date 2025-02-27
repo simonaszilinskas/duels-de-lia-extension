@@ -1,0 +1,38 @@
+{
+  "name": "prompt-footprint",
+  "displayName": "Prompt Footprint",
+  "version": "0.0.1",
+  "description": "Track your AI prompt carbon footprint",
+  "author": "Your Name",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build"
+  },
+  "dependencies": {
+    "plasmo": "^0.84.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "chart.js": "^4.4.0",
+    "react-chartjs-2": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.246",
+    "@types/node": "^20.5.9",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "typescript": "^5.2.2"
+  },
+  "manifest": {
+    "host_permissions": [
+      "https://*.openai.com/*",
+      "https://*.anthropic.com/*",
+      "https://*.bing.com/*",
+      "https://*.google.com/*",
+      "https://*.perplexity.ai/*"
+    ],
+    "permissions": [
+      "storage",
+      "tabs"
+    ]
+  }
+}
