@@ -4,6 +4,9 @@
   "version": "0.0.1",
   "description": "Track your AI prompt carbon footprint",
   "author": "Your Name",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build"
