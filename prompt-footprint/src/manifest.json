@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Prompt Footprint",
+  "version": "0.0.1",
+  "description": "Track your AI prompt carbon footprint",
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "permissions": ["storage", "scripting", "tabs"],
+  "host_permissions": [
+    "https://*.openai.com/*",
+    "https://*.anthropic.com/*",
+    "https://*.claude.ai/*",
+    "https://*.bing.com/*",
+    "https://*.google.com/*",
+    "https://*.perplexity.ai/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.openai.com/*",
+        "https://*.anthropic.com/*",
+        "https://*.claude.ai/*",
+        "https://*.bing.com/*",
+        "https://*.google.com/*",
+        "https://*.perplexity.ai/*"
+      ],
+      "js": ["aiMonitor.js"]
+    }
+  ]
+}

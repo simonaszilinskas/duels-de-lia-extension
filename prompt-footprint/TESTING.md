@@ -19,10 +19,10 @@
 
 ## Loading the extension in Chrome
 
-1. After running `npm run dev`, Plasmo will build the extension to the `.plasmo` directory
+1. After running `npm run dev`, Webpack will build the extension to the `dist` directory
 2. Open Chrome and navigate to `chrome://extensions`
 3. Enable "Developer mode" in the top right corner
-4. Click "Load unpacked" and select the `.plasmo/chrome-mv3-dev` directory
+4. Click "Load unpacked" and select the `dist` directory
 5. The extension should now be installed and you should see the Prompt Footprint icon in your browser toolbar
 
 ## Testing
@@ -55,4 +55,4 @@ When you're ready to create a production build:
 npm run build
 ```
 
-This will create a production-ready extension in the `.plasmo/chrome-mv3-prod` directory.
+This will create a production-ready extension in the `dist` directory.
