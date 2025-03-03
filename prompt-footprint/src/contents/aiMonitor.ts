@@ -19,8 +19,8 @@ function setupPromptDetection() {
       input: 'textarea[data-testid="chat-input-textarea"], textarea[placeholder], textarea.w-full'
     },
     'claude': {
-      button: 'button[aria-label="Send message"], button[type="submit"], button.submit-button',
-      input: 'div[contenteditable="true"], textarea'
+      button: 'button[aria-label="Send Message"], button[aria-label="Send message"], button[type="button"] svg[width="16"][height="16"]',
+      input: '.ProseMirror, div[contenteditable="true"]'
     },
     'bard': {
       button: 'button[aria-label="Send"], button.send-button, button[type="submit"]',
@@ -63,6 +63,30 @@ function setupPromptDetection() {
     const buttons = document.querySelectorAll(serviceSelectors.button);
     console.log(`[Prompt Footprint] Found ${buttons.length} buttons`);
     
+    // For Claude specifically, we also need to look for the parent button 
+    // of SVG elements since Claude's UI nests them
+    if (aiService === 'claude') {
+      const svgParents = document.querySelectorAll('button[type="button"] svg[width="16"][height="16"]');
+      console.log(`[Prompt Footprint] Found ${svgParents.length} SVG buttons in Claude`);
+      
+      svgParents.forEach(svg => {
+        const parentButton = svg.closest('button');
+        if (parentButton && !processedElements.has(parentButton)) {
+          processedElements.add(parentButton);
+          console.log(`[Prompt Footprint] Adding listener to Claude SVG parent button:`, parentButton);
+          
+          parentButton.addEventListener('click', () => {
+            console.log(`[Prompt Footprint] Claude button clicked`);
+            const input = document.querySelector(serviceSelectors.input);
+            if (input && input.textContent?.trim()) {
+              notifyPromptDetected();
+            }
+          });
+        }
+      });
+    }
+    
+    // Standard button handling
     buttons.forEach(button => {
       if (!processedElements.has(button)) {
         processedElements.add(button);
@@ -98,10 +122,20 @@ function setupPromptDetection() {
   // Also track keyboard shortcuts (Enter key)
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
-      const input = document.querySelector(serviceSelectors.input);
-      if (input && document.activeElement === input && 
-          (input.textContent?.trim() || (input as HTMLInputElement).value?.trim())) {
-        notifyPromptDetected();
+      // Special handling for Claude with the ProseMirror editor
+      if (aiService === 'claude') {
+        const input = document.querySelector('.ProseMirror');
+        if (input && document.activeElement === input && input.textContent?.trim()) {
+          console.log(`[Prompt Footprint] Claude Enter key detected with content`);
+          notifyPromptDetected();
+        }
+      } else {
+        const input = document.querySelector(serviceSelectors.input);
+        if (input && document.activeElement === input && 
+            (input.textContent?.trim() || (input as HTMLInputElement).value?.trim())) {
+          console.log(`[Prompt Footprint] Enter key detected with content`);
+          notifyPromptDetected();
+        }
       }
     }
   });
@@ -124,4 +158,23 @@ setupPromptDetection();
     console.log('[Prompt Footprint] Test message response:', response);
   });
   return `Test message sent for service: ${service}`;
+};
+
+// Add a Claude-specific test function
+(window as any).testClaudeDetection = function() {
+  console.log('[Prompt Footprint] Testing Claude detection');
+  // Find all possible send buttons
+  const claudeButtons = document.querySelectorAll('button[aria-label="Send Message"], button[type="button"] svg[width="16"][height="16"]');
+  console.log(`[Prompt Footprint] Found ${claudeButtons.length} potential Claude buttons:`, claudeButtons);
+  
+  // Look for the ProseMirror editor
+  const editors = document.querySelectorAll('.ProseMirror, div[contenteditable="true"]');
+  console.log(`[Prompt Footprint] Found ${editors.length} potential Claude editors:`, editors);
+  
+  return {
+    buttonCount: claudeButtons.length,
+    editorCount: editors.length,
+    buttons: claudeButtons,
+    editors: editors
+  };
 };
