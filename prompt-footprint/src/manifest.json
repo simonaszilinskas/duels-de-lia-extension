@@ -39,7 +39,8 @@
         "https://*.google.com/*",
         "https://*.perplexity.ai/*"
       ],
-      "js": ["aiMonitor.js"]
+      "js": ["globalFunctions.js", "aiMonitor.js"],
+      "run_at": "document_start"
     }
   ]
 }

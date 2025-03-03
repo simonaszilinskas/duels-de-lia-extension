@@ -5,7 +5,8 @@ module.exports = {
   entry: {
     background: './src/background/index.ts',
     popup: './src/popup/index.tsx',
-    aiMonitor: './src/contents/aiMonitor.ts'
+    aiMonitor: './src/contents/aiMonitor.ts',
+    globalFunctions: './src/contents/global.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
