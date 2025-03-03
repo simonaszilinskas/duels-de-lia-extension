@@ -12,37 +12,63 @@ export function getTodayString(): string {
 
 // Initialize or get today's data
 export async function getTodayData(): Promise<DailyPromptData> {
-  const today = getTodayString();
-  const result = await chrome.storage.local.get(today);
-  
-  if (result[today]) {
-    return result[today] as DailyPromptData;
+  try {
+    const today = getTodayString();
+    console.log(`[Prompt Footprint Storage] Getting data for today: ${today}`);
+    
+    const result = await chrome.storage.local.get(today);
+    console.log(`[Prompt Footprint Storage] Storage result:`, result);
+    
+    if (result[today]) {
+      console.log(`[Prompt Footprint Storage] Found existing data for today`);
+      return result[today] as DailyPromptData;
+    }
+    
+    console.log(`[Prompt Footprint Storage] No data found for today, initializing new data`);
+    
+    // Initialize new data for today
+    const newData: DailyPromptData = {
+      date: today,
+      prompts: {},
+      totalCount: 0
+    };
+    
+    await chrome.storage.local.set({ [today]: newData });
+    console.log(`[Prompt Footprint Storage] Initialized new data for today:`, newData);
+    
+    return newData;
+  } catch (error) {
+    console.error(`[Prompt Footprint Storage] Error getting today's data:`, error);
+    throw error;
   }
-  
-  // Initialize new data for today
-  const newData: DailyPromptData = {
-    date: today,
-    prompts: {},
-    totalCount: 0
-  };
-  
-  await chrome.storage.local.set({ [today]: newData });
-  return newData;
 }
 
 // Log a new prompt
 export async function logPrompt(aiService: string): Promise<void> {
-  const todayData = await getTodayData();
+  console.log(`[Prompt Footprint Storage] Logging prompt for service: ${aiService}`);
   
-  // Increment count for this AI service
-  if (!todayData.prompts[aiService]) {
-    todayData.prompts[aiService] = 0;
+  try {
+    const todayData = await getTodayData();
+    console.log(`[Prompt Footprint Storage] Current data:`, todayData);
+    
+    // Increment count for this AI service
+    if (!todayData.prompts[aiService]) {
+      todayData.prompts[aiService] = 0;
+    }
+    todayData.prompts[aiService]++;
+    todayData.totalCount++;
+    
+    console.log(`[Prompt Footprint Storage] Updated data:`, todayData);
+    
+    // Save updated data
+    await chrome.storage.local.set({ [todayData.date]: todayData });
+    console.log(`[Prompt Footprint Storage] Data saved successfully`);
+    
+    return;
+  } catch (error) {
+    console.error(`[Prompt Footprint Storage] Error logging prompt:`, error);
+    throw error;
   }
-  todayData.prompts[aiService]++;
-  todayData.totalCount++;
-  
-  // Save updated data
-  await chrome.storage.local.set({ [todayData.date]: todayData });
 }
 
 // Get data for the last N days

@@ -45,16 +45,26 @@ function setupPromptDetection() {
   // Function to notify the background script about a detected prompt
   function notifyPromptDetected() {
     console.log(`[Prompt Footprint] Detected prompt for ${aiService}`);
-    chrome.runtime.sendMessage({
-      type: "PROMPT_DETECTED",
-      aiService: aiService
-    }, (response) => {
-      if (response) {
-        console.log(`[Prompt Footprint] Background response:`, response);
-      } else {
-        console.error(`[Prompt Footprint] No response from background script`);
-      }
-    });
+    
+    try {
+      chrome.runtime.sendMessage({
+        type: "PROMPT_DETECTED",
+        aiService: aiService
+      }, (response) => {
+        if (chrome.runtime.lastError) {
+          console.error(`[Prompt Footprint] Error sending message:`, chrome.runtime.lastError);
+          return;
+        }
+        
+        if (response) {
+          console.log(`[Prompt Footprint] Background response:`, response);
+        } else {
+          console.error(`[Prompt Footprint] No response from background script`);
+        }
+      });
+    } catch (error) {
+      console.error(`[Prompt Footprint] Exception sending message:`, error);
+    }
   }
   
   // Add a global click listener for Claude

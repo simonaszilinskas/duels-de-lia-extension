@@ -49,14 +49,20 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 // Update the extension badge with today's prompt count
 async function updateBadge() {
-  const todayData = await getTodayData();
-  
-  // Display the count on the extension badge
-  chrome.action.setBadgeText({ 
-    text: todayData.totalCount.toString() 
-  });
-  
-  chrome.action.setBadgeBackgroundColor({ color: "#10B981" });
+  try {
+    const todayData = await getTodayData();
+    console.log('[Prompt Footprint Background] Today data for badge:', todayData);
+    
+    // Display the count on the extension badge
+    chrome.action.setBadgeText({ 
+      text: todayData.totalCount.toString() 
+    });
+    
+    chrome.action.setBadgeBackgroundColor({ color: "#10B981" });
+    console.log('[Prompt Footprint Background] Badge updated with count:', todayData.totalCount);
+  } catch (error) {
+    console.error('[Prompt Footprint Background] Error updating badge:', error);
+  }
 }
 
 // Initial badge update when extension loads
