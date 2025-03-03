@@ -41,17 +41,29 @@ export const AI_MODELS: Record<string, ModelFootprint> = {
 
 // Determine AI service from URL
 export function detectAIService(url: string): string {
-  if (url.includes('openai.com') || url.includes('chat.openai.com')) {
-    return 'chatgpt';
-  } else if (url.includes('anthropic.com') || url.includes('claude.ai')) {
-    return 'claude';
-  } else if (url.includes('bard.google.com') || url.includes('gemini.google.com')) {
-    return 'bard';
-  } else if (url.includes('bing.com')) {
-    return 'bing';
-  } else if (url.includes('perplexity.ai')) {
-    return 'perplexity';
+  if (!url) {
+    return 'other';
   }
+  
+  try {
+    // Convert to lowercase for case-insensitive matching
+    const lowerUrl = url.toLowerCase();
+    
+    if (lowerUrl.includes('openai.com') || lowerUrl.includes('chat.openai.com')) {
+      return 'chatgpt';
+    } else if (lowerUrl.includes('anthropic.com') || lowerUrl.includes('claude.ai')) {
+      return 'claude';
+    } else if (lowerUrl.includes('bard.google.com') || lowerUrl.includes('gemini.google.com')) {
+      return 'bard';
+    } else if (lowerUrl.includes('bing.com') && (lowerUrl.includes('chat') || lowerUrl.includes('search'))) {
+      return 'bing';
+    } else if (lowerUrl.includes('perplexity.ai')) {
+      return 'perplexity';
+    }
+  } catch (error) {
+    console.error('[Prompt Footprint] Error detecting AI service:', error);
+  }
+  
   return 'other';
 }
 

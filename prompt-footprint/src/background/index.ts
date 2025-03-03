@@ -5,27 +5,43 @@ import { logPrompt, getTodayData } from "../utils/storage";
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete" && tab.url) {
     const aiService = detectAIService(tab.url);
+    console.log(`[Prompt Footprint Background] Tab updated: ${tab.url}, service: ${aiService}`);
+    
     if (aiService !== 'other') {
       // User is on a supported AI service, setup monitoring for this tab
+      console.log(`[Prompt Footprint Background] Injecting script for ${aiService}`);
       chrome.scripting.executeScript({
         target: { tabId },
         files: ["aiMonitor.js"]
-      }).catch(err => console.error("Failed to inject monitor script:", err));
+      }).then(() => {
+        console.log(`[Prompt Footprint Background] Script injected successfully`);
+      }).catch(err => {
+        console.error(`[Prompt Footprint Background] Failed to inject monitor script:`, err);
+      });
     }
   }
 });
 
 // Listen for messages from content scripts
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log('[Prompt Footprint Background] Message received:', message);
+  
   if (message.type === "PROMPT_DETECTED") {
     const aiService = message.aiService;
+    console.log(`[Prompt Footprint Background] Detected prompt for ${aiService}`);
+    
     // Log the prompt
     logPrompt(aiService).then(() => {
+      console.log(`[Prompt Footprint Background] Prompt logged successfully`);
       // Update the badge count
       updateBadge();
       // Send confirmation back
       sendResponse({ success: true });
+    }).catch(err => {
+      console.error(`[Prompt Footprint Background] Error logging prompt:`, err);
+      sendResponse({ success: false, error: err.message });
     });
+    
     // Return true to indicate we'll respond asynchronously
     return true;
   }
