@@ -37,12 +37,29 @@ function IndexPopup() {
       setLoading(true);
       const today = await getTodayData();
       const history = await getHistoricalData(7);
+      console.log("[Popup] Loaded today's data:", today);
+      console.log("[Popup] Loaded history data:", history);
       setTodayData(today);
       setWeekData(history);
       setLoading(false);
     }
 
+    // Load data immediately
     loadData();
+    
+    // Set up a listener for storage changes
+    const handleStorageChange = (changes: {[key: string]: chrome.storage.StorageChange}) => {
+      console.log("[Popup] Storage changed:", changes);
+      // Reload data when storage changes
+      loadData();
+    };
+    
+    chrome.storage.onChanged.addListener(handleStorageChange);
+    
+    // Clean up listener when component unmounts
+    return () => {
+      chrome.storage.onChanged.removeListener(handleStorageChange);
+    };
   }, []);
 
   // Calculate carbon footprint for today

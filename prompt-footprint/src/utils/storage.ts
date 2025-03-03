@@ -73,35 +73,51 @@ export async function logPrompt(aiService: string): Promise<void> {
 
 // Get data for the last N days
 export async function getHistoricalData(days: number = 7): Promise<DailyPromptData[]> {
-  const dates: string[] = [];
-  const today = new Date();
-  
-  // Generate date strings for the last 'days' days
-  for (let i = 0; i < days; i++) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
-    const dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-    dates.push(dateString);
+  try {
+    console.log(`[Prompt Footprint Storage] Getting historical data for ${days} days`);
+    
+    const dates: string[] = [];
+    const today = new Date();
+    
+    // Generate date strings for the last 'days' days
+    for (let i = 0; i < days; i++) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      const dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+      dates.push(dateString);
+    }
+    
+    console.log(`[Prompt Footprint Storage] Generated date strings:`, dates);
+    
+    // Fetch data for all dates
+    const result = await chrome.storage.local.get(dates);
+    console.log(`[Prompt Footprint Storage] Retrieved historical data:`, result);
+    
+    // Process and sort the data
+    const processedData = dates
+      .map(date => {
+        if (result[date]) {
+          console.log(`[Prompt Footprint Storage] Found data for ${date}`);
+          return result[date] as DailyPromptData;
+        } else {
+          console.log(`[Prompt Footprint Storage] No data for ${date}, creating empty record`);
+          // Return empty data for days with no records
+          return {
+            date,
+            prompts: {},
+            totalCount: 0
+          };
+        }
+      })
+      .reverse(); // Return in chronological order
+    
+    console.log(`[Prompt Footprint Storage] Processed historical data:`, processedData);
+    return processedData;
+  } catch (error) {
+    console.error(`[Prompt Footprint Storage] Error getting historical data:`, error);
+    // Return empty array as fallback
+    return [];
   }
-  
-  // Fetch data for all dates
-  const result = await chrome.storage.local.get(dates);
-  
-  // Process and sort the data
-  return dates
-    .map(date => {
-      if (result[date]) {
-        return result[date] as DailyPromptData;
-      } else {
-        // Return empty data for days with no records
-        return {
-          date,
-          prompts: {},
-          totalCount: 0
-        };
-      }
-    })
-    .reverse(); // Return in chronological order
 }
 
 // Clear all stored data

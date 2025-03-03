@@ -142,17 +142,38 @@ function setupPromptDetection() {
     subtree: true
   });
   
-  // Also track keyboard shortcuts (Enter key)
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      // Special handling for Claude with the ProseMirror editor
-      if (aiService === 'claude') {
-        const input = document.querySelector('.ProseMirror');
-        if (input && document.activeElement === input && input.textContent?.trim()) {
-          console.log(`[Prompt Footprint] Claude Enter key detected with content`);
+  // For Claude, we need a more direct approach for the Enter key
+  if (aiService === 'claude') {
+    console.log(`[Prompt Footprint] Setting up Claude-specific Enter key handler`);
+    
+    // Direct keydown listener on the document
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        console.log(`[Prompt Footprint] Enter key pressed in Claude (key event):`, e);
+        
+        // Check if we have content in any editable div
+        const inputs = document.querySelectorAll('.ProseMirror, div[contenteditable="true"]');
+        console.log(`[Prompt Footprint] Found ${inputs.length} possible input areas`);
+        
+        let hasContent = false;
+        inputs.forEach(input => {
+          if (input.textContent?.trim()) {
+            console.log(`[Prompt Footprint] Found input with content:`, input);
+            hasContent = true;
+          }
+        });
+        
+        if (hasContent) {
+          console.log(`[Prompt Footprint] Claude Enter key with content detected`);
           notifyPromptDetected();
         }
-      } else {
+      }
+    }, true); // Using capture phase to ensure this runs before other handlers
+  } else {
+    // Regular Enter key handling for other services
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        console.log(`[Prompt Footprint] Enter key pressed (key event):`, e);
         const input = document.querySelector(serviceSelectors.input);
         if (input && document.activeElement === input && 
             (input.textContent?.trim() || (input as HTMLInputElement).value?.trim())) {
@@ -160,8 +181,8 @@ function setupPromptDetection() {
           notifyPromptDetected();
         }
       }
-    }
-  });
+    });
+  }
   
   console.log(`[Prompt Footprint] Monitoring prompts for ${aiService}`);
 }
@@ -203,12 +224,32 @@ setupPromptDetection();
   console.log(`[Prompt Footprint] Found ${editors.length} potential Claude editors:`, editors);
   
   // Test actually adding a prompt
-  chrome.runtime.sendMessage({
-    type: "PROMPT_DETECTED",
-    aiService: "claude"
-  }, (response) => {
-    console.log('[Prompt Footprint] Test message response:', response);
-  });
+  try {
+    chrome.runtime.sendMessage({
+      type: "PROMPT_DETECTED",
+      aiService: "claude"
+    }, (response) => {
+      if (chrome.runtime.lastError) {
+        console.error('[Prompt Footprint] Error sending test message:', chrome.runtime.lastError);
+        return;
+      }
+      console.log('[Prompt Footprint] Test message response:', response);
+    });
+    
+    console.log('[Prompt Footprint] Successfully sent test message');
+    
+    // Also verify storage directly
+    setTimeout(() => {
+      const today = new Date();
+      const dateString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+      
+      chrome.storage.local.get([dateString], (result) => {
+        console.log(`[Prompt Footprint] Current storage for today (${dateString}):`, result);
+      });
+    }, 500);
+  } catch (error) {
+    console.error('[Prompt Footprint] Exception sending test message:', error);
+  }
   
   return {
     ariaButtonCount: claudeButtons.length,
@@ -221,4 +262,21 @@ setupPromptDetection();
     editors: editors,
     message: "Test prompt has been sent to the background script"
   };
+};
+
+// Add a simple counter reset function
+(window as any).resetPromptCounter = function() {
+  try {
+    chrome.storage.local.clear(() => {
+      if (chrome.runtime.lastError) {
+        console.error('[Prompt Footprint] Error clearing storage:', chrome.runtime.lastError);
+        return;
+      }
+      console.log('[Prompt Footprint] Storage has been cleared');
+    });
+    return "Storage cleared, counter reset";
+  } catch (error) {
+    console.error('[Prompt Footprint] Exception clearing storage:', error);
+    return "Error clearing storage: " + error;
+  }
 };
