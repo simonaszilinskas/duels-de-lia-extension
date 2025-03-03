@@ -57,36 +57,47 @@ function setupPromptDetection() {
     });
   }
   
-  // Add direct event listener for send buttons
-  function addButtonListeners() {
+  // Add a global click listener for Claude
+  function setupGlobalClickListener() {
+    console.log(`[Prompt Footprint] Setting up global click listener for ${aiService}`);
+    
+    // For Claude, we'll use a more aggressive approach with a document-wide click listener
+    if (aiService === 'claude') {
+      document.addEventListener('click', (event) => {
+        // Check if the click is on a button or inside a button
+        const target = event.target as HTMLElement;
+        const button = target.closest('button');
+        
+        if (button) {
+          console.log(`[Prompt Footprint] Button click detected:`, button);
+          
+          // Check if this looks like a send button
+          const isSendButton = 
+            button.getAttribute('aria-label') === 'Send Message' ||
+            (button.querySelector('svg') && button.querySelector('svg[width="16"][height="16"]')) ||
+            button.classList.contains('bg-accent-main-100');
+            
+          if (isSendButton) {
+            console.log(`[Prompt Footprint] Send button detected!`);
+            
+            // Check if we have content in the editor
+            const input = document.querySelector('.ProseMirror, div[contenteditable="true"]');
+            if (input && input.textContent?.trim()) {
+              console.log(`[Prompt Footprint] Input content detected, logging prompt`);
+              notifyPromptDetected();
+            }
+          }
+        }
+      });
+      
+      return; // Skip the standard button listeners for Claude
+    }
+    
+    // Regular button handling for other services
     console.log(`[Prompt Footprint] Looking for buttons with selector: ${serviceSelectors.button}`);
     const buttons = document.querySelectorAll(serviceSelectors.button);
     console.log(`[Prompt Footprint] Found ${buttons.length} buttons`);
     
-    // For Claude specifically, we also need to look for the parent button 
-    // of SVG elements since Claude's UI nests them
-    if (aiService === 'claude') {
-      const svgParents = document.querySelectorAll('button[type="button"] svg[width="16"][height="16"]');
-      console.log(`[Prompt Footprint] Found ${svgParents.length} SVG buttons in Claude`);
-      
-      svgParents.forEach(svg => {
-        const parentButton = svg.closest('button');
-        if (parentButton && !processedElements.has(parentButton)) {
-          processedElements.add(parentButton);
-          console.log(`[Prompt Footprint] Adding listener to Claude SVG parent button:`, parentButton);
-          
-          parentButton.addEventListener('click', () => {
-            console.log(`[Prompt Footprint] Claude button clicked`);
-            const input = document.querySelector(serviceSelectors.input);
-            if (input && input.textContent?.trim()) {
-              notifyPromptDetected();
-            }
-          });
-        }
-      });
-    }
-    
-    // Standard button handling
     buttons.forEach(button => {
       if (!processedElements.has(button)) {
         processedElements.add(button);
@@ -105,12 +116,14 @@ function setupPromptDetection() {
   }
   
   // Call immediately to set up initial listeners
-  addButtonListeners();
+  setupGlobalClickListener();
   
   // Create a mutation observer to watch for button clicks
   const observer = new MutationObserver((mutations) => {
-    // Look for send buttons that have been added or changed
-    addButtonListeners();
+    // No need to re-add global listeners for Claude
+    if (aiService !== 'claude') {
+      setupGlobalClickListener();
+    }
   });
   
   // Start observing the document
@@ -164,17 +177,38 @@ setupPromptDetection();
 (window as any).testClaudeDetection = function() {
   console.log('[Prompt Footprint] Testing Claude detection');
   // Find all possible send buttons
-  const claudeButtons = document.querySelectorAll('button[aria-label="Send Message"], button[type="button"] svg[width="16"][height="16"]');
-  console.log(`[Prompt Footprint] Found ${claudeButtons.length} potential Claude buttons:`, claudeButtons);
+  const claudeButtons = document.querySelectorAll('button[aria-label="Send Message"]');
+  console.log(`[Prompt Footprint] Found ${claudeButtons.length} buttons with aria-label="Send Message"`, claudeButtons);
+  
+  // Look for SVG buttons
+  const svgButtons = document.querySelectorAll('button svg[width="16"][height="16"]');
+  console.log(`[Prompt Footprint] Found ${svgButtons.length} buttons with SVG icons:`, svgButtons);
+  
+  // Look for accent colored buttons
+  const accentButtons = document.querySelectorAll('button.bg-accent-main-100');
+  console.log(`[Prompt Footprint] Found ${accentButtons.length} accent-colored buttons:`, accentButtons);
   
   // Look for the ProseMirror editor
   const editors = document.querySelectorAll('.ProseMirror, div[contenteditable="true"]');
   console.log(`[Prompt Footprint] Found ${editors.length} potential Claude editors:`, editors);
   
+  // Test actually adding a prompt
+  chrome.runtime.sendMessage({
+    type: "PROMPT_DETECTED",
+    aiService: "claude"
+  }, (response) => {
+    console.log('[Prompt Footprint] Test message response:', response);
+  });
+  
   return {
-    buttonCount: claudeButtons.length,
+    ariaButtonCount: claudeButtons.length,
+    svgButtonCount: svgButtons.length,
+    accentButtonCount: accentButtons.length,
     editorCount: editors.length,
-    buttons: claudeButtons,
-    editors: editors
+    ariaButtons: claudeButtons,
+    svgButtons: svgButtons,
+    accentButtons: accentButtons,
+    editors: editors,
+    message: "Test prompt has been sent to the background script"
   };
 };
