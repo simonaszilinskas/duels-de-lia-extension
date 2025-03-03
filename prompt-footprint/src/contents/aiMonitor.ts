@@ -78,7 +78,7 @@ function setupPromptDetection() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       const input = document.querySelector(serviceSelectors.input);
-      if (document.activeElement === input && 
+      if (input && document.activeElement === input && 
           (input.textContent?.trim() || (input as HTMLInputElement).value?.trim())) {
         notifyPromptDetected();
       }

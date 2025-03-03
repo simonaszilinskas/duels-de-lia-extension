@@ -1,5 +1,5 @@
 import { detectAIService } from "../utils/carbonCalculation";
-import { logPrompt } from "../utils/storage";
+import { logPrompt, getTodayData } from "../utils/storage";
 
 // Track URL changes to detect when a user is on an AI chat service
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
@@ -9,7 +9,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       // User is on a supported AI service, setup monitoring for this tab
       chrome.scripting.executeScript({
         target: { tabId },
-        files: ["contents/aiMonitor.js"]
+        files: ["aiMonitor.js"]
       }).catch(err => console.error("Failed to inject monitor script:", err));
     }
   }
@@ -33,7 +33,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 // Update the extension badge with today's prompt count
 async function updateBadge() {
-  const { getTodayData } = await import("../utils/storage");
   const todayData = await getTodayData();
   
   // Display the count on the extension badge
