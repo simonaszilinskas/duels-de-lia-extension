@@ -743,9 +743,31 @@ const commonResources = {
     title: "Guide du facilitateur",
     url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8?pvs=74"
   },
+  "educationalResources": [
+    {
+      title: "📚 Introduction aux duels sur l'impact environnemental",
+      url: "https://drive.google.com/file/d/1xsrkj1vJehdMKJo3FhcuVCk285qCiU6V/view"
+    },
+    {
+      title: "⚡ Pourquoi les IA consomment-elles de l'électricité ?",
+      url: "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
+    },
+    {
+      title: "📏 Qu'est-ce que la \"taille\" d'un modèle ?",
+      url: "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/view"
+    },
+    {
+      title: "🔍 ChatGPT ou Google : lequel est plus frugal ?",
+      url: "https://drive.google.com/file/d/1GSzqbH2fZ5N7FLP7l3gOygmrZqLqZF6U/view"
+    },
+    {
+      title: "🧠 Qu'est-ce qu'un modèle de raisonnement ?",
+      url: "https://drive.google.com/file/d/1JCnZaZaklBEzqQrxlML8Drenf-1rmJl5/view"
+    }
+  ],
   "frugalAI": {
     title: "Pourquoi les IA consomment de l'énergie ?",
-    url: "https://drive.google.com/drive/u/0/folders/17F2AJ4YAVIBt1WvKZE_JWcwi1iNwBSCq"
+    url: "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
   }
 };
 
@@ -914,27 +936,40 @@ if (isComparIASite) {
       }
     });
     
-    // AI Frugale section
-    if (allResources.length > 0 || commonResources.frugalAI) {
+    // Educational Resources section
+    if (commonResources.educationalResources && commonResources.educationalResources.length > 0) {
+      const educationalSection = document.createElement('div');
+      educationalSection.className = 'duels-resources-section';
+      
+      const educationalTitle = document.createElement('h3');
+      educationalTitle.className = 'duels-resources-section-title';
+      educationalTitle.textContent = 'Ressources pédagogiques';
+      educationalSection.appendChild(educationalTitle);
+      
+      // Add all educational resources
+      commonResources.educationalResources.forEach(resource => {
+        const resourceLink = document.createElement('a');
+        resourceLink.className = 'duels-resource-button';
+        resourceLink.href = resource.url;
+        resourceLink.target = '_blank';
+        resourceLink.textContent = resource.title;
+        educationalSection.appendChild(resourceLink);
+      });
+      
+      resourcesPanel.appendChild(educationalSection);
+    }
+    
+    // AI Frugale section (if needed for compatibility)
+    if (allResources.length > 0) {
       const frugaleSection = document.createElement('div');
       frugaleSection.className = 'duels-resources-section';
       
       const frugaleTitle = document.createElement('h3');
       frugaleTitle.className = 'duels-resources-section-title';
-      frugaleTitle.textContent = 'En savoir plus sur l\'IA frugale';
+      frugaleTitle.textContent = 'Autres ressources';
       frugaleSection.appendChild(frugaleTitle);
       
-      // Add common frugal AI resource
-      if (commonResources.frugalAI) {
-        const frugaleLink = document.createElement('a');
-        frugaleLink.className = 'duels-resource-button';
-        frugaleLink.href = commonResources.frugalAI.url;
-        frugaleLink.target = '_blank';
-        frugaleLink.textContent = commonResources.frugalAI.title;
-        frugaleSection.appendChild(frugaleLink);
-      }
-      
-      // Add other resources
+      // Add resources from steps
       allResources.forEach(resource => {
         const resourceLink = document.createElement('a');
         resourceLink.className = 'duels-resource-button';
@@ -965,6 +1000,28 @@ if (isComparIASite) {
       notesSection.appendChild(facilitatorLink);
       
       resourcesPanel.appendChild(notesSection);
+    }
+    
+    // Educational resources section (nouveau)
+    if (commonResources.educationalResources && commonResources.educationalResources.length > 0) {
+      const educationalSection = document.createElement('div');
+      educationalSection.className = 'duels-resources-section';
+      
+      const educationalTitle = document.createElement('h3');
+      educationalTitle.className = 'duels-resources-section-title';
+      educationalTitle.textContent = 'Ressources pédagogiques';
+      educationalSection.appendChild(educationalTitle);
+      
+      commonResources.educationalResources.forEach(resource => {
+        const resourceLink = document.createElement('a');
+        resourceLink.className = 'duels-resource-button';
+        resourceLink.href = resource.url;
+        resourceLink.target = '_blank';
+        resourceLink.textContent = resource.title;
+        educationalSection.appendChild(resourceLink);
+      });
+      
+      resourcesPanel.appendChild(educationalSection);
     }
     
     return resourcesPanel;
@@ -1248,23 +1305,28 @@ if (isComparIASite) {
     promptsSection.appendChild(promptsList);
     resourcesPanel.appendChild(promptsSection);
     
-    // AI Frugale section
-    const frugaleSection = document.createElement('div');
-    frugaleSection.className = 'duels-resources-section';
-    
-    const frugaleTitle = document.createElement('h3');
-    frugaleTitle.className = 'duels-resources-section-title';
-    frugaleTitle.textContent = 'En savoir plus sur l\'IA frugale';
-    frugaleSection.appendChild(frugaleTitle);
-    
-    const frugaleLink = document.createElement('a');
-    frugaleLink.className = 'duels-resource-button';
-    frugaleLink.href = commonResources.frugalAI.url;
-    frugaleLink.target = '_blank';
-    frugaleLink.textContent = commonResources.frugalAI.title;
-    frugaleSection.appendChild(frugaleLink);
-    
-    resourcesPanel.appendChild(frugaleSection);
+    // Educational Resources section
+    if (commonResources.educationalResources && commonResources.educationalResources.length > 0) {
+      const educationalSection = document.createElement('div');
+      educationalSection.className = 'duels-resources-section';
+      
+      const educationalTitle = document.createElement('h3');
+      educationalTitle.className = 'duels-resources-section-title';
+      educationalTitle.textContent = 'Ressources pédagogiques';
+      educationalSection.appendChild(educationalTitle);
+      
+      // Add all educational resources
+      commonResources.educationalResources.forEach(resource => {
+        const resourceLink = document.createElement('a');
+        resourceLink.className = 'duels-resource-button';
+        resourceLink.href = resource.url;
+        resourceLink.target = '_blank';
+        resourceLink.textContent = resource.title;
+        educationalSection.appendChild(resourceLink);
+      });
+      
+      resourcesPanel.appendChild(educationalSection);
+    }
     
     // Notes de facilitation section
     const notesSection = document.createElement('div');
@@ -1283,6 +1345,28 @@ if (isComparIASite) {
     notesSection.appendChild(facilitatorLink);
     
     resourcesPanel.appendChild(notesSection);
+    
+    // Educational resources section (nouveau)
+    if (commonResources.educationalResources && commonResources.educationalResources.length > 0) {
+      const educationalSection = document.createElement('div');
+      educationalSection.className = 'duels-resources-section';
+      
+      const educationalTitle = document.createElement('h3');
+      educationalTitle.className = 'duels-resources-section-title';
+      educationalTitle.textContent = 'Ressources pédagogiques';
+      educationalSection.appendChild(educationalTitle);
+      
+      commonResources.educationalResources.forEach(resource => {
+        const resourceLink = document.createElement('a');
+        resourceLink.className = 'duels-resource-button';
+        resourceLink.href = resource.url;
+        resourceLink.target = '_blank';
+        resourceLink.textContent = resource.title;
+        educationalSection.appendChild(resourceLink);
+      });
+      
+      resourcesPanel.appendChild(educationalSection);
+    }
     
     return resourcesPanel;
   }
