@@ -588,9 +588,10 @@ const stepsLibrary = {
     instruction: "Entrez votre propre prompt ou essayez une des suggestions.",
     pages: ["duel"],
     suggestions: [
-      "Écris un conte pour enfants sur l'écologie. Sois concis.",
-      "Donne-moi 3 arguments pour limiter l'usage de l'IA.",
-      "Explique le réchauffement climatique à un enfant de 8 ans."
+      "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum.",
+      "🌱 Thomas, consultant en transition écologique : Reformule moi cette phrase - \"l'IA générative a un effet sur l'environnement donc il est nécessaire de l'utiliser de manière consciente\"",
+      "👩‍🎓 Camille, étudiante : c'est quoi la différence entre un grand et un petit modèle d'IA générative ? Donne une réponse compréhensible en quelques mots",
+      "👩🏻‍💼 Mei, cheffe de projet chez EDF : où trouver des petits modèles d'IA générative ? Réponse synthétique."
     ],
     resources: [
       {
@@ -657,9 +658,10 @@ const stepsLibrary = {
 // Ressources communes à tous les parcours
 const commonResources = {
   "promptSuggestions": [
-    "Écris un conte pour enfants sur l'écologie. Sois concis.",
-    "Donne-moi 3 arguments pour limiter l'usage de l'IA.",
-    "Explique le réchauffement climatique à un enfant de 8 ans."
+    "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum.",
+    "🌱 Thomas, consultant en transition écologique : Reformule moi cette phrase - \"l'IA générative a un effet sur l'environnement donc il est nécessaire de l'utiliser de manière consciente\"",
+    "👩‍🎓 Camille, étudiante : c'est quoi la différence entre un grand et un petit modèle d'IA générative ? Donne une réponse compréhensible en quelques mots",
+    "👩🏻‍💼 Mei, cheffe de projet chez EDF : où trouver des petits modèles d'IA générative ? Réponse synthétique."
   ],
   "facilitatorGuide": {
     title: "Guide du facilitateur",
