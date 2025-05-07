@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Duels de l'IA</title>
+  <link rel="stylesheet" href="../css/popup.css">
+</head>
+<body>
+  <div class="duels-popup">
+    <header class="duels-header">
+      <h1>Les Duels de l'IA</h1>
+    </header>
+    
+    <div class="duels-content">
+      <div id="not-on-comparia-message">
+        <div class="duels-alert">
+          <span class="duels-alert-icon">🚩</span>
+          <p>You are not on the ComparIA website.</p>
+        </div>
+        
+        <p class="duels-instructions">
+          Please visit ComparIA to begin your workshop. The extension provides
+          step-by-step guidance when you're on the ComparIA site.
+        </p>
+        
+        <div class="duels-button-group">
+          <a href="https://comparia.beta.gouv.fr" target="_blank" class="duels-button primary">Go to ComparIA</a>
+          <a href="https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8?pvs=74" target="_blank" class="duels-button secondary">Facilitator Notes</a>
+        </div>
+      </div>
+      
+      <div id="on-comparia-message" style="display: none;">
+        <div class="duels-success">
+          <span class="duels-success-icon">✓</span>
+          <p>You are on the ComparIA website!</p>
+        </div>
+        
+        <p class="duels-instructions">
+          The extension is active and the step-by-step guide is available on the page.
+          Look for the sidebar on the right side of the screen.
+        </p>
+      </div>
+    </div>
+    
+    <footer class="duels-footer">
+      <p>Les Duels de l'IA Workshop Extension</p>
+    </footer>
+  </div>
+  
+  <script src="../js/popup.js"></script>
+</body>
+</html>

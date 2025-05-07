@@ -1,0 +1,18 @@
+{
+  "name": "duels-extension",
+  "version": "1.0.0",
+  "description": "Chrome extension for Les Duels de l'IA workshop facilitators",
+  "private": true,
+  "scripts": {
+    "build": "echo \"No build process needed yet\" && exit 0",
+    "zip": "cd src && zip -r ../duels-extension.zip *"
+  },
+  "keywords": [
+    "chrome-extension",
+    "ai",
+    "comparia",
+    "workshop"
+  ],
+  "author": "",
+  "license": "MIT"
+}

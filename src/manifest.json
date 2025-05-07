@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Les Duels de l'IA",
+  "version": "1.0.0",
+  "description": "A Chrome extension to assist facilitators running the Les Duels de l'IA workshop",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["*://comparia.beta.gouv.fr/*"],
+  "action": {
+    "default_popup": "html/popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://comparia.beta.gouv.fr/*"],
+      "js": ["js/content.js"],
+      "css": ["css/content.css"]
+    }
+  ],
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}
