@@ -432,6 +432,82 @@ globalStyle.textContent = `
     border-color: #4caf50;
   }
   
+  /* Style pour les personas et prompts */
+  .duels-persona {
+    background-color: white;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .duels-persona:hover {
+    background-color: #f5f5ff;
+    border-color: #9898F8;
+    box-shadow: 0 2px 5px rgba(152, 152, 248, 0.2);
+  }
+  
+  .duels-persona::after {
+    content: '▼';
+    font-size: 0.7rem;
+    color: #777;
+    transition: transform 0.2s;
+  }
+  
+  .duels-persona.open::after {
+    transform: rotate(180deg);
+  }
+  
+  .duels-prompt {
+    padding: 8px 10px 10px;
+    margin-top: -6px;
+    margin-bottom: 8px;
+    background-color: #f8f8ff;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    font-size: 0.85rem;
+    display: none;
+    color: #555;
+    position: relative;
+  }
+  
+  .duels-prompt.visible {
+    display: block;
+    animation: fadeIn 0.2s ease;
+  }
+  
+  .duels-copy-button {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background-color: #9898F8;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 3px 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.2s;
+  }
+  
+  .duels-copy-button:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+  
+  .duels-prompt.copied .duels-copy-button {
+    background-color: #4caf50;
+  }
+  
   .duels-links {
     margin-top: 20px;
     padding-top: 15px;
@@ -775,23 +851,50 @@ if (isComparIASite) {
       promptsList.className = 'duels-suggestions';
       
       commonResources.promptSuggestions.forEach(suggestion => {
-        const suggestionElement = document.createElement('div');
-        suggestionElement.className = 'duels-suggestion';
-        suggestionElement.textContent = suggestion;
+        // Extract persona and prompt from the suggestion
+        const parts = suggestion.split(":");
+        const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
+        const prompt = parts.slice(1).join(":").trim(); // Rest of the message
+        
+        // Create persona element (toggleable header)
+        const personaElement = document.createElement('div');
+        personaElement.className = 'duels-persona';
+        personaElement.textContent = persona;
+        
+        // Create prompt element (toggleable content)
+        const promptElement = document.createElement('div');
+        promptElement.className = 'duels-prompt';
+        promptElement.textContent = prompt;
+        
+        // Add copy button
+        const copyButton = document.createElement('button');
+        copyButton.className = 'duels-copy-button';
+        copyButton.textContent = 'Copier';
+        promptElement.appendChild(copyButton);
+        
+        // Add toggle functionality
+        personaElement.addEventListener('click', () => {
+          personaElement.classList.toggle('open');
+          promptElement.classList.toggle('visible');
+        });
         
         // Add copy functionality
-        suggestionElement.addEventListener('click', () => {
+        copyButton.addEventListener('click', (e) => {
+          e.stopPropagation(); // Prevent toggle when clicking the button
           navigator.clipboard.writeText(suggestion)
             .then(() => {
               // Visual feedback
-              suggestionElement.classList.add('copied');
+              promptElement.classList.add('copied');
+              copyButton.textContent = 'Copié!';
               setTimeout(() => {
-                suggestionElement.classList.remove('copied');
+                promptElement.classList.remove('copied');
+                copyButton.textContent = 'Copier';
               }, 1000);
             });
         });
         
-        promptsList.appendChild(suggestionElement);
+        promptsList.appendChild(personaElement);
+        promptsList.appendChild(promptElement);
       });
       
       promptsSection.appendChild(promptsList);
@@ -1097,23 +1200,49 @@ if (isComparIASite) {
     // Using the commonResources instead of workshopSteps
     const suggestions = commonResources.promptSuggestions;
     suggestions.forEach(suggestion => {
-      const suggestionElement = document.createElement('div');
-      suggestionElement.className = 'duels-suggestion';
-      suggestionElement.textContent = suggestion;
+      // Séparer l'emoji et le persona du prompt
+      const parts = suggestion.split(":");
+      const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
+      const prompt = parts.slice(1).join(":").trim(); // Rest of the message
       
-      // Add copy functionality
-      suggestionElement.addEventListener('click', () => {
+      // Create persona element (toggleable header)
+      const personaElement = document.createElement('div');
+      personaElement.className = 'duels-persona';
+      personaElement.textContent = persona;
+      
+      // Create prompt element (toggleable content)
+      const promptElement = document.createElement('div');
+      promptElement.className = 'duels-prompt';
+      promptElement.textContent = prompt;
+      
+      // Ajouter un bouton de copie
+      const copyButton = document.createElement('button');
+      copyButton.className = 'duels-copy-button';
+      copyButton.textContent = 'Copier';
+      copyButton.addEventListener('click', (e) => {
+        e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
         navigator.clipboard.writeText(suggestion)
           .then(() => {
-            // Visual feedback
-            suggestionElement.classList.add('copied');
+            // Feedback visuel
+            promptElement.classList.add('copied');
+            copyButton.textContent = 'Copié !';
             setTimeout(() => {
-              suggestionElement.classList.remove('copied');
+              promptElement.classList.remove('copied');
+              copyButton.textContent = 'Copier';
             }, 1000);
           });
       });
+      promptElement.appendChild(copyButton);
       
-      promptsList.appendChild(suggestionElement);
+      // Ajouter l'événement de toggle au persona
+      personaElement.addEventListener('click', () => {
+        personaElement.classList.toggle('open');
+        promptElement.classList.toggle('visible');
+      });
+      
+      // Ajouter les éléments au DOM
+      promptsList.appendChild(personaElement);
+      promptsList.appendChild(promptElement);
     });
     
     promptsSection.appendChild(promptsList);
@@ -1296,23 +1425,49 @@ if (isComparIASite) {
         suggestionsList.className = 'duels-suggestions';
         
         step.suggestions.forEach(suggestion => {
-          const suggestionElement = document.createElement('div');
-          suggestionElement.className = 'duels-suggestion';
-          suggestionElement.textContent = suggestion;
+          // Séparer l'emoji et le persona du prompt
+          const parts = suggestion.split(":");
+          const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
+          const prompt = parts.slice(1).join(":").trim(); // Rest of the message
           
-          // Add copy functionality
-          suggestionElement.addEventListener('click', () => {
+          // Create persona element (toggleable header)
+          const personaElement = document.createElement('div');
+          personaElement.className = 'duels-persona';
+          personaElement.textContent = persona;
+          
+          // Create prompt element (toggleable content)
+          const promptElement = document.createElement('div');
+          promptElement.className = 'duels-prompt';
+          promptElement.textContent = prompt;
+          
+          // Ajouter un bouton de copie
+          const copyButton = document.createElement('button');
+          copyButton.className = 'duels-copy-button';
+          copyButton.textContent = 'Copier';
+          copyButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
             navigator.clipboard.writeText(suggestion)
               .then(() => {
-                // Visual feedback
-                suggestionElement.classList.add('copied');
+                // Feedback visuel
+                promptElement.classList.add('copied');
+                copyButton.textContent = 'Copié !';
                 setTimeout(() => {
-                  suggestionElement.classList.remove('copied');
+                  promptElement.classList.remove('copied');
+                  copyButton.textContent = 'Copier';
                 }, 1000);
               });
           });
+          promptElement.appendChild(copyButton);
           
-          suggestionsList.appendChild(suggestionElement);
+          // Ajouter l'événement de toggle au persona
+          personaElement.addEventListener('click', () => {
+            personaElement.classList.toggle('open');
+            promptElement.classList.toggle('visible');
+          });
+          
+          // Ajouter les éléments au DOM
+          suggestionsList.appendChild(personaElement);
+          suggestionsList.appendChild(promptElement);
         });
         
         stepElement.appendChild(suggestionsList);
@@ -1376,23 +1531,49 @@ if (isComparIASite) {
         suggestionsList.className = 'duels-suggestions';
         
         step.suggestions.forEach(suggestion => {
-          const suggestionElement = document.createElement('div');
-          suggestionElement.className = 'duels-suggestion';
-          suggestionElement.textContent = suggestion;
+          // Séparer l'emoji et le persona du prompt
+          const parts = suggestion.split(":");
+          const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
+          const prompt = parts.slice(1).join(":").trim(); // Rest of the message
           
-          // Add copy functionality
-          suggestionElement.addEventListener('click', () => {
+          // Create persona element (toggleable header)
+          const personaElement = document.createElement('div');
+          personaElement.className = 'duels-persona';
+          personaElement.textContent = persona;
+          
+          // Create prompt element (toggleable content)
+          const promptElement = document.createElement('div');
+          promptElement.className = 'duels-prompt';
+          promptElement.textContent = prompt;
+          
+          // Ajouter un bouton de copie
+          const copyButton = document.createElement('button');
+          copyButton.className = 'duels-copy-button';
+          copyButton.textContent = 'Copier';
+          copyButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
             navigator.clipboard.writeText(suggestion)
               .then(() => {
-                // Visual feedback
-                suggestionElement.classList.add('copied');
+                // Feedback visuel
+                promptElement.classList.add('copied');
+                copyButton.textContent = 'Copié !';
                 setTimeout(() => {
-                  suggestionElement.classList.remove('copied');
+                  promptElement.classList.remove('copied');
+                  copyButton.textContent = 'Copier';
                 }, 1000);
               });
           });
+          promptElement.appendChild(copyButton);
           
-          suggestionsList.appendChild(suggestionElement);
+          // Ajouter l'événement de toggle au persona
+          personaElement.addEventListener('click', () => {
+            personaElement.classList.toggle('open');
+            promptElement.classList.toggle('visible');
+          });
+          
+          // Ajouter les éléments au DOM
+          suggestionsList.appendChild(personaElement);
+          suggestionsList.appendChild(promptElement);
         });
         
         stepContent.appendChild(suggestionsList);
@@ -1469,23 +1650,49 @@ if (isComparIASite) {
         suggestionsContainer.className = 'duels-suggestions';
         
         step.suggestions.forEach(suggestion => {
-          const suggestionElement = document.createElement('div');
-          suggestionElement.className = 'duels-suggestion';
-          suggestionElement.textContent = suggestion;
+          // Séparer l'emoji et le persona du prompt
+          const parts = suggestion.split(":");
+          const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
+          const prompt = parts.slice(1).join(":").trim(); // Rest of the message
           
-          // Add copy functionality
-          suggestionElement.addEventListener('click', () => {
+          // Create persona element (toggleable header)
+          const personaElement = document.createElement('div');
+          personaElement.className = 'duels-persona';
+          personaElement.textContent = persona;
+          
+          // Create prompt element (toggleable content)
+          const promptElement = document.createElement('div');
+          promptElement.className = 'duels-prompt';
+          promptElement.textContent = prompt;
+          
+          // Ajouter un bouton de copie
+          const copyButton = document.createElement('button');
+          copyButton.className = 'duels-copy-button';
+          copyButton.textContent = 'Copier';
+          copyButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
             navigator.clipboard.writeText(suggestion)
               .then(() => {
-                // Visual feedback
-                suggestionElement.classList.add('copied');
+                // Feedback visuel
+                promptElement.classList.add('copied');
+                copyButton.textContent = 'Copié !';
                 setTimeout(() => {
-                  suggestionElement.classList.remove('copied');
+                  promptElement.classList.remove('copied');
+                  copyButton.textContent = 'Copier';
                 }, 1000);
               });
           });
+          promptElement.appendChild(copyButton);
           
-          suggestionsContainer.appendChild(suggestionElement);
+          // Ajouter l'événement de toggle au persona
+          personaElement.addEventListener('click', () => {
+            personaElement.classList.toggle('open');
+            promptElement.classList.toggle('visible');
+          });
+          
+          // Ajouter les éléments au DOM
+          suggestionsContainer.appendChild(personaElement);
+          suggestionsContainer.appendChild(promptElement);
         });
         
         stepContent.appendChild(suggestionsContainer);
