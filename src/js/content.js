@@ -661,7 +661,7 @@ const stepsLibrary = {
     id: "enter_prompt",
     order: 3,
     title: "Entrer un prompt",
-    instruction: "Entrez votre propre prompt ou essayez une des suggestions.",
+    instruction: "Entrez votre propre prompt ou essayez une des suggestions.\n\nLes suggestions incluent différents personnages qui représentent divers cas d'usage.",
     pages: ["duel"],
     suggestions: [
       "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum.",
@@ -718,7 +718,7 @@ const stepsLibrary = {
     id: "worth_it",
     order: 7,
     title: "La réponse en vaut-elle l'impact environnemental ?",
-    instruction: "\"Les réponses justifient-elles l'énergie consommée ?\"",
+    instruction: "\"Les réponses justifient-elles l'énergie consommée ?\"<br><br>Voici quelques points à considérer:<br>- La qualité de la réponse<br>- Son utilité<br>- Son originalité",
     pages: ["duel"],
     suggestions: [],
     resources: [
@@ -1370,7 +1370,7 @@ if (isComparIASite) {
       stepElement.appendChild(stepTitle);
       
       const stepInstructions = document.createElement('p');
-      stepInstructions.textContent = step.instruction;
+      stepInstructions.innerHTML = step.instruction;
       stepElement.appendChild(stepInstructions);
       
       // Add callout if available
@@ -1519,7 +1519,7 @@ if (isComparIASite) {
       stepContent.className = 'duels-accordion-content';
       
       const stepInstructions = document.createElement('p');
-      stepInstructions.textContent = step.instruction;
+      stepInstructions.innerHTML = step.instruction;
       stepContent.appendChild(stepInstructions);
       
       // Add callout if available
@@ -1638,7 +1638,7 @@ if (isComparIASite) {
       stepContent.className = 'duels-accordion-content';
       
       const stepInstructions = document.createElement('p');
-      stepInstructions.textContent = step.instruction;
+      stepInstructions.innerHTML = step.instruction;
       stepContent.appendChild(stepInstructions);
       
       // Add callout if available
