@@ -1642,6 +1642,11 @@ function createModelSelectionGuide() {
       stepAccordion.classList.add('active');
     }
     
+    // Make evaluate_frugality step active by default for demo purposes
+    if (step.id === 'evaluate_frugality') {
+      stepAccordion.classList.add('active');
+    }
+    
     const stepHeader = document.createElement('div');
     stepHeader.className = 'duels-accordion-header';
     
@@ -1807,6 +1812,11 @@ function createDuelGuide() {
     
     // Resources section is always active
     if (step.type === 'resources_section') {
+      stepAccordion.classList.add('active');
+    }
+    
+    // Make evaluate_frugality step active by default for demo purposes
+    if (step.id === 'evaluate_frugality') {
       stepAccordion.classList.add('active');
     }
     
