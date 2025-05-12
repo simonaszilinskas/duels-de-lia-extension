@@ -813,7 +813,29 @@ const stepsLibrary = {
     suggestions: [],
     resources: [],
     media: [],
-    type: "main" // étape principale
+    type: "main", // étape principale
+    discussion_cards: [
+      {
+        question: "Quels compromis êtes-vous prêt(e) à faire entre la qualité des réponses et l'impact environnemental ?",
+        color: "#6a6af4"
+      },
+      {
+        question: "Comment pourriez-vous adapter vos prompts pour obtenir de bons résultats même avec des petits modèles ?",
+        color: "#4caf50"
+      },
+      {
+        question: "Dans quels cas professionnels privilégieriez-vous un petit modèle, et dans quels cas un grand modèle ?",
+        color: "#ff9800"
+      },
+      {
+        question: "Quels critères définissent selon vous une IA 'frugale' ?",
+        color: "#e91e63"
+      },
+      {
+        question: "Comment sensibiliser vos collègues à l'impact environnemental des IA ?",
+        color: "#2196f3"
+      }
+    ]
   },
   
   "pour_aller_plus_loin": {
@@ -1347,6 +1369,11 @@ function createMainPageGuide() {
     // Add callout if available
     renderCallout(step, stepElement);
     
+    // Add discussion cards if available
+    if (step.discussion_cards && step.discussion_cards.length > 0) {
+      renderDiscussionCards(step, stepElement);
+    }
+    
     // Add media content if available
     if (step.media && step.media.length > 0) {
       const mediaContainer = document.createElement('div');
@@ -1463,6 +1490,109 @@ function createMainPageGuide() {
   
   // Initialize facilitator task visibility
   initializeFacilitatorTaskVisibility();
+}
+
+// Fonction pour rendre les cartes de discussion
+function renderDiscussionCards(step, container) {
+  if (!step.discussion_cards || step.discussion_cards.length === 0) return;
+
+  // Container principal pour les cartes
+  const cardsContainer = document.createElement('div');
+  cardsContainer.className = 'duels-cards-container';
+  
+  // Instructions
+  const instruction = document.createElement('p');
+  instruction.className = 'duels-draw-instruction';
+  instruction.textContent = 'Tirez une carte au sort pour lancer la discussion :';
+  cardsContainer.appendChild(instruction);
+  
+  // Le bouton pour tirer une carte
+  const drawButton = document.createElement('button');
+  drawButton.className = 'duels-draw-button';
+  drawButton.textContent = 'Tirer une carte';
+  cardsContainer.appendChild(drawButton);
+  
+  // Container pour les cartes et le deck
+  const cardsWrapper = document.createElement('div');
+  cardsWrapper.className = 'duels-cards-wrapper';
+  
+  // Le deck de cartes (élément visuel)
+  const cardsDeck = document.createElement('div');
+  cardsDeck.className = 'duels-cards-deck';
+  cardsDeck.textContent = 'Cartes de discussion';
+  cardsWrapper.appendChild(cardsDeck);
+  
+  // Variables pour gérer l'état des cartes
+  let currentCardIndex = -1;
+  let currentCard = null;
+  const usedCardIndices = new Set();
+  
+  // Créer toutes les cartes mais les garder cachées
+  step.discussion_cards.forEach((card, index) => {
+    const cardElement = document.createElement('div');
+    cardElement.className = 'duels-card';
+    cardElement.style.backgroundColor = card.color || '#6a6af4';
+    
+    const cardContent = document.createElement('div');
+    cardContent.className = 'duels-card-content';
+    cardContent.textContent = card.question;
+    
+    cardElement.appendChild(cardContent);
+    cardsWrapper.appendChild(cardElement);
+  });
+  
+  // Fonction pour tirer une carte aléatoire
+  function drawRandomCard() {
+    // Si toutes les cartes ont été tirées, réinitialiser
+    if (usedCardIndices.size >= step.discussion_cards.length) {
+      usedCardIndices.clear();
+      if (currentCard) {
+        currentCard.classList.remove('visible');
+        currentCard = null;
+      }
+    }
+    
+    // Cacher la carte précédente si elle existe
+    if (currentCard) {
+      currentCard.classList.remove('visible');
+    }
+    
+    // Trouver un index aléatoire qui n'a pas encore été utilisé
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * step.discussion_cards.length);
+    } while (usedCardIndices.has(randomIndex));
+    
+    // Marquer l'index comme utilisé
+    usedCardIndices.add(randomIndex);
+    
+    // Mettre à jour la carte actuelle
+    currentCardIndex = randomIndex;
+    currentCard = cardsWrapper.querySelectorAll('.duels-card')[randomIndex];
+    
+    // Afficher la nouvelle carte
+    currentCard.classList.add('visible');
+    
+    // Désactiver le bouton si toutes les cartes ont été tirées
+    if (usedCardIndices.size >= step.discussion_cards.length) {
+      drawButton.textContent = 'Toutes les cartes ont été tirées';
+      drawButton.disabled = true;
+    }
+  }
+  
+  // Événement de clic sur le bouton pour tirer une carte
+  drawButton.addEventListener('click', drawRandomCard);
+  
+  // Événement de clic sur le deck pour tirer une carte (alternative)
+  cardsDeck.addEventListener('click', () => {
+    if (!drawButton.disabled) {
+      drawRandomCard();
+    }
+  });
+  
+  // Ajouter les éléments au DOM
+  cardsContainer.appendChild(cardsWrapper);
+  container.appendChild(cardsContainer);
 }
 
 // Function to create a simplified guide for the model selection page (Step 2)
