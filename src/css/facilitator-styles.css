@@ -1,0 +1,217 @@
+/* Styles simplifiés pour les tâches facilitateur et sections spéciales */
+
+/* Styles communs pour tous les éléments facilitateur */
+.duels-step.facilitator,
+.duels-accordion.facilitator {
+  opacity: 0.7;
+  font-style: italic;
+  border-left: 1px solid #ccc;
+  background-color: #f5f5f5;
+}
+
+/* Titres des éléments facilitateur */
+.duels-step.facilitator h3,
+.duels-accordion.facilitator .duels-accordion-header {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: normal;
+  margin-bottom: 2px;
+}
+
+/* En-tête d'accordéon */
+.duels-accordion.facilitator .duels-accordion-header {
+  padding: 6px 10px;
+}
+
+/* Zone de contenu */
+.duels-step.facilitator {
+  padding: 4px 6px;
+  margin-bottom: 4px;
+}
+
+.duels-accordion.facilitator .duels-accordion-content {
+  padding: 6px 8px;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+}
+
+/* États d'interaction */
+.duels-accordion.facilitator .duels-accordion-header:hover,
+.duels-accordion.facilitator.active .duels-accordion-header {
+  background-color: #e0e0e0;
+  color: #666;
+  opacity: 1;
+}
+
+/* Style pour les étapes complétées */
+.duels-accordion.facilitator.completed .duels-accordion-header {
+  background-color: #f0f8f0;
+  border-left: 1px solid #4caf50;
+  opacity: 0.8;
+}
+
+.duels-accordion.facilitator.completed .duels-accordion-header::before {
+  content: "✓";
+  color: #4caf50;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.duels-accordion.facilitator.completed .duels-accordion-content {
+  background-color: #f8fff8;
+  border-color: #e0f0e0;
+}
+
+.duels-accordion.facilitator.completed .duels-accordion-content p {
+  color: #4caf50 !important;
+}
+
+/* Bouton facilitateur dans la navbar */
+.duels-facilitator-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.duels-facilitator-btn:hover {
+  background-color: #000091 !important;
+  color: white !important;
+  opacity: 1 !important;
+  --hover-tint: #000091 !important;
+  --active-tint: #000091 !important;
+}
+
+.duels-facilitator-btn.inactive {
+  opacity: 0.7;
+  background-color: rgba(150, 150, 150, 0.3);
+  border-color: rgba(150, 150, 150, 0.5);
+}
+
+.duels-facilitator-btn.inactive:hover {
+  background-color: #000091 !important;
+  color: white !important;
+  opacity: 1 !important;
+  --hover-tint: #000091 !important;
+  --active-tint: #000091 !important;
+}
+
+/* Styles pour la section spéciale "Pour aller plus loin" */
+.duels-accordion.resources-section {
+  margin-top: 40px;
+  padding-top: 25px;
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  opacity: 1;
+  position: relative;
+}
+
+.duels-accordion.resources-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+/* Create more space from regular accordion items */
+.duels-accordion + .duels-accordion.resources-section {
+  margin-top: 40px;
+}
+
+.duels-accordion.resources-section .duels-accordion-header {
+  background-color: transparent !important;
+  border-left: none !important;
+  font-size: 1.1rem;
+  color: #444;
+  font-weight: 600;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  margin-bottom: 0;
+}
+
+.duels-accordion.resources-section .duels-accordion-header::after {
+  display: none !important; /* Remove collapse icon */
+}
+
+.duels-accordion.resources-section .duels-accordion-header::before {
+  content: "";
+  display: none;
+}
+
+.duels-accordion.resources-section.active .duels-accordion-header {
+  background-color: transparent !important;
+  color: #444 !important;
+  border-left: none !important;
+}
+
+.duels-accordion.resources-section .duels-accordion-content {
+  display: block !important; /* Always visible */
+  background-color: transparent !important;
+  border: none !important;
+  padding: 15px 0;
+  animation: none !important;
+}
+
+.duels-accordion.resources-section .duels-accordion-content p {
+  color: #555 !important;
+  font-size: 0.85rem !important;
+  font-style: normal;
+  margin-bottom: 15px !important;
+}
+
+.duels-accordion.resources-section .duels-resource-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.duels-accordion.resources-section .duels-resource-button {
+  background-color: #6a6af4;
+  border: none;
+  color: white !important;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-decoration: none !important;
+  transition: all 0.2s;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+
+.duels-accordion.resources-section .duels-resource-button:hover {
+  background-color: #000091;
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  opacity: 1;
+}
+
+/* Styles pour les appareils mobiles */
+@media (max-width: 768px) {
+  .duels-accordion.facilitator .duels-accordion-header {
+    font-size: 0.7rem;
+    padding: 5px 8px;
+  }
+  
+  .duels-accordion.resources-section {
+    margin-top: 20px;
+    padding-top: 15px;
+  }
+}

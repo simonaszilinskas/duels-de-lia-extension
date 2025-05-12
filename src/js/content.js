@@ -6,12 +6,18 @@ marianneFont.rel = 'stylesheet';
 marianneFont.href = 'https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Bold.woff2';
 document.head.appendChild(marianneFont);
 
-// Style global
+// Style global avec les améliorations responsives et typographiques
 const globalStyle = document.createElement('style');
 globalStyle.textContent = `
   @import url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Bold.woff2');
   @import url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Regular.woff2');
   @import url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Medium.woff2');
+
+
+  p {
+    font-size: 0.85rem !important;
+    line-height: 1.25rem !important;
+    }
 
   .duels-guide {
     font-family: 'Marianne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
@@ -22,8 +28,7 @@ globalStyle.textContent = `
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 370px;
-    max-width: 90vw;
+    width: min(370px, 90vw);
     max-height: 85vh;
     overflow-y: auto;
     background-color: white;
@@ -48,7 +53,7 @@ globalStyle.textContent = `
   .duels-header h2 {
     margin: 0;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: white;
   }
   
@@ -57,11 +62,12 @@ globalStyle.textContent = `
     align-items: center;
   }
   
-  .duels-resources-btn {
+  .duels-resources-btn,
+  .duels-paths-btn {
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.5);
     color: white;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     display: flex;
@@ -76,7 +82,8 @@ globalStyle.textContent = `
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
   
-  .duels-resources-btn:hover {
+  .duels-resources-btn:hover,
+  .duels-paths-btn:hover {
     background-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-1px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
@@ -87,31 +94,6 @@ globalStyle.textContent = `
     font-size: 0.9rem;
   }
   
-  .duels-paths-btn {
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px;
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    border-radius: 50%;
-    transition: all 0.2s;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .duels-paths-btn:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  }
-  
   .duels-paths-dropdown {
     position: fixed;
     top: 50%;
@@ -120,8 +102,7 @@ globalStyle.textContent = `
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    width: 300px;
-    max-width: 90vw;
+    width: min(300px, 90vw);
     z-index: 10001;
     display: none;
     padding: 20px;
@@ -133,7 +114,7 @@ globalStyle.textContent = `
   }
   
   .duels-dropdown-title {
-    font-size: 16px;
+    font-size: 0.95rem;
     font-weight: 600;
     color: #333;
     margin-bottom: 15px;
@@ -169,7 +150,7 @@ globalStyle.textContent = `
   }
   
   .duels-path-item i {
-    font-size: 18px;
+    font-size: 1rem;
     color: #6a6af4;
     margin-right: 12px;
   }
@@ -180,13 +161,13 @@ globalStyle.textContent = `
   
   .duels-path-name {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 0.9rem;
     color: #333;
     margin-bottom: 4px;
   }
   
   .duels-path-description {
-    font-size: 12px;
+    font-size: 0.8rem;
     color: #666;
   }
   
@@ -203,6 +184,7 @@ globalStyle.textContent = `
     cursor: pointer;
     transition: all 0.2s;
     font-weight: 600;
+    font-size: 0.85rem;
   }
   
   .duels-dropdown-close:hover {
@@ -224,7 +206,7 @@ globalStyle.textContent = `
   }
   
   .duels-media-caption {
-    font-size: 12px;
+    font-size: 0.8rem;
     color: #666;
     font-style: italic;
     margin-bottom: 10px;
@@ -240,7 +222,7 @@ globalStyle.textContent = `
   }
   
   .duels-callout-icon {
-    font-size: 16px;
+    font-size: 1rem;
     margin-right: 10px;
     flex-shrink: 0;
   }
@@ -251,10 +233,11 @@ globalStyle.textContent = `
   
   .duels-callout-title {
     margin-bottom: 4px;
+    font-size: 0.85rem;
   }
   
   .duels-callout-text {
-    font-size: 13px;
+    font-size: 0.8rem;
     line-height: 1.4;
   }
   
@@ -298,7 +281,7 @@ globalStyle.textContent = `
   .duels-step h3,
   .duels-accordion-header {
     color: #333;
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin-bottom: 12px;
   }
   
@@ -313,13 +296,40 @@ globalStyle.textContent = `
     transition: all 0.2s;
   }
   
+  /* Style différencié pour les tâches facilitateur */
+  .duels-accordion.facilitator .duels-accordion-header {
+    background-color: #f0f0f0;
+    border-left: 4px solid #aaaaaa;
+    color: #666;
+    font-size: 0.85rem;
+    padding: 8px 15px;
+    font-weight: 500;
+  }
+  
+  /* Style pour les étapes principales */
+  .duels-accordion.main .duels-accordion-header {
+    background-color: #f5f5f5;
+    border-left: 4px solid #9898F8;
+    color: #333;
+    font-weight: 600;
+  }
+  
   .duels-accordion-header:hover {
     background-color: #f0f0ff;
+  }
+  
+  .duels-accordion.facilitator .duels-accordion-header:hover {
+    background-color: #e8e8e8;
   }
   
   .duels-accordion.active .duels-accordion-header {
     background-color: #e8e8ff;
     color: #000;
+  }
+  
+  .duels-accordion.facilitator.active .duels-accordion-header {
+    background-color: #e8e8e8;
+    color: #444;
   }
   
   .duels-accordion-content {
@@ -331,11 +341,33 @@ globalStyle.textContent = `
     border: 1px solid #eaeaea;
     border-top: none;
     line-height: 1.5;
+    font-size: 0.85rem;
+  }
+  
+  /* Style différencié pour les contenus de tâches facilitateur */
+  .duels-accordion.facilitator .duels-accordion-content {
+    padding: 10px;
+    font-size: 0.85rem;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
   }
   
   .duels-accordion.active .duels-accordion-content {
     display: block;
     animation: fadeIn 0.3s ease;
+  }
+  
+  /* Style du texte des instructions */
+  .duels-accordion.main .duels-accordion-content p {
+    color: #333;
+    line-height: 1.4;
+  }
+  
+  .duels-accordion.facilitator .duels-accordion-content p {
+    color: #666 !important;
+    line-height: 1.25rem !important;
+    font-size: 0.75rem !important;
+    margin: 0 0 0.5rem 0 !important;
   }
   
   @keyframes fadeIn {
@@ -350,7 +382,7 @@ globalStyle.textContent = `
   .duels-resources-title {
     margin: 15px 0 10px 0;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #333;
   }
   
@@ -359,21 +391,22 @@ globalStyle.textContent = `
     padding: 8px 15px;
     margin: 5px 10px 5px 0;
     background-color: #6a6af4;
-    color: white;
-    text-decoration: none;
+    color: white !important;
+    text-decoration: none !important;
     border-radius: 4px;
     font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.2s;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
     border: none;
-    box-shadow: 0 2px 4px rgba(152, 152, 248, 0.3);
+    box-shadow: 0 1px 3px rgba(152, 152, 248, 0.2);
   }
   
   .duels-resource-button:hover {
-    background-color: #5252e0;
-    color: white;
-    box-shadow: 0 4px 8px rgba(152, 152, 248, 0.4);
-    transform: translateY(-1px);
+    background-color: #000091 !important;
+    color: white !important;
+    opacity: 1 !important;
+    --hover-tint: #000091 !important;
+    --active-tint: #000091 !important;
   }
   
   .duels-fab {
@@ -407,7 +440,7 @@ globalStyle.textContent = `
     padding: 10px 15px;
     margin: 15px 0;
     border-radius: 0 4px 4px 0;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
   
   .duels-suggestion {
@@ -418,7 +451,7 @@ globalStyle.textContent = `
     cursor: pointer;
     border: 1px solid #e0e0e0;
     transition: all 0.2s;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
   
   .duels-suggestion:hover {
@@ -441,7 +474,7 @@ globalStyle.textContent = `
     cursor: pointer;
     border: 1px solid #e0e0e0;
     transition: all 0.2s;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     display: flex;
     justify-content: space-between;
@@ -473,7 +506,7 @@ globalStyle.textContent = `
     border: 1px solid #e0e0e0;
     border-top: none;
     border-radius: 0 0 4px 4px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     display: none;
     color: #555;
     position: relative;
@@ -520,6 +553,7 @@ globalStyle.textContent = `
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s;
+    font-size: 0.85rem;
   }
   
   .duels-link:hover {
@@ -549,7 +583,7 @@ globalStyle.textContent = `
   
   .duels-resources-section-title {
     color: #6a6af4;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     margin-bottom: 15px;
     padding-bottom: 5px;
@@ -602,6 +636,41 @@ globalStyle.textContent = `
   .duels-close-button:hover {
     opacity: 1;
   }
+  
+  /* Media queries for better responsiveness */
+  @media (max-width: 768px) {
+    .duels-guide {
+      width: min(350px, 90vw);
+    }
+    
+    .duels-content-container {
+      padding: 15px;
+    }
+    
+    .duels-header {
+      padding: 12px 15px;
+    }
+    
+    .duels-header h2 {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .duels-guide {
+      width: 90vw;
+      top: 10px;
+      right: 5vw;
+    }
+    
+    .duels-content-container {
+      padding: 10px;
+    }
+    
+    .duels-resources-section {
+      padding: 15px;
+    }
+  }
 `;
 document.head.appendChild(globalStyle);
 
@@ -621,8 +690,9 @@ const workshopPaths = {
     icon: "fas fa-bolt",
     steps: [
       // Les étapes sont définies dans stepsLibrary et référencées par leur ID
-      "start_duel", "select_mode", "enter_prompt", "send_prompt", 
-      "vote_response", "discover_impact", "worth_it"
+      "start_duel", "select_mode", "choose_prompt", "send_prompt", 
+      "evaluate_utility", "vote_response", "discover_impact", "evaluate_frugality",
+      "pour_aller_plus_loin"
     ]
   }
 };
@@ -632,36 +702,39 @@ const stepsLibrary = {
   "start_duel": {
     id: "start_duel",
     order: 1,
-    title: "Lancer un duel",
+    title: "Démarrer un duel",
     instruction: "Cliquez sur \"Commencer à discuter\" sur ComparIA.",
-    pages: ["main"], // Sur quelles pages cette étape s'affiche
+    pages: ["main", "duel"], // Ajouté sur la page duel aussi
     suggestions: [],
     resources: [],
-    media: [] // Images ou GIFs à afficher
+    media: [], // Images ou GIFs à afficher
+    type: "facilitator", // tâche facilitateur
+    status: "completed" // Marquer comme complété
   },
   
   "select_mode": {
     id: "select_mode",
     order: 2,
     title: "Sélectionner le mode",
-    instruction: "Choisissez \"David contre Goliath\" ou sélectionnez deux modèles.",
+    instruction: "Choisissez \"David contre Goliath\" pour comparer un petit modèle avec un grand modèle.",
     pages: ["model_selection", "duel"],
     suggestions: [],
     resources: [],
-    media: [],
+    media: [], // Temporarily removed until images are properly set up
+    type: "facilitator", // tâche facilitateur
     callout: {
       type: "important", // types possibles: important, info, warning, success
       icon: "💡", // émoji ou classe d'icône FontAwesome (ex: "fas fa-info-circle")
-      title: "Important :",
-      content: "Vous pouvez aussi choisir deux petits modèles manuellement parmi la liste. Par exemple DeepSeek V3 contre Gemma 3 4b"
+      title: "Conseil facilitateur :",
+      content: "Pour une démonstration claire de la différence d'impact, le mode David contre Goliath est recommandé."
     }
   },
   
-  "enter_prompt": {
-    id: "enter_prompt",
+  "choose_prompt": {
+    id: "choose_prompt",
     order: 3,
-    title: "Entrer un prompt",
-    instruction: "Entrez votre propre prompt ou essayez une des suggestions.\n\nLes suggestions incluent différents personnages qui représentent divers cas d'usage.",
+    title: "Étape 1 : Choisir un prompt",
+    instruction: "Choisissez une question ou une demande à soumettre aux deux modèles d'IA.",
     pages: ["duel"],
     suggestions: [
       "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum.",
@@ -673,61 +746,117 @@ const stepsLibrary = {
       {
         title: "Comment bien prompter ?",
         url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
+      },
+      {
+        title: "Comment bien construire son prompt ?",
+        url: ""
       }
     ],
-    media: [
-      // Exemple pour ajouter une image (à décommenter et compléter si besoin)
-      // { type: "image", url: "https://example.com/image.png", alt: "Description", caption: "Légende" }
-    ]
+    media: [],
+    type: "main" // étape principale
   },
   
   "send_prompt": {
     id: "send_prompt",
     order: 4,
-    title: "Cliquer sur \"Envoyer\"",
-    instruction: "Attendez les réponses des deux modèles.",
+    title: "Envoyer le prompt",
+    instruction: "Cliquez sur le bouton \"Envoyer\" et attendez les réponses des deux modèles.",
     pages: ["duel"],
     suggestions: [],
     resources: [],
-    media: []
+    media: [], // Temporarily removed until images are properly set up
+    type: "facilitator" // tâche facilitateur
+  },
+  
+  "evaluate_utility": {
+    id: "evaluate_utility",
+    order: 5,
+    title: "Étape 2 : Évaluer l'utilité des réponses",
+    instruction: "Examinez les deux réponses et évaluez leur utilité.<br><br>Questions à se poser :<br>- La réponse répond-elle correctement à la demande ?<br>- Est-elle claire et bien structurée ?<br>- Apporte-t-elle une valeur ajoutée ?",
+    pages: ["duel"],
+    suggestions: [],
+    resources: [],
+    media: [],
+    type: "main" // étape principale
   },
   
   "vote_response": {
     id: "vote_response",
-    order: 5,
-    title: "Voter sur les réponses",
-    instruction: "\"Quelle réponse préférez-vous ?\"",
+    order: 6,
+    title: "Voter pour une réponse",
+    instruction: "Cliquez sur \"Voter\" pour la réponse que vous préférez.",
     pages: ["duel"],
     suggestions: [],
     resources: [],
-    media: []
+    media: [], // Temporarily removed until images are properly set up
+    type: "facilitator" // tâche facilitateur
   },
   
   "discover_impact": {
     id: "discover_impact",
-    order: 6,
-    title: "Découvrir l'impact environnemental",
-    instruction: "Cliquez pour révéler quel modèle est lequel. Examinez les métriques d'impact environnemental pour chaque modèle.",
+    order: 7,
+    title: "Découvrir l'impact",
+    instruction: "Cliquez sur le bouton pour révéler quel modèle est lequel et voir leurs métriques d'impact environnemental.",
     pages: ["duel"],
     suggestions: [],
     resources: [],
-    media: []
+    media: [], // Temporarily removed until images are properly set up
+    type: "facilitator" // tâche facilitateur
   },
   
-  "worth_it": {
-    id: "worth_it",
-    order: 7,
-    title: "La réponse en vaut-elle l'impact environnemental ?",
-    instruction: "\"Les réponses justifient-elles l'énergie consommée ?\"<br><br>Voici quelques points à considérer:<br>- La qualité de la réponse<br>- Son utilité<br>- Son originalité",
+  "evaluate_frugality": {
+    id: "evaluate_frugality",
+    order: 8,
+    title: "Étape 3 : Évaluer la frugalité des réponses",
+    instruction: "Analysez si la différence de qualité entre les deux réponses justifie la différence d'impact environnemental.<br><br>Questions à se poser :<br>- Le modèle le plus énergivore apporte-t-il une valeur significativement supérieure ?<br>- Pour ce cas d'usage, est-il nécessaire d'utiliser le modèle le plus puissant ?<br>- Quel compromis entre qualité et impact vous semble le plus approprié ?",
+    pages: ["duel"],
+    suggestions: [],
+    resources: [],
+    media: [],
+    type: "main" // étape principale
+  },
+  
+  "pour_aller_plus_loin": {
+    id: "pour_aller_plus_loin",
+    order: 9,
+    title: "Pour aller plus loin",
+    instruction: "Découvrez des ressources complémentaires pour approfondir les notions d'impact environnemental des IA et de frugalité numérique.",
     pages: ["duel"],
     suggestions: [],
     resources: [
       {
-        title: "Pourquoi les IA consomment de l'énergie ?",
-        url: "https://drive.google.com/drive/u/0/folders/17F2AJ4YAVIBt1WvKZE_JWcwi1iNwBSCq"
+        title: "📊 Impact environnemental des IA",
+        url: "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
+      },
+      {
+        title: "📘 Comprendre les modèles de langage",
+        url: "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/view"
+      },
+      {
+        title: "🔍 Impact comparatif : petits vs grands modèles",
+        url: "https://drive.google.com/file/d/1GSzqbH2fZ5N7FLP7l3gOygmrZqLqZF6U/view"
+      },
+      {
+        title: "🌱 Bonnes pratiques d'IA frugale",
+        url: "https://drive.google.com/file/d/1xsrkj1vJehdMKJo3FhcuVCk285qCiU6V/view"
+      },
+      {
+        title: "🧮 Calcul de l'empreinte carbone d'une IA",
+        url: "https://labelia.org/fr/solution/ia"
+      },
+      {
+        title: "🌍 Rapport Green AI 2023",
+        url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
       }
     ],
-    media: []
+    media: [],
+    type: "resources_section", // Type spécial pour une section de ressources
+    callout: {
+      type: "info",
+      icon: "🌱",
+      title: "Poursuivez l'exploration :",
+      content: "Consultez ces ressources pour mieux comprendre les enjeux énergétiques et environnementaux liés à l'usage des IA génératives et découvrir comment adopter une approche plus frugale."
+    }
   }
 };
 
@@ -775,7 +904,8 @@ const commonResources = {
 let currentSettings = {
   activePath: "duels", // Parcours actif par défaut
   showCompletedSteps: true, // Afficher/masquer les étapes terminées
-  currentStep: 1 // Étape actuelle
+  currentStep: 1, // Étape actuelle
+  showFacilitatorTasks: true // Afficher/masquer les tâches facilitateur
 };
 
 // Check if we're on the ComparIA site
@@ -787,9 +917,20 @@ chrome.runtime.sendMessage({
   isComparIASite: isComparIASite 
 });
 
-// State variables (declare them outside the if block to avoid redeclaration)
+// State variables
 let isGuideOpen = false;
 let showingResources = false;
+
+// Load Font Awesome for icons
+function loadFontAwesome() {
+  if (!document.getElementById('fontawesome-css')) {
+    const fontAwesome = document.createElement('link');
+    fontAwesome.id = 'fontawesome-css';
+    fontAwesome.rel = 'stylesheet';
+    fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
+    document.head.appendChild(fontAwesome);
+  }
+}
 
 // Fonction utilitaire pour obtenir les étapes à afficher sur la page actuelle
 function getStepsForCurrentPage(pageName) {
@@ -807,442 +948,210 @@ function getActivePath() {
   return workshopPaths[currentSettings.activePath];
 }
 
-// Only continue if we're on the ComparIA site
-if (isComparIASite) {
-  // Check what page we're on
-  const isMainPage = window.location.pathname === "/" || window.location.pathname === "";
-  const isModelSelectionPage = window.location.href.includes("/arene") && 
-                              document.body.textContent.includes("Sélection des modèles");
-  const isDuelPage = window.location.href.includes("/arene") && 
-                    !document.body.textContent.includes("Sélection des modèles");
+// Function to toggle the guide visibility
+function toggleGuide() {
+  const guide = document.getElementById('duels-guide');
+  isGuideOpen = !isGuideOpen;
   
-  // Create the FAB
-  createFAB();
-  
-  // Determine what guide to show based on the current page
-  if (isMainPage) {
-    createMainPageGuide();
-  } else if (isModelSelectionPage) {
-    createModelSelectionGuide();
-  } else if (isDuelPage) {
-    createDuelGuide();
-  }
-  
-  // Function to create floating action button
-  function createFAB() {
-    const fab = document.createElement('div');
-    fab.className = 'duels-fab';
-    fab.innerHTML = '⚔️'; // Swords emoji
-    fab.title = 'Guide d\'Atelier';
-    
-    fab.addEventListener('click', toggleGuide);
-    
-    document.body.appendChild(fab);
-  }
-  
-  // Create resources panel for any guide
-  function createResourcesPanel() {
-    const resourcesPanel = document.createElement('div');
-    resourcesPanel.className = 'duels-content-container';
-    resourcesPanel.id = 'duels-resources-panel';
-    resourcesPanel.style.display = 'none';
-    
-    // Add back to steps button (icon only)
-    const backButton = document.createElement('button');
-    backButton.className = 'duels-back-to-steps';
-    backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
-    backButton.title = 'Retour aux étapes';
-    backButton.addEventListener('click', toggleResources);
-    resourcesPanel.appendChild(backButton);
-    
-    // Get current path and relevant steps
-    const activePath = getActivePath();
-    const currentPathSteps = activePath.steps.map(stepId => stepsLibrary[stepId]);
-    
-    // Prompt suggestions section
-    if (commonResources.promptSuggestions && commonResources.promptSuggestions.length > 0) {
-      const promptsSection = document.createElement('div');
-      promptsSection.className = 'duels-resources-section';
-      
-      const promptsTitle = document.createElement('h3');
-      promptsTitle.className = 'duels-resources-section-title';
-      promptsTitle.textContent = 'Suggestions de prompts';
-      promptsSection.appendChild(promptsTitle);
-      
-      const promptsList = document.createElement('div');
-      promptsList.className = 'duels-suggestions';
-      
-      commonResources.promptSuggestions.forEach(suggestion => {
-        // Extract persona and prompt from the suggestion
-        const parts = suggestion.split(":");
-        const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
-        const prompt = parts.slice(1).join(":").trim(); // Rest of the message
-        
-        // Create persona element (toggleable header)
-        const personaElement = document.createElement('div');
-        personaElement.className = 'duels-persona';
-        personaElement.textContent = persona;
-        
-        // Create prompt element (toggleable content)
-        const promptElement = document.createElement('div');
-        promptElement.className = 'duels-prompt';
-        promptElement.textContent = prompt;
-        
-        // Add copy button
-        const copyButton = document.createElement('button');
-        copyButton.className = 'duels-copy-button';
-        copyButton.textContent = 'Copier';
-        promptElement.appendChild(copyButton);
-        
-        // Add toggle functionality
-        personaElement.addEventListener('click', () => {
-          personaElement.classList.toggle('open');
-          promptElement.classList.toggle('visible');
-        });
-        
-        // Add copy functionality
-        copyButton.addEventListener('click', (e) => {
-          e.stopPropagation(); // Prevent toggle when clicking the button
-          navigator.clipboard.writeText(suggestion)
-            .then(() => {
-              // Visual feedback
-              promptElement.classList.add('copied');
-              copyButton.textContent = 'Copié!';
-              setTimeout(() => {
-                promptElement.classList.remove('copied');
-                copyButton.textContent = 'Copier';
-              }, 1000);
-            });
-        });
-        
-        promptsList.appendChild(personaElement);
-        promptsList.appendChild(promptElement);
-      });
-      
-      promptsSection.appendChild(promptsList);
-      resourcesPanel.appendChild(promptsSection);
-    }
-    
-    // Collect all resources from steps in current path
-    const allResources = [];
-    currentPathSteps.forEach(step => {
-      if (step.resources && step.resources.length > 0) {
-        step.resources.forEach(resource => {
-          // Check if resource is already in allResources to avoid duplicates
-          if (!allResources.some(r => r.url === resource.url)) {
-            allResources.push(resource);
-          }
-        });
-      }
-    });
-    
-    // Educational Resources section
-    if (commonResources.educationalResources && commonResources.educationalResources.length > 0) {
-      const educationalSection = document.createElement('div');
-      educationalSection.className = 'duels-resources-section';
-      
-      const educationalTitle = document.createElement('h3');
-      educationalTitle.className = 'duels-resources-section-title';
-      educationalTitle.textContent = 'Ressources pédagogiques';
-      educationalSection.appendChild(educationalTitle);
-      
-      // Add all educational resources
-      commonResources.educationalResources.forEach(resource => {
-        const resourceLink = document.createElement('a');
-        resourceLink.className = 'duels-resource-button';
-        resourceLink.href = resource.url;
-        resourceLink.target = '_blank';
-        resourceLink.textContent = resource.title;
-        educationalSection.appendChild(resourceLink);
-      });
-      
-      resourcesPanel.appendChild(educationalSection);
-    }
-    
-    // AI Frugale section (if needed for compatibility)
-    if (allResources.length > 0) {
-      const frugaleSection = document.createElement('div');
-      frugaleSection.className = 'duels-resources-section';
-      
-      const frugaleTitle = document.createElement('h3');
-      frugaleTitle.className = 'duels-resources-section-title';
-      frugaleTitle.textContent = 'Autres ressources';
-      frugaleSection.appendChild(frugaleTitle);
-      
-      // Add resources from steps
-      allResources.forEach(resource => {
-        const resourceLink = document.createElement('a');
-        resourceLink.className = 'duels-resource-button';
-        resourceLink.href = resource.url;
-        resourceLink.target = '_blank';
-        resourceLink.textContent = resource.title;
-        frugaleSection.appendChild(resourceLink);
-      });
-      
-      resourcesPanel.appendChild(frugaleSection);
-    }
-    
-    // Notes de facilitation section
-    if (commonResources.facilitatorGuide) {
-      const notesSection = document.createElement('div');
-      notesSection.className = 'duels-resources-section';
-      
-      const notesTitle = document.createElement('h3');
-      notesTitle.className = 'duels-resources-section-title';
-      notesTitle.textContent = 'Notes de facilitation';
-      notesSection.appendChild(notesTitle);
-      
-      const facilitatorLink = document.createElement('a');
-      facilitatorLink.className = 'duels-resource-button';
-      facilitatorLink.href = commonResources.facilitatorGuide.url;
-      facilitatorLink.target = '_blank';
-      facilitatorLink.textContent = commonResources.facilitatorGuide.title;
-      notesSection.appendChild(facilitatorLink);
-      
-      resourcesPanel.appendChild(notesSection);
-    }
-    
-    // Educational resources section (nouveau)
-    if (commonResources.educationalResources && commonResources.educationalResources.length > 0) {
-      const educationalSection = document.createElement('div');
-      educationalSection.className = 'duels-resources-section';
-      
-      const educationalTitle = document.createElement('h3');
-      educationalTitle.className = 'duels-resources-section-title';
-      educationalTitle.textContent = 'Ressources pédagogiques';
-      educationalSection.appendChild(educationalTitle);
-      
-      commonResources.educationalResources.forEach(resource => {
-        const resourceLink = document.createElement('a');
-        resourceLink.className = 'duels-resource-button';
-        resourceLink.href = resource.url;
-        resourceLink.target = '_blank';
-        resourceLink.textContent = resource.title;
-        educationalSection.appendChild(resourceLink);
-      });
-      
-      resourcesPanel.appendChild(educationalSection);
-    }
-    
-    return resourcesPanel;
-  }
-  
-  // Load Font Awesome for icons
-  function loadFontAwesome() {
-    if (!document.getElementById('fontawesome-css')) {
-      const fontAwesome = document.createElement('link');
-      fontAwesome.id = 'fontawesome-css';
-      fontAwesome.rel = 'stylesheet';
-      fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
-      document.head.appendChild(fontAwesome);
-    }
-  }
-
-  // Functions for guide interaction
-
-  // Function to toggle the guide visibility
-  function toggleGuide() {
-    const guide = document.getElementById('duels-guide');
-    isGuideOpen = !isGuideOpen;
-    
-    if (isGuideOpen) {
-      guide.classList.add('open');
-    } else {
-      guide.classList.remove('open');
-      // Reset to steps view when closing
-      showingResources = false;
-      updateGuideContent();
-    }
-  }
-
-  // Function to toggle between steps and resources
-  function toggleResources() {
-    showingResources = !showingResources;
+  if (isGuideOpen) {
+    guide.classList.add('open');
+  } else {
+    guide.classList.remove('open');
+    // Reset to steps view when closing
+    showingResources = false;
     updateGuideContent();
   }
+}
 
-  // Function to update the guide content based on current state
-  function updateGuideContent() {
-    const stepsContainer = document.getElementById('duels-steps-container');
-    const resourcesContainer = document.getElementById('duels-resources-panel');
+// Function to toggle between steps and resources
+function toggleResources() {
+  showingResources = !showingResources;
+  updateGuideContent();
+}
+
+// Function to toggle facilitator tasks visibility
+function toggleFacilitatorTasks() {
+  currentSettings.showFacilitatorTasks = !currentSettings.showFacilitatorTasks;
+  
+  // Update button title and style
+  const facilitatorButton = document.querySelector('.duels-facilitator-btn');
+  if (facilitatorButton) {
+    facilitatorButton.title = currentSettings.showFacilitatorTasks ? 'Masquer les tâches facilitateur' : 'Afficher les tâches facilitateur';
     
-    if (showingResources) {
-      if (stepsContainer) stepsContainer.style.display = 'none';
-      if (resourcesContainer) resourcesContainer.style.display = 'block';
+    // Update button style based on state
+    if (currentSettings.showFacilitatorTasks) {
+      facilitatorButton.classList.remove('inactive');
     } else {
-      if (stepsContainer) stepsContainer.style.display = 'block';
-      if (resourcesContainer) resourcesContainer.style.display = 'none';
+      facilitatorButton.classList.add('inactive');
     }
   }
   
-  // Function to create a guide with standardized header and navigation
-  function createGuideBase() {
-    const guide = document.createElement('div');
-    guide.className = 'duels-guide';
-    guide.id = 'duels-guide';
-    
-    // Create header with navigation
-    const header = document.createElement('div');
-    header.className = 'duels-header';
-    
-    // Get active path information
-    const activePath = getActivePath();
-    
-    const title = document.createElement('h2');
-    title.innerHTML = `<i class="${activePath.icon}"></i> ${activePath.name}`;
-    header.appendChild(title);
-    
-    // Create navbar
-    const navbar = document.createElement('div');
-    navbar.className = 'duels-navbar';
-    
-    // Paths dropdown button (désactivé pour l'instant - un seul parcours)
-    // Décommentez ce bloc lorsque vous ajouterez d'autres parcours
-    /*
-    if (Object.keys(workshopPaths).length > 1) {
-      const pathsButton = document.createElement('button');
-      pathsButton.className = 'duels-paths-btn';
-      pathsButton.innerHTML = '<i class="fas fa-map-signs"></i>';
-      pathsButton.title = 'Changer de parcours';
-      
-      // Create a dropdown for paths selection
-      pathsButton.addEventListener('click', togglePathsDropdown);
-      navbar.appendChild(pathsButton);
-    }
-    */
-    
-    // Resources button with icon only
-    const resourcesButton = document.createElement('button');
-    resourcesButton.className = 'duels-resources-btn';
-    resourcesButton.innerHTML = '<i class="fas fa-book"></i>';
-    resourcesButton.title = 'Ressources';
-    resourcesButton.addEventListener('click', toggleResources);
-    navbar.appendChild(resourcesButton);
-    
-    // Close button
-    const closeButton = document.createElement('button');
-    closeButton.className = 'duels-close-button';
-    closeButton.innerHTML = '&times;';
-    closeButton.addEventListener('click', toggleGuide);
-    navbar.appendChild(closeButton);
-    
-    header.appendChild(navbar);
-    guide.appendChild(header);
-    
-    return guide;
-  }
+  // Get all facilitator elements
+  const facilitatorElements = document.querySelectorAll('.duels-step.facilitator, .duels-accordion.facilitator');
   
-  // Function to create paths dropdown menu
-  function createPathsDropdown() {
-    const dropdown = document.createElement('div');
-    dropdown.className = 'duels-paths-dropdown';
-    dropdown.id = 'duels-paths-dropdown';
-    
-    const title = document.createElement('div');
-    title.className = 'duels-dropdown-title';
-    title.textContent = 'Sélectionner un parcours';
-    dropdown.appendChild(title);
-    
-    const pathsList = document.createElement('div');
-    pathsList.className = 'duels-paths-list';
-    
-    // Add each available path
-    Object.values(workshopPaths).forEach(path => {
-      const pathItem = document.createElement('div');
-      pathItem.className = 'duels-path-item';
-      if (path.id === currentSettings.activePath) {
-        pathItem.classList.add('active');
-      }
+  // Update their visibility
+  facilitatorElements.forEach(element => {
+    if (currentSettings.showFacilitatorTasks) {
+      element.style.display = 'block';
       
-      const pathIcon = document.createElement('i');
-      pathIcon.className = path.icon;
-      pathItem.appendChild(pathIcon);
-      
-      const pathInfo = document.createElement('div');
-      pathInfo.className = 'duels-path-info';
-      
-      const pathName = document.createElement('div');
-      pathName.className = 'duels-path-name';
-      pathName.textContent = path.name;
-      pathInfo.appendChild(pathName);
-      
-      const pathDesc = document.createElement('div');
-      pathDesc.className = 'duels-path-description';
-      pathDesc.textContent = path.description;
-      pathInfo.appendChild(pathDesc);
-      
-      pathItem.appendChild(pathInfo);
-      
-      // Add click handler to change path
-      pathItem.addEventListener('click', () => {
-        changePath(path.id);
-        togglePathsDropdown(); // Close dropdown after selection
+      // Force styles on paragraphs inside this element using !important via style attribute
+      const paragraphs = element.querySelectorAll('p');
+      paragraphs.forEach(p => {
+        p.setAttribute('style', 'font-size: 0.75rem !important; line-height: 1.25rem !important; color: #888 !important; margin: 0 0 0.5rem 0 !important;');
       });
-      
-      pathsList.appendChild(pathItem);
-    });
-    
-    dropdown.appendChild(pathsList);
-    
-    // Add close button
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'duels-dropdown-close';
-    closeBtn.innerHTML = 'Fermer';
-    closeBtn.addEventListener('click', togglePathsDropdown);
-    dropdown.appendChild(closeBtn);
-    
-    // Add to document
-    document.body.appendChild(dropdown);
-  }
-  
-  // Function to toggle paths dropdown visibility
-  function togglePathsDropdown() {
-    const dropdown = document.getElementById('duels-paths-dropdown');
-    
-    if (!dropdown) {
-      createPathsDropdown();
     } else {
-      dropdown.classList.toggle('open');
+      element.style.display = 'none';
     }
-  }
+  });
+}
+
+// Function to update the guide content based on current state
+function updateGuideContent() {
+  const stepsContainer = document.getElementById('duels-steps-container');
+  const resourcesContainer = document.getElementById('duels-resources-panel');
   
-  // Function to change the active path
-  function changePath(pathId) {
-    if (workshopPaths[pathId]) {
-      currentSettings.activePath = pathId;
+  if (showingResources) {
+    if (stepsContainer) stepsContainer.style.display = 'none';
+    if (resourcesContainer) resourcesContainer.style.display = 'block';
+  } else {
+    if (stepsContainer) stepsContainer.style.display = 'block';
+    if (resourcesContainer) resourcesContainer.style.display = 'none';
+  }
+}
+
+// Function to create floating action button
+function createFAB() {
+  const fab = document.createElement('div');
+  fab.className = 'duels-fab';
+  fab.innerHTML = '⚔️'; // Swords emoji
+  fab.title = 'Guide d\'Atelier';
+  
+  fab.addEventListener('click', toggleGuide);
+  
+  document.body.appendChild(fab);
+}
+
+// Fonction pour créer et afficher un callout dans une étape
+function renderCallout(step, container) {
+  if (step.callout) {
+    const calloutElement = document.createElement('div');
+    calloutElement.className = `duels-callout duels-callout-${step.callout.type}`;
+    
+    // Add icon if provided
+    if (step.callout.icon) {
+      let iconElement;
       
-      // Re-render the guide with the new path
-      const existingGuide = document.getElementById('duels-guide');
-      if (existingGuide) {
-        existingGuide.remove();
+      // Check if it's a FontAwesome icon class or an emoji
+      if (step.callout.icon.startsWith('fas ') || step.callout.icon.startsWith('far ') || step.callout.icon.startsWith('fab ')) {
+        iconElement = document.createElement('i');
+        iconElement.className = `${step.callout.icon} duels-callout-icon`;
+      } else {
+        iconElement = document.createElement('span');
+        iconElement.className = 'duels-callout-icon';
+        iconElement.textContent = step.callout.icon;
       }
       
-      if (isMainPage) {
-        createMainPageGuide();
-      } else if (isModelSelectionPage) {
-        createModelSelectionGuide();
-      } else if (isDuelPage) {
-        createDuelGuide();
-      }
+      calloutElement.appendChild(iconElement);
     }
+    
+    // Add callout content
+    const calloutContent = document.createElement('div');
+    calloutContent.className = 'duels-callout-content';
+    
+    // Add title if provided
+    if (step.callout.title) {
+      const calloutTitle = document.createElement('div');
+      calloutTitle.className = 'duels-callout-title';
+      calloutTitle.innerHTML = `<strong>${step.callout.title}</strong>`;
+      calloutContent.appendChild(calloutTitle);
+    }
+    
+    // Add content
+    const calloutText = document.createElement('div');
+    calloutText.className = 'duels-callout-text';
+    calloutText.textContent = step.callout.content;
+    calloutContent.appendChild(calloutText);
+    
+    calloutElement.appendChild(calloutContent);
+    container.appendChild(calloutElement);
   }
+}
+
+// Function to create a guide with standardized header and navigation
+function createGuideBase() {
+  const guide = document.createElement('div');
+  guide.className = 'duels-guide';
+  guide.id = 'duels-guide';
   
-  // Function to create resources panel that can be reused across different guides
-  function createResourcesPanel() {
-    const resourcesPanel = document.createElement('div');
-    resourcesPanel.className = 'duels-content-container';
-    resourcesPanel.id = 'duels-resources-panel';
-    resourcesPanel.style.display = 'none';
-    
-    // Add back to steps button
-    const backButton = document.createElement('button');
-    backButton.className = 'duels-back-to-steps';
-    backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
-    backButton.title = 'Retour aux étapes';
-    backButton.addEventListener('click', toggleResources);
-    resourcesPanel.appendChild(backButton);
-    
-    // Prompt suggestions section
+  // Create header with navigation
+  const header = document.createElement('div');
+  header.className = 'duels-header';
+  
+  // Get active path information
+  const activePath = getActivePath();
+  
+  const title = document.createElement('h2');
+  title.innerHTML = `<i class="${activePath.icon}"></i> ${activePath.name}`;
+  header.appendChild(title);
+  
+  // Create navbar
+  const navbar = document.createElement('div');
+  navbar.className = 'duels-navbar';
+  
+  // Resources button with icon only
+  const resourcesButton = document.createElement('button');
+  resourcesButton.className = 'duels-resources-btn';
+  resourcesButton.innerHTML = '<i class="fas fa-book"></i>';
+  resourcesButton.title = 'Ressources';
+  resourcesButton.addEventListener('click', toggleResources);
+  navbar.appendChild(resourcesButton);
+  
+  // Facilitator tasks toggle button
+  const facilitatorButton = document.createElement('button');
+  facilitatorButton.className = 'duels-facilitator-btn';
+  // Ajouter la classe inactive si les tâches sont masquées
+  if (!currentSettings.showFacilitatorTasks) {
+    facilitatorButton.classList.add('inactive');
+  }
+  facilitatorButton.innerHTML = '<i class="fas fa-cog"></i>';
+  facilitatorButton.title = currentSettings.showFacilitatorTasks ? 'Masquer les tâches facilitateur' : 'Afficher les tâches facilitateur';
+  facilitatorButton.addEventListener('click', toggleFacilitatorTasks);
+  navbar.appendChild(facilitatorButton);
+  
+  // Close button
+  const closeButton = document.createElement('button');
+  closeButton.className = 'duels-close-button';
+  closeButton.innerHTML = '&times;';
+  closeButton.addEventListener('click', toggleGuide);
+  navbar.appendChild(closeButton);
+  
+  header.appendChild(navbar);
+  guide.appendChild(header);
+  
+  return guide;
+}
+
+// Create resources panel for any guide
+function createResourcesPanel() {
+  const resourcesPanel = document.createElement('div');
+  resourcesPanel.className = 'duels-content-container';
+  resourcesPanel.id = 'duels-resources-panel';
+  resourcesPanel.style.display = 'none';
+  
+  // Add back to steps button (icon only)
+  const backButton = document.createElement('button');
+  backButton.className = 'duels-back-to-steps';
+  backButton.innerHTML = '<i class="fas fa-arrow-left"></i>';
+  backButton.title = 'Retour aux étapes';
+  backButton.addEventListener('click', toggleResources);
+  resourcesPanel.appendChild(backButton);
+  
+  // Get current path and relevant steps
+  const activePath = getActivePath();
+  const currentPathSteps = activePath.steps.map(stepId => stepsLibrary[stepId]);
+  
+  // Prompt suggestions section
+  if (commonResources.promptSuggestions && commonResources.promptSuggestions.length > 0) {
     const promptsSection = document.createElement('div');
     promptsSection.className = 'duels-resources-section';
     
@@ -1254,10 +1163,8 @@ if (isComparIASite) {
     const promptsList = document.createElement('div');
     promptsList.className = 'duels-suggestions';
     
-    // Using the commonResources instead of workshopSteps
-    const suggestions = commonResources.promptSuggestions;
-    suggestions.forEach(suggestion => {
-      // Séparer l'emoji et le persona du prompt
+    commonResources.promptSuggestions.forEach(suggestion => {
+      // Extract persona and prompt from the suggestion
       const parts = suggestion.split(":");
       const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
       const prompt = parts.slice(1).join(":").trim(); // Rest of the message
@@ -1272,63 +1179,102 @@ if (isComparIASite) {
       promptElement.className = 'duels-prompt';
       promptElement.textContent = prompt;
       
-      // Ajouter un bouton de copie
+      // Add copy button
       const copyButton = document.createElement('button');
       copyButton.className = 'duels-copy-button';
       copyButton.textContent = 'Copier';
+      promptElement.appendChild(copyButton);
+      
+      // Add toggle functionality
+      personaElement.addEventListener('click', () => {
+        personaElement.classList.toggle('open');
+        promptElement.classList.toggle('visible');
+      });
+      
+      // Add copy functionality
       copyButton.addEventListener('click', (e) => {
-        e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
+        e.stopPropagation(); // Prevent toggle when clicking the button
         navigator.clipboard.writeText(suggestion)
           .then(() => {
-            // Feedback visuel
+            // Visual feedback
             promptElement.classList.add('copied');
-            copyButton.textContent = 'Copié !';
+            copyButton.textContent = 'Copié!';
             setTimeout(() => {
               promptElement.classList.remove('copied');
               copyButton.textContent = 'Copier';
             }, 1000);
           });
       });
-      promptElement.appendChild(copyButton);
       
-      // Ajouter l'événement de toggle au persona
-      personaElement.addEventListener('click', () => {
-        personaElement.classList.toggle('open');
-        promptElement.classList.toggle('visible');
-      });
-      
-      // Ajouter les éléments au DOM
       promptsList.appendChild(personaElement);
       promptsList.appendChild(promptElement);
     });
     
     promptsSection.appendChild(promptsList);
     resourcesPanel.appendChild(promptsSection);
-    
-    // Educational Resources section
-    if (commonResources.educationalResources && commonResources.educationalResources.length > 0) {
-      const educationalSection = document.createElement('div');
-      educationalSection.className = 'duels-resources-section';
-      
-      const educationalTitle = document.createElement('h3');
-      educationalTitle.className = 'duels-resources-section-title';
-      educationalTitle.textContent = 'Ressources pédagogiques';
-      educationalSection.appendChild(educationalTitle);
-      
-      // Add all educational resources
-      commonResources.educationalResources.forEach(resource => {
-        const resourceLink = document.createElement('a');
-        resourceLink.className = 'duels-resource-button';
-        resourceLink.href = resource.url;
-        resourceLink.target = '_blank';
-        resourceLink.textContent = resource.title;
-        educationalSection.appendChild(resourceLink);
+  }
+  
+  // Collect all resources from steps in current path
+  const allResources = [];
+  currentPathSteps.forEach(step => {
+    if (step.resources && step.resources.length > 0) {
+      step.resources.forEach(resource => {
+        // Check if resource is already in allResources to avoid duplicates
+        if (!allResources.some(r => r.url === resource.url)) {
+          allResources.push(resource);
+        }
       });
-      
-      resourcesPanel.appendChild(educationalSection);
     }
+  });
+  
+  // Educational Resources section
+  if (commonResources.educationalResources && commonResources.educationalResources.length > 0) {
+    const educationalSection = document.createElement('div');
+    educationalSection.className = 'duels-resources-section';
     
-    // Notes de facilitation section
+    const educationalTitle = document.createElement('h3');
+    educationalTitle.className = 'duels-resources-section-title';
+    educationalTitle.textContent = 'Ressources pédagogiques';
+    educationalSection.appendChild(educationalTitle);
+    
+    // Add all educational resources
+    commonResources.educationalResources.forEach(resource => {
+      const resourceLink = document.createElement('a');
+      resourceLink.className = 'duels-resource-button';
+      resourceLink.href = resource.url;
+      resourceLink.target = '_blank';
+      resourceLink.textContent = resource.title;
+      educationalSection.appendChild(resourceLink);
+    });
+    
+    resourcesPanel.appendChild(educationalSection);
+  }
+  
+  // AI Frugale section (if needed for compatibility)
+  if (allResources.length > 0) {
+    const frugaleSection = document.createElement('div');
+    frugaleSection.className = 'duels-resources-section';
+    
+    const frugaleTitle = document.createElement('h3');
+    frugaleTitle.className = 'duels-resources-section-title';
+    frugaleTitle.textContent = 'Autres ressources';
+    frugaleSection.appendChild(frugaleTitle);
+    
+    // Add resources from steps
+    allResources.forEach(resource => {
+      const resourceLink = document.createElement('a');
+      resourceLink.className = 'duels-resource-button';
+      resourceLink.href = resource.url;
+      resourceLink.target = '_blank';
+      resourceLink.textContent = resource.title;
+      frugaleSection.appendChild(resourceLink);
+    });
+    
+    resourcesPanel.appendChild(frugaleSection);
+  }
+  
+  // Notes de facilitation section
+  if (commonResources.facilitatorGuide) {
     const notesSection = document.createElement('div');
     notesSection.className = 'duels-resources-section';
     
@@ -1345,466 +1291,543 @@ if (isComparIASite) {
     notesSection.appendChild(facilitatorLink);
     
     resourcesPanel.appendChild(notesSection);
-    
-    // Educational resources section (nouveau)
-    if (commonResources.educationalResources && commonResources.educationalResources.length > 0) {
-      const educationalSection = document.createElement('div');
-      educationalSection.className = 'duels-resources-section';
-      
-      const educationalTitle = document.createElement('h3');
-      educationalTitle.className = 'duels-resources-section-title';
-      educationalTitle.textContent = 'Ressources pédagogiques';
-      educationalSection.appendChild(educationalTitle);
-      
-      commonResources.educationalResources.forEach(resource => {
-        const resourceLink = document.createElement('a');
-        resourceLink.className = 'duels-resource-button';
-        resourceLink.href = resource.url;
-        resourceLink.target = '_blank';
-        resourceLink.textContent = resource.title;
-        educationalSection.appendChild(resourceLink);
-      });
-      
-      resourcesPanel.appendChild(educationalSection);
-    }
-    
-    return resourcesPanel;
   }
   
-  // Function to load Font Awesome if it's not already loaded
-  function loadFontAwesome() {
-    if (!document.getElementById('fontawesome-css')) {
-      const fontAwesome = document.createElement('link');
-      fontAwesome.id = 'fontawesome-css';
-      fontAwesome.rel = 'stylesheet';
-      fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
-      document.head.appendChild(fontAwesome);
-    }
-  }
-  
-  // Fonction pour créer et afficher un callout dans une étape
-  function renderCallout(step, container) {
-    if (step.callout) {
-      const calloutElement = document.createElement('div');
-      calloutElement.className = `duels-callout duels-callout-${step.callout.type}`;
-      
-      // Add icon if provided
-      if (step.callout.icon) {
-        let iconElement;
-        
-        // Check if it's a FontAwesome icon class or an emoji
-        if (step.callout.icon.startsWith('fas ') || step.callout.icon.startsWith('far ') || step.callout.icon.startsWith('fab ')) {
-          iconElement = document.createElement('i');
-          iconElement.className = `${step.callout.icon} duels-callout-icon`;
-        } else {
-          iconElement = document.createElement('span');
-          iconElement.className = 'duels-callout-icon';
-          iconElement.textContent = step.callout.icon;
-        }
-        
-        calloutElement.appendChild(iconElement);
-      }
-      
-      // Add callout content
-      const calloutContent = document.createElement('div');
-      calloutContent.className = 'duels-callout-content';
-      
-      // Add title if provided
-      if (step.callout.title) {
-        const calloutTitle = document.createElement('div');
-        calloutTitle.className = 'duels-callout-title';
-        calloutTitle.innerHTML = `<strong>${step.callout.title}</strong>`;
-        calloutContent.appendChild(calloutTitle);
-      }
-      
-      // Add content
-      const calloutText = document.createElement('div');
-      calloutText.className = 'duels-callout-text';
-      calloutText.textContent = step.callout.content;
-      calloutContent.appendChild(calloutText);
-      
-      calloutElement.appendChild(calloutContent);
-      container.appendChild(calloutElement);
-    }
-  }
+  return resourcesPanel;
+}
 
 // Function to create a guide for the main page
-  function createMainPageGuide() {
-    const guide = createGuideBase();
+function createMainPageGuide() {
+  const guide = createGuideBase();
+  
+  // Create steps container
+  const stepsContainer = document.createElement('div');
+  stepsContainer.className = 'duels-content-container';
+  stepsContainer.id = 'duels-steps-container';
+  
+  // Get all steps for the main page
+  const mainPageSteps = getStepsForCurrentPage('main');
+  
+  // Add each step
+  mainPageSteps.forEach((step, index) => {
+    const stepElement = document.createElement('div');
+    stepElement.className = 'duels-step';
     
-    // Create steps container
-    const stepsContainer = document.createElement('div');
-    stepsContainer.className = 'duels-content-container';
-    stepsContainer.id = 'duels-steps-container';
+    // Add class based on step type
+    if (step.type === 'facilitator') {
+      stepElement.classList.add('facilitator');
+    } else if (step.type === 'resources_section') {
+      stepElement.classList.add('resources-section');
+    } else {
+      stepElement.classList.add('main');
+    }
     
-    // Get all steps for the main page
-    const mainPageSteps = getStepsForCurrentPage('main');
+    // Mark current step as active
+    if (step.order === currentSettings.currentStep) {
+      stepElement.classList.add('active');
+    }
     
-    // Add each step
-    mainPageSteps.forEach((step, index) => {
-      const stepElement = document.createElement('div');
-      stepElement.className = 'duels-step';
-      // Mark current step as active
-      if (step.order === currentSettings.currentStep) {
-        stepElement.classList.add('active');
-      }
+    const stepTitle = document.createElement('h3');
+    
+    // Different formatting for facilitator tasks vs main steps
+    if (step.type === 'facilitator') {
+      stepTitle.innerHTML = `<i class="fas fa-cog" style="margin-right: 8px; font-size: 0.8rem; opacity: 0.7;"></i> ${step.title}`;
+    } else if (step.type === 'resources_section') {
+      stepTitle.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
+    } else {
+      stepTitle.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
+    }
+    
+    stepElement.appendChild(stepTitle);
+    
+    const stepInstructions = document.createElement('p');
+    stepInstructions.innerHTML = step.instruction;
+    stepElement.appendChild(stepInstructions);
+    
+    // Add callout if available
+    renderCallout(step, stepElement);
+    
+    // Add media content if available
+    if (step.media && step.media.length > 0) {
+      const mediaContainer = document.createElement('div');
+      mediaContainer.className = 'duels-media-container';
       
-      const stepTitle = document.createElement('h3');
-      stepTitle.textContent = `Étape ${step.order}: ${step.title}`;
-      stepElement.appendChild(stepTitle);
-      
-      const stepInstructions = document.createElement('p');
-      stepInstructions.innerHTML = step.instruction;
-      stepElement.appendChild(stepInstructions);
-      
-      // Add callout if available
-      renderCallout(step, stepElement);
-      
-      // Add media content if available
-      if (step.media && step.media.length > 0) {
-        const mediaContainer = document.createElement('div');
-        mediaContainer.className = 'duels-media-container';
-        
-        step.media.forEach(media => {
-          if (media.type === 'image') {
-            const img = document.createElement('img');
-            img.src = media.url;
-            img.alt = media.alt || '';
-            img.className = 'duels-media-image';
-            mediaContainer.appendChild(img);
-            
-            if (media.caption) {
-              const caption = document.createElement('div');
-              caption.className = 'duels-media-caption';
-              caption.textContent = media.caption;
-              mediaContainer.appendChild(caption);
-            }
-          } else if (media.type === 'gif') {
-            const img = document.createElement('img');
-            img.src = media.url;
-            img.alt = media.alt || '';
-            img.className = 'duels-media-gif';
-            mediaContainer.appendChild(img);
-            
-            if (media.caption) {
-              const caption = document.createElement('div');
-              caption.className = 'duels-media-caption';
-              caption.textContent = media.caption;
-              mediaContainer.appendChild(caption);
-            }
+      step.media.forEach(media => {
+        if (media.type === 'image') {
+          const img = document.createElement('img');
+          img.src = media.url;
+          img.alt = media.alt || '';
+          img.className = 'duels-media-image';
+          mediaContainer.appendChild(img);
+          console.log('Loading image:', media.url);
+          
+          if (media.caption) {
+            const caption = document.createElement('div');
+            caption.className = 'duels-media-caption';
+            caption.textContent = media.caption;
+            mediaContainer.appendChild(caption);
           }
+        } else if (media.type === 'gif') {
+          const img = document.createElement('img');
+          img.src = media.url;
+          img.alt = media.alt || '';
+          img.className = 'duels-media-gif';
+          mediaContainer.appendChild(img);
+          console.log('Loading GIF:', media.url);
+          
+          if (media.caption) {
+            const caption = document.createElement('div');
+            caption.className = 'duels-media-caption';
+            caption.textContent = media.caption;
+            mediaContainer.appendChild(caption);
+          }
+        }
+      });
+      
+      stepElement.appendChild(mediaContainer);
+    }
+    
+    // Add suggestions if available
+    if (step.suggestions && step.suggestions.length > 0) {
+      const suggestionsTitle = document.createElement('h4');
+      suggestionsTitle.className = 'duels-suggestions-title';
+      suggestionsTitle.textContent = 'Suggestions:';
+      stepElement.appendChild(suggestionsTitle);
+      
+      const suggestionsList = document.createElement('div');
+      suggestionsList.className = 'duels-suggestions';
+      
+      step.suggestions.forEach(suggestion => {
+        // Séparer l'emoji et le persona du prompt
+        const parts = suggestion.split(":");
+        const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
+        const prompt = parts.slice(1).join(":").trim(); // Rest of the message
+        
+        // Create persona element (toggleable header)
+        const personaElement = document.createElement('div');
+        personaElement.className = 'duels-persona';
+        personaElement.textContent = persona;
+        
+        // Create prompt element (toggleable content)
+        const promptElement = document.createElement('div');
+        promptElement.className = 'duels-prompt';
+        promptElement.textContent = prompt;
+        
+        // Ajouter un bouton de copie
+        const copyButton = document.createElement('button');
+        copyButton.className = 'duels-copy-button';
+        copyButton.textContent = 'Copier';
+        copyButton.addEventListener('click', (e) => {
+          e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
+          navigator.clipboard.writeText(suggestion)
+            .then(() => {
+              // Feedback visuel
+              promptElement.classList.add('copied');
+              copyButton.textContent = 'Copié !';
+              setTimeout(() => {
+                promptElement.classList.remove('copied');
+                copyButton.textContent = 'Copier';
+              }, 1000);
+            });
+        });
+        promptElement.appendChild(copyButton);
+        
+        // Ajouter l'événement de toggle au persona
+        personaElement.addEventListener('click', () => {
+          personaElement.classList.toggle('open');
+          promptElement.classList.toggle('visible');
         });
         
-        stepElement.appendChild(mediaContainer);
-      }
+        // Ajouter les éléments au DOM
+        suggestionsList.appendChild(personaElement);
+        suggestionsList.appendChild(promptElement);
+      });
       
-      // Add suggestions if available
-      if (step.suggestions && step.suggestions.length > 0) {
-        const suggestionsTitle = document.createElement('h4');
-        suggestionsTitle.className = 'duels-suggestions-title';
-        suggestionsTitle.textContent = 'Suggestions:';
-        stepElement.appendChild(suggestionsTitle);
-        
-        const suggestionsList = document.createElement('div');
-        suggestionsList.className = 'duels-suggestions';
-        
-        step.suggestions.forEach(suggestion => {
-          // Séparer l'emoji et le persona du prompt
-          const parts = suggestion.split(":");
-          const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
-          const prompt = parts.slice(1).join(":").trim(); // Rest of the message
-          
-          // Create persona element (toggleable header)
-          const personaElement = document.createElement('div');
-          personaElement.className = 'duels-persona';
-          personaElement.textContent = persona;
-          
-          // Create prompt element (toggleable content)
-          const promptElement = document.createElement('div');
-          promptElement.className = 'duels-prompt';
-          promptElement.textContent = prompt;
-          
-          // Ajouter un bouton de copie
-          const copyButton = document.createElement('button');
-          copyButton.className = 'duels-copy-button';
-          copyButton.textContent = 'Copier';
-          copyButton.addEventListener('click', (e) => {
-            e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
-            navigator.clipboard.writeText(suggestion)
-              .then(() => {
-                // Feedback visuel
-                promptElement.classList.add('copied');
-                copyButton.textContent = 'Copié !';
-                setTimeout(() => {
-                  promptElement.classList.remove('copied');
-                  copyButton.textContent = 'Copier';
-                }, 1000);
-              });
-          });
-          promptElement.appendChild(copyButton);
-          
-          // Ajouter l'événement de toggle au persona
-          personaElement.addEventListener('click', () => {
-            personaElement.classList.toggle('open');
-            promptElement.classList.toggle('visible');
-          });
-          
-          // Ajouter les éléments au DOM
-          suggestionsList.appendChild(personaElement);
-          suggestionsList.appendChild(promptElement);
-        });
-        
-        stepElement.appendChild(suggestionsList);
-      }
-      
-      stepsContainer.appendChild(stepElement);
-    });
+      stepElement.appendChild(suggestionsList);
+    }
     
-    guide.appendChild(stepsContainer);
-    
-    // Create resources panel (initially hidden)
-    const resourcesPanel = createResourcesPanel();
-    guide.appendChild(resourcesPanel);
-    
-    // Add guide to the page
-    document.body.appendChild(guide);
-    
-    // Load Font Awesome for icons if needed
-    loadFontAwesome();
-  }
+    stepsContainer.appendChild(stepElement);
+  });
   
-  // Function to create a simplified guide for the model selection page (Step 2)
-  function createModelSelectionGuide() {
-    const guide = createGuideBase();
+  guide.appendChild(stepsContainer);
+  
+  // Create resources panel (initially hidden)
+  const resourcesPanel = createResourcesPanel();
+  guide.appendChild(resourcesPanel);
+  
+  // Add guide to the page
+  document.body.appendChild(guide);
+  
+  // Load Font Awesome for icons
+  loadFontAwesome();
+  
+  // Initialize facilitator task visibility
+  initializeFacilitatorTaskVisibility();
+}
+
+// Function to create a simplified guide for the model selection page (Step 2)
+// Helper function to log image URL 
+function logImageUrl(url) {
+  console.log('Loading image URL:', url);
+  return url;
+}
+
+function createModelSelectionGuide() {
+  const guide = createGuideBase();
+  
+  // Create steps container
+  const stepsContainer = document.createElement('div');
+  stepsContainer.className = 'duels-content-container';
+  stepsContainer.id = 'duels-steps-container';
+  
+  // Get steps for model selection page
+  const modelSelectionSteps = getStepsForCurrentPage('model_selection');
+  
+  // Add each step as an accordion
+  modelSelectionSteps.forEach(step => {
+    const stepAccordion = document.createElement('div');
+    stepAccordion.className = 'duels-accordion';
     
-    // Create steps container
-    const stepsContainer = document.createElement('div');
-    stepsContainer.className = 'duels-content-container';
-    stepsContainer.id = 'duels-steps-container';
-    
-    // Get steps for model selection page
-    const modelSelectionSteps = getStepsForCurrentPage('model_selection');
-    
-    // Add each step as an accordion
-    modelSelectionSteps.forEach(step => {
-      const stepAccordion = document.createElement('div');
-      stepAccordion.className = 'duels-accordion';
+    // Add class based on step type
+    if (step.type === 'facilitator') {
+      stepAccordion.classList.add('facilitator');
       
-      // Mark current step as active
-      if (step.order === currentSettings.currentStep) {
-        stepAccordion.classList.add('active');
+      // Ajouter la classe 'completed' si l'étape est marquée comme complétée
+      if (step.status === 'completed') {
+        stepAccordion.classList.add('completed');
       }
+    } else if (step.type === 'resources_section') {
+      stepAccordion.classList.add('resources-section');
+    } else {
+      stepAccordion.classList.add('main');
+    }
+    
+    // Mark current step as active
+    if (step.order === currentSettings.currentStep) {
+      stepAccordion.classList.add('active');
+    }
+    
+    // Resources section is always active
+    if (step.type === 'resources_section') {
+      stepAccordion.classList.add('active');
+    }
+    
+    const stepHeader = document.createElement('div');
+    stepHeader.className = 'duels-accordion-header';
+    
+    // Different formatting for facilitator tasks vs main steps
+    if (step.type === 'facilitator') {
+      stepHeader.innerHTML = `<i class="fas fa-cog" style="margin-right: 8px; font-size: 0.8rem; opacity: 0.7;"></i> ${step.title}`;
+    } else if (step.type === 'resources_section') {
+      stepHeader.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
+    } else {
+      stepHeader.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
+    }
+    
+    const stepContent = document.createElement('div');
+    stepContent.className = 'duels-accordion-content';
+    
+    const stepInstructions = document.createElement('p');
+    stepInstructions.innerHTML = step.instruction;
+    stepContent.appendChild(stepInstructions);
+    
+    // Add callout if available
+    renderCallout(step, stepContent);
+    
+    // Add resources with special styling for resources_section
+    if (step.resources && step.resources.length > 0) {
+      const resourceContainer = document.createElement('div');
+      resourceContainer.className = 'duels-resource-container';
       
-      const stepHeader = document.createElement('div');
-      stepHeader.className = 'duels-accordion-header';
-      stepHeader.textContent = `Étape ${step.order}: ${step.title}`;
+      step.resources.forEach(resource => {
+        const resourceLink = document.createElement('a');
+        resourceLink.className = 'duels-resource-button';
+        resourceLink.href = resource.url || '#';
+        resourceLink.target = '_blank';
+        resourceLink.textContent = resource.title;
+        resourceContainer.appendChild(resourceLink);
+      });
       
-      const stepContent = document.createElement('div');
-      stepContent.className = 'duels-accordion-content';
+      stepContent.appendChild(resourceContainer);
+    }
+    
+    // Add suggestions if available
+    if (step.suggestions && step.suggestions.length > 0) {
+      const suggestionsList = document.createElement('div');
+      suggestionsList.className = 'duels-suggestions';
       
-      const stepInstructions = document.createElement('p');
-      stepInstructions.innerHTML = step.instruction;
-      stepContent.appendChild(stepInstructions);
-      
-      // Add callout if available
-      renderCallout(step, stepContent);
-      
-      // Add suggestions if available
-      if (step.suggestions && step.suggestions.length > 0) {
-        const suggestionsList = document.createElement('div');
-        suggestionsList.className = 'duels-suggestions';
+      step.suggestions.forEach(suggestion => {
+        // Séparer l'emoji et le persona du prompt
+        const parts = suggestion.split(":");
+        const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
+        const prompt = parts.slice(1).join(":").trim(); // Rest of the message
         
-        step.suggestions.forEach(suggestion => {
-          // Séparer l'emoji et le persona du prompt
-          const parts = suggestion.split(":");
-          const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
-          const prompt = parts.slice(1).join(":").trim(); // Rest of the message
-          
-          // Create persona element (toggleable header)
-          const personaElement = document.createElement('div');
-          personaElement.className = 'duels-persona';
-          personaElement.textContent = persona;
-          
-          // Create prompt element (toggleable content)
-          const promptElement = document.createElement('div');
-          promptElement.className = 'duels-prompt';
-          promptElement.textContent = prompt;
-          
-          // Ajouter un bouton de copie
-          const copyButton = document.createElement('button');
-          copyButton.className = 'duels-copy-button';
-          copyButton.textContent = 'Copier';
-          copyButton.addEventListener('click', (e) => {
-            e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
-            navigator.clipboard.writeText(suggestion)
-              .then(() => {
-                // Feedback visuel
-                promptElement.classList.add('copied');
-                copyButton.textContent = 'Copié !';
-                setTimeout(() => {
-                  promptElement.classList.remove('copied');
-                  copyButton.textContent = 'Copier';
-                }, 1000);
-              });
-          });
-          promptElement.appendChild(copyButton);
-          
-          // Ajouter l'événement de toggle au persona
-          personaElement.addEventListener('click', () => {
-            personaElement.classList.toggle('open');
-            promptElement.classList.toggle('visible');
-          });
-          
-          // Ajouter les éléments au DOM
-          suggestionsList.appendChild(personaElement);
-          suggestionsList.appendChild(promptElement);
+        // Create persona element (toggleable header)
+        const personaElement = document.createElement('div');
+        personaElement.className = 'duels-persona';
+        personaElement.textContent = persona;
+        
+        // Create prompt element (toggleable content)
+        const promptElement = document.createElement('div');
+        promptElement.className = 'duels-prompt';
+        promptElement.textContent = prompt;
+        
+        // Ajouter un bouton de copie
+        const copyButton = document.createElement('button');
+        copyButton.className = 'duels-copy-button';
+        copyButton.textContent = 'Copier';
+        copyButton.addEventListener('click', (e) => {
+          e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
+          navigator.clipboard.writeText(suggestion)
+            .then(() => {
+              // Feedback visuel
+              promptElement.classList.add('copied');
+              copyButton.textContent = 'Copié !';
+              setTimeout(() => {
+                promptElement.classList.remove('copied');
+                copyButton.textContent = 'Copier';
+              }, 1000);
+            });
+        });
+        promptElement.appendChild(copyButton);
+        
+        // Ajouter l'événement de toggle au persona
+        personaElement.addEventListener('click', () => {
+          personaElement.classList.toggle('open');
+          promptElement.classList.toggle('visible');
         });
         
-        stepContent.appendChild(suggestionsList);
-      }
+        // Ajouter les éléments au DOM
+        suggestionsList.appendChild(personaElement);
+        suggestionsList.appendChild(promptElement);
+      });
       
-      stepAccordion.appendChild(stepHeader);
-      stepAccordion.appendChild(stepContent);
-      
-      // Add click event to toggle accordion
+      stepContent.appendChild(suggestionsList);
+    }
+    
+    stepAccordion.appendChild(stepHeader);
+    stepAccordion.appendChild(stepContent);
+    
+    // Add click event to toggle accordion (except for resources section)
+    if (step.type !== 'resources_section') {
       stepHeader.addEventListener('click', () => {
         stepAccordion.classList.toggle('active');
       });
-      
-      stepsContainer.appendChild(stepAccordion);
-    });
+    }
     
-    guide.appendChild(stepsContainer);
-    
-    // Create resources panel (initially hidden)
-    const resourcesPanel = createResourcesPanel();
-    guide.appendChild(resourcesPanel);
-    
-    // Add guide to the page
-    document.body.appendChild(guide);
-    
-    // Load Font Awesome for icons
-    loadFontAwesome();
-  }
+    stepsContainer.appendChild(stepAccordion);
+  });
   
-  // Function to create guide for the duel page (steps 2-7)
-  function createDuelGuide() {
-    const guide = createGuideBase();
+  guide.appendChild(stepsContainer);
+  
+  // Create resources panel (initially hidden)
+  const resourcesPanel = createResourcesPanel();
+  guide.appendChild(resourcesPanel);
+  
+  // Add guide to the page
+  document.body.appendChild(guide);
+  
+  // Load Font Awesome for icons
+  loadFontAwesome();
+  
+  // Initialize facilitator task visibility
+  initializeFacilitatorTaskVisibility();
+}
+
+// Function to create guide for the duel page (steps 2-7)
+function createDuelGuide() {
+  const guide = createGuideBase();
+  
+  // Create steps container
+  const stepsContainer = document.createElement('div');
+  stepsContainer.className = 'duels-content-container';
+  stepsContainer.id = 'duels-steps-container';
+  
+  // Get steps for duel page
+  const duelSteps = getStepsForCurrentPage('duel');
+  
+  // Add each step as an accordion
+  duelSteps.forEach(step => {
+    const stepAccordion = document.createElement('div');
+    stepAccordion.className = 'duels-accordion';
     
-    // Create steps container
-    const stepsContainer = document.createElement('div');
-    stepsContainer.className = 'duels-content-container';
-    stepsContainer.id = 'duels-steps-container';
-    
-    // Get steps for duel page
-    const duelSteps = getStepsForCurrentPage('duel');
-    
-    // Add each step as an accordion
-    duelSteps.forEach(step => {
-      const stepAccordion = document.createElement('div');
-      stepAccordion.className = 'duels-accordion';
+    // Add class based on step type
+    if (step.type === 'facilitator') {
+      stepAccordion.classList.add('facilitator');
       
-      // Mark current step as active
-      if (step.order === currentSettings.currentStep) {
-        stepAccordion.classList.add('active');
+      // Ajouter la classe 'completed' si l'étape est marquée comme complétée
+      if (step.status === 'completed') {
+        stepAccordion.classList.add('completed');
       }
+    } else if (step.type === 'resources_section') {
+      stepAccordion.classList.add('resources-section');
+    } else {
+      stepAccordion.classList.add('main');
+    }
+    
+    // Mark current step as active
+    if (step.order === currentSettings.currentStep) {
+      stepAccordion.classList.add('active');
+    }
+    
+    // Make choose_prompt step active by default if it's present
+    if (step.id === 'choose_prompt') {
+      stepAccordion.classList.add('active');
+    }
+    
+    // Resources section is always active
+    if (step.type === 'resources_section') {
+      stepAccordion.classList.add('active');
+    }
+    
+    const stepHeader = document.createElement('div');
+    stepHeader.className = 'duels-accordion-header';
+    
+    // Different formatting for facilitator tasks vs main steps
+    if (step.type === 'facilitator') {
+      stepHeader.innerHTML = `<i class="fas fa-cog" style="margin-right: 8px; font-size: 0.8rem; opacity: 0.7;"></i> ${step.title}`;
+    } else if (step.type === 'resources_section') {
+      stepHeader.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
+    } else {
+      stepHeader.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
+    }
+    
+    const stepContent = document.createElement('div');
+    stepContent.className = 'duels-accordion-content';
+    
+    const stepInstructions = document.createElement('p');
+    stepInstructions.innerHTML = step.instruction;
+    stepContent.appendChild(stepInstructions);
+    
+    // Add callout if available
+    renderCallout(step, stepContent);
+    
+    // Add resources with special styling for resources_section
+    if (step.resources && step.resources.length > 0) {
+      const resourceContainer = document.createElement('div');
+      resourceContainer.className = 'duels-resource-container';
       
-      // Make prompt entry step active by default if it's present
-      if (step.id === 'enter_prompt') {
-        stepAccordion.classList.add('active');
-      }
+      step.resources.forEach(resource => {
+        const resourceLink = document.createElement('a');
+        resourceLink.className = 'duels-resource-button';
+        resourceLink.href = resource.url || '#';
+        resourceLink.target = '_blank';
+        resourceLink.textContent = resource.title;
+        resourceContainer.appendChild(resourceLink);
+      });
       
-      const stepHeader = document.createElement('div');
-      stepHeader.className = 'duels-accordion-header';
-      stepHeader.textContent = `Étape ${step.order}: ${step.title}`;
+      stepContent.appendChild(resourceContainer);
+    }
+    
+    // Add suggestions if available
+    if (step.suggestions && step.suggestions.length > 0) {
+      const suggestionsContainer = document.createElement('div');
+      suggestionsContainer.className = 'duels-suggestions';
       
-      const stepContent = document.createElement('div');
-      stepContent.className = 'duels-accordion-content';
-      
-      const stepInstructions = document.createElement('p');
-      stepInstructions.innerHTML = step.instruction;
-      stepContent.appendChild(stepInstructions);
-      
-      // Add callout if available
-      renderCallout(step, stepContent);
-      
-      // Add suggestions if available
-      if (step.suggestions && step.suggestions.length > 0) {
-        const suggestionsContainer = document.createElement('div');
-        suggestionsContainer.className = 'duels-suggestions';
+      step.suggestions.forEach(suggestion => {
+        // Séparer l'emoji et le persona du prompt
+        const parts = suggestion.split(":");
+        const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
+        const prompt = parts.slice(1).join(":").trim(); // Rest of the message
         
-        step.suggestions.forEach(suggestion => {
-          // Séparer l'emoji et le persona du prompt
-          const parts = suggestion.split(":");
-          const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
-          const prompt = parts.slice(1).join(":").trim(); // Rest of the message
-          
-          // Create persona element (toggleable header)
-          const personaElement = document.createElement('div');
-          personaElement.className = 'duels-persona';
-          personaElement.textContent = persona;
-          
-          // Create prompt element (toggleable content)
-          const promptElement = document.createElement('div');
-          promptElement.className = 'duels-prompt';
-          promptElement.textContent = prompt;
-          
-          // Ajouter un bouton de copie
-          const copyButton = document.createElement('button');
-          copyButton.className = 'duels-copy-button';
-          copyButton.textContent = 'Copier';
-          copyButton.addEventListener('click', (e) => {
-            e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
-            navigator.clipboard.writeText(suggestion)
-              .then(() => {
-                // Feedback visuel
-                promptElement.classList.add('copied');
-                copyButton.textContent = 'Copié !';
-                setTimeout(() => {
-                  promptElement.classList.remove('copied');
-                  copyButton.textContent = 'Copier';
-                }, 1000);
-              });
-          });
-          promptElement.appendChild(copyButton);
-          
-          // Ajouter l'événement de toggle au persona
-          personaElement.addEventListener('click', () => {
-            personaElement.classList.toggle('open');
-            promptElement.classList.toggle('visible');
-          });
-          
-          // Ajouter les éléments au DOM
-          suggestionsContainer.appendChild(personaElement);
-          suggestionsContainer.appendChild(promptElement);
+        // Create persona element (toggleable header)
+        const personaElement = document.createElement('div');
+        personaElement.className = 'duels-persona';
+        personaElement.textContent = persona;
+        
+        // Create prompt element (toggleable content)
+        const promptElement = document.createElement('div');
+        promptElement.className = 'duels-prompt';
+        promptElement.textContent = prompt;
+        
+        // Ajouter un bouton de copie
+        const copyButton = document.createElement('button');
+        copyButton.className = 'duels-copy-button';
+        copyButton.textContent = 'Copier';
+        copyButton.addEventListener('click', (e) => {
+          e.stopPropagation(); // Empêcher le toggle du persona au clic sur le bouton
+          navigator.clipboard.writeText(suggestion)
+            .then(() => {
+              // Feedback visuel
+              promptElement.classList.add('copied');
+              copyButton.textContent = 'Copié !';
+              setTimeout(() => {
+                promptElement.classList.remove('copied');
+                copyButton.textContent = 'Copier';
+              }, 1000);
+            });
+        });
+        promptElement.appendChild(copyButton);
+        
+        // Ajouter l'événement de toggle au persona
+        personaElement.addEventListener('click', () => {
+          personaElement.classList.toggle('open');
+          promptElement.classList.toggle('visible');
         });
         
-        stepContent.appendChild(suggestionsContainer);
-      }
+        // Ajouter les éléments au DOM
+        suggestionsContainer.appendChild(personaElement);
+        suggestionsContainer.appendChild(promptElement);
+      });
       
-      stepAccordion.appendChild(stepHeader);
-      stepAccordion.appendChild(stepContent);
-      
-      // Add click event to toggle accordion
+      stepContent.appendChild(suggestionsContainer);
+    }
+    
+    stepAccordion.appendChild(stepHeader);
+    stepAccordion.appendChild(stepContent);
+    
+    // Add click event to toggle accordion (except for resources section)
+    if (step.type !== 'resources_section') {
       stepHeader.addEventListener('click', () => {
         stepAccordion.classList.toggle('active');
       });
-      
-      stepsContainer.appendChild(stepAccordion);
-    });
+    }
     
-    guide.appendChild(stepsContainer);
-    
-    // Create resources panel (initially hidden)
-    const resourcesPanel = createResourcesPanel();
-    guide.appendChild(resourcesPanel);
-    
-    // Add guide to the page
-    document.body.appendChild(guide);
-    
-    // Load Font Awesome for icons
-    loadFontAwesome();
+    stepsContainer.appendChild(stepAccordion);
+  });
+  
+  guide.appendChild(stepsContainer);
+  
+  // Create resources panel (initially hidden)
+  const resourcesPanel = createResourcesPanel();
+  guide.appendChild(resourcesPanel);
+  
+  // Add guide to the page
+  document.body.appendChild(guide);
+  
+  // Load Font Awesome for icons
+  loadFontAwesome();
+  
+  // Initialize facilitator task visibility
+  initializeFacilitatorTaskVisibility();
+}
+
+// Function to create appropriate guide based on detected page
+function createGuideForCurrentPage() {
+  // Check what page we're on
+  const isMainPage = window.location.pathname === "/" || window.location.pathname === "";
+  const isModelSelectionPage = window.location.href.includes("/arene") && 
+                           document.body.textContent.includes("Sélection des modèles");
+  const isDuelPage = window.location.href.includes("/arene") && 
+                    !document.body.textContent.includes("Sélection des modèles");
+  
+  // Create appropriate guide
+  if (isMainPage) {
+    createMainPageGuide();
+  } else if (isModelSelectionPage) {
+    createModelSelectionGuide();
+  } else if (isDuelPage) {
+    createDuelGuide();
   }
+}
+
+// Only continue if we're on the ComparIA site
+if (isComparIASite) {
+  // Create the FAB
+  createFAB();
+  
+  // Create guide for current page
+  createGuideForCurrentPage();
   
   // Add URL change detection to handle navigation within the ComparIA site
   let lastUrl = window.location.href;
@@ -1815,13 +1838,6 @@ if (isComparIASite) {
     if (lastUrl !== window.location.href) {
       lastUrl = window.location.href;
       
-      // Check which page we're on after URL change
-      const isNowMainPage = window.location.pathname === "/" || window.location.pathname === "";
-      const isNowModelPage = window.location.href.includes("/arene") && 
-                            document.body.textContent.includes("Sélection des modèles");
-      const isNowDuelPage = window.location.href.includes("/arene") && 
-                           !document.body.textContent.includes("Sélection des modèles");
-      
       // Remove existing guide
       const existingGuide = document.getElementById('duels-guide');
       if (existingGuide) {
@@ -1829,16 +1845,60 @@ if (isComparIASite) {
       }
       
       // Create appropriate guide
-      if (isNowMainPage) {
-        createMainPageGuide();
-      } else if (isNowModelPage) {
-        createModelSelectionGuide();
-      } else if (isNowDuelPage) {
-        createDuelGuide();
-      }
+      createGuideForCurrentPage();
     }
   });
   
   // Start observing
   observer.observe(document, { subtree: true, childList: true });
+  
+  // Initialize facilitator task visibility
+  initializeFacilitatorTaskVisibility();
+  
+  // Observer pour l'application des styles facilitateur
+  const styleObserver = new MutationObserver(() => {
+    // Petit délai pour s'assurer que le DOM est bien mis à jour
+    setTimeout(initializeFacilitatorTaskVisibility, 50);
+  });
+  
+  // Observer le DOM pour les changements
+  styleObserver.observe(document.body, { 
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['class', 'style']
+  });
+}
+
+// Function to initialize facilitator task visibility
+function initializeFacilitatorTaskVisibility() {
+  // Apply visibility for facilitator tasks based on current settings
+  if (!currentSettings.showFacilitatorTasks) {
+    const facilitatorElements = document.querySelectorAll('.duels-step.facilitator, .duels-accordion.facilitator');
+    facilitatorElements.forEach(element => {
+      element.style.display = 'none';
+    });
+  }
+  
+  // Force application des styles facilitateur avec injection directe de style avec !important
+  const facilitatorParagraphs = document.querySelectorAll('.duels-accordion.facilitator .duels-accordion-content p, .duels-step.facilitator p');
+  facilitatorParagraphs.forEach(p => {
+    p.setAttribute('style', 'font-size: 0.75rem !important; line-height: 1.25rem !important; color: #888 !important; margin: 0 0 0.5rem 0 !important;');
+  });
+  
+  // Création d'une règle CSS directement dans le DOM avec la plus haute priorité
+  if (!document.getElementById('facilitator-override-style')) {
+    const styleElement = document.createElement('style');
+    styleElement.id = 'facilitator-override-style';
+    styleElement.innerHTML = `
+      .duels-accordion.facilitator .duels-accordion-content p,
+      .duels-step.facilitator p {
+        font-size: 0.75rem !important;
+        line-height: 1.25rem !important;
+        color: #888 !important;
+        margin: 0 0 0.5rem 0 !important;
+      }
+    `;
+    document.head.appendChild(styleElement);
+  }
 }
