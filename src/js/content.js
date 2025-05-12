@@ -777,7 +777,14 @@ const stepsLibrary = {
     suggestions: [],
     resources: [],
     media: [],
-    type: "main" // étape principale
+    type: "main", // étape principale
+    random_questions: [
+      "Quelle réponse a le mieux répondu aux spécificités du prompt ?",
+      "Auriez-vous formulé différemment la question pour obtenir une meilleure réponse ?",
+      "Quels critères d'utilité privilégiez-vous dans votre contexte professionnel ?",
+      "La réponse qui vous plaît le plus est-elle aussi la plus utile ? Pourquoi ?",
+      "À quel point la structure et la présentation de la réponse influencent votre appréciation ?"
+    ]
   },
   
   "vote_response": {
@@ -1369,6 +1376,11 @@ function createMainPageGuide() {
     // Add callout if available
     renderCallout(step, stepElement);
     
+    // Add random questions functionality if available
+    if (step.random_questions && step.random_questions.length > 0) {
+      renderRandomQuestions(step, stepElement);
+    }
+    
     // Add discussion cards if available
     if (step.discussion_cards && step.discussion_cards.length > 0) {
       renderDiscussionCards(step, stepElement);
@@ -1496,103 +1508,66 @@ function createMainPageGuide() {
 function renderDiscussionCards(step, container) {
   if (!step.discussion_cards || step.discussion_cards.length === 0) return;
 
-  // Container principal pour les cartes
-  const cardsContainer = document.createElement('div');
-  cardsContainer.className = 'duels-cards-container';
+  // Create a random questions container similar to the one in renderRandomQuestions
+  const randomQuestionsContainer = document.createElement('div');
+  randomQuestionsContainer.className = 'duels-random-questions-container';
   
-  // Instructions
-  const instruction = document.createElement('p');
-  instruction.className = 'duels-draw-instruction';
-  instruction.textContent = 'Tirez une carte au sort pour lancer la discussion :';
-  cardsContainer.appendChild(instruction);
+  // Titre de la section
+  const sectionTitle = document.createElement('h4');
+  sectionTitle.className = 'duels-random-questions-title';
+  sectionTitle.textContent = 'À débattre :';
+  randomQuestionsContainer.appendChild(sectionTitle);
   
-  // Le bouton pour tirer une carte
-  const drawButton = document.createElement('button');
-  drawButton.className = 'duels-draw-button';
-  drawButton.textContent = 'Tirer une carte';
-  cardsContainer.appendChild(drawButton);
+  // Conteneur pour la question affichée
+  const questionDisplay = document.createElement('div');
+  questionDisplay.className = 'duels-random-question-display';
+  questionDisplay.textContent = 'Cliquez sur le dé pour générer une question';
+  randomQuestionsContainer.appendChild(questionDisplay);
   
-  // Container pour les cartes et le deck
-  const cardsWrapper = document.createElement('div');
-  cardsWrapper.className = 'duels-cards-wrapper';
+  // Bouton avec l'icône de dé pour générer une question aléatoire
+  const diceButton = document.createElement('button');
+  diceButton.className = 'duels-dice-button';
+  diceButton.innerHTML = '<i class="fas fa-dice"></i>';
+  diceButton.title = 'Générer une question aléatoire';
+  randomQuestionsContainer.appendChild(diceButton);
   
-  // Le deck de cartes (élément visuel)
-  const cardsDeck = document.createElement('div');
-  cardsDeck.className = 'duels-cards-deck';
-  cardsDeck.textContent = 'Cartes de discussion';
-  cardsWrapper.appendChild(cardsDeck);
+  // Variables pour gérer l'affichage des questions
   
-  // Variables pour gérer l'état des cartes
-  let currentCardIndex = -1;
-  let currentCard = null;
-  const usedCardIndices = new Set();
+  // Index pour suivre la question actuelle
+  let currentIndex = 0;
   
-  // Créer toutes les cartes mais les garder cachées
-  step.discussion_cards.forEach((card, index) => {
-    const cardElement = document.createElement('div');
-    cardElement.className = 'duels-card';
-    cardElement.style.backgroundColor = card.color || '#6a6af4';
-    
-    const cardContent = document.createElement('div');
-    cardContent.className = 'duels-card-content';
-    cardContent.textContent = card.question;
-    
-    cardElement.appendChild(cardContent);
-    cardsWrapper.appendChild(cardElement);
-  });
-  
-  // Fonction pour tirer une carte aléatoire
-  function drawRandomCard() {
-    // Si toutes les cartes ont été tirées, réinitialiser
-    if (usedCardIndices.size >= step.discussion_cards.length) {
-      usedCardIndices.clear();
-      if (currentCard) {
-        currentCard.classList.remove('visible');
-        currentCard = null;
-      }
+  // Fonction pour afficher la question suivante dans l'ordre
+  function generateRandomQuestion() {
+    // Si on a atteint la fin, revenir au début
+    if (currentIndex >= step.discussion_cards.length) {
+      currentIndex = 0;
     }
     
-    // Cacher la carte précédente si elle existe
-    if (currentCard) {
-      currentCard.classList.remove('visible');
-    }
+    // Récupérer la question à l'index actuel
+    const cardData = step.discussion_cards[currentIndex];
+    questionDisplay.textContent = cardData.question;
     
-    // Trouver un index aléatoire qui n'a pas encore été utilisé
-    let randomIndex;
-    do {
-      randomIndex = Math.floor(Math.random() * step.discussion_cards.length);
-    } while (usedCardIndices.has(randomIndex));
+    // Add color accent based on the card color
+    questionDisplay.style.borderLeft = `4px solid ${cardData.color || '#6a6af4'}`;
     
-    // Marquer l'index comme utilisé
-    usedCardIndices.add(randomIndex);
+    // Incrémenter l'index pour la prochaine fois
+    currentIndex++;
     
-    // Mettre à jour la carte actuelle
-    currentCardIndex = randomIndex;
-    currentCard = cardsWrapper.querySelectorAll('.duels-card')[randomIndex];
-    
-    // Afficher la nouvelle carte
-    currentCard.classList.add('visible');
-    
-    // Désactiver le bouton si toutes les cartes ont été tirées
-    if (usedCardIndices.size >= step.discussion_cards.length) {
-      drawButton.textContent = 'Toutes les cartes ont été tirées';
-      drawButton.disabled = true;
-    }
+    // Animation du dé
+    diceButton.classList.add('rolling');
+    setTimeout(() => {
+      diceButton.classList.remove('rolling');
+    }, 500);
   }
   
-  // Événement de clic sur le bouton pour tirer une carte
-  drawButton.addEventListener('click', drawRandomCard);
+  // Associer la fonction au clic sur le bouton
+  diceButton.addEventListener('click', generateRandomQuestion);
   
-  // Événement de clic sur le deck pour tirer une carte (alternative)
-  cardsDeck.addEventListener('click', () => {
-    if (!drawButton.disabled) {
-      drawRandomCard();
-    }
-  });
+  // Ajouter le conteneur au DOM
+  container.appendChild(randomQuestionsContainer);
   
-  // Ajouter les éléments au DOM
-  cardsContainer.appendChild(cardsWrapper);
-  container.appendChild(cardsContainer);
+  // Générer une question initiale au hasard
+  setTimeout(generateRandomQuestion, 500);
 }
 
 // Function to create a simplified guide for the model selection page (Step 2)
@@ -1668,6 +1643,11 @@ function createModelSelectionGuide() {
     
     // Add callout if available
     renderCallout(step, stepContent);
+    
+    // Add random questions functionality if available
+    if (step.random_questions && step.random_questions.length > 0) {
+      renderRandomQuestions(step, stepContent);
+    }
     
     // Add resources with special styling for resources_section
     if (step.resources && step.resources.length > 0) {
@@ -1842,6 +1822,17 @@ function createDuelGuide() {
     // Add callout if available
     renderCallout(step, stepContent);
     
+    // Add random questions functionality if available
+    if (step.random_questions && step.random_questions.length > 0) {
+      renderRandomQuestions(step, stepContent);
+    }
+    
+    // Add discussion cards if available
+    if (step.discussion_cards && step.discussion_cards.length > 0) {
+      renderDiscussionCards(step, stepContent);
+      console.log(`Adding discussion cards to step: ${step.id}`);
+    }
+    
     // Add resources with special styling for resources_section
     if (step.resources && step.resources.length > 0) {
       const resourceContainer = document.createElement('div');
@@ -2008,6 +1999,135 @@ if (isComparIASite) {
     attributes: true,
     attributeFilter: ['class', 'style']
   });
+}
+
+// Fonction pour rendre et gérer la fonctionnalité de questions aléatoires
+function renderRandomQuestions(step, container) {
+  if (!step.random_questions || step.random_questions.length === 0) return;
+  
+  // Container pour la section de questions aléatoires
+  const randomQuestionsContainer = document.createElement('div');
+  randomQuestionsContainer.className = 'duels-random-questions-container';
+  
+  // Titre de la section
+  const sectionTitle = document.createElement('h4');
+  sectionTitle.className = 'duels-random-questions-title';
+  sectionTitle.textContent = 'À débattre :';
+  randomQuestionsContainer.appendChild(sectionTitle);
+  
+  // Conteneur pour la question affichée
+  const questionDisplay = document.createElement('div');
+  questionDisplay.className = 'duels-random-question-display';
+  questionDisplay.textContent = 'Cliquez sur le dé pour générer une question';
+  randomQuestionsContainer.appendChild(questionDisplay);
+  
+  // Bouton avec l'icône de dé pour générer une question aléatoire
+  const diceButton = document.createElement('button');
+  diceButton.className = 'duels-dice-button';
+  diceButton.innerHTML = '<i class="fas fa-dice"></i>';
+  diceButton.title = 'Générer une question aléatoire';
+  randomQuestionsContainer.appendChild(diceButton);
+  
+  // La fonction draw sera appelée après sa définition
+  
+  // Index pour suivre la question actuelle dans step 2
+  let currentIndex = 0;
+  
+  // Fonction pour afficher la question suivante dans l'ordre
+  function generateRandomQuestion() {
+    // Si on a atteint la fin, revenir au début
+    if (currentIndex >= step.random_questions.length) {
+      currentIndex = 0;
+    }
+    
+    // Récupérer la question à l'index actuel
+    questionDisplay.textContent = step.random_questions[currentIndex];
+    
+    // Incrémenter l'index pour la prochaine fois
+    currentIndex++;
+    
+    // Animation du dé
+    diceButton.classList.add('rolling');
+    setTimeout(() => {
+      diceButton.classList.remove('rolling');
+    }, 500);
+  }
+  
+  // Associer la fonction au clic sur le bouton
+  diceButton.addEventListener('click', generateRandomQuestion);
+  
+  // Ajouter le conteneur au DOM
+  container.appendChild(randomQuestionsContainer);
+  
+  // Ajouter le style CSS pour cette fonctionnalité
+  if (!document.getElementById('random-questions-style')) {
+    const styleElement = document.createElement('style');
+    styleElement.id = 'random-questions-style';
+    styleElement.innerHTML = `
+      .duels-random-questions-container {
+        margin: 15px 0;
+        padding: 10px 15px;
+        background-color: #f5f5ff;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        position: relative;
+      }
+      
+      .duels-random-questions-title {
+        font-size: 0.9rem;
+        color: #6a6af4;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+      
+      .duels-random-question-display {
+        padding: 12px;
+        background-color: white;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        min-height: 20px;
+      }
+      
+      .duels-dice-button {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background-color: #6a6af4;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .duels-dice-button:hover {
+        background-color: #5a5ad4;
+        transform: translateY(-2px);
+      }
+      
+      .duels-dice-button.rolling {
+        animation: roll 0.5s ease;
+      }
+      
+      @keyframes roll {
+        0% { transform: rotate(0deg); }
+        20% { transform: rotate(-30deg); }
+        40% { transform: rotate(30deg); }
+        60% { transform: rotate(-15deg); }
+        80% { transform: rotate(15deg); }
+        100% { transform: rotate(0deg); }
+      }
+    `;
+    document.head.appendChild(styleElement);
+  }
 }
 
 // Function to initialize facilitator task visibility
