@@ -109,7 +109,8 @@
 .duels-accordion.resources-section {
   margin-top: 40px;
   padding-top: 25px;
-  padding-bottom: 30px; /* Extra padding at bottom */
+  padding-bottom: 50px; /* More padding at bottom to prevent cutoff */
+  margin-bottom: 20px; /* Extra margin at bottom */
   background-color: transparent;
   border-radius: 0;
   border: none;

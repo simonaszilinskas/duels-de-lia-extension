@@ -29,7 +29,7 @@ globalStyle.textContent = `
     top: 20px;
     right: 20px;
     width: min(370px, 90vw);
-    max-height: 90vh; /* Slightly larger max-height */
+    max-height: 95vh; /* Allow more space, almost full viewport */
     overflow-y: auto; /* Keep scroll for the overall container */
     background-color: white;
     z-index: 10000;
@@ -53,6 +53,8 @@ globalStyle.textContent = `
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Add shadow for better visual separation */
+    min-height: 30px; /* Ensure consistent header height */
+    flex-shrink: 0; /* Prevent header from shrinking */
   }
   
   .duels-header h2 {
@@ -278,6 +280,8 @@ globalStyle.textContent = `
     max-height: none; /* Remove fixed height to adapt to content */
     overflow-y: visible; /* Allow content to expand */
     overflow-x: hidden;
+    flex: 1 1 auto; /* Allow content to grow and take available space */
+    padding-bottom: 30px; /* Extra padding at bottom to prevent content being cut off */
   }
   
   .duels-step {
