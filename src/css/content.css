@@ -382,3 +382,44 @@
 .duels-link:hover {
   text-decoration: underline;
 }
+
+/* Resource buttons - consistent styling across all panels */
+.duels-resource-button, 
+.duels-resources-section a.duels-resource-button,
+#duels-resources-panel a.duels-resource-button {
+  display: inline-block !important;
+  padding: 8px 15px !important;
+  margin: 5px 10px 10px 0 !important; /* Increased bottom margin */
+  background-color: white !important;
+  color: #222 !important;
+  text-decoration: none !important;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  border: 2px solid #9898F8 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  transition: none !important;
+  max-width: calc(100% - 20px) !important; /* Prevent overflow */
+  word-break: break-word !important; /* Allow text to wrap */
+}
+
+/* Removing hover effects and the black line across all panels */
+.duels-resource-button:hover,
+.duels-resource-button:focus,
+.duels-resource-button:active,
+.duels-resources-section a.duels-resource-button:hover,
+.duels-resources-section a.duels-resource-button:focus,
+.duels-resources-section a.duels-resource-button:active,
+#duels-resources-panel a.duels-resource-button:hover,
+#duels-resources-panel a.duels-resource-button:focus,
+#duels-resources-panel a.duels-resource-button:active {
+  background-color: white !important;
+  color: #222 !important;
+  opacity: 1 !important;
+  transform: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  border: 2px solid #9898F8 !important;
+}

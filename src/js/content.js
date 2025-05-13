@@ -29,10 +29,12 @@ globalStyle.textContent = `
     top: 20px;
     right: 20px;
     width: min(370px, 90vw);
-    max-height: 85vh;
-    overflow-y: auto;
+    max-height: 90vh; /* Slightly larger max-height */
+    overflow-y: auto; /* Keep scroll for the overall container */
     background-color: white;
     z-index: 10000;
+    display: flex;
+    flex-direction: column; /* Better for sticky header */
   }
   
   .duels-guide:not(.open) {
@@ -44,10 +46,13 @@ globalStyle.textContent = `
     color: white;
     border-radius: 8px 8px 0 0;
     padding: 15px 20px;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 10001; /* Ensure it stays above other content */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Add shadow for better visual separation */
   }
   
   .duels-header h2 {
@@ -270,8 +275,9 @@ globalStyle.textContent = `
     padding: 20px;
     background-color: #fafafa;
     border-radius: 0 0 8px 8px;
-    max-height: calc(85vh - 60px);
-    overflow-y: auto;
+    max-height: none; /* Remove fixed height to adapt to content */
+    overflow-y: visible; /* Allow content to expand */
+    overflow-x: hidden;
   }
   
   .duels-step {
@@ -390,23 +396,30 @@ globalStyle.textContent = `
     display: inline-block;
     padding: 8px 15px;
     margin: 5px 10px 5px 0;
-    background-color: #6a6af4;
-    color: white !important;
+    background-color: white;
+    color: #222 !important;
     text-decoration: none !important;
     border-radius: 4px;
     font-weight: 600;
     font-size: 0.85rem;
-    transition: background-color 0.2s;
-    border: none;
-    box-shadow: 0 1px 3px rgba(152, 152, 248, 0.2);
+    border: 2px solid #9898F8;
+    box-shadow: none;
+    outline: none;
   }
   
-  .duels-resource-button:hover {
-    background-color: #000091 !important;
-    color: white !important;
+  /* Removing hover effects and the black line */
+  .duels-resource-button:hover,
+  .duels-resource-button:focus,
+  .duels-resource-button:active {
+    background-color: white !important;
+    color: #222 !important;
     opacity: 1 !important;
-    --hover-tint: #000091 !important;
-    --active-tint: #000091 !important;
+    --hover-tint: none !important;
+    --active-tint: none !important;
+    transform: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
   }
   
   .duels-fab {
@@ -621,9 +634,6 @@ globalStyle.textContent = `
   }
   
   .duels-close-button {
-    position: absolute;
-    top: 15px;
-    right: 15px;
     background: none;
     border: none;
     color: white;
@@ -631,6 +641,7 @@ globalStyle.textContent = `
     cursor: pointer;
     opacity: 0.8;
     transition: opacity 0.2s;
+    margin-left: 8px;
   }
   
   .duels-close-button:hover {
@@ -641,6 +652,7 @@ globalStyle.textContent = `
   @media (max-width: 768px) {
     .duels-guide {
       width: min(350px, 90vw);
+      max-height: 92vh; /* Allow more vertical space on smaller screens */
     }
     
     .duels-content-container {
@@ -654,6 +666,15 @@ globalStyle.textContent = `
     .duels-header h2 {
       font-size: 1rem;
     }
+    
+    /* Improve resource button display on smaller screens */
+    .duels-resource-button, 
+    .duels-resources-section a.duels-resource-button,
+    #duels-resources-panel a.duels-resource-button {
+      margin: 5px 5px 10px 0 !important; /* Smaller margins */
+      padding: 6px 12px !important; /* Slightly smaller padding */
+      font-size: 0.8rem !important; /* Slightly smaller text */
+    }
   }
   
   @media (max-width: 480px) {
@@ -661,6 +682,7 @@ globalStyle.textContent = `
       width: 90vw;
       top: 10px;
       right: 5vw;
+      max-height: 95vh; /* Almost full viewport height on very small screens */
     }
     
     .duels-content-container {
@@ -669,6 +691,22 @@ globalStyle.textContent = `
     
     .duels-resources-section {
       padding: 15px;
+    }
+    
+    /* Ensure resource buttons are well displayed on very small screens */
+    .duels-resource-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .duels-resource-button, 
+    .duels-resources-section a.duels-resource-button,
+    #duels-resources-panel a.duels-resource-button {
+      width: calc(100% - 10px);
+      box-sizing: border-box;
+      margin-right: 0 !important;
+      text-align: center;
     }
   }
 `;
@@ -703,7 +741,7 @@ const stepsLibrary = {
     id: "start_duel",
     order: 1,
     title: "Démarrer un duel",
-    instruction: "Cliquez sur \"Commencer à discuter\" sur ComparIA.",
+    instruction: "Cliquez sur \"Commencer à discuter\" sur la page d'accueil ComparIA.",
     pages: ["main", "duel"], // Ajouté sur la page duel aussi
     suggestions: [],
     resources: [],
@@ -726,7 +764,7 @@ const stepsLibrary = {
       type: "important", // types possibles: important, info, warning, success
       icon: "💡", // émoji ou classe d'icône FontAwesome (ex: "fas fa-info-circle")
       title: "Conseil facilitateur :",
-      content: "Pour une démonstration claire de la différence d'impact, le mode David contre Goliath est recommandé."
+      content: "Si vous voulez, vous pouvez aussi pré-sélectionner un grand et un petit modèle. Par exemple Gemma 3 4b contre Deepseek V3"
     }
   },
   
@@ -734,7 +772,7 @@ const stepsLibrary = {
     id: "choose_prompt",
     order: 3,
     title: "Étape 1 : Choisir un prompt",
-    instruction: "Choisissez une question ou une demande à soumettre aux deux modèles d'IA.",
+    instruction: "Choisissez une question à envoyer aux deux modèles d'IA.",
     pages: ["duel"],
     suggestions: [
       "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum.",
@@ -744,15 +782,17 @@ const stepsLibrary = {
     ],
     resources: [
       {
-        title: "Comment bien prompter ?",
-        url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
-      },
-      {
         title: "Comment bien construire son prompt ?",
         url: ""
       }
     ],
     media: [],
+    callout: {
+      type: "important", // types possibles: important, info, warning, success
+      icon: "💡", // émoji ou classe d'icône FontAwesome (ex: "fas fa-info-circle")
+      title: "Important",
+      content: "Si vous voulez, vous pouvez aussi co-construire un prompt ensemble sans piocher parmi les suggestions."
+    },
     type: "main" // étape principale
   },
   
@@ -771,8 +811,8 @@ const stepsLibrary = {
   "evaluate_utility": {
     id: "evaluate_utility",
     order: 5,
-    title: "Étape 2 : Évaluer l'utilité des réponses",
-    instruction: "Examinez les deux réponses et évaluez leur utilité.<br><br>Questions à se poser :<br>- La réponse répond-elle correctement à la demande ?<br>- Est-elle claire et bien structurée ?<br>- Apporte-t-elle une valeur ajoutée ?",
+    title: "Étape 2 : coup de cœur ?",
+    instruction: "Examinez les deux réponses et votez pour votre préférée.",
     pages: ["duel"],
     suggestions: [],
     resources: [],
@@ -781,9 +821,9 @@ const stepsLibrary = {
     random_questions: [
       "Quelle réponse a le mieux répondu aux spécificités du prompt ?",
       "Auriez-vous formulé différemment la question pour obtenir une meilleure réponse ?",
-      "Quels critères d'utilité privilégiez-vous dans votre contexte professionnel ?",
-      "La réponse qui vous plaît le plus est-elle aussi la plus utile ? Pourquoi ?",
-      "À quel point la structure et la présentation de la réponse influencent votre appréciation ?"
+      "Est ce qu’il aurait été possible de répondre à cette question sans IA ? Si oui, en combien de temps et avec quel(s) outil(s) ?",
+      "À quel point la structure et la présentation de la réponse influencent votre appréciation ?",
+      "À quel point le style d'écriture / le ton de l'IA influence votre appréciation ?"
     ]
   },
   
@@ -791,7 +831,7 @@ const stepsLibrary = {
     id: "vote_response",
     order: 6,
     title: "Voter pour une réponse",
-    instruction: "Cliquez sur \"Voter\" pour la réponse que vous préférez.",
+    instruction: "Votez pour la réponse que vous préférez soit en mettant un like ou dislike sous le message, soit en cliquant sur le bouton Révélation des modèles et sélectionnant celui que vous avez préféré.",
     pages: ["duel"],
     suggestions: [],
     resources: [],
@@ -803,7 +843,7 @@ const stepsLibrary = {
     id: "discover_impact",
     order: 7,
     title: "Découvrir l'impact",
-    instruction: "Cliquez sur le bouton pour révéler quel modèle est lequel et voir leurs métriques d'impact environnemental.",
+    instruction: "Cliquez sur le bouton Révélation des modèles et regardez les estimations d'impact environnemental.",
     pages: ["duel"],
     suggestions: [],
     resources: [],
@@ -814,8 +854,8 @@ const stepsLibrary = {
   "evaluate_frugality": {
     id: "evaluate_frugality",
     order: 8,
-    title: "Étape 3 : Évaluer la frugalité des réponses",
-    instruction: "Analysez si la différence de qualité entre les deux réponses justifie la différence d'impact environnemental.<br><br>Questions à se poser :<br>- Le modèle le plus énergivore apporte-t-il une valeur significativement supérieure ?<br>- Pour ce cas d'usage, est-il nécessaire d'utiliser le modèle le plus puissant ?<br>- Quel compromis entre qualité et impact vous semble le plus approprié ?",
+    title: "Étape 3 : qui répond en chauffant moins la planète ?",
+    instruction: "Analysez si la différence de qualité entre les deux réponses justifie la différence d'impact environnemental.",
     pages: ["duel"],
     suggestions: [],
     resources: [],
@@ -823,24 +863,30 @@ const stepsLibrary = {
     type: "main", // étape principale
     discussion_cards: [
       {
-        question: "Quels compromis êtes-vous prêt(e) à faire entre la qualité des réponses et l'impact environnemental ?",
+        question: "Est-ce que, en connaissance de l'impact environnemental des modèles, vous auriez voté pour l'autre modèle ?",
         color: "#6a6af4"
+      },
+      {
+        question: "Dans quels cas académiques/professionnels privilégieriez-vous un petit modèle, et dans quels cas un grand modèle ?",
+        color: "#ff9800"
       },
       {
         question: "Comment pourriez-vous adapter vos prompts pour obtenir de bons résultats même avec des petits modèles ?",
         color: "#4caf50"
       },
       {
-        question: "Dans quels cas professionnels privilégieriez-vous un petit modèle, et dans quels cas un grand modèle ?",
-        color: "#ff9800"
-      },
-      {
-        question: "Quels critères définissent selon vous une IA 'frugale' ?",
-        color: "#e91e63"
-      },
-      {
-        question: "Comment sensibiliser vos collègues à l'impact environnemental des IA ?",
+        question: "Est-ce que votre manière d'utiliser des IA conversationnelles changera après la révélation de l'impact environnemental des modèles ?",
         color: "#2196f3"
+      }
+    ],
+    resources: [
+      {
+        title: "⚡ Pourquoi les IA consomment-elles de l'électricité ?",
+        url: "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
+      },
+      {
+        title: "📏 Qu'est-ce que la taille d'un modèle ?",
+        url: "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/view"
       }
     ]
   },
@@ -854,38 +900,36 @@ const stepsLibrary = {
     suggestions: [],
     resources: [
       {
-        title: "📊 Impact environnemental des IA",
+        title: "⚡ Pourquoi les IA consomment-elles de l'électricité ?",
         url: "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
       },
       {
-        title: "📘 Comprendre les modèles de langage",
+        title: "📏 Qu'est-ce que la taille d'un modèle ?",
         url: "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/view"
       },
       {
-        title: "🔍 Impact comparatif : petits vs grands modèles",
+        title: "🔍 ChatGPT ou Google : lequel est plus frugal ?",
         url: "https://drive.google.com/file/d/1GSzqbH2fZ5N7FLP7l3gOygmrZqLqZF6U/view"
+      },
+      {
+        title: "🧠 Qu'est-ce qu'un modèle de raisonnement ?",
+        url: "https://drive.google.com/file/d/1JCnZaZaklBEzqQrxlML8Drenf-1rmJl5/view"
+      },
+      {
+        title: "🔋 Qui consomme plus : entraîner ou utiliser une IA ?",
+        url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
+      },
+      {
+        title: "🌱 DeepSeek est-il frugal ?",
+        url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
       },
       {
         title: "🌱 Bonnes pratiques d'IA frugale",
         url: "https://drive.google.com/file/d/1xsrkj1vJehdMKJo3FhcuVCk285qCiU6V/view"
-      },
-      {
-        title: "🧮 Calcul de l'empreinte carbone d'une IA",
-        url: "https://labelia.org/fr/solution/ia"
-      },
-      {
-        title: "🌍 Rapport Green AI 2023",
-        url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
       }
     ],
     media: [],
     type: "resources_section", // Type spécial pour une section de ressources
-    callout: {
-      type: "info",
-      icon: "🌱",
-      title: "Poursuivez l'exploration :",
-      content: "Consultez ces ressources pour mieux comprendre les enjeux énergétiques et environnementaux liés à l'usage des IA génératives et découvrir comment adopter une approche plus frugale."
-    }
   }
 };
 
@@ -1326,6 +1370,8 @@ function createResourcesPanel() {
 }
 
 // Function to create a guide for the main page
+// Note: All guide creation functions ensure resources are displayed last
+// This maintains consistent positioning across all step types
 function createMainPageGuide() {
   const guide = createGuideBase();
   
@@ -1485,6 +1531,28 @@ function createMainPageGuide() {
       stepElement.appendChild(suggestionsList);
     }
     
+    // Add resources (always last)
+    if (step.resources && step.resources.length > 0) {
+      const resourceContainer = document.createElement('div');
+      resourceContainer.className = 'duels-resource-container';
+      
+      const resourcesTitle = document.createElement('h4');
+      resourcesTitle.className = 'duels-resources-title';
+      resourcesTitle.textContent = 'Ressources:';
+      resourceContainer.appendChild(resourcesTitle);
+      
+      step.resources.forEach(resource => {
+        const resourceLink = document.createElement('a');
+        resourceLink.className = 'duels-resource-button';
+        resourceLink.href = resource.url || '#';
+        resourceLink.target = '_blank';
+        resourceLink.textContent = resource.title;
+        resourceContainer.appendChild(resourceLink);
+      });
+      
+      stepElement.appendChild(resourceContainer);
+    }
+    
     stepsContainer.appendChild(stepElement);
   });
   
@@ -1577,6 +1645,8 @@ function logImageUrl(url) {
   return url;
 }
 
+// Note: All guide creation functions ensure resources are displayed last
+// This maintains consistent positioning across all step types
 function createModelSelectionGuide() {
   const guide = createGuideBase();
   
@@ -1649,23 +1719,6 @@ function createModelSelectionGuide() {
       renderRandomQuestions(step, stepContent);
     }
     
-    // Add resources with special styling for resources_section
-    if (step.resources && step.resources.length > 0) {
-      const resourceContainer = document.createElement('div');
-      resourceContainer.className = 'duels-resource-container';
-      
-      step.resources.forEach(resource => {
-        const resourceLink = document.createElement('a');
-        resourceLink.className = 'duels-resource-button';
-        resourceLink.href = resource.url || '#';
-        resourceLink.target = '_blank';
-        resourceLink.textContent = resource.title;
-        resourceContainer.appendChild(resourceLink);
-      });
-      
-      stepContent.appendChild(resourceContainer);
-    }
-    
     // Add suggestions if available
     if (step.suggestions && step.suggestions.length > 0) {
       const suggestionsList = document.createElement('div');
@@ -1720,6 +1773,23 @@ function createModelSelectionGuide() {
       stepContent.appendChild(suggestionsList);
     }
     
+    // Add resources with special styling for resources_section (always last)
+    if (step.resources && step.resources.length > 0) {
+      const resourceContainer = document.createElement('div');
+      resourceContainer.className = 'duels-resource-container';
+      
+      step.resources.forEach(resource => {
+        const resourceLink = document.createElement('a');
+        resourceLink.className = 'duels-resource-button';
+        resourceLink.href = resource.url || '#';
+        resourceLink.target = '_blank';
+        resourceLink.textContent = resource.title;
+        resourceContainer.appendChild(resourceLink);
+      });
+      
+      stepContent.appendChild(resourceContainer);
+    }
+    
     stepAccordion.appendChild(stepHeader);
     stepAccordion.appendChild(stepContent);
     
@@ -1750,6 +1820,8 @@ function createModelSelectionGuide() {
 }
 
 // Function to create guide for the duel page (steps 2-7)
+// Note: All guide creation functions ensure resources are displayed last
+// This maintains consistent positioning across all step types
 function createDuelGuide() {
   const guide = createGuideBase();
   
@@ -1830,25 +1902,11 @@ function createDuelGuide() {
     // Add discussion cards if available
     if (step.discussion_cards && step.discussion_cards.length > 0) {
       renderDiscussionCards(step, stepContent);
-      console.log(`Adding discussion cards to step: ${step.id}`);
     }
     
-    // Add resources with special styling for resources_section
-    if (step.resources && step.resources.length > 0) {
-      const resourceContainer = document.createElement('div');
-      resourceContainer.className = 'duels-resource-container';
-      
-      step.resources.forEach(resource => {
-        const resourceLink = document.createElement('a');
-        resourceLink.className = 'duels-resource-button';
-        resourceLink.href = resource.url || '#';
-        resourceLink.target = '_blank';
-        resourceLink.textContent = resource.title;
-        resourceContainer.appendChild(resourceLink);
-      });
-      
-      stepContent.appendChild(resourceContainer);
-    }
+    // Add resources with special styling for resources_section (last)
+    // Note: We're intentionally moving resources to the end of the function to ensure 
+    // they always appear last, regardless of other content like suggestions or questions
     
     // Add suggestions if available
     if (step.suggestions && step.suggestions.length > 0) {
@@ -1904,6 +1962,23 @@ function createDuelGuide() {
       stepContent.appendChild(suggestionsContainer);
     }
     
+    // Add resources with special styling for resources_section (always last)
+    if (step.resources && step.resources.length > 0) {
+      const resourceContainer = document.createElement('div');
+      resourceContainer.className = 'duels-resource-container';
+      
+      step.resources.forEach(resource => {
+        const resourceLink = document.createElement('a');
+        resourceLink.className = 'duels-resource-button';
+        resourceLink.href = resource.url || '#';
+        resourceLink.target = '_blank';
+        resourceLink.textContent = resource.title;
+        resourceContainer.appendChild(resourceLink);
+      });
+      
+      stepContent.appendChild(resourceContainer);
+    }
+    
     stepAccordion.appendChild(stepHeader);
     stepAccordion.appendChild(stepContent);
     
@@ -1953,12 +2028,34 @@ function createGuideForCurrentPage() {
 }
 
 // Only continue if we're on the ComparIA site
+// Function to apply consistent styling to all resource buttons
+function applyResourceButtonStyles() {
+  // Apply styling to all resource buttons
+  const resourceButtons = document.querySelectorAll('.duels-resource-button');
+  resourceButtons.forEach(button => {
+    button.setAttribute('style', 'background-color: white !important; color: #222 !important; border: 2px solid #9898F8 !important; box-shadow: none !important; outline: none !important; text-decoration: none !important;');
+    
+    // Also remove any hover effects by adding event listeners
+    button.addEventListener('mouseenter', (e) => {
+      e.target.style.backgroundColor = 'white';
+      e.target.style.color = '#222';
+      e.target.style.boxShadow = 'none';
+      e.target.style.outline = 'none';
+      e.target.style.textDecoration = 'none';
+      e.target.style.transform = 'none';
+    });
+  });
+}
+
 if (isComparIASite) {
   // Create the FAB
   createFAB();
   
   // Create guide for current page
   createGuideForCurrentPage();
+  
+  // Apply resource button styles
+  setTimeout(applyResourceButtonStyles, 500);
   
   // Add URL change detection to handle navigation within the ComparIA site
   let lastUrl = window.location.href;
@@ -1977,6 +2074,9 @@ if (isComparIASite) {
       
       // Create appropriate guide
       createGuideForCurrentPage();
+      
+      // Apply resource button styles
+      setTimeout(applyResourceButtonStyles, 500);
     }
   });
   
@@ -1986,10 +2086,13 @@ if (isComparIASite) {
   // Initialize facilitator task visibility
   initializeFacilitatorTaskVisibility();
   
-  // Observer pour l'application des styles facilitateur
+  // Observer pour l'application des styles facilitateur et des boutons de ressources
   const styleObserver = new MutationObserver(() => {
     // Petit délai pour s'assurer que le DOM est bien mis à jour
-    setTimeout(initializeFacilitatorTaskVisibility, 50);
+    setTimeout(() => {
+      initializeFacilitatorTaskVisibility();
+      applyResourceButtonStyles();
+    }, 50);
   });
   
   // Observer le DOM pour les changements
@@ -2005,59 +2108,141 @@ if (isComparIASite) {
 function renderRandomQuestions(step, container) {
   if (!step.random_questions || step.random_questions.length === 0) return;
   
-  // Container pour la section de questions aléatoires
-  const randomQuestionsContainer = document.createElement('div');
-  randomQuestionsContainer.className = 'duels-random-questions-container';
-  
-  // Titre de la section
-  const sectionTitle = document.createElement('h4');
-  sectionTitle.className = 'duels-random-questions-title';
-  sectionTitle.textContent = 'À débattre :';
-  randomQuestionsContainer.appendChild(sectionTitle);
-  
-  // Conteneur pour la question affichée
-  const questionDisplay = document.createElement('div');
-  questionDisplay.className = 'duels-random-question-display';
-  questionDisplay.textContent = 'Cliquez sur le dé pour générer une question';
-  randomQuestionsContainer.appendChild(questionDisplay);
-  
-  // Bouton avec l'icône de dé pour générer une question aléatoire
-  const diceButton = document.createElement('button');
-  diceButton.className = 'duels-dice-button';
-  diceButton.innerHTML = '<i class="fas fa-dice"></i>';
-  diceButton.title = 'Générer une question aléatoire';
-  randomQuestionsContainer.appendChild(diceButton);
-  
-  // La fonction draw sera appelée après sa définition
-  
-  // Index pour suivre la question actuelle dans step 2
-  let currentIndex = 0;
-  
-  // Fonction pour afficher la question suivante dans l'ordre
-  function generateRandomQuestion() {
-    // Si on a atteint la fin, revenir au début
-    if (currentIndex >= step.random_questions.length) {
-      currentIndex = 0;
+  // Si c'est l'étape 2 (evaluate_utility), on utilise un formulaire spécial
+  if (step.id === 'evaluate_utility') {
+    // Container pour la section de questions
+    const questionsContainer = document.createElement('div');
+    questionsContainer.className = 'duels-random-questions-container';
+    
+    // Titre de la section
+    const sectionTitle = document.createElement('h4');
+    sectionTitle.className = 'duels-random-questions-title';
+    sectionTitle.textContent = 'À débattre :';
+    questionsContainer.appendChild(sectionTitle);
+    
+    // Question principale
+    const mainQuestion = document.createElement('div');
+    mainQuestion.className = 'duels-question-main';
+    mainQuestion.innerHTML = "Est ce qu'il aurait été possible de répondre à cette question sans IA ?";
+    questionsContainer.appendChild(mainQuestion);
+    
+    // Form pour la réponse Oui/Non
+    const yesNoContainer = document.createElement('div');
+    yesNoContainer.className = 'duels-yesno-container';
+    
+    const yesLabel = document.createElement('label');
+    yesLabel.className = 'duels-radio-label';
+    const yesInput = document.createElement('input');
+    yesInput.type = 'radio';
+    yesInput.name = 'ai-alternative';
+    yesInput.value = 'yes';
+    yesInput.className = 'duels-radio';
+    yesLabel.appendChild(yesInput);
+    yesLabel.appendChild(document.createTextNode(' Oui'));
+    
+    const noLabel = document.createElement('label');
+    noLabel.className = 'duels-radio-label';
+    const noInput = document.createElement('input');
+    noInput.type = 'radio';
+    noInput.name = 'ai-alternative';
+    noInput.value = 'no';
+    noInput.className = 'duels-radio';
+    noLabel.appendChild(noInput);
+    noLabel.appendChild(document.createTextNode(' Non'));
+    
+    yesNoContainer.appendChild(yesLabel);
+    yesNoContainer.appendChild(noLabel);
+    questionsContainer.appendChild(yesNoContainer);
+    
+    // Sous-question qui apparaît lorsque "Oui" est sélectionné
+    const conditionalFields = document.createElement('div');
+    conditionalFields.className = 'duels-conditional-fields';
+    conditionalFields.style.display = 'none';
+    
+    // Question du temps uniquement
+    const timeLabel = document.createElement('label');
+    timeLabel.className = 'duels-field-label';
+    timeLabel.textContent = 'En combien de temps ?';
+    const timeInput = document.createElement('input');
+    timeInput.type = 'text';
+    timeInput.className = 'duels-text-input';
+    timeInput.placeholder = 'Ex: 5 minutes, 1 heure...';
+    
+    conditionalFields.appendChild(timeLabel);
+    conditionalFields.appendChild(timeInput);
+    
+    questionsContainer.appendChild(conditionalFields);
+    
+    // Événement pour afficher/masquer les champs conditionnels
+    yesInput.addEventListener('change', function() {
+      if (this.checked) {
+        conditionalFields.style.display = 'block';
+      }
+    });
+    
+    noInput.addEventListener('change', function() {
+      if (this.checked) {
+        conditionalFields.style.display = 'none';
+      }
+    });
+    
+    // Ajouter le conteneur au DOM
+    container.appendChild(questionsContainer);
+    
+  } else {
+    // Pour les autres étapes, on garde le comportement original avec le dé
+    // Container pour la section de questions aléatoires
+    const randomQuestionsContainer = document.createElement('div');
+    randomQuestionsContainer.className = 'duels-random-questions-container';
+    
+    // Titre de la section
+    const sectionTitle = document.createElement('h4');
+    sectionTitle.className = 'duels-random-questions-title';
+    sectionTitle.textContent = 'À débattre :';
+    randomQuestionsContainer.appendChild(sectionTitle);
+    
+    // Conteneur pour la question affichée
+    const questionDisplay = document.createElement('div');
+    questionDisplay.className = 'duels-random-question-display';
+    questionDisplay.textContent = 'Cliquez sur le dé pour générer une question';
+    randomQuestionsContainer.appendChild(questionDisplay);
+    
+    // Bouton avec l'icône de dé pour générer une question aléatoire
+    const diceButton = document.createElement('button');
+    diceButton.className = 'duels-dice-button';
+    diceButton.innerHTML = '<i class="fas fa-dice"></i>';
+    diceButton.title = 'Générer une question aléatoire';
+    randomQuestionsContainer.appendChild(diceButton);
+    
+    // Index pour suivre la question actuelle
+    let currentIndex = 0;
+    
+    // Fonction pour afficher la question suivante dans l'ordre
+    function generateRandomQuestion() {
+      // Si on a atteint la fin, revenir au début
+      if (currentIndex >= step.random_questions.length) {
+        currentIndex = 0;
+      }
+      
+      // Récupérer la question à l'index actuel
+      questionDisplay.textContent = step.random_questions[currentIndex];
+      
+      // Incrémenter l'index pour la prochaine fois
+      currentIndex++;
+      
+      // Animation du dé
+      diceButton.classList.add('rolling');
+      setTimeout(() => {
+        diceButton.classList.remove('rolling');
+      }, 500);
     }
     
-    // Récupérer la question à l'index actuel
-    questionDisplay.textContent = step.random_questions[currentIndex];
+    // Associer la fonction au clic sur le bouton
+    diceButton.addEventListener('click', generateRandomQuestion);
     
-    // Incrémenter l'index pour la prochaine fois
-    currentIndex++;
-    
-    // Animation du dé
-    diceButton.classList.add('rolling');
-    setTimeout(() => {
-      diceButton.classList.remove('rolling');
-    }, 500);
+    // Ajouter le conteneur au DOM
+    container.appendChild(randomQuestionsContainer);
   }
-  
-  // Associer la fonction au clic sur le bouton
-  diceButton.addEventListener('click', generateRandomQuestion);
-  
-  // Ajouter le conteneur au DOM
-  container.appendChild(randomQuestionsContainer);
   
   // Ajouter le style CSS pour cette fonctionnalité
   if (!document.getElementById('random-questions-style')) {
@@ -2124,6 +2309,70 @@ function renderRandomQuestions(step, container) {
         60% { transform: rotate(-15deg); }
         80% { transform: rotate(15deg); }
         100% { transform: rotate(0deg); }
+      }
+      
+      /* Styles pour le formulaire de l'étape 2 */
+      .duels-question-main {
+        padding: 12px;
+        background-color: white;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #333;
+      }
+      
+      .duels-yesno-container {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 15px;
+        padding: 0 10px;
+      }
+      
+      .duels-radio-label {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        cursor: pointer;
+        color: #333;
+      }
+      
+      .duels-radio {
+        margin-right: 5px;
+        cursor: pointer;
+      }
+      
+      .duels-conditional-fields {
+        background-color: white;
+        padding: 15px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+        margin-top: 5px;
+      }
+      
+      .duels-field-label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #333;
+      }
+      
+      .duels-text-input {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+        font-family: inherit;
+      }
+      
+      .duels-text-input:focus {
+        border-color: #6a6af4;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(106, 106, 244, 0.2);
       }
     `;
     document.head.appendChild(styleElement);

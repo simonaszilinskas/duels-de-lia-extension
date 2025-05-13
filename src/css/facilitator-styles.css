@@ -109,11 +109,13 @@
 .duels-accordion.resources-section {
   margin-top: 40px;
   padding-top: 25px;
+  padding-bottom: 30px; /* Extra padding at bottom */
   background-color: transparent;
   border-radius: 0;
   border: none;
   opacity: 1;
   position: relative;
+  width: 100%; /* Ensure full width */
 }
 
 .duels-accordion.resources-section::before {
@@ -165,6 +167,8 @@
   border: none !important;
   padding: 15px 0;
   animation: none !important;
+  max-height: none !important; /* Ensure no height restriction */
+  overflow: visible !important; /* Allow content to fully display */
 }
 
 .duels-accordion.resources-section .duels-accordion-content p {
@@ -179,6 +183,9 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 15px;
+  margin-bottom: 20px; /* Add bottom margin for better spacing */
+  padding-bottom: 10px; /* Additional padding at bottom */
+  width: 100%; /* Ensure full width */
 }
 
 .duels-accordion.resources-section .duels-resource-button {
