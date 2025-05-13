@@ -882,16 +882,6 @@ const stepsLibrary = {
         question: "Est-ce que votre manière d'utiliser des IA conversationnelles changera après la révélation de l'impact environnemental des modèles ?",
         color: "#2196f3"
       }
-    ],
-    resources: [
-      {
-        title: "⚡ Pourquoi les IA consomment-elles de l'électricité ?",
-        url: "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
-      },
-      {
-        title: "📏 Qu'est-ce que la taille d'un modèle ?",
-        url: "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/view"
-      }
     ]
   },
   
@@ -924,12 +914,8 @@ const stepsLibrary = {
         url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
       },
       {
-        title: "🌱 DeepSeek est-il frugal ?",
-        url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
-      },
-      {
         title: "🌱 Bonnes pratiques d'IA frugale",
-        url: "https://drive.google.com/file/d/1xsrkj1vJehdMKJo3FhcuVCk285qCiU6V/view"
+        url: "https://drive.google.com/drive/folders/1oSgGJkBSHhj7ZXRe7iA-IwfzTy2fEZd7"
       }
     ],
     media: [],
@@ -947,19 +933,15 @@ const commonResources = {
   ],
   "facilitatorGuide": {
     title: "Guide du facilitateur",
-    url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8?pvs=74"
+    url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
   },
   "educationalResources": [
-    {
-      title: "📚 Introduction aux duels sur l'impact environnemental",
-      url: "https://drive.google.com/file/d/1xsrkj1vJehdMKJo3FhcuVCk285qCiU6V/view"
-    },
     {
       title: "⚡ Pourquoi les IA consomment-elles de l'électricité ?",
       url: "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
     },
     {
-      title: "📏 Qu'est-ce que la \"taille\" d'un modèle ?",
+      title: "📏 Qu'est-ce que la taille d'un modèle ?",
       url: "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/view"
     },
     {
@@ -969,12 +951,16 @@ const commonResources = {
     {
       title: "🧠 Qu'est-ce qu'un modèle de raisonnement ?",
       url: "https://drive.google.com/file/d/1JCnZaZaklBEzqQrxlML8Drenf-1rmJl5/view"
+    },
+    {
+      title: "🔋 Qui consomme plus : entraîner ou utiliser une IA ?",
+      url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
+    },
+    {
+      title: "🌱 Bonnes pratiques d'IA frugale",
+      url: "https://drive.google.com/drive/folders/1oSgGJkBSHhj7ZXRe7iA-IwfzTy2fEZd7"
     }
-  ],
-  "frugalAI": {
-    title: "Pourquoi les IA consomment de l'énergie ?",
-    url: "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
-  }
+  ]
 };
 
 // Paramètres actuels (à modifier avec les préférences utilisateur)
