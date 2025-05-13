@@ -1,50 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Les Duels de l'IA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="../css/popup.css">
 </head>
 <body>
   <div class="duels-popup">
     <header class="duels-header">
-      <h1>Les Duels de l'IA</h1>
+      <h1><i class="fas fa-bolt" style="margin-right: 8px;"></i>Les Duels de l'IA</h1>
     </header>
     
     <div class="duels-content">
       <div id="not-on-comparia-message">
         <div class="duels-alert">
-          <span class="duels-alert-icon">🚩</span>
-          <p>You are not on the ComparIA website.</p>
+          <span class="duels-alert-icon"><i class="fas fa-exclamation-triangle"></i></span>
+          <div>
+            <p style="margin: 0; font-weight: 600;">Site ComparIA non détecté</p>
+            <p style="margin: 3px 0 0 0; font-size: 0.8rem;">Vous n'êtes pas sur le site ComparIA.</p>
+          </div>
         </div>
         
         <p class="duels-instructions">
-          Please visit ComparIA to begin your workshop. The extension provides
-          step-by-step guidance when you're on the ComparIA site.
+          Pour utiliser cette extension, veuillez vous rendre sur le site ComparIA. 
+          L'extension fournit un guide étape par étape lorsque vous êtes sur le site.
         </p>
         
         <div class="duels-button-group">
-          <a href="https://comparia.beta.gouv.fr" target="_blank" class="duels-button primary">Go to ComparIA</a>
-          <a href="https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8?pvs=74" target="_blank" class="duels-button secondary">Facilitator Notes</a>
+          <a href="https://comparia.beta.gouv.fr" target="_blank" class="duels-button primary">
+            <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Aller sur ComparIA
+          </a>
+          <a href="https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8?pvs=74" target="_blank" class="duels-button secondary">
+            <i class="fas fa-book" style="margin-right: 8px;"></i>Notes pour facilitateurs
+          </a>
         </div>
       </div>
       
       <div id="on-comparia-message" style="display: none;">
         <div class="duels-success">
-          <span class="duels-success-icon">✓</span>
-          <p>You are on the ComparIA website!</p>
+          <span class="duels-success-icon"><i class="fas fa-check-circle"></i></span>
+          <div>
+            <p style="margin: 0; font-weight: 600;">Site ComparIA détecté</p>
+            <p style="margin: 3px 0 0 0; font-size: 0.8rem;">L'extension est active sur cette page.</p>
+          </div>
         </div>
         
         <p class="duels-instructions">
-          The extension is active and the step-by-step guide is available on the page.
-          Look for the sidebar on the right side of the screen.
+          Le guide étape par étape est disponible sur la page. Cherchez le bouton 
+          <span style="padding: 0 5px; background: #6a6af4; color: white; border-radius: 50%; display: inline-block; width: 18px; height: 18px; text-align: center; line-height: 18px; font-size: 12px;">⚔️</span> 
+          en bas à droite de l'écran pour ouvrir l'assistant.
         </p>
+        
+        <div class="duels-button-group">
+          <a href="https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8?pvs=74" target="_blank" class="duels-button secondary">
+            <i class="fas fa-book" style="margin-right: 8px;"></i>Notes pour facilitateurs
+          </a>
+        </div>
       </div>
     </div>
     
     <footer class="duels-footer">
-      <p>Les Duels de l'IA Workshop Extension</p>
+      <p>Extension pour Les Duels de l'IA • v1.0</p>
     </footer>
   </div>
   
