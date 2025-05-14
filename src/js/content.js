@@ -1,26 +1,26 @@
 // content.js - Script that runs directly on the ComparIA website
 
-// Charger la police Marianne
-const marianneFont = document.createElement('link');
-marianneFont.rel = 'stylesheet';
-marianneFont.href = 'https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Bold.woff2';
-document.head.appendChild(marianneFont);
+// Charger la police Marianne via le CSS DSFR
+const dfsrCSS = document.createElement('link');
+dfsrCSS.rel = 'stylesheet';
+dfsrCSS.href = 'https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/dsfr.min.css';
+document.head.appendChild(dfsrCSS);
 
 // Style global avec les améliorations responsives et typographiques
 const globalStyle = document.createElement('style');
 globalStyle.textContent = `
-  @import url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Bold.woff2');
-  @import url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Regular.woff2');
-  @import url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Medium.woff2');
+  /* We now load the Marianne font from the DSFR CSS */
 
 
   p {
     font-size: 0.85rem !important;
     line-height: 1.25rem !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
     }
 
   .duels-guide {
-    font-family: 'Marianne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    font-family: Marianne, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     border: 1px solid #e6e6e6;
@@ -28,7 +28,7 @@ globalStyle.textContent = `
     position: fixed;
     top: 20px;
     right: 20px;
-    width: min(370px, 90vw);
+    width: min(290px, 90vw);
     max-height: 95vh; /* Allow more space, almost full viewport */
     overflow-y: auto; /* Keep scroll for the overall container */
     background-color: white;
@@ -45,7 +45,7 @@ globalStyle.textContent = `
     background-color: #6a6af4;
     color: white;
     border-radius: 8px 8px 0 0;
-    padding: 15px 20px;
+    padding: 8px 12px;
     position: sticky;
     top: 0;
     z-index: 10001; /* Ensure it stays above other content */
@@ -53,14 +53,16 @@ globalStyle.textContent = `
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Add shadow for better visual separation */
-    min-height: 30px; /* Ensure consistent header height */
+    min-height: 25px; /* Shorter height */
     flex-shrink: 0; /* Prevent header from shrinking */
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .duels-header h2 {
     margin: 0;
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 0.85rem;
     color: white;
   }
   
@@ -109,7 +111,7 @@ globalStyle.textContent = `
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    width: min(300px, 90vw);
+    width: min(260px, 90vw);
     z-index: 10001;
     display: none;
     padding: 20px;
@@ -274,18 +276,23 @@ globalStyle.textContent = `
   }
   
   .duels-content-container {
-    padding: 20px;
+    padding: 10px;
     background-color: #fafafa;
     border-radius: 0 0 8px 8px;
     max-height: none; /* Remove fixed height to adapt to content */
     overflow-y: visible; /* Allow content to expand */
     overflow-x: hidden;
     flex: 1 1 auto; /* Allow content to grow and take available space */
-    padding-bottom: 30px; /* Extra padding at bottom to prevent content being cut off */
+    padding-bottom: 40px; /* Extra padding at bottom to prevent content being cut off */
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .duels-step {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .duels-step h3,
@@ -293,17 +300,21 @@ globalStyle.textContent = `
     color: #333;
     font-size: 0.95rem;
     margin-bottom: 12px;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
   
   .duels-accordion-header {
     background-color: #f5f5f5;
     border-left: 4px solid #9898F8;
-    padding: 12px 15px;
+    padding: 10px 12px;
     font-weight: 600;
     border-radius: 4px;
     margin-bottom: 2px;
     cursor: pointer;
     transition: all 0.2s;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
   
   /* Style différencié pour les tâches facilitateur */
@@ -343,15 +354,15 @@ globalStyle.textContent = `
   }
   
   .duels-accordion-content {
-    padding: 15px;
+    padding: 8px 8px;
     background-color: white;
     border-radius: 0 0 4px 4px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     display: none;
     border: 1px solid #eaeaea;
     border-top: none;
-    line-height: 1.5;
-    font-size: 0.85rem;
+    line-height: 1.4;
+    font-size: 0.75rem;
   }
   
   /* Style différencié pour les contenus de tâches facilitateur */
@@ -365,6 +376,8 @@ globalStyle.textContent = `
   .duels-accordion.active .duels-accordion-content {
     display: block;
     animation: fadeIn 0.3s ease;
+    height: auto;
+    overflow: visible;
   }
   
   /* Style du texte des instructions */
@@ -387,28 +400,41 @@ globalStyle.textContent = `
   
   .duels-resource-container {
     margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
   
   .duels-resources-title {
-    margin: 15px 0 10px 0;
-    font-weight: 600;
-    font-size: 0.9rem;
+    margin: 12px 0 5px 0;
+    font-weight: 500;
+    font-size: 0.75rem;
     color: #333;
+    word-break: break-word;
   }
   
   .duels-resource-button {
-    display: inline-block;
-    padding: 8px 15px;
-    margin: 5px 10px 5px 0;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3px 5px;
+    margin: 3px 0;
     background-color: white;
     color: #222 !important;
     text-decoration: none !important;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    border: 2px solid #9898F8;
+    border-radius: 3px;
+    font-weight: 400;
+    font-size: 0.6rem;
+    line-height: 1.1;
+    border: 1px solid #9898F8;
     box-shadow: none;
     outline: none;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
+    white-space: normal;
+    min-height: 0;
+    height: auto;
   }
   
   /* Removing hover effects and the black line */
@@ -428,17 +454,17 @@ globalStyle.textContent = `
   
   .duels-fab {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 56px;
-    height: 56px;
+    bottom: 15px;
+    right: 15px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background-color: #9898F8;
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 18px;
     color: white;
     cursor: pointer;
     z-index: 10000;
@@ -460,6 +486,12 @@ globalStyle.textContent = `
     font-size: 0.85rem;
   }
   
+  .duels-suggestions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
   .duels-suggestion {
     background-color: white;
     padding: 10px 15px;
@@ -469,6 +501,9 @@ globalStyle.textContent = `
     border: 1px solid #e0e0e0;
     transition: all 0.2s;
     font-size: 0.85rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
   }
   
   .duels-suggestion:hover {
@@ -495,7 +530,11 @@ globalStyle.textContent = `
     font-weight: 600;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .duels-persona:hover {
@@ -509,6 +548,8 @@ globalStyle.textContent = `
     font-size: 0.7rem;
     color: #777;
     transition: transform 0.2s;
+    margin-left: 10px;
+    flex-shrink: 0;
   }
   
   .duels-persona.open::after {
@@ -516,17 +557,23 @@ globalStyle.textContent = `
   }
   
   .duels-prompt {
-    padding: 8px 10px 10px;
+    padding: 8px 10px 25px; /* Added padding at bottom for copy button */
     margin-top: -6px;
     margin-bottom: 8px;
     background-color: #f8f8ff;
     border: 1px solid #e0e0e0;
     border-top: none;
     border-radius: 0 0 4px 4px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    line-height: 1.2;
     display: none;
     color: #555;
     position: relative;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .duels-prompt.visible {
@@ -536,17 +583,18 @@ globalStyle.textContent = `
   
   .duels-copy-button {
     position: absolute;
-    bottom: 8px;
-    right: 8px;
+    bottom: 5px;
+    right: 5px;
     background-color: #9898F8;
     color: white;
     border: none;
     border-radius: 3px;
-    padding: 3px 6px;
-    font-size: 0.75rem;
+    padding: 2px 4px;
+    font-size: 0.65rem;
     cursor: pointer;
     opacity: 0.8;
     transition: all 0.2s;
+    z-index: 2;
   }
   
   .duels-copy-button:hover {
@@ -655,7 +703,7 @@ globalStyle.textContent = `
   /* Media queries for better responsiveness */
   @media (max-width: 768px) {
     .duels-guide {
-      width: min(350px, 90vw);
+      width: min(270px, 90vw);
       max-height: 92vh; /* Allow more vertical space on smaller screens */
     }
     
@@ -675,9 +723,9 @@ globalStyle.textContent = `
     .duels-resource-button, 
     .duels-resources-section a.duels-resource-button,
     #duels-resources-panel a.duels-resource-button {
-      margin: 5px 5px 10px 0 !important; /* Smaller margins */
-      padding: 6px 12px !important; /* Slightly smaller padding */
-      font-size: 0.8rem !important; /* Slightly smaller text */
+      margin: 3px 3px 6px 0 !important; /* Smaller margins */
+      padding: 4px 8px !important; /* Smaller padding */
+      font-size: 0.7rem !important; /* Smaller text */
     }
   }
   
@@ -707,10 +755,17 @@ globalStyle.textContent = `
     .duels-resource-button, 
     .duels-resources-section a.duels-resource-button,
     #duels-resources-panel a.duels-resource-button {
-      width: calc(100% - 10px);
+      width: 100%;
       box-sizing: border-box;
-      margin-right: 0 !important;
+      margin: 3px 0 !important;
+      padding: 4px 6px !important;
       text-align: center;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+      font-size: 0.65rem !important;
+      line-height: 1.1 !important;
+      min-height: 0 !important;
     }
   }
 `;
@@ -782,7 +837,7 @@ const stepsLibrary = {
     ],
     resources: [
       {
-        title: "Comment bien construire son prompt ?",
+        title: "Construire son prompt",
         url: ""
       }
     ],
@@ -903,10 +958,6 @@ const stepsLibrary = {
         url: "https://drive.google.com/file/d/1JCnZaZaklBEzqQrxlML8Drenf-1rmJl5/view"
       },
       {
-        title: "🔋 Qui consomme plus : entraîner ou utiliser une IA ?",
-        url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
-      },
-      {
         title: "🌱 Bonnes pratiques d'IA frugale",
         url: "https://drive.google.com/drive/folders/1oSgGJkBSHhj7ZXRe7iA-IwfzTy2fEZd7"
       }
@@ -940,10 +991,6 @@ const commonResources = {
     {
       title: "🧠 Qu'est-ce qu'un modèle de raisonnement ?",
       url: "https://drive.google.com/file/d/1JCnZaZaklBEzqQrxlML8Drenf-1rmJl5/view"
-    },
-    {
-      title: "🔋 Qui consomme plus : entraîner ou utiliser une IA ?",
-      url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
     },
     {
       title: "🌱 Bonnes pratiques d'IA frugale",
@@ -997,6 +1044,28 @@ function getStepsForCurrentPage(pageName) {
 // Fonction utilitaire pour obtenir le chemin actif
 function getActivePath() {
   return workshopPaths[currentSettings.activePath];
+}
+
+// Fonction pour adapter les éléments qui risquent d'être coupés
+function adaptContentSize() {
+  // Adjust resource buttons in choose_prompt step
+  const resourceButtons = document.querySelectorAll('.duels-resource-button');
+  resourceButtons.forEach(button => {
+    if (button.clientWidth < button.scrollWidth) {
+      // Content is being cut off, make font smaller
+      button.style.fontSize = '0.55rem';
+      button.style.padding = '2px 3px';
+      button.style.lineHeight = '1';
+    }
+  });
+  
+  // Extra handling for personas and prompts
+  const personas = document.querySelectorAll('.duels-persona');
+  personas.forEach(persona => {
+    if (persona.clientWidth < persona.scrollWidth) {
+      persona.style.fontSize = '0.7rem';
+    }
+  });
 }
 
 // Function to toggle the guide visibility
@@ -1455,7 +1524,35 @@ function createMainPageGuide() {
         resourceLink.className = 'duels-resource-button';
         resourceLink.href = resource.url || '#';
         resourceLink.target = '_blank';
-        resourceLink.textContent = resource.title;
+        
+        // Shortening long resource titles
+        let title = resource.title;
+        // Replace specific long titles with shorter versions
+        if (title === "Comment bien construire son prompt ?") {
+          title = "Construire son prompt";
+        }
+        resourceLink.textContent = title;
+        
+        // Apply special styling for small container
+        resourceLink.style.fontSize = '0.6rem';
+        resourceLink.style.padding = '3px 4px';
+        resourceLink.style.fontWeight = '400';
+        resourceLink.style.border = '1px solid #9898F8';
+        
+        // Add specific handling for step 3 (choose prompt step) and other specific resources
+        if (step.id === 'choose_prompt') {
+          resourceLink.style.fontSize = '0.5rem';  // Even smaller font
+          resourceLink.style.padding = '2px 3px';  // Minimum padding
+          resourceLink.style.margin = '2px 0';     // Minimum margin
+          resourceLink.style.lineHeight = '1';     // Minimum line height
+          
+          // Handle this specific problematic button
+          if (title === 'Construire son prompt') {
+            resourceLink.style.fontWeight = '300';
+            resourceLink.style.letterSpacing = '-0.2px';
+          }
+        }
+        
         resourceContainer.appendChild(resourceLink);
       });
       
@@ -1938,8 +2035,11 @@ if (isComparIASite) {
   // Create guide for current page
   createGuideForCurrentPage();
   
-  // Apply resource button styles
-  setTimeout(applyResourceButtonStyles, 500);
+  // Apply resource button styles and adapt content
+  setTimeout(() => {
+    applyResourceButtonStyles();
+    adaptContentSize();
+  }, 500);
   
   // Add URL change detection to handle navigation within the ComparIA site
   let lastUrl = window.location.href;
@@ -1973,6 +2073,7 @@ if (isComparIASite) {
     // Petit délai pour s'assurer que le DOM est bien mis à jour
     setTimeout(() => {
       applyResourceButtonStyles();
+      adaptContentSize(); // Add dynamic content adaptation
     }, 50);
   });
   
