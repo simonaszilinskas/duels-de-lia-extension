@@ -732,9 +732,7 @@ const workshopPaths = {
     icon: "fas fa-bolt",
     steps: [
       // Les étapes sont définies dans stepsLibrary et référencées par leur ID
-      "start_duel", "select_mode", "choose_prompt", "send_prompt", 
-      "evaluate_utility", "vote_response", "discover_impact", "evaluate_frugality",
-      "pour_aller_plus_loin"
+      "choose_prompt", "evaluate_utility", "evaluate_frugality"
     ]
   }
 };
@@ -773,7 +771,7 @@ const stepsLibrary = {
   "choose_prompt": {
     id: "choose_prompt",
     order: 3,
-    title: "Étape 1 : Choisir un prompt",
+    title: "Étape 1 : Lancer une discussion",
     instruction: "Choisissez une question à envoyer aux deux modèles d'IA.",
     pages: ["duel"],
     suggestions: [
@@ -812,7 +810,7 @@ const stepsLibrary = {
   "evaluate_utility": {
     id: "evaluate_utility",
     order: 5,
-    title: "Étape 2 : coup de cœur ?",
+    title: "Étape 2 : Voter",
     instruction: "Examinez les deux réponses et votez pour votre préférée.",
     pages: ["duel"],
     suggestions: [],
@@ -853,7 +851,7 @@ const stepsLibrary = {
   "evaluate_frugality": {
     id: "evaluate_frugality",
     order: 8,
-    title: "Étape 3 : qui répond en chauffant moins la planète ?",
+    title: "Étape 3 : Le jeu en vaut-il la chandelle ?",
     instruction: "Analysez si la différence de qualité entre les deux réponses justifie la différence d'impact environnemental.",
     pages: ["duel"],
     suggestions: [],
