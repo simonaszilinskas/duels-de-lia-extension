@@ -32,10 +32,6 @@ const stepsLibrary = { ... }
 const commonResources = { ... }
 ```
 
-## 📸 Captures d'écran
-
-<!-- Ajoutez des captures d'écran si disponibles -->
-
 ## 📄 Licence
 
 [MIT](LICENSE)
