@@ -750,7 +750,6 @@ const stepsLibrary = {
     suggestions: [],
     resources: [],
     media: [], // Images ou GIFs à afficher
-    type: "facilitator", // tâche facilitateur
     status: "completed" // Marquer comme complété
   },
   
@@ -763,7 +762,6 @@ const stepsLibrary = {
     suggestions: [],
     resources: [],
     media: [], // Temporarily removed until images are properly set up
-    type: "facilitator", // tâche facilitateur
     callout: {
       type: "important", // types possibles: important, info, warning, success
       icon: "💡", // émoji ou classe d'icône FontAwesome (ex: "fas fa-info-circle")
@@ -808,8 +806,7 @@ const stepsLibrary = {
     pages: ["duel"],
     suggestions: [],
     resources: [],
-    media: [], // Temporarily removed until images are properly set up
-    type: "facilitator" // tâche facilitateur
+    media: [] // Temporarily removed until images are properly set up
   },
   
   "evaluate_utility": {
@@ -839,8 +836,7 @@ const stepsLibrary = {
     pages: ["duel"],
     suggestions: [],
     resources: [],
-    media: [], // Temporarily removed until images are properly set up
-    type: "facilitator" // tâche facilitateur
+    media: [] // Temporarily removed until images are properly set up
   },
   
   "discover_impact": {
@@ -851,8 +847,7 @@ const stepsLibrary = {
     pages: ["duel"],
     suggestions: [],
     resources: [],
-    media: [], // Temporarily removed until images are properly set up
-    type: "facilitator" // tâche facilitateur
+    media: [] // Temporarily removed until images are properly set up
   },
   
   "evaluate_frugality": {
@@ -931,10 +926,6 @@ const commonResources = {
     "👩‍🎓 Camille, étudiante : c'est quoi la différence entre un grand et un petit modèle d'IA générative ? Donne une réponse compréhensible en quelques mots",
     "👩🏻‍💼 Mei, cheffe de projet chez EDF : où trouver des petits modèles d'IA générative ? Réponse synthétique."
   ],
-  "facilitatorGuide": {
-    title: "Guide du facilitateur",
-    url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8"
-  },
   "educationalResources": [
     {
       title: "⚡ Pourquoi les IA consomment-elles de l'électricité ?",
@@ -1289,25 +1280,6 @@ function createResourcesPanel() {
     resourcesPanel.appendChild(frugaleSection);
   }
   
-  // Notes de facilitation section
-  if (commonResources.facilitatorGuide) {
-    const notesSection = document.createElement('div');
-    notesSection.className = 'duels-resources-section';
-    
-    const notesTitle = document.createElement('h3');
-    notesTitle.className = 'duels-resources-section-title';
-    notesTitle.textContent = 'Notes de facilitation';
-    notesSection.appendChild(notesTitle);
-    
-    const facilitatorLink = document.createElement('a');
-    facilitatorLink.className = 'duels-resource-button';
-    facilitatorLink.href = commonResources.facilitatorGuide.url;
-    facilitatorLink.target = '_blank';
-    facilitatorLink.textContent = commonResources.facilitatorGuide.title;
-    notesSection.appendChild(facilitatorLink);
-    
-    resourcesPanel.appendChild(notesSection);
-  }
   
   return resourcesPanel;
 }
@@ -1332,9 +1304,7 @@ function createMainPageGuide() {
     stepElement.className = 'duels-step';
     
     // Add class based on step type
-    if (step.type === 'facilitator') {
-      stepElement.classList.add('facilitator');
-    } else if (step.type === 'resources_section') {
+    if (step.type === 'resources_section') {
       stepElement.classList.add('resources-section');
     } else {
       stepElement.classList.add('main');
@@ -1347,10 +1317,8 @@ function createMainPageGuide() {
     
     const stepTitle = document.createElement('h3');
     
-    // Different formatting for facilitator tasks vs main steps
-    if (step.type === 'facilitator') {
-      stepTitle.innerHTML = `<i class="fas fa-cog" style="margin-right: 8px; font-size: 0.8rem; opacity: 0.7;"></i> ${step.title}`;
-    } else if (step.type === 'resources_section') {
+    // Format by step type
+    if (step.type === 'resources_section') {
       stepTitle.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
     } else {
       stepTitle.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
@@ -1605,14 +1573,7 @@ function createModelSelectionGuide() {
     stepAccordion.className = 'duels-accordion';
     
     // Add class based on step type
-    if (step.type === 'facilitator') {
-      stepAccordion.classList.add('facilitator');
-      
-      // Ajouter la classe 'completed' si l'étape est marquée comme complétée
-      if (step.status === 'completed') {
-        stepAccordion.classList.add('completed');
-      }
-    } else if (step.type === 'resources_section') {
+    if (step.type === 'resources_section') {
       stepAccordion.classList.add('resources-section');
     } else {
       stepAccordion.classList.add('main');
@@ -1636,15 +1597,12 @@ function createModelSelectionGuide() {
     const stepHeader = document.createElement('div');
     stepHeader.className = 'duels-accordion-header';
     
-    // Different formatting for facilitator tasks vs main steps
-    if (step.type === 'facilitator') {
-      stepHeader.innerHTML = `<i class="fas fa-cog" style="margin-right: 8px; font-size: 0.8rem; opacity: 0.7;"></i> ${step.title}`;
-    } else if (step.type === 'resources_section') {
+    // Format by step type
+    if (step.type === 'resources_section') {
       stepHeader.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
     } else {
       stepHeader.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
-    }
-    
+    }    
     const stepContent = document.createElement('div');
     stepContent.className = 'duels-accordion-content';
     
@@ -1778,14 +1736,7 @@ function createDuelGuide() {
     stepAccordion.className = 'duels-accordion';
     
     // Add class based on step type
-    if (step.type === 'facilitator') {
-      stepAccordion.classList.add('facilitator');
-      
-      // Ajouter la classe 'completed' si l'étape est marquée comme complétée
-      if (step.status === 'completed') {
-        stepAccordion.classList.add('completed');
-      }
-    } else if (step.type === 'resources_section') {
+    if (step.type === 'resources_section') {
       stepAccordion.classList.add('resources-section');
     } else {
       stepAccordion.classList.add('main');
@@ -1814,10 +1765,8 @@ function createDuelGuide() {
     const stepHeader = document.createElement('div');
     stepHeader.className = 'duels-accordion-header';
     
-    // Different formatting for facilitator tasks vs main steps
-    if (step.type === 'facilitator') {
-      stepHeader.innerHTML = `<i class="fas fa-cog" style="margin-right: 8px; font-size: 0.8rem; opacity: 0.7;"></i> ${step.title}`;
-    } else if (step.type === 'resources_section') {
+    // Format by step type
+    if (step.type === 'resources_section') {
       stepHeader.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
     } else {
       stepHeader.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
