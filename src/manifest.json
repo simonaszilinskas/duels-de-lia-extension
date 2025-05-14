@@ -20,7 +20,7 @@
     {
       "matches": ["*://comparia.beta.gouv.fr/arene/*"],
       "js": ["js/content.js"],
-      "css": ["css/content.css", "css/facilitator-styles.css"]
+      "css": ["css/content.css"]
     }
   ],
   "icons": {

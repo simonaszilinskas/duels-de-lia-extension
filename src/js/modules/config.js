@@ -10,7 +10,7 @@ export const workshopPaths = {
     icon: "fas fa-bolt",
     steps: [
       // Les étapes sont définies dans stepsLibrary et référencées par leur ID
-      "start_duel", "select_mode", "enter_prompt", "send_prompt", 
+      "start_duel", "enter_prompt", "send_prompt", 
       "vote_response", "discover_impact", "worth_it"
     ]
   }
@@ -29,26 +29,10 @@ export const stepsLibrary = {
     media: [] // Images ou GIFs à afficher
   },
   
-  "select_mode": {
-    id: "select_mode",
-    order: 2,
-    title: "Sélectionner le mode",
-    instruction: "Choisissez \"David contre Goliath\" ou sélectionnez deux modèles.",
-    pages: ["model_selection", "duel"],
-    suggestions: [],
-    resources: [],
-    media: [],
-    callout: {
-      type: "important", // types possibles: important, info, warning, success
-      icon: "💡", // émoji ou classe d'icône FontAwesome (ex: "fas fa-info-circle")
-      title: "Important :",
-      content: "Vous pouvez aussi choisir deux petits modèles manuellement parmi la liste. Par exemple DeepSeek V3 contre Gemma 3 4b"
-    }
-  },
   
   "enter_prompt": {
     id: "enter_prompt",
-    order: 3,
+    order: 2,
     title: "Entrer un prompt",
     instruction: "Entrez votre propre prompt ou essayez une des suggestions.\n\nLes suggestions incluent différents personnages qui représentent divers cas d'usage.",
     pages: ["duel"],
@@ -72,7 +56,7 @@ export const stepsLibrary = {
   
   "send_prompt": {
     id: "send_prompt",
-    order: 4,
+    order: 3,
     title: "Cliquer sur \"Envoyer\"",
     instruction: "Attendez les réponses des deux modèles.",
     pages: ["duel"],
@@ -83,7 +67,7 @@ export const stepsLibrary = {
   
   "vote_response": {
     id: "vote_response",
-    order: 5,
+    order: 4,
     title: "Voter sur les réponses",
     instruction: "\"Quelle réponse préférez-vous ?\"",
     pages: ["duel"],
@@ -94,7 +78,7 @@ export const stepsLibrary = {
   
   "discover_impact": {
     id: "discover_impact",
-    order: 6,
+    order: 5,
     title: "Découvrir l'impact environnemental",
     instruction: "Cliquez pour révéler quel modèle est lequel. Examinez les métriques d'impact environnemental pour chaque modèle.",
     pages: ["duel"],
@@ -105,7 +89,7 @@ export const stepsLibrary = {
   
   "worth_it": {
     id: "worth_it",
-    order: 7,
+    order: 6,
     title: "La réponse en vaut-elle l'impact environnemental ?",
     instruction: "\"Les réponses justifient-elles l'énergie consommée ?\"<br><br>Voici quelques points à considérer:<br>- La qualité de la réponse<br>- Son utilité<br>- Son originalité",
     pages: ["duel"],
@@ -128,10 +112,6 @@ export const commonResources = {
     "👩‍🎓 Camille, étudiante : c'est quoi la différence entre un grand et un petit modèle d'IA générative ? Donne une réponse compréhensible en quelques mots",
     "👩🏻‍💼 Mei, cheffe de projet chez EDF : où trouver des petits modèles d'IA générative ? Réponse synthétique."
   ],
-  "facilitatorGuide": {
-    title: "Guide du facilitateur",
-    url: "https://atelier-numerique.notion.site/Faciliter-un-Duel-de-l-IA-1b247c728624801b84f0f805b23544b8?pvs=74"
-  },
   "educationalResources": [
     {
       title: "📚 Introduction aux duels sur l'impact environnemental",

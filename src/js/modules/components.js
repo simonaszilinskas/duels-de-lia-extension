@@ -31,14 +31,6 @@ export function createGuideBase(activePath, toggleResourcesCallback, toggleGuide
   const navbar = document.createElement('div');
   navbar.className = 'duels-navbar';
   
-  // Resources button with icon only
-  const resourcesButton = document.createElement('button');
-  resourcesButton.className = 'duels-resources-btn';
-  resourcesButton.innerHTML = '<i class="fas fa-book"></i>';
-  resourcesButton.title = 'Ressources';
-  resourcesButton.addEventListener('click', toggleResourcesCallback);
-  navbar.appendChild(resourcesButton);
-  
   // Close button
   const closeButton = document.createElement('button');
   closeButton.className = 'duels-close-button';
@@ -304,25 +296,6 @@ export function createResourcesPanel(commonResources, activePath, stepsLibrary, 
     resourcesPanel.appendChild(frugaleSection);
   }
   
-  // Notes de facilitation section
-  if (commonResources.facilitatorGuide) {
-    const notesSection = document.createElement('div');
-    notesSection.className = 'duels-resources-section';
-    
-    const notesTitle = document.createElement('h3');
-    notesTitle.className = 'duels-resources-section-title';
-    notesTitle.textContent = 'Notes de facilitation';
-    notesSection.appendChild(notesTitle);
-    
-    const facilitatorLink = document.createElement('a');
-    facilitatorLink.className = 'duels-resource-button';
-    facilitatorLink.href = commonResources.facilitatorGuide.url;
-    facilitatorLink.target = '_blank';
-    facilitatorLink.textContent = commonResources.facilitatorGuide.title;
-    notesSection.appendChild(facilitatorLink);
-    
-    resourcesPanel.appendChild(notesSection);
-  }
   
   return resourcesPanel;
 }

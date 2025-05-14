@@ -967,8 +967,7 @@ const commonResources = {
 let currentSettings = {
   activePath: "duels", // Parcours actif par défaut
   showCompletedSteps: true, // Afficher/masquer les étapes terminées
-  currentStep: 1, // Étape actuelle
-  showFacilitatorTasks: true // Afficher/masquer les tâches facilitateur
+  currentStep: 1 // Étape actuelle
 };
 
 // Check if we're on the ComparIA site
@@ -1032,41 +1031,6 @@ function toggleResources() {
   updateGuideContent();
 }
 
-// Function to toggle facilitator tasks visibility
-function toggleFacilitatorTasks() {
-  currentSettings.showFacilitatorTasks = !currentSettings.showFacilitatorTasks;
-  
-  // Update button title and style
-  const facilitatorButton = document.querySelector('.duels-facilitator-btn');
-  if (facilitatorButton) {
-    facilitatorButton.title = currentSettings.showFacilitatorTasks ? 'Masquer les tâches facilitateur' : 'Afficher les tâches facilitateur';
-    
-    // Update button style based on state
-    if (currentSettings.showFacilitatorTasks) {
-      facilitatorButton.classList.remove('inactive');
-    } else {
-      facilitatorButton.classList.add('inactive');
-    }
-  }
-  
-  // Get all facilitator elements
-  const facilitatorElements = document.querySelectorAll('.duels-step.facilitator, .duels-accordion.facilitator');
-  
-  // Update their visibility
-  facilitatorElements.forEach(element => {
-    if (currentSettings.showFacilitatorTasks) {
-      element.style.display = 'block';
-      
-      // Force styles on paragraphs inside this element using !important via style attribute
-      const paragraphs = element.querySelectorAll('p');
-      paragraphs.forEach(p => {
-        p.setAttribute('style', 'font-size: 0.75rem !important; line-height: 1.25rem !important; color: #888 !important; margin: 0 0 0.5rem 0 !important;');
-      });
-    } else {
-      element.style.display = 'none';
-    }
-  });
-}
 
 // Function to update the guide content based on current state
 function updateGuideContent() {
@@ -1169,17 +1133,6 @@ function createGuideBase() {
   resourcesButton.addEventListener('click', toggleResources);
   navbar.appendChild(resourcesButton);
   
-  // Facilitator tasks toggle button
-  const facilitatorButton = document.createElement('button');
-  facilitatorButton.className = 'duels-facilitator-btn';
-  // Ajouter la classe inactive si les tâches sont masquées
-  if (!currentSettings.showFacilitatorTasks) {
-    facilitatorButton.classList.add('inactive');
-  }
-  facilitatorButton.innerHTML = '<i class="fas fa-cog"></i>';
-  facilitatorButton.title = currentSettings.showFacilitatorTasks ? 'Masquer les tâches facilitateur' : 'Afficher les tâches facilitateur';
-  facilitatorButton.addEventListener('click', toggleFacilitatorTasks);
-  navbar.appendChild(facilitatorButton);
   
   // Close button
   const closeButton = document.createElement('button');
@@ -1558,8 +1511,6 @@ function createMainPageGuide() {
   // Load Font Awesome for icons
   loadFontAwesome();
   
-  // Initialize facilitator task visibility
-  initializeFacilitatorTaskVisibility();
 }
 
 // Fonction pour rendre les cartes de discussion
@@ -1805,8 +1756,6 @@ function createModelSelectionGuide() {
   // Load Font Awesome for icons
   loadFontAwesome();
   
-  // Initialize facilitator task visibility
-  initializeFacilitatorTaskVisibility();
 }
 
 // Function to create guide for the duel page (steps 2-7)
@@ -1994,8 +1943,6 @@ function createDuelGuide() {
   // Load Font Awesome for icons
   loadFontAwesome();
   
-  // Initialize facilitator task visibility
-  initializeFacilitatorTaskVisibility();
 }
 
 // Function to create appropriate guide based on detected page
@@ -2073,14 +2020,11 @@ if (isComparIASite) {
   // Start observing
   observer.observe(document, { subtree: true, childList: true });
   
-  // Initialize facilitator task visibility
-  initializeFacilitatorTaskVisibility();
   
-  // Observer pour l'application des styles facilitateur et des boutons de ressources
+  // Observer pour l'application des styles des boutons de ressources
   const styleObserver = new MutationObserver(() => {
     // Petit délai pour s'assurer que le DOM est bien mis à jour
     setTimeout(() => {
-      initializeFacilitatorTaskVisibility();
       applyResourceButtonStyles();
     }, 50);
   });
@@ -2370,34 +2314,3 @@ function renderRandomQuestions(step, container) {
 }
 
 // Function to initialize facilitator task visibility
-function initializeFacilitatorTaskVisibility() {
-  // Apply visibility for facilitator tasks based on current settings
-  if (!currentSettings.showFacilitatorTasks) {
-    const facilitatorElements = document.querySelectorAll('.duels-step.facilitator, .duels-accordion.facilitator');
-    facilitatorElements.forEach(element => {
-      element.style.display = 'none';
-    });
-  }
-  
-  // Force application des styles facilitateur avec injection directe de style avec !important
-  const facilitatorParagraphs = document.querySelectorAll('.duels-accordion.facilitator .duels-accordion-content p, .duels-step.facilitator p');
-  facilitatorParagraphs.forEach(p => {
-    p.setAttribute('style', 'font-size: 0.75rem !important; line-height: 1.25rem !important; color: #888 !important; margin: 0 0 0.5rem 0 !important;');
-  });
-  
-  // Création d'une règle CSS directement dans le DOM avec la plus haute priorité
-  if (!document.getElementById('facilitator-override-style')) {
-    const styleElement = document.createElement('style');
-    styleElement.id = 'facilitator-override-style';
-    styleElement.innerHTML = `
-      .duels-accordion.facilitator .duels-accordion-content p,
-      .duels-step.facilitator p {
-        font-size: 0.75rem !important;
-        line-height: 1.25rem !important;
-        color: #888 !important;
-        margin: 0 0 0.5rem 0 !important;
-      }
-    `;
-    document.head.appendChild(styleElement);
-  }
-}
