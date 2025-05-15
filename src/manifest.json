@@ -19,22 +19,23 @@
   "content_scripts": [
     {
       "matches": ["*://comparia.beta.gouv.fr/arene/*"],
-      "js": ["js/content.js"],
-      "css": ["css/content.css"],
-      "type": "module"
+      "js": ["js/content-wrapper.js"],
+      "css": ["css/content.css"]
     }
   ],
   "web_accessible_resources": [
     {
       "resources": [
-        "css/guide-ui.css",
-        "css/steps-components.css",
-        "css/resources-components.css",
-        "css/suggestions-components.css"
+        "css/*.css",
+        "js/content-module.js",
+        "js/modules/*.js"
       ],
       "matches": ["*://comparia.beta.gouv.fr/*"]
     }
   ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
