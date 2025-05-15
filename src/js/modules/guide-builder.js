@@ -121,15 +121,26 @@ export function createSuggestionsList(suggestions, suggestionCategories) {
         const categoryContainer = document.createElement('div');
         categoryContainer.className = 'duels-suggestion-category';
         
-        // Create category header
+        // Create category header (toggleable)
         const categoryHeader = document.createElement('div');
         categoryHeader.className = 'duels-category-header';
         categoryHeader.textContent = category.name;
         categoryContainer.appendChild(categoryHeader);
         
+        // Create category content (toggleable)
+        const categoryContent = document.createElement('div');
+        categoryContent.className = 'duels-category-content';
+        
         // Create suggestion list for this category
         const categoryList = document.createElement('div');
         categoryList.className = 'duels-suggestions';
+        categoryContent.appendChild(categoryList);
+        
+        // Add toggle functionality for category
+        categoryHeader.addEventListener('click', () => {
+          categoryHeader.classList.toggle('duels-is-open');
+          categoryContent.classList.toggle('duels-is-visible');
+        });
         
         // Add each suggestion to the category
         category.suggestions.forEach(suggestion => {
@@ -138,7 +149,14 @@ export function createSuggestionsList(suggestions, suggestionCategories) {
           categoryList.appendChild(promptElement);
         });
         
-        categoryContainer.appendChild(categoryList);
+        categoryContainer.appendChild(categoryContent);
+        
+        // Open the first category by default
+        if (category === suggestionCategories[0]) {
+          categoryHeader.classList.add('duels-is-open');
+          categoryContent.classList.add('duels-is-visible');
+        }
+        
         suggestionsContainer.appendChild(categoryContainer);
       }
     });

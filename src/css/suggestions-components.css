@@ -26,6 +26,36 @@
   background-color: rgba(106, 106, 244, 0.08);
   border-radius: var(--duels-border-radius-sm);
   border-left: 3px solid var(--duels-primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.duels-category-header::after {
+  content: '↓';
+  font-size: var(--duels-font-size-xs);
+  color: var(--duels-primary);
+  transition: transform var(--duels-transition-fast);
+  margin-left: var(--duels-spacing-sm);
+  flex-shrink: 0;
+}
+
+.duels-category-header.duels-is-open::after {
+  transform: rotate(180deg);
+}
+
+.duels-category-content {
+  display: none;
+  padding-left: var(--duels-spacing-xs);
+  margin-top: var(--duels-spacing-xs);
+  margin-bottom: var(--duels-spacing-sm);
+}
+
+.duels-category-content.duels-is-visible {
+  display: block;
+  animation: duels-fade-in var(--duels-transition-fast);
 }
 
 /* Suggestions list */
