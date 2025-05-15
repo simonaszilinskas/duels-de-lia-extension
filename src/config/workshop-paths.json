@@ -1,0 +1,13 @@
+{
+  "duels": {
+    "id": "duels",
+    "name": "Les Duels de l'IA",
+    "description": "Atelier standard: découvrir l'impact environnemental des IA",
+    "icon": "fas fa-bolt",
+    "steps": [
+      "choose_prompt", 
+      "evaluate_utility", 
+      "evaluate_frugality"
+    ]
+  }
+}

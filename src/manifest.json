@@ -28,7 +28,8 @@
       "resources": [
         "css/*.css",
         "js/content-module.js",
-        "js/modules/*.js"
+        "js/modules/*.js",
+        "config/*.json"
       ],
       "matches": ["*://comparia.beta.gouv.fr/*"]
     }

@@ -1,0 +1,30 @@
+{
+  "promptSuggestions": [
+    "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum.",
+    "🌱 Thomas, consultant en transition écologique : Reformule moi cette phrase - \"l'IA générative a un effet sur l'environnement donc il est nécessaire de l'utiliser de manière consciente\"",
+    "👩‍🎓 Camille, étudiante : c'est quoi la différence entre un grand et un petit modèle d'IA générative ? Donne une réponse compréhensible en quelques mots",
+    "👩🏻‍💼 Mei, cheffe de projet chez EDF : où trouver des petits modèles d'IA générative ? Réponse synthétique."
+  ],
+  "educationalResources": [
+    {
+      "title": "⚡ Pourquoi les IA consomment-elles de l'électricité ?",
+      "url": "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
+    },
+    {
+      "title": "📏 Qu'est-ce que la taille d'un modèle ?",
+      "url": "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/view"
+    },
+    {
+      "title": "🔍 ChatGPT ou Google : lequel est plus frugal ?",
+      "url": "https://drive.google.com/file/d/1GSzqbH2fZ5N7FLP7l3gOygmrZqLqZF6U/view"
+    },
+    {
+      "title": "🧠 Qu'est-ce qu'un modèle de raisonnement ?",
+      "url": "https://drive.google.com/file/d/1JCnZaZaklBEzqQrxlML8Drenf-1rmJl5/view"
+    },
+    {
+      "title": "🌱 Bonnes pratiques d'IA frugale",
+      "url": "https://drive.google.com/drive/folders/1oSgGJkBSHhj7ZXRe7iA-IwfzTy2fEZd7"
+    }
+  ]
+}

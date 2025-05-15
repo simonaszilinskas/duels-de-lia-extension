@@ -1,5 +1,15 @@
 // content-wrapper.js - Non-module version that includes all functionality
 
+// Configuration objects (initialized later)
+let workshopPaths = {};
+let stepsLibrary = {};
+let commonResources = {};
+let currentSettings = {
+  activePath: "duels",
+  showCompletedSteps: true,
+  currentStep: 1
+};
+
 // Load CSS resources
 function loadStyles() {
   // DSFR CSS (Marianne font)
@@ -25,239 +35,58 @@ function loadStyles() {
 }
 
 // =============================================
-// CONFIGURATION DES PARCOURS ET ÉTAPES
+// CONFIGURATION LOADING
 // =============================================
-// Cette section est facilement éditable pour ajouter/modifier des étapes 
-// ou créer de nouveaux parcours complets.
+// Load configuration from JSON files
 
-// Structure des parcours d'atelier
-const workshopPaths = {
-  // Parcours principal unique pour le moment
-  "duels": {
-    id: "duels",
-    name: "Les Duels de l'IA",
-    description: "Atelier standard: découvrir l'impact environnemental des IA",
-    icon: "fas fa-bolt",
-    steps: [
-      // Les étapes sont définies dans stepsLibrary et référencées par leur ID
-      "choose_prompt", "evaluate_utility", "evaluate_frugality"
-    ]
-  }
-};
-
-// Bibliothèque d'étapes réutilisables
-const stepsLibrary = {
-  "start_duel": {
-    id: "start_duel",
-    order: 1,
-    title: "Démarrer un duel",
-    instruction: "Cliquez sur \"Commencer à discuter\" sur la page d'accueil ComparIA.",
-    pages: ["main", "duel"], // Ajouté sur la page duel aussi
-    suggestions: [],
-    resources: [],
-    media: [], // Images ou GIFs à afficher
-    status: "completed" // Marquer comme complété
-  },
-  
-  "select_mode": {
-    id: "select_mode",
-    order: 2,
-    title: "Sélectionner le mode",
-    instruction: "Choisissez \"David contre Goliath\" pour comparer un petit modèle avec un grand modèle.",
-    pages: ["model_selection", "duel"],
-    suggestions: [],
-    resources: [],
-    media: [], // Temporarily removed until images are properly set up
-    callout: {
-      type: "important", // types possibles: important, info, warning, success
-      icon: "💡", // émoji ou classe d'icône FontAwesome (ex: "fas fa-info-circle")
-      title: "Conseil facilitateur :",
-      content: "Si vous voulez, vous pouvez aussi pré-sélectionner un grand et un petit modèle. Par exemple Gemma 3 4b contre Deepseek V3"
+/**
+ * Load a configuration file
+ * @param {string} configName - Name of the config file without extension
+ * @returns {Promise<Object>} - The loaded configuration object
+ */
+async function loadConfig(configName) {
+  try {
+    const url = chrome.runtime.getURL(`config/${configName}.json`);
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to load config: ${configName}.json`);
     }
-  },
-  
-  "choose_prompt": {
-    id: "choose_prompt",
-    order: 3,
-    title: "Étape 1 : Lancer une discussion",
-    instruction: "Choisissez une question à envoyer aux deux modèles d'IA.",
-    pages: ["duel"],
-    suggestions: [
-      "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum.",
-      "🌱 Thomas, consultant en transition écologique : Reformule moi cette phrase - \"l'IA générative a un effet sur l'environnement donc il est nécessaire de l'utiliser de manière consciente\"",
-      "👩‍🎓 Camille, étudiante : c'est quoi la différence entre un grand et un petit modèle d'IA générative ? Donne une réponse compréhensible en quelques mots",
-      "👩🏻‍💼 Mei, cheffe de projet chez EDF : où trouver des petits modèles d'IA générative ? Réponse synthétique."
-    ],
-    resources: [
-      {
-        title: "Construire son prompt",
-        url: ""
-      }
-    ],
-    media: [],
-    callout: {
-      type: "important", // types possibles: important, info, warning, success
-      icon: "💡", // émoji ou classe d'icône FontAwesome (ex: "fas fa-info-circle")
-      title: "Important",
-      content: "Si vous voulez, vous pouvez aussi co-construire un prompt ensemble sans piocher parmi les suggestions."
-    },
-    type: "main" // étape principale
-  },
-  
-  "send_prompt": {
-    id: "send_prompt",
-    order: 4,
-    title: "Envoyer le prompt",
-    instruction: "Cliquez sur le bouton \"Envoyer\" et attendez les réponses des deux modèles.",
-    pages: ["duel"],
-    suggestions: [],
-    resources: [],
-    media: [] // Temporarily removed until images are properly set up
-  },
-  
-  "evaluate_utility": {
-    id: "evaluate_utility",
-    order: 5,
-    title: "Étape 2 : Voter",
-    instruction: "Examinez les deux réponses et votez pour votre préférée.",
-    pages: ["duel"],
-    suggestions: [],
-    resources: [],
-    media: [],
-    type: "main", // étape principale
-    random_questions: [
-      "Quelle réponse a le mieux répondu aux spécificités du prompt ?",
-      "Auriez-vous formulé différemment la question pour obtenir une meilleure réponse ?",
-      "Est ce qu'il aurait été possible de répondre à cette question sans IA ? Si oui, en combien de temps et avec quel(s) outil(s) ?",
-      "À quel point la structure et la présentation de la réponse influencent votre appréciation ?",
-      "À quel point le style d'écriture / le ton de l'IA influence votre appréciation ?"
-    ]
-  },
-  
-  "vote_response": {
-    id: "vote_response",
-    order: 6,
-    title: "Voter pour une réponse",
-    instruction: "Votez pour la réponse que vous préférez soit en mettant un like ou dislike sous le message, soit en cliquant sur le bouton Révélation des modèles et sélectionnant celui que vous avez préféré.",
-    pages: ["duel"],
-    suggestions: [],
-    resources: [],
-    media: [] // Temporarily removed until images are properly set up
-  },
-  
-  "discover_impact": {
-    id: "discover_impact",
-    order: 7,
-    title: "Découvrir l'impact",
-    instruction: "Cliquez sur le bouton Révélation des modèles et regardez les estimations d'impact environnemental.",
-    pages: ["duel"],
-    suggestions: [],
-    resources: [],
-    media: [] // Temporarily removed until images are properly set up
-  },
-  
-  "evaluate_frugality": {
-    id: "evaluate_frugality",
-    order: 8,
-    title: "Étape 3 : Le jeu en vaut-il la chandelle ?",
-    instruction: "Analysez si la différence de qualité entre les deux réponses justifie la différence d'impact environnemental.",
-    pages: ["duel"],
-    suggestions: [],
-    resources: [],
-    media: [],
-    type: "main", // étape principale
-    discussion_cards: [
-      {
-        question: "Est-ce que, en connaissance de l'impact environnemental des modèles, vous auriez voté pour l'autre modèle ?",
-        color: "#6a6af4"
-      },
-      {
-        question: "Dans quels cas académiques/professionnels privilégieriez-vous un petit modèle, et dans quels cas un grand modèle ?",
-        color: "#ff9800"
-      },
-      {
-        question: "Comment pourriez-vous adapter vos prompts pour obtenir de bons résultats même avec des petits modèles ?",
-        color: "#4caf50"
-      },
-      {
-        question: "Est-ce que votre manière d'utiliser des IA conversationnelles changera après la révélation de l'impact environnemental des modèles ?",
-        color: "#2196f3"
-      }
-    ]
-  },
-  
-  "pour_aller_plus_loin": {
-    id: "pour_aller_plus_loin",
-    order: 9,
-    title: "Pour aller plus loin",
-    instruction: "Découvrez des ressources complémentaires pour approfondir les notions d'impact environnemental des IA et de frugalité numérique.",
-    pages: ["duel"],
-    suggestions: [],
-    resources: [
-      {
-        title: "⚡ Pourquoi les IA consomment-elles de l'électricité ?",
-        url: "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
-      },
-      {
-        title: "📏 Qu'est-ce que la taille d'un modèle ?",
-        url: "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/view"
-      },
-      {
-        title: "🔍 ChatGPT ou Google : lequel est plus frugal ?",
-        url: "https://drive.google.com/file/d/1GSzqbH2fZ5N7FLP7l3gOygmrZqLqZF6U/view"
-      },
-      {
-        title: "🧠 Qu'est-ce qu'un modèle de raisonnement ?",
-        url: "https://drive.google.com/file/d/1JCnZaZaklBEzqQrxlML8Drenf-1rmJl5/view"
-      },
-      {
-        title: "🌱 Bonnes pratiques d'IA frugale",
-        url: "https://drive.google.com/drive/folders/1oSgGJkBSHhj7ZXRe7iA-IwfzTy2fEZd7"
-      }
-    ],
-    media: [],
-    type: "resources_section", // Type spécial pour une section de ressources
+    
+    return await response.json();
+  } catch (error) {
+    console.error(`Error loading config ${configName}:`, error);
+    return {};
   }
-};
+}
 
-// Ressources communes à tous les parcours
-const commonResources = {
-  "promptSuggestions": [
-    "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum.",
-    "🌱 Thomas, consultant en transition écologique : Reformule moi cette phrase - \"l'IA générative a un effet sur l'environnement donc il est nécessaire de l'utiliser de manière consciente\"",
-    "👩‍🎓 Camille, étudiante : c'est quoi la différence entre un grand et un petit modèle d'IA générative ? Donne une réponse compréhensible en quelques mots",
-    "👩🏻‍💼 Mei, cheffe de projet chez EDF : où trouver des petits modèles d'IA générative ? Réponse synthétique."
-  ],
-  "educationalResources": [
-    {
-      title: "⚡ Pourquoi les IA consomment-elles de l'électricité ?",
-      url: "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/view"
-    },
-    {
-      title: "📏 Qu'est-ce que la taille d'un modèle ?",
-      url: "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/view"
-    },
-    {
-      title: "🔍 ChatGPT ou Google : lequel est plus frugal ?",
-      url: "https://drive.google.com/file/d/1GSzqbH2fZ5N7FLP7l3gOygmrZqLqZF6U/view"
-    },
-    {
-      title: "🧠 Qu'est-ce qu'un modèle de raisonnement ?",
-      url: "https://drive.google.com/file/d/1JCnZaZaklBEzqQrxlML8Drenf-1rmJl5/view"
-    },
-    {
-      title: "🌱 Bonnes pratiques d'IA frugale",
-      url: "https://drive.google.com/drive/folders/1oSgGJkBSHhj7ZXRe7iA-IwfzTy2fEZd7"
-    }
-  ]
-};
-
-// Paramètres actuels (à modifier avec les préférences utilisateur)
-let currentSettings = {
-  activePath: "duels", // Parcours actif par défaut
-  showCompletedSteps: true, // Afficher/masquer les étapes terminées
-  currentStep: 1 // Étape actuelle
-};
+/**
+ * Load all required configuration files
+ * @returns {Promise<boolean>} - Success status
+ */
+async function loadAllConfigs() {
+  try {
+    const [loadedWorkshopPaths, loadedStepsLibrary, loadedCommonResources, loadedDefaultSettings] = await Promise.all([
+      loadConfig('workshop-paths'),
+      loadConfig('steps-library'),
+      loadConfig('common-resources'),
+      loadConfig('default-settings')
+    ]);
+    
+    // Update global configuration objects
+    workshopPaths = loadedWorkshopPaths;
+    stepsLibrary = loadedStepsLibrary;
+    commonResources = loadedCommonResources;
+    
+    // Merge default settings with current settings
+    currentSettings = { ...loadedDefaultSettings, ...currentSettings };
+    
+    return true;
+  } catch (error) {
+    console.error('Error loading configurations:', error);
+    return false;
+  }
+}
 
 // State variables
 let isGuideOpen = false;
@@ -1396,7 +1225,7 @@ function renderRandomQuestions(step, container) {
 }
 
 // Initialize Extension
-function initialize() {
+async function initialize() {
   // Check if we're on the ComparIA site
   const isComparIASite = window.location.hostname === "comparia.beta.gouv.fr";
   
@@ -1408,6 +1237,16 @@ function initialize() {
   
   // Load CSS resources
   loadStyles();
+  
+  // Load configurations
+  const configLoaded = await loadAllConfigs();
+  
+  // Log configuration status and data for testing
+  console.log('Configuration loading status:', configLoaded);
+  console.log('Workshop paths:', workshopPaths);
+  console.log('Steps library:', stepsLibrary);
+  console.log('Common resources:', commonResources);
+  console.log('Current settings:', currentSettings);
   
   // Initialize the guide if we're on the ComparIA site
   if (isComparIASite) {
