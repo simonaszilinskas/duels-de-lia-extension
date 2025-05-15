@@ -9,7 +9,7 @@ import {
 
 import { createResourcesPanel, createGuideBase } from './components.js';
 import { getActivePath, detectPageType } from './utils.js';
-import { workshopPaths, stepsLibrary, commonResources } from './config.js';
+import { workshopPaths, stepsLibrary, commonResources, initializeConfigs } from './config.js';
 
 // State variables
 let isGuideOpen = false;
@@ -296,6 +296,9 @@ export async function adaptContentSize() {
  */
 export async function initializeGuide() {
   try {
+    // First, ensure all configs are loaded
+    await initializeConfigs();
+    
     // Load Font Awesome for icons
     await loadFontAwesome();
 
@@ -318,6 +321,11 @@ export async function initializeGuide() {
     // Setup style observer
     setupStyleObserver();
     
+    console.log('Guide initialized successfully with configs:', {
+      workshopPaths,
+      stepsLibrary,
+      commonResources
+    });
   } catch (error) {
     console.error('Error initializing guide:', error);
   }
