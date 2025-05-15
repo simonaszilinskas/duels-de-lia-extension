@@ -1,0 +1,247 @@
+/* resources-components.css - Contains styles for resources, paths dropdown, and related UI */
+
+/* Paths dropdown */
+.duels-paths-dropdown {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  width: min(260px, 90vw);
+  z-index: 10001;
+  display: none;
+  padding: 20px;
+}
+
+.duels-paths-dropdown.open {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+.duels-dropdown-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.duels-paths-list {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.duels-path-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #f5f5f5;
+  border-left: 3px solid transparent;
+}
+
+.duels-path-item:hover {
+  background-color: #e8e8ff;
+  transform: translateY(-1px);
+}
+
+.duels-path-item.active {
+  border-left: 3px solid #6a6af4;
+  background-color: #f0f0ff;
+}
+
+.duels-path-item i {
+  font-size: 1rem;
+  color: #6a6af4;
+  margin-right: 12px;
+}
+
+.duels-path-info {
+  flex: 1;
+}
+
+.duels-path-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.duels-path-description {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.duels-dropdown-close {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  padding: 8px;
+  background-color: #f0f0ff;
+  border: 1px solid #6a6af4;
+  color: #6a6af4;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.duels-dropdown-close:hover {
+  background-color: #6a6af4;
+  color: white;
+}
+
+/* Back to steps button */
+.duels-back-to-steps {
+  display: inline-block;
+  padding: 6px;
+  background-color: white;
+  color: #6a6af4;
+  border: 2px solid #6a6af4;
+  border-radius: 50%;
+  font-weight: 600;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.duels-back-to-steps:hover {
+  background-color: #6a6af4;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.duels-back-to-steps i {
+  font-size: 0.9rem;
+}
+
+/* Resources panel */
+#duels-resources-panel {
+  background-color: #f0f0ff;
+  border-radius: 0 0 8px 8px;
+}
+
+.duels-resources-section {
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(106, 106, 244, 0.2);
+  padding-bottom: 20px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(106, 106, 244, 0.1);
+  margin-bottom: 15px;
+}
+
+.duels-resources-section:last-child {
+  margin-bottom: 0;
+}
+
+.duels-resources-section-title {
+  color: #6a6af4;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #6a6af4;
+  display: inline-block;
+}
+
+/* Resource container */
+.duels-resource-container {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.duels-resources-title {
+  margin: 12px 0 5px 0;
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: #333;
+  word-break: break-word;
+}
+
+.duels-resource-button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 3px 5px;
+  margin: 3px 0;
+  background-color: white;
+  color: #222 !important;
+  text-decoration: none !important;
+  border-radius: 3px;
+  font-weight: 400;
+  font-size: 0.6rem;
+  line-height: 1.1;
+  border: 1px solid #9898F8;
+  box-shadow: none;
+  outline: none;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+  white-space: normal;
+  min-height: 0;
+  height: auto;
+}
+
+/* Removing hover effects and the black line */
+.duels-resource-button:hover,
+.duels-resource-button:focus,
+.duels-resource-button:active {
+  background-color: white !important;
+  color: #222 !important;
+  opacity: 1 !important;
+  --hover-tint: none !important;
+  --active-tint: none !important;
+  transform: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+/* Model instruction box */
+.duels-model-instruction {
+  background-color: #f0f0ff;
+  border-left: 3px solid #9898F8;
+  padding: 10px 15px;
+  margin: 15px 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.85rem;
+}
+
+/* Links section */
+.duels-links {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.duels-link {
+  color: #9898F8;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+  font-size: 0.85rem;
+}
+
+.duels-link:hover {
+  color: #7070ff;
+  text-decoration: underline;
+}

@@ -20,7 +20,19 @@
     {
       "matches": ["*://comparia.beta.gouv.fr/arene/*"],
       "js": ["js/content.js"],
-      "css": ["css/content.css"]
+      "css": ["css/content.css"],
+      "type": "module"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "css/guide-ui.css",
+        "css/steps-components.css",
+        "css/resources-components.css",
+        "css/suggestions-components.css"
+      ],
+      "matches": ["*://comparia.beta.gouv.fr/*"]
     }
   ],
   "icons": {
