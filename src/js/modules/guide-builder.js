@@ -4,6 +4,49 @@ import { renderCallout } from './components.js';
 import { getStepsForCurrentPage } from './utils.js';
 
 /**
+ * Selects an appropriate emoji based on step title or ID
+ * @param {Object} step - The step object
+ * @returns {string} An emoji character
+ */
+function getStepEmoji(step) {
+  const title = step.title.toLowerCase();
+  const id = step.id ? step.id.toLowerCase() : '';
+  
+  // Resource sections get seedling emoji
+  if (step.type === 'resources_section') {
+    return '🌱';
+  }
+  
+  // Check for keywords in title or id and return appropriate emoji
+  if (title.includes('resource') || id.includes('resource')) {
+    return '📚';
+  } else if (title.includes('prompt') || id.includes('prompt') || id.includes('enter_prompt')) {
+    return '✍️';
+  } else if (title.includes('évalue') || title.includes('evaluat') || id.includes('evaluat')) {
+    return '🔍';
+  } else if (title.includes('comparer') || title.includes('compar') || title.includes('discuss')) {
+    return '🔄';
+  } else if (title.includes('synthèse') || title.includes('synthes') || title.includes('conclusion')) {
+    return '📝';
+  } else if (title.includes('model') || id.includes('model')) {
+    return '🤖';
+  } else if (title.includes('stratég') || title.includes('strateg')) {
+    return '🎯';
+  } else if (title.includes('frugal')) {
+    return '🌿';
+  } else if (title.includes('utilit') || id.includes('utility')) {
+    return '⚙️';
+  } else if (title.includes('comprendre') || title.includes('understand')) {
+    return '💡';
+  } else if (title.includes('choix') || title.includes('choice') || title.includes('choose')) {
+    return '🔄';
+  }
+  
+  // Default emoji for other step types
+  return '📋';
+}
+
+/**
  * Creates a suggestions list component
  * @param {Array} suggestions - The list of suggestions to display
  * @returns {HTMLElement} - The suggestions list container
@@ -41,11 +84,11 @@ export function createSuggestionsList(suggestions) {
       navigator.clipboard.writeText(suggestion)
         .then(() => {
           // Visual feedback
-          promptElement.classList.add('copied');
-          copyButton.textContent = 'Copié!';
+          promptElement.classList.add('duels-is-copied');
+          copyButton.classList.add('duels-is-copied');
           setTimeout(() => {
-            promptElement.classList.remove('copied');
-            copyButton.textContent = 'Copier';
+            promptElement.classList.remove('duels-is-copied');
+            copyButton.classList.remove('duels-is-copied');
           }, 1000);
         });
     });
@@ -53,8 +96,8 @@ export function createSuggestionsList(suggestions) {
     
     // Add toggle functionality
     personaElement.addEventListener('click', () => {
-      personaElement.classList.toggle('open');
-      promptElement.classList.toggle('visible');
+      personaElement.classList.toggle('duels-is-open');
+      promptElement.classList.toggle('duels-is-visible');
     });
     
     suggestionsContainer.appendChild(personaElement);
@@ -248,9 +291,9 @@ export function renderQuestionsOrDiscussions(step, container) {
         currentIndex++;
         
         // Animation du dé
-        diceButton.classList.add('rolling');
+        diceButton.classList.add('duels-is-rolling');
         setTimeout(() => {
-          diceButton.classList.remove('rolling');
+          diceButton.classList.remove('duels-is-rolling');
         }, 500);
       }
       
@@ -310,9 +353,9 @@ export function renderQuestionsOrDiscussions(step, container) {
       currentIndex++;
       
       // Animation for dice
-      diceButton.classList.add('rolling');
+      diceButton.classList.add('duels-is-rolling');
       setTimeout(() => {
-        diceButton.classList.remove('rolling');
+        diceButton.classList.remove('duels-is-rolling');
       }, 500);
     }
     
@@ -346,15 +389,19 @@ export function createStepElement(step, currentStep) {
   
   // Mark current step as active
   if (step.order === currentStep) {
-    stepElement.classList.add('active');
+    stepElement.classList.add('duels-is-active');
   }
   
   // Create step title
   const stepTitle = document.createElement('h3');
+  
+  // Get appropriate emoji based on step title or id
+  const emoji = getStepEmoji(step);
+  
   if (step.type === 'resources_section') {
-    stepTitle.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
+    stepTitle.innerHTML = `${emoji} ${step.title}`;
   } else {
-    stepTitle.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
+    stepTitle.innerHTML = `${emoji} ${step.title}`;
   }
   stepElement.appendChild(stepTitle);
   
@@ -417,23 +464,26 @@ export function createAccordionElement(step, currentStep, forceActiveSteps = [])
   
   // Mark current step as active
   if (step.order === currentStep) {
-    stepAccordion.classList.add('active');
+    stepAccordion.classList.add('duels-is-active');
   }
   
   // Mark specific steps as active by default
   if (forceActiveSteps.includes(step.id) || step.type === 'resources_section') {
-    stepAccordion.classList.add('active');
+    stepAccordion.classList.add('duels-is-active');
   }
   
   // Create header
   const stepHeader = document.createElement('div');
   stepHeader.className = 'duels-accordion-header';
   
+  // Get appropriate emoji based on step title or id
+  const emoji = getStepEmoji(step);
+  
   // Format by step type
   if (step.type === 'resources_section') {
-    stepHeader.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
+    stepHeader.innerHTML = `${emoji} ${step.title}`;
   } else {
-    stepHeader.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
+    stepHeader.innerHTML = `${emoji} ${step.title}`;
   }
   
   // Create content area
@@ -476,7 +526,7 @@ export function createAccordionElement(step, currentStep, forceActiveSteps = [])
   // Add click event to toggle accordion (except for resources section)
   if (step.type !== 'resources_section') {
     stepHeader.addEventListener('click', () => {
-      stepAccordion.classList.toggle('active');
+      stepAccordion.classList.toggle('duels-is-active');
     });
   }
   

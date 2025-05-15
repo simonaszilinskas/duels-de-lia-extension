@@ -62,7 +62,7 @@
 }
 
 .duels-persona::after {
-  content: '▼';
+  content: '↓';
   font-size: var(--duels-font-size-xs);
   color: var(--duels-grey-dark);
   transition: transform var(--duels-transition-fast);

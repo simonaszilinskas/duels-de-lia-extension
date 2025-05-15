@@ -63,7 +63,7 @@ export function createPathsDropdown(workshopPaths, currentSettings, changePathCa
     const pathItem = document.createElement('div');
     pathItem.className = 'duels-path-item';
     if (path.id === currentSettings.activePath) {
-      pathItem.classList.add('active');
+      pathItem.classList.add('duels-is-active');
     }
     
     const pathIcon = document.createElement('i');
@@ -210,8 +210,8 @@ export function createResourcesPanel(commonResources, activePath, stepsLibrary, 
       
       // Add toggle functionality
       personaElement.addEventListener('click', () => {
-        personaElement.classList.toggle('open');
-        promptElement.classList.toggle('visible');
+        personaElement.classList.toggle('duels-is-open');
+        promptElement.classList.toggle('duels-is-visible');
       });
       
       // Add copy functionality
@@ -220,11 +220,11 @@ export function createResourcesPanel(commonResources, activePath, stepsLibrary, 
         navigator.clipboard.writeText(suggestion)
           .then(() => {
             // Visual feedback
-            promptElement.classList.add('copied');
-            copyButton.textContent = 'Copié!';
+            promptElement.classList.add('duels-is-copied');
+            copyButton.classList.add('duels-is-copied');
             setTimeout(() => {
-              promptElement.classList.remove('copied');
-              copyButton.textContent = 'Copier';
+              promptElement.classList.remove('duels-is-copied');
+              copyButton.classList.remove('duels-is-copied');
             }, 1000);
           });
       });

@@ -12,6 +12,8 @@
   --duels-primary: #6a6af4;
   --duels-primary-light: #9898f8;
   --duels-primary-dark: #5252e0;
+  --duels-soft-blue: #7b90d9;
+  --duels-soft-blue-dark: #5b6eb3;
   --duels-navy: #000091;
   --duels-red: #f44336;
   --duels-green: #4caf50;
@@ -90,7 +92,8 @@
 
 .duels-container p {
   font-size: var(--duels-font-size-md);
-  margin-bottom: var(--duels-spacing-md);
+  margin-bottom: var(--duels-spacing-lg);
+  line-height: 1.6;
 }
 
 /* Common Animations */
@@ -114,10 +117,13 @@
 /* Use .duels-is-* format for all state classes */
 .duels-is-active {
   /* Active state styling (replaces .active) */
+  color: var(--duels-primary);
+  border-color: var(--duels-primary);
 }
 
 .duels-is-open {
   /* Open state styling (replaces .open) */
+  display: block;
 }
 
 .duels-is-visible {
@@ -140,10 +146,14 @@
 
 .duels-is-selected {
   /* Selected state styling */
+  background-color: rgba(var(--duels-primary), 0.1);
+  outline: 2px solid var(--duels-primary);
 }
 
 .duels-is-focused {
   /* Focused state styling */
+  box-shadow: 0 0 0 2px rgba(106, 106, 244, 0.3);
+  outline: none;
 }
 
 .duels-is-loading {
@@ -154,10 +164,15 @@
 
 .duels-is-completed {
   /* Completed state styling */
+  text-decoration: line-through;
+  opacity: 0.7;
+  color: var(--duels-green);
 }
 
 .duels-is-copied {
   /* Copied state styling */
+  background-color: rgba(76, 175, 80, 0.1);
+  border-color: var(--duels-green);
 }
 
 .duels-is-error {
@@ -232,37 +247,30 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  background-color: var(--duels-grey-light);
-  border-radius: 50%;
+  position: absolute;
+  right: var(--duels-spacing-xs);
+  bottom: var(--duels-spacing-xs);
+  color: var(--duels-grey-dark);
+  background: none;
   border: none;
   cursor: pointer;
   transition: var(--duels-transition-fast);
-  position: relative;
-  margin-left: var(--duels-spacing-xs);
+  font-size: var(--duels-font-size-xs);
+  padding: 2px;
 }
 
 .duels-copy-button:hover {
-  background-color: var(--duels-grey);
+  color: var(--duels-primary);
 }
 
 .duels-copy-button::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 14px;
-  height: 14px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'%3E%3C/path%3E%3Crect x='8' y='2' width='8' height='4' rx='1' ry='1'%3E%3C/rect%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
+  content: '📋';
   transition: var(--duels-transition-fast);
 }
 
 .duels-copy-button.duels-is-copied::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234caf50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  content: '✓';
+  color: var(--duels-green);
 }
 
 /* Responsive media queries */
@@ -274,7 +282,7 @@
   
   /* Guide container */
   .duels-guide {
-    width: min(270px, 90vw);
+    width: min(330px, 90vw);
     max-height: 92vh;
   }
   
@@ -321,7 +329,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   :root {
     --duels-font-size-md: 0.85rem;
     --duels-spacing-md: 0.7rem;

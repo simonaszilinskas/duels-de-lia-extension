@@ -12,7 +12,7 @@
   position: fixed;
   top: var(--duels-spacing-lg);
   right: var(--duels-spacing-lg);
-  width: min(290px, 90vw);
+  width: min(360px, 90vw);
   max-height: 95vh;
   overflow-y: auto;
   background-color: var(--duels-white);

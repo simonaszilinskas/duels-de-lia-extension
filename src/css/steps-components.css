@@ -5,56 +5,75 @@
 
 /* Steps */
 .duels-step {
-  margin-bottom: var(--duels-spacing-md);
+  margin-bottom: calc(var(--duels-spacing-lg) + var(--duels-spacing-sm));
+  padding-bottom: var(--duels-spacing-sm);
+  border-bottom: 1px solid var(--duels-grey);
   height: auto;
   width: 100%;
   box-sizing: border-box;
 }
 
-.duels-step h3,
+.duels-step h3 {
+  color: var(--duels-black);
+  font-size: var(--duels-font-size-md);
+  margin-bottom: var(--duels-spacing-md);
+  padding-bottom: var(--duels-spacing-xs);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  border-bottom: 2px solid var(--duels-primary-light);
+  display: inline-block;
+}
+
 .duels-accordion-header {
   color: var(--duels-black);
   font-size: var(--duels-font-size-md);
-  margin-bottom: var(--duels-spacing-sm);
   word-break: break-word;
   overflow-wrap: break-word;
+  display: flex;
+  align-items: center;
 }
+
+/* Emoji is now added in JavaScript directly */
 
 /* Accordion Components */
 .duels-accordion-header {
-  background-color: var(--duels-grey-light);
+  background-color: var(--duels-white);
+  color: var(--duels-black);
   border-left: 4px solid var(--duels-primary-light);
   padding: var(--duels-spacing-sm) var(--duels-spacing-md);
   font-weight: 600;
   border-radius: var(--duels-border-radius-sm);
-  margin-bottom: 2px;
+  margin-bottom: 3px;
   cursor: pointer;
   transition: var(--duels-transition-fast);
   word-break: break-word;
   overflow-wrap: break-word;
   position: relative;
+  box-shadow: var(--duels-shadow-sm);
 }
 
 /* Different styles for facilitator tasks */
 .duels-accordion--facilitator .duels-accordion-header {
-  background-color: var(--duels-grey-light);
+  background-color: var(--duels-white);
   border-left: 4px solid var(--duels-grey-dark);
-  color: var(--duels-grey-dark);
+  color: var(--duels-black);
   font-size: var(--duels-font-size-sm);
-  padding: var(--duels-spacing-xs) var(--duels-spacing-md);
+  padding: var(--duels-spacing-sm) var(--duels-spacing-md);
   font-weight: 500;
 }
 
 /* Style for main steps */
 .duels-accordion--main .duels-accordion-header {
-  background-color: var(--duels-grey-light);
+  background-color: var(--duels-white);
   border-left: 4px solid var(--duels-primary-light);
   color: var(--duels-black);
   font-weight: 600;
 }
 
 .duels-accordion-header:hover {
-  background-color: #f0f0ff;
+  background-color: var(--duels-grey-light);
+  transform: translateY(-1px);
+  box-shadow: var(--duels-shadow-md);
 }
 
 .duels-accordion--facilitator .duels-accordion-header:hover {
@@ -62,25 +81,27 @@
 }
 
 .duels-accordion.duels-is-active .duels-accordion-header {
-  background-color: #e8e8ff;
-  color: var(--duels-black);
+  background-color: var(--duels-primary-light);
+  color: var(--duels-white);
+  box-shadow: var(--duels-shadow-md);
 }
 
 .duels-accordion--facilitator.duels-is-active .duels-accordion-header {
-  background-color: var(--duels-grey);
+  background-color: var(--duels-grey-light);
   color: var(--duels-black);
+  box-shadow: var(--duels-shadow-md);
 }
 
 .duels-accordion-content {
-  padding: var(--duels-spacing-xs) var(--duels-spacing-xs);
+  padding: var(--duels-spacing-md) var(--duels-spacing-md);
   background-color: var(--duels-white);
   border-radius: 0 0 var(--duels-border-radius-sm) var(--duels-border-radius-sm);
   margin-bottom: var(--duels-spacing-sm);
   display: none;
   border: 1px solid var(--duels-grey);
   border-top: none;
-  line-height: 1.4;
-  font-size: var(--duels-font-size-xs);
+  line-height: 1.5;
+  font-size: var(--duels-font-size-sm);
 }
 
 .duels-accordion--facilitator .duels-accordion-content {
@@ -88,6 +109,12 @@
   font-size: var(--duels-font-size-sm);
   background-color: var(--duels-grey-light);
   border: 1px solid var(--duels-grey);
+}
+
+.duels-accordion {
+  margin-bottom: var(--duels-spacing-sm);
+  border-bottom: 1px solid var(--duels-grey-light);
+  padding-bottom: var(--duels-spacing-xs);
 }
 
 .duels-accordion.duels-is-active .duels-accordion-content {
@@ -100,7 +127,9 @@
 /* Text styles within accordions */
 .duels-accordion--main .duels-accordion-content p {
   color: var(--duels-black);
-  line-height: 1.4;
+  line-height: 1.6;
+  font-size: var(--duels-font-size-md);
+  margin-bottom: var(--duels-spacing-md);
 }
 
 .duels-accordion--facilitator .duels-accordion-content p {

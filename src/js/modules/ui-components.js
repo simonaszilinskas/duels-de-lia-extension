@@ -278,7 +278,7 @@ export class Header extends Component {
     if (this.props.onToggleResources) {
       const resourcesButton = new Button({
         className: 'duels-resources-btn',
-        icon: 'fas fa-book',
+        text: 'Ressources',
         title: 'Ressources',
         onClick: this.props.onToggleResources
       }).render();
@@ -412,11 +412,11 @@ export class Persona extends Component {
       navigator.clipboard.writeText(fullPrompt)
         .then(() => {
           // Visual feedback
-          promptElement.classList.add('copied');
-          copyButton.textContent = 'Copié!';
+          promptElement.classList.add('duels-is-copied');
+          copyButton.classList.add('duels-is-copied');
           setTimeout(() => {
-            promptElement.classList.remove('copied');
-            copyButton.textContent = 'Copier';
+            promptElement.classList.remove('duels-is-copied');
+            copyButton.classList.remove('duels-is-copied');
           }, 1000);
           
           // Call custom onCopy handler if provided
@@ -430,8 +430,8 @@ export class Persona extends Component {
     
     // Add toggle functionality
     personaElement.addEventListener('click', () => {
-      personaElement.classList.toggle('open');
-      promptElement.classList.toggle('visible');
+      personaElement.classList.toggle('duels-is-open');
+      promptElement.classList.toggle('duels-is-visible');
     });
     
     container.appendChild(personaElement);
