@@ -1,0 +1,96 @@
+/* icon-styles.css - Styles for icons and specialized UI elements */
+
+/* Icon styles that were previously inline */
+.duels-icon-seedling {
+  margin-right: 8px;
+  font-size: 1rem;
+  color: #6a6af4;
+}
+
+.duels-icon-book {
+  margin-right: 8px;
+  font-size: 0.9rem;
+  color: #6a6af4;
+}
+
+.duels-step h3 i,
+.duels-accordion-header i {
+  margin-right: 8px;
+}
+
+.duels-step.resources-section h3 i,
+.duels-accordion.resources-section .duels-accordion-header i {
+  font-size: 1rem;
+  color: #6a6af4;
+}
+
+.duels-step.main h3 i,
+.duels-accordion.main .duels-accordion-header i {
+  font-size: 0.9rem;
+  color: #6a6af4;
+}
+
+/* Animation styles */
+@keyframes roll {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-30deg); }
+  40% { transform: rotate(30deg); }
+  60% { transform: rotate(-15deg); }
+  80% { transform: rotate(15deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.duels-dice-button.rolling {
+  animation: roll 0.5s ease;
+}
+
+/* Copy button states */
+.duels-copy-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #9898F8;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 2px 4px;
+  font-size: 0.65rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s;
+  z-index: 2;
+}
+
+.duels-copy-button:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.duels-prompt.copied .duels-copy-button {
+  background-color: #4caf50;
+}
+
+/* Callout types */
+.duels-callout-important {
+  background-color: #fff3cd;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+.duels-callout-info {
+  background-color: #d1ecf1;
+  border-color: #0dcaf0;
+  color: #0c5460;
+}
+
+.duels-callout-warning {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+.duels-callout-success {
+  background-color: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}

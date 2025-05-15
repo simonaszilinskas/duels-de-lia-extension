@@ -23,7 +23,8 @@ function loadStyles() {
     'guide-ui.css',
     'steps-components.css',
     'resources-components.css',
-    'suggestions-components.css'
+    'suggestions-components.css',
+    'icon-styles.css'
   ];
   
   stylesheets.forEach(stylesheet => {
