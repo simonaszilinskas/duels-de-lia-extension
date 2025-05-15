@@ -33,6 +33,7 @@
   --duels-font-size-xl: 1.5rem;
   
   /* Spacing */
+  --duels-spacing-xxs: 0.125rem;
   --duels-spacing-xs: 0.25rem;
   --duels-spacing-sm: 0.5rem;
   --duels-spacing-md: 1rem;
