@@ -49,7 +49,7 @@
 .duels-category-content {
   display: none;
   padding-left: var(--duels-spacing-xs);
-  margin-top: var(--duels-spacing-xxs);
+  margin-top: var(--duels-spacing-xs);
   margin-bottom: var(--duels-spacing-xs);
 }
 
