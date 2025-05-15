@@ -121,6 +121,10 @@
   border-color: var(--duels-primary);
 }
 
+.duels-is-active p {
+  color: var(--duels-black);
+}
+
 .duels-is-open {
   /* Open state styling (replaces .open) */
   display: block;
