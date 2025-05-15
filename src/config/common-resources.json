@@ -3,7 +3,9 @@
     {
       "name": "Rédaction professionnelle",
       "suggestions": [
-        "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum."
+        "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum.",
+        "📝 Marc, journaliste : Rédige une introduction percutante pour un article sur l'intelligence artificielle et son impact sur le journalisme en 3 phrases.",
+        "👨‍💼 Paul, directeur marketing : Rédige un email de bienvenue pour les nouveaux abonnés à notre newsletter sur les technologies durables."
       ]
     },
     {
@@ -18,13 +20,26 @@
         "👩‍🎓 Camille, étudiante : c'est quoi la différence entre un grand et un petit modèle d'IA générative ? Donne une réponse compréhensible en quelques mots",
         "👩🏻‍💼 Mei, cheffe de projet chez EDF : où trouver des petits modèles d'IA générative ? Réponse synthétique."
       ]
+    },
+    {
+      "name": "Création de contenu",
+      "suggestions": [
+        "🎨 Sophie, designer : Génère 3 idées de logos pour une application d'aide au recyclage appelée 'GreenCycle'",
+        "📚 Antoine, professeur : Crée une courte fable qui enseigne aux enfants l'importance de la conservation de l'eau",
+        "🎵 Julie, musicienne : Écris les paroles d'un court refrain sur la protection de l'environnement"
+      ]
     }
   ],
   "promptSuggestions": [
     "⚙️ Leila, ingénieure en mécanique : Ma machine à laver, que j'ai achetée il y a un an et demi, fuit. Écris un mail à l'entreprise qui me l'a vendue pour demander une intervention et une réparation sous garantie. Le mail doit être de 5 lignes maximum.",
     "🌱 Thomas, consultant en transition écologique : Reformule moi cette phrase - \"l'IA générative a un effet sur l'environnement donc il est nécessaire de l'utiliser de manière consciente\"",
     "👩‍🎓 Camille, étudiante : c'est quoi la différence entre un grand et un petit modèle d'IA générative ? Donne une réponse compréhensible en quelques mots",
-    "👩🏻‍💼 Mei, cheffe de projet chez EDF : où trouver des petits modèles d'IA générative ? Réponse synthétique."
+    "👩🏻‍💼 Mei, cheffe de projet chez EDF : où trouver des petits modèles d'IA générative ? Réponse synthétique.",
+    "📝 Marc, journaliste : Rédige une introduction percutante pour un article sur l'intelligence artificielle et son impact sur le journalisme en 3 phrases.",
+    "👨‍💼 Paul, directeur marketing : Rédige un email de bienvenue pour les nouveaux abonnés à notre newsletter sur les technologies durables.",
+    "🎨 Sophie, designer : Génère 3 idées de logos pour une application d'aide au recyclage appelée 'GreenCycle'",
+    "📚 Antoine, professeur : Crée une courte fable qui enseigne aux enfants l'importance de la conservation de l'eau",
+    "🎵 Julie, musicienne : Écris les paroles d'un court refrain sur la protection de l'environnement"
   ],
   "educationalResources": [
     {
