@@ -1,73 +1,39 @@
 /* content.css - Minimal override styles for the content script
- * Most styles moved to dedicated CSS files:
+ * Leverages base.css for consistent styling
+ * Additional styles in dedicated CSS files:
  * - guide-ui.css (main container, FAB, headers)
  * - steps-components.css (steps, accordion, callouts)
  * - resources-components.css (resources, dropdowns, navbars)
  * - suggestions-components.css (prompts, personas, copy functionality)
  */
 
-/* Toggle indicator for accordions - not covered by other CSS files */
+/* Import base styles */
+@import 'base.css';
+
+/* Toggle indicator for accordions - specific to content */
 .duels-accordion-header::after {
   content: '▼';
   position: absolute;
-  right: 8px;
+  right: var(--duels-spacing-sm);
   top: 50%;
   transform: translateY(-50%) rotate(0);
-  transition: transform 0.2s ease;
-  font-size: 10px;
-  color: #666;
+  transition: var(--duels-transition-fast);
+  font-size: var(--duels-font-size-xs);
+  color: var(--duels-grey-dark);
 }
 
-.duels-accordion.active .duels-accordion-header::after {
+.duels-accordion.duels-is-active .duels-accordion-header::after {
   transform: translateY(-50%) rotate(180deg);
 }
 
-/* Controls and navigation - preserved from original */
+/* Controls and navigation */
 .duels-controls {
   display: flex;
   justify-content: space-between;
-  padding: 7px 8px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #eaeaea;
+  padding: var(--duels-spacing-xs) var(--duels-spacing-sm);
+  background-color: var(--duels-grey-light);
+  border-top: 1px solid var(--duels-grey);
   position: sticky;
   bottom: 0;
-}
-
-.duels-button {
-  padding: 5px 7px;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  font-size: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.duels-button:hover:not(:disabled) {
-  background-color: #e9e9e9;
-}
-
-.duels-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.duels-button.primary {
-  background-color: #6a6af4;
-  color: white;
-  border-color: #5252e0;
-}
-
-.duels-button.primary:hover:not(:disabled) {
-  background-color: #5252e0;
-}
-
-.duels-button.secondary {
-  background-color: #6c757d;
-  color: white;
-  border-color: #5a6268;
-}
-
-.duels-button.secondary:hover:not(:disabled) {
-  background-color: #5a6268;
+  z-index: var(--duels-z-index-sticky);
 }

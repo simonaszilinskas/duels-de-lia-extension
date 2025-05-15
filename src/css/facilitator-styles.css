@@ -1,144 +1,143 @@
-/* Styles simplifiés pour les tâches facilitateur et sections spéciales */
+/* Facilitator styles - Styles for facilitator tasks and special sections */
 
-/* Styles communs pour tous les éléments facilitateur */
-.duels-step.facilitator,
-.duels-accordion.facilitator {
+/* Import base styles */
+@import 'base.css';
+
+/* Common styles for all facilitator elements */
+.duels-step--facilitator,
+.duels-accordion--facilitator {
   opacity: 0.7;
   font-style: italic;
-  border-left: 1px solid #ccc;
-  background-color: #f5f5f5;
+  border-left: 1px solid var(--duels-grey);
+  background-color: var(--duels-grey-light);
 }
 
-/* Titres des éléments facilitateur */
-.duels-step.facilitator h3,
-.duels-accordion.facilitator .duels-accordion-header {
-  font-size: 0.75rem;
-  color: #888;
+/* Facilitator element titles */
+.duels-step--facilitator h3,
+.duels-accordion--facilitator .duels-accordion-header {
+  font-size: var(--duels-font-size-xs);
+  color: var(--duels-grey-dark);
   font-weight: normal;
   margin-bottom: 2px;
 }
 
-/* En-tête d'accordéon */
-.duels-accordion.facilitator .duels-accordion-header {
-  padding: 6px 10px;
+/* Accordion header */
+.duels-accordion--facilitator .duels-accordion-header {
+  padding: var(--duels-spacing-xs) var(--duels-spacing-sm);
 }
 
-/* Zone de contenu */
-.duels-step.facilitator {
+/* Content area */
+.duels-step--facilitator {
   padding: 4px 6px;
   margin-bottom: 4px;
 }
 
-.duels-accordion.facilitator .duels-accordion-content {
-  padding: 6px 8px;
-  border: 1px solid #e0e0e0;
+.duels-accordion--facilitator .duels-accordion-content {
+  padding: var(--duels-spacing-xs) var(--duels-spacing-xs);
+  border: 1px solid var(--duels-grey);
   border-top: none;
 }
 
-/* États d'interaction */
-.duels-accordion.facilitator .duels-accordion-header:hover,
-.duels-accordion.facilitator.active .duels-accordion-header {
-  background-color: #e0e0e0;
-  color: #666;
+/* Interaction states */
+.duels-accordion--facilitator .duels-accordion-header:hover,
+.duels-accordion--facilitator.duels-is-active .duels-accordion-header {
+  background-color: var(--duels-grey);
+  color: var(--duels-grey-dark);
   opacity: 1;
 }
 
-/* Style pour les étapes complétées */
-.duels-accordion.facilitator.completed .duels-accordion-header {
+/* Style for completed steps */
+.duels-accordion--facilitator.duels-is-completed .duels-accordion-header {
   background-color: #f0f8f0;
-  border-left: 1px solid #4caf50;
+  border-left: 1px solid var(--duels-green);
   opacity: 0.8;
 }
 
-.duels-accordion.facilitator.completed .duels-accordion-header::before {
+.duels-accordion--facilitator.duels-is-completed .duels-accordion-header::before {
   content: "✓";
-  color: #4caf50;
-  margin-right: 5px;
+  color: var(--duels-green);
+  margin-right: var(--duels-spacing-xs);
   font-weight: bold;
 }
 
-.duels-accordion.facilitator.completed .duels-accordion-content {
+.duels-accordion--facilitator.duels-is-completed .duels-accordion-content {
   background-color: #f8fff8;
   border-color: #e0f0e0;
 }
 
-.duels-accordion.facilitator.completed .duels-accordion-content p {
-  color: #4caf50 !important;
+.duels-accordion--facilitator.duels-is-completed .duels-accordion-content p {
+  color: var(--duels-green);
 }
 
-/* Bouton facilitateur dans la navbar */
+/* Facilitator button in navbar */
 .duels-facilitator-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 30px;
   height: 30px;
-  margin-right: 10px;
+  margin-right: var(--duels-spacing-sm);
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  color: white;
-  font-size: 0.9rem;
+  color: var(--duels-white);
+  font-size: var(--duels-font-size-sm);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: var(--duels-transition-fast);
 }
 
 .duels-facilitator-btn:hover {
-  background-color: #000091 !important;
-  color: white !important;
-  opacity: 1 !important;
-  --hover-tint: #000091 !important;
-  --active-tint: #000091 !important;
+  background-color: var(--duels-navy);
+  color: var(--duels-white);
+  opacity: 1;
 }
 
-.duels-facilitator-btn.inactive {
+.duels-facilitator-btn.duels-is-inactive {
   opacity: 0.7;
   background-color: rgba(150, 150, 150, 0.3);
   border-color: rgba(150, 150, 150, 0.5);
 }
 
-.duels-facilitator-btn.inactive:hover {
-  background-color: #000091 !important;
-  color: white !important;
-  opacity: 1 !important;
-  --hover-tint: #000091 !important;
-  --active-tint: #000091 !important;
+.duels-facilitator-btn.duels-is-inactive:hover {
+  background-color: var(--duels-navy);
+  color: var(--duels-white);
+  opacity: 1;
 }
 
-/* Styles pour la section spéciale "Pour aller plus loin" */
-.duels-accordion.resources-section {
-  margin-top: 40px;
-  padding-top: 25px;
-  padding-bottom: 50px; /* More padding at bottom to prevent cutoff */
-  margin-bottom: 20px; /* Extra margin at bottom */
+/* Styles for "For Further Reading" special section */
+.duels-resources-section {
+  margin-top: var(--duels-spacing-xl);
+  padding-top: var(--duels-spacing-lg);
+  padding-bottom: var(--duels-spacing-xl);
+  margin-bottom: var(--duels-spacing-lg);
   background-color: transparent;
   border-radius: 0;
   border: none;
   opacity: 1;
   position: relative;
-  width: 100%; /* Ensure full width */
+  width: 100%;
 }
 
-.duels-accordion.resources-section::before {
+.duels-resources-section::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 1px;
-  background: #e0e0e0;
+  background: var(--duels-grey);
 }
 
 /* Create more space from regular accordion items */
-.duels-accordion + .duels-accordion.resources-section {
-  margin-top: 40px;
+.duels-accordion + .duels-resources-section {
+  margin-top: var(--duels-spacing-xl);
 }
 
-.duels-accordion.resources-section .duels-accordion-header {
-  background-color: transparent !important;
-  border-left: none !important;
-  font-size: 1.1rem;
-  color: #444;
+.duels-resources-section-header {
+  background-color: transparent;
+  border-left: none;
+  font-size: var(--duels-font-size-lg);
+  color: var(--duels-black);
   font-weight: 600;
   padding-left: 0;
   display: flex;
@@ -147,73 +146,58 @@
   margin-bottom: 0;
 }
 
-.duels-accordion.resources-section .duels-accordion-header::after {
-  display: none !important; /* Remove collapse icon */
+.duels-resources-section-content {
+  display: block;
+  background-color: transparent;
+  border: none;
+  padding: var(--duels-spacing-md) 0;
+  animation: none;
+  max-height: none;
+  overflow: visible;
 }
 
-.duels-accordion.resources-section .duels-accordion-header::before {
-  content: "";
-  display: none;
-}
-
-.duels-accordion.resources-section.active .duels-accordion-header {
-  background-color: transparent !important;
-  color: #444 !important;
-  border-left: none !important;
-}
-
-.duels-accordion.resources-section .duels-accordion-content {
-  display: block !important; /* Always visible */
-  background-color: transparent !important;
-  border: none !important;
-  padding: 15px 0;
-  animation: none !important;
-  max-height: none !important; /* Ensure no height restriction */
-  overflow: visible !important; /* Allow content to fully display */
-}
-
-.duels-accordion.resources-section .duels-accordion-content p {
-  color: #555 !important;
-  font-size: 0.85rem !important;
+.duels-resources-section-content p {
+  color: var(--duels-grey-dark);
+  font-size: var(--duels-font-size-sm);
   font-style: normal;
-  margin-bottom: 15px !important;
+  margin-bottom: var(--duels-spacing-md);
 }
 
-.duels-accordion.resources-section .duels-resource-container {
+.duels-resources-section .duels-resource-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 15px;
-  margin-bottom: 20px; /* Add bottom margin for better spacing */
-  padding-bottom: 10px; /* Additional padding at bottom */
-  width: 100%; /* Ensure full width */
+  gap: var(--duels-spacing-sm);
+  margin-top: var(--duels-spacing-md);
+  margin-bottom: var(--duels-spacing-lg);
+  padding-bottom: var(--duels-spacing-sm);
+  width: 100%;
 }
 
-.duels-accordion.resources-section .duels-resource-button {
-  background-color: #6a6af4;
+.duels-resources-button {
+  background-color: var(--duels-primary);
   border: none;
-  color: white !important;
-  padding: 8px 15px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  text-decoration: none !important;
-  transition: all 0.2s;
+  color: var(--duels-white);
+  padding: var(--duels-spacing-xs) var(--duels-spacing-md);
+  border-radius: var(--duels-border-radius-sm);
+  font-size: var(--duels-font-size-sm);
+  text-decoration: none;
+  transition: var(--duels-transition-fast);
   display: inline-block;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--duels-shadow-sm);
   font-weight: 500;
 }
 
-.duels-accordion.resources-section .duels-resource-button:hover {
-  background-color: #000091;
-  color: white !important;
+.duels-resources-button:hover {
+  background-color: var(--duels-navy);
+  color: var(--duels-white);
   transform: translateY(-1px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--duels-shadow-md);
   opacity: 1;
 }
 
-/* Styles pour les cartes de discussion */
+/* Styles for discussion cards */
 .duels-cards-container {
-  margin-top: 20px;
+  margin-top: var(--duels-spacing-lg);
   text-align: center;
 }
 
@@ -221,31 +205,31 @@
   position: relative;
   height: 200px;
   margin: 0 auto;
-  perspective: 1000px; /* Pour l'effet 3D */
+  perspective: 1000px;
 }
 
 .duels-cards-deck {
   width: 100%;
   max-width: 300px;
   height: 150px;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  border: 2px solid #ccc;
-  margin: 0 auto 15px auto;
+  background-color: var(--duels-grey-light);
+  border-radius: var(--duels-border-radius-md);
+  border: 2px solid var(--duels-grey);
+  margin: 0 auto var(--duels-spacing-md) auto;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: var(--duels-shadow-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  color: #555;
+  color: var(--duels-grey-dark);
   position: relative;
-  transition: all 0.3s ease;
+  transition: var(--duels-transition-normal);
 }
 
 .duels-cards-deck:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: var(--duels-shadow-md);
 }
 
 .duels-cards-deck::before {
@@ -255,13 +239,13 @@
   left: 3px;
   right: 3px;
   bottom: 3px;
-  border-radius: 6px;
-  border: 1px dashed #aaa;
+  border-radius: var(--duels-border-radius-sm);
+  border: 1px dashed var(--duels-grey-dark);
 }
 
 .duels-cards-deck::after {
   content: "🎲";
-  font-size: 2rem;
+  font-size: var(--duels-font-size-xl);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -277,9 +261,9 @@
   max-width: 300px;
   height: 150px;
   margin: 0 auto;
-  background-color: #6a6af4;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  background-color: var(--duels-primary);
+  border-radius: var(--duels-border-radius-md);
+  box-shadow: var(--duels-shadow-md);
   transform-style: preserve-3d;
   transform: rotateY(180deg);
   transition: transform 0.6s cubic-bezier(0.38, 0.02, 0.09, 1.66);
@@ -287,79 +271,58 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: var(--duels-spacing-lg);
   box-sizing: border-box;
   text-align: center;
   z-index: 1;
 }
 
-.duels-card.visible {
+.duels-card.duels-is-visible {
   opacity: 1;
   transform: rotateY(0deg);
   z-index: 5;
 }
 
 .duels-card-content {
-  color: white;
+  color: var(--duels-white);
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: var(--duels-font-size-sm);
   line-height: 1.4;
 }
 
 .duels-draw-instruction {
-  font-size: 0.85rem;
-  color: #555;
-  margin-bottom: 10px;
+  font-size: var(--duels-font-size-sm);
+  color: var(--duels-grey-dark);
+  margin-bottom: var(--duels-spacing-sm);
   font-style: italic;
 }
 
 .duels-draw-button {
   display: inline-block;
-  padding: 8px 15px;
-  background-color: #6a6af4;
-  color: white;
+  padding: var(--duels-spacing-xs) var(--duels-spacing-md);
+  background-color: var(--duels-primary);
+  color: var(--duels-white);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--duels-border-radius-sm);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: var(--duels-font-size-sm);
   cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  margin-bottom: 15px;
+  transition: var(--duels-transition-fast);
+  box-shadow: var(--duels-shadow-sm);
+  margin-bottom: var(--duels-spacing-md);
 }
 
 .duels-draw-button:hover {
-  background-color: #000091;
+  background-color: var(--duels-navy);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: var(--duels-shadow-md);
 }
 
 .duels-draw-button:disabled {
-  background-color: #ccc;
+  background-color: var(--duels-grey);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
-/* Styles pour les appareils mobiles */
-@media (max-width: 768px) {
-  .duels-accordion.facilitator .duels-accordion-header {
-    font-size: 0.7rem;
-    padding: 5px 8px;
-  }
-  
-  .duels-accordion.resources-section {
-    margin-top: 20px;
-    padding-top: 15px;
-  }
-  
-  .duels-cards-wrapper {
-    height: 180px;
-  }
-  
-  .duels-cards-deck,
-  .duels-card {
-    height: 130px;
-    max-width: 260px;
-  }
-}
+/* Media queries moved to base.css for consistency */

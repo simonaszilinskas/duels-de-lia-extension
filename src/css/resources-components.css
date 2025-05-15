@@ -1,32 +1,35 @@
 /* resources-components.css - Contains styles for resources, paths dropdown, and related UI */
 
+/* Import base styles */
+@import 'base.css';
+
 /* Paths dropdown */
 .duels-paths-dropdown {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  background-color: var(--duels-white);
+  border-radius: var(--duels-border-radius-md);
+  box-shadow: var(--duels-shadow-lg);
   width: min(260px, 90vw);
-  z-index: 10001;
+  z-index: var(--duels-z-index-modal);
   display: none;
-  padding: 20px;
+  padding: var(--duels-spacing-lg);
 }
 
-.duels-paths-dropdown.open {
+.duels-paths-dropdown.duels-is-open {
   display: block;
-  animation: fadeIn 0.2s ease;
+  animation: duels-fade-in var(--duels-transition-fast);
 }
 
 .duels-dropdown-title {
-  font-size: 0.95rem;
+  font-size: var(--duels-font-size-md);
   font-weight: 600;
-  color: #333;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eaeaea;
+  color: var(--duels-black);
+  margin-bottom: var(--duels-spacing-md);
+  padding-bottom: var(--duels-spacing-sm);
+  border-bottom: 1px solid var(--duels-grey);
 }
 
 .duels-paths-list {
@@ -37,12 +40,12 @@
 .duels-path-item {
   display: flex;
   align-items: center;
-  padding: 12px;
-  border-radius: 6px;
-  margin-bottom: 8px;
+  padding: var(--duels-spacing-sm);
+  border-radius: var(--duels-border-radius-md);
+  margin-bottom: var(--duels-spacing-xs);
   cursor: pointer;
-  transition: all 0.2s;
-  background-color: #f5f5f5;
+  transition: var(--duels-transition-fast);
+  background-color: var(--duels-grey-light);
   border-left: 3px solid transparent;
 }
 
@@ -51,15 +54,15 @@
   transform: translateY(-1px);
 }
 
-.duels-path-item.active {
-  border-left: 3px solid #6a6af4;
+.duels-path-item.duels-is-active {
+  border-left: 3px solid var(--duels-primary);
   background-color: #f0f0ff;
 }
 
 .duels-path-item i {
-  font-size: 1rem;
-  color: #6a6af4;
-  margin-right: 12px;
+  font-size: var(--duels-font-size-md);
+  color: var(--duels-primary);
+  margin-right: var(--duels-spacing-sm);
 }
 
 .duels-path-info {
@@ -68,82 +71,80 @@
 
 .duels-path-name {
   font-weight: 600;
-  font-size: 0.9rem;
-  color: #333;
-  margin-bottom: 4px;
+  font-size: var(--duels-font-size-sm);
+  color: var(--duels-black);
+  margin-bottom: var(--duels-spacing-xs);
 }
 
 .duels-path-description {
-  font-size: 0.8rem;
-  color: #666;
+  font-size: var(--duels-font-size-xs);
+  color: var(--duels-grey-dark);
 }
 
 .duels-dropdown-close {
   display: block;
   width: 100%;
   text-align: center;
-  margin-top: 15px;
-  padding: 8px;
+  margin-top: var(--duels-spacing-md);
+  padding: var(--duels-spacing-xs);
   background-color: #f0f0ff;
-  border: 1px solid #6a6af4;
-  color: #6a6af4;
-  border-radius: 4px;
+  border: 1px solid var(--duels-primary);
+  color: var(--duels-primary);
+  border-radius: var(--duels-border-radius-sm);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: var(--duels-transition-fast);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: var(--duels-font-size-sm);
 }
 
 .duels-dropdown-close:hover {
-  background-color: #6a6af4;
-  color: white;
+  background-color: var(--duels-primary);
+  color: var(--duels-white);
 }
 
 /* Back to steps button */
 .duels-back-to-steps {
-  display: inline-block;
-  padding: 6px;
-  background-color: white;
-  color: #6a6af4;
-  border: 2px solid #6a6af4;
-  border-radius: 50%;
-  font-weight: 600;
-  margin-bottom: 15px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: center;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: var(--duels-spacing-xs);
+  background-color: var(--duels-white);
+  color: var(--duels-primary);
+  border: 2px solid var(--duels-primary);
+  border-radius: 50%;
+  font-weight: 600;
+  margin-bottom: var(--duels-spacing-md);
+  cursor: pointer;
+  transition: var(--duels-transition-fast);
   width: 30px;
   height: 30px;
 }
 
 .duels-back-to-steps:hover {
-  background-color: #6a6af4;
-  color: white;
+  background-color: var(--duels-primary);
+  color: var(--duels-white);
   transform: translateY(-1px);
 }
 
 .duels-back-to-steps i {
-  font-size: 0.9rem;
+  font-size: var(--duels-font-size-sm);
 }
 
 /* Resources panel */
 #duels-resources-panel {
   background-color: #f0f0ff;
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 var(--duels-border-radius-md) var(--duels-border-radius-md);
 }
 
 .duels-resources-section {
-  margin-bottom: 30px;
+  margin-bottom: var(--duels-spacing-lg);
   border-bottom: 1px solid rgba(106, 106, 244, 0.2);
-  padding-bottom: 20px;
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(106, 106, 244, 0.1);
-  margin-bottom: 15px;
+  padding-bottom: var(--duels-spacing-lg);
+  background-color: var(--duels-white);
+  border-radius: var(--duels-border-radius-md);
+  padding: var(--duels-spacing-lg);
+  box-shadow: var(--duels-shadow-sm);
+  margin-bottom: var(--duels-spacing-md);
 }
 
 .duels-resources-section:last-child {
@@ -151,28 +152,28 @@
 }
 
 .duels-resources-section-title {
-  color: #6a6af4;
-  font-size: 1rem;
+  color: var(--duels-primary);
+  font-size: var(--duels-font-size-md);
   font-weight: 600;
-  margin-bottom: 15px;
-  padding-bottom: 5px;
-  border-bottom: 2px solid #6a6af4;
+  margin-bottom: var(--duels-spacing-md);
+  padding-bottom: var(--duels-spacing-xs);
+  border-bottom: 2px solid var(--duels-primary);
   display: inline-block;
 }
 
 /* Resource container */
 .duels-resource-container {
-  margin-top: 15px;
+  margin-top: var(--duels-spacing-md);
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
 .duels-resources-title {
-  margin: 12px 0 5px 0;
+  margin: var(--duels-spacing-sm) 0 var(--duels-spacing-xs) 0;
   font-weight: 500;
-  font-size: 0.75rem;
-  color: #333;
+  font-size: var(--duels-font-size-xs);
+  color: var(--duels-black);
   word-break: break-word;
 }
 
@@ -182,14 +183,14 @@
   box-sizing: border-box;
   padding: 3px 5px;
   margin: 3px 0;
-  background-color: white;
-  color: #222 !important;
-  text-decoration: none !important;
-  border-radius: 3px;
+  background-color: var(--duels-white);
+  color: var(--duels-black);
+  text-decoration: none;
+  border-radius: var(--duels-border-radius-sm);
   font-weight: 400;
-  font-size: 0.6rem;
+  font-size: var(--duels-font-size-xs);
   line-height: 1.1;
-  border: 1px solid #9898F8;
+  border: 1px solid var(--duels-primary-light);
   box-shadow: none;
   outline: none;
   word-break: break-word;
@@ -204,44 +205,44 @@
 .duels-resource-button:hover,
 .duels-resource-button:focus,
 .duels-resource-button:active {
-  background-color: white !important;
-  color: #222 !important;
-  opacity: 1 !important;
-  --hover-tint: none !important;
-  --active-tint: none !important;
-  transform: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  text-decoration: none !important;
+  background-color: var(--duels-white);
+  color: var(--duels-black);
+  opacity: 1;
+  --hover-tint: none;
+  --active-tint: none;
+  transform: none;
+  outline: none;
+  box-shadow: none;
+  text-decoration: none;
 }
 
 /* Model instruction box */
 .duels-model-instruction {
   background-color: #f0f0ff;
-  border-left: 3px solid #9898F8;
-  padding: 10px 15px;
-  margin: 15px 0;
-  border-radius: 0 4px 4px 0;
-  font-size: 0.85rem;
+  border-left: 3px solid var(--duels-primary-light);
+  padding: var(--duels-spacing-sm) var(--duels-spacing-md);
+  margin: var(--duels-spacing-md) 0;
+  border-radius: 0 var(--duels-border-radius-sm) var(--duels-border-radius-sm) 0;
+  font-size: var(--duels-font-size-sm);
 }
 
 /* Links section */
 .duels-links {
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
+  margin-top: var(--duels-spacing-lg);
+  padding-top: var(--duels-spacing-md);
+  border-top: 1px solid var(--duels-grey);
   text-align: center;
 }
 
 .duels-link {
-  color: #9898F8;
+  color: var(--duels-primary-light);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s;
-  font-size: 0.85rem;
+  transition: color var(--duels-transition-fast);
+  font-size: var(--duels-font-size-sm);
 }
 
 .duels-link:hover {
-  color: #7070ff;
+  color: var(--duels-primary-dark);
   text-decoration: underline;
 }

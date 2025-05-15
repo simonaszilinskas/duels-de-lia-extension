@@ -1,14 +1,13 @@
 /* popup.css - Redesigned to match the extension's design language */
 
-@import url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Bold.woff2');
-@import url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Regular.woff2');
-@import url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.7.2/dist/fonts/Marianne-Medium.woff2');
+/* Import base styles */
+@import 'base.css';
 
 body, html {
   margin: 0;
   padding: 0;
-  font-family: 'Marianne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  background-color: #fafafa;
+  font-family: var(--duels-font-family);
+  background-color: var(--duels-grey-light);
 }
 
 .duels-popup {
@@ -16,14 +15,14 @@ body, html {
   min-height: 250px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: var(--duels-shadow-md);
   border-radius: 0;
 }
 
 .duels-header {
-  background-color: #6a6af4; /* Match extension purple */
-  color: white;
-  padding: 15px 20px;
+  background-color: var(--duels-primary);
+  color: var(--duels-white);
+  padding: var(--duels-spacing-md) var(--duels-spacing-lg);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,31 +31,32 @@ body, html {
 
 .duels-header h1 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: var(--duels-font-size-lg);
   font-weight: 700;
-  color: white;
+  color: var(--duels-white);
 }
 
 .duels-content {
-  padding: 20px;
+  padding: var(--duels-spacing-lg);
   flex-grow: 1;
-  background-color: white;
+  background-color: var(--duels-white);
+  animation: duels-fade-in var(--duels-transition-normal);
 }
 
 .duels-alert {
   display: flex;
   align-items: flex-start;
   background-color: #fff3cd;
-  border-left: 4px solid #ffc107;
+  border-left: 4px solid var(--duels-yellow);
   color: #856404;
-  padding: 12px 15px;
-  border-radius: 0 4px 4px 0;
-  margin-bottom: 15px;
+  padding: var(--duels-spacing-sm) var(--duels-spacing-md);
+  border-radius: 0 var(--duels-border-radius-sm) var(--duels-border-radius-sm) 0;
+  margin-bottom: var(--duels-spacing-md);
 }
 
 .duels-alert-icon {
-  font-size: 1rem;
-  margin-right: 10px;
+  font-size: var(--duels-font-size-md);
+  margin-right: var(--duels-spacing-sm);
   margin-top: 2px;
 }
 
@@ -64,91 +64,82 @@ body, html {
   display: flex;
   align-items: flex-start;
   background-color: #d4edda;
-  border-left: 4px solid #28a745;
+  border-left: 4px solid var(--duels-green);
   color: #155724;
-  padding: 12px 15px;
-  border-radius: 0 4px 4px 0;
-  margin-bottom: 15px;
+  padding: var(--duels-spacing-sm) var(--duels-spacing-md);
+  border-radius: 0 var(--duels-border-radius-sm) var(--duels-border-radius-sm) 0;
+  margin-bottom: var(--duels-spacing-md);
 }
 
 .duels-success-icon {
-  font-size: 1rem;
-  margin-right: 10px;
+  font-size: var(--duels-font-size-md);
+  margin-right: var(--duels-spacing-sm);
   margin-top: 2px;
 }
 
 .duels-instructions {
-  font-size: 0.85rem;
+  font-size: var(--duels-font-size-sm);
   line-height: 1.4;
-  color: #333;
-  margin-bottom: 15px;
+  color: var(--duels-black);
+  margin-bottom: var(--duels-spacing-md);
 }
 
 .duels-button-group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  gap: var(--duels-spacing-sm);
+  margin-top: var(--duels-spacing-lg);
 }
 
-.duels-button {
+/* Popup-specific button styles */
+.duels-popup-button {
   display: inline-block;
   text-align: center;
-  padding: 10px 15px;
-  border-radius: 4px;
+  padding: var(--duels-spacing-sm) var(--duels-spacing-md);
+  border-radius: var(--duels-border-radius-sm);
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: var(--duels-font-size-sm);
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: var(--duels-transition-fast);
   cursor: pointer;
-  border: 2px solid #9898F8; /* Match extension style */
-  background-color: white;
-  color: #333;
+  border: 2px solid var(--duels-primary-light);
+  background-color: var(--duels-white);
+  color: var(--duels-black);
 }
 
-.duels-button:hover {
+.duels-popup-button:hover {
   background-color: #f0f0ff;
   transform: translateY(-1px);
 }
 
-.duels-button.primary {
-  background-color: #6a6af4; /* Match extension purple */
-  color: white;
-  border-color: #6a6af4;
+.duels-popup-button--primary {
+  background-color: var(--duels-primary);
+  color: var(--duels-white);
+  border-color: var(--duels-primary);
 }
 
-.duels-button.primary:hover {
-  background-color: #5252e0;
-  border-color: #5252e0;
+.duels-popup-button--primary:hover {
+  background-color: var(--duels-primary-dark);
+  border-color: var(--duels-primary-dark);
 }
 
-.duels-button.secondary {
-  background-color: white;
-  color: #6a6af4;
-  border-color: #6a6af4;
+.duels-popup-button--secondary {
+  background-color: var(--duels-white);
+  color: var(--duels-primary);
+  border-color: var(--duels-primary);
 }
 
-.duels-button.secondary:hover {
+.duels-popup-button--secondary:hover {
   background-color: #f0f0ff;
-  color: #5252e0;
-  border-color: #5252e0;
+  color: var(--duels-primary-dark);
+  border-color: var(--duels-primary-dark);
 }
 
 .duels-footer {
-  background-color: #f5f5f5;
-  color: #666;
-  font-size: 0.75rem;
+  background-color: var(--duels-grey-light);
+  color: var(--duels-grey-dark);
+  font-size: var(--duels-font-size-xs);
   text-align: center;
-  padding: 10px;
-  border-top: 1px solid #eee;
-}
-
-/* Animation when opening popup */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.duels-content {
-  animation: fadeIn 0.3s ease;
+  padding: var(--duels-spacing-sm);
+  border-top: 1px solid var(--duels-grey);
 }

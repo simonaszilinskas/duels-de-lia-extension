@@ -1,51 +1,45 @@
 /* guide-ui.css - Contains styles for the floating guide UI components */
 
-/* Global typography adjustments */
-p {
-  font-size: 0.85rem !important;
-  line-height: 1.25rem !important;
-  word-break: break-word !important;
-  overflow-wrap: break-word !important;
-}
+/* Import base styles */
+@import 'base.css';
 
 /* Main guide container */
 .duels-guide {
-  font-family: Marianne, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  border: 1px solid #e6e6e6;
-  transition: all 0.3s ease;
+  border-radius: var(--duels-border-radius-md);
+  box-shadow: var(--duels-shadow-lg);
+  border: 1px solid var(--duels-grey);
+  transition: var(--duels-transition-normal);
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: var(--duels-spacing-lg);
+  right: var(--duels-spacing-lg);
   width: min(290px, 90vw);
-  max-height: 95vh; /* Allow more space, almost full viewport */
-  overflow-y: auto; /* Keep scroll for the overall container */
-  background-color: white;
-  z-index: 10000;
+  max-height: 95vh;
+  overflow-y: auto;
+  background-color: var(--duels-white);
+  z-index: var(--duels-z-index-fixed);
   display: flex;
-  flex-direction: column; /* Better for sticky header */
+  flex-direction: column;
 }
 
-.duels-guide:not(.open) {
+.duels-guide:not(.duels-is-open) {
   transform: translateX(calc(100% + 30px));
 }
 
 /* Guide header */
 .duels-header {
-  background-color: #6a6af4;
-  color: white;
-  border-radius: 8px 8px 0 0;
-  padding: 8px 12px;
+  background-color: var(--duels-primary);
+  color: var(--duels-white);
+  border-radius: var(--duels-border-radius-md) var(--duels-border-radius-md) 0 0;
+  padding: var(--duels-spacing-sm) var(--duels-spacing-md);
   position: sticky;
   top: 0;
-  z-index: 10001; /* Ensure it stays above other content */
+  z-index: var(--duels-z-index-sticky);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Add shadow for better visual separation */
-  min-height: 25px; /* Shorter height */
-  flex-shrink: 0; /* Prevent header from shrinking */
+  box-shadow: var(--duels-shadow-sm);
+  min-height: 25px;
+  flex-shrink: 0;
   width: 100%;
   box-sizing: border-box;
 }
@@ -53,8 +47,8 @@ p {
 .duels-header h2 {
   margin: 0;
   font-weight: 600;
-  font-size: 0.85rem;
-  color: white;
+  font-size: var(--duels-font-size-sm);
+  color: var(--duels-white);
 }
 
 /* Navigation */
@@ -67,44 +61,43 @@ p {
 .duels-paths-btn {
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  color: white;
-  font-size: 0.9rem;
+  color: var(--duels-white);
+  font-size: var(--duels-font-size-sm);
   font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
+  padding: var(--duels-spacing-xs);
   width: 30px;
   height: 30px;
-  margin-right: 10px;
+  margin-right: var(--duels-spacing-sm);
   border-radius: 50%;
-  transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: var(--duels-transition-fast);
+  box-shadow: var(--duels-shadow-sm);
 }
 
 .duels-resources-btn:hover,
 .duels-paths-btn:hover {
   background-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-1px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--duels-shadow-md);
 }
 
 .duels-resources-btn i,
 .duels-paths-btn i {
-  font-size: 0.9rem;
+  font-size: var(--duels-font-size-sm);
 }
 
 /* Content container */
 .duels-content-container {
-  padding: 10px;
-  background-color: #fafafa;
-  border-radius: 0 0 8px 8px;
-  max-height: none; /* Remove fixed height to adapt to content */
-  overflow-y: visible; /* Allow content to expand */
+  padding: var(--duels-spacing-sm);
+  background-color: var(--duels-grey-light);
+  border-radius: 0 0 var(--duels-border-radius-md) var(--duels-border-radius-md);
+  overflow-y: visible;
   overflow-x: hidden;
-  flex: 1 1 auto; /* Allow content to grow and take available space */
-  padding-bottom: 40px; /* Extra padding at bottom to prevent content being cut off */
+  flex: 1 1 auto;
+  padding-bottom: var(--duels-spacing-xl);
   width: 100%;
   box-sizing: border-box;
 }
@@ -112,26 +105,26 @@ p {
 /* Floating Action Button (FAB) */
 .duels-fab {
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: var(--duels-spacing-md);
+  right: var(--duels-spacing-md);
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: #9898F8;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  background-color: var(--duels-primary-light);
+  box-shadow: var(--duels-shadow-md);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
-  color: white;
+  font-size: var(--duels-font-size-lg);
+  color: var(--duels-white);
   cursor: pointer;
-  z-index: 10000;
-  transition: all 0.2s;
+  z-index: var(--duels-z-index-fixed);
+  transition: var(--duels-transition-fast);
 }
 
 .duels-fab:hover {
   transform: scale(1.05);
-  background-color: #8080ff;
+  background-color: var(--duels-primary);
   box-shadow: 0 4px 12px rgba(152, 152, 248, 0.5);
 }
 
@@ -139,89 +132,16 @@ p {
 .duels-close-button {
   background: none;
   border: none;
-  color: white;
-  font-size: 24px;
+  color: var(--duels-white);
+  font-size: var(--duels-font-size-xl);
   cursor: pointer;
   opacity: 0.8;
-  transition: opacity 0.2s;
-  margin-left: 8px;
+  transition: var(--duels-transition-fast);
+  margin-left: var(--duels-spacing-sm);
 }
 
 .duels-close-button:hover {
   opacity: 1;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Media queries for better responsiveness */
-@media (max-width: 768px) {
-  .duels-guide {
-    width: min(270px, 90vw);
-    max-height: 92vh; /* Allow more vertical space on smaller screens */
-  }
-  
-  .duels-content-container {
-    padding: 15px;
-  }
-  
-  .duels-header {
-    padding: 12px 15px;
-  }
-  
-  .duels-header h2 {
-    font-size: 1rem;
-  }
-  
-  /* Improve resource button display on smaller screens */
-  .duels-resource-button, 
-  .duels-resources-section a.duels-resource-button,
-  #duels-resources-panel a.duels-resource-button {
-    margin: 3px 3px 6px 0 !important; /* Smaller margins */
-    padding: 4px 8px !important; /* Smaller padding */
-    font-size: 0.7rem !important; /* Smaller text */
-  }
-}
-
-@media (max-width: 480px) {
-  .duels-guide {
-    width: 90vw;
-    top: 10px;
-    right: 5vw;
-    max-height: 95vh; /* Almost full viewport height on very small screens */
-  }
-  
-  .duels-content-container {
-    padding: 10px;
-  }
-  
-  .duels-resources-section {
-    padding: 15px;
-  }
-  
-  /* Ensure resource buttons are well displayed on very small screens */
-  .duels-resource-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .duels-resource-button, 
-  .duels-resources-section a.duels-resource-button,
-  #duels-resources-panel a.duels-resource-button {
-    width: 100%;
-    box-sizing: border-box;
-    margin: 3px 0 !important;
-    padding: 4px 6px !important;
-    text-align: center;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    font-size: 0.65rem !important;
-    line-height: 1.1 !important;
-    min-height: 0 !important;
-  }
-}
+/* Media queries moved to base.css for consistency */
