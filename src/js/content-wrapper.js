@@ -115,6 +115,49 @@ function getStepsForCurrentPage(pageName) {
     .sort((a, b) => a.order - b.order);
 }
 
+/**
+ * Selects an appropriate emoji based on step title or ID
+ * @param {Object} step - The step object
+ * @returns {string} An emoji character
+ */
+function getStepEmoji(step) {
+  const title = step.title.toLowerCase();
+  const id = step.id ? step.id.toLowerCase() : '';
+  
+  // Resource sections get seedling emoji
+  if (step.type === 'resources_section') {
+    return '🌱';
+  }
+  
+  // Check for keywords in title or id and return appropriate emoji
+  if (title.includes('resource') || id.includes('resource')) {
+    return '📚';
+  } else if (title.includes('prompt') || id.includes('prompt') || id.includes('enter_prompt')) {
+    return '✍️';
+  } else if (title.includes('évalue') || title.includes('evaluat') || id.includes('evaluat')) {
+    return '🔍';
+  } else if (title.includes('comparer') || title.includes('compar') || title.includes('discuss')) {
+    return '🔄';
+  } else if (title.includes('synthèse') || title.includes('synthes') || title.includes('conclusion')) {
+    return '📝';
+  } else if (title.includes('model') || id.includes('model')) {
+    return '🤖';
+  } else if (title.includes('stratég') || title.includes('strateg')) {
+    return '🎯';
+  } else if (title.includes('frugal')) {
+    return '🌿';
+  } else if (title.includes('utilit') || id.includes('utility')) {
+    return '⚙️';
+  } else if (title.includes('comprendre') || title.includes('understand')) {
+    return '💡';
+  } else if (title.includes('choix') || title.includes('choice') || title.includes('choose')) {
+    return '🔄';
+  }
+  
+  // Default emoji for other step types
+  return '📋';
+}
+
 // Fonction utilitaire pour obtenir le chemin actif
 function getActivePath() {
   return workshopPaths[currentSettings.activePath];
@@ -148,9 +191,9 @@ function toggleGuide() {
   isGuideOpen = !isGuideOpen;
   
   if (isGuideOpen) {
-    guide.classList.add('open');
+    guide.classList.add('duels-is-open');
   } else {
-    guide.classList.remove('open');
+    guide.classList.remove('duels-is-open');
     // Reset to steps view when closing
     showingResources = false;
     updateGuideContent();
@@ -287,13 +330,13 @@ function createResourcesPanel() {
       // Add copy button
       const copyButton = document.createElement('button');
       copyButton.className = 'duels-copy-button';
-      copyButton.textContent = 'Copier';
+      // textContent now handled via CSS ::before pseudo-element
       promptElement.appendChild(copyButton);
       
       // Add toggle functionality
       personaElement.addEventListener('click', () => {
-        personaElement.classList.toggle('open');
-        promptElement.classList.toggle('visible');
+        personaElement.classList.toggle('duels-is-open');
+        promptElement.classList.toggle('duels-is-visible');
       });
       
       // Add copy functionality
@@ -302,11 +345,11 @@ function createResourcesPanel() {
         navigator.clipboard.writeText(suggestion)
           .then(() => {
             // Visual feedback
-            promptElement.classList.add('copied');
-            copyButton.textContent = 'Copié!';
+            promptElement.classList.add('duels-is-copied');
+            copyButton.classList.add('duels-is-copied');
             setTimeout(() => {
-              promptElement.classList.remove('copied');
-              copyButton.textContent = 'Copier';
+              promptElement.classList.remove('duels-is-copied');
+              copyButton.classList.remove('duels-is-copied');
             }, 1000);
           });
       });
@@ -451,17 +494,16 @@ function createMainPageGuide() {
     
     // Mark current step as active
     if (step.order === currentSettings.currentStep) {
-      stepElement.classList.add('active');
+      stepElement.classList.add('duels-is-active');
     }
     
     const stepTitle = document.createElement('h3');
     
-    // Format by step type
-    if (step.type === 'resources_section') {
-      stepTitle.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
-    } else {
-      stepTitle.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
-    }
+    // Get appropriate emoji based on step title or id
+    const emoji = getStepEmoji(step);
+    
+    // Set step title with emoji
+    stepTitle.innerHTML = `${emoji} ${step.title}`;
     
     stepElement.appendChild(stepTitle);
     
@@ -555,10 +597,10 @@ function createMainPageGuide() {
           navigator.clipboard.writeText(suggestion)
             .then(() => {
               // Feedback visuel
-              promptElement.classList.add('copied');
+              promptElement.classList.add("duels-is-copied");
               copyButton.textContent = 'Copié !';
               setTimeout(() => {
-                promptElement.classList.remove('copied');
+                promptElement.classList.remove("duels-is-copied");
                 copyButton.textContent = 'Copier';
               }, 1000);
             });
@@ -567,8 +609,8 @@ function createMainPageGuide() {
         
         // Ajouter l'événement de toggle au persona
         personaElement.addEventListener('click', () => {
-          personaElement.classList.toggle('open');
-          promptElement.classList.toggle('visible');
+          personaElement.classList.toggle("duels-is-open");
+          promptElement.classList.toggle("duels-is-visible");
         });
         
         // Ajouter les éléments au DOM
@@ -695,9 +737,9 @@ function renderDiscussionCards(step, container) {
     currentIndex++;
     
     // Animation du dé
-    diceButton.classList.add('rolling');
+    diceButton.classList.add("duels-is-rolling");
     setTimeout(() => {
-      diceButton.classList.remove('rolling');
+      diceButton.classList.remove("duels-is-rolling");
     }, 500);
   }
   
@@ -737,28 +779,28 @@ function createModelSelectionGuide() {
     
     // Mark current step as active
     if (step.order === currentSettings.currentStep) {
-      stepAccordion.classList.add('active');
+      stepAccordion.classList.add("duels-is-active");
     }
     
     // Resources section is always active
     if (step.type === 'resources_section') {
-      stepAccordion.classList.add('active');
+      stepAccordion.classList.add("duels-is-active");
     }
     
     // Make evaluate_frugality step active by default for demo purposes
     if (step.id === 'evaluate_frugality') {
-      stepAccordion.classList.add('active');
+      stepAccordion.classList.add("duels-is-active");
     }
     
     const stepHeader = document.createElement('div');
     stepHeader.className = 'duels-accordion-header';
     
-    // Format by step type
-    if (step.type === 'resources_section') {
-      stepHeader.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
-    } else {
-      stepHeader.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
-    }    
+    // Get appropriate emoji based on step title or id
+    const emoji = getStepEmoji(step);
+    
+    // Set step title with emoji
+    stepHeader.innerHTML = `${emoji} ${step.title}`;
+    
     const stepContent = document.createElement('div');
     stepContent.className = 'duels-accordion-content';
     
@@ -804,10 +846,10 @@ function createModelSelectionGuide() {
           navigator.clipboard.writeText(suggestion)
             .then(() => {
               // Feedback visuel
-              promptElement.classList.add('copied');
+              promptElement.classList.add("duels-is-copied");
               copyButton.textContent = 'Copié !';
               setTimeout(() => {
-                promptElement.classList.remove('copied');
+                promptElement.classList.remove("duels-is-copied");
                 copyButton.textContent = 'Copier';
               }, 1000);
             });
@@ -816,8 +858,8 @@ function createModelSelectionGuide() {
         
         // Ajouter l'événement de toggle au persona
         personaElement.addEventListener('click', () => {
-          personaElement.classList.toggle('open');
-          promptElement.classList.toggle('visible');
+          personaElement.classList.toggle("duels-is-open");
+          promptElement.classList.toggle("duels-is-visible");
         });
         
         // Ajouter les éléments au DOM
@@ -851,7 +893,7 @@ function createModelSelectionGuide() {
     // Add click event to toggle accordion (except for resources section)
     if (step.type !== 'resources_section') {
       stepHeader.addEventListener('click', () => {
-        stepAccordion.classList.toggle('active');
+        stepAccordion.classList.toggle("duels-is-active");
       });
     }
     
@@ -899,33 +941,32 @@ function createDuelGuide() {
     
     // Mark current step as active
     if (step.order === currentSettings.currentStep) {
-      stepAccordion.classList.add('active');
+      stepAccordion.classList.add("duels-is-active");
     }
     
     // Make choose_prompt step active by default if it's present
     if (step.id === 'choose_prompt') {
-      stepAccordion.classList.add('active');
+      stepAccordion.classList.add("duels-is-active");
     }
     
     // Resources section is always active
     if (step.type === 'resources_section') {
-      stepAccordion.classList.add('active');
+      stepAccordion.classList.add("duels-is-active");
     }
     
     // Make evaluate_frugality step active by default for demo purposes
     if (step.id === 'evaluate_frugality') {
-      stepAccordion.classList.add('active');
+      stepAccordion.classList.add("duels-is-active");
     }
     
     const stepHeader = document.createElement('div');
     stepHeader.className = 'duels-accordion-header';
     
-    // Format by step type
-    if (step.type === 'resources_section') {
-      stepHeader.innerHTML = `<i class="fas fa-seedling" style="margin-right: 8px; font-size: 1rem; color: #6a6af4;"></i> ${step.title}`;
-    } else {
-      stepHeader.innerHTML = `<i class="fas fa-book" style="margin-right: 8px; font-size: 0.9rem; color: #6a6af4;"></i> ${step.title}`;
-    }
+    // Get appropriate emoji based on step title or id
+    const emoji = getStepEmoji(step);
+    
+    // Set step title with emoji
+    stepHeader.innerHTML = `${emoji} ${step.title}`;
     
     const stepContent = document.createElement('div');
     stepContent.className = 'duels-accordion-content';
@@ -977,10 +1018,10 @@ function createDuelGuide() {
           navigator.clipboard.writeText(suggestion)
             .then(() => {
               // Feedback visuel
-              promptElement.classList.add('copied');
+              promptElement.classList.add("duels-is-copied");
               copyButton.textContent = 'Copié !';
               setTimeout(() => {
-                promptElement.classList.remove('copied');
+                promptElement.classList.remove("duels-is-copied");
                 copyButton.textContent = 'Copier';
               }, 1000);
             });
@@ -989,8 +1030,8 @@ function createDuelGuide() {
         
         // Ajouter l'événement de toggle au persona
         personaElement.addEventListener('click', () => {
-          personaElement.classList.toggle('open');
-          promptElement.classList.toggle('visible');
+          personaElement.classList.toggle("duels-is-open");
+          promptElement.classList.toggle("duels-is-visible");
         });
         
         // Ajouter les éléments au DOM
@@ -1024,7 +1065,7 @@ function createDuelGuide() {
     // Add click event to toggle accordion (except for resources section)
     if (step.type !== 'resources_section') {
       stepHeader.addEventListener('click', () => {
-        stepAccordion.classList.toggle('active');
+        stepAccordion.classList.toggle("duels-is-active");
       });
     }
     
@@ -1211,9 +1252,9 @@ function renderRandomQuestions(step, container) {
       currentIndex++;
       
       // Animation du dé
-      diceButton.classList.add('rolling');
+      diceButton.classList.add("duels-is-rolling");
       setTimeout(() => {
-        diceButton.classList.remove('rolling');
+        diceButton.classList.remove("duels-is-rolling");
       }, 500);
     }
     

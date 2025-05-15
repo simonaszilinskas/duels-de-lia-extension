@@ -23,7 +23,7 @@ export function createMainPageGuide(activePath, stepsLibrary, currentSettings, s
     stepElement.className = 'duels-step';
     // Mark current step as active
     if (step.order === currentSettings.currentStep) {
-      stepElement.classList.add('active');
+      stepElement.classList.add('duels-is-active');
     }
     
     const stepTitle = document.createElement('h3');
@@ -110,10 +110,10 @@ export function createMainPageGuide(activePath, stepsLibrary, currentSettings, s
           navigator.clipboard.writeText(suggestion)
             .then(() => {
               // Feedback visuel
-              promptElement.classList.add('copied');
+              promptElement.classList.add('duels-is-copied');
               copyButton.textContent = 'Copié !';
               setTimeout(() => {
-                promptElement.classList.remove('copied');
+                promptElement.classList.remove('duels-is-copied');
                 copyButton.textContent = 'Copier';
               }, 1000);
             });
@@ -122,8 +122,8 @@ export function createMainPageGuide(activePath, stepsLibrary, currentSettings, s
         
         // Ajouter l'événement de toggle au persona
         personaElement.addEventListener('click', () => {
-          personaElement.classList.toggle('open');
-          promptElement.classList.toggle('visible');
+          personaElement.classList.toggle('duels-is-open');
+          promptElement.classList.toggle('duels-is-visible');
         });
         
         // Ajouter les éléments au DOM
@@ -177,7 +177,7 @@ export function createModelSelectionGuide(activePath, stepsLibrary, currentSetti
     
     // Mark current step as active
     if (step.order === currentSettings.currentStep) {
-      stepAccordion.classList.add('active');
+      stepAccordion.classList.add('duels-is-active');
     }
     
     const stepHeader = document.createElement('div');
@@ -224,10 +224,10 @@ export function createModelSelectionGuide(activePath, stepsLibrary, currentSetti
           navigator.clipboard.writeText(suggestion)
             .then(() => {
               // Feedback visuel
-              promptElement.classList.add('copied');
+              promptElement.classList.add('duels-is-copied');
               copyButton.textContent = 'Copié !';
               setTimeout(() => {
-                promptElement.classList.remove('copied');
+                promptElement.classList.remove('duels-is-copied');
                 copyButton.textContent = 'Copier';
               }, 1000);
             });
@@ -236,8 +236,8 @@ export function createModelSelectionGuide(activePath, stepsLibrary, currentSetti
         
         // Ajouter l'événement de toggle au persona
         personaElement.addEventListener('click', () => {
-          personaElement.classList.toggle('open');
-          promptElement.classList.toggle('visible');
+          personaElement.classList.toggle('duels-is-open');
+          promptElement.classList.toggle('duels-is-visible');
         });
         
         // Ajouter les éléments au DOM
@@ -253,7 +253,7 @@ export function createModelSelectionGuide(activePath, stepsLibrary, currentSetti
     
     // Add click event to toggle accordion
     stepHeader.addEventListener('click', () => {
-      stepAccordion.classList.toggle('active');
+      stepAccordion.classList.toggle("duels-is-active");
     });
     
     stepsContainer.appendChild(stepAccordion);
@@ -299,12 +299,12 @@ export function createDuelGuide(activePath, stepsLibrary, currentSettings, showi
     
     // Mark current step as active
     if (step.order === currentSettings.currentStep) {
-      stepAccordion.classList.add('active');
+      stepAccordion.classList.add('duels-is-active');
     }
     
     // Make prompt entry step active by default if it's present
     if (step.id === 'enter_prompt') {
-      stepAccordion.classList.add('active');
+      stepAccordion.classList.add('duels-is-active');
     }
     
     const stepHeader = document.createElement('div');
@@ -351,10 +351,10 @@ export function createDuelGuide(activePath, stepsLibrary, currentSettings, showi
           navigator.clipboard.writeText(suggestion)
             .then(() => {
               // Feedback visuel
-              promptElement.classList.add('copied');
+              promptElement.classList.add('duels-is-copied');
               copyButton.textContent = 'Copié !';
               setTimeout(() => {
-                promptElement.classList.remove('copied');
+                promptElement.classList.remove('duels-is-copied');
                 copyButton.textContent = 'Copier';
               }, 1000);
             });
@@ -363,8 +363,8 @@ export function createDuelGuide(activePath, stepsLibrary, currentSettings, showi
         
         // Ajouter l'événement de toggle au persona
         personaElement.addEventListener('click', () => {
-          personaElement.classList.toggle('open');
-          promptElement.classList.toggle('visible');
+          personaElement.classList.toggle('duels-is-open');
+          promptElement.classList.toggle('duels-is-visible');
         });
         
         // Ajouter les éléments au DOM
@@ -380,7 +380,7 @@ export function createDuelGuide(activePath, stepsLibrary, currentSettings, showi
     
     // Add click event to toggle accordion
     stepHeader.addEventListener('click', () => {
-      stepAccordion.classList.toggle('active');
+      stepAccordion.classList.toggle("duels-is-active");
     });
     
     stepsContainer.appendChild(stepAccordion);

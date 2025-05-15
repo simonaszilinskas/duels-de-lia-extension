@@ -33,9 +33,9 @@ async function toggleGuide() {
   // Use a promise to handle the transition
   await new Promise(resolve => {
     if (isGuideOpen) {
-      guide.classList.add('open');
+      guide.classList.add('duels-is-open');
     } else {
-      guide.classList.remove('open');
+      guide.classList.remove('duels-is-open');
       // Reset to steps view when closing
       showingResources = false;
       updateGuideContent();

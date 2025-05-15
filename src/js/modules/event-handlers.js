@@ -10,8 +10,8 @@
  */
 export function attachPersonaToggle(personaElement, promptElement) {
   personaElement.addEventListener('click', () => {
-    personaElement.classList.toggle('open');
-    promptElement.classList.toggle('visible');
+    personaElement.classList.toggle('duels-is-open');
+    promptElement.classList.toggle('duels-is-visible');
   });
 }
 
@@ -30,15 +30,15 @@ export function attachCopyHandler(button, textToCopy, feedbackElement = null, on
       .then(() => {
         // Visual feedback
         if (feedbackElement) {
-          feedbackElement.classList.add('copied');
+          feedbackElement.classList.add('duels-is-copied');
         }
         
         const originalText = button.textContent;
-        button.textContent = 'Copié!';
+        button.textContent = 'Copiï¿½!';
         
         setTimeout(() => {
           if (feedbackElement) {
-            feedbackElement.classList.remove('copied');
+            feedbackElement.classList.remove('duels-is-copied');
           }
           button.textContent = originalText;
         }, 1000);
@@ -65,7 +65,7 @@ export function attachCopyHandler(button, textToCopy, feedbackElement = null, on
  */
 export function attachAccordionToggle(headerElement, accordionElement) {
   headerElement.addEventListener('click', () => {
-    accordionElement.classList.toggle('active');
+    accordionElement.classList.toggle('duels-is-active');
   });
 }
 
@@ -93,9 +93,9 @@ export function attachQuestionGenerator(diceButton, displayElement, questions) {
     currentIndex++;
     
     // Animation
-    diceButton.classList.add('rolling');
+    diceButton.classList.add('duels-is-rolling');
     setTimeout(() => {
-      diceButton.classList.remove('rolling');
+      diceButton.classList.remove('duels-is-rolling');
     }, 500);
   }
   
@@ -136,9 +136,9 @@ export function attachDiscussionCardGenerator(diceButton, displayElement, cards)
     currentIndex++;
     
     // Animation
-    diceButton.classList.add('rolling');
+    diceButton.classList.add('duels-is-rolling');
     setTimeout(() => {
-      diceButton.classList.remove('rolling');
+      diceButton.classList.remove('duels-is-rolling');
     }, 500);
   }
   
