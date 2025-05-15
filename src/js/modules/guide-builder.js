@@ -47,62 +47,115 @@ function getStepEmoji(step) {
 }
 
 /**
+ * Creates a suggestion item 
+ * @param {string} suggestion - The suggestion text
+ * @returns {Array} - Array containing the persona and prompt elements
+ */
+function createSuggestionItem(suggestion) {
+  // Séparer l'emoji et le persona du prompt
+  const parts = suggestion.split(":");
+  const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
+  const prompt = parts.slice(1).join(":").trim(); // Rest of the message
+  
+  // Create persona element (toggleable header)
+  const personaElement = document.createElement('div');
+  personaElement.className = 'duels-persona';
+  personaElement.textContent = persona;
+  
+  // Create prompt element (toggleable content)
+  const promptElement = document.createElement('div');
+  promptElement.className = 'duels-prompt';
+  promptElement.textContent = prompt;
+  
+  // Add copy button
+  const copyButton = document.createElement('button');
+  copyButton.className = 'duels-copy-button';
+  copyButton.textContent = 'Copier';
+  
+  // Add copy functionality
+  copyButton.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent toggle when clicking the button
+    navigator.clipboard.writeText(suggestion)
+      .then(() => {
+        // Visual feedback
+        promptElement.classList.add('duels-is-copied');
+        copyButton.classList.add('duels-is-copied');
+        setTimeout(() => {
+          promptElement.classList.remove('duels-is-copied');
+          copyButton.classList.remove('duels-is-copied');
+        }, 1000);
+      });
+  });
+  promptElement.appendChild(copyButton);
+  
+  // Add toggle functionality
+  personaElement.addEventListener('click', () => {
+    personaElement.classList.toggle('duels-is-open');
+    promptElement.classList.toggle('duels-is-visible');
+  });
+  
+  return [personaElement, promptElement];
+}
+
+/**
  * Creates a suggestions list component
  * @param {Array} suggestions - The list of suggestions to display
+ * @param {Array} suggestionCategories - The categorized suggestions
  * @returns {HTMLElement} - The suggestions list container
  */
-export function createSuggestionsList(suggestions) {
-  if (!suggestions || !suggestions.length) return null;
+export function createSuggestionsList(suggestions, suggestionCategories) {
+  // Return null if no suggestions provided
+  if ((!suggestions || !suggestions.length) && (!suggestionCategories || !suggestionCategories.length)) {
+    return null;
+  }
 
   const suggestionsContainer = document.createElement('div');
-  suggestionsContainer.className = 'duels-suggestions';
+  suggestionsContainer.className = 'duels-suggestions-container';
   
-  suggestions.forEach(suggestion => {
-    // Séparer l'emoji et le persona du prompt
-    const parts = suggestion.split(":");
-    const persona = parts[0].trim(); // e.g. "⚙️ Leila, ingénieure en mécanique"
-    const prompt = parts.slice(1).join(":").trim(); // Rest of the message
-    
-    // Create persona element (toggleable header)
-    const personaElement = document.createElement('div');
-    personaElement.className = 'duels-persona';
-    personaElement.textContent = persona;
-    
-    // Create prompt element (toggleable content)
-    const promptElement = document.createElement('div');
-    promptElement.className = 'duels-prompt';
-    promptElement.textContent = prompt;
-    
-    // Add copy button
-    const copyButton = document.createElement('button');
-    copyButton.className = 'duels-copy-button';
-    copyButton.textContent = 'Copier';
-    
-    // Add copy functionality
-    copyButton.addEventListener('click', (e) => {
-      e.stopPropagation(); // Prevent toggle when clicking the button
-      navigator.clipboard.writeText(suggestion)
-        .then(() => {
-          // Visual feedback
-          promptElement.classList.add('duels-is-copied');
-          copyButton.classList.add('duels-is-copied');
-          setTimeout(() => {
-            promptElement.classList.remove('duels-is-copied');
-            copyButton.classList.remove('duels-is-copied');
-          }, 1000);
+  // If we have categorized suggestions
+  if (suggestionCategories && suggestionCategories.length > 0) {
+    // Create each category
+    suggestionCategories.forEach(category => {
+      if (category.suggestions && category.suggestions.length > 0) {
+        // Create category container
+        const categoryContainer = document.createElement('div');
+        categoryContainer.className = 'duels-suggestion-category';
+        
+        // Create category header
+        const categoryHeader = document.createElement('div');
+        categoryHeader.className = 'duels-category-header';
+        categoryHeader.textContent = category.name;
+        categoryContainer.appendChild(categoryHeader);
+        
+        // Create suggestion list for this category
+        const categoryList = document.createElement('div');
+        categoryList.className = 'duels-suggestions';
+        
+        // Add each suggestion to the category
+        category.suggestions.forEach(suggestion => {
+          const [personaElement, promptElement] = createSuggestionItem(suggestion);
+          categoryList.appendChild(personaElement);
+          categoryList.appendChild(promptElement);
         });
+        
+        categoryContainer.appendChild(categoryList);
+        suggestionsContainer.appendChild(categoryContainer);
+      }
     });
-    promptElement.appendChild(copyButton);
+  } 
+  // For backward compatibility or if only regular suggestions are provided
+  else if (suggestions && suggestions.length > 0) {
+    const suggestionsListContainer = document.createElement('div');
+    suggestionsListContainer.className = 'duels-suggestions';
     
-    // Add toggle functionality
-    personaElement.addEventListener('click', () => {
-      personaElement.classList.toggle('duels-is-open');
-      promptElement.classList.toggle('duels-is-visible');
+    suggestions.forEach(suggestion => {
+      const [personaElement, promptElement] = createSuggestionItem(suggestion);
+      suggestionsListContainer.appendChild(personaElement);
+      suggestionsListContainer.appendChild(promptElement);
     });
     
-    suggestionsContainer.appendChild(personaElement);
-    suggestionsContainer.appendChild(promptElement);
-  });
+    suggestionsContainer.appendChild(suggestionsListContainer);
+  }
   
   return suggestionsContainer;
 }
@@ -422,14 +475,15 @@ export function createStepElement(step, currentStep) {
     stepElement.appendChild(mediaContainer);
   }
   
-  // Add suggestions if available
-  if (step.suggestions && step.suggestions.length > 0) {
+  // Add suggestions if available (either categorized or not)
+  if ((step.suggestionCategories && step.suggestionCategories.length > 0) || 
+      (step.suggestions && step.suggestions.length > 0)) {
     const suggestionsTitle = document.createElement('h4');
     suggestionsTitle.className = 'duels-suggestions-title';
     suggestionsTitle.textContent = 'Suggestions:';
     stepElement.appendChild(suggestionsTitle);
     
-    const suggestionsList = createSuggestionsList(step.suggestions);
+    const suggestionsList = createSuggestionsList(step.suggestions, step.suggestionCategories);
     if (suggestionsList) {
       stepElement.appendChild(suggestionsList);
     }
@@ -507,8 +561,8 @@ export function createAccordionElement(step, currentStep, forceActiveSteps = [])
     stepContent.appendChild(mediaContainer);
   }
   
-  // Add suggestions if available
-  const suggestionsList = createSuggestionsList(step.suggestions);
+  // Add suggestions if available (either categorized or not)
+  const suggestionsList = createSuggestionsList(step.suggestions, step.suggestionCategories);
   if (suggestionsList) {
     stepContent.appendChild(suggestionsList);
   }
