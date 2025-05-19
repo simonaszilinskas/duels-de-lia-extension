@@ -53,7 +53,7 @@
           </div>
           
           <div class="duelsia-footer-link">
-            <a href="#" id="duelsia-ultimate-link">Le jeu en vaut-il la chandelle ?</a>
+            <a href="#" id="duelsia-ultimate-link">Débat final</a>
           </div>
         </div>
         
@@ -80,6 +80,12 @@
     panel.querySelector('.duelsia-close-content').addEventListener('click', toggleModal);
     panel.querySelector('.duelsia-back-button').addEventListener('click', showMainView);
     panel.querySelector('.duelsia-dropdown-container').addEventListener('click', toggleDropdown);
+    
+    // Add debate final click handler
+    panel.querySelector('#duelsia-ultimate-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      showDebateFinal();
+    });
     
     // Setup overlay
     setupOverlay();
@@ -567,6 +573,45 @@
       initialY = currentY;
       isDragging = false;
     }
+  }
+  
+  // Show debate final screen
+  function showDebateFinal() {
+    currentView = 'content';
+    
+    const content = `
+      <div class="duelsia-debate-final">
+        <h2 class="duelsia-main-question">Le jeu en vaut-il la chandelle ?</h2>
+        
+        <div class="duelsia-explanation">
+          <p>Cette question centrale invite à réfléchir sur le retour sur investissement de l'IA dans votre organisation. 
+          Est-ce que les bénéfices obtenus justifient les efforts, les coûts et les défis rencontrés ?</p>
+        </div>
+        
+        <div class="duelsia-session-recap">
+          <div class="duelsia-resource-item" id="duelsia-recap-btn">
+            <span class="duelsia-resource-emoji">📄</span>
+            <div class="duelsia-resource-content">
+              <h4>Récapitulatif de la session</h4>
+            </div>
+            <span class="duelsia-resource-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    document.getElementById('duelsia-content-title').textContent = 'Débat final';
+    document.getElementById('duelsia-content-display').innerHTML = content;
+    
+    // Add click handler for recap button
+    document.getElementById('duelsia-recap-btn').addEventListener('click', () => {
+      // Replace with your actual Google Drive PDF URL
+      const recapUrl = 'https://drive.google.com/file/d/YOUR_PDF_FILE_ID/view';
+      window.open(recapUrl, '_blank');
+    });
+    
+    document.querySelector('.duelsia-main-content').style.display = 'none';
+    document.querySelector('.duelsia-content-view').style.display = 'flex';
   }
   
   // Show error message
