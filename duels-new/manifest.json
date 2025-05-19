@@ -18,7 +18,7 @@
         "js/content-loader.js",
         "data/content-data.json"
       ],
-      "matches": ["https://www.comparia.beta.gouv.fr/arene/*"]
+      "matches": ["https://www.comparia.beta.gouv.fr/*"]
     }
   ],
   "icons": {
