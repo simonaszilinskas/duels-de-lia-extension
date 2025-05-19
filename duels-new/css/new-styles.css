@@ -1,7 +1,10 @@
 /* Duels de l'IA - New Design Based on Example */
 
+/* Import Marianne font */
+@import url('https://www.systeme-de-design.gouv.fr/fonts/marianne/marianne.css');
+
 body {
-  font-family: sans-serif;
+  font-family: 'Marianne', sans-serif;
 }
 
 /* Modal/Panel styling inspired by example */
@@ -20,6 +23,7 @@ body {
   visibility: visible;
   display: flex;
   flex-direction: column;
+  font-family: 'Marianne', sans-serif;
 }
 
 #duelsia-panel.duelsia-hidden {
