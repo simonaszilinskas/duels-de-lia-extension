@@ -16,8 +16,8 @@
           "description": "Échangez puis votez avec le public pour votre modèle préféré"
         },
         {
-          "title": "Terminez par le débat général",
-          "description": "Tous ensemble, débattez sur le sujet \"Le jeu en vaut-il la chandelle ?\" à travers des questions de relance"
+          "title": "Terminez par le débat final",
+          "description": "Tous ensemble, débattez sur la frugalité et l'utilité de l'IA conversationnelle"
         }
       ],
       "blocks": {
@@ -28,31 +28,31 @@
           "personas": [
             {
               "name": "Alex",
-              "emoji": "👩‍💻",
-              "profession": "Développeuse web",
-              "category": "Aide technique",
-              "prompt": "J'ai un bug dans mon code React, aide-moi à debugger cette fonction de tri"
-            },
-            {
-              "name": "Tiffany",
-              "emoji": "🎨",
-              "profession": "Directrice artistique",
-              "category": "Création visuelle",
-              "prompt": "Génère-moi 5 idées de logos modernes pour une start-up écolo"
-            },
-            {
-              "name": "Adrien",
-              "emoji": "📈",
-              "profession": "Analyste marketing",
-              "category": "Stratégie business",
-              "prompt": "Analyse les tendances du marché des voitures électriques en Europe"
-            },
-            {
-              "name": "Sophie",
-              "emoji": "✏️",
-              "profession": "Rédactrice",
+              "emoji": "🤵‍♀️",
+              "profession": "Consultante en transition écologique",
               "category": "Rédaction",
-              "prompt": "Écris une introduction captivante pour un article sur l'IA éthique"
+              "prompt": "Reformule moi cette phrase - l'IA générative a un effet sur l'environnement donc il est nécessaire de l'utiliser de manière consciente."
+            },
+            {
+              "name": "Elias",
+              "emoji": "👨‍🏫",
+              "profession": "Professeur d'histoire-géographie",
+              "category": "Éducation",
+              "prompt": "J'enseigne l'histoire-géographie en terminale et je me rends compte que mes élèves décrochent systématiquement pendant mon chapitre sur la Guerre Froide. Je veux innover mais je n'ai que 2 heures par semaine avec eux. Propose-moi une activité pédagogique pour les captiver. 50 mots maximum."
+            },
+            {
+              "name": "Mei",
+              "emoji": "🏡",
+              "profession": "Maire d'une commune rurale",
+              "category": "Stratégie",
+              "prompt": "Je suis maire d'un village de 800 habitants et notre dernier commerce vient de fermer. Mes administrés âgés doivent maintenant faire 15km pour acheter du pain. Notre budget communal est déjà serré. Donne moi une idée d'action pour agir rapidement. 40 mots maximum."
+            },
+            {
+              "name": "Camille",
+              "emoji": "👩‍🍳",
+              "profession": "Chef étoilée",
+              "category": "Créativité",
+              "prompt": "Je dois créer un plat gastronomique autour du thème 'Retour du marché'. Contrainte: respect de la saisonnalité octobre-novembre. Fais moi trois propositions de plats sans détailler les recettes. Sois créatif, très concret et très synthétique."
             },
             {
               "name": "Thomas",
@@ -60,27 +60,6 @@
               "profession": "Data scientist",
               "category": "Analyse de données",
               "prompt": "Explique-moi comment fonctionne un algorithme de machine learning Random Forest"
-            },
-            {
-              "name": "Marie",
-              "emoji": "🩺",
-              "profession": "Médecin",
-              "category": "Santé",
-              "prompt": "Quelles sont les applications de l'IA dans le diagnostic médical ?"
-            },
-            {
-              "name": "Lucas",
-              "emoji": "🎮",
-              "profession": "Game designer",
-              "category": "Jeux vidéo",
-              "prompt": "Aide-moi à créer un système de progression équilibré pour mon RPG"
-            },
-            {
-              "name": "Emma",
-              "emoji": "📚",
-              "profession": "Enseignante",
-              "category": "Éducation",
-              "prompt": "Comment utiliser l'IA pour personnaliser l'apprentissage de mes élèves ?"
             }
           ]
         },
@@ -90,38 +69,30 @@
           "description": "Pour susciter le débat parmi les participants",
           "cards": [
             {
-              "theme": "Créativité",
-              "question": "L'IA peut-elle vraiment être créative ou ne fait-elle qu'imiter ?"
+              "theme": "Taille des modèles",
+              "question": "Seriez-vous prêts à sacrifier 10% de performance pour diviser par 4 l'empreinte environnementale de vos requêtes ? Où placez-vous la limite entre confort et responsabilité ?"
             },
             {
-              "theme": "Éthique",
-              "question": "Qui est responsable quand une IA prend une mauvaise décision ?"
+              "theme": "Moteurs de recherche",
+              "question": "Sachant qu'une recherche via une IA conversationnelle consomme bien plus qu'une requête Google, dans quels cas justifieriez-vous ce choix énergivore ?"
             },
             {
-              "theme": "Avenir",
-              "question": "Dans 10 ans, quel métier aura disparu à cause de l'IA ?"
+              "theme": "Prompts",
+              "question": "Peut-on réduire concrètement l'empreinte carbone de l'IA en apprenant à mieux formuler nos prompts ? Faut-il en faire un enjeu de formation ?"
             },
             {
-              "theme": "Autonomie",
-              "question": "Faut-il donner des droits aux intelligences artificielles avancées ?"
+              "theme": "Responsabilité",
+              "question": "La sobriété numérique dans l’IA devrait-elle être portée par les utilisateurs, imposée par les régulateurs, ou conçue en amont par les entreprises ? Qui doit vraiment agir ?"
             },
             {
-              "theme": "Société",
-              "question": "L'IA creuse-t-elle les inégalités ou peut-elle les réduire ?"
+              "theme": "Frugalité et usages",
+              "question": "Si certaines fonctionnalités d’IA (génération d’images, résumés, etc.) avaient une empreinte carbone élevée, seriez-vous prêts à y renoncer ? Pour quels usages diriez-vous non ?"
             },
             {
-              "theme": "Confiance",
-              "question": "Peut-on faire confiance à une IA pour prendre des décisions médicales ?"
-            },
-            {
-              "theme": "Éducation",
-              "question": "L'IA va-t-elle remplacer les enseignants ou les assister ?"
-            },
-            {
-              "theme": "Humanité",
-              "question": "Qu'est-ce qui restera uniquement humain face à l'IA ?"
+              "theme": "Frugalité et usages",
+              "question": "Doit-on restreindre les usages créatifs ou ludiques de l’IA — comme écrire des poèmes ou jouer avec elle — au nom de la sobriété écologique ?"
             }
-          ]
+          ]       
         },
         "ressources": {
           "icon": "📚",
@@ -130,38 +101,38 @@
           "items": [
             {
               "emoji": "📊",
-              "title": "Présentation générale sur l'IA",
-              "url": "https://drive.google.com/file/d/1GSzqbH2fZ5N7FLP7l3gOygmrZqLqZF6U/view?usp=drive_link",
+              "title": "Pourquoi les IA consomment-elles de l'électricité ?",
+              "url": "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/preview",
               "type": "google-drive"
             },
             {
               "emoji": "📈",
-              "title": "Guide du facilitateur",
-              "url": "https://drive.google.com/file/d/1ExampleFileId123/view?usp=sharing",
+              "title": "Qu'est-ce que la taille d'un modèle ?",
+              "url": "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/preview",
               "type": "google-drive"
             },
             {
               "emoji": "🎮",
-              "title": "Activités ludiques autour de l'IA",
-              "url": "https://example.com/activites-ludiques-ia.pdf",
-              "type": "external"
+              "title": "ChatGPT ou Google : lequel est plus frugal ?",
+              "url": "https://drive.google.com/file/d/1GSzqbH2fZ5N7FLP7l3gOygmrZqLqZF6U/preview",
+              "type": "google-drive"
             },
             {
               "emoji": "📚",
-              "title": "Bibliographie recommandée",
-              "url": "https://drive.google.com/file/d/1AnotherExample456/view?usp=sharing",
+              "title": "Qu'est-ce qu'un modèle de raisonnement ?",
+              "url": "https://drive.google.com/file/d/1JCnZaZaklBEzqQrxlML8Drenf-1rmJl5/preview",
               "type": "google-drive"
             },
             {
               "emoji": "🎯",
-              "title": "Modèles de débats",
-              "url": "https://example.com/modeles-debats.html",
+              "title": "Qui consomme plus : entraîner ou utiliser une IA ?",
+              "url": "https://drive.google.com/file/d/16Hdl25gSUcWA_lxbC3axBxM84D2F7MUs/preview",
               "type": "external"
             },
             {
               "emoji": "🔧",
-              "title": "Kit d'animation",
-              "url": "https://drive.google.com/file/d/1KitAnimation789/view?usp=sharing",
+              "title": "DeepSeek est-il frugal ?",
+              "url": "https://drive.google.com/file/d/149mO0TybVyGorvljV4nY0MXHE9Sf6y_1/preview",
               "type": "google-drive"
             }
           ]
