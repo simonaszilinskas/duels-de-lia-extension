@@ -337,16 +337,21 @@
                 <div class="duelsia-persona-details">
                   <span class="duelsia-persona-name">${persona.name}</span>
                   <span class="duelsia-persona-profession">${persona.profession}</span>
+                  <span class="duelsia-persona-category-inline">${persona.category}</span>
                 </div>
               </div>
               <span class="duelsia-persona-arrow">⌄</span>
             </div>
             <div class="duelsia-persona-content" id="persona-content-${index}">
-              <div class="duelsia-persona-category">${persona.category}</div>
               <div class="duelsia-persona-tags">
                 ${persona.tags.map(tag => `<span class="duelsia-tag">${tag}</span>`).join('')}
               </div>
-              <div class="duelsia-persona-prompt">"${persona.prompt}"</div>
+              <div class="duelsia-persona-prompt-container">
+                <div class="duelsia-persona-prompt">${persona.prompt}</div>
+                <button class="duelsia-copy-btn" data-prompt="${persona.prompt.replace(/"/g, '&quot;')}">
+                  Copier
+                </button>
+              </div>
             </div>
           </div>
         `).join('')}
@@ -361,6 +366,31 @@
         const index = header.dataset.index;
         togglePersona(index);
       });
+    });
+    
+    // Add copy button handlers
+    document.querySelectorAll('.duelsia-copy-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const prompt = btn.dataset.prompt;
+        copyToClipboard(prompt);
+        
+        // Update button text temporarily
+        const originalText = btn.textContent;
+        btn.textContent = 'Copié!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 1500);
+      });
+    });
+  }
+  
+  // Copy text to clipboard
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      // Optional: Show a success message
+    }).catch(err => {
+      console.error('Failed to copy:', err);
     });
   }
   
