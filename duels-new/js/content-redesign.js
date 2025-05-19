@@ -598,6 +598,12 @@
           </div>
         </div>
       </div>
+      <div class="duelsia-pdf-overlay" id="duelsia-pdf-overlay" style="display: none;">
+        <div class="duelsia-pdf-container">
+          <button class="duelsia-pdf-close" id="duelsia-pdf-close">✕</button>
+          <iframe id="duelsia-pdf-frame" src="" frameborder="0"></iframe>
+        </div>
+      </div>
     `;
     
     document.getElementById('duelsia-content-title').textContent = 'Débat final';
@@ -606,8 +612,34 @@
     // Add click handler for recap button
     document.getElementById('duelsia-recap-btn').addEventListener('click', () => {
       const recapUrl = 'https://drive.google.com/file/d/1dvEtIEickBAgk5RpQ5ljxRg02hAbid6t/view?usp=drive_link';
-      window.open(recapUrl, '_blank');
+      // Extract file ID and convert to embed URL
+      const fileId = recapUrl.match(/d\/([a-zA-Z0-9-_]+)/)?.[1];
+      if (fileId) {
+        const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+        openPdfOverlay(embedUrl);
+      } else {
+        // Fallback to opening in new tab
+        window.open(recapUrl, '_blank');
+      }
     });
+    
+    // Close overlay handler
+    const closeBtn = document.getElementById('duelsia-pdf-close');
+    const overlay = document.getElementById('duelsia-pdf-overlay');
+    
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        closePdfOverlay();
+      });
+    }
+    
+    if (overlay) {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          closePdfOverlay();
+        }
+      });
+    }
     
     document.querySelector('.duelsia-main-content').style.display = 'none';
     document.querySelector('.duelsia-content-view').style.display = 'flex';
