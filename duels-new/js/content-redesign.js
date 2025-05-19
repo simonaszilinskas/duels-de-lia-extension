@@ -35,6 +35,7 @@
               emoji: "👩‍💻",
               profession: "Développeuse web",
               category: "Aide technique",
+              tags: ["Debug", "Code", "Clarification"],
               prompt: "J'ai un bug dans mon code React, aide-moi à debugger cette fonction de tri"
             },
             {
@@ -42,6 +43,7 @@
               emoji: "🎨",
               profession: "Directrice artistique",
               category: "Création visuelle",
+              tags: ["Création", "Design", "Idéation"],
               prompt: "Génère-moi 5 idées de logos modernes pour une start-up écolo"
             },
             {
@@ -49,6 +51,7 @@
               emoji: "📈",
               profession: "Analyste marketing",
               category: "Stratégie business",
+              tags: ["Analyse", "Marketing", "Recherche"],
               prompt: "Analyse les tendances du marché des voitures électriques en Europe"
             },
             {
@@ -56,6 +59,7 @@
               emoji: "✏️",
               profession: "Rédactrice",
               category: "Rédaction",
+              tags: ["Écriture", "Création", "Communication"],
               prompt: "Écris une introduction captivante pour un article sur l'IA éthique"
             },
             {
@@ -63,6 +67,7 @@
               emoji: "🧮",
               profession: "Data scientist",
               category: "Analyse de données",
+              tags: ["Clarification", "Formation", "Technique"],
               prompt: "Explique-moi comment fonctionne un algorithme de machine learning Random Forest"
             },
             {
@@ -70,6 +75,7 @@
               emoji: "🩺",
               profession: "Médecin",
               category: "Santé",
+              tags: ["Information", "Recherche", "Analyse"],
               prompt: "Quelles sont les applications de l'IA dans le diagnostic médical ?"
             },
             {
@@ -77,6 +83,7 @@
               emoji: "🎮",
               profession: "Game designer",
               category: "Jeux vidéo",
+              tags: ["Création", "Conception", "Stratégie"],
               prompt: "Aide-moi à créer un système de progression équilibré pour mon RPG"
             },
             {
@@ -84,6 +91,7 @@
               emoji: "📚",
               profession: "Enseignante",
               category: "Éducation",
+              tags: ["Pédagogie", "Innovation", "Stratégie"],
               prompt: "Comment utiliser l'IA pour personnaliser l'apprentissage de mes élèves ?"
             }
           ],
@@ -323,7 +331,7 @@
       <div class="duelsia-personas-list">
         ${personas.map((persona, index) => `
           <div class="duelsia-persona-item" id="persona-${index}">
-            <div class="duelsia-persona-header" onclick="togglePersona(${index})">
+            <div class="duelsia-persona-header" data-index="${index}">
               <div class="duelsia-persona-info">
                 <span class="duelsia-persona-emoji">${persona.emoji}</span>
                 <div class="duelsia-persona-details">
@@ -333,8 +341,11 @@
               </div>
               <span class="duelsia-persona-arrow">⌄</span>
             </div>
-            <div class="duelsia-persona-content" id="persona-content-${index}" style="display: none;">
+            <div class="duelsia-persona-content" id="persona-content-${index}">
               <div class="duelsia-persona-category">${persona.category}</div>
+              <div class="duelsia-persona-tags">
+                ${persona.tags.map(tag => `<span class="duelsia-tag">${tag}</span>`).join('')}
+              </div>
               <div class="duelsia-persona-prompt">"${persona.prompt}"</div>
             </div>
           </div>
@@ -343,6 +354,14 @@
     `;
     
     document.getElementById('duelsia-content-display').innerHTML = content;
+    
+    // Add click handlers after inserting the content
+    document.querySelectorAll('.duelsia-persona-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const index = header.dataset.index;
+        togglePersona(index);
+      });
+    });
   }
   
   // Toggle persona display
@@ -350,12 +369,12 @@
     const content = document.getElementById(`persona-content-${index}`);
     const arrow = document.querySelector(`#persona-${index} .duelsia-persona-arrow`);
     
-    if (content.style.display === 'none') {
-      content.style.display = 'block';
-      arrow.classList.add('rotate');
-    } else {
-      content.style.display = 'none';
+    if (content.classList.contains('show')) {
+      content.classList.remove('show');
       arrow.classList.remove('rotate');
+    } else {
+      content.classList.add('show');
+      arrow.classList.add('rotate');
     }
   }
   
@@ -486,9 +505,6 @@
     // Create UI elements
     createFAB();
     createModal();
-    
-    // Make togglePersona available globally
-    window.togglePersona = togglePersona;
   }
 
   // Initialize when DOM is ready

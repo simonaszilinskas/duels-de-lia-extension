@@ -290,6 +290,8 @@ body {
   flex: 1;
   padding: 1.5rem;
   overflow-y: auto;
+  max-height: calc(100vh - 200px);
+  min-height: 0;
 }
 
 /* FAB Button - keep similar style */
@@ -451,6 +453,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overflow-y: auto;
+  max-height: calc(100vh - 250px);
+  padding: 4px;
 }
 
 .duelsia-persona-item {
@@ -510,9 +515,14 @@ body {
 }
 
 .duelsia-persona-content {
+  display: none;
   padding: 0 16px 16px;
-  animation: slideDown 0.3s ease-in-out;
   border-top: 1px solid #e5e7eb;
+}
+
+.duelsia-persona-content.show {
+  display: block;
+  animation: slideDown 0.3s ease-in-out;
 }
 
 .duelsia-persona-category {
@@ -522,6 +532,22 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 12px 0 8px;
+}
+
+.duelsia-persona-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.duelsia-tag {
+  background: #e0e7ff;
+  color: #715CF6;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .duelsia-persona-prompt {
