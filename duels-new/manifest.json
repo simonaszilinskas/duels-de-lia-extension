@@ -13,7 +13,11 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["css/new-styles.css"],
+      "resources": [
+        "css/new-styles.css",
+        "js/content-loader.js",
+        "data/content-data.json"
+      ],
       "matches": ["<all_urls>"]
     }
   ],

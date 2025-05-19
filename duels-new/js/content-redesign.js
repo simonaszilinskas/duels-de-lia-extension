@@ -2,173 +2,9 @@
 (function() {
   'use strict';
   
-  // Content data embedded directly
-  const CONTENT_DATA = {
-    'comment-se-deroule': {
-      title: "Comment se déroule un duel ?",
-      steps: [
-        {
-          title: "Choisissez David contre Goliath",
-          description: "Ce mode permet de comparer un petit modèle économe avec un grand modèle"
-        },
-        {
-          title: "Envoyez votre prompt",
-          description: "Sélectionnez le parmi les suggestions de prompts ou co-construisez le avec le public"
-        },
-        {
-          title: "Examinez les réponses et votez",
-          description: "Échangez puis votez avec le public pour votre modèle préféré"
-        },
-        {
-          title: "Terminez par le débat général",
-          description: "Tous ensemble, débattez sur le sujet \"Le jeu en vaut-il la chandelle ?\" à travers des questions de relance"
-        }
-      ],
-      blocks: {
-        prompts: {
-          icon: "✍️",
-          title: "Prompts",
-          description: "Liste de prompts prêts à l'usage",
-          personas: [
-            {
-              name: "Alex",
-              emoji: "👩‍💻",
-              profession: "Développeuse web",
-              category: "Aide technique",
-              prompt: "J'ai un bug dans mon code React, aide-moi à debugger cette fonction de tri"
-            },
-            {
-              name: "Tiffany",
-              emoji: "🎨",
-              profession: "Directrice artistique",
-              category: "Création visuelle",
-              prompt: "Génère-moi 5 idées de logos modernes pour une start-up écolo"
-            },
-            {
-              name: "Adrien",
-              emoji: "📈",
-              profession: "Analyste marketing",
-              category: "Stratégie business",
-              prompt: "Analyse les tendances du marché des voitures électriques en Europe"
-            },
-            {
-              name: "Sophie",
-              emoji: "✏️",
-              profession: "Rédactrice",
-              category: "Rédaction",
-              prompt: "Écris une introduction captivante pour un article sur l'IA éthique"
-            },
-            {
-              name: "Thomas",
-              emoji: "🧮",
-              profession: "Data scientist",
-              category: "Analyse de données",
-              prompt: "Explique-moi comment fonctionne un algorithme de machine learning Random Forest"
-            },
-            {
-              name: "Marie",
-              emoji: "🩺",
-              profession: "Médecin",
-              category: "Santé",
-              prompt: "Quelles sont les applications de l'IA dans le diagnostic médical ?"
-            },
-            {
-              name: "Lucas",
-              emoji: "🎮",
-              profession: "Game designer",
-              category: "Jeux vidéo",
-              prompt: "Aide-moi à créer un système de progression équilibré pour mon RPG"
-            },
-            {
-              name: "Emma",
-              emoji: "📚",
-              profession: "Enseignante",
-              category: "Éducation",
-              prompt: "Comment utiliser l'IA pour personnaliser l'apprentissage de mes élèves ?"
-            }
-          ],
-          content: null // Will be generated dynamically
-        },
-        cartes: {
-          icon: "🃏",
-          title: "Cartes débat",
-          description: "Pour susciter le débat parmi les participants",
-          cards: [
-            {
-              theme: "Créativité",
-              question: "L'IA peut-elle vraiment être créative ou ne fait-elle qu'imiter ?"
-            },
-            {
-              theme: "Éthique",
-              question: "Qui est responsable quand une IA prend une mauvaise décision ?"
-            },
-            {
-              theme: "Avenir",
-              question: "Dans 10 ans, quel métier aura disparu à cause de l'IA ?"
-            },
-            {
-              theme: "Autonomie",
-              question: "Faut-il donner des droits aux intelligences artificielles avancées ?"
-            },
-            {
-              theme: "Société",
-              question: "L'IA creuse-t-elle les inégalités ou peut-elle les réduire ?"
-            },
-            {
-              theme: "Confiance",
-              question: "Peut-on faire confiance à une IA pour prendre des décisions médicales ?"
-            },
-            {
-              theme: "Éducation",
-              question: "L'IA va-t-elle remplacer les enseignants ou les assister ?"
-            },
-            {
-              theme: "Humanité",
-              question: "Qu'est-ce qui restera uniquement humain face à l'IA ?"
-            }
-          ],
-          content: null // Will be generated dynamically
-        },
-        ressources: {
-          icon: "📚",
-          title: "Ressources",
-          description: "Slides complètes pour aller plus loin",
-          content: `
-            <h3>Ressources pédagogiques</h3>
-            <ul>
-              <li>📊 <a href="#" target="_blank">Présentation générale sur l'IA</a></li>
-              <li>📈 <a href="#" target="_blank">Guide du facilitateur</a></li>
-              <li>🎮 <a href="#" target="_blank">Activités ludiques autour de l'IA</a></li>
-              <li>📚 <a href="#" target="_blank">Bibliographie recommandée</a></li>
-            </ul>
-          `
-        },
-        faq: {
-          icon: "❓",
-          title: "FAQ", 
-          description: "Réponses aux questions générales sur l'IA",
-          content: `
-            <h3>Questions fréquentes</h3>
-            <div style="display: grid; gap: 16px;">
-              <div>
-                <h4 style="color: #715CF6;">Q: Qu'est-ce qu'un duel de l'IA ?</h4>
-                <p>R: Un atelier participatif où les participants débattent des enjeux de l'IA de manière ludique et accessible.</p>
-              </div>
-              <div>
-                <h4 style="color: #715CF6;">Q: Combien de temps dure un duel ?</h4>
-                <p>R: Entre 45 minutes et 2 heures selon le format choisi.</p>
-              </div>
-              <div>
-                <h4 style="color: #715CF6;">Q: Faut-il des connaissances techniques ?</h4>
-                <p>R: Non, les duels sont conçus pour être accessibles à tous les publics.</p>
-              </div>
-            </div>
-          `
-        }
-      },
-      ultimateQuestion: "Le jeu en vaut-il la chandelle ?"
-    }
-  };
+  // Content data will be loaded from JSON
+  let CONTENT_DATA = null;
+  let isLoading = true;
 
   let currentView = 'main';
   let currentSection = 'comment-se-deroule';
@@ -204,13 +40,8 @@
             <span class="duelsia-dropdown-icon">⌄</span>
             
             <div class="duelsia-dropdown-content" id="duelsia-dropdown-content">
-              <ol>
-                ${CONTENT_DATA['comment-se-deroule'].steps.map(step => `
-                  <li>
-                    <strong>${step.title}</strong>
-                    <p>${step.description}</p>
-                  </li>
-                `).join('')}
+              <ol id="duelsia-steps-list">
+                <li>Chargement des étapes...</li>
               </ol>
             </div>
           </div>
@@ -218,7 +49,7 @@
           <div class="duelsia-overlay" id="duelsia-overlay"></div>
           
           <div class="duelsia-card-grid" id="duelsia-cards">
-            <!-- Cards will be dynamically inserted here -->
+            <div class="duelsia-loading">Chargement des contenus...</div>
           </div>
           
           <div class="duelsia-footer-link">
@@ -252,17 +83,81 @@
     
     // Setup overlay
     setupOverlay();
+  }
+
+  // Load content data from JSON
+  async function loadContentData() {
+    try {
+      const response = await fetch(chrome.runtime.getURL('data/content-data.json'));
+      if (!response.ok) {
+        throw new Error(`Failed to load content: ${response.statusText}`);
+      }
+      
+      const data = await response.json();
+      CONTENT_DATA = data.duels;
+      isLoading = false;
+      
+      // Update UI with loaded content
+      updateUIWithContent();
+    } catch (error) {
+      console.error('Error loading content data:', error);
+      isLoading = false;
+      showError('Erreur de chargement des données');
+    }
+  }
+  
+  // Update UI with loaded content
+  function updateUIWithContent() {
+    if (!CONTENT_DATA || !CONTENT_DATA['comment-se-deroule']) {
+      showError('Données invalides');
+      return;
+    }
     
-    // Initial render
+    // Update steps list
+    const stepsList = document.getElementById('duelsia-steps-list');
+    if (stepsList && CONTENT_DATA['comment-se-deroule'].steps) {
+      stepsList.innerHTML = CONTENT_DATA['comment-se-deroule'].steps.map(step => `
+        <li>
+          <strong>${step.title}</strong>
+          <p>${step.description}</p>
+        </li>
+      `).join('');
+    }
+    
+    // Update ultimate question
+    const ultimateLink = document.getElementById('duelsia-ultimate-link');
+    if (ultimateLink && CONTENT_DATA['comment-se-deroule'].ultimateQuestion) {
+      ultimateLink.textContent = CONTENT_DATA['comment-se-deroule'].ultimateQuestion;
+    }
+    
+    // Render cards
     renderCards();
   }
 
   // Render cards based on current section
   function renderCards() {
     const cardsContainer = document.getElementById('duelsia-cards');
-    const sectionData = CONTENT_DATA[currentSection];
     
-    if (!sectionData) return;
+    if (!CONTENT_DATA) {
+      cardsContainer.innerHTML = `
+        <div class="duelsia-loading-cards">
+          ${[1, 2, 3, 4].map(() => `
+            <div class="duelsia-loading-card">
+              <div class="duelsia-skeleton"></div>
+              <div class="duelsia-skeleton"></div>
+              <div class="duelsia-skeleton"></div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      return;
+    }
+    
+    const sectionData = CONTENT_DATA[currentSection];
+    if (!sectionData) {
+      cardsContainer.innerHTML = '<div class="duelsia-error">Section non trouvée</div>';
+      return;
+    }
     
     const cardsHTML = Object.entries(sectionData.blocks).map(([key, block]) => `
       <div class="duelsia-card" data-block="${key}">
@@ -281,20 +176,26 @@
         showBlockContent(blockKey);
       });
     });
-    
-    // Update ultimate question link
-    const ultimateLink = document.getElementById('duelsia-ultimate-link');
-    if (sectionData.ultimateQuestion) {
-      ultimateLink.textContent = sectionData.ultimateQuestion;
-    }
   }
 
   // Show block content
   function showBlockContent(blockKey) {
-    const sectionData = CONTENT_DATA[currentSection];
-    const block = sectionData.blocks[blockKey];
+    if (!CONTENT_DATA) {
+      showError('Les données sont en cours de chargement...');
+      return;
+    }
     
-    if (!block) return;
+    const sectionData = CONTENT_DATA[currentSection];
+    if (!sectionData || !sectionData.blocks) {
+      showError('Section non trouvée');
+      return;
+    }
+    
+    const block = sectionData.blocks[blockKey];
+    if (!block) {
+      showError('Contenu non disponible');
+      return;
+    }
     
     currentBlock = blockKey;
     currentView = 'content';
@@ -306,8 +207,12 @@
       showRandomCard();
     } else if (blockKey === 'prompts') {
       showPersonas();
+    } else if (blockKey === 'faq') {
+      showFAQ();
+    } else if (blockKey === 'ressources') {
+      showRessources();
     } else {
-      document.getElementById('duelsia-content-display').innerHTML = block.content;
+      document.getElementById('duelsia-content-display').innerHTML = block.content || 'Contenu non disponible';
     }
     
     document.querySelector('.duelsia-main-content').style.display = 'none';
@@ -317,7 +222,7 @@
   // Show personas
   function showPersonas() {
     const sectionData = CONTENT_DATA[currentSection];
-    const personas = sectionData.blocks.prompts.personas;
+    const personas = sectionData.blocks.prompts.personas || [];
     
     const content = `
       <div class="duelsia-personas-list">
@@ -383,6 +288,152 @@
     });
   }
   
+  // Show FAQ section
+  function showFAQ() {
+    const sectionData = CONTENT_DATA[currentSection];
+    const questions = sectionData.blocks.faq.questions || [];
+    
+    const content = `
+      <div class="duelsia-faq-list">
+        ${questions.map((item, index) => `
+          <div class="duelsia-faq-item" id="faq-${index}">
+            <div class="duelsia-faq-header" data-index="${index}">
+              <div class="duelsia-faq-info">
+                <span class="duelsia-faq-emoji">${item.emoji}</span>
+                <div class="duelsia-faq-question">
+                  ${item.question}
+                </div>
+              </div>
+              <span class="duelsia-faq-arrow">⌄</span>
+            </div>
+            <div class="duelsia-faq-content" id="faq-content-${index}">
+              <div class="duelsia-faq-answer">
+                ${item.answer}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    
+    document.getElementById('duelsia-content-display').innerHTML = content;
+    
+    // Add click handlers after inserting the content
+    document.querySelectorAll('.duelsia-faq-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const index = header.dataset.index;
+        toggleFAQ(index);
+      });
+    });
+  }
+  
+  // Toggle FAQ display
+  function toggleFAQ(index) {
+    const content = document.getElementById(`faq-content-${index}`);
+    const arrow = document.querySelector(`#faq-${index} .duelsia-faq-arrow`);
+    
+    if (content.classList.contains('show')) {
+      content.classList.remove('show');
+      arrow.classList.remove('rotate');
+    } else {
+      content.classList.add('show');
+      arrow.classList.add('rotate');
+    }
+  }
+  
+  // Show resources section
+  function showRessources() {
+    const sectionData = CONTENT_DATA[currentSection];
+    const resources = sectionData.blocks.ressources.items || [];
+    
+    const content = `
+      <div class="duelsia-resources-list">
+        ${resources.map((resource, index) => `
+          <div class="duelsia-resource-item" data-index="${index}">
+            <span class="duelsia-resource-emoji">${resource.emoji}</span>
+            <div class="duelsia-resource-content">
+              <h4>${resource.title}</h4>
+            </div>
+            <span class="duelsia-resource-arrow">→</span>
+          </div>
+        `).join('')}
+      </div>
+      <div class="duelsia-pdf-overlay" id="duelsia-pdf-overlay" style="display: none;">
+        <div class="duelsia-pdf-container">
+          <button class="duelsia-pdf-close" id="duelsia-pdf-close">✕</button>
+          <iframe id="duelsia-pdf-frame" src="" frameborder="0"></iframe>
+        </div>
+      </div>
+    `;
+    
+    document.getElementById('duelsia-content-display').innerHTML = content;
+    
+    // Add click handlers after inserting the content
+    document.querySelectorAll('.duelsia-resource-item').forEach((item, index) => {
+      item.addEventListener('click', () => {
+        handleResourceClick(resources[index]);
+      });
+    });
+    
+    // Close overlay handler
+    const closeBtn = document.getElementById('duelsia-pdf-close');
+    const overlay = document.getElementById('duelsia-pdf-overlay');
+    
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        closePdfOverlay();
+      });
+    }
+    
+    if (overlay) {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          closePdfOverlay();
+        }
+      });
+    }
+  }
+  
+  // Handle resource click
+  function handleResourceClick(resource) {
+    if (resource.type === 'google-drive') {
+      // Convert Google Drive view link to embed link
+      const fileId = resource.url.match(/d\/([a-zA-Z0-9-_]+)/)?.[1];
+      if (fileId) {
+        const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+        openPdfOverlay(embedUrl);
+      } else {
+        // Fallback to opening in new tab if can't extract file ID
+        window.open(resource.url, '_blank');
+      }
+    } else {
+      // Open external links in new tab
+      window.open(resource.url, '_blank');
+    }
+  }
+  
+  // Open PDF overlay
+  function openPdfOverlay(embedUrl) {
+    const overlay = document.getElementById('duelsia-pdf-overlay');
+    const frame = document.getElementById('duelsia-pdf-frame');
+    
+    if (overlay && frame) {
+      frame.src = embedUrl;
+      overlay.style.display = 'flex';
+    }
+  }
+  
+  // Close PDF overlay
+  function closePdfOverlay() {
+    const overlay = document.getElementById('duelsia-pdf-overlay');
+    const frame = document.getElementById('duelsia-pdf-frame');
+    
+    if (overlay && frame) {
+      overlay.style.display = 'none';
+      frame.src = '';
+    }
+  }
+  
   // Toggle persona display
   function togglePersona(index) {
     const content = document.getElementById(`persona-content-${index}`);
@@ -400,7 +451,12 @@
   // Show random debate card
   function showRandomCard() {
     const sectionData = CONTENT_DATA[currentSection];
-    const cards = sectionData.blocks.cartes.cards;
+    const cards = sectionData.blocks.cartes.cards || [];
+    
+    if (cards.length === 0) {
+      showError('Aucune carte disponible');
+      return;
+    }
     
     // Get a different card than the last one
     let randomIndex;
@@ -512,18 +568,41 @@
       isDragging = false;
     }
   }
+  
+  // Show error message
+  function showError(message) {
+    const content = `
+      <div class="duelsia-error-container">
+        <div class="duelsia-error-icon">⚠️</div>
+        <div class="duelsia-error-message">${message}</div>
+        <button class="duelsia-retry-btn" onclick="location.reload()">Réessayer</button>
+      </div>
+    `;
+    
+    const display = document.getElementById('duelsia-content-display');
+    if (display) {
+      display.innerHTML = content;
+    }
+  }
 
   // Initialize extension
-  function initialize() {
-    // Create styles
-    const style = document.createElement('link');
-    style.rel = 'stylesheet';
-    style.href = chrome.runtime.getURL('css/new-styles.css');
-    document.head.appendChild(style);
-    
-    // Create UI elements
-    createFAB();
-    createModal();
+  async function initialize() {
+    try {
+      // Create styles
+      const style = document.createElement('link');
+      style.rel = 'stylesheet';
+      style.href = chrome.runtime.getURL('css/new-styles.css');
+      document.head.appendChild(style);
+      
+      // Create UI elements
+      createFAB();
+      createModal();
+      
+      // Load content data
+      await loadContentData();
+    } catch (error) {
+      console.error('Initialization error:', error);
+    }
   }
 
   // Initialize when DOM is ready
