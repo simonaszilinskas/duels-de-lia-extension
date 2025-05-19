@@ -94,6 +94,7 @@ body {
   font-weight: 600;
   position: relative;
   z-index: 2;
+  color: #715CF6;
 }
 
 .duelsia-dropdown-icon {
@@ -239,22 +240,39 @@ body {
   line-height: 1.4;
 }
 
-/* Footer link section */
+/* Footer link section - Full button style */
 .duelsia-footer-link {
-  text-align: center;
   padding: 1rem;
-  border-top: 1px solid #eee;
+  margin-top: 0.5rem;
 }
 
 .duelsia-footer-link a {
-  color: #715CF6;
+  color: white;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  display: block;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background-color: #715CF6;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(113, 92, 246, 0.2);
 }
 
 .duelsia-footer-link a:hover {
-  text-decoration: underline;
+  background-color: #f7f6ff;
+  color: #715CF6;
+  border: 2px solid #715CF6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(113, 92, 246, 0.3);
+  padding: 14px 22px; /* Adjust padding to account for border */
+}
+
+.duelsia-footer-link a:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(113, 92, 246, 0.2);
 }
 
 /* Content view */
@@ -299,13 +317,13 @@ body {
 .duelsia-content-nav h3 {
   margin: 0;
   font-size: 18px;
-  color: #1f2937;
+  color: #715CF6;
   flex: 1;
 }
 
 .duelsia-content-display {
   flex: 1;
-  padding: 1.5rem;
+  padding: 1rem;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
@@ -385,7 +403,7 @@ body {
 /* Style adjustments for content */
 .duelsia-content-display h3 {
   margin-top: 0;
-  color: #1f2937;
+  color: #715CF6;
   font-size: 18px;
 }
 
@@ -418,15 +436,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  padding: 1rem;
+  gap: 1rem;
+  padding: 0.5rem;
 }
 
 .duelsia-debate-card {
   background: #f7f6ff;
   border: 2px solid #715CF6;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
   max-width: 400px;
   width: 100%;
@@ -440,14 +458,14 @@ body {
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .duelsia-debate-question {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #1f2937;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .duelsia-random-card-btn {
@@ -455,8 +473,8 @@ body {
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 10px 20px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -464,6 +482,42 @@ body {
 
 .duelsia-random-card-btn:hover {
   background-color: #5C49D9;
+}
+
+/* Opinion section styles */
+.duelsia-opinion-section {
+  width: 100%;
+  max-width: 400px;
+  margin: 0.75rem 0;
+}
+
+.duelsia-opinion-section label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.duelsia-opinion-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  transition: border-color 0.2s;
+  font-family: 'Marianne', sans-serif;
+}
+
+.duelsia-opinion-textarea:focus {
+  outline: none;
+  border-color: #715CF6;
+}
+
+.duelsia-opinion-textarea::placeholder {
+  color: #9ca3af;
 }
 
 /* Personas styles */
@@ -908,6 +962,56 @@ body {
   padding: 20px 20px 10px 20px;
   max-width: 600px;
   margin: 0 auto;
+}
+
+/* Radio options styles */
+.duelsia-radio-options {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.duelsia-radio-options h3 {
+  margin: 0 0 1rem 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.duelsia-radio-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.duelsia-radio-label:last-child {
+  margin-bottom: 0;
+}
+
+.duelsia-radio-label:hover {
+  background-color: #f3f4f6;
+}
+
+.duelsia-radio-input {
+  margin-top: 4px;
+  width: 16px;
+  height: 16px;
+  accent-color: #715CF6;
+  cursor: pointer;
+}
+
+.duelsia-radio-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #374151;
+  flex: 1;
 }
 
 .duelsia-main-question {

@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(rm:*)",
+      "Bash(git reset:*)",
+      "Bash(grep:*)",
+      "Bash(git rm:*)",
+      "Bash(git merge:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(sed:*)",
+      "Bash(git pull:*)",
+      "Bash(git config:*)",
+      "Bash(mv:*)",
+      "Bash(ls:*)",
+      "Bash(git remote remove:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(cp:*)",
+      "Bash(touch:*)",
+      "Bash(git clone:*)",
+      "Bash(git fetch:*)",
+      "Bash(find:*)",
+      "Bash(git clean:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(git restore:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git init:*)"
+    ],
+    "deny": []
+  }
+}

@@ -36,7 +36,7 @@
     panel.innerHTML = `
       <div class="duelsia-panel-content">
         <div class="duelsia-header duelsia-draggable">
-          <span>Aide facilitateur - Duel de l'IA</span>
+          <span>Bienvenue dans les duels de l'IA</span>
           <button class="duelsia-close">✕</button>
         </div>
         
@@ -59,7 +59,7 @@
           </div>
           
           <div class="duelsia-footer-link">
-            <a href="#" id="duelsia-ultimate-link">Débat final</a>
+            <a href="#" id="duelsia-ultimate-link">IA ou pas d'IA: telle est la question !</a>
           </div>
         </div>
         
@@ -485,6 +485,15 @@
           <div class="duelsia-debate-theme">${card.theme}</div>
           <div class="duelsia-debate-question">${card.question}</div>
         </div>
+        <div class="duelsia-opinion-section">
+          <label for="duelsia-group-opinion">Avis du groupe (optionnel):</label>
+          <textarea 
+            id="duelsia-group-opinion" 
+            class="duelsia-opinion-textarea"
+            placeholder="Notez ici les réflexions et l'avis du groupe sur cette question..."
+            rows="3"
+          ></textarea>
+        </div>
         <button class="duelsia-random-card-btn" id="duelsia-random-btn">
           Autre carte débat
         </button>
@@ -590,8 +599,23 @@
         <h2 class="duelsia-main-question">Le jeu en vaut-il la chandelle ?</h2>
         
         <div class="duelsia-explanation">
-          <p>La question invite à réfléchir sur le rapport utilité - coût environnemental de l'IA.
-          Est-ce que les réponses obtenues justifient l'impact en électricité, eau et matières premières ?</p>
+          <p>Il s'agit d'évaluer l'utilité et la pertinence des réponses des modèles au regard de leur consommation énergétique: les réponses obtenues justifient-elles l'impact en consommation de ressources et d'énergie ?</p>
+        </div>
+        
+        <div class="duelsia-radio-options">
+          <h3>Votre avis :</h3>
+          <label class="duelsia-radio-label">
+            <input type="radio" name="debate-opinion" value="yes" class="duelsia-radio-input">
+            <span class="duelsia-radio-text">Oui, les modèles d'IA me sont utiles par rapport à la demande et l'impact environnemental est acceptable</span>
+          </label>
+          <label class="duelsia-radio-label">
+            <input type="radio" name="debate-opinion" value="no" class="duelsia-radio-input">
+            <span class="duelsia-radio-text">Non, j'aurais pu me passer de l'assistance des modèles d'IA</span>
+          </label>
+          <label class="duelsia-radio-label">
+            <input type="radio" name="debate-opinion" value="complex" class="duelsia-radio-input">
+            <span class="duelsia-radio-text">Ce n'est pas si simple: l'assistance des modèles est utile mais l'impact environnemental me fait réfléchir</span>
+          </label>
         </div>
         
         <div class="duelsia-session-recap">
@@ -612,7 +636,7 @@
       </div>
     `;
     
-    document.getElementById('duelsia-content-title').textContent = 'Débat final';
+    document.getElementById('duelsia-content-title').textContent = 'IA ou pas d\'IA: telle est la question !';
     document.getElementById('duelsia-content-display').innerHTML = content;
     
     // Add click handler for recap button
@@ -650,7 +674,6 @@
     document.querySelector('.duelsia-main-content').style.display = 'none';
     document.querySelector('.duelsia-content-view').style.display = 'flex';
   }
-  
   // Show error message
   function showError(message) {
     const content = `

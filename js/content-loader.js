@@ -42,8 +42,8 @@
             title: "Comment se déroule un duel ?",
             steps: [
               {
-                title: "Choisissez David contre Goliath",
-                description: "Ce mode permet de comparer un petit modèle économe avec un grand modèle"
+                title: "Choisissez le mode de sélection des modèles",
+                description: "En sélectionnant David contre Goliath, un petit modèle sera confronté à un grand modèle"
               }
             ],
             blocks: {
