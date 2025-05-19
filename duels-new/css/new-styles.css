@@ -1,0 +1,325 @@
+/* Duels de l'IA - New Design Based on Example */
+
+body {
+  font-family: sans-serif;
+}
+
+/* Modal/Panel styling inspired by example */
+#duelsia-panel {
+  position: fixed;
+  top: 50%;
+  right: 50px;
+  width: 400px;
+  max-width: 400px;
+  height: auto;
+  max-height: 90vh;
+  background: white;
+  z-index: 999999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transform: translateY(-50%);
+  opacity: 1;
+  visibility: visible;
+  overflow: hidden;
+}
+
+#duelsia-panel.duelsia-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.duelsia-panel-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Header with purple background */
+.duelsia-header {
+  background-color: #715CF6;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  cursor: grab;
+  user-select: none;
+  position: relative;
+}
+
+.duelsia-header:active {
+  cursor: grabbing;
+}
+
+.duelsia-header h2 {
+  margin: 0;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.duelsia-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.duelsia-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Dropdown container */
+.duelsia-dropdown-container {
+  padding: 1rem;
+}
+
+.duelsia-dropdown-container select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+/* Tab content / Main content area */
+.duelsia-tab-content {
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Card grid inspired by example */
+.duelsia-blocks,
+.duelsia-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.duelsia-block,
+.duelsia-card {
+  background-color: #fefefe;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.duelsia-block:hover,
+.duelsia-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.duelsia-block-icon,
+.duelsia-emoji {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.duelsia-block-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+  margin: 0;
+}
+
+.duelsia-block h3,
+.duelsia-card h3 {
+  margin: 0.5rem 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.duelsia-block p,
+.duelsia-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Footer link section */
+.duelsia-footer-link {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.duelsia-footer-link a {
+  color: #715CF6;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.duelsia-footer-link a:hover {
+  text-decoration: underline;
+}
+
+/* Content view */
+.duelsia-content-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.duelsia-content-nav {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #f7f7f7;
+}
+
+.duelsia-back-button {
+  background: none;
+  border: none;
+  color: #715CF6;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.duelsia-back-button:hover {
+  background-color: rgba(113, 92, 246, 0.1);
+}
+
+.duelsia-content-nav h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #1f2937;
+  flex: 1;
+}
+
+.duelsia-content-display {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+/* FAB Button - keep similar style */
+#duelsia-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #715CF6;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 999998;
+  transition: all 0.3s ease;
+}
+
+#duelsia-fab:hover {
+  background-color: #5C49D9;
+  transform: scale(1.05);
+}
+
+/* Remove tabs - using dropdown instead */
+.duelsia-tabs {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #duelsia-panel {
+    width: 90%;
+    max-width: 380px;
+    right: 5%;
+    height: auto;
+    max-height: 80vh;
+  }
+  
+  .duelsia-blocks,
+  .duelsia-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Additional styling for the ultimate question section */
+.duelsia-ultimate-question {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #f7f6ff;
+  border: 2px solid #715CF6;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.duelsia-ultimate-question.hidden {
+  display: none;
+}
+
+.duelsia-ultimate-question p {
+  font-size: 16px;
+  color: #1f2937;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* Hide reveal button - not needed with new design */
+.duelsia-reveal {
+  display: none;
+}
+
+/* Style adjustments for content */
+.duelsia-content-display h3 {
+  margin-top: 0;
+  color: #1f2937;
+  font-size: 18px;
+}
+
+.duelsia-content-display ul {
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.duelsia-content-display a {
+  color: #715CF6;
+  text-decoration: none;
+}
+
+.duelsia-content-display a:hover {
+  text-decoration: underline;
+}
+
+/* For debugging section labels */
+.duelsia-section-label {
+  padding: 0.5rem 1rem;
+  background-color: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #4b5563;
+  font-size: 14px;
+}
