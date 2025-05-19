@@ -584,8 +584,8 @@
         <h2 class="duelsia-main-question">Le jeu en vaut-il la chandelle ?</h2>
         
         <div class="duelsia-explanation">
-          <p>Cette question centrale invite à réfléchir sur le retour sur investissement de l'IA dans votre organisation. 
-          Est-ce que les bénéfices obtenus justifient les efforts, les coûts et les défis rencontrés ?</p>
+          <p>La question invite à réfléchir sur le rapport utilité - coût environnemental de l'IA.
+          Est-ce que les réponses obtenues justifient l'impact en électricité, eau et matières premières ?</p>
         </div>
         
         <div class="duelsia-session-recap">
@@ -605,8 +605,7 @@
     
     // Add click handler for recap button
     document.getElementById('duelsia-recap-btn').addEventListener('click', () => {
-      // Replace with your actual Google Drive PDF URL
-      const recapUrl = 'https://drive.google.com/file/d/YOUR_PDF_FILE_ID/view';
+      const recapUrl = 'https://drive.google.com/file/d/1dvEtIEickBAgk5RpQ5ljxRg02hAbid6t/view?usp=drive_link';
       window.open(recapUrl, '_blank');
     });
     
