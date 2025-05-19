@@ -11,7 +11,7 @@ body {
   right: 50px;
   width: 450px;
   max-width: 450px;
-  height: auto;
+  height: 600px;
   max-height: 85vh;
   background: white;
   z-index: 999999;
@@ -32,12 +32,11 @@ body {
 }
 
 .duelsia-panel-content {
-  flex: 1;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   border-radius: 12px;
-  min-height: 0;
 }
 
 /* Header with purple background */
@@ -166,17 +165,16 @@ body {
 .duelsia-tab-content {
   padding: 0;
   flex: 1;
-  overflow-y: auto;
+  overflow: hidden;
   min-height: 0;
 }
 
 /* Main content wrapper */
 .duelsia-main-content {
-  position: relative;
-  flex: 1;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  overflow: hidden;
 }
 
 /* Card grid inspired by example */
@@ -186,6 +184,8 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   padding: 1rem;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .duelsia-block,
@@ -296,12 +296,10 @@ body {
 }
 
 .duelsia-content-display {
-  flex: 1;
+  height: calc(100% - 60px); /* Accounting for the nav header */
   padding: 1.5rem;
-  overflow-y: auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
 }
 
 /* FAB Button - keep similar style */
@@ -464,8 +462,8 @@ body {
   flex-direction: column;
   gap: 12px;
   overflow-y: auto;
-  flex: 1;
-  min-height: 0;
+  overflow-x: hidden;
+  height: 400px; /* Fixed height for scrolling */
   padding: 4px;
 }
 
