@@ -53,13 +53,6 @@
               "profession": "Chef étoilée",
               "category": "Créativité",
               "prompt": "Je dois créer un plat gastronomique autour du thème 'Retour du marché'. Contrainte: respect de la saisonnalité octobre-novembre. Fais moi trois propositions de plats sans détailler les recettes. Sois créatif, très concret et très synthétique."
-            },
-            {
-              "name": "Thomas",
-              "emoji": "🧮",
-              "profession": "Data scientist",
-              "category": "Analyse de données",
-              "prompt": "Explique-moi comment fonctionne un algorithme de machine learning Random Forest"
             }
           ]
         },
