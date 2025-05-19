@@ -6,6 +6,24 @@
   const CONTENT_DATA = {
     'comment-se-deroule': {
       title: "Comment se déroule un duel ?",
+      steps: [
+        {
+          title: "Choisissez David contre Goliath",
+          description: "Ce mode permet de comparer un petit modèle économe avec un grand modèle"
+        },
+        {
+          title: "Envoyez votre prompt",
+          description: "Sélectionnez le parmi les suggestions de prompts ou co-construisez le avec le public"
+        },
+        {
+          title: "Examinez les réponses et votez",
+          description: "Échangez puis votez avec le public pour votre modèle préféré"
+        },
+        {
+          title: "Terminez par le débat général",
+          description: "Tous ensemble, débattez sur le sujet \"Le jeu en vaut-il la chandelle ?\" à travers des questions de relance"
+        }
+      ],
       blocks: {
         prompts: {
           icon: "✍️",
@@ -112,10 +130,20 @@
         </div>
         
         <div class="duelsia-main-content">
-          <div class="duelsia-dropdown-container">
-            <select id="duelsia-section-select">
-              <option value="comment-se-deroule" selected>Comment se déroule un duel ?</option>
-            </select>
+          <div class="duelsia-dropdown-container" id="duelsia-dropdown">
+            <span>Comment se déroule un duel ?</span>
+            <span class="duelsia-dropdown-icon">⌄</span>
+          </div>
+          
+          <div class="duelsia-dropdown-content" id="duelsia-dropdown-content">
+            <ol>
+              ${CONTENT_DATA['comment-se-deroule'].steps.map(step => `
+                <li>
+                  <strong>${step.title}</strong>
+                  <p>${step.description}</p>
+                </li>
+              `).join('')}
+            </ol>
           </div>
           
           <div class="duelsia-card-grid" id="duelsia-cards">
@@ -149,7 +177,7 @@
     panel.querySelector('.duelsia-close').addEventListener('click', toggleModal);
     panel.querySelector('.duelsia-close-content').addEventListener('click', toggleModal);
     panel.querySelector('.duelsia-back-button').addEventListener('click', showMainView);
-    panel.querySelector('#duelsia-section-select').addEventListener('change', handleSectionChange);
+    panel.querySelector('.duelsia-dropdown-container').addEventListener('click', toggleDropdown);
     
     // Initial render
     renderCards();
@@ -213,10 +241,13 @@
     document.querySelector('.duelsia-content-view').style.display = 'none';
   }
 
-  // Handle section change
-  function handleSectionChange(e) {
-    currentSection = e.target.value;
-    renderCards();
+  // Toggle dropdown content
+  function toggleDropdown() {
+    const content = document.getElementById('duelsia-dropdown-content');
+    const icon = document.querySelector('.duelsia-dropdown-icon');
+    
+    content.classList.toggle('show');
+    icon.classList.toggle('rotate');
   }
 
   // Toggle modal visibility

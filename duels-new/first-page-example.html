@@ -40,14 +40,45 @@
 
     .dropdown-container {
       padding: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
     }
 
-    select {
-      width: 100%;
-      padding: 0.5rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+    .dropdown-icon {
       font-size: 1rem;
+      transform: rotate(0deg);
+      transition: transform 0.3s;
+    }
+
+    .dropdown.open .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-content {
+      padding: 0 1rem 1rem;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .dropdown-content.show {
+      display: block;
+    }
+
+    .dropdown-content ol {
+      padding-left: 1.2rem;
+    }
+
+    .dropdown-content li {
+      margin-bottom: 1rem;
+    }
+
+    .dropdown-content p {
+      margin: 0.25rem 0 0;
+      color: #555;
+      font-size: 0.9rem;
     }
 
     .card-grid {
@@ -86,6 +117,11 @@
       text-decoration: none;
       font-weight: bold;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -95,10 +131,30 @@
       <button class="close-btn" onclick="closeModal()">✕</button>
     </div>
 
-    <div class="dropdown-container">
-      <select id="duelSelect">
-        <option selected>Comment se déroule un duel ?</option>
-      </select>
+    <div class="dropdown-container" onclick="toggleDropdown()">
+      <span>Comment se déroule un duel ?</span>
+      <span class="dropdown-icon">⌄</span>
+    </div>
+
+    <div class="dropdown-content" id="dropdownContent">
+      <ol>
+        <li>
+          <strong>Choisissez David contre Goliath</strong>
+          <p>Ce mode permet de comparer un petit modèle économe avec un grand modèle</p>
+        </li>
+        <li>
+          <strong>Envoyez votre prompt</strong>
+          <p>Sélectionnez le parmi les suggestions de prompts ou co-construisez le avec le public</p>
+        </li>
+        <li>
+          <strong>Examinez les réponses et votez</strong>
+          <p>Échangez puis votez avec le public pour votre modèle préféré</p>
+        </li>
+        <li>
+          <strong>Terminez par le débat général</strong>
+          <p>Tous ensemble, débattez sur le sujet “Le jeu en vaut-il la chandelle ?” à travers des questions de relance</p>
+        </li>
+      </ol>
     </div>
 
     <div class="card-grid">
@@ -132,6 +188,13 @@
   <script>
     function closeModal() {
       document.querySelector('.modal').style.display = 'none';
+    }
+
+    function toggleDropdown() {
+      const content = document.getElementById('dropdownContent');
+      const icon = document.querySelector('.dropdown-icon');
+      content.classList.toggle('show');
+      icon.parentElement.classList.toggle('open');
     }
   </script>
 </body>

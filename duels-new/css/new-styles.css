@@ -84,15 +84,50 @@ body {
 /* Dropdown container */
 .duelsia-dropdown-container {
   padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
 }
 
-.duelsia-dropdown-container select {
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+.duelsia-dropdown-icon {
   font-size: 1rem;
-  font-family: sans-serif;
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+}
+
+.duelsia-dropdown-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.duelsia-dropdown-content {
+  padding: 0 1rem 1rem;
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.duelsia-dropdown-content.show {
+  display: block;
+}
+
+.duelsia-dropdown-content ol {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.duelsia-dropdown-content li {
+  margin-bottom: 1rem;
+}
+
+.duelsia-dropdown-content li:last-child {
+  margin-bottom: 0;
+}
+
+.duelsia-dropdown-content p {
+  margin: 0.25rem 0 0;
+  color: #555;
+  font-size: 0.9rem;
 }
 
 /* Tab content / Main content area */
@@ -322,4 +357,16 @@ body {
   font-weight: 600;
   color: #4b5563;
   font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-5px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }

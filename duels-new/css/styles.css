@@ -1,0 +1,313 @@
+/* Duels de l'IA - Styles */
+
+/* FAB Button */
+#duelsia-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 999998;
+  transition: all 0.3s ease;
+}
+
+#duelsia-fab:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.05);
+}
+
+/* Draggable Panel */
+#duelsia-panel {
+  position: fixed;
+  top: 50%;
+  right: 50px;
+  width: 450px;
+  height: 600px;
+  max-height: 90vh;
+  background: white;
+  z-index: 999999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transform: translateY(-50%);
+  opacity: 1;
+  visibility: visible;
+}
+
+#duelsia-panel.duelsia-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.duelsia-panel-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Header */
+.duelsia-header {
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+  border-radius: 12px 12px 0 0;
+  background-color: #f9fafb;
+  position: relative;
+}
+
+.duelsia-header:active {
+  cursor: grabbing;
+}
+
+.duelsia-header h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #1f2937;
+}
+
+.duelsia-header::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background-color: #d1d5db;
+  border-radius: 2px;
+}
+
+.duelsia-close, .duelsia-close-content {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.duelsia-close:hover, .duelsia-close-content:hover {
+  background-color: #f3f4f6;
+}
+
+/* Tabs */
+.duelsia-tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+.duelsia-tab {
+  flex: 1;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.duelsia-tab:hover {
+  color: #2563eb;
+  background-color: #f3f4f6;
+}
+
+.duelsia-tab.active {
+  color: #2563eb;
+  font-weight: 600;
+  border-bottom-color: #2563eb;
+}
+
+/* Tab Content */
+.duelsia-tab-content {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.duelsia-tab-content.hidden {
+  display: none;
+}
+
+/* Blocks */
+.duelsia-blocks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.duelsia-block {
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.duelsia-block:hover {
+  border-color: #2563eb;
+  background-color: #f0f9ff;
+  transform: translateY(-2px);
+}
+
+.duelsia-block-icon {
+  font-size: 32px;
+}
+
+.duelsia-block-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+}
+
+/* Reveal Button */
+.duelsia-reveal {
+  width: 100%;
+  padding: 16px 24px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.duelsia-reveal:hover {
+  background-color: #1d4ed8;
+}
+
+/* Ultimate Question */
+.duelsia-ultimate-question {
+  margin-top: 24px;
+  padding: 20px;
+  background-color: #f0f9ff;
+  border: 2px solid #2563eb;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.duelsia-ultimate-question.hidden {
+  display: none;
+}
+
+.duelsia-ultimate-question p {
+  font-size: 18px;
+  color: #1f2937;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.duelsia-ultimate-question a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.duelsia-ultimate-question a:hover {
+  text-decoration: underline;
+}
+
+/* Content View */
+.duelsia-content-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.duelsia-content-nav {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #f9fafb;
+}
+
+.duelsia-back-button {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.duelsia-back-button:hover {
+  background-color: #e0e7ff;
+}
+
+.duelsia-content-nav h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #1f2937;
+  flex: 1;
+}
+
+.duelsia-content-display {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.duelsia-content-display h3 {
+  margin-top: 0;
+  color: #1f2937;
+  font-size: 18px;
+}
+
+.duelsia-content-display ul {
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.duelsia-content-display a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.duelsia-content-display a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #duelsia-panel {
+    width: 90%;
+    max-width: 400px;
+    right: 5%;
+    height: 80vh;
+  }
+  
+  .duelsia-blocks {
+    grid-template-columns: 1fr;
+  }
+}
