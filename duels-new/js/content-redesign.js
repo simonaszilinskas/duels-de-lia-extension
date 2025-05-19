@@ -133,18 +133,20 @@
           <div class="duelsia-dropdown-container" id="duelsia-dropdown">
             <span>Comment se déroule un duel ?</span>
             <span class="duelsia-dropdown-icon">⌄</span>
+            
+            <div class="duelsia-dropdown-content" id="duelsia-dropdown-content">
+              <ol>
+                ${CONTENT_DATA['comment-se-deroule'].steps.map(step => `
+                  <li>
+                    <strong>${step.title}</strong>
+                    <p>${step.description}</p>
+                  </li>
+                `).join('')}
+              </ol>
+            </div>
           </div>
           
-          <div class="duelsia-dropdown-content" id="duelsia-dropdown-content">
-            <ol>
-              ${CONTENT_DATA['comment-se-deroule'].steps.map(step => `
-                <li>
-                  <strong>${step.title}</strong>
-                  <p>${step.description}</p>
-                </li>
-              `).join('')}
-            </ol>
-          </div>
+          <div class="duelsia-overlay" id="duelsia-overlay"></div>
           
           <div class="duelsia-card-grid" id="duelsia-cards">
             <!-- Cards will be dynamically inserted here -->
@@ -178,6 +180,9 @@
     panel.querySelector('.duelsia-close-content').addEventListener('click', toggleModal);
     panel.querySelector('.duelsia-back-button').addEventListener('click', showMainView);
     panel.querySelector('.duelsia-dropdown-container').addEventListener('click', toggleDropdown);
+    
+    // Setup overlay
+    setupOverlay();
     
     // Initial render
     renderCards();
@@ -244,10 +249,20 @@
   // Toggle dropdown content
   function toggleDropdown() {
     const content = document.getElementById('duelsia-dropdown-content');
+    const overlay = document.getElementById('duelsia-overlay');
     const icon = document.querySelector('.duelsia-dropdown-icon');
     
     content.classList.toggle('show');
+    overlay.classList.toggle('show');
     icon.classList.toggle('rotate');
+  }
+  
+  // Close dropdown when clicking overlay
+  function setupOverlay() {
+    const overlay = document.getElementById('duelsia-overlay');
+    if (overlay) {
+      overlay.addEventListener('click', toggleDropdown);
+    }
   }
 
   // Toggle modal visibility

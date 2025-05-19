@@ -45,6 +45,7 @@
       justify-content: space-between;
       align-items: center;
       font-weight: bold;
+      position: relative;
     }
 
     .dropdown-icon {
@@ -58,12 +59,38 @@
     }
 
     .dropdown-content {
-      padding: 0 1rem 1rem;
+      position: absolute;
+      top: calc(100% - 1rem);
+      left: 0;
+      right: 0;
+      background: white;
+      padding: 1rem;
+      margin: 0 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       display: none;
-      animation: fadeIn 0.3s ease-in-out;
+      animation: slideDown 0.3s ease-in-out;
+      z-index: 10;
+      max-height: 60vh;
+      overflow-y: auto;
     }
 
     .dropdown-content.show {
+      display: block;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      display: none;
+      z-index: 5;
+    }
+    
+    .overlay.show {
       display: block;
     }
 
@@ -118,8 +145,8 @@
       font-weight: bold;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
@@ -134,9 +161,8 @@
     <div class="dropdown-container" onclick="toggleDropdown()">
       <span>Comment se déroule un duel ?</span>
       <span class="dropdown-icon">⌄</span>
-    </div>
-
-    <div class="dropdown-content" id="dropdownContent">
+      
+      <div class="dropdown-content" id="dropdownContent">
       <ol>
         <li>
           <strong>Choisissez David contre Goliath</strong>
@@ -155,6 +181,7 @@
           <p>Tous ensemble, débattez sur le sujet “Le jeu en vaut-il la chandelle ?” à travers des questions de relance</p>
         </li>
       </ol>
+      </div>
     </div>
 
     <div class="card-grid">
@@ -184,6 +211,8 @@
       <a href="#">Le jeu en vaut-il la chandelle ?</a>
     </div>
   </div>
+  
+  <div class="overlay" id="overlay" onclick="toggleDropdown()"></div>
 
   <script>
     function closeModal() {
@@ -192,9 +221,11 @@
 
     function toggleDropdown() {
       const content = document.getElementById('dropdownContent');
+      const overlay = document.getElementById('overlay');
       const icon = document.querySelector('.dropdown-icon');
       content.classList.toggle('show');
-      icon.parentElement.classList.toggle('open');
+      overlay.classList.toggle('show');
+      icon.classList.toggle('rotate');
     }
   </script>
 </body>
