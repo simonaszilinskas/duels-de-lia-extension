@@ -446,6 +446,94 @@ body {
   background-color: #5C49D9;
 }
 
+/* Personas styles */
+.duelsia-personas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.duelsia-persona-item {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.duelsia-persona-item:hover {
+  border-color: #715CF6;
+}
+
+.duelsia-persona-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.duelsia-persona-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.duelsia-persona-emoji {
+  font-size: 32px;
+}
+
+.duelsia-persona-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.duelsia-persona-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1f2937;
+}
+
+.duelsia-persona-profession {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.duelsia-persona-arrow {
+  font-size: 16px;
+  transition: transform 0.3s;
+  color: #6b7280;
+}
+
+.duelsia-persona-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.duelsia-persona-content {
+  padding: 0 16px 16px;
+  animation: slideDown 0.3s ease-in-out;
+  border-top: 1px solid #e5e7eb;
+}
+
+.duelsia-persona-category {
+  font-size: 12px;
+  color: #715CF6;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 12px 0 8px;
+}
+
+.duelsia-persona-prompt {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.5;
+  background: #f3f4f6;
+  padding: 12px;
+  border-radius: 6px;
+  font-style: italic;
+}
+
 /* Animations */
 @keyframes slideDown {
   from { 

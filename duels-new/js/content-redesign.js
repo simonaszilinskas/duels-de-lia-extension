@@ -29,15 +29,65 @@
           icon: "✍️",
           title: "Prompts",
           description: "Liste de prompts prêts à l'usage",
-          content: `
-            <h3>Prompts pour démarrer</h3>
-            <ul>
-              <li>"Explique la différence entre IA forte et IA faible"</li>
-              <li>"Comment l'IA peut-elle aider dans l'éducation ?"</li>
-              <li>"Quels sont les risques de l'IA pour l'emploi ?"</li>
-              <li>"Décris l'impact environnemental de ChatGPT"</li>
-            </ul>
-          `
+          personas: [
+            {
+              name: "Alex",
+              emoji: "👩‍💻",
+              profession: "Développeuse web",
+              category: "Aide technique",
+              prompt: "J'ai un bug dans mon code React, aide-moi à debugger cette fonction de tri"
+            },
+            {
+              name: "Tiffany",
+              emoji: "🎨",
+              profession: "Directrice artistique",
+              category: "Création visuelle",
+              prompt: "Génère-moi 5 idées de logos modernes pour une start-up écolo"
+            },
+            {
+              name: "Adrien",
+              emoji: "📈",
+              profession: "Analyste marketing",
+              category: "Stratégie business",
+              prompt: "Analyse les tendances du marché des voitures électriques en Europe"
+            },
+            {
+              name: "Sophie",
+              emoji: "✏️",
+              profession: "Rédactrice",
+              category: "Rédaction",
+              prompt: "Écris une introduction captivante pour un article sur l'IA éthique"
+            },
+            {
+              name: "Thomas",
+              emoji: "🧮",
+              profession: "Data scientist",
+              category: "Analyse de données",
+              prompt: "Explique-moi comment fonctionne un algorithme de machine learning Random Forest"
+            },
+            {
+              name: "Marie",
+              emoji: "🩺",
+              profession: "Médecin",
+              category: "Santé",
+              prompt: "Quelles sont les applications de l'IA dans le diagnostic médical ?"
+            },
+            {
+              name: "Lucas",
+              emoji: "🎮",
+              profession: "Game designer",
+              category: "Jeux vidéo",
+              prompt: "Aide-moi à créer un système de progression équilibré pour mon RPG"
+            },
+            {
+              name: "Emma",
+              emoji: "📚",
+              profession: "Enseignante",
+              category: "Éducation",
+              prompt: "Comment utiliser l'IA pour personnaliser l'apprentissage de mes élèves ?"
+            }
+          ],
+          content: null // Will be generated dynamically
         },
         cartes: {
           icon: "🃏",
@@ -251,15 +301,62 @@
     
     document.getElementById('duelsia-content-title').textContent = block.title;
     
-    // Handle special case for cartes débat
+    // Handle special cases
     if (blockKey === 'cartes') {
       showRandomCard();
+    } else if (blockKey === 'prompts') {
+      showPersonas();
     } else {
       document.getElementById('duelsia-content-display').innerHTML = block.content;
     }
     
     document.querySelector('.duelsia-main-content').style.display = 'none';
     document.querySelector('.duelsia-content-view').style.display = 'flex';
+  }
+  
+  // Show personas
+  function showPersonas() {
+    const sectionData = CONTENT_DATA[currentSection];
+    const personas = sectionData.blocks.prompts.personas;
+    
+    const content = `
+      <div class="duelsia-personas-list">
+        ${personas.map((persona, index) => `
+          <div class="duelsia-persona-item" id="persona-${index}">
+            <div class="duelsia-persona-header" onclick="togglePersona(${index})">
+              <div class="duelsia-persona-info">
+                <span class="duelsia-persona-emoji">${persona.emoji}</span>
+                <div class="duelsia-persona-details">
+                  <span class="duelsia-persona-name">${persona.name}</span>
+                  <span class="duelsia-persona-profession">${persona.profession}</span>
+                </div>
+              </div>
+              <span class="duelsia-persona-arrow">⌄</span>
+            </div>
+            <div class="duelsia-persona-content" id="persona-content-${index}" style="display: none;">
+              <div class="duelsia-persona-category">${persona.category}</div>
+              <div class="duelsia-persona-prompt">"${persona.prompt}"</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    
+    document.getElementById('duelsia-content-display').innerHTML = content;
+  }
+  
+  // Toggle persona display
+  function togglePersona(index) {
+    const content = document.getElementById(`persona-content-${index}`);
+    const arrow = document.querySelector(`#persona-${index} .duelsia-persona-arrow`);
+    
+    if (content.style.display === 'none') {
+      content.style.display = 'block';
+      arrow.classList.add('rotate');
+    } else {
+      content.style.display = 'none';
+      arrow.classList.remove('rotate');
+    }
   }
   
   // Show random debate card
@@ -389,6 +486,9 @@
     // Create UI elements
     createFAB();
     createModal();
+    
+    // Make togglePersona available globally
+    window.togglePersona = togglePersona;
   }
 
   // Initialize when DOM is ready
