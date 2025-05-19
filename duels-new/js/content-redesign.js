@@ -43,23 +43,41 @@
           icon: "🃏",
           title: "Cartes débat",
           description: "Pour susciter le débat parmi les participants",
-          content: `
-            <h3>Cartes pour animer le débat</h3>
-            <div style="display: grid; gap: 12px;">
-              <div style="background: #f7f6ff; padding: 16px; border-radius: 8px; border-left: 4px solid #715CF6;">
-                <strong>Carte 1: Créativité</strong><br>
-                L'IA peut-elle vraiment être créative ou ne fait-elle qu'imiter ?
-              </div>
-              <div style="background: #f7f6ff; padding: 16px; border-radius: 8px; border-left: 4px solid #715CF6;">
-                <strong>Carte 2: Éthique</strong><br>
-                Qui est responsable quand une IA prend une mauvaise décision ?
-              </div>
-              <div style="background: #f7f6ff; padding: 16px; border-radius: 8px; border-left: 4px solid #715CF6;">
-                <strong>Carte 3: Avenir</strong><br>
-                Dans 10 ans, quel métier aura disparu à cause de l'IA ?
-              </div>
-            </div>
-          `
+          cards: [
+            {
+              theme: "Créativité",
+              question: "L'IA peut-elle vraiment être créative ou ne fait-elle qu'imiter ?"
+            },
+            {
+              theme: "Éthique",
+              question: "Qui est responsable quand une IA prend une mauvaise décision ?"
+            },
+            {
+              theme: "Avenir",
+              question: "Dans 10 ans, quel métier aura disparu à cause de l'IA ?"
+            },
+            {
+              theme: "Autonomie",
+              question: "Faut-il donner des droits aux intelligences artificielles avancées ?"
+            },
+            {
+              theme: "Société",
+              question: "L'IA creuse-t-elle les inégalités ou peut-elle les réduire ?"
+            },
+            {
+              theme: "Confiance",
+              question: "Peut-on faire confiance à une IA pour prendre des décisions médicales ?"
+            },
+            {
+              theme: "Éducation",
+              question: "L'IA va-t-elle remplacer les enseignants ou les assister ?"
+            },
+            {
+              theme: "Humanité",
+              question: "Qu'est-ce qui restera uniquement humain face à l'IA ?"
+            }
+          ],
+          content: null // Will be generated dynamically
         },
         ressources: {
           icon: "📚",
@@ -231,10 +249,38 @@
     currentView = 'content';
     
     document.getElementById('duelsia-content-title').textContent = block.title;
-    document.getElementById('duelsia-content-display').innerHTML = block.content;
+    
+    // Handle special case for cartes débat
+    if (blockKey === 'cartes') {
+      showRandomCard();
+    } else {
+      document.getElementById('duelsia-content-display').innerHTML = block.content;
+    }
     
     document.querySelector('.duelsia-main-content').style.display = 'none';
     document.querySelector('.duelsia-content-view').style.display = 'flex';
+  }
+  
+  // Show random debate card
+  function showRandomCard() {
+    const sectionData = CONTENT_DATA[currentSection];
+    const cards = sectionData.blocks.cartes.cards;
+    const randomIndex = Math.floor(Math.random() * cards.length);
+    const card = cards[randomIndex];
+    
+    const content = `
+      <div class="duelsia-card-display">
+        <div class="duelsia-debate-card">
+          <div class="duelsia-debate-theme">${card.theme}</div>
+          <div class="duelsia-debate-question">${card.question}</div>
+        </div>
+        <button class="duelsia-random-card-btn" onclick="window.showRandomCard()">
+          Autre carte débat
+        </button>
+      </div>
+    `;
+    
+    document.getElementById('duelsia-content-display').innerHTML = content;
   }
 
   // Show main view
@@ -332,6 +378,9 @@
     // Create UI elements
     createFAB();
     createModal();
+    
+    // Make showRandomCard available globally
+    window.showRandomCard = showRandomCard;
   }
 
   // Initialize when DOM is ready
