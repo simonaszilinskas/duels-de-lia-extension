@@ -281,11 +281,15 @@ body {
   background: none;
   border: none;
   color: #715CF6;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   padding: 8px 12px;
   border-radius: 6px;
   transition: background-color 0.2s ease;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .duelsia-back-button:hover {

@@ -59,7 +59,7 @@
         
         <div class="duelsia-content-view" style="display: none;">
           <div class="duelsia-content-nav">
-            <button class="duelsia-back-button">← Retour</button>
+            <button class="duelsia-back-button">←</button>
             <h3 id="duelsia-content-title"></h3>
             <button class="duelsia-close duelsia-close-content">✕</button>
           </div>
