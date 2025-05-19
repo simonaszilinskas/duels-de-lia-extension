@@ -35,7 +35,6 @@
               emoji: "👩‍💻",
               profession: "Développeuse web",
               category: "Aide technique",
-              tags: ["Debug", "Code", "Clarification"],
               prompt: "J'ai un bug dans mon code React, aide-moi à debugger cette fonction de tri"
             },
             {
@@ -43,7 +42,6 @@
               emoji: "🎨",
               profession: "Directrice artistique",
               category: "Création visuelle",
-              tags: ["Création", "Design", "Idéation"],
               prompt: "Génère-moi 5 idées de logos modernes pour une start-up écolo"
             },
             {
@@ -51,7 +49,6 @@
               emoji: "📈",
               profession: "Analyste marketing",
               category: "Stratégie business",
-              tags: ["Analyse", "Marketing", "Recherche"],
               prompt: "Analyse les tendances du marché des voitures électriques en Europe"
             },
             {
@@ -59,7 +56,6 @@
               emoji: "✏️",
               profession: "Rédactrice",
               category: "Rédaction",
-              tags: ["Écriture", "Création", "Communication"],
               prompt: "Écris une introduction captivante pour un article sur l'IA éthique"
             },
             {
@@ -67,7 +63,6 @@
               emoji: "🧮",
               profession: "Data scientist",
               category: "Analyse de données",
-              tags: ["Clarification", "Formation", "Technique"],
               prompt: "Explique-moi comment fonctionne un algorithme de machine learning Random Forest"
             },
             {
@@ -75,7 +70,6 @@
               emoji: "🩺",
               profession: "Médecin",
               category: "Santé",
-              tags: ["Information", "Recherche", "Analyse"],
               prompt: "Quelles sont les applications de l'IA dans le diagnostic médical ?"
             },
             {
@@ -83,7 +77,6 @@
               emoji: "🎮",
               profession: "Game designer",
               category: "Jeux vidéo",
-              tags: ["Création", "Conception", "Stratégie"],
               prompt: "Aide-moi à créer un système de progression équilibré pour mon RPG"
             },
             {
@@ -91,7 +84,6 @@
               emoji: "📚",
               profession: "Enseignante",
               category: "Éducation",
-              tags: ["Pédagogie", "Innovation", "Stratégie"],
               prompt: "Comment utiliser l'IA pour personnaliser l'apprentissage de mes élèves ?"
             }
           ],
@@ -343,9 +335,6 @@
               <span class="duelsia-persona-arrow">⌄</span>
             </div>
             <div class="duelsia-persona-content" id="persona-content-${index}">
-              <div class="duelsia-persona-tags">
-                ${persona.tags.map(tag => `<span class="duelsia-tag">${tag}</span>`).join('')}
-              </div>
               <div class="duelsia-persona-prompt-container">
                 <div class="duelsia-persona-prompt">${persona.prompt}</div>
                 <button class="duelsia-copy-btn" data-prompt="${persona.prompt.replace(/"/g, '&quot;')}">

@@ -167,11 +167,16 @@ body {
   padding: 0;
   flex: 1;
   overflow-y: auto;
+  min-height: 0;
 }
 
 /* Main content wrapper */
 .duelsia-main-content {
   position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 /* Card grid inspired by example */
@@ -253,9 +258,10 @@ body {
 
 /* Content view */
 .duelsia-content-view {
-  height: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .duelsia-content-nav {
@@ -547,21 +553,7 @@ body {
   margin: 12px 0 8px;
 }
 
-.duelsia-persona-tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin: 12px 0;
-}
-
-.duelsia-tag {
-  background: #e0e7ff;
-  color: #715CF6;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 500;
-}
+/* Tags removed - no longer needed */
 
 .duelsia-persona-prompt-container {
   display: flex;
