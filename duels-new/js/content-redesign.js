@@ -123,6 +123,7 @@
   let currentView = 'main';
   let currentSection = 'comment-se-deroule';
   let currentBlock = null;
+  let lastCardIndex = -1;
 
   // Create FAB button
   function createFAB() {
@@ -265,7 +266,14 @@
   function showRandomCard() {
     const sectionData = CONTENT_DATA[currentSection];
     const cards = sectionData.blocks.cartes.cards;
-    const randomIndex = Math.floor(Math.random() * cards.length);
+    
+    // Get a different card than the last one
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * cards.length);
+    } while (randomIndex === lastCardIndex && cards.length > 1);
+    
+    lastCardIndex = randomIndex;
     const card = cards[randomIndex];
     
     const content = `
@@ -274,13 +282,16 @@
           <div class="duelsia-debate-theme">${card.theme}</div>
           <div class="duelsia-debate-question">${card.question}</div>
         </div>
-        <button class="duelsia-random-card-btn" onclick="window.showRandomCard()">
+        <button class="duelsia-random-card-btn" id="duelsia-random-btn">
           Autre carte débat
         </button>
       </div>
     `;
     
     document.getElementById('duelsia-content-display').innerHTML = content;
+    
+    // Add click handler after inserting the content
+    document.getElementById('duelsia-random-btn').addEventListener('click', showRandomCard);
   }
 
   // Show main view
@@ -378,9 +389,6 @@
     // Create UI elements
     createFAB();
     createModal();
-    
-    // Make showRandomCard available globally
-    window.showRandomCard = showRandomCard;
   }
 
   // Initialize when DOM is ready
