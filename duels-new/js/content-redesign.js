@@ -2,6 +2,12 @@
 (function() {
   'use strict';
   
+  // Check if we're on the correct page
+  const currentUrl = window.location.href;
+  if (!currentUrl.includes('https://www.comparia.beta.gouv.fr/arene/') || !currentUrl.includes('cgu_acceptees')) {
+    return; // Don't initialize if not on the correct page
+  }
+  
   // Content data will be loaded from JSON
   let CONTENT_DATA = null;
   let isLoading = true;
