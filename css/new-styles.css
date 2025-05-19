@@ -65,6 +65,11 @@ body {
   font-weight: 600;
 }
 
+.duelsia-header span {
+  font-weight: 800;
+  font-size: 16px;
+}
+
 .duelsia-close {
   background: none;
   border: none;
@@ -333,15 +338,15 @@ body {
 /* FAB Button - keep similar style */
 #duelsia-fab {
   position: fixed;
-  bottom: 20px;
+  bottom: 40px;
   right: 20px;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background-color: #715CF6;
   color: white;
   border: none;
-  font-size: 24px;
+  font-size: 28px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 999998;
@@ -1031,7 +1036,7 @@ body {
 
 .duelsia-explanation p {
   color: #555;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.6;
   margin: 0;
   text-align: center;

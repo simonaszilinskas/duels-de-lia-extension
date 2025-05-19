@@ -21,7 +21,7 @@
   function createFAB() {
     const fab = document.createElement('button');
     fab.id = 'duelsia-fab';
-    fab.innerHTML = '🤖';
+    fab.innerHTML = '⚔️';
     fab.title = 'Duels de l\'IA';
     fab.addEventListener('click', toggleModal);
     document.body.appendChild(fab);
@@ -598,9 +598,6 @@
       <div class="duelsia-debate-final">
         <h2 class="duelsia-main-question">Le jeu en vaut-il la chandelle ?</h2>
         
-        <div class="duelsia-explanation">
-          <p>Il s'agit d'évaluer l'utilité et la pertinence des réponses des modèles au regard de leur consommation énergétique: les réponses obtenues justifient-elles l'impact en consommation de ressources et d'énergie ?</p>
-        </div>
         
         <div class="duelsia-radio-options">
           <h3>Votre avis :</h3>
