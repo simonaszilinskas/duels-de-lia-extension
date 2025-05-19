@@ -1,6 +1,6 @@
 /* Duels de l'IA - New Design Based on Example */
 
-/* Import Marianne font */
+/* Import Marianne font with all available weights */
 @import url('https://www.systeme-de-design.gouv.fr/fonts/marianne/marianne.css');
 
 body {
@@ -46,7 +46,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: bold;
+  font-weight: 600;
   cursor: grab;
   user-select: none;
   position: sticky;
@@ -62,7 +62,7 @@ body {
   margin: 0;
   font-size: 16px;
   color: white;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .duelsia-close {
@@ -91,7 +91,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: bold;
+  font-weight: 600;
   position: relative;
   z-index: 2;
 }
@@ -249,7 +249,7 @@ body {
 .duelsia-footer-link a {
   color: #715CF6;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 14px;
 }
 
@@ -432,7 +432,7 @@ body {
 
 .duelsia-debate-theme {
   color: #715CF6;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -518,7 +518,7 @@ body {
 .duelsia-persona-category-inline {
   font-size: 12px;
   color: #715CF6;
-  font-weight: 500;
+  font-weight: 600;
   margin-top: 4px;
 }
 
@@ -581,7 +581,7 @@ body {
   border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
   transition: background-color 0.2s;
   white-space: nowrap;
 }
@@ -643,7 +643,7 @@ body {
 .duelsia-faq-arrow {
   color: #715CF6;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   transition: transform 0.3s ease;
 }
 
@@ -715,7 +715,7 @@ body {
 .duelsia-resource-arrow {
   font-size: 20px;
   color: #715CF6;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 /* PDF Overlay styles */
@@ -909,7 +909,7 @@ body {
 .duelsia-main-question {
   color: #715CF6;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
   margin-bottom: 25px;
   padding: 20px;
