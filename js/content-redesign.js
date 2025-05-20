@@ -370,12 +370,6 @@
           </div>
         `).join('')}
       </div>
-      <div class="duelsia-pdf-overlay" id="duelsia-pdf-overlay" style="display: none;">
-        <div class="duelsia-pdf-container">
-          <button class="duelsia-pdf-close" id="duelsia-pdf-close">✕</button>
-          <iframe id="duelsia-pdf-frame" src="" frameborder="0"></iframe>
-        </div>
-      </div>
     `;
     
     document.getElementById('duelsia-content-display').innerHTML = content;
@@ -387,23 +381,7 @@
       });
     });
     
-    // Close overlay handler
-    const closeBtn = document.getElementById('duelsia-pdf-close');
-    const overlay = document.getElementById('duelsia-pdf-overlay');
-    
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        closePdfOverlay();
-      });
-    }
-    
-    if (overlay) {
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
-          closePdfOverlay();
-        }
-      });
-    }
+    // Using global overlay now instead of local ones
   }
   
   // Handle resource click
@@ -426,23 +404,67 @@
   
   // Open PDF overlay
   function openPdfOverlay(embedUrl) {
-    const overlay = document.getElementById('duelsia-pdf-overlay');
-    const frame = document.getElementById('duelsia-pdf-frame');
+    // Create overlay at document level if it doesn't exist
+    let overlay = document.getElementById('duelsia-global-pdf-overlay');
+    let frame = document.getElementById('duelsia-global-pdf-frame');
     
-    if (overlay && frame) {
-      frame.src = embedUrl;
-      overlay.style.display = 'flex';
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'duelsia-global-pdf-overlay';
+      overlay.className = 'duelsia-pdf-overlay';
+      
+      const container = document.createElement('div');
+      container.className = 'duelsia-pdf-container duelsia-fullscreen-container';
+      
+      const closeBtn = document.createElement('button');
+      closeBtn.id = 'duelsia-global-pdf-close';
+      closeBtn.className = 'duelsia-pdf-close';
+      closeBtn.innerHTML = '✕';
+      closeBtn.addEventListener('click', closePdfOverlay);
+      
+      frame = document.createElement('iframe');
+      frame.id = 'duelsia-global-pdf-frame';
+      frame.className = 'duelsia-pdf-frame';
+      frame.frameBorder = '0';
+      
+      container.appendChild(closeBtn);
+      container.appendChild(frame);
+      overlay.appendChild(container);
+      
+      // Close when clicking outside
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          closePdfOverlay();
+        }
+      });
+      
+      document.body.appendChild(overlay);
+    }
+    
+    frame.src = embedUrl;
+    overlay.style.display = 'flex';
+    
+    // Hide the panel while viewing the document
+    const panel = document.getElementById('duelsia-panel');
+    if (panel) {
+      panel.classList.add('duelsia-hidden');
     }
   }
   
   // Close PDF overlay
   function closePdfOverlay() {
-    const overlay = document.getElementById('duelsia-pdf-overlay');
-    const frame = document.getElementById('duelsia-pdf-frame');
+    const overlay = document.getElementById('duelsia-global-pdf-overlay');
+    const frame = document.getElementById('duelsia-global-pdf-frame');
     
     if (overlay && frame) {
       overlay.style.display = 'none';
       frame.src = '';
+      
+      // Show the panel again when closing the document
+      const panel = document.getElementById('duelsia-panel');
+      if (panel) {
+        panel.classList.remove('duelsia-hidden');
+      }
     }
   }
   
@@ -625,12 +647,6 @@
           </div>
         </div>
       </div>
-      <div class="duelsia-pdf-overlay" id="duelsia-pdf-overlay" style="display: none;">
-        <div class="duelsia-pdf-container">
-          <button class="duelsia-pdf-close" id="duelsia-pdf-close">✕</button>
-          <iframe id="duelsia-pdf-frame" src="" frameborder="0"></iframe>
-        </div>
-      </div>
     `;
     
     document.getElementById('duelsia-content-title').textContent = 'IA ou pas d\'IA: telle est la question !';
@@ -649,24 +665,6 @@
         window.open(recapUrl, '_blank');
       }
     });
-    
-    // Close overlay handler
-    const closeBtn = document.getElementById('duelsia-pdf-close');
-    const overlay = document.getElementById('duelsia-pdf-overlay');
-    
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        closePdfOverlay();
-      });
-    }
-    
-    if (overlay) {
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
-          closePdfOverlay();
-        }
-      });
-    }
     
     document.querySelector('.duelsia-main-content').style.display = 'none';
     document.querySelector('.duelsia-content-view').style.display = 'flex';

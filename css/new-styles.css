@@ -788,8 +788,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 999999; /* Higher than the panel */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -806,6 +806,14 @@ body {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.duelsia-fullscreen-container {
+  position: relative;
+  width: 95%;
+  height: 95%;
+  max-width: none;
+  max-height: none;
 }
 
 .duelsia-pdf-close {
