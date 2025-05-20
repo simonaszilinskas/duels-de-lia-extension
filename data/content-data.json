@@ -136,34 +136,79 @@
           "description": "Réponses aux questions générales sur l'IA",
           "questions": [
             {
-              "emoji": "🤖",
-              "question": "Qu'est-ce qu'un duel de l'IA ?",
-              "answer": "Un atelier participatif où les participants débattent des enjeux de l'IA de manière ludique et accessible."
+              "emoji": "🔍",
+              "question": "Comment est estimé l'impact environnemental sur compar:IA ?",
+              "answer": "Compar:IA utilise un outil qui s'appelle EcoLogits pour estimer l'impact environnemental de la réponse. L'estimation porte uniquement sur l'inférence (l'utilisation) et non pas l'entraînement du modèle."
             },
             {
-              "emoji": "⏰",
-              "question": "Combien de temps dure un duel ?",
-              "answer": "Entre 45 minutes et 2 heures selon le format choisi."
+              "emoji": "⚡",
+              "question": "Pourquoi une IA consomme-t-elle de l'énergie ?",
+              "answer": "Parce qu'à chaque interaction (comme une question posée à ChatGPT), l'IA doit effectuer des calculs complexes. Ces calculs nécessitent des ordinateurs plus ou moins puissants selon la taille du modèle d'IA utilisé."
             },
             {
-              "emoji": "🧠",
-              "question": "Faut-il des connaissances techniques ?",
-              "answer": "Non, les duels sont conçus pour être accessibles à tous les publics."
+              "emoji": "💻",
+              "question": "Quelle puissance de calcul est nécessaire selon la taille du modèle ?",
+              "answer": "**Petit modèle (0,5B à 7B)** : Un simple ordinateur portable moderne suffit. **Modèle moyen (7B à 70B)** : Une tour avec une ou plusieurs cartes graphiques est nécessaire. **Grand modèle (plus de 70B)** : Un grand serveur avec plusieurs cartes graphiques spécialisées est indispensable."
             },
             {
-              "emoji": "🎯",
-              "question": "Quel est l'objectif pédagogique ?",
-              "answer": "Permettre à tous de comprendre et débattre des enjeux de l'IA sans barrière technique."
+              "emoji": "🏭",
+              "question": "Quelle est la consommation énergétique d'un data center IA ?",
+              "answer": "Un data center IA peut facilement consommer autant d'électricité que **100 000 foyers**. Les plus grands centres actuellement en construction pourraient consommer **20 fois plus**."
             },
             {
-              "emoji": "📅",
-              "question": "Comment organiser un duel ?",
-              "answer": "Contactez notre équipe pour obtenir les ressources et un accompagnement personnalisé."
+              "emoji": "💧",
+              "question": "Pourquoi les IA consomment-elles de l'eau ?",
+              "answer": "L'eau est utilisée pour **refroidir** les équipements informatiques dans les data centers, qui produisent énormément de chaleur lors du traitement des données."
+            },
+            {
+              "emoji": "🔋",
+              "question": "Quels matériaux sont nécessaires pour faire fonctionner l'IA ?",
+              "answer": "Le **cuivre** est un matériau clé. La demande annuelle des data centers en cuivre, actuellement à 1 %, pourrait atteindre **6 à 7 %** d'ici 2050. Cela soulève des enjeux pour la transition énergétique."
+            },
+            {
+              "emoji": "📊",
+              "question": "Pourquoi les grandes IA consomment-elles plus?",
+              "answer": "Plus de paramètres = plus de calculs = plus de serveurs / ordinateurs = plus d'électricité nécessaire."
             },
             {
               "emoji": "🔄",
-              "question": "Peut-on adapter le format ?",
-              "answer": "Oui, le format est flexible et peut être adapté selon votre public et vos contraintes."
+              "question": "Est-ce que les petites IA sont toujours moins performantes?",
+              "answer": "Pas nécessairement! Comme vous l'avez vu dans les duels, parfois les petites IA donnent des réponses tout aussi satisfaisantes."
+            },
+            {
+              "emoji": "🤔",
+              "question": "Quelle IA devrais-je utiliser au quotidien?",
+              "answer": "Cela dépend de vos besoins. Pour des questions simples, une petite IA ou même un moteur de recherche suffira. Pour des tâches complexes, une grande IA peut être nécessaire. Vous pouvez toujours en tester plusieurs sur compar:IA"
+            },
+            {
+              "emoji": "📏",
+              "question": "Qu'est-ce que la taille d'un modèle d'intelligence artificielle ?",
+              "answer": "La taille correspond au nombre de paramètres du modèle. Par exemple, un modèle 70B a 70 milliards de paramètres. C'est un indicateur de sa complexité et de sa puissance."
+            },
+            {
+              "emoji": "⚖️",
+              "question": "Pourquoi la taille d'un modèle est-elle importante ?",
+              "answer": "Un modèle plus grand est généralement plus performant, mais il est aussi plus coûteux en énergie et en ressources pour fonctionner."
+            },
+            {
+              "emoji": "🧪",
+              "question": "Qu'est-ce que la distillation de modèles ?",
+              "answer": "La distillation consiste à entraîner un petit modèle à imiter un grand. On obtient alors un modèle plus rapide, plus économe, mais qui conserve de bonnes performances."
+            },
+            {
+              "emoji": "🌐",
+              "question": "Est-ce que les modèles d'IA ont accès à Internet ?",
+              "answer": "Par défaut, non. Les modèles d'IA ne sont pas connectés à Internet. Cependant, certains éditeurs commencent à leur donner accès à des outils comme des moteurs de recherche intégrés. Sur compar:IA, les modèles n'ont pas accès à Internet."
+            },
+            {
+              "emoji": "🔎",
+              "question": "Quelle est la différence entre un moteur de recherche et une IA comme ChatGPT ?",
+              "answer": "Un moteur de recherche vous redirige vers des pages existantes. Une IA génère directement une réponse, souvent à partir de grandes quantités de données préalablement analysées. Une IA comme ChatGPT n'a pour objectif que de générer du texte et donc peut générer de fausses informations."
+            },
+            {
+              "emoji": "⚡",
+              "question": "Qu'est-ce qui consomme le plus d'énergie : une recherche Google ou une requête ChatGPT ?",
+              "answer": "Une recherche sur un moteur comme Google consomme environ 0,3 Wh, tandis qu'une requête à un modèle d'IA peut consommer entre 0,5 et 22 Wh selon sa taille et architecture."
             }
           ]
         }
