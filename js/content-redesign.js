@@ -619,7 +619,7 @@
     const content = `
       <div class="duelsia-debate-final">
         <h2 class="duelsia-main-question">Le jeu en vaut-il la chandelle ?</h2>
-        
+        <p class="duelsia-debate-subquestion">Maintenant que vous connaissez l'impact environnemental des modèles, cela changerait-il votre vote ?</p>
         
         <div class="duelsia-radio-options">
           <h3>Votre avis :</h3>
@@ -645,6 +645,13 @@
             </div>
             <span class="duelsia-resource-arrow">→</span>
           </div>
+          <div class="duelsia-resource-item duelsia-secondary-btn" id="duelsia-more-questions-btn">
+            <span class="duelsia-resource-emoji">🃏</span>
+            <div class="duelsia-resource-content">
+              <h4>Plus de questions de débat</h4>
+            </div>
+            <span class="duelsia-resource-arrow">→</span>
+          </div>
         </div>
       </div>
     `;
@@ -664,6 +671,16 @@
         // Fallback to opening in new tab
         window.open(recapUrl, '_blank');
       }
+    });
+    
+    // Add click handler for more debate questions button
+    document.getElementById('duelsia-more-questions-btn').addEventListener('click', () => {
+      // Back to main view, then navigate to debate cards
+      showMainView();
+      // After a short delay to ensure the main view is shown, show cards content
+      setTimeout(() => {
+        showBlockContent('cartes');
+      }, 100);
     });
     
     document.querySelector('.duelsia-main-content').style.display = 'none';
