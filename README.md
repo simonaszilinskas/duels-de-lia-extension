@@ -10,6 +10,12 @@ Extension Chrome pour l'atelier pédagogique "Duel de l'IA" sur Comparia.
 4. Cliquez sur "Charger l'extension non empaquetée"
 5. Sélectionnez le dossier contenant l'extension
 
+
+
+https://github.com/user-attachments/assets/d8730b18-2955-46f2-a575-dc8ffe3d4454
+
+
+
 ## Utilisation
 
 1. Naviguez vers https://comparia.beta.gouv.fr/arene
