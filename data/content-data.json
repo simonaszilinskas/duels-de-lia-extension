@@ -84,6 +84,38 @@
             {
               "theme": "Frugalité et usages",
               "question": "Doit-on restreindre les usages créatifs ou ludiques de l’IA — comme écrire des poèmes ou jouer avec elle — au nom de la sobriété écologique ?"
+            },
+            {
+              "theme": "Transparence",
+              "question": "Les IA devraient-elles indiquer leur impact environnemental à chaque réponse ?"
+            },
+            {
+              "theme": "Efficience",
+              "question": "Est-il justifié d'utiliser une IA très puissante pour des tâches simples (résumer un texte, corriger une faute) ?"
+            },
+            {
+              "theme": "Réglementation",
+              "question": "Faut-il limiter l'usage des IA génératives pour protéger l'environnement ?"
+            },
+            {
+              "theme": "Définition",
+              "question": "Peut-on vraiment parler d'\"intelligence artificielle responsable\" vu que même les petits modèles consomment de l'énergie ?"
+            },
+            {
+              "theme": "Compromis",
+              "question": "Accepteriez-vous un service moins performant si vous saviez qu'il est plus écoresponsable ?"
+            },
+            {
+              "theme": "Formation",
+              "question": "Devrait-on apprendre à \"mieux interroger\" les IA pour éviter de gaspiller de l'énergie ?"
+            },
+            {
+              "theme": "Responsabilité",
+              "question": "Qui est responsable de l'impact écologique d'une IA : l'utilisateur, le développeur, l'entreprise ?"
+            },
+            {
+              "theme": "Institutions",
+              "question": "Les écoles ou collectivités devraient-elles interdire les IA trop polluantes ?"
             }
           ]       
         },
