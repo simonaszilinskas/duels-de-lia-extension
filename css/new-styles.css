@@ -811,9 +811,12 @@ body {
 .duelsia-fullscreen-container {
   position: relative;
   width: 95%;
-  height: 95%;
+  height: 95%; 
   max-width: none;
   max-height: none;
+  display: flex;
+  flex-direction: column;
+  background: white;
 }
 
 .duelsia-pdf-close {
@@ -840,9 +843,16 @@ body {
   background-color: #f3f4f6;
 }
 
-#duelsia-pdf-frame {
+#duelsia-pdf-frame, 
+#duelsia-global-pdf-frame,
+.duelsia-pdf-frame {
   width: 100%;
   height: 100%;
+  border: none;
+  display: block;
+  position: relative;
+  flex: 1;
+  min-height: 0;
 }
 
 /* Loading and error styles */
