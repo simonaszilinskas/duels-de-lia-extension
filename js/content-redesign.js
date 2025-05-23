@@ -4,9 +4,12 @@
   
   // Check if we're on the correct page
   const currentUrl = window.location.href;
-  if (!currentUrl.includes('https://www.comparia.beta.gouv.fr/arene/') || !currentUrl.includes('cgu_acceptees')) {
+  console.log('Duels de l\'IA - Current URL:', currentUrl);
+  if (!currentUrl.includes('comparia.beta.gouv.fr/arene/')) {
+    console.log('Duels de l\'IA - Not on arena page, skipping initialization');
     return; // Don't initialize if not on the correct page
   }
+  console.log('Duels de l\'IA - Initializing extension');
   
   // Content data will be loaded from JSON
   let CONTENT_DATA = null;

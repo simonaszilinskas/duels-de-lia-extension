@@ -6,7 +6,7 @@
   "permissions": ["activeTab"],
   "content_scripts": [
     {
-      "matches": ["https://www.comparia.beta.gouv.fr/arene/*"],
+      "matches": ["https://*.comparia.beta.gouv.fr/arene/*", "https://comparia.beta.gouv.fr/arene/*"],
       "js": ["js/content-redesign.js"],
       "css": ["css/new-styles.css"]
     }
@@ -18,7 +18,7 @@
         "js/content-loader.js",
         "data/content-data.json"
       ],
-      "matches": ["https://www.comparia.beta.gouv.fr/*"]
+      "matches": ["https://*.comparia.beta.gouv.fr/*", "https://comparia.beta.gouv.fr/*"]
     }
   ],
   "icons": {
