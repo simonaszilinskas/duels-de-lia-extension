@@ -2,14 +2,29 @@
 (function() {
   'use strict';
   
+  console.log('====================================');
+  console.log('🎯 Duels de l\'IA - Script chargé');
+  console.log('⏰ Timestamp:', new Date().toISOString());
+  console.log('🔧 Extension ID:', chrome.runtime.id);
+  console.log('====================================');
+  console.log('📍 URL complète:', window.location.href);
+  console.log('🌐 Hostname:', window.location.hostname);
+  console.log('📄 Pathname:', window.location.pathname);
+  console.log('🔍 Recherche:', window.location.search);
+  console.log('📌 Hash:', window.location.hash);
+  console.log('====================================');
+  
   // Check if we're on the correct page
   const currentUrl = window.location.href;
-  console.log('Duels de l\'IA - Current URL:', currentUrl);
-  if (!currentUrl.includes('comparia.beta.gouv.fr/arene/')) {
-    console.log('Duels de l\'IA - Not on arena page, skipping initialization');
-    return; // Don't initialize if not on the correct page
+  const urlCheck = currentUrl.includes('comparia.beta.gouv.fr/arene/');
+  console.log('✅ URL contient "comparia.beta.gouv.fr/arene/"?', urlCheck);
+  
+  if (!urlCheck) {
+    console.warn('⚠️ Duels de l\'IA - Pas sur la page arène, arrêt de l\'initialisation');
+    console.log('💡 L\'extension s\'active uniquement sur les URLs contenant "comparia.beta.gouv.fr/arene/"');
+    return;
   }
-  console.log('Duels de l\'IA - Initializing extension');
+  console.log('🚀 Duels de l\'IA - Début de l\'initialisation');
   
   // Content data will be loaded from JSON
   let CONTENT_DATA = null;
@@ -22,12 +37,45 @@
 
   // Create FAB button
   function createFAB() {
+    console.log('🔨 Création du FAB...');
+    
+    // Check if FAB already exists
+    if (document.getElementById('duelsia-fab')) {
+      console.warn('⚠️ FAB déjà existant, abandon de la création');
+      return;
+    }
+    
+    // Check if body exists
+    if (!document.body) {
+      console.error('❌ document.body n\'existe pas! Impossible de créer le FAB');
+      return;
+    }
+    
     const fab = document.createElement('button');
     fab.id = 'duelsia-fab';
     fab.innerHTML = '⚔️';
     fab.title = 'Duels de l\'IA';
     fab.addEventListener('click', toggleModal);
+    
+    console.log('📐 Ajout du FAB au body...');
     document.body.appendChild(fab);
+    
+    // Verify FAB was added
+    const addedFab = document.getElementById('duelsia-fab');
+    if (addedFab) {
+      console.log('✅ FAB créé avec succès');
+      const styles = window.getComputedStyle(addedFab);
+      console.log('🎨 Styles du FAB:', {
+        display: styles.display,
+        visibility: styles.visibility,
+        position: styles.position,
+        zIndex: styles.zIndex,
+        bottom: styles.bottom,
+        right: styles.right
+      });
+    } else {
+      console.error('❌ FAB non trouvé après création!');
+    }
   }
 
   // Create redesigned modal interface
@@ -102,20 +150,29 @@
 
   // Load content data from JSON
   async function loadContentData() {
+    console.log('📚 Chargement des données JSON...');
     try {
-      const response = await fetch(chrome.runtime.getURL('data/content-data.json'));
+      const jsonUrl = chrome.runtime.getURL('data/content-data.json');
+      console.log('🔗 URL du JSON:', jsonUrl);
+      
+      const response = await fetch(jsonUrl);
+      console.log('📡 Réponse fetch:', response.status, response.statusText);
+      
       if (!response.ok) {
         throw new Error(`Failed to load content: ${response.statusText}`);
       }
       
       const data = await response.json();
+      console.log('✅ Données JSON chargées:', Object.keys(data));
+      
       CONTENT_DATA = data.duels;
       isLoading = false;
       
       // Update UI with loaded content
       updateUIWithContent();
     } catch (error) {
-      console.error('Error loading content data:', error);
+      console.error('❌ Erreur de chargement des données:', error);
+      console.error('Stack trace:', error.stack);
       isLoading = false;
       showError('Erreur de chargement des données');
     }
@@ -707,28 +764,60 @@
 
   // Initialize extension
   async function initialize() {
+    console.log('🎬 Début de l\'initialisation...');
+    console.log('📊 État du document:', document.readyState);
+    console.log('🏷️ Body existe?', !!document.body);
+    console.log('🏷️ Head existe?', !!document.head);
+    
     try {
       // Create styles
+      console.log('🎨 Ajout des styles CSS...');
+      const styleUrl = chrome.runtime.getURL('css/new-styles.css');
+      console.log('🔗 URL du CSS:', styleUrl);
+      
       const style = document.createElement('link');
       style.rel = 'stylesheet';
-      style.href = chrome.runtime.getURL('css/new-styles.css');
+      style.href = styleUrl;
       document.head.appendChild(style);
+      console.log('✅ Styles CSS ajoutés');
       
       // Create UI elements
+      console.log('🏗️ Création des éléments UI...');
       createFAB();
       createModal();
       
       // Load content data
+      console.log('📥 Chargement du contenu...');
       await loadContentData();
+      
+      console.log('🎉 Initialisation terminée avec succès!');
     } catch (error) {
-      console.error('Initialization error:', error);
+      console.error('❌ Erreur d\'initialisation:', error);
+      console.error('Stack trace:', error.stack);
     }
   }
 
   // Initialize when DOM is ready
+  console.log('🔄 Vérification de l\'état du DOM...');
+  console.log('📊 document.readyState actuel:', document.readyState);
+  
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initialize);
+    console.log('⏳ DOM en cours de chargement, attente de DOMContentLoaded...');
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('✅ DOMContentLoaded déclenché!');
+      initialize();
+    });
   } else {
+    console.log('✅ DOM déjà chargé, initialisation immédiate...');
     initialize();
   }
+  
+  // Fallback: also try on window load
+  window.addEventListener('load', function() {
+    console.log('🔄 Window load event - vérification du FAB...');
+    if (!document.getElementById('duelsia-fab')) {
+      console.warn('⚠️ FAB manquant au window.load, tentative de réinitialisation...');
+      initialize();
+    }
+  });
 })();
