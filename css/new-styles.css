@@ -12,8 +12,8 @@ body {
   position: fixed;
   top: 50px;
   right: 50px;
-  width: 450px;
-  height: 600px;
+  width: 370px;
+  height: 650px;
   background: white;
   z-index: 999999;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -321,7 +321,7 @@ body {
 
 .duelsia-content-nav h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   color: #715CF6;
   flex: 1;
 }
@@ -619,7 +619,7 @@ body {
 
 .duelsia-persona-prompt-container {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   gap: 12px;
   margin-top: 8px;
 }
@@ -647,6 +647,7 @@ body {
   font-weight: 600;
   transition: background-color 0.2s;
   white-space: nowrap;
+  align-self: flex-start;
 }
 
 .duelsia-copy-btn:hover {
@@ -1031,10 +1032,23 @@ body {
 }
 
 .duelsia-radio-text {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #374151;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.duelsia-radio-text strong {
+  font-size: 15px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.duelsia-radio-subtext {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #6b7280;
+  display: block;
 }
 
 .duelsia-main-question {
@@ -1049,9 +1063,9 @@ body {
 }
 
 .duelsia-debate-subquestion {
-  color: #555;
+  color: #000;
   font-size: 16px;
-  font-style: italic;
+  font-weight: bold;
   text-align: center;
   margin-bottom: 25px;
   padding: 0 20px;

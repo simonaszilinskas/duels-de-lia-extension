@@ -110,7 +110,7 @@
           </div>
           
           <div class="duelsia-footer-link">
-            <a href="#" id="duelsia-ultimate-link">IA ou pas d'IA: telle est la question !</a>
+            <a href="#" id="duelsia-ultimate-link">Le jeu en vaut-il la chandelle ?</a>
           </div>
         </div>
         
@@ -678,22 +678,30 @@
     
     const content = `
       <div class="duelsia-debate-final">
-        <h2 class="duelsia-main-question">Le jeu en vaut-il la chandelle ?</h2>
-        <p class="duelsia-debate-subquestion">Maintenant que vous connaissez l'impact environnemental des modèles, cela changerait-il votre vote ?</p>
+        <p class="duelsia-debate-subquestion">Maintenant que vous connaissez l'impact environnemental des modèles, cela change-t-il votre vote ?</p>
         
         <div class="duelsia-radio-options">
           <h3>Votre avis :</h3>
           <label class="duelsia-radio-label">
             <input type="radio" name="debate-opinion" value="yes" class="duelsia-radio-input">
-            <span class="duelsia-radio-text">Oui, les modèles d'IA me sont utiles par rapport à la demande et l'impact environnemental est acceptable</span>
+            <div class="duelsia-radio-text">
+              <strong>Non, il ne change pas</strong>
+              <span class="duelsia-radio-subtext">Les modèles d'IA me sont utiles et l'impact environnemental est acceptable pour cette requête.</span>
+            </div>
           </label>
           <label class="duelsia-radio-label">
             <input type="radio" name="debate-opinion" value="no" class="duelsia-radio-input">
-            <span class="duelsia-radio-text">Non, j'aurais pu me passer de l'assistance des modèles d'IA</span>
+            <div class="duelsia-radio-text">
+              <strong>Oui, il change</strong>
+              <span class="duelsia-radio-subtext">J'aurais pu me passer de l'assistance des modèles d'IA</span>
+            </div>
           </label>
           <label class="duelsia-radio-label">
             <input type="radio" name="debate-opinion" value="complex" class="duelsia-radio-input">
-            <span class="duelsia-radio-text">Ce n'est pas si simple: l'assistance des modèles est utile mais l'impact environnemental me fait réfléchir</span>
+            <div class="duelsia-radio-text">
+              <strong>Ce n'est pas si simple</strong>
+              <span class="duelsia-radio-subtext">L'assistance des modèles est utile mais l'impact environnemental me fait réfléchir</span>
+            </div>
           </label>
         </div>
         
@@ -716,7 +724,7 @@
       </div>
     `;
     
-    document.getElementById('duelsia-content-title').textContent = 'IA ou pas d\'IA: telle est la question !';
+    document.getElementById('duelsia-content-title').textContent = 'Le jeu en vaut-il la chandelle ?';
     document.getElementById('duelsia-content-display').innerHTML = content;
     
     // Add click handler for recap button
