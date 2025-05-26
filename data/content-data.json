@@ -53,6 +53,41 @@
               "profession": "Chef étoilée",
               "category": "Créativité",
               "prompt": "Je dois créer un plat gastronomique autour du thème 'Retour du marché'. Contrainte: respect de la saisonnalité octobre-novembre. Fais moi trois propositions de plats sans détailler les recettes. Sois créatif, très concret et très synthétique."
+            },
+            {
+              "name": "Rayan",
+              "emoji": "🌍",
+              "profession": "Lycéen curieux",
+              "category": "Jeu de rôles",
+              "prompt": "Je prépare un exposé sur l'impact écologique du tourisme de masse. Pour m'entraîner, pose-moi une question qu'un prof ou un camarade pourrait me poser."
+            },
+            {
+              "name": "Lina",
+              "emoji": "📝",
+              "profession": "Élève en terminale",
+              "category": "Conseil",
+              "prompt": "Il me reste une semaine avant le bac de philo et je ne sais pas trop par où commencer. Tu peux m'aider à organiser mes révisions avec un planning efficace ?"
+            },
+            {
+              "name": "Noa",
+              "emoji": "🧪",
+              "profession": "Étudiante en sciences",
+              "category": "Suggestions",
+              "prompt": "Je voudrais faire une expérience de chimie simple et originale avec mon neveu pendant les vacances. Tu as une idée sympa qui demande peu de matériel mais montre bien un concept intéressant ?"
+            },
+            {
+              "name": "Bertrand",
+              "emoji": "📚",
+              "profession": "Étudiant en lettres",
+              "category": "Suggestions",
+              "prompt": "Je réfléchis à l'évolution du langage depuis l'arrivée des IA génératives comme ChatGPT. Tu peux me proposer une idée d'angle d'analyse en une phrase ?"
+            },
+            {
+              "name": "Ilias",
+              "emoji": "💼",
+              "profession": "Étudiant en école de commerce",
+              "category": "Conseil",
+              "prompt": "Je dois préparer un business plan pour un projet. Tu peux me proposer une structure claire avec les points clés pour convaincre des investisseurs ?"
             }
           ]
         },
