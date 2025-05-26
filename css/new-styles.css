@@ -70,6 +70,32 @@ body {
   font-size: 16px;
 }
 
+.duelsia-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.duelsia-feedback-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.duelsia-feedback-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 .duelsia-close {
   background: none;
   border: none;
@@ -1101,5 +1127,119 @@ body {
 }
 
 .duelsia-secondary-btn:hover {
+  background-color: #ebe6ff !important;
+}
+
+/* Feedback View Styles */
+.duelsia-feedback-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.duelsia-feedback-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.duelsia-feedback-participants,
+.duelsia-feedback-facilitator {
+  margin-bottom: 30px;
+}
+
+.duelsia-feedback-participants h4,
+.duelsia-feedback-facilitator h4 {
+  color: #715CF6;
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.duelsia-feedback-participants p,
+.duelsia-feedback-facilitator p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.duelsia-qr-code {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.duelsia-qr-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.duelsia-qr-placeholder {
+  width: 200px;
+  height: 200px;
+  background: #f8f8f8;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.duelsia-qr-pattern {
+  width: 160px;
+  height: 160px;
+  background-image: 
+    repeating-linear-gradient(0deg, #333 0, #333 8px, transparent 8px, transparent 16px),
+    repeating-linear-gradient(90deg, #333 0, #333 8px, transparent 8px, transparent 16px);
+  opacity: 0.1;
+  margin-bottom: 8px;
+}
+
+.duelsia-qr-placeholder p {
+  color: #999;
+  font-size: 12px;
+  margin: 0;
+}
+
+.duelsia-qr-url {
+  text-align: center;
+  color: #715CF6;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.duelsia-facilitator-feedback-btn {
+  background-color: #715CF6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.duelsia-facilitator-feedback-btn:hover {
+  background-color: #5940d8;
+}
+
+.duelsia-close-feedback {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.duelsia-close-feedback:hover {
   background-color: #ede9fe !important;
 }

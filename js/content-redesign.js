@@ -88,7 +88,10 @@
       <div class="duelsia-panel-content">
         <div class="duelsia-header duelsia-draggable">
           <span>Bienvenue dans les duels de l'IA</span>
-          <button class="duelsia-close">✕</button>
+          <div class="duelsia-header-actions">
+            <button class="duelsia-feedback-btn" title="Retours">💬</button>
+            <button class="duelsia-close">✕</button>
+          </div>
         </div>
         
         <div class="duelsia-main-content">
@@ -124,6 +127,27 @@
             <!-- Content will be dynamically inserted here -->
           </div>
         </div>
+        
+        <div class="duelsia-feedback-view" style="display: none;">
+          <div class="duelsia-content-nav">
+            <button class="duelsia-back-button">←</button>
+            <h3>Retours</h3>
+            <button class="duelsia-close duelsia-close-feedback">✕</button>
+          </div>
+          <div class="duelsia-feedback-content">
+            <div class="duelsia-feedback-participants">
+              <h4>Participants</h4>
+              <div class="duelsia-qr-code" id="duelsia-qr-code">
+                <!-- QR code will be generated here -->
+              </div>
+              <p class="duelsia-qr-url">https://adtk8x51mbw.eu.typeform.com/to/YyVO0zl6</p>
+            </div>
+            <div class="duelsia-feedback-facilitator">
+              <h4>Facilitateur</h4>
+              <button class="duelsia-facilitator-feedback-btn">Accéder au formulaire facilitateur</button>
+            </div>
+          </div>
+        </div>
       </div>
     `;
     
@@ -135,8 +159,22 @@
     // Event listeners
     panel.querySelector('.duelsia-close').addEventListener('click', toggleModal);
     panel.querySelector('.duelsia-close-content').addEventListener('click', toggleModal);
-    panel.querySelector('.duelsia-back-button').addEventListener('click', showMainView);
+    panel.querySelector('.duelsia-close-feedback').addEventListener('click', toggleModal);
+    
+    // Handle all back buttons
+    panel.querySelectorAll('.duelsia-back-button').forEach(button => {
+      button.addEventListener('click', showMainView);
+    });
+    
     panel.querySelector('.duelsia-dropdown-container').addEventListener('click', toggleDropdown);
+    
+    // Add feedback button click handler
+    panel.querySelector('.duelsia-feedback-btn').addEventListener('click', showFeedbackView);
+    
+    // Add facilitator feedback button handler
+    panel.querySelector('.duelsia-facilitator-feedback-btn').addEventListener('click', () => {
+      window.open('https://adtk8x51mbw.eu.typeform.com/facilit-duel', '_blank');
+    });
     
     // Add debate final click handler
     panel.querySelector('#duelsia-ultimate-link').addEventListener('click', (e) => {
@@ -595,6 +633,25 @@
     
     document.querySelector('.duelsia-main-content').style.display = 'block';
     document.querySelector('.duelsia-content-view').style.display = 'none';
+    document.querySelector('.duelsia-feedback-view').style.display = 'none';
+  }
+  
+  // Show feedback view
+  function showFeedbackView() {
+    currentView = 'feedback';
+    
+    document.querySelector('.duelsia-main-content').style.display = 'none';
+    document.querySelector('.duelsia-content-view').style.display = 'none';
+    document.querySelector('.duelsia-feedback-view').style.display = 'block';
+    
+    // Display the actual QR code image
+    const qrContainer = document.getElementById('duelsia-qr-code');
+    if (qrContainer && !qrContainer.querySelector('img')) {
+      const qrImageUrl = chrome.runtime.getURL('data/qr_code_transparent_fixed.png');
+      qrContainer.innerHTML = `
+        <img src="${qrImageUrl}" alt="QR Code pour feedback" class="duelsia-qr-image" />
+      `;
+    }
   }
 
   // Toggle dropdown content

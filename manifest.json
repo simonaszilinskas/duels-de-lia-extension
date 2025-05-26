@@ -16,7 +16,8 @@
       "resources": [
         "css/new-styles.css",
         "js/content-loader.js",
-        "data/content-data.json"
+        "data/content-data.json",
+        "data/qr_code_transparent_fixed.png"
       ],
       "matches": ["https://*.comparia.beta.gouv.fr/*", "https://comparia.beta.gouv.fr/*"]
     }
