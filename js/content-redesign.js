@@ -786,7 +786,7 @@
     
     // Add click handler for recap button
     document.getElementById('duelsia-recap-btn').addEventListener('click', () => {
-      const recapUrl = 'https://drive.google.com/file/d/1dvEtIEickBAgk5RpQ5ljxRg02hAbid6t/view?usp=drive_link';
+      const recapUrl = 'https://drive.google.com/file/d/19GvpbS1c4kIyUaJyWwdWyyJ6WsNefD2M/view?usp=drive_link';
       // Extract file ID and convert to embed URL
       const fileId = recapUrl.match(/d\/([a-zA-Z0-9-_]+)/)?.[1];
       if (fileId) {

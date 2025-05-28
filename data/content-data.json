@@ -160,39 +160,57 @@
           "description": "Slides complètes pour aller plus loin",
           "items": [
             {
-              "emoji": "📊",
-              "title": "Pourquoi les IA consomment-elles de l'électricité ?",
-              "url": "https://drive.google.com/file/d/189G2VMx52Htsm_JRj82AkcAXZ8qdIcbK/preview",
+              "emoji": "🤖",
+              "title": "C'est quoi l'IA ?",
+              "url": "https://drive.google.com/file/d/1iGxcswurpFvecgNR3hWQAMsdftwPZM0l/preview",
               "type": "google-drive"
             },
             {
-              "emoji": "📈",
-              "title": "Qu'est-ce que la taille d'un modèle ?",
-              "url": "https://drive.google.com/file/d/1I-wrsF2rD2k8n8tp2N9qD_dkJaq3za5L/preview",
+              "emoji": "📏",
+              "title": "C'est quoi la taille d'un modèle ?",
+              "url": "https://drive.google.com/file/d/1Pk8iXc60HtHEN3ovZjJMIaXHuwMguVWp/preview",
               "type": "google-drive"
             },
             {
-              "emoji": "🎮",
-              "title": "ChatGPT ou Google : lequel est plus frugal ?",
-              "url": "https://drive.google.com/file/d/1GSzqbH2fZ5N7FLP7l3gOygmrZqLqZF6U/preview",
+              "emoji": "💧",
+              "title": "Pourquoi les IA consomment-elles de l'électricité et de l'eau ?",
+              "url": "https://drive.google.com/file/d/1n1wpFA1q58T9roQmQqDA8uXPXgf3QfSm/preview",
               "type": "google-drive"
             },
             {
-              "emoji": "📚",
-              "title": "Qu'est-ce qu'un modèle de raisonnement ?",
-              "url": "https://drive.google.com/file/d/1JCnZaZaklBEzqQrxlML8Drenf-1rmJl5/preview",
+              "emoji": "🎓",
+              "title": "Comment est entraîné un modèle d'IA ?",
+              "url": "https://drive.google.com/file/d/1Qlbd1PO4A_rJsjQWftqREpFg2fZ59hFz/preview",
               "type": "google-drive"
             },
             {
-              "emoji": "🎯",
-              "title": "Qui consomme plus : entraîner ou utiliser une IA ?",
-              "url": "https://drive.google.com/file/d/16Hdl25gSUcWA_lxbC3axBxM84D2F7MUs/preview",
-              "type": "external"
+              "emoji": "♻️",
+              "title": "Cycle de vie d'un modèle d'IA",
+              "url": "https://drive.google.com/file/d/14iNJOn3zFEcC3a5vKsUd84qL4JGmpTfq/preview",
+              "type": "google-drive"
+            },
+            {
+              "emoji": "⚙️",
+              "title": "Facteurs qui influencent la consommation d'un modèle d'IA",
+              "url": "https://drive.google.com/file/d/1yW9hFoYTa4ai2rqgOE7eI86AEFvdWkLW/preview",
+              "type": "google-drive"
+            },
+            {
+              "emoji": "🌐",
+              "title": "L'IA et Internet",
+              "url": "https://drive.google.com/file/d/1tHn8-QQVrfi4QDyMF5viP_bp-BC_vdLW/preview",
+              "type": "google-drive"
             },
             {
               "emoji": "🔧",
               "title": "DeepSeek est-il frugal ?",
-              "url": "https://drive.google.com/file/d/149mO0TybVyGorvljV4nY0MXHE9Sf6y_1/preview",
+              "url": "https://drive.google.com/file/d/1X84yF9HS2R4VFhXxCbC3s55B1Q2dYmuy/preview",
+              "type": "google-drive"
+            },
+            {
+              "emoji": "📊",
+              "title": "Conclusion/récapitulatif",
+              "url": "https://drive.google.com/file/d/19GvpbS1c4kIyUaJyWwdWyyJ6WsNefD2M/preview",
               "type": "google-drive"
             }
           ]
