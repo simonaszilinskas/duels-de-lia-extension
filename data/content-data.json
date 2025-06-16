@@ -160,6 +160,12 @@
           "description": "Slides complètes pour aller plus loin",
           "items": [
             {
+              "emoji": "📖",
+              "title": "Introduction",
+              "url": "https://drive.google.com/file/d/1wjf7wLklv1sWvAHWa5DODE_5XBcpB3Sf/preview",
+              "type": "google-drive"
+            },
+            {
               "emoji": "🤖",
               "title": "C'est quoi l'IA ?",
               "url": "https://drive.google.com/file/d/1iGxcswurpFvecgNR3hWQAMsdftwPZM0l/preview",
