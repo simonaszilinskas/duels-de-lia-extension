@@ -27,46 +27,25 @@
           "description": "Liste de prompts prêts à l'usage",
           "personas": [
             {
-              "name": "Alex",
-              "emoji": "🌿",
-              "profession": "Consultante en transition écologique",
-              "category": "Rédaction",
-              "prompt": "Reformule moi cette phrase - l'IA générative a un effet sur l'environnement donc il est nécessaire de l'utiliser de manière consciente."
-            },
-            {
-              "name": "Elias",
-              "emoji": "👨‍🏫",
-              "profession": "Professeur d'histoire-géographie",
-              "category": "Éducation",
-              "prompt": "J'enseigne l'histoire-géographie en terminale et je me rends compte que mes élèves décrochent systématiquement pendant mon chapitre sur la Guerre Froide. Je veux innover mais je n'ai que 2 heures par semaine avec eux. Propose-moi une activité pédagogique pour les captiver. 50 mots maximum."
-            },
-            {
-              "name": "Mei",
-              "emoji": "🏡",
-              "profession": "Maire d'une commune rurale",
-              "category": "Stratégie",
-              "prompt": "Je suis maire d'un village de 800 habitants et notre dernier commerce vient de fermer. Mes administrés âgés doivent maintenant faire 15km pour acheter du pain. Notre budget communal est déjà serré. Donne moi une idée d'action pour agir rapidement. 40 mots maximum."
-            },
-            {
-              "name": "Camille",
-              "emoji": "👩‍🍳",
-              "profession": "Chef étoilée",
-              "category": "Créativité",
-              "prompt": "Je dois créer un plat gastronomique autour du thème 'Retour du marché'. Contrainte: respect de la saisonnalité octobre-novembre. Fais moi trois propositions de plats sans détailler les recettes. Sois créatif, très concret et très synthétique."
-            },
-            {
               "name": "Rayan",
               "emoji": "🌍",
-              "profession": "Lycéen curieux",
+              "profession": "Lycéen",
               "category": "Jeu de rôles",
               "prompt": "Je prépare un exposé sur l'impact écologique du tourisme de masse. Pour m'entraîner, pose-moi une question qu'un prof ou un camarade pourrait me poser."
             },
             {
-              "name": "Lina",
-              "emoji": "📝",
-              "profession": "Élève en terminale",
+              "name": "Camille",
+              "emoji": "👩‍🍳",
+              "profession": "Cheffe étoilée",
+              "category": "Créativité",
+              "prompt": "Je dois créer un plat gastronomique autour du thème 'Retour du marché'. Contrainte: respect de la saisonnalité octobre-novembre. Fais moi trois propositions de plats sans détailler les recettes. Sois créatif, très concret et très synthétique."
+            },
+            {
+              "name": "Ilias",
+              "emoji": "💼",
+              "profession": "Étudiant en école de commerce",
               "category": "Conseil",
-              "prompt": "Il me reste une semaine avant le bac de philo et je ne sais pas trop par où commencer. Tu peux m'aider à organiser mes révisions avec un planning efficace ?"
+              "prompt": "Je prépare une note pour expliquer pourquoi il serait utile d’utiliser de petits modèles de langage plutôt que de grands dans l’entreprise où je suis en stage. Quelles questions mes supérieurs risquent-ils de me poser ?"
             },
             {
               "name": "Noa",
@@ -76,6 +55,27 @@
               "prompt": "Je voudrais faire une expérience de chimie simple et originale avec mon neveu pendant les vacances. Tu as une idée sympa qui demande peu de matériel mais montre bien un concept intéressant ?"
             },
             {
+              "name": "Alex",
+              "emoji": "🌿",
+              "profession": "Consultante en transition écologique",
+              "category": "Rédaction",
+              "prompt": "Reformule cette phrase : 'L’IA générative a un effet sur l’environnement, donc il est nécessaire de l’utiliser de manière consciente.'"
+            },
+            {
+              "name": "Lina",
+              "emoji": "📝",
+              "profession": "Élève en terminale",
+              "category": "Conseil",
+              "prompt": "Il me reste une semaine avant le bac de philo et je ne sais pas trop par où commencer. Tu peux m'aider à organiser mes révisions avec un planning efficace ?"
+            },
+            {
+              "name": "Mei",
+              "emoji": "🏡",
+              "profession": "Maire d'une commune rurale",
+              "category": "Stratégie",
+              "prompt": "Je suis maire d'un village de 800 habitants et notre dernier commerce vient de fermer. Mes administrés âgés doivent maintenant faire 15km pour acheter du pain. Notre budget communal est déjà serré. Donne moi une idée d'action pour agir rapidement. 40 mots maximum."
+            },
+            {
               "name": "Bertrand",
               "emoji": "📚",
               "profession": "Étudiant en lettres",
@@ -83,11 +83,11 @@
               "prompt": "Je réfléchis à l'évolution du langage depuis l'arrivée des IA génératives comme ChatGPT. Tu peux me proposer une idée d'angle d'analyse en une phrase ?"
             },
             {
-              "name": "Ilias",
-              "emoji": "💼",
-              "profession": "Étudiant en école de commerce",
-              "category": "Conseil",
-              "prompt": "Je dois préparer un business plan pour un projet. Tu peux me proposer une structure claire avec les points clés pour convaincre des investisseurs ?"
+              "name": "Elias",
+              "emoji": "👨‍🏫",
+              "profession": "Professeur d'histoire-géographie",
+              "category": "Éducation",
+              "prompt": "Je suis prof d’histoire-géo en terminale, et mes élèves décrochent pendant le chapitre sur la Guerre froide. Je n’ai que 2h par semaine. Propose-moi une activité pédagogique pour les captiver. 50 mots maximum."
             }
           ]
         },
@@ -98,15 +98,11 @@
           "cards": [
             {
               "theme": "Taille des modèles",
-              "question": "Seriez-vous prêts à sacrifier 10% de performance pour diviser par 4 l'empreinte environnementale de vos requêtes ? Où placez-vous la limite entre confort et responsabilité ?"
+              "question": "Seriez-vous prêts à sacrifier 10% de performance pour diviser par 4 l'empreinte environnementale de vos requêtes ? Où placez-vous le curseur entre la qualité de réponse et l'impact environnemental ?"
             },
             {
               "theme": "Moteurs de recherche",
-              "question": "Sachant qu'une recherche via une IA conversationnelle consomme bien plus qu'une requête Google, dans quels cas justifieriez-vous ce choix énergivore ?"
-            },
-            {
-              "theme": "Prompts",
-              "question": "Peut-on réduire concrètement l'empreinte carbone de l'IA en apprenant à mieux formuler nos prompts ? Faut-il en faire un enjeu de formation ?"
+              "question": "Sachant qu'une recherche via une IA conversationnelle consomme bien plus qu'une requête Google, dans quels cas justifieriez-vous l'utilisation d'une IA conversationnelle ?"
             },
             {
               "theme": "Responsabilité",
@@ -114,11 +110,11 @@
             },
             {
               "theme": "Frugalité et usages",
-              "question": "Si certaines fonctionnalités d’IA (génération d’images, résumés, etc.) avaient une empreinte carbone élevée, seriez-vous prêts à y renoncer ? Pour quels usages diriez-vous non ?"
+              "question": "Si certaines fonctionnalités d’IA (génération d’images, de vidéos, etc.) avaient une empreinte carbone élevée, seriez-vous prêts à y renoncer complètement ? Pour quels usages diriez-vous non ?"
             },
             {
               "theme": "Frugalité et usages",
-              "question": "Doit-on restreindre les usages créatifs ou ludiques de l’IA — comme écrire des poèmes ou jouer avec elle — au nom de la sobriété écologique ?"
+              "question": "Doit-on restreindre les usages créatifs ou ludiques de l’IA, comme écrire des poèmes, au nom de la sobriété écologique ?"
             },
             {
               "theme": "Transparence",
@@ -134,23 +130,7 @@
             },
             {
               "theme": "Définition",
-              "question": "Peut-on vraiment parler d'\"intelligence artificielle responsable\" vu que même les petits modèles consomment de l'énergie ?"
-            },
-            {
-              "theme": "Compromis",
-              "question": "Accepteriez-vous un service moins performant si vous saviez qu'il est plus écoresponsable ?"
-            },
-            {
-              "theme": "Formation",
-              "question": "Devrait-on apprendre à \"mieux interroger\" les IA pour éviter de gaspiller de l'énergie ?"
-            },
-            {
-              "theme": "Responsabilité",
-              "question": "Qui est responsable de l'impact écologique d'une IA : l'utilisateur, le développeur, l'entreprise ?"
-            },
-            {
-              "theme": "Institutions",
-              "question": "Les écoles ou collectivités devraient-elles interdire les IA trop polluantes ?"
+              "question": "Peut-on vraiment parler d'\"intelligence artificielle responsable\" vu que même les petits modèles consomment beaucoup d'énergie ?"
             }
           ]       
         },
