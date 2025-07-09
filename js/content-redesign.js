@@ -16,7 +16,7 @@
   
   // Check if we're on the correct page
   const currentUrl = window.location.href;
-  const urlCheck = currentUrl.includes('comparia.beta.gouv.fr/arene/');
+  const urlCheck = currentUrl.includes('comparia.beta.gouv.fr/arene');
   console.log('✅ URL contient "comparia.beta.gouv.fr/arene/"?', urlCheck);
   
   if (!urlCheck) {
@@ -494,6 +494,10 @@
         // Fallback to opening in new tab if can't extract file ID
         window.open(resource.url, '_blank');
       }
+    } else if (resource.type === 'local-pdf') {
+      // Handle local PDF files
+      const pdfUrl = chrome.runtime.getURL(resource.url);
+      openPdfOverlay(pdfUrl);
     } else {
       // Open external links in new tab
       window.open(resource.url, '_blank');

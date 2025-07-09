@@ -142,62 +142,62 @@
             {
               "emoji": "📖",
               "title": "Introduction",
-              "url": "https://drive.google.com/file/d/1wjf7wLklv1sWvAHWa5DODE_5XBcpB3Sf/preview",
-              "type": "google-drive"
+              "url": "data/slides/duels-intro.pdf",
+              "type": "local-pdf"
             },
             {
               "emoji": "🤖",
               "title": "C'est quoi l'IA ?",
-              "url": "https://drive.google.com/file/d/1iGxcswurpFvecgNR3hWQAMsdftwPZM0l/preview",
-              "type": "google-drive"
+              "url": "data/slides/Cestquoilia.pdf",
+              "type": "local-pdf"
             },
             {
               "emoji": "📏",
               "title": "C'est quoi la taille d'un modèle ?",
-              "url": "https://drive.google.com/file/d/1Pk8iXc60HtHEN3ovZjJMIaXHuwMguVWp/preview",
-              "type": "google-drive"
+              "url": "data/slides/tailledesmodeles.pdf",
+              "type": "local-pdf"
             },
             {
               "emoji": "💧",
               "title": "Pourquoi les IA consomment-elles de l'électricité et de l'eau ?",
-              "url": "https://drive.google.com/file/d/1n1wpFA1q58T9roQmQqDA8uXPXgf3QfSm/preview",
-              "type": "google-drive"
+              "url": "data/slides/Pourquoi ca consomme.pdf",
+              "type": "local-pdf"
             },
             {
               "emoji": "🎓",
               "title": "Comment est entraîné un modèle d'IA ?",
-              "url": "https://drive.google.com/file/d/1Qlbd1PO4A_rJsjQWftqREpFg2fZ59hFz/preview",
-              "type": "google-drive"
+              "url": "data/slides/comment-est-entraine-un-modele.pdf",
+              "type": "local-pdf"
             },
             {
               "emoji": "♻️",
               "title": "Cycle de vie d'un modèle d'IA",
-              "url": "https://drive.google.com/file/d/14iNJOn3zFEcC3a5vKsUd84qL4JGmpTfq/preview",
-              "type": "google-drive"
+              "url": "data/slides/cycle-de-vie-de-modele.pdf",
+              "type": "local-pdf"
             },
             {
               "emoji": "⚙️",
               "title": "Facteurs qui influencent la consommation d'un modèle d'IA",
-              "url": "https://drive.google.com/file/d/1yW9hFoYTa4ai2rqgOE7eI86AEFvdWkLW/preview",
-              "type": "google-drive"
+              "url": "data/slides/Facteurs conso énergétique.pdf",
+              "type": "local-pdf"
             },
             {
               "emoji": "🌐",
               "title": "L'IA et Internet",
-              "url": "https://drive.google.com/file/d/1tHn8-QQVrfi4QDyMF5viP_bp-BC_vdLW/preview",
-              "type": "google-drive"
+              "url": "data/slides/IA et internet.pdf",
+              "type": "local-pdf"
             },
             {
               "emoji": "🔧",
               "title": "DeepSeek est-il frugal ?",
-              "url": "https://drive.google.com/file/d/1X84yF9HS2R4VFhXxCbC3s55B1Q2dYmuy/preview",
-              "type": "google-drive"
+              "url": "data/slides/Deepseek-est-il-frugal.pdf",
+              "type": "local-pdf"
             },
             {
               "emoji": "📊",
               "title": "Conclusion/récapitulatif",
-              "url": "https://drive.google.com/file/d/19GvpbS1c4kIyUaJyWwdWyyJ6WsNefD2M/preview",
-              "type": "google-drive"
+              "url": "data/slides/conclusion.pdf",
+              "type": "local-pdf"
             }
           ]
         },
