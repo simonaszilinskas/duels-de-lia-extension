@@ -142,55 +142,49 @@
             {
               "emoji": "📖",
               "title": "Introduction",
-              "url": "data/slides/duels-intro.pdf",
-              "type": "local-pdf"
-            },
-            {
-              "emoji": "🤖",
-              "title": "C'est quoi l'IA ?",
-              "url": "data/slides/Cestquoilia.pdf",
+              "url": "data/slides/Introduction.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "📏",
               "title": "C'est quoi la taille d'un modèle ?",
-              "url": "data/slides/tailledesmodeles.pdf",
+              "url": "data/slides/cestquoi-la-taille-dun-modele.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "💧",
               "title": "Pourquoi les IA consomment-elles de l'électricité et de l'eau ?",
-              "url": "data/slides/Pourquoi ca consomme.pdf",
+              "url": "data/slides/pourquoi-ca-consomme.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "🎓",
               "title": "Comment est entraîné un modèle d'IA ?",
-              "url": "data/slides/comment-est-entraine-un-modele.pdf",
+              "url": "data/slides/Comment-est-entraine-un-modele.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "♻️",
-              "title": "Cycle de vie d'un modèle d'IA",
-              "url": "data/slides/cycle-de-vie-de-modele.pdf",
+              "title": "Entraînement vs Inférence",
+              "url": "data/slides/entrainement-vs-inference.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "⚙️",
               "title": "Facteurs qui influencent la consommation d'un modèle d'IA",
-              "url": "data/slides/Facteurs conso énergétique.pdf",
+              "url": "data/slides/facteurs-conso-modele.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "🌐",
               "title": "L'IA et Internet",
-              "url": "data/slides/IA et internet.pdf",
+              "url": "data/slides/IA-et-internet.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "🔧",
-              "title": "DeepSeek est-il frugal ?",
-              "url": "data/slides/Deepseek-est-il-frugal.pdf",
+              "title": "Modèles de raisonnement",
+              "url": "data/slides/modeles-de-raisonnement.pdf",
               "type": "local-pdf"
             },
             {
