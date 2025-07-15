@@ -142,55 +142,55 @@
             {
               "emoji": "📖",
               "title": "Introduction",
-              "url": "data/slides/Introduction.pdf",
+              "url": "data/slides/Juillet- Introduction.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "📏",
               "title": "C'est quoi la taille d'un modèle ?",
-              "url": "data/slides/cestquoi-la-taille-dun-modele.pdf",
+              "url": "data/slides/Juillet - taille des modèles.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "💧",
               "title": "Pourquoi les IA consomment-elles de l'électricité et de l'eau ?",
-              "url": "data/slides/pourquoi-ca-consomme.pdf",
+              "url": "data/slides/Juillet - pourquoi ca consomme.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "🎓",
               "title": "Comment est entraîné un modèle d'IA ?",
-              "url": "data/slides/Comment-est-entraine-un-modele.pdf",
+              "url": "data/slides/Juillet - comment est entraîné un modèle d'IA.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "♻️",
               "title": "Entraînement vs Inférence",
-              "url": "data/slides/entrainement-vs-inference.pdf",
+              "url": "data/slides/Juillet - Entraînement vs inférence.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "⚙️",
               "title": "Facteurs qui influencent la consommation d'un modèle d'IA",
-              "url": "data/slides/facteurs-conso-modele.pdf",
+              "url": "data/slides/Juillet - Facteurs qui déterminnet la consommation d'un modèle.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "🌐",
               "title": "L'IA et Internet",
-              "url": "data/slides/IA-et-internet.pdf",
+              "url": "data/slides/Juillet - IA et internet.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "🔧",
               "title": "Modèles de raisonnement",
-              "url": "data/slides/modeles-de-raisonnement.pdf",
+              "url": "data/slides/Juillet - quel impact selon la localisation des serveurs ?.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "📊",
               "title": "Conclusion/récapitulatif",
-              "url": "data/slides/conclusion.pdf",
+              "url": "data/slides/Juillet - conclusion.pdf",
               "type": "local-pdf"
             }
           ]
