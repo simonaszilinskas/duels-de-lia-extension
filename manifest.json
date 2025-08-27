@@ -3,7 +3,7 @@
   "name": "Duels de l'IA",
   "version": "1.0.0",
   "description": "Extension pour l'atelier pédagogique Duel de l'IA",
-  "permissions": ["activeTab"],
+  "permissions": [],
   "content_scripts": [
     {
       "matches": ["*://*.comparia.beta.gouv.fr/*"],
