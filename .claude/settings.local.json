@@ -29,7 +29,9 @@
       "Bash(git restore:*)",
       "Bash(git rev-parse:*)",
       "Bash(git init:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(git rebase:*)",
+      "Bash(git diff:*)"
     ],
     "deny": []
   }
