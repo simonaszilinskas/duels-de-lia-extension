@@ -142,61 +142,79 @@
             {
               "emoji": "📖",
               "title": "Introduction",
-              "url": "data/slides/Introduction.pdf",
-              "type": "local-pdf"
-            },
-            {
-              "emoji": "📏",
-              "title": "C'est quoi la taille d'un modèle ?",
-              "url": "data/slides/cestquoi-la-taille-dun-modele.pdf",
-              "type": "local-pdf"
-            },
-            {
-              "emoji": "💧",
-              "title": "Pourquoi les IA consomment-elles de l'électricité et de l'eau ?",
-              "url": "data/slides/pourquoi-ca-consomme.pdf",
-              "type": "local-pdf"
-            },
-            {
-              "emoji": "🎓",
-              "title": "Comment est entraîné un modèle d'IA ?",
-              "url": "data/slides/comment-est-entraine-un-modele.pdf",
-              "type": "local-pdf"
-            },
-            {
-              "emoji": "♻️",
-              "title": "Entraînement vs Inférence",
-              "url": "data/slides/aout-entrainement-vs-inference.pdf",
-              "type": "local-pdf"
-            },
-            {
-              "emoji": "⚙️",
-              "title": "Facteurs qui influencent la consommation d'un modèle d'IA",
-              "url": "data/slides/aout-consommation-d-un-modele.pdf",
-              "type": "local-pdf"
-            },
-            {
-              "emoji": "🌐",
-              "title": "L'IA et Internet",
-              "url": "data/slides/aout-l-IA-et-internet.pdf",
-              "type": "local-pdf"
-            },
-            {
-              "emoji": "🔧",
-              "title": "Modèles de raisonnement",
-              "url": "data/slides/modeles-de-raisonnement.pdf",
+              "url": "data/slides/mars2026-introduction.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "📏",
               "title": "Comment calculer l'impact ?",
-              "url": "data/slides/aout-comment-calculer-l'impact.pdf",
+              "url": "data/slides/mars2026-comment-calculer-l-impact.pdf",
+              "type": "local-pdf"
+            },
+            {
+              "emoji": "🔄",
+              "title": "Le paradoxe de Jevons",
+              "url": "data/slides/mars2026-paradoxe-de-jevons.pdf",
+              "type": "local-pdf"
+            },
+            {
+              "emoji": "🎓",
+              "title": "Comment est entraîné un modèle d'IA ?",
+              "url": "data/slides/mars2026-comment-est-entraine-un-modele.pdf",
+              "type": "local-pdf"
+            },
+            {
+              "emoji": "💧",
+              "title": "Pourquoi les IA consomment-elles de l'électricité et de l'eau ?",
+              "url": "data/slides/mars2026-pourquoi-ca-consomme.pdf",
+              "type": "local-pdf"
+            },
+            {
+              "emoji": "📐",
+              "title": "C'est quoi la taille d'un modèle ?",
+              "url": "data/slides/mars2026-taille-dun-modele.pdf",
+              "type": "local-pdf"
+            },
+            {
+              "emoji": "🌐",
+              "title": "L'IA et Internet",
+              "url": "data/slides/mars2026-IA-et-internet.pdf",
+              "type": "local-pdf"
+            },
+            {
+              "emoji": "♻️",
+              "title": "Entraînement vs Inférence",
+              "url": "data/slides/mars2026-entrainement-vs-inference.pdf",
+              "type": "local-pdf"
+            },
+            {
+              "emoji": "⚙️",
+              "title": "Facteurs qui influencent la consommation d'un modèle d'IA",
+              "url": "data/slides/mars2026-consommation-dun-modele.pdf",
+              "type": "local-pdf"
+            },
+            {
+              "emoji": "🔧",
+              "title": "Modèles de raisonnement",
+              "url": "data/slides/mars2026-modeles-de-raisonnement.pdf",
+              "type": "local-pdf"
+            },
+            {
+              "emoji": "📍",
+              "title": "Localisation des serveurs",
+              "url": "data/slides/mars2026-localisation-des-serveurs.pdf",
+              "type": "local-pdf"
+            },
+            {
+              "emoji": "🤖",
+              "title": "DeepSeek est-il frugal ?",
+              "url": "data/slides/mars2026-deepseek-est-il-frugal.pdf",
               "type": "local-pdf"
             },
             {
               "emoji": "📊",
               "title": "Conclusion/récapitulatif",
-              "url": "data/slides/conclusion.pdf",
+              "url": "data/slides/mars2026-conclusion.pdf",
               "type": "local-pdf"
             }
           ]
