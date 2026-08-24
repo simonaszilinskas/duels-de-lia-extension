@@ -10,93 +10,125 @@
 <body>
 <main class="stage">
 
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
   <section class="slide titre">
-    <h1>Entraînement vs inférence</h1>
+    <h1>Entraînement vs <em>inférence</em></h1>
     <p class="chapeau">Un modèle consomme à deux moments : quand on le fabrique, et chaque fois qu'on s'en sert.</p>
   </section>
 
   <section class="slide">
-    <h1>Deux moments, deux profils</h1>
-    <div class="cartes">
-      <div class="carte">
-        <h3>1. Entraînement</h3>
-        <p>Le modèle apprend à générer du texte.</p>
-        <p><strong>Beaucoup d'énergie</strong> pendant plusieurs semaines — mais une seule fois par modèle.</p>
+    <h1>Deux moments, <em>deux</em> profils</h1>
+    <div class="compare">
+      <div>
+        <h2>Entraînement</h2>
+        <img class="visuel" src="img/comment-est-entraine-un-modele-p2-4.webp" alt="Une allée de centre de données bordée de baies de serveurs hérissées de câbles de couleur.">
+        <p>Le modèle apprend à générer du texte. Beaucoup d'énergie, plusieurs semaines, une seule fois par modèle.</p>
       </div>
-      <div class="carte">
-        <h3>2. Utilisation (inférence)</h3>
-        <p>Le modèle génère du texte à partir d'une question.</p>
-        <p><strong>Peu d'énergie</strong> par demande — mais s'il y a beaucoup de demandes, le cumul devient considérable.</p>
+      <div>
+        <h2>Utilisation</h2>
+        <img class="visuel" src="img/pourquoi-ca-consomme-p3-6.webp" alt="Écran d'accueil de ChatGPT : la question « What can I help with? » au-dessus d'un champ de saisie.">
+        <p>Le modèle répond à une question. Peu d'énergie par demande, mais le cumul devient considérable.</p>
       </div>
     </div>
   </section>
 
   <section class="slide">
-    <h1>Entraîner un modèle</h1>
-    <p class="chapeau">Exemple : Meta / Llama 4.</p>
+    <h1>Entraîner un modèle : <em>Llama 4</em></h1>
     <p class="chiffre">≈ 5 GWh</p>
-    <p>consommés pour l'entraînement, soit la consommation d'environ <strong>1 100 ménages français pendant un an</strong>.</p>
-    <div class="nuance">
-      <p>Meta ne publie pas de gigawattheures : seulement <strong>7,4 millions d'heures de carte graphique</strong>, à 700 W. Le chiffre ci-dessus est cette conversion, et il ne couvre que Scout et Maverick. Behemoth, le plus gros des trois, n'a jamais été publié.</p>
-    </div>
+    <p>pour l'entraînement, soit la consommation d'environ <strong>1 100 ménages français pendant un an</strong>.</p>
     <p class="source">Meta, <em>Llama 4 Model Card</em>, 2025 : 5,0 M + 2,38 M heures GPU à 700 W. En comptant le reste du serveur et le refroidissement, on monte vers 7 à 8 GWh. Ménage français : 4 700 kWh par an, toutes énergies de chauffage confondues.</p>
   </section>
 
   <section class="slide">
-    <h1>Se servir d'un modèle</h1>
-    <p class="chapeau">Exemple : OpenAI / GPT-5, pour écrire un texte de cinq pages (5 000 jetons).</p>
-    <p class="chiffre">8,7 Wh</p>
-    <p>soit <strong>50 à 70 % de la batterie d'un smartphone</strong>.</p>
-    <div class="nuance">
-      <p>Ce n'est pas une mesure, c'est une <strong>simulation</strong>. OpenAI ne publie ni la taille ni l'architecture de GPT-5 : EcoLogits estime lui-même 300 milliards de paramètres, dont 10 à 30 % actifs, et sort une fourchette de <strong>6,7 à 10 Wh</strong>, pas une valeur unique.</p>
+    <h1>Un chiffre <em>reconstitué</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <div class="nuance">
+          <p>Meta ne publie pas de gigawattheures, mais <strong>7,4 millions d'heures de carte graphique</strong>. Le chiffre vient de cette conversion.</p>
+        </div>
+        <p>Il ne couvre que deux modèles sur trois : Behemoth, le plus gros, n'a jamais été publié.</p>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p2-5.webp" alt="Un serveur en rack ouvert, surmonté de quatre modules de calcul prêts à être glissés dedans.">
     </div>
-    <p class="source">EcoLogits 0.10.2, mix électrique mondial moyen, PUE 1,2, 5 000 jetons de sortie. Batterie de référence : 14 à 15 Wh, celle d'un iPhone récent.</p>
+    <p class="source">Meta, <em>Llama 4 Model Card</em>, 2025 : 5,0 M heures GPU pour Scout, 2,38 M pour Maverick, à 700 W.</p>
   </section>
 
   <section class="slide">
-    <h1>Et si tout le monde s'y met</h1>
-    <p>Si <strong>1 % de la population mondiale</strong> écrivait ce texte de cinq pages tous les jours pendant un an, il faudrait, pour fournir cette électricité, la production annuelle de :</p>
-    <p class="chiffre">60 éoliennes</p>
-    <p>Une demande minuscule, répétée, finit par se compter en parc éolien.</p>
+    <h1>Se servir d'un modèle : <em>GPT-5</em></h1>
+    <p>Écrire un texte de cinq pages, soit 5 000 jetons :</p>
+    <p class="chiffre">8,7 Wh</p>
+    <p>soit <strong>50 à 70 % de la batterie d'un smartphone</strong>.</p>
     <div class="nuance">
-      <p>Soixante éoliennes de <strong>2 MW</strong>, la moyenne du parc français existant. Avec les machines qu'on installe aujourd'hui, 3,5 MW, la réponse serait plutôt <strong>trente</strong>. En mer, une dizaine. Annoncez la taille d'éolienne, sinon le chiffre ne veut rien dire.</p>
+      <p>Ce n'est pas une mesure, c'est une <strong>simulation</strong> : EcoLogits sort une fourchette de 6,7 à 10 Wh.</p>
     </div>
+    <p class="source">EcoLogits 0.10.2, mix électrique mondial moyen, PUE 1,2, 5 000 jetons de sortie. OpenAI ne publie ni la taille ni l'architecture de GPT-5 : EcoLogits estime lui-même 300 milliards de paramètres, dont 10 à 30 % actifs. Batterie de référence : 14 à 15 Wh, celle d'un iPhone récent.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Et si <em>tout le monde</em> s'y met</h1>
+    <p>1 % de la population mondiale écrit ce texte de cinq pages chaque jour, pendant un an. Pour fournir cette électricité, il faut la production annuelle de :</p>
+    <p class="chiffre">60 éoliennes</p>
     <p class="source">Calcul : 82 millions de personnes × 8,7 Wh × 365 jours = 260 GWh par an. Une éolienne de 2 MW à 25 % de facteur de charge produit 4,4 GWh par an. Population mondiale : ONU, <em>World Population Prospects</em> 2024. Parc éolien : RTE, bilan électrique 2025.</p>
   </section>
 
   <section class="slide">
-    <h1>« S'il te plaît », « merci »</h1>
-    <p>Chaque mot de politesse est un jeton de plus à traiter. À l'échelle de ChatGPT, ces jetons se comptent en électricité et en argent.</p>
-    <figure>
-      <img src="img/tweet-altman-merci.png" alt="Échange sur X. Question : combien d'argent OpenAI perd-il en électricité à cause des gens qui disent « please » et « thank you » à leurs modèles ? Réponse de Sam Altman : des dizaines de millions de dollars bien dépensés, on ne sait jamais.">
-      <figcaption>« Combien d'argent OpenAI perd-il à cause des gens qui disent “s'il te plaît” et “merci” à leurs modèles ? » — Réponse de Sam Altman, PDG d'OpenAI : « Des dizaines de millions de dollars […] »</figcaption>
-    </figure>
+    <h1>Soixante, ou <em>trente</em> ?</h1>
+    <div class="nuance">
+      <p>Soixante éoliennes de <strong>2 MW</strong>, la moyenne du parc français existant. Avec les machines qu'on installe aujourd'hui, 3,5 MW, la réponse serait plutôt trente. En mer, une dizaine.</p>
+    </div>
+    <p>Une demande minuscule, répétée, finit par se compter en parc éolien.</p>
+    <p class="source">Puissance moyenne du parc français : RTE, bilan électrique 2025.</p>
+  </section>
+
+  <section class="slide">
+    <h1>« S'il te plaît », <em>« merci »</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Chaque mot de politesse est un jeton de plus à traiter.</p>
+        <p>À l'échelle de ChatGPT, ces jetons se comptent en électricité et en argent.</p>
+      </div>
+      <img class="visuel" src="img/entrainement-vs-inference-p5-1.webp" alt="Échange sur X. tomie demande combien d'argent OpenAI perd en électricité à cause des gens qui disent « please » et « thank you » à leurs modèles. Sam Altman répond : « tens of millions of dollars well spent — you never know ».">
+    </div>
     <p class="source">Sam Altman (@sama) sur X, 17 avril 2025, en réponse à @tomieinlove.</p>
   </section>
 
   <section class="slide">
-    <h1>L'analogie de la voiture</h1>
-    <p>Les indicateurs d'impact regardent surtout l'inférence. De quoi croire que se servir d'un modèle pèse moins lourd que le fabriquer. La réalité est plus retorse.</p>
-    <div class="cartes">
-      <div class="carte">
-        <h3>Construire la voiture</h3>
+    <h1>L'analogie de la <em>voiture</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Construire la voiture</h2>
         <p>C'est l'entraînement : une opération unique, très gourmande en ressources.</p>
       </div>
-      <div class="carte">
-        <h3>Rouler avec</h3>
+      <div>
+        <h2>Rouler avec</h2>
         <p>C'est l'inférence : chaque trajet coûte peu, mais on roule tous les jours, et le nombre de trajets n'a pas de limite visible.</p>
       </div>
     </div>
-    <p>Cumulé sur des millions de gens qui interrogent un modèle chaque jour, l'usage peut peser <strong>plus lourd que l'entraînement</strong>.</p>
     <p class="source">D'après l'explication que compar:IA publiait dans sa foire aux questions.</p>
   </section>
 
   <section class="slide">
-    <h1>Ce que compte compar:IA, et ce qu'il ne compte pas</h1>
-    <div class="nuance">
-      <p>L'<strong>« Énergie de génération estimée »</strong> du bilan ne couvre <strong>que l'inférence</strong> : l'électricité dépensée pour écrire la réponse que vous venez de lire. EcoLogits, la méthode derrière ce chiffre, <strong>ne compte pas l'entraînement</strong> du modèle.</p>
+    <h1>L'usage peut peser <em>plus lourd</em></h1>
+    <p>Les indicateurs d'impact regardent surtout l'inférence. De quoi croire que se servir d'un modèle pèse moins lourd que le fabriquer.</p>
+    <p>Cumulé sur des millions de gens qui interrogent un modèle chaque jour, l'usage peut dépasser l'entraînement.</p>
+    <p class="source">D'après l'explication que compar:IA publiait dans sa foire aux questions.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que compte <em>compar:IA</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <div class="nuance">
+          <p>L'« Énergie de génération estimée » du bilan ne couvre <strong>que l'inférence</strong>. EcoLogits, la méthode derrière ce chiffre, ne compte pas l'entraînement.</p>
+        </div>
+        <p>Le chiffre affiché après un duel est un plancher, pas le coût complet d'un modèle.</p>
+      </div>
+      <img class="visuel" src="img/introduction-p5-11.webp" alt="Écran de duel de compar:IA : la même question posée à deux modèles anonymes, Modèle A et Modèle B, chacun avec sa réponse et des boutons de vote.">
     </div>
-    <p>C'est le malentendu le plus fréquent de l'atelier. Le chiffre affiché après un duel est un plancher, pas le coût complet d'un modèle.</p>
     <p class="source">Méthode EcoLogits 0.10.2, telle qu'employée par compar:IA.</p>
   </section>
 

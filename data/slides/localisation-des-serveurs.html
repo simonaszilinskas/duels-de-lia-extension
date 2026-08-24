@@ -10,56 +10,83 @@
 <body>
 <main class="stage">
 
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
   <section class="slide titre">
-    <h1>Localisation des serveurs</h1>
-    <p class="chapeau">Impact environnemental : CO₂ et ressources en eau.</p>
+    <h1>Localisation des <em>serveurs</em></h1>
+    <p class="chapeau">Le carbone et l'eau dépendent de l'endroit où tournent les machines.</p>
   </section>
 
   <section class="slide">
-    <h1>Le même kWh ne pèse pas le même carbone</h1>
-    <p class="chapeau">Pour juger l'impact carbone direct d'un centre de données, il faut regarder l'électricité du pays où il est installé — pas celui où vivent les utilisateurs.</p>
-    <table>
-      <tr>
-        <th></th>
-        <th>France</th>
-        <th>États-Unis</th>
-      </tr>
-      <tr>
-        <td>Intensité carbone de l'électricité</td>
-        <td><strong>41 g</strong></td>
-        <td><strong>384 g</strong></td>
-      </tr>
-    </table>
-    <p>En grammes de CO₂ par kWh produit, en 2024. Un rapport de <strong>1 à 9</strong>.</p>
-    <p class="source">Ember, <em>Global Electricity Review</em>, 2025, même méthode pour les deux pays. RTE publie 20 g pour la France en comptant les seules émissions directes de production ; l'écart avec Ember vient du bois-énergie. Annoncez la base retenue, quelqu'un dans la salle la connaîtra.</p>
-  </section>
-
-  <section class="slide">
-    <h1>Des serveurs surtout américains</h1>
-    <ul>
-      <li>Les principaux éditeurs de modèles sont des entreprises américaines. Leurs centres de données se concentrent donc sur le <strong>territoire américain</strong>.</li>
-      <li>La France a un <strong>mix électrique largement décarboné</strong>, porté par le nucléaire. Elle a donc un vrai atout pour accueillir de futures infrastructures d'IA.</li>
-      <li>Autrement dit : à modèle égal et à réponse égale, le carbone dépend de la prise de courant.</li>
-    </ul>
-  </section>
-
-  <section class="slide">
-    <h1>Santiago du Chili : l'eau, pas le carbone</h1>
-    <ul>
-      <li>À Santiago, les géants américains construisent des centres de données qui consomment <strong>des milliards de litres d'eau par an</strong>, et aggravent la sécheresse.</li>
-      <li>Le Chili traverse une sécheresse structurelle depuis plus de dix ans. C'est là que l'eau d'un centre de données pèse le plus lourd.</li>
-      <li>Ils s'installent là pour des infrastructures fiables et une réglementation accueillante, au détriment de l'eau locale.</li>
-      <li>On ne juge donc pas une consommation à l'échelle des ressources mondiales, mais face aux contraintes — électricité et eau — de la région qui accueille les machines.</li>
-    </ul>
-    <p class="source">Chiffre repris tel quel du support d'origine, qui ne cite pas sa source.</p>
-  </section>
-
-  <section class="slide">
-    <h1>Ce que l'écran ne mesure pas</h1>
-    <div class="nuance">
-      <p>L'argument tient, mais <strong>compar:IA ne le mesure pas</strong>. Le calcul est fait sur le <strong>mix électrique mondial moyen</strong>, jamais sur celui du pays d'hébergement. Et le bilan affiche de l'énergie, <strong>plus aucun CO₂</strong>. Un animateur qui pointe l'écran après cette diapositive cherchera un chiffre qui n'y est pas.</p>
+    <h1>Le même kWh ne pèse pas le même <em>carbone</em></h1>
+    <p class="chapeau">C'est l'électricité du pays d'hébergement qui compte, pas celle des utilisateurs.</p>
+    <div class="compare">
+      <div>
+        <h2>France</h2>
+        <p class="chiffre">41 g</p>
+        <p>de CO₂ par kWh produit, en 2024.</p>
+      </div>
+      <div>
+        <h2>États-Unis</h2>
+        <p class="chiffre">384 g</p>
+        <p>de CO₂ par kWh produit, en 2024. <strong>Neuf fois plus.</strong></p>
+      </div>
     </div>
-    <p>Pour mesurer l'effet de la localisation, il faudrait savoir où chaque fournisseur fait tourner ses serveurs. Les fournisseurs ne le publient pas. Le débat reste donc entier — il se mène avec cette diapositive, pas avec l'écran.</p>
+    <p class="source">Ember, <em>Global Electricity Review</em>, 2025, même méthode pour les deux pays. RTE publie 20 g pour la France en comptant les seules émissions directes de production ; l'écart avec Ember vient du bois-énergie.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Des serveurs surtout <em>américains</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Les principaux éditeurs de modèles sont des entreprises américaines. Leurs centres de données se concentrent donc sur le territoire américain.</p>
+        <p>À modèle égal et à réponse égale, le carbone dépend de la <strong>prise de courant</strong>.</p>
+      </div>
+      <img class="visuel" src="img/localisation-des-serveurs-p2-1.webp" alt="Allée d'un centre de données bordée de canalisations de refroidissement peintes en bleu, rouge, jaune et vert.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>La France a un <em>atout</em></h1>
+    <p class="chapeau">Son mix électrique est largement décarboné, porté par le nucléaire.</p>
+    <p>Elle a donc un vrai atout pour accueillir de futures infrastructures d'IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Santiago du Chili : l'eau, pas le <em>carbone</em></h1>
+    <p class="chapeau">Les géants américains y construisent des centres de données qui consomment des milliards de litres d'eau par an.</p>
+    <p>Le Chili traverse une sécheresse depuis plus de dix ans. C'est là que l'eau d'un centre de données pèse le plus lourd.</p>
+    <p class="source">Chiffre sans source publiée.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Juger à l'échelle <em>locale</em></h1>
+    <p class="chapeau">Une même machine ne pèse pas pareil selon l'endroit où on la pose.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Électricité</h3>
+        <p>Le carbone suit le mix du pays qui héberge les serveurs.</p>
+      </div>
+      <div class="carte">
+        <h3>Eau</h3>
+        <p>Le refroidissement pèse d'autant plus lourd que la région en manque.</p>
+      </div>
+      <div class="carte">
+        <h3>Règles</h3>
+        <p>Les géants s'installent là où les infrastructures sont fiables et la réglementation accueillante.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que l'écran ne <em>mesure pas</em></h1>
+    <div class="nuance">
+      <p>compar:IA calcule sur le <strong>mix électrique mondial moyen</strong>, jamais sur celui du pays d'hébergement. Et le bilan affiche de l'énergie, <strong>plus aucun CO₂</strong>.</p>
+    </div>
+    <p>Il faudrait savoir où chaque fournisseur fait tourner ses serveurs. Aucun ne le publie. Le débat reste donc entier.</p>
   </section>
 
 </main>

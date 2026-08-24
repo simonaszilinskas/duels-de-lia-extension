@@ -10,45 +10,85 @@
 <body>
 <main class="stage">
 
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
   <section class="slide titre">
-    <h1>Comment est entraîné un modèle d'IA ?</h1>
+    <h1>Comment est <em>entraîné</em> un modèle d'IA ?</h1>
     <p class="chapeau">Des données, beaucoup de calculs, et au bout un modèle qui prédit.</p>
   </section>
 
   <section class="slide">
-    <h1>La recette</h1>
+    <h1>La <em>recette</em></h1>
     <div class="cartes">
       <div class="carte">
         <h3>Des données</h3>
-        <p>De quoi apprendre : des textes, des images, avec ce qu'ils représentent.</p>
+        <img class="visuel" src="img/comment-est-entraine-un-modele-p1-1.webp" alt="Une grille de photos de chats et de chiens, chacune légendée « cat (0) » ou « dog (1) ».">
+        <p>Des textes, des images, avec ce qu'ils représentent.</p>
       </div>
       <div class="carte">
         <h3>+ beaucoup de calculs</h3>
-        <p>La machine ajuste ses chiffres jusqu'à retomber sur les bonnes réponses. C'est ce qu'on appelle « apprendre ».</p>
+        <img class="visuel" src="img/comment-est-entraine-un-modele-p1-2.webp" alt="Une photo de chat et une photo de chien entrent dans un réseau de neurones à quatre couches, qui produit la sortie « Cat ».">
+        <p>La machine ajuste ses chiffres jusqu'à retomber sur les bonnes réponses.</p>
       </div>
       <div class="carte">
         <h3>= un modèle d'IA</h3>
+        <img class="visuel" src="img/comment-est-entraine-un-modele-p1-3.webp" alt="Une photo d'un chien et d'un chat, chacun entouré d'un cadre bleu portant l'étiquette « Dog » ou « Cat ».">
         <p>Qui prédit ensuite sur des données qu'il n'a jamais vues.</p>
       </div>
     </div>
   </section>
 
   <section class="slide">
-    <h1>Sur quoi s'entraîne une IA conversationnelle ?</h1>
+    <h1>Sur quoi s'entraîne une IA <em>conversationnelle</em> ?</h1>
     <ul>
       <li><strong>Quasiment tout Internet public.</strong></li>
       <li><strong>Peu de filtrage</strong> des contenus sous droits d'auteur.</li>
     </ul>
-    <p>Un jeu de données de taille moyenne, comme FineWeb, pèse :</p>
+  </section>
+
+  <section class="slide">
+    <h1>Un jeu de données de taille <em>moyenne</em></h1>
+    <p class="chapeau">Exemple : FineWeb.</p>
     <p class="chiffre">51 To</p>
+    <p>de texte, soit 18 500 milliards de jetons.</p>
     <p class="source">Carte du jeu de données FineWeb, HuggingFace : le tableau de la carte totalise aujourd'hui 50 447 Go, pour 18 500 milliards de jetons.</p>
   </section>
 
   <section class="slide">
-    <h1>Ce qu'on obtient au bout</h1>
+    <h1>« Apprendre », pour une <em>machine</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Apprendre, c'est régler les chiffres de ces formules, un peu mieux à chaque exemple.</p>
+        <p>Personne ne les règle à la main : la machine se corrige elle-même, des milliards de fois.</p>
+      </div>
+      <img class="visuel" src="img/comment-est-entraine-un-modele-p2-8.webp" alt="Un bloc de formules mathématiques décrivant une couche de transformeur : normalisation, attention, réseau à propagation avant.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Où tournent ces <em>calculs</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Pas sur un ordinateur de bureau.</p>
+        <p>Dans des centres de données remplis de cartes graphiques, des semaines durant.</p>
+      </div>
+      <img class="visuel" src="img/comment-est-entraine-un-modele-p2-4.webp" alt="Une allée de centre de données bordée de baies de serveurs hérissées de câbles de couleur.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'on obtient <em>au bout</em></h1>
     <p class="chapeau">Pas une base de connaissances, pas un moteur de recherche.</p>
     <p>Un <strong>ensemble de chiffres</strong> qui servent à prédire la réponse <strong>la plus probable</strong> à la requête.</p>
-    <p>Ces chiffres, ce sont les <strong>paramètres</strong>. compar:IA affiche leur nombre pour les modèles ouverts, et seulement une classe de taille pour les modèles propriétaires, dont les laboratoires ne publient rien.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ces chiffres, ce sont les <em>paramètres</em></h1>
+    <p>compar:IA affiche leur nombre pour les modèles ouverts.</p>
+    <p>Pour les modèles propriétaires, dont les laboratoires ne publient rien, il n'affiche qu'une classe de taille.</p>
     <p class="source">Catalogue des modèles de compar:IA, page /models.</p>
   </section>
 

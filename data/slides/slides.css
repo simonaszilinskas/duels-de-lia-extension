@@ -75,7 +75,9 @@ body { display: flex; }
 .slide {
   position: absolute;
   inset: 0;
-  padding: 6cqw 7cqw;
+  /* Le bas réserve la bande où .source est posée en absolu : sans cette marge,
+     une source sur deux lignes vient buter dans le contenu. */
+  padding: 6cqw 7cqw 8.5cqw;
   display: flex;
   flex-direction: column;
   gap: 1em;

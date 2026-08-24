@@ -26,6 +26,34 @@ for (const nom of decks) {
   if (!/<section class="slide/.test(s)) fail(nom, 'aucune diapositive');
   if (/CONFIRMER|À AJOUTER|TODO/.test(s)) fail(nom, 'marqueur de relecture encore présent');
 
+  // Une diapositive s'adresse à la salle, pas à l'animateur.
+  const notes = [
+    /support d['’]origine/i,
+    /\bl['’]animateur\b/i,
+    /à dire à voix haute/i,
+    /annoncez\b/i,
+    /erratum/i,
+  ];
+  for (const re of notes) {
+    if (re.test(s)) fail(nom, `note d'animateur ou erratum sur la diapositive : ${re}`);
+  }
+
+  // Le produit n'affiche plus de CO2 : ne pas réintroduire l'ancien discours.
+  for (const mot of ['tonnes de CO', 'baguette', 'Paris - NYC', 'Paris-NYC', 'mangue', 'piscine']) {
+    if (s.includes(mot)) fail(nom, `vocabulaire de l'ancien écran CO2 : « ${mot} »`);
+  }
+
+  // Une diapositive tassée est ratée : on plafonne le texte.
+  const diapos = s.split(/<section class="slide/).slice(1);
+  diapos.forEach((d, i) => {
+    const corps = d
+      .replace(/<p class="source">[\s\S]*?<\/p>/g, '')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&[a-z]+;/g, ' ');
+    const mots = corps.split(/\s+/).filter(Boolean).length;
+    if (mots > 90) fail(nom, `diapositive ${i + 1} : ${mots} mots, à scinder`);
+  });
+
   for (const balise of s.match(/<img[^>]*>/g) || []) {
     if (!/\salt=/.test(balise)) fail(nom, 'image sans attribut alt');
     const src = (balise.match(/src="([^"]+)"/) || [])[1];

@@ -10,14 +10,18 @@
 <body>
 <main class="stage">
 
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
   <section class="slide titre">
-    <h1>La consommation d'un modèle</h1>
+    <h1>La <em>consommation</em> d'un modèle</h1>
     <p class="chapeau">Trois facteurs expliquent ce que coûte une requête en électricité.</p>
   </section>
 
   <section class="slide">
-    <h1>Trois facteurs</h1>
-    <p class="chapeau">Pour chaque requête, la consommation dépend de ces trois facteurs principaux.</p>
+    <h1>Trois <em>facteurs</em></h1>
     <div class="cartes">
       <div class="carte">
         <h3>Taille du modèle</h3>
@@ -32,21 +36,24 @@
         <p>Par exemple mélange d'experts (MoE) ou MatFormer.</p>
       </div>
     </div>
-    <p>La taille est traitée dans le support <em>Qu'est-ce que la taille d'un modèle ?</em>. Ici, on regarde les deux autres.</p>
+    <p>La taille est traitée dans le support « La taille d'un modèle ». Ici, on regarde les deux autres.</p>
   </section>
 
   <section class="slide">
-    <h1>Ce que fait la taille</h1>
-    <figure>
-      <img src="img/cnnum-taille-consommation.png" alt="Trois carrés emboîtés : un très grand carré orange pour GPT-4, un carré jaune bien plus petit pour Mistral Small, un carré vert minuscule pour Gemma 3n. L'axe horizontal porte la consommation d'énergie, l'axe vertical la taille du modèle.">
-      <figcaption>Un paramètre est comme une « synapse » artificielle. Plus il y en a, plus il faut de puissance de calcul — donc d'électricité. Un modèle plus grand n'est pas pour autant plus « intelligent ».</figcaption>
-    </figure>
-    <p class="source">Graphique — Conseil National du Numérique, « 20 cartes pour aborder l'impact énergétique de l'IA générative ».</p>
+    <h1>Ce que fait <em>la taille</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Un paramètre est comme une « synapse » artificielle. Plus il y en a, plus il faut de puissance de calcul — donc d'électricité.</p>
+        <p>Un modèle plus grand n'est pas pour autant plus « intelligent ».</p>
+      </div>
+      <img class="visuel" src="img/consommation-dun-modele-p4-2.webp" alt="Logo du Conseil national du numérique : les lettres cnnum dessinées d'un seul trait violet, au-dessus de la mention « conseil national du numérique ».">
+    </div>
+    <p class="source">Conseil National du Numérique, « 20 cartes pour aborder l'impact énergétique de l'IA générative ».</p>
   </section>
 
   <section class="slide">
-    <h1>Les « jetons »</h1>
-    <p>La longueur du texte produit par un modèle de langage se compte en <strong>jetons</strong> (tokens). Un jeton est une unité de base, qui peut couvrir une ou plusieurs lettres selon leur fréquence d'apparition ensemble dans la langue.</p>
+    <h1>Les <em>jetons</em></h1>
+    <p class="chapeau">Un jeton couvre une ou plusieurs lettres, selon leur fréquence d'apparition ensemble dans la langue.</p>
     <div class="cartes">
       <div class="carte">
         <h3>« Salut »</h3>
@@ -58,78 +65,127 @@
         <p class="chiffre">5</p>
         <p>jetons</p>
       </div>
-      <div class="carte">
-        <h3>À quoi ça sert</h3>
-        <p>Découper le texte en morceaux que l'IA peut traiter, compter ce qu'elle peut traiter d'un coup, et calculer le coût d'utilisation.</p>
-      </div>
     </div>
-    <p class="source">Exemples du support d'origine. Sur compar:IA, un jeton vaut à peu près quatre lettres.</p>
+    <p class="source">Sur compar:IA, un jeton vaut à peu près quatre lettres.</p>
   </section>
 
   <section class="slide">
-    <h1>Les « mélanges d'experts »</h1>
-    <p class="chapeau">Plusieurs experts dans un même modèle, dont une poignée seulement travaille pour chaque jeton.</p>
+    <h1>À quoi servent les <em>jetons</em></h1>
     <div class="cartes">
       <div class="carte">
-        <h3>Avantages</h3>
+        <h3>Découper</h3>
+        <p>Le texte devient des morceaux que le modèle sait traiter.</p>
+      </div>
+      <div class="carte">
+        <h3>Mesurer</h3>
+        <p>Ils disent ce que le modèle peut traiter d'un coup.</p>
+      </div>
+      <div class="carte">
+        <h3>Facturer</h3>
+        <p>Le coût d'utilisation se compte au jeton, en entrée et en sortie.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Les <em>mélanges d'experts</em></h1>
+    <p class="chapeau">Plusieurs experts dans un même modèle, dont une poignée seulement travaille pour chaque jeton.</p>
+    <ol>
+      <li>Le jeton entre.</li>
+      <li>Un routeur choisit les experts les plus adaptés.</li>
+      <li>Seuls ceux-là calculent.</li>
+      <li>La sortie part.</li>
+    </ol>
+  </section>
+
+  <section class="slide">
+    <h1>Avantages et <em>limites</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Avantages</h2>
         <ul>
           <li>Moins de puissance de calcul nécessaire.</li>
           <li>Donc moins d'électricité consommée.</li>
           <li>Donc moins cher à utiliser.</li>
         </ul>
       </div>
-      <div class="carte">
-        <h3>Désavantages</h3>
+      <div>
+        <h2>Désavantages</h2>
         <ul>
           <li>Prend beaucoup de place dans la mémoire de la machine.</li>
           <li>Plus complexe à développer.</li>
           <li>Peut moins bien généraliser.</li>
         </ul>
       </div>
-      <div class="carte">
-        <h3>Le chemin d'un jeton</h3>
-        <p>Entrée → un routeur choisit les quelques experts les plus adaptés → seuls ceux-là calculent → sortie.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Qui les <em>utilise</em></h1>
+    <p class="chapeau">Des modèles ouverts, bâtis en mélange d'experts.</p>
+    <div class="compare">
+      <div>
+        <h2>DeepSeek/DeepSeek V3</h2>
+        <img class="visuel" src="img/consommation-dun-modele-p6-3.webp" alt="Logo de DeepSeek : une baleine bleue stylisée, la queue relevée.">
+      </div>
+      <div>
+        <h2>Meta/Llama 4 Scout</h2>
+        <img class="visuel" src="img/consommation-dun-modele-p6-4.webp" alt="Logo de Meta : un ruban bleu replié en boucle infinie.">
       </div>
     </div>
-    <p class="source">Exemples cités : Mistral/Mistral 8x7B, DeepSeek/DeepSeek V3, Meta/Llama 4 Scout.</p>
+    <p class="source">Mistral/Mistral 8x7B en est un autre exemple.</p>
   </section>
 
   <section class="slide">
-    <h1>Paramètres au total, paramètres actifs</h1>
-    <p>Il faut charger <strong>tous</strong> les paramètres en mémoire, mais le calcul n'en traverse qu'une partie à chaque jeton. Les deux nombres ne mesurent donc pas la même chose : l'un dit le matériel qu'il faut, l'autre l'électricité qu'on dépense.</p>
-    <p>C'est exactement ce que dit la ligne <strong>« Dont N mds actifs »</strong> sur la fiche d'un modèle dans compar:IA.</p>
-    <p>DeepSeek V3 en est un bon exemple : 671 milliards de paramètres au total, dont 37 milliards actifs par jeton.</p>
-    <p class="source">Comptes publiés par DeepSeek pour DeepSeek V3. La ligne « Dont N mds actifs » n'apparaît que pour les modèles ouverts en mélange d'experts.</p>
+    <h1>Paramètres au total, paramètres <em>actifs</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Au total</h2>
+        <p class="chiffre">671 mds</p>
+        <p class="chapeau">Tout doit tenir dans la mémoire de la machine.</p>
+      </div>
+      <div>
+        <h2>Actifs par jeton</h2>
+        <p class="chiffre">37 mds</p>
+        <p class="chapeau">Seuls ceux-là calculent, et dépensent de l'électricité.</p>
+      </div>
+    </div>
+    <p>La fiche d'un modèle ouvert en mélange d'experts porte la ligne <strong>« Dont N mds actifs »</strong>.</p>
+    <p class="source">Comptes publiés par DeepSeek pour DeepSeek V3.</p>
   </section>
 
   <section class="slide">
-    <h1>Ce que tout cela donne à l'écran</h1>
-    <p class="chapeau">Taille, longueur du texte et architecture se résument en une énergie et une lettre.</p>
-    <table>
-      <tr>
-        <th>Classe</th>
-        <th>Énergie pour un million de jetons de sortie</th>
-      </tr>
-      <tr><td><strong>A</strong></td><td>moins de 100 Wh</td></tr>
-      <tr><td><strong>B</strong></td><td>moins de 300 Wh</td></tr>
-      <tr><td><strong>C</strong></td><td>moins de 1 000 Wh</td></tr>
-      <tr><td><strong>D</strong></td><td>moins de 3 000 Wh</td></tr>
-      <tr><td><strong>E</strong></td><td>moins de 10 000 Wh</td></tr>
-      <tr><td><strong>F</strong></td><td>10 000 Wh et au-delà</td></tr>
-    </table>
+    <h1>Ce que tout cela donne <em>à l'écran</em></h1>
+    <p class="chapeau">Taille, longueur du texte et architecture se résument en une énergie et une lettre, par million de jetons de sortie.</p>
+    <div class="compare">
+      <div>
+        <table>
+          <tr><th>Classe</th><th>Énergie</th></tr>
+          <tr><td><strong>A</strong></td><td>moins de 100 Wh</td></tr>
+          <tr><td><strong>B</strong></td><td>moins de 300 Wh</td></tr>
+          <tr><td><strong>C</strong></td><td>moins de 1 000 Wh</td></tr>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr><th>Classe</th><th>Énergie</th></tr>
+          <tr><td><strong>D</strong></td><td>moins de 3 000 Wh</td></tr>
+          <tr><td><strong>E</strong></td><td>moins de 10 000 Wh</td></tr>
+          <tr><td><strong>F</strong></td><td>10 000 Wh et au-delà</td></tr>
+        </table>
+      </div>
+    </div>
     <p class="source">Seuils compar:IA, estimation EcoLogits 0.10.2, PUE 1,2, mix électrique mondial moyen.</p>
   </section>
 
   <section class="slide">
-    <h1>Ce qu'il faut retenir</h1>
+    <h1>Ce qu'il faut <em>retenir</em></h1>
     <ul>
       <li>Un gros modèle coûte plus cher à faire tourner qu'un petit, à texte égal.</li>
       <li>Une réponse longue coûte plus qu'une réponse courte : le compteur, ce sont les <strong>jetons</strong>.</li>
       <li>Un mélange d'experts n'active qu'une part de ses paramètres, et consomme donc moins que sa taille totale ne le laisse croire.</li>
     </ul>
-    <div class="nuance">
-      <p>Le support d'origine présentait l'écran comme une équation « taille × longueur du texte ≈ énergie », suivie d'équivalences en tonnes de CO₂. Cet écran n'existe plus : compar:IA affiche une énergie en mWh et une classe A–F, et ses équivalences sont en énergie, pas en carbone.</p>
-    </div>
+    <p class="source">Le bilan de compar:IA affiche une énergie en mWh et une classe A–F. Ses équivalences sont en énergie.</p>
   </section>
 
 </main>

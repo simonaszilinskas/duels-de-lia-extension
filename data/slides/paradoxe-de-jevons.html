@@ -10,27 +10,38 @@
 <body>
 <main class="stage">
 
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
   <section class="slide titre">
-    <h1>Le paradoxe de Jevons</h1>
-    <p class="chapeau">Plus les modèles deviennent efficaces, plus on les utilise, et plus la consommation totale de ressources augmente.</p>
+    <h1>Le paradoxe de <em>Jevons</em></h1>
+    <p class="chapeau">Plus les modèles deviennent efficaces, plus on les utilise. Et le total grimpe.</p>
   </section>
 
   <section class="slide">
-    <h1>Ce que Jevons a vu dans le charbon</h1>
+    <h1>Ce que Jevons a vu dans le <em>charbon</em></h1>
     <ul>
-      <li>Au XIXe siècle, les machines à vapeur brûlent de moins en moins de charbon pour le même travail.</li>
+      <li>Au XIX<sup>e</sup> siècle, les machines à vapeur brûlent de moins en moins de charbon pour le même travail.</li>
       <li>Tout le monde attendait une baisse de la consommation de charbon. C'est l'inverse qui est arrivé.</li>
-      <li>Le charbon revenant moins cher à l'usage, on a mis des machines partout : mines, filatures, trains, navires.</li>
-      <li>L'économie faite sur chaque machine a été <strong>avalée par le nombre de machines</strong>.</li>
     </ul>
     <p class="source">William Stanley Jevons, <em>The Coal Question</em>, 1865.</p>
   </section>
 
   <section class="slide">
-    <h1>La boucle</h1>
+    <h1>L'économie avalée par le <em>nombre</em></h1>
+    <ul>
+      <li>Le charbon revient moins cher à l'usage. On met donc des machines partout : mines, filatures, trains, navires.</li>
+      <li>Le gain fait sur chaque machine est avalé par le nombre de machines.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h1>La <em>boucle</em></h1>
     <div class="cartes">
       <div class="carte">
-        <h3>1. Modèles plus efficaces et performants</h3>
+        <h3>1. Modèles plus efficaces</h3>
         <p>Chaque génération fait mieux avec moins de calcul.</p>
       </div>
       <div class="carte">
@@ -38,70 +49,112 @@
         <p>Le prix du million de jetons descend.</p>
       </div>
       <div class="carte">
-        <h3>3. Usage explose</h3>
+        <h3>3. Usage qui explose</h3>
         <p>On en met partout, et pour tout.</p>
       </div>
       <div class="carte">
-        <h3>4. Consommation totale en hausse</h3>
-        <p>Le total grimpe, malgré le gain sur chaque requête.</p>
+        <h3>4. Total en hausse</h3>
+        <p>Malgré le gain sur chaque requête.</p>
       </div>
     </div>
-    <p>La flèche revient à la case 1 : le gain d'efficacité nourrit la demande, qui réclame de nouveaux gains d'efficacité.</p>
+    <p>La flèche revient à la case 1 : le gain nourrit la demande, qui réclame de nouveaux gains.</p>
   </section>
 
   <section class="slide">
-    <h1>Appliqué au calcul des IA</h1>
-    <ul>
-      <li>Un modèle récent répond aussi bien qu'un modèle d'il y a deux ans en mobilisant beaucoup moins de calcul par jeton.</li>
-      <li>Le tarif au jeton suit la même pente, donc l'IA cesse d'être une dépense que l'on surveille.</li>
-      <li>Alors on l'appelle partout : résumés, correction, traduction, autocomplétion, agents qui tournent seuls pendant des heures.</li>
-      <li>Les modèles de raisonnement ajoutent leur part : ils dépensent beaucoup plus de jetons pour une même question. Voir le support <em>Les modèles de raisonnement</em>.</li>
-    </ul>
-    <p>Le coût d'une requête baisse. Le nombre de requêtes, lui, se compte en milliards.</p>
+    <h1>Le calcul revient <em>moins cher</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Un modèle récent répond aussi bien qu'un modèle d'il y a deux ans, en mobilisant beaucoup moins de calcul par jeton.</p>
+        <p>Le tarif au jeton suit la même pente. L'IA cesse d'être une dépense que l'on surveille.</p>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p5-8.webp" alt="Baies de serveurs traversées par des faisceaux de câbles réseau jaunes, verts, rouges et bleus.">
+    </div>
   </section>
 
   <section class="slide">
-    <h1>Les deux faits, chez le même acteur</h1>
+    <h1>Alors on l'appelle <em>partout</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Résumés, correction, traduction, autocomplétion, agents qui tournent seuls pendant des heures.</p>
+        <p>Le coût d'une requête baisse. Le nombre de requêtes, lui, se compte en milliards.</p>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p3-6.webp" alt="Page d'accueil de ChatGPT : « What can I help with? », un champ de saisie et les boutons Search, Talk, Research, Sora.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Le <em>raisonnement</em> ajoute sa part</h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Un modèle de raisonnement dépense beaucoup plus de jetons pour une même question.</p>
+        <p>Le détail est dans le support <strong>Les modèles de raisonnement</strong>.</p>
+      </div>
+      <img class="visuel" src="img/IA-et-internet-p1-1.webp" alt="Barre de saisie « Poser une question », avec les boutons « Rechercher » et « Raisonner ».">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Les deux faits, chez le même <em>acteur</em></h1>
     <p class="chapeau">Google publie les deux, sur la même année.</p>
-    <div class="cartes">
-      <div class="carte">
-        <h3>Par requête, ça baisse</h3>
+    <div class="compare">
+      <div>
+        <h2>Par requête, ça baisse</h2>
         <p class="chiffre">÷ 33</p>
         <p>d'énergie par requête texte sur Gemini, en douze mois. Médiane : 0,24 Wh.</p>
       </div>
-      <div class="carte">
-        <h3>Au total, ça monte</h3>
+      <div>
+        <h2>Au total, ça monte</h2>
         <p class="chiffre">+ 37 %</p>
-        <p>d'électricité consommée par ses centres de données en 2025, soit environ 42 TWh.</p>
+        <p>d'électricité pour ses centres de données en 2025, soit environ 42 TWh.</p>
       </div>
     </div>
     <p class="source">Google, « Measuring the environmental impact of delivering AI at Google Scale », août 2025, et <em>Environmental Report</em> 2026.</p>
   </section>
 
   <section class="slide">
-    <h1>Dire « effet rebond », pas « paradoxe »</h1>
+    <h1>Dire « effet <em>rebond</em> », pas « paradoxe »</h1>
     <div class="nuance">
-      <p>Les deux faits sont mesurés. Le <strong>lien de cause à effet</strong>, lui, ne l'est pas : aucune étude ne démontre que c'est l'efficacité <em>elle-même</em> qui fait monter le total. La croissance vient aussi de l'argent investi et de fonctionnalités volontairement plus gourmandes — vidéo, raisonnement, agents.</p>
+      <p>Les deux faits sont mesurés. Le <strong>lien de cause à effet</strong>, lui, ne l'est pas.</p>
     </div>
-    <ul>
-      <li>En économie de l'énergie, l'effet rebond mesuré reste <strong>partiel</strong>, de l'ordre de 20 à 60 %. L'efficacité économise quand même de l'énergie, simplement moins qu'annoncé.</li>
-      <li>Le mot « paradoxe » suppose un rebond supérieur à 100 %. Personne ne l'a montré pour l'IA.</li>
-      <li>Méfiez-vous aussi de qui invoque le paradoxe : le PDG de Microsoft l'a fait le jour où DeepSeek a fait chuter l'action Nvidia.</li>
-    </ul>
-    <p class="source">Luccioni, Strubell et Crawford, « From Efficiency Gains to Rebound Effects », FAccT 2025, qui juge l'effet « hautement plausible » sans le démontrer. Gillingham, Rapson et Wagner, <em>Review of Environmental Economics and Policy</em>, 2016, pour l'amplitude du rebond.</p>
+    <p>La croissance vient aussi de l'argent investi et de fonctionnalités plus gourmandes : vidéo, raisonnement, agents.</p>
+    <p class="source">Luccioni, Strubell et Crawford, « From Efficiency Gains to Rebound Effects », FAccT 2025, qui juge l'effet « hautement plausible » sans le démontrer.</p>
   </section>
 
   <section class="slide">
-    <h1>Pourquoi ce paradoxe compte pour le débat</h1>
-    <div class="nuance">
-      <p>Le paradoxe ne dit pas que l'efficacité est inutile. Il dit qu'elle ne suffit pas : elle ne décide rien toute seule sur le total consommé.</p>
-    </div>
+    <h1>Un rebond <em>partiel</em></h1>
     <ul>
-      <li>Choisir un modèle plus sobre réduit ma consommation. Est-ce que cela réduit celle du parc ?</li>
-      <li>Si l'IA revient à presque rien à l'usage, qu'est-ce qui limite encore son usage ?</li>
-      <li>Faut-il agir sur la technique, sur le prix, sur la règle, ou sur nos habitudes ?</li>
+      <li>En économie de l'énergie, le rebond mesuré va de 20 à 60 %. L'efficacité économise quand même, simplement moins qu'annoncé.</li>
+      <li>Le mot « paradoxe » suppose un rebond supérieur à 100 %. Personne ne l'a montré pour l'IA.</li>
     </ul>
-    <p>Ces trois questions ouvrent le débat final de l'atelier.</p>
+    <p class="source">Gillingham, Rapson et Wagner, <em>Review of Environmental Economics and Policy</em>, 2016, pour l'amplitude du rebond.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Qui invoque le <em>paradoxe</em> ?</h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Le PDG de Microsoft l'a fait le jour où DeepSeek a fait chuter l'action Nvidia.</p>
+        <p>Un argument sert aussi celui qui le tient.</p>
+      </div>
+      <img class="visuel" src="img/conclusion-p1-3.webp" alt="Logo de Microsoft : quatre carrés rouge, vert, bleu et jaune sur fond noir.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que ça change pour le <em>débat</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <div class="nuance">
+          <p>L'efficacité ne décide rien toute seule sur le total consommé.</p>
+        </div>
+        <ul>
+          <li>Un modèle plus sobre réduit ma consommation. Réduit-il celle du parc ?</li>
+          <li>Si l'IA ne coûte presque rien, qu'est-ce qui limite son usage ?</li>
+          <li>Agir sur la technique, le prix, la règle, ou nos habitudes ?</li>
+        </ul>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p4-7.webp" alt="Trois tours de refroidissement d'une centrale, un panache de vapeur blanche et un drapeau américain.">
+    </div>
   </section>
 
 </main>

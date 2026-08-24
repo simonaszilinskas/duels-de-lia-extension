@@ -10,81 +10,130 @@
 <body>
 <main class="stage">
 
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
   <section class="slide titre">
-    <h1>Pourquoi les IA consomment-elles de l'électricité et de l'eau ?</h1>
+    <h1>Pourquoi les IA consomment de l'<em>électricité</em> et de l'eau</h1>
     <p class="chapeau">Parce que derrière chaque réponse, une machine calcule.</p>
   </section>
 
   <section class="slide">
-    <h1>À chaque question, des calculs</h1>
-    <p>Générer du texte, pour un ordinateur, c'est enchaîner des multiplications de tableaux de chiffres, des milliers de fois par réponse.</p>
-    <figure>
-      <img src="img/schema-calculs-transformeur.png" alt="Schéma des étapes de calcul d'un transformeur : les jetons entrent, sont convertis en vecteurs, passent par des têtes d'attention et des couches MLP, puis ressortent en logits. Chaque étape est accompagnée de sa formule.">
-      <figcaption>Les étapes de calcul d'un modèle de langage, avec leurs formules. N'essayez pas de les faire de tête : il faut un ordinateur très puissant.</figcaption>
-    </figure>
+    <h1>À chaque question, des <em>calculs</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Générer du texte, pour un ordinateur, c'est enchaîner des multiplications de tableaux de chiffres, des milliers de fois par réponse.</p>
+        <p>N'essayez pas de les faire de tête.</p>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p1-1.webp" alt="Schéma des étapes de calcul d'un modèle de langage : les jetons entrent, sont convertis en vecteurs, passent par des têtes d'attention puis une couche MLP, et ressortent en logits. Chaque étape porte sa formule.">
+    </div>
     <p class="source">Schéma tiré de « A Mathematical Framework for Transformer Circuits », Anthropic, 2021.</p>
   </section>
 
   <section class="slide">
-    <h1>Plus le modèle est gros, plus la machine est grosse</h1>
-    <p class="chapeau">Ce qui compte, c'est la mémoire qu'il faut pour charger les paramètres.</p>
-    <div class="cartes">
-      <div class="carte">
-        <h3>Un smartphone</h3>
-        <p>Jusqu'à 3 Go.</p>
+    <h1>Plus le modèle est gros, plus la <em>machine</em> est grosse</h1>
+    <div class="duo">
+      <div class="colonne">
+        <p class="chapeau">Ce qui compte, c'est la mémoire qu'il faut pour charger les paramètres.</p>
+        <ul>
+          <li>Un smartphone : jusqu'à 3 Go.</li>
+          <li>Un ordinateur portable : jusqu'à 16 Go, pour un petit modèle.</li>
+        </ul>
       </div>
-      <div class="carte">
-        <h3>Un ordinateur portable</h3>
-        <p>Jusqu'à 16 Go, pour un petit modèle.</p>
-      </div>
-      <div class="carte">
-        <h3>Une tour avec une carte graphique</h3>
-        <p>Jusqu'à 80 Go, pour un modèle moyen.</p>
-      </div>
-      <div class="carte">
-        <h3>Un serveur à plusieurs cartes</h3>
-        <p>Au-delà de 80 Go, pour un grand modèle.</p>
-      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p2-4.webp" alt="Un ordinateur portable argenté, ouvert, vu de trois quarts, écran allumé.">
     </div>
-    <p class="source">Seuils affichés par compar:IA dans la fiche « Matériel nécessaire » de chaque modèle, à raison de 80 Go par carte graphique.</p>
+    <p class="source">Seuils affichés par compar:IA dans la fiche « Matériel nécessaire » de chaque modèle.</p>
   </section>
 
   <section class="slide">
-    <h1>Où tournent ces machines</h1>
-    <p>Vous posez une question à une IA comme ChatGPT. Elle part dans un <strong>centre de données</strong> rempli d'ordinateurs puissants. Le centre tire son électricité du réseau et consomme de l'eau pour refroidir les machines.</p>
-    <p>Un centre de données <strong>type</strong> orienté IA consomme autant d'électricité que <strong>100 000 ménages</strong>.</p>
-    <p>Les plus grands, en construction aujourd'hui, en consommeront <strong>20 fois plus</strong> — soit environ deux millions de ménages, l'ordre de grandeur de deux réacteurs nucléaires.</p>
+    <h1>Au-delà, il faut des <em>cartes graphiques</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Une tour</h2>
+        <img class="visuel" src="img/pourquoi-ca-consomme-p2-2.webp" alt="Une tour d'ordinateur noire, façade ajourée soulignée d'un liseré lumineux orange.">
+        <p>Une carte graphique, jusqu'à 80 Go, pour un modèle moyen.</p>
+      </div>
+      <div>
+        <h2>Un serveur</h2>
+        <img class="visuel" src="img/pourquoi-ca-consomme-p2-5.webp" alt="Un serveur en rack ouvert, surmonté de quatre modules de calcul prêts à être glissés dedans.">
+        <p>Plusieurs cartes, au-delà de 80 Go, pour un grand modèle.</p>
+      </div>
+    </div>
+    <p class="source">Seuils affichés par compar:IA, fiche « Matériel nécessaire », à 80 Go par carte graphique.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Où tournent ces <em>machines</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Vous posez une question à une IA comme ChatGPT. Elle part dans un <strong>centre de données</strong> rempli d'ordinateurs puissants.</p>
+        <p>Le centre tire son électricité du réseau et consomme de l'eau pour refroidir les machines.</p>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p3-6.webp" alt="Écran d'accueil de ChatGPT : la question « What can I help with? » au-dessus d'un champ de saisie.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que consomme un <em>centre de données</em></h1>
+    <p>Un centre orienté IA consomme autant d'électricité que :</p>
+    <p class="chiffre">100 000 ménages</p>
+    <p>Les plus grands, en construction aujourd'hui, en consommeront <strong>20 fois plus</strong> — deux millions de ménages, l'ordre de grandeur de deux réacteurs nucléaires.</p>
     <p class="source">Agence internationale de l'énergie, « Energy and AI », avril 2025. Le rapport parle d'un centre « type », pas d'un centre quelconque.</p>
   </section>
 
   <section class="slide">
-    <h1>Rallumer une centrale nucléaire</h1>
-    <figure>
-      <img src="img/three-mile-island.png" alt="Les tours de refroidissement de la centrale nucléaire de Three Mile Island, en Pennsylvanie, avec un panache de vapeur et un drapeau américain.">
-      <figcaption>La centrale de Three Mile Island, en Pennsylvanie, à l'arrêt depuis 2019.</figcaption>
-    </figure>
-    <p>En septembre 2024, Microsoft a signé un contrat d'achat d'électricité sur <strong>20 ans</strong> avec Constellation Energy, propriétaire de la centrale. Le réacteur, rebaptisé Crane Clean Energy Center, doit fournir :</p>
-    <p class="chiffre">835 MW</p>
-    <p>pour alimenter des centres de données. <strong>Il n'a pas encore redémarré</strong> : la décision de licence de l'autorité de sûreté américaine est attendue en 2027.</p>
-    <p class="source">Constellation Energy, communiqué du 20 septembre 2024, et département américain de l'Énergie, « Crane Restart ». Microsoft n'a pas acheté la centrale : elle achète son électricité.</p>
+    <h1>Rallumer une centrale <em>nucléaire</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>En septembre 2024, Microsoft a signé un contrat d'achat d'électricité sur <strong>20 ans</strong> avec Constellation Energy, propriétaire de la centrale de Three Mile Island.</p>
+        <p class="chiffre">835 MW</p>
+        <p>promis à des centres de données.</p>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p4-7.webp" alt="Les tours de refroidissement de la centrale nucléaire de Three Mile Island, en Pennsylvanie : un panache de vapeur blanche et un drapeau américain.">
+    </div>
+    <p class="source">Constellation Energy, communiqué du 20 septembre 2024.</p>
   </section>
 
   <section class="slide">
-    <h1>Et des matières premières</h1>
-    <p>D'après BHP, l'essor de l'IA fera passer la part des centres de données dans la demande annuelle de cuivre :</p>
-    <table>
-      <tr>
-        <th>Aujourd'hui</th>
-        <th>D'ici 2050</th>
-      </tr>
-      <tr>
-        <td>moins de 1 %</td>
-        <td>6 à 7 %</td>
-      </tr>
-    </table>
-    <p>Soit, en tonnes, un passage d'environ 0,5 à 3 millions de tonnes par an — la production annuelle cumulée des quatre plus grandes mines de cuivre du monde.</p>
-    <p>Or le cuivre est un métal essentiel à la <strong>transition énergétique</strong>, qui en a besoin au même moment.</p>
-    <p class="source">BHP Insights, « Why AI tools and data centres are driving copper demand », janvier 2025 ; pourcentages donnés au Financial Times par la directrice financière de BHP, septembre 2024. BHP est le premier minier mondial et vend du cuivre.</p>
+    <h1>Le réacteur n'a <em>pas</em> redémarré</h1>
+    <p>Rebaptisé Crane Clean Energy Center, il attend la décision de licence de l'autorité de sûreté américaine, prévue en 2027.</p>
+    <div class="nuance">
+      <p>Microsoft n'a pas acheté la centrale : elle achète son électricité.</p>
+    </div>
+    <p class="source">Département américain de l'Énergie, « Crane Restart ».</p>
+  </section>
+
+  <section class="slide">
+    <h1>Et des matières <em>premières</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>L'essor de l'IA fera passer la part des centres de données dans la demande annuelle de cuivre :</p>
+        <table>
+          <tr>
+            <th>Aujourd'hui</th>
+            <th>D'ici 2050</th>
+          </tr>
+          <tr>
+            <td>moins de 1 %</td>
+            <td>6 à 7 %</td>
+          </tr>
+        </table>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p5-8.webp" alt="Faisceaux de câbles réseau de couleur reliant des baies dans un centre de données.">
+    </div>
+    <p class="source">Pourcentages donnés au Financial Times par la directrice financière de BHP, septembre 2024.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le cuivre manque <em>ailleurs</em></h1>
+    <p>En tonnes : de 0,5 à 3 millions par an, la production cumulée des quatre plus grandes mines du monde.</p>
+    <p>Or la <strong>transition énergétique</strong> a besoin du même métal, au même moment.</p>
+    <div class="nuance">
+      <p>BHP est le premier minier mondial, et il vend du cuivre.</p>
+    </div>
+    <p class="source">BHP Insights, « Why AI tools and data centres are driving copper demand », janvier 2025.</p>
   </section>
 
 </main>
