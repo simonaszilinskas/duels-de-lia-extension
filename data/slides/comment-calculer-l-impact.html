@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment calculer l'impact ? — Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <section class="slide titre">
+    <h1>Comment calculer l'impact ?</h1>
+    <p class="chapeau">Trois fournisseurs publient des chiffres. Ces chiffres ne se comparent pas.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que publient les fournisseurs</h1>
+    <p class="chapeau">En 2025, trois hébergeurs de modèles d'IA publient leurs données d'impact environnemental.</p>
+    <!-- CHIFFRES À CONFIRMER -->
+    <table>
+      <tr>
+        <th></th>
+        <th>OpenAI</th>
+        <th>Gemini</th>
+        <th>Mistral AI</th>
+      </tr>
+      <tr>
+        <td>Électricité</td>
+        <td>0,34 Wh</td>
+        <td>0,24 Wh</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>Émissions</td>
+        <td>?</td>
+        <td>0,03 g. CO₂e</td>
+        <td>1,14 g. CO₂e</td>
+      </tr>
+      <tr>
+        <td>Eau</td>
+        <td>0,3 mL</td>
+        <td>0,26 mL</td>
+        <td>45 mL</td>
+      </tr>
+    </table>
+    <p><strong>Est-ce que Gemini émet réellement 38 fois moins de CO₂ que Mistral AI ?</strong></p>
+    <p class="source">Chiffres par requête publiés par OpenAI, Google et Mistral AI en 2025, repris tels quels du support d'origine.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Probablement pas.</h1>
+    <p class="chapeau">Cette différence massive s'explique davantage par des <strong>méthodologies de calcul divergentes</strong> entre les deux acteurs.</p>
+    <ul>
+      <li>Chaque fournisseur mesure ce qu'il veut : deux cases sur neuf restent vides.</li>
+      <li>Personne ne dit sur quel matériel, avec quelle électricité ni sur quel périmètre le chiffre est calculé.</li>
+      <li>Comparer deux nombres obtenus par deux méthodes différentes ne dit rien de l'écart réel.</li>
+    </ul>
+    <p class="source">Lecture du tableau de la diapositive précédente.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Il faut donc une méthode commune</h1>
+    <p>Pour obtenir des données comparables, compar:IA s'appuie sur <strong>EcoLogits</strong>, une initiative maintenue par une ONG.</p>
+    <p>Sa méthode applique le même calcul à tous les modèles, à partir de :</p>
+    <ul>
+      <li>le nombre de paramètres du modèle,</li>
+      <li>son architecture,</li>
+      <li>le mix énergétique utilisé,</li>
+      <li>et d'autres variables clés.</li>
+    </ul>
+    <p>La méthode est publique : on peut la discuter, la refaire, la corriger.</p>
+    <p class="source">EcoLogits, méthodologie ouverte maintenue par l'association GenAI Impact.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'EcoLogits donne à l'écran</h1>
+    <div class="nuance">
+      <p>Le support d'origine posait la question en CO₂. compar:IA <strong>n'affiche plus d'émissions du tout</strong> : estimer un CO₂ suppose de savoir où tournent les serveurs et avec quelle électricité, deux informations que les fournisseurs ne publient pas. L'écran s'en tient à ce qui s'estime : l'énergie.</p>
+    </div>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Une énergie</h3>
+        <p>L'électricité mobilisée pour générer la réponse, en <strong>milliwattheures</strong> (mWh).</p>
+      </div>
+      <div class="carte">
+        <h3>Une classe</h3>
+        <p>Une lettre de <strong>A à F</strong>, qui situe le modèle par rapport aux autres.</p>
+      </div>
+    </div>
+    <p class="source">Panneau « Bilan » de compar:IA. Le calcul suppose le mix électrique mondial moyen, pas le mix français.</p>
+  </section>
+
+  <section class="slide">
+    <h1>La classe énergétique, de A à F</h1>
+    <p class="chapeau">Elle se lit par million de jetons produits en sortie.</p>
+    <table>
+      <tr>
+        <th>Classe</th>
+        <th>Énergie pour un million de jetons de sortie</th>
+      </tr>
+      <tr><td><strong>A</strong></td><td>moins de 100 Wh</td></tr>
+      <tr><td><strong>B</strong></td><td>moins de 300 Wh</td></tr>
+      <tr><td><strong>C</strong></td><td>moins de 1 000 Wh</td></tr>
+      <tr><td><strong>D</strong></td><td>moins de 3 000 Wh</td></tr>
+      <tr><td><strong>E</strong></td><td>moins de 10 000 Wh</td></tr>
+      <tr><td><strong>F</strong></td><td>10 000 Wh et au-delà</td></tr>
+    </table>
+    <p class="source">Seuils compar:IA, estimation EcoLogits 0.10.2, PUE 1,2, mix électrique mondial moyen.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'il faut retenir</h1>
+    <ul>
+      <li>Les chiffres publiés par les fournisseurs <strong>ne se comparent pas entre eux</strong>.</li>
+      <li>Une méthode commune vaut mieux qu'un chiffre officiel : c'est le rôle d'EcoLogits.</li>
+      <li>Une estimation reste une estimation. Elle donne un <strong>ordre de grandeur</strong>, pas une mesure.</li>
+    </ul>
+    <div class="nuance">
+      <p>À dire en atelier : les modèles propriétaires reçoivent quand même une classe A–F, calculée à partir d'une estimation interne, alors qu'ils sont exclus du classement « Focus énergie » faute de données publiées.</p>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

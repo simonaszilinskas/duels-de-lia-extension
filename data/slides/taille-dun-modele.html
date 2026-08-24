@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La taille d'un modèle — Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <section class="slide titre">
+    <h1>Qu'est-ce que la « taille » d'un modèle ?</h1>
+    <p class="chapeau">Une quantité de paramètres, et ce que compar:IA en montre.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Une quantité de paramètres</h1>
+    <p class="chiffre">4B = 4 milliards</p>
+    <p>Un <strong>paramètre</strong> d'un modèle d'IA est un nombre appris pendant l'entraînement, qui règle comment le modèle transforme une entrée en sortie.</p>
+    <p>Sur compar:IA, ce nombre s'affiche en tête de la fiche du modèle : « 4 mds de paramètres ».</p>
+    <p class="source">Fiche Google/Gemma 3 4B sur compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Quatre modèles, quatre tailles</h1>
+    <table>
+      <tr>
+        <th>Modèle</th>
+        <th>Paramètres</th>
+        <th>Classe</th>
+      </tr>
+      <tr>
+        <td>Anthropic/Claude Sonnet</td>
+        <td>non publié</td>
+        <td><strong>Taille estimée XL</strong></td>
+      </tr>
+      <tr>
+        <td>Meta/Llama 3.3 70B</td>
+        <td>70 milliards</td>
+        <td><strong>M</strong></td>
+      </tr>
+      <tr>
+        <td>Mistral/Mistral Small</td>
+        <td>24 milliards</td>
+        <td><strong>S</strong></td>
+      </tr>
+      <tr>
+        <td>Google/Gemma 3 4B</td>
+        <td>4 milliards</td>
+        <td><strong>XS</strong></td>
+      </tr>
+    </table>
+    <p class="source">Comptes publiés par Meta, Mistral AI et Google. Lettres calculées avec les seuils compar:IA de la diapositive suivante.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Les classes de taille</h1>
+    <p class="chapeau">En milliards de paramètres.</p>
+    <table>
+      <tr>
+        <th>Classe</th>
+        <th>Paramètres</th>
+      </tr>
+      <tr><td><strong>XS</strong></td><td>moins de 15 milliards</td></tr>
+      <tr><td><strong>S</strong></td><td>de 15 à 60 milliards</td></tr>
+      <tr><td><strong>M</strong></td><td>de 60 à 100 milliards</td></tr>
+      <tr><td><strong>L</strong></td><td>de 100 à 400 milliards</td></tr>
+      <tr><td><strong>XL</strong></td><td>plus de 400 milliards</td></tr>
+    </table>
+    <div class="nuance">
+      <p>Le support d'origine rangeait Llama 3.3 70B en L et Mistral Small en M. Avec les seuils que compar:IA applique aujourd'hui, ce sont <strong>M</strong> et <strong>S</strong>. L'idée ne change pas, les bornes si.</p>
+    </div>
+    <p class="source">Seuils de classe de taille appliqués par compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Pourquoi aucun chiffre en face des modèles fermés</h1>
+    <p>Le support d'origine annonçait « 300 milliards de paramètres (env) » pour Claude Sonnet. Ce chiffre a disparu de compar:IA, pour deux raisons.</p>
+    <ul>
+      <li>Les laboratoires <strong>ne publient pas</strong> la taille de leurs modèles propriétaires. Le nombre était une estimation, jamais une donnée.</li>
+      <li>Nommer une estimation <strong>déplace le débat sur le chiffre</strong> au lieu de l'ordre de grandeur. On discute du 300 au lieu de discuter du coût de calcul.</li>
+    </ul>
+    <p>Les modèles <strong>ouverts</strong> gardent leur compte exact. Les modèles <strong>propriétaires</strong> n'affichent qu'une classe, marquée « Taille estimée XL ».</p>
+    <p class="source">Règle d'affichage de compar:IA pour les modèles propriétaires.</p>
+  </section>
+
+  <section class="slide">
+    <h1>La distillation</h1>
+    <p class="chapeau">Entraîner un petit modèle en imitant un grand, pour le rendre plus rapide et plus efficace.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Meta/Llama 3.1 405B</h3>
+        <p>405 milliards de paramètres. Le modèle d'origine.</p>
+      </div>
+      <div class="carte">
+        <h3>Meta/Llama 3.3 70B</h3>
+        <p>70 milliards. Il apprend à reproduire les sorties du précédent.</p>
+      </div>
+      <div class="carte">
+        <h3>Meta/Llama 3.3 8B</h3>
+        <p>8 milliards. Assez petit pour tourner sur une seule carte.</p>
+      </div>
+    </div>
+    <p>Une même famille couvre ainsi trois classes de taille : XL, M et XS.</p>
+    <p class="source">Famille Llama 3, comptes publiés par Meta.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'il faut retenir</h1>
+    <ul>
+      <li>La taille se compte en paramètres, et elle pèse lourd sur la puissance de calcul.</li>
+      <li>compar:IA affiche un <strong>compte exact</strong> pour les modèles ouverts, une <strong>classe seule</strong> pour les modèles fermés.</li>
+      <li>Un modèle plus grand n'est pas forcément meilleur — mais il coûte plus à faire tourner.</li>
+    </ul>
+    <p>La taille n'est qu'un des facteurs de consommation. Pour les autres, voir le support <em>La consommation d'un modèle</em>.</p>
+  </section>
+
+</main>
+</body>
+</html>

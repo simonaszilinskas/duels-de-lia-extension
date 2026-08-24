@@ -35,6 +35,14 @@
   let currentBlock = null;
   let lastCardIndex = -1;
 
+  // Les réponses de la FAQ sont écrites avec des **gras** en markdown : on les rend,
+  // sinon les astérisques s'affichent telles quelles devant le public.
+  function enGras(texte) {
+    return String(texte)
+      .replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  }
+
   // Create FAB button
   function createFAB() {
     console.log('🔨 Création du FAB...');
@@ -418,7 +426,7 @@
             </div>
             <div class="duelsia-faq-content" id="faq-content-${index}">
               <div class="duelsia-faq-answer">
-                ${item.answer}
+                ${enGras(item.answer)}
               </div>
             </div>
           </div>
@@ -750,7 +758,7 @@
     
     const content = `
       <div class="duelsia-debate-final">
-        <p class="duelsia-debate-subquestion">Maintenant que vous connaissez l'impact environnemental des modèles, cela change-t-il votre vote ?</p>
+        <p class="duelsia-debate-subquestion">Maintenant que vous avez vu l'énergie consommée et la classe énergétique de chaque modèle, cela change-t-il votre vote ?</p>
         
         <div class="duelsia-radio-options">
           <h3>Votre avis :</h3>
@@ -758,7 +766,7 @@
             <input type="radio" name="debate-opinion" value="yes" class="duelsia-radio-input">
             <div class="duelsia-radio-text">
               <strong>Non, il ne change pas</strong>
-              <span class="duelsia-radio-subtext">Les modèles d'IA me sont utiles et l'impact environnemental est acceptable pour cette requête.</span>
+              <span class="duelsia-radio-subtext">Les modèles d'IA me sont utiles et l'énergie dépensée est acceptable pour cette requête.</span>
             </div>
           </label>
           <label class="duelsia-radio-label">
@@ -772,7 +780,7 @@
             <input type="radio" name="debate-opinion" value="complex" class="duelsia-radio-input">
             <div class="duelsia-radio-text">
               <strong>Ce n'est pas si simple</strong>
-              <span class="duelsia-radio-subtext">L'assistance des modèles est utile mais l'impact environnemental me fait réfléchir</span>
+              <span class="duelsia-radio-subtext">L'assistance des modèles est utile, mais l'énergie dépensée me fait réfléchir</span>
             </div>
           </label>
         </div>

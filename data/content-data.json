@@ -17,7 +17,7 @@
         },
         {
           "title": "Terminez par le débat final",
-          "description": "Tous ensemble, débattez sur la frugalité et l'utilité de l'IA conversationnelle"
+          "description": "Tous ensemble, débattez de la frugalité et de l'utilité de l'IA conversationnelle, une fois le bilan énergétique révélé"
         }
       ],
       "blocks": {
@@ -98,11 +98,11 @@
           "cards": [
             {
               "theme": "Taille des modèles",
-              "question": "Seriez-vous prêts à sacrifier 10% de performance pour diviser par 4 l'empreinte environnementale de vos requêtes ? Où placez-vous le curseur entre la qualité de réponse et l'impact environnemental ?"
+              "question": "Le bilan classe les modèles de A à F. Seriez-vous prêts à accepter une réponse un peu moins bonne pour descendre d'une ou deux classes énergétiques ? Et qui décide de ce « un peu » ?"
             },
             {
               "theme": "Moteurs de recherche",
-              "question": "Sachant qu'une recherche via une IA conversationnelle consomme bien plus qu'une requête Google, dans quels cas justifieriez-vous l'utilisation d'une IA conversationnelle ?"
+              "question": "Pour trouver une information factuelle, quand une IA conversationnelle vaut-elle mieux qu'un moteur de recherche ? Et quand est-ce l'inverse ?"
             },
             {
               "theme": "Responsabilité",
@@ -130,92 +130,92 @@
             },
             {
               "theme": "Définition",
-              "question": "Peut-on vraiment parler d'\"intelligence artificielle responsable\" vu que même les petits modèles consomment beaucoup d'énergie ?"
+              "question": "Peut-on parler d'« intelligence artificielle responsable » tant que personne ne publie ce que consomment réellement les modèles les plus utilisés ?"
             }
-          ]       
+          ]
         },
         "ressources": {
           "icon": "📚",
           "title": "Ressources",
-          "description": "Slides complètes pour aller plus loin",
+          "description": "Supports de présentation, à projeter pendant l'atelier",
           "items": [
             {
               "emoji": "📖",
               "title": "Introduction",
-              "url": "data/slides/mars2026-introduction.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/introduction.html",
+              "type": "slides"
             },
             {
               "emoji": "📏",
               "title": "Comment calculer l'impact ?",
-              "url": "data/slides/mars2026-comment-calculer-l-impact.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/comment-calculer-l-impact.html",
+              "type": "slides"
             },
             {
               "emoji": "🔄",
               "title": "Le paradoxe de Jevons",
-              "url": "data/slides/mars2026-paradoxe-de-jevons.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/paradoxe-de-jevons.html",
+              "type": "slides"
             },
             {
               "emoji": "🎓",
               "title": "Comment est entraîné un modèle d'IA ?",
-              "url": "data/slides/mars2026-comment-est-entraine-un-modele.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/comment-est-entraine-un-modele.html",
+              "type": "slides"
             },
             {
               "emoji": "💧",
               "title": "Pourquoi les IA consomment-elles de l'électricité et de l'eau ?",
-              "url": "data/slides/mars2026-pourquoi-ca-consomme.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/pourquoi-ca-consomme.html",
+              "type": "slides"
             },
             {
               "emoji": "📐",
               "title": "C'est quoi la taille d'un modèle ?",
-              "url": "data/slides/mars2026-taille-dun-modele.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/taille-dun-modele.html",
+              "type": "slides"
             },
             {
               "emoji": "🌐",
               "title": "L'IA et Internet",
-              "url": "data/slides/mars2026-IA-et-internet.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/ia-et-internet.html",
+              "type": "slides"
             },
             {
               "emoji": "♻️",
               "title": "Entraînement vs Inférence",
-              "url": "data/slides/mars2026-entrainement-vs-inference.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/entrainement-vs-inference.html",
+              "type": "slides"
             },
             {
               "emoji": "⚙️",
               "title": "Facteurs qui influencent la consommation d'un modèle d'IA",
-              "url": "data/slides/mars2026-consommation-dun-modele.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/consommation-dun-modele.html",
+              "type": "slides"
             },
             {
               "emoji": "🔧",
               "title": "Modèles de raisonnement",
-              "url": "data/slides/mars2026-modeles-de-raisonnement.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/modeles-de-raisonnement.html",
+              "type": "slides"
             },
             {
               "emoji": "📍",
               "title": "Localisation des serveurs",
-              "url": "data/slides/mars2026-localisation-des-serveurs.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/localisation-des-serveurs.html",
+              "type": "slides"
             },
             {
               "emoji": "🤖",
               "title": "DeepSeek est-il frugal ?",
-              "url": "data/slides/mars2026-deepseek-est-il-frugal.pdf",
-              "type": "local-pdf"
+              "url": "data/slides/deepseek-est-il-frugal.html",
+              "type": "slides"
             },
             {
               "emoji": "📊",
-              "title": "Conclusion/récapitulatif",
-              "url": "data/slides/mars2026-conclusion.pdf",
-              "type": "local-pdf"
+              "title": "Conclusion / récapitulatif",
+              "url": "data/slides/conclusion.html",
+              "type": "slides"
             }
           ]
         },
@@ -227,77 +227,112 @@
             {
               "emoji": "🔍",
               "question": "Comment est estimé l'impact environnemental sur compar:IA ?",
-              "answer": "Compar:IA utilise un outil qui s'appelle EcoLogits pour estimer l'impact environnemental de la réponse. L'estimation porte uniquement sur l'inférence (l'utilisation) et non pas l'entraînement du modèle."
+              "answer": "compar:IA utilise **EcoLogits**, une méthode maintenue par l'ONG GenAI Impact. L'estimation porte **uniquement sur l'inférence** — l'utilisation du modèle — et non sur son entraînement. Elle s'appuie sur la taille du modèle, son architecture et le nombre de jetons produits, et suppose le **mix électrique mondial moyen**. Elle s'affiche en **milliwattheures (mWh)**, accompagnée d'une classe énergétique de **A à F**."
+            },
+            {
+              "emoji": "🧾",
+              "question": "Que montre le bilan à la fin d'un duel ?",
+              "answer": "Trois cartes. **Texte généré** : le nombre de jetons produits. **Coût** : le tarif public du modèle, entrée et sortie. **Énergie de génération estimée** : l'électricité mobilisée pour écrire la réponse, en mWh. Deux onglets complètent le tout : **Explication**, une phrase sur l'architecture du modèle et sa classe énergétique, et **Équivalences**, la même énergie traduite en gestes du quotidien."
+            },
+            {
+              "emoji": "🔤",
+              "question": "Que veut dire la classe énergétique A à F ?",
+              "answer": "C'est l'énergie estimée pour produire **un million de jetons de sortie**, rangée en six paliers : **A** sous 100 Wh, **B** sous 300, **C** sous 1 000, **D** sous 3 000, **E** sous 10 000, **F** au-delà. Plus la lettre est proche de A, plus le modèle est économe. Ce n'est pas une mesure du fournisseur : le matériel réel, la quantification et la longueur des échanges peuvent déplacer le résultat."
+            },
+            {
+              "emoji": "💡",
+              "question": "À quoi correspondent les équivalences en énergie ?",
+              "answer": "À trois références simples. Le **streaming vidéo** compte pour 80 W, soit 80 Wh pour une heure. L'**ampoule LED** compte pour 6 W, soit 6 Wh par heure d'éclairage. La **batterie de smartphone** vaut 15 Wh pour une charge complète. Ces repères servent à donner une échelle, pas à mesurer quoi que ce soit."
+            },
+            {
+              "emoji": "🎚️",
+              "question": "Pourquoi peut-on changer de scénario dans le bilan ?",
+              "answer": "Parce qu'une discussion d'atelier ne dit pas grand-chose d'un usage réel. Trois scénarios sont proposés : **cette discussion**, une **recherche approfondie** (310 000 jetons) et une **session de code agentique** (500 000 jetons). Les projections ne comptent que les **jetons de sortie** et supposent une exécution **sans cache** — donc plutôt une borne haute."
+            },
+            {
+              "emoji": "🚫",
+              "question": "Pourquoi le bilan n'affiche-t-il plus d'émissions de CO₂ ?",
+              "answer": "Convertir de l'énergie en CO₂ suppose de savoir **où** tournent les serveurs et avec quelle électricité. Les fournisseurs ne publient pas cette information, et les rares chiffres qu'ils communiquent reposent sur des méthodes trop différentes pour être comparées. compar:IA s'en tient donc à ce qu'il peut estimer sérieusement : l'énergie. Le débat sur le carbone reste entier — il se mène avec le support « Localisation des serveurs »."
             },
             {
               "emoji": "⚡",
               "question": "Pourquoi une IA consomme-t-elle de l'énergie ?",
-              "answer": "Parce qu'à chaque interaction (comme une question posée à ChatGPT), l'IA doit effectuer des calculs complexes. Ces calculs nécessitent des ordinateurs plus ou moins puissants selon la taille du modèle d'IA utilisé."
+              "answer": "Parce qu'à chaque question posée, le modèle doit effectuer des calculs. Ces calculs tournent sur des machines plus ou moins puissantes selon la taille du modèle, et ces machines consomment de l'électricité."
             },
             {
               "emoji": "💻",
-              "question": "Quelle puissance de calcul est nécessaire selon la taille du modèle ?",
-              "answer": "**Petit modèle (0,5B à 7B)** : Un simple ordinateur portable moderne suffit. **Modèle moyen (7B à 70B)** : Une tour avec une ou plusieurs cartes graphiques est nécessaire. **Grand modèle (plus de 70B)** : Un grand serveur avec plusieurs cartes graphiques spécialisées est indispensable."
-            },
-            {
-              "emoji": "🏭",
-              "question": "Quelle est la consommation énergétique d'un data center IA ?",
-              "answer": "Un data center IA peut facilement consommer autant d'électricité que **100 000 foyers**. Les plus grands centres actuellement en construction pourraient consommer **20 fois plus**."
-            },
-            {
-              "emoji": "💧",
-              "question": "Pourquoi les IA consomment-elles de l'eau ?",
-              "answer": "L'eau est utilisée pour **refroidir** les équipements informatiques dans les data centers, qui produisent énormément de chaleur lors du traitement des données."
-            },
-            {
-              "emoji": "🔋",
-              "question": "Quels matériaux sont nécessaires pour faire fonctionner l'IA ?",
-              "answer": "Le **cuivre** est un matériau clé. La demande annuelle des data centers en cuivre, actuellement à 1 %, pourrait atteindre **6 à 7 %** d'ici 2050. Cela soulève des enjeux pour la transition énergétique."
-            },
-            {
-              "emoji": "📊",
-              "question": "Pourquoi les grandes IA consomment-elles plus?",
-              "answer": "Plus de paramètres = plus de calculs = plus de serveurs / ordinateurs = plus d'électricité nécessaire."
-            },
-            {
-              "emoji": "🔄",
-              "question": "Est-ce que les petites IA sont toujours moins performantes?",
-              "answer": "Pas nécessairement! Comme vous l'avez vu dans les duels, parfois les petites IA donnent des réponses tout aussi satisfaisantes."
-            },
-            {
-              "emoji": "🤔",
-              "question": "Quelle IA devrais-je utiliser au quotidien?",
-              "answer": "Cela dépend de vos besoins. Pour des questions simples, une petite IA ou même un moteur de recherche suffira. Pour des tâches complexes, une grande IA peut être nécessaire. Vous pouvez toujours en tester plusieurs sur compar:IA"
+              "question": "Quel matériel faut-il pour faire tourner un modèle ?",
+              "answer": "compar:IA estime la mémoire nécessaire pour charger les paramètres, et la range en quatre paliers : jusqu'à **3 Go**, un smartphone suffit ; jusqu'à **16 Go**, un ordinateur portable ; jusqu'à **80 Go**, une station de travail avec une carte graphique ; au-delà, un **serveur multi-GPU**. C'est un minimum théorique : le contexte, la quantification et le moteur d'inférence font monter le besoin réel."
             },
             {
               "emoji": "📏",
-              "question": "Qu'est-ce que la taille d'un modèle d'intelligence artificielle ?",
-              "answer": "La taille correspond au nombre de paramètres du modèle. Par exemple, un modèle 70B a 70 milliards de paramètres. C'est un indicateur de sa complexité et de sa puissance."
+              "question": "Qu'est-ce que la taille d'un modèle ?",
+              "answer": "Le nombre de paramètres, compté en milliards. compar:IA les range en cinq classes : **XS** sous 15 milliards, **S** de 15 à 60, **M** de 60 à 100, **L** de 100 à 400, **XL** au-delà de 400."
             },
             {
-              "emoji": "⚖️",
-              "question": "Pourquoi la taille d'un modèle est-elle importante ?",
-              "answer": "Un modèle plus grand est généralement plus performant, mais il est aussi plus coûteux en énergie et en ressources pour fonctionner."
+              "emoji": "🕵️",
+              "question": "Pourquoi le nombre de paramètres des modèles propriétaires n'est-il pas affiché ?",
+              "answer": "Parce que les laboratoires ne le publient pas. Les chiffres qui circulent sont des estimations, y compris celles de compar:IA. Nommer une estimation déplace la discussion sur le chiffre au lieu de l'ordre de grandeur : les modèles propriétaires affichent donc seulement leur **classe de taille estimée**. Les modèles ouverts, eux, gardent leur compte exact."
+            },
+            {
+              "emoji": "📊",
+              "question": "Pourquoi les grands modèles consomment-ils plus ?",
+              "answer": "Plus de paramètres mobilisés, c'est plus de calculs, donc plus d'électricité pour chaque jeton produit. Attention toutefois : ce qui compte, ce sont les paramètres **réellement activés**. Un modèle à mélange d'experts n'en active qu'une fraction, et un modèle de raisonnement produit beaucoup plus de jetons — ces deux effets pèsent autant que la taille brute."
+            },
+            {
+              "emoji": "🧩",
+              "question": "Qu'est-ce qu'un modèle à mélange d'experts ?",
+              "answer": "Un modèle qui n'active qu'une partie de ses paramètres à chaque réponse, au lieu de les mobiliser tous. C'est ce que signale la ligne « **Dont N mds actifs** » sur la fiche du modèle. À taille totale égale, cette architecture consomme nettement moins par jeton."
+            },
+            {
+              "emoji": "📉",
+              "question": "Pourquoi les modèles propriétaires sont-ils absents du graphique du classement ?",
+              "answer": "L'onglet **Focus énergie** croise satisfaction et consommation moyenne. Il n'accepte que les modèles dont la taille et l'architecture sont publiées, ce qui exclut les modèles propriétaires. Ils reçoivent tout de même une classe A–F sur l'écran de bilan, calculée à partir d'une estimation interne — une incohérence qu'il vaut mieux dire à voix haute en atelier."
+            },
+            {
+              "emoji": "🔄",
+              "question": "Est-ce que les petites IA sont toujours moins performantes ?",
+              "answer": "Pas nécessairement. Comme vous l'avez vu dans les duels, un petit modèle donne souvent une réponse tout aussi satisfaisante."
+            },
+            {
+              "emoji": "🤔",
+              "question": "Quelle IA devrais-je utiliser au quotidien ?",
+              "answer": "Cela dépend du besoin. Pour une question simple, un petit modèle ou même un moteur de recherche suffit. Pour une tâche complexe, un grand modèle se justifie. Le catalogue de compar:IA, à l'adresse comparia.beta.gouv.fr/models, permet de comparer taille, classe énergétique et matériel nécessaire."
             },
             {
               "emoji": "🧪",
               "question": "Qu'est-ce que la distillation de modèles ?",
-              "answer": "La distillation consiste à entraîner un petit modèle à imiter un grand. On obtient alors un modèle plus rapide, plus économe, mais qui conserve de bonnes performances."
+              "answer": "Entraîner un petit modèle à imiter un grand. On obtient un modèle plus rapide et plus économe, qui conserve une bonne part des performances."
+            },
+            {
+              "emoji": "🏭",
+              "question": "Quelle est la consommation d'un data center dédié à l'IA ?",
+              "answer": "Un data center orienté IA peut consommer autant d'électricité que **100 000 foyers**. Les plus grands, actuellement en construction, pourraient consommer **20 fois plus**."
+            },
+            {
+              "emoji": "💧",
+              "question": "Pourquoi les IA consomment-elles de l'eau ?",
+              "answer": "L'eau sert à **refroidir** les machines des data centers, qui dégagent énormément de chaleur. S'ajoute l'eau utilisée en amont pour produire l'électricité, rarement comptée."
+            },
+            {
+              "emoji": "🔋",
+              "question": "Quels matériaux sont nécessaires pour faire fonctionner l'IA ?",
+              "answer": "Le **cuivre** est un matériau clé. La demande annuelle des data centers en cuivre, aujourd'hui autour de 1 %, pourrait atteindre **6 à 7 %** d'ici 2050 — de quoi peser sur la transition énergétique, qui en a besoin elle aussi."
             },
             {
               "emoji": "🌐",
               "question": "Est-ce que les modèles d'IA ont accès à Internet ?",
-              "answer": "Par défaut, non. Les modèles d'IA ne sont pas connectés à Internet. Cependant, certains éditeurs commencent à leur donner accès à des outils comme des moteurs de recherche intégrés. Sur compar:IA, les modèles n'ont pas accès à Internet."
+              "answer": "Par défaut, non : un modèle répond à partir de ce qu'il a appris pendant son entraînement, figé à une date. Certains éditeurs y ajoutent une recherche web. **Sur compar:IA, les modèles n'ont pas accès à Internet.**"
             },
             {
               "emoji": "🔎",
               "question": "Quelle est la différence entre un moteur de recherche et une IA comme ChatGPT ?",
-              "answer": "Un moteur de recherche vous redirige vers des pages existantes. Une IA génère directement une réponse, souvent à partir de grandes quantités de données préalablement analysées. Une IA comme ChatGPT n'a pour objectif que de générer du texte et donc peut générer de fausses informations."
+              "answer": "Un moteur de recherche vous renvoie vers des pages qui existent. Une IA rédige une réponse. Son objectif est de produire un texte plausible, pas un texte exact : elle peut donc énoncer des faits faux avec aplomb."
             },
             {
               "emoji": "⚡",
-              "question": "Qu'est-ce qui consomme le plus d'énergie : une recherche Google ou une requête ChatGPT ?",
-              "answer": "Une recherche sur un moteur comme Google consomme environ 0,3 Wh, tandis qu'une requête à un modèle d'IA peut consommer entre 0,5 et 22 Wh selon sa taille et architecture."
+              "question": "Qu'est-ce qui consomme le plus : une recherche Google ou une requête à une IA ?",
+              "answer": "Une recherche sur un moteur consomme environ **0,3 Wh**, tandis qu'une requête à un modèle d'IA peut consommer entre **0,5 et 22 Wh** selon sa taille et son architecture."
             }
           ]
         }
