@@ -1,6 +1,7 @@
-/* Feuille de style commune aux supports de l'atelier Duels de l'IA.
-   Une diapositive = une <section class="slide">. Tout est dimensionné en cqw
-   pour que le texte suive la taille de la fenêtre sans calcul en JavaScript. */
+/* Supports de l'atelier Duels de l'IA.
+   Une diapositive = une <section class="slide">.
+   Quatre tailles de texte, pas une de plus : display, titre, corps, source.
+   Tout est en unités de conteneur, la boîte 16/9 fait le reste. */
 
 @font-face {
   font-family: 'Marianne';
@@ -17,11 +18,15 @@
 
 :root {
   --violet: #715cf6;
-  --violet-clair: #ede9ff;
+  --violet-pale: #f0edff;
   --encre: #161616;
-  --gris: #666;
-  --trait: #ddd;
-  --alerte: #b34000;
+  --gris: #6a6a6a;
+  --trait: #e3e3e3;
+  --fond: #f5f5f8;
+
+  --display: 3.2em;
+  --titre: 1.75em;
+  --source: 0.7em;
 }
 
 * { box-sizing: border-box; }
@@ -29,129 +34,239 @@
 html, body {
   margin: 0;
   height: 100%;
-  background: #1b1b1b;
+  background: #111;
   font-family: 'Marianne', system-ui, sans-serif;
   color: var(--encre);
+  -webkit-font-smoothing: antialiased;
 }
+body { display: flex; }
 
-/* Boîte 16/9 centrée, la plus grande qui tienne dans la fenêtre. */
+/* La plus grande boîte 16/9 qui tienne dans la fenêtre. */
 .stage {
   container-type: size;
   width: min(100vw, 177.78vh);
   height: min(56.25vw, 100vh);
   margin: auto;
   position: relative;
-  background: #fff;
+  background: var(--fond);
   overflow: hidden;
 }
-body { display: flex; }
+
+/* Bloc de marque, en haut à droite de chaque support. Un seul par fichier. */
+.marque {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  background: var(--violet);
+  color: #fff;
+  border-bottom-left-radius: 1.2cqw;
+  padding: 1.4cqw 2.2cqw 1.4cqw 1.8cqw;
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  font-size: 1.6cqw;
+  line-height: 1.15;
+}
+.marque img { width: 3.4cqw; height: auto; }
+.marque strong { display: block; font-size: 1.35em; font-weight: 700; }
+.marque span { opacity: 0.85; }
 
 .slide {
   position: absolute;
   inset: 0;
-  padding: 4.5cqw 6cqw 6.5cqw;
+  padding: 6cqw 7cqw;
   display: flex;
   flex-direction: column;
-  gap: 0.65em;
-  font-size: 2cqw;
-  line-height: 1.4;
+  gap: 1em;
+  font-size: 2.15cqw;
+  line-height: 1.5;
 }
-/* Sans JavaScript on empile tout, ce qui reste lisible. */
+/* Sans JavaScript les diapositives s'empilent, ce qui reste lisible. */
 .deck-ready .slide { display: none; }
 .deck-ready .slide.is-current { display: flex; }
 
+/* --- Texte : quatre tailles --- */
+
 .slide h1 {
-  font-size: 2.1em;
+  font-size: var(--titre);
   line-height: 1.1;
   margin: 0;
-  color: var(--violet);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  max-width: 26ch;
+  padding-right: 22cqw; /* laisse la place au bloc de marque */
 }
-.slide h2 {
-  font-size: 1.5em;
-  line-height: 1.15;
+/* Un mot en violet dans le titre, comme sur les supports d'origine. */
+.slide h1 em { font-style: normal; color: var(--violet); }
+.slide p, .slide li, .slide td, .slide th, .slide h2, .slide h3 {
+  font-size: 1em;
+  font-weight: 400;
   margin: 0;
 }
-.slide h1 + .chapeau, .slide h2 + .chapeau { color: var(--gris); }
-.slide p, .slide li { margin: 0; }
-.slide ul, .slide ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 0.35em; }
-.slide strong { color: var(--violet); }
-.slide a { color: var(--violet); }
-
-/* Diapositive de titre. */
-.slide.titre { justify-content: center; background: var(--violet-clair); }
-.slide.titre h1 { font-size: 3em; }
-
-/* Chiffre mis en avant. */
-.chiffre { font-size: 3.2em; font-weight: 700; color: var(--violet); line-height: 1; }
-
-/* Rangée de cartes. */
-.cartes { display: flex; gap: 1em; flex: 1; align-items: stretch; }
-.carte {
-  flex: 1;
-  border: 0.1em solid var(--trait);
-  border-radius: 0.4em;
-  padding: 1em;
+.slide h2, .slide h3, .slide th { font-weight: 700; }
+.slide .chapeau { color: var(--gris); max-width: 44ch; }
+.slide ul, .slide ol {
+  margin: 0;
+  padding-left: 1.1em;
   display: flex;
   flex-direction: column;
-  gap: 0.4em;
+  gap: 0.6em;
+  max-width: 52ch;
 }
-.carte h3 { margin: 0; font-size: 1.1em; }
+.slide li::marker { color: var(--violet); }
+.slide strong { font-weight: 700; }
+.slide a { color: var(--violet); }
 
-/* Tableau. */
-.slide table { border-collapse: collapse; width: 100%; font-size: 0.95em; }
-.slide th, .slide td { border-bottom: 0.06em solid var(--trait); padding: 0.5em 0.6em; text-align: left; }
-.slide th { color: var(--gris); font-weight: 400; }
-
-/* Encadré de nuance ou d'avertissement. */
-.nuance {
-  border-left: 0.25em solid var(--alerte);
-  padding: 0.6em 0 0.6em 0.9em;
-  background: #fdf4ee;
+/* Le chiffre qu'on veut voir du fond de la salle. */
+.chiffre {
+  font-size: var(--display) !important;
+  font-weight: 700;
+  color: var(--violet);
+  line-height: 1;
+  letter-spacing: -0.03em;
 }
 
-figure { margin: 0; flex: 1; display: flex; flex-direction: column; gap: 0.4em; min-height: 0; }
-figure img { flex: 1; min-height: 0; object-fit: contain; object-position: left center; }
-figcaption { font-size: 0.8em; color: var(--gris); }
-
-/* Ligne de source, toujours visible, en bas de la diapositive. */
+/* Source, toujours au même endroit, discrète. */
 .source {
   position: absolute;
-  left: 6cqw;
-  right: 6cqw;
-  bottom: 3.2cqw;
-  font-size: 0.75em;
+  left: 7cqw;
+  right: 7cqw;
+  bottom: 2.6cqw;
+  font-size: var(--source) !important;
   color: var(--gris);
+  line-height: 1.4;
+  max-width: none;
 }
 
-/* Barre de navigation. */
+/* --- Diapositive d'ouverture --- */
+
+.slide.titre {
+  justify-content: center;
+  background: var(--violet-pale);
+  padding-left: 9cqw;
+}
+.slide.titre h1 { font-size: var(--display); letter-spacing: -0.03em; }
+.slide.titre .chapeau { font-size: 1em; max-width: 34ch; }
+
+/* --- Mises en page --- */
+
+/* Texte à gauche, image à droite. La mise en page par défaut dès qu'il y a un visuel. */
+.duo {
+  display: flex;
+  gap: 3cqw;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+.duo > * { flex: 1 1 0; min-width: 0; min-height: 0; }
+.duo .colonne { display: flex; flex-direction: column; gap: 0.8em; justify-content: center; min-width: 0; }
+.duo > .visuel { align-self: stretch; }
+
+/* Image seule, plein cadre. */
+.plein { flex: 1; min-height: 0; display: flex; }
+.plein img { width: 100%; height: 100%; object-fit: contain; }
+
+figure { margin: 0; display: flex; flex-direction: column; gap: 0.6em; min-height: 0; flex: 1; }
+figure img { flex: 1; min-height: 0; width: 100%; object-fit: contain; }
+figcaption { font-size: 1em; color: var(--gris); }
+
+/* Un visuel se pose comme une carte, pas comme une image collée.
+   flex + min-height:0 : sans ça une image haute pousse la diapositive hors cadre. */
+.visuel {
+  border-radius: 0.9cqw;
+  background: #fff;
+  box-shadow: 0 0.15cqw 1.2cqw rgba(22, 22, 22, 0.1);
+  object-fit: contain;
+  padding: 0.6cqw;
+  width: 100%;
+  flex: 1 1 0;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* Comparaison en deux colonnes séparées par un filet, comme « IA / IA générative ». */
+.compare {
+  display: flex;
+  gap: 2.5cqw;
+  flex: 1;
+  min-height: 0;
+}
+.compare > * {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+.compare > * + * { border-left: 1px solid var(--trait); padding-left: 2.5cqw; }
+.compare h2 { text-align: center; }
+
+/* Cartes côte à côte. */
+.cartes { display: flex; gap: 1.4cqw; flex: 1; align-items: stretch; min-height: 0; }
+.carte {
+  flex: 1;
+  border-top: 0.2em solid var(--violet);
+  padding-top: 0.7em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.carte ul { gap: 0.35em; }
+.carte .visuel { flex: 1 1 0; min-height: 0; }
+
+/* Tableau. */
+.slide img { max-width: 100%; max-height: 100%; }
+.slide table { border-collapse: collapse; width: 100%; }
+.slide th, .slide td {
+  border-bottom: 0.07em solid var(--trait);
+  padding: 0.55em 0.7em 0.55em 0;
+  text-align: left;
+  vertical-align: top;
+}
+.slide thead th, .slide tr:first-child th { color: var(--gris); font-weight: 400; }
+
+/* Encadré : une nuance que la salle doit lire, pas une note à l'animateur. */
+.nuance {
+  border-left: 0.25em solid var(--violet);
+  padding: 0.1em 0 0.1em 1em;
+  color: var(--encre);
+  max-width: 56ch;
+}
+
+/* --- Navigation --- */
+
 .nav {
   position: fixed;
-  bottom: 0.8rem;
+  bottom: 0.9rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(0, 0, 0, 0.65);
+  gap: 0.35rem;
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 2rem;
-  padding: 0.3rem 0.5rem;
-  font-family: 'Marianne', system-ui, sans-serif;
+  padding: 0.25rem 0.45rem;
   color: #fff;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  opacity: 0.35;
+  transition: opacity 0.15s;
 }
+.nav:hover, .nav:focus-within { opacity: 1; }
 .nav button {
   background: none;
   border: none;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1;
-  padding: 0.25rem 0.6rem;
+  padding: 0.25rem 0.55rem;
   border-radius: 1rem;
   cursor: pointer;
 }
-.nav button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.2); }
-.nav button:disabled { opacity: 0.35; cursor: default; }
-.nav [aria-live] { min-width: 3.5rem; text-align: center; font-variant-numeric: tabular-nums; }
+.nav button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.22); }
+.nav button:disabled { opacity: 0.3; cursor: default; }
+.nav [aria-live] { min-width: 3.2rem; text-align: center; font-variant-numeric: tabular-nums; }
 
 @media print {
   html, body { background: #fff; }
