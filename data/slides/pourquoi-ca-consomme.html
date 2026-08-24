@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pourquoi ça consomme — Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <section class="slide titre">
+    <h1>Pourquoi les IA consomment-elles de l'électricité et de l'eau ?</h1>
+    <p class="chapeau">Parce que derrière chaque réponse, une machine calcule.</p>
+  </section>
+
+  <section class="slide">
+    <h1>À chaque question, des calculs</h1>
+    <p>Générer du texte, pour un ordinateur, c'est enchaîner des multiplications de tableaux de chiffres, des milliers de fois par réponse.</p>
+    <figure>
+      <img src="img/schema-calculs-transformeur.png" alt="Schéma des étapes de calcul d'un transformeur : les jetons entrent, sont convertis en vecteurs, passent par des têtes d'attention et des couches MLP, puis ressortent en logits. Chaque étape est accompagnée de sa formule.">
+      <figcaption>Les étapes de calcul d'un modèle de langage, avec leurs formules. N'essayez pas de les faire de tête : il faut un ordinateur très puissant.</figcaption>
+    </figure>
+    <p class="source">Schéma tiré de « A Mathematical Framework for Transformer Circuits », Anthropic, 2021.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Plus le modèle est gros, plus la machine est grosse</h1>
+    <p class="chapeau">Ce qui compte, c'est la mémoire qu'il faut pour charger les paramètres.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Un smartphone</h3>
+        <p>Jusqu'à 3 Go.</p>
+      </div>
+      <div class="carte">
+        <h3>Un ordinateur portable</h3>
+        <p>Jusqu'à 16 Go, pour un petit modèle.</p>
+      </div>
+      <div class="carte">
+        <h3>Une tour avec une carte graphique</h3>
+        <p>Jusqu'à 80 Go, pour un modèle moyen.</p>
+      </div>
+      <div class="carte">
+        <h3>Un serveur à plusieurs cartes</h3>
+        <p>Au-delà de 80 Go, pour un grand modèle.</p>
+      </div>
+    </div>
+    <p class="source">Seuils affichés par compar:IA dans la fiche « Matériel nécessaire » de chaque modèle, à raison de 80 Go par carte graphique.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Où tournent ces machines</h1>
+    <p>Vous posez une question à une IA comme ChatGPT. Elle part dans un <strong>centre de données</strong> rempli d'ordinateurs puissants. Le centre tire son électricité du réseau et consomme de l'eau pour refroidir les machines.</p>
+    <!-- CHIFFRE À CONFIRMER -->
+    <p>Un centre de données orienté IA consomme autant d'électricité que <strong>100 000 ménages</strong>.</p>
+    <!-- CHIFFRE À CONFIRMER -->
+    <p>Les plus grands, en construction aujourd'hui, en consommeront <strong>20 fois plus</strong>.</p>
+    <p class="source">« Energy and AI », Agence internationale de l'énergie, 2025.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Rallumer une centrale nucléaire</h1>
+    <figure>
+      <img src="img/three-mile-island.png" alt="Les tours de refroidissement de la centrale nucléaire de Three Mile Island, en Pennsylvanie, avec un panache de vapeur et un drapeau américain.">
+      <figcaption>La centrale de Three Mile Island, en Pennsylvanie, à l'arrêt depuis 2019.</figcaption>
+    </figure>
+    <p>En 2024, Microsoft a acheté cette ancienne centrale. L'entreprise espère en tirer :</p>
+    <!-- CHIFFRE À CONFIRMER -->
+    <p class="chiffre">850 MW</p>
+    <p>pour alimenter des systèmes d'intelligence artificielle comme ChatGPT.</p>
+    <p class="source">« Three Mile Island nuclear plant will reopen to power Microsoft data centers », NPR, 2024.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Et des matières premières</h1>
+    <p>D'après BHP, l'essor de l'IA fera passer la part des centres de données dans la demande annuelle de cuivre :</p>
+    <table>
+      <tr>
+        <th>Aujourd'hui</th>
+        <th>D'ici 2050</th>
+      </tr>
+      <tr>
+        <!-- CHIFFRE À CONFIRMER -->
+        <td>1 %</td>
+        <!-- CHIFFRE À CONFIRMER -->
+        <td>6 à 7 %</td>
+      </tr>
+    </table>
+    <p>Or le cuivre est un métal essentiel à la <strong>transition énergétique</strong>.</p>
+    <p class="source">« Why AI tools and data centres are driving copper demand », BHP, 2024.</p>
+  </section>
+
+</main>
+</body>
+</html>

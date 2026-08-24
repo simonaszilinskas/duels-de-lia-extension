@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conclusion — Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <section class="slide titre">
+    <h1>Conclusion</h1>
+    <p class="chapeau">Ce que l'atelier a montré, et ce que vous pouvez en faire dès demain.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'IA, ce n'est pas que ChatGPT</h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>IA génératives conversationnelles</h3>
+        <p>Une poignée de fournisseurs se partagent le terrain. C'est la famille que compar:IA fait s'affronter dans l'arène.</p>
+      </div>
+      <div class="carte">
+        <h3>Autres IA</h3>
+        <p>La traduction automatique, la lecture d'une radiographie, la conduite autonome. Elles travaillent depuis longtemps, sans faire parler d'elles.</p>
+      </div>
+    </div>
+    <p class="source">Pour en découvrir plus : comparia.beta.gouv.fr</p>
+  </section>
+
+  <section class="slide">
+    <h1>Les modèles d'IA ont un impact environnemental</h1>
+    <p class="chapeau">À l'échelle, une requête consomme peu, mais des milliards de requêtes sur de très grands modèles finissent par consommer énormément.</p>
+    <p>D'où l'intérêt de regarder deux choses à la fois : ce que coûte <strong>une</strong> réponse, et ce que coûterait le même geste répété par tout le monde, tous les jours.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que le bilan affiche après le vote</h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Texte généré</h3>
+        <p>Le nombre de jetons produits. Un jeton vaut à peu près quatre lettres.</p>
+      </div>
+      <div class="carte">
+        <h3>Coût</h3>
+        <p>Le tarif public du modèle, entrée et sortie comprises.</p>
+      </div>
+      <div class="carte">
+        <h3>Énergie de génération estimée</h3>
+        <p>En <strong>milliwattheures</strong>, notés mWh.</p>
+      </div>
+    </div>
+    <p>Un sélecteur change d'échelle : « Cette discussion », « Recherche approfondie » (310 000 jetons) ou « Session de code agentique » (500 000 jetons).</p>
+    <p class="source">Les projections ne comptent que les jetons de sortie et supposent une exécution sans cache.</p>
+  </section>
+
+  <section class="slide">
+    <h1>La classe énergétique, de A à F</h1>
+    <table>
+      <tr><th>Classe</th><th>Énergie pour un million de jetons de sortie</th></tr>
+      <tr><td><strong>A</strong></td><td>moins de 100 Wh</td></tr>
+      <tr><td><strong>B</strong></td><td>moins de 300 Wh</td></tr>
+      <tr><td><strong>C</strong></td><td>moins de 1 000 Wh</td></tr>
+      <tr><td><strong>D</strong></td><td>moins de 3 000 Wh</td></tr>
+      <tr><td><strong>E</strong></td><td>moins de 10 000 Wh</td></tr>
+      <tr><td><strong>F</strong></td><td>10 000 Wh et au-delà</td></tr>
+    </table>
+    <p class="source">Estimation EcoLogits 0.10.2, PUE 1,2, mix électrique mondial moyen.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Les classes de taille</h1>
+    <table>
+      <tr><th>Classe</th><th>Paramètres, en milliards</th></tr>
+      <tr><td><strong>XS</strong></td><td>moins de 15</td></tr>
+      <tr><td><strong>S</strong></td><td>de 15 à 60</td></tr>
+      <tr><td><strong>M</strong></td><td>de 60 à 100</td></tr>
+      <tr><td><strong>L</strong></td><td>de 100 à 400</td></tr>
+      <tr><td><strong>XL</strong></td><td>plus de 400</td></tr>
+    </table>
+    <p>Un modèle <strong>ouvert</strong> affiche son compte exact, et sa part active s'il fonctionne par mélange d'experts. Un modèle <strong>propriétaire</strong> n'affiche que sa classe, marquée « Taille estimée ».</p>
+    <p class="source">Classes de taille compar:IA. Les laboratoires propriétaires ne publient pas leur compte de paramètres.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Trois équivalences pour se figurer l'énergie</h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Streaming vidéo</h3>
+        <p>Référence : 80 W pour une heure de lecture.</p>
+      </div>
+      <div class="carte">
+        <h3>Ampoule LED</h3>
+        <p>Référence : 6 W allumés.</p>
+      </div>
+      <div class="carte">
+        <h3>Batterie de smartphone</h3>
+        <p>Référence : 15 Wh pour une charge complète.</p>
+      </div>
+    </div>
+    <p class="source">Équivalences de l'onglet du même nom, exprimées en énergie et non en carbone.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Les petits modèles consomment moins</h1>
+    <p class="chapeau">Les petits et moyens modèles consomment moins d'énergie que leurs homologues de grande taille, tout en offrant des résultats de qualité comparable.</p>
+    <p>L'onglet <strong>Focus énergie</strong> du classement place chaque modèle selon son score de satisfaction et sa consommation moyenne pour 1 000 jetons. On y voit des petits modèles bien classés et sobres.</p>
+    <p>Où trouver les petits modèles : le catalogue compar:IA, HuggingChat, Jan, Duck.ai, OpenRouter.</p>
+    <p class="source">comparia.beta.gouv.fr/models pour le catalogue, /ranking pour le classement. Score de satisfaction Bradley-Terry, calculé sur les votes de l'arène.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Trois conseils pour utiliser l'IA plus sobrement</h1>
+    <ol>
+      <li>Utilisez des <strong>petits modèles</strong> : ils sont très bons pour la majorité des cas d'usage.</li>
+      <li>Pour chercher une information, préférez un <strong>moteur de recherche</strong>.</li>
+      <li>Utilisez <strong>compar:IA</strong> pour repérer les bons modèles pour vos cas d'usage.</li>
+    </ol>
+    <p class="source">L'arène est à la racine du site, comparia.beta.gouv.fr, et le catalogue à comparia.beta.gouv.fr/models</p>
+  </section>
+
+</main>
+</body>
+</html>

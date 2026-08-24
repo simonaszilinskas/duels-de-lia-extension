@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entraînement vs inférence — Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <section class="slide titre">
+    <h1>Entraînement vs inférence</h1>
+    <p class="chapeau">Un modèle consomme à deux moments : quand on le fabrique, et chaque fois qu'on s'en sert.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux moments, deux profils</h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>1. Entraînement</h3>
+        <p>Le modèle apprend à générer du texte.</p>
+        <p><strong>Beaucoup d'énergie</strong> pendant plusieurs semaines — mais une seule fois par modèle.</p>
+      </div>
+      <div class="carte">
+        <h3>2. Utilisation (inférence)</h3>
+        <p>Le modèle génère du texte à partir d'une question.</p>
+        <p><strong>Peu d'énergie</strong> par demande — mais s'il y a beaucoup de demandes, le cumul devient considérable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Entraîner un modèle</h1>
+    <p class="chapeau">Exemple : Meta / Llama 4.</p>
+    <!-- CHIFFRE À CONFIRMER -->
+    <p class="chiffre">21 000 GWh</p>
+    <p>consommés pour l'entraînement, soit la consommation de <strong>10 000 ménages pendant un an</strong>.</p>
+    <p class="source">Données publiées par Meta sur Llama 4.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Se servir d'un modèle</h1>
+    <p class="chapeau">Exemple : OpenAI / GPT-5, pour écrire un texte de cinq pages (5 000 jetons).</p>
+    <!-- CHIFFRE À CONFIRMER -->
+    <p class="chiffre">8,68 Wh</p>
+    <p>soit <strong>50 à 70 % de la batterie d'un smartphone</strong>.</p>
+    <p class="source">Estimation EcoLogits. Sur compar:IA, la batterie de référence vaut 15 Wh pour 100 %.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Et si tout le monde s'y met</h1>
+    <p>Si <strong>1 % de la population mondiale</strong> écrivait ce texte de cinq pages tous les jours pendant un an, il faudrait, pour fournir cette électricité, la production annuelle de :</p>
+    <!-- CHIFFRE À CONFIRMER -->
+    <p class="chiffre">60 éoliennes</p>
+    <p>Une demande minuscule, répétée, finit par se compter en parc éolien.</p>
+    <p class="source">Projection du support d'atelier, à partir de l'estimation EcoLogits de 8,68 Wh.</p>
+  </section>
+
+  <section class="slide">
+    <h1>« S'il te plaît », « merci »</h1>
+    <p>Chaque mot de politesse est un jeton de plus à traiter. À l'échelle de ChatGPT, ces jetons se comptent en électricité et en argent.</p>
+    <figure>
+      <img src="img/tweet-altman-merci.png" alt="Échange sur X. Question : combien d'argent OpenAI perd-il en électricité à cause des gens qui disent « please » et « thank you » à leurs modèles ? Réponse de Sam Altman : des dizaines de millions de dollars bien dépensés, on ne sait jamais.">
+      <figcaption>« Combien d'argent OpenAI perd-il à cause des gens qui disent “s'il te plaît” et “merci” à leurs modèles ? » — Réponse de Sam Altman, PDG d'OpenAI : « Des dizaines de millions de dollars […] »</figcaption>
+    </figure>
+    <p class="source">Sam Altman (@sama) sur X, 17 avril 2025, en réponse à @tomieinlove.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'analogie de la voiture</h1>
+    <p>Les indicateurs d'impact regardent surtout l'inférence. De quoi croire que se servir d'un modèle pèse moins lourd que le fabriquer. La réalité est plus retorse.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Construire la voiture</h3>
+        <p>C'est l'entraînement : une opération unique, très gourmande en ressources.</p>
+      </div>
+      <div class="carte">
+        <h3>Rouler avec</h3>
+        <p>C'est l'inférence : chaque trajet coûte peu, mais on roule tous les jours, et le nombre de trajets n'a pas de limite visible.</p>
+      </div>
+    </div>
+    <p>Cumulé sur des millions de gens qui interrogent un modèle chaque jour, l'usage peut peser <strong>plus lourd que l'entraînement</strong>.</p>
+    <p class="source">D'après l'explication que compar:IA publiait dans sa foire aux questions.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que compte compar:IA, et ce qu'il ne compte pas</h1>
+    <div class="nuance">
+      <p>L'<strong>« Énergie de génération estimée »</strong> du bilan ne couvre <strong>que l'inférence</strong> : l'électricité dépensée pour écrire la réponse que vous venez de lire. EcoLogits, la méthode derrière ce chiffre, <strong>ne compte pas l'entraînement</strong> du modèle.</p>
+    </div>
+    <p>C'est le malentendu le plus fréquent de l'atelier. Le chiffre affiché après un duel est un plancher, pas le coût complet d'un modèle.</p>
+    <p class="source">Méthode EcoLogits 0.10.2, telle qu'employée par compar:IA.</p>
+  </section>
+
+</main>
+</body>
+</html>

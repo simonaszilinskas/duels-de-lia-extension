@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Les modèles de raisonnement — Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <section class="slide titre">
+    <h1>Les modèles de raisonnement</h1>
+    <p class="chapeau">Ils simulent une réflexion avant de donner la réponse définitive.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux façons de répondre</h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Modèle « classique »</h3>
+        <p>Il écrit la réponse directement. Ce que vous lisez, c'est tout ce qu'il a produit.</p>
+      </div>
+      <div class="carte">
+        <h3>Modèle de raisonnement</h3>
+        <p>Il écrit d'abord un brouillon pour lui-même — il pose le problème, essaie, se corrige — puis rédige la réponse. Le brouillon est souvent replié ou caché.</p>
+      </div>
+    </div>
+    <p>Même architecture, même nombre de paramètres : la seule différence est la quantité de texte produite.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Plus de jetons, plus d'énergie</h1>
+    <p class="chapeau">Parce qu'ils génèrent au total plus de jetons, les modèles de raisonnement consomment plus d'énergie, à architecture et nombre de paramètres égal.</p>
+    <ul>
+      <li>Le brouillon est fait de <strong>jetons de sortie</strong>, exactement comme la réponse. Il coûte la même chose à produire.</li>
+      <li>Il est invisible pour le lecteur, mais il compte dans le total.</li>
+      <!-- FACTEUR À AJOUTER APRÈS VÉRIFICATION -->
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que l'animateur verra sur le Bilan</h1>
+    <ul>
+      <li><strong>Texte généré</strong> : le compte de jetons grimpe, brouillon compris — même si l'écran n'en affiche qu'une partie.</li>
+      <li><strong>Énergie de génération estimée</strong> : en milliwattheures, elle suit ce compte et monte avec lui.</li>
+      <li><strong>Classe énergétique</strong> : elle se calcule par million de jetons de sortie, donc un modèle de raisonnement s'y place plus haut.</li>
+      <li>Le sélecteur de scénario ne compte <strong>que les jetons de sortie</strong> : l'écart se creuse encore sur « Recherche approfondie » ou « Session de code agentique ».</li>
+    </ul>
+    <p class="source">Classes énergétiques A à F, par million de jetons de sortie, estimation EcoLogits 0.10.2, PUE 1,2.</p>
+  </section>
+
+  <section class="slide">
+    <h1>À dire en atelier</h1>
+    <div class="nuance">
+      <p>Le duel oppose souvent un modèle de raisonnement à un modèle classique. L'écart d'énergie qui apparaît alors ne vient pas d'un modèle « plus gros » : il vient du <strong>brouillon</strong>. C'est le meilleur moment pour montrer que le chiffre suit le texte produit, pas la taille seule.</p>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

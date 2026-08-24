@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment est entraîné un modèle d'IA — Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <section class="slide titre">
+    <h1>Comment est entraîné un modèle d'IA ?</h1>
+    <p class="chapeau">Des données, beaucoup de calculs, et au bout un modèle qui prédit.</p>
+  </section>
+
+  <section class="slide">
+    <h1>La recette</h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Des données</h3>
+        <p>De quoi apprendre : des textes, des images, avec ce qu'ils représentent.</p>
+      </div>
+      <div class="carte">
+        <h3>+ beaucoup de calculs</h3>
+        <p>La machine ajuste ses chiffres jusqu'à retomber sur les bonnes réponses. C'est ce qu'on appelle « apprendre ».</p>
+      </div>
+      <div class="carte">
+        <h3>= un modèle d'IA</h3>
+        <p>Qui prédit ensuite sur des données qu'il n'a jamais vues.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Sur quoi s'entraîne une IA conversationnelle ?</h1>
+    <ul>
+      <li><strong>Quasiment tout Internet public.</strong></li>
+      <li><strong>Peu de filtrage</strong> des contenus sous droits d'auteur.</li>
+    </ul>
+    <p>Un jeu de données de taille moyenne, comme FineWeb, pèse :</p>
+    <p class="chiffre">51 To</p>
+    <p class="source">Carte du jeu de données FineWeb, HuggingFace : le tableau de la carte totalise aujourd'hui 50 447 Go, pour 18 500 milliards de jetons.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'on obtient au bout</h1>
+    <p class="chapeau">Pas une base de connaissances, pas un moteur de recherche.</p>
+    <p>Un <strong>ensemble de chiffres</strong> qui servent à prédire la réponse <strong>la plus probable</strong> à la requête.</p>
+    <p>Ces chiffres, ce sont les <strong>paramètres</strong>. compar:IA affiche leur nombre pour les modèles ouverts, et seulement une classe de taille pour les modèles propriétaires, dont les laboratoires ne publient rien.</p>
+    <p class="source">Catalogue des modèles de compar:IA, page /models.</p>
+  </section>
+
+</main>
+</body>
+</html>

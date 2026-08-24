@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La consommation d'un modèle — Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <section class="slide titre">
+    <h1>La consommation d'un modèle</h1>
+    <p class="chapeau">Trois facteurs expliquent ce que coûte une requête en électricité.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Trois facteurs</h1>
+    <p class="chapeau">Pour chaque requête, la consommation dépend de ces trois facteurs principaux.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Taille du modèle</h3>
+        <p>En milliards de paramètres.</p>
+      </div>
+      <div class="carte">
+        <h3>Longueur du texte</h3>
+        <p>En jetons.</p>
+      </div>
+      <div class="carte">
+        <h3>Architecture</h3>
+        <p>Par exemple mélange d'experts (MoE) ou MatFormer.</p>
+      </div>
+    </div>
+    <p>La taille est traitée dans le support <em>Qu'est-ce que la taille d'un modèle ?</em>. Ici, on regarde les deux autres.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que fait la taille</h1>
+    <figure>
+      <img src="img/cnnum-taille-consommation.png" alt="Trois carrés emboîtés : un très grand carré orange pour GPT-4, un carré jaune bien plus petit pour Mistral Small, un carré vert minuscule pour Gemma 3n. L'axe horizontal porte la consommation d'énergie, l'axe vertical la taille du modèle.">
+      <figcaption>Un paramètre est comme une « synapse » artificielle. Plus il y en a, plus il faut de puissance de calcul — donc d'électricité. Un modèle plus grand n'est pas pour autant plus « intelligent ».</figcaption>
+    </figure>
+    <p class="source">Graphique — Conseil National du Numérique, « 20 cartes pour aborder l'impact énergétique de l'IA générative ».</p>
+  </section>
+
+  <section class="slide">
+    <h1>Les « jetons »</h1>
+    <p>La longueur du texte produit par un modèle de langage se compte en <strong>jetons</strong> (tokens). Un jeton est une unité de base, qui peut couvrir une ou plusieurs lettres selon leur fréquence d'apparition ensemble dans la langue.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>« Salut »</h3>
+        <p class="chiffre">1</p>
+        <p>jeton</p>
+      </div>
+      <div class="carte">
+        <h3>« Salut, ça va ? »</h3>
+        <p class="chiffre">5</p>
+        <p>jetons</p>
+      </div>
+      <div class="carte">
+        <h3>À quoi ça sert</h3>
+        <p>Découper le texte en morceaux que l'IA peut traiter, compter ce qu'elle peut traiter d'un coup, et calculer le coût d'utilisation.</p>
+      </div>
+    </div>
+    <p class="source">Exemples du support d'origine. Sur compar:IA, un jeton vaut à peu près quatre lettres.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Les « mélanges d'experts »</h1>
+    <p class="chapeau">Un modèle mélange d'experts (Mixture of Experts) contient plusieurs experts, mais n'en active qu'un par jeton.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Avantages</h3>
+        <ul>
+          <li>Moins de puissance de calcul nécessaire.</li>
+          <li>Donc moins d'électricité consommée.</li>
+          <li>Donc moins cher à utiliser.</li>
+        </ul>
+      </div>
+      <div class="carte">
+        <h3>Désavantages</h3>
+        <ul>
+          <li>Prend beaucoup de place dans la mémoire de la machine.</li>
+          <li>Plus complexe à développer.</li>
+          <li>Peut avoir des problèmes de généralisation.</li>
+        </ul>
+      </div>
+      <div class="carte">
+        <h3>Le chemin d'un jeton</h3>
+        <p>Entrée → modèle de routage, qui choisit l'expert le plus approprié → expert → sortie.</p>
+      </div>
+    </div>
+    <p class="source">Exemples cités : Mistral/Mistral 8x7B, DeepSeek/DeepSeek V3, Meta/Llama 4 Scout.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Paramètres au total, paramètres actifs</h1>
+    <p>Il faut charger <strong>tous</strong> les paramètres en mémoire, mais le calcul n'en traverse qu'une partie à chaque jeton. Les deux nombres ne mesurent donc pas la même chose : l'un dit le matériel qu'il faut, l'autre l'électricité qu'on dépense.</p>
+    <p>C'est exactement ce que dit la ligne <strong>« Dont N mds actifs »</strong> sur la fiche d'un modèle dans compar:IA.</p>
+    <p>DeepSeek V3 en est un bon exemple : 671 milliards de paramètres au total, dont 37 milliards actifs par jeton.</p>
+    <p class="source">Comptes publiés par DeepSeek pour DeepSeek V3. La ligne « Dont N mds actifs » n'apparaît que pour les modèles ouverts en mélange d'experts.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que tout cela donne à l'écran</h1>
+    <p class="chapeau">Taille, longueur du texte et architecture se résument en une énergie et une lettre.</p>
+    <table>
+      <tr>
+        <th>Classe</th>
+        <th>Énergie pour un million de jetons de sortie</th>
+      </tr>
+      <tr><td><strong>A</strong></td><td>moins de 100 Wh</td></tr>
+      <tr><td><strong>B</strong></td><td>moins de 300 Wh</td></tr>
+      <tr><td><strong>C</strong></td><td>moins de 1 000 Wh</td></tr>
+      <tr><td><strong>D</strong></td><td>moins de 3 000 Wh</td></tr>
+      <tr><td><strong>E</strong></td><td>moins de 10 000 Wh</td></tr>
+      <tr><td><strong>F</strong></td><td>10 000 Wh et au-delà</td></tr>
+    </table>
+    <p class="source">Seuils compar:IA, estimation EcoLogits 0.10.2, PUE 1,2, mix électrique mondial moyen.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'il faut retenir</h1>
+    <ul>
+      <li>Un gros modèle coûte plus cher à faire tourner qu'un petit, à texte égal.</li>
+      <li>Une réponse longue coûte plus qu'une réponse courte : le compteur, ce sont les <strong>jetons</strong>.</li>
+      <li>Un mélange d'experts n'active qu'une part de ses paramètres, et consomme donc moins que sa taille totale ne le laisse croire.</li>
+    </ul>
+    <div class="nuance">
+      <p>Le support d'origine présentait l'écran comme une équation « taille × longueur du texte ≈ énergie », suivie d'équivalences en tonnes de CO₂. Cet écran n'existe plus : compar:IA affiche une énergie en mWh et une classe A–F, et ses équivalences sont en énergie, pas en carbone.</p>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
