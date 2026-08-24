@@ -307,17 +307,17 @@
             {
               "emoji": "🏭",
               "question": "Quelle est la consommation d'un data center dédié à l'IA ?",
-              "answer": "Un data center orienté IA peut consommer autant d'électricité que **100 000 foyers**. Les plus grands, actuellement en construction, pourraient consommer **20 fois plus**."
+              "answer": "Un centre de données **type** orienté IA consomme autant d'électricité que **100 000 foyers**. Les plus grands, actuellement en construction, en consommeront **20 fois plus** — environ deux millions de foyers, l'ordre de grandeur de deux réacteurs nucléaires. Source : Agence internationale de l'énergie, « Energy and AI », avril 2025."
             },
             {
               "emoji": "💧",
               "question": "Pourquoi les IA consomment-elles de l'eau ?",
-              "answer": "L'eau sert à **refroidir** les machines des data centers, qui dégagent énormément de chaleur. S'ajoute l'eau utilisée en amont pour produire l'électricité, rarement comptée."
+              "answer": "L'eau sert à **refroidir** les machines des data centers, qui dégagent énormément de chaleur. S'ajoute l'eau consommée en amont pour produire l'électricité et fabriquer le matériel — c'est là que les fournisseurs divergent : Google ne compte que le refroidissement, Mistral compte toute la chaîne. D'où des chiffres qui varient d'un facteur 173 pour une même unité."
             },
             {
               "emoji": "🔋",
               "question": "Quels matériaux sont nécessaires pour faire fonctionner l'IA ?",
-              "answer": "Le **cuivre** est un matériau clé. La demande annuelle des data centers en cuivre, aujourd'hui autour de 1 %, pourrait atteindre **6 à 7 %** d'ici 2050 — de quoi peser sur la transition énergétique, qui en a besoin elle aussi."
+              "answer": "Le **cuivre** est un matériau clé. D'après BHP, la part des centres de données dans la demande annuelle de cuivre passerait de **moins de 1 %** aujourd'hui à **6 à 7 %** d'ici 2050, soit de 0,5 à 3 millions de tonnes par an. De quoi peser sur la transition énergétique, qui a besoin du même métal. À garder en tête : BHP est le premier minier mondial et vend du cuivre."
             },
             {
               "emoji": "🌐",
@@ -332,7 +332,7 @@
             {
               "emoji": "⚡",
               "question": "Qu'est-ce qui consomme le plus : une recherche Google ou une requête à une IA ?",
-              "answer": "Une recherche sur un moteur consomme environ **0,3 Wh**, tandis qu'une requête à un modèle d'IA peut consommer entre **0,5 et 22 Wh** selon sa taille et son architecture."
+              "answer": "**On ne peut plus répondre honnêtement à cette question.** Le seul chiffre publié par Google pour une recherche web, 0,3 Wh, date de **2009** et n'a jamais été mis à jour. Or les chiffres mesurés par les fournisseurs en 2025 sont du même ordre : **0,24 Wh** pour un prompt texte médian sur Gemini, **0,34 Wh** pour une requête ChatGPT moyenne. L'écart intéressant n'est pas entre recherche et IA : il est **entre modèles**, où un facteur 100 sépare un petit modèle d'un modèle de raisonnement sur un prompt long."
             }
           ]
         }

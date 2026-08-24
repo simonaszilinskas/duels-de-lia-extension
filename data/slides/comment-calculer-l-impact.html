@@ -18,7 +18,6 @@
   <section class="slide">
     <h1>Ce que publient les fournisseurs</h1>
     <p class="chapeau">En 2025, trois hébergeurs de modèles d'IA publient leurs données d'impact environnemental.</p>
-    <!-- CHIFFRES À CONFIRMER -->
     <table>
       <tr>
         <th></th>
@@ -46,18 +45,22 @@
       </tr>
     </table>
     <p><strong>Est-ce que Gemini émet réellement 38 fois moins de CO₂ que Mistral AI ?</strong></p>
-    <p class="source">Chiffres par requête publiés par OpenAI, Google et Mistral AI en 2025, repris tels quels du support d'origine.</p>
+    <p class="source">OpenAI : Sam Altman, « The Gentle Singularity », blog personnel, juin 2025. Google : Elsworth et coll., « Measuring the environmental impact of delivering AI at Google Scale », août 2025. Mistral AI : « Our contribution to a global environmental standard for AI », juillet 2025.</p>
   </section>
 
   <section class="slide">
     <h1>Probablement pas.</h1>
     <p class="chapeau">Cette différence massive s'explique davantage par des <strong>méthodologies de calcul divergentes</strong> entre les deux acteurs.</p>
     <ul>
-      <li>Chaque fournisseur mesure ce qu'il veut : deux cases sur neuf restent vides.</li>
-      <li>Personne ne dit sur quel matériel, avec quelle électricité ni sur quel périmètre le chiffre est calculé.</li>
-      <li>Comparer deux nombres obtenus par deux méthodes différentes ne dit rien de l'écart réel.</li>
+      <li><strong>Le périmètre de l'eau change tout.</strong> Google ne compte que l'eau de refroidissement du centre de données. Mistral compte aussi l'eau consommée en amont, pour produire l'électricité et fabriquer le matériel. D'où le facteur 173 entre 0,26 mL et 45 mL.</li>
+      <li><strong>La façon de compter le carbone change tout.</strong> Google retient une méthode « marché », qui crédite ses achats d'électricité renouvelable. Mistral retient une méthode « localisation », qui prend le réseau tel qu'il est.</li>
+      <li><strong>Les modèles ne sont pas les mêmes.</strong> Google donne une <em>médiane</em> sur tous ses usages, dominés par de petits modèles rapides. Mistral mesure une réponse de Mistral Large 2, un grand modèle dense.</li>
+      <li>Seul le chiffre de Mistral a été relu par des tiers. Celui d'OpenAI tient en deux phrases sur un blog, sans méthode.</li>
     </ul>
-    <p class="source">Lecture du tableau de la diapositive précédente.</p>
+    <div class="nuance">
+      <p>Ce tableau ne dit pas quel assistant est le plus propre. Il dit à quel point les entreprises comptent différemment.</p>
+    </div>
+    <p class="source">Google reconnaît lui-même qu'une comparaison n'a de sens qu'à périmètre de mesure identique.</p>
   </section>
 
   <section class="slide">

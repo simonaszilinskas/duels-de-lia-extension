@@ -68,7 +68,7 @@
 
   <section class="slide">
     <h1>Les « mélanges d'experts »</h1>
-    <p class="chapeau">Un modèle mélange d'experts (Mixture of Experts) contient plusieurs experts, mais n'en active qu'un par jeton.</p>
+    <p class="chapeau">Un modèle à mélange d'experts (Mixture of Experts) contient plusieurs experts, mais n'en active qu'une poignée pour chaque jeton.</p>
     <div class="cartes">
       <div class="carte">
         <h3>Avantages</h3>
@@ -88,7 +88,7 @@
       </div>
       <div class="carte">
         <h3>Le chemin d'un jeton</h3>
-        <p>Entrée → modèle de routage, qui choisit l'expert le plus approprié → expert → sortie.</p>
+        <p>Entrée → un routeur choisit les quelques experts les plus adaptés → seuls ceux-là calculent → sortie.</p>
       </div>
     </div>
     <p class="source">Exemples cités : Mistral/Mistral 8x7B, DeepSeek/DeepSeek V3, Meta/Llama 4 Scout.</p>
