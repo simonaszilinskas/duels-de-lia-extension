@@ -17,13 +17,12 @@
 
   <section class="slide">
     <h1>Ce qu'on a lu au moment de la sortie</h1>
-    <!-- CHIFFRES À CONFIRMER -->
     <ul>
       <li>« L'IA chinoise DeepSeek R1 consomme <strong>10 à 40 fois moins d'énergie</strong> et secoue le marché. »</li>
-      <li>« DeepSeek n'est peut-être pas une si bonne nouvelle pour l'énergie après tout. » Sur 40 questions posées, le modèle a demandé environ <strong>41 % d'énergie de plus</strong> que celui de Meta pour répondre.</li>
+      <li>« DeepSeek n'est peut-être pas une si bonne nouvelle pour l'énergie après tout. » À efficacité par jeton comparable à celle du modèle de Meta, R1 a demandé <strong>87 % d'énergie de plus par réponse</strong>, parce qu'il écrit beaucoup plus long.</li>
       <li>« Derrière DeepSeek et le sommet de Paris se cache l'enjeu d'une intelligence artificielle ouverte et sobre. »</li>
     </ul>
-    <p class="source">Titres repris du support d'origine : drivingeco.com ; MIT Technology Review ; Le Monde.</p>
+    <p class="source">MIT Technology Review, 31 janvier 2025, mesures de Scott Chamberlin. Le premier et le troisième titres sont repris du support d'origine.</p>
   </section>
 
   <section class="slide">
@@ -47,13 +46,15 @@
   </section>
 
   <section class="slide">
-    <h1>DeepSeek raisonne avant de répondre</h1>
+    <h1>R1 raisonne avant de répondre</h1>
+    <p class="chapeau">Attention au nom : <strong>V3</strong> répond directement, <strong>R1</strong> raisonne. Seul R1 est concerné.</p>
     <ul>
       <li>Au lieu de répondre directement, un modèle de raisonnement écrit d'abord sa réflexion, puis la réponse.</li>
       <li>Cette réflexion se paie en jetons : elle est produite, donc calculée, donc facturée en énergie.</li>
       <li>À architecture et taille égales, le modèle qui raisonne consomme donc plus que celui qui répond tout de suite.</li>
+      <li>Sur le jeu de tests AIME, R1 est passé d'environ <strong>12 000 à 23 000 jetons</strong> par question d'une version à l'autre. Un modèle qui ne raisonne pas répond en quelques centaines.</li>
     </ul>
-    <p>Détail du mécanisme dans le support <em>Les modèles de raisonnement</em>.</p>
+    <p class="source">Fiche du modèle DeepSeek-R1-0528, publiée par DeepSeek. Détail du mécanisme dans le support <em>Les modèles de raisonnement</em>.</p>
   </section>
 
   <section class="slide">
@@ -71,10 +72,11 @@
   <section class="slide">
     <h1>Alors, frugal ou pas ?</h1>
     <ul>
-      <li><strong>À l'entraînement</strong> : DeepSeek a peut-être obtenu un très bon modèle avec moins d'énergie que ses concurrents.</li>
+      <li><strong>À l'entraînement</strong> : DeepSeek a peut-être obtenu un très bon modèle avec moins d'énergie que ses concurrents. 2,79 millions d'heures de carte graphique pour V3, chiffrées à 5,6 M$ — mais ce compte <em>exclut</em>, DeepSeek le dit lui-même, toute la recherche et les essais qui ont précédé.</li>
       <li><strong>À l'inférence, par jeton</strong> : chaque jeton coûte peu, parce que le mélange d'experts n'en réveille qu'une petite part.</li>
-      <li><strong>À l'inférence, par réponse</strong> : le modèle raisonne, donc il produit énormément de jetons. Il finit parmi les plus gourmands.</li>
+      <li><strong>À l'inférence, par réponse</strong> : R1 raisonne, donc il produit énormément de jetons. Il finit parmi les plus gourmands. V3, lui, ne présente pas ce surcoût.</li>
     </ul>
+    <p class="source">DeepSeek-AI, <em>DeepSeek-V3 Technical Report</em>, décembre 2024, table 1. La location de GPU y est théorique, à 2 $ l'heure, et le total ne couvre que l'entraînement final.</p>
     <p>L'énergie d'une réponse, c'est l'énergie d'un jeton multipliée par le nombre de jetons. Ici, c'est le nombre qui l'emporte.</p>
   </section>
 

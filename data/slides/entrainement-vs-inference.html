@@ -34,28 +34,34 @@
   <section class="slide">
     <h1>Entraîner un modèle</h1>
     <p class="chapeau">Exemple : Meta / Llama 4.</p>
-    <!-- CHIFFRE À CONFIRMER -->
-    <p class="chiffre">21 000 GWh</p>
-    <p>consommés pour l'entraînement, soit la consommation de <strong>10 000 ménages pendant un an</strong>.</p>
-    <p class="source">Données publiées par Meta sur Llama 4.</p>
+    <p class="chiffre">≈ 5 GWh</p>
+    <p>consommés pour l'entraînement, soit la consommation d'environ <strong>1 100 ménages français pendant un an</strong>.</p>
+    <div class="nuance">
+      <p>Meta ne publie pas de gigawattheures : seulement <strong>7,4 millions d'heures de carte graphique</strong>, à 700 W. Le chiffre ci-dessus est cette conversion, et il ne couvre que Scout et Maverick. Behemoth, le plus gros des trois, n'a jamais été publié.</p>
+    </div>
+    <p class="source">Meta, <em>Llama 4 Model Card</em>, 2025 : 5,0 M + 2,38 M heures GPU à 700 W. En comptant le reste du serveur et le refroidissement, on monte vers 7 à 8 GWh. Ménage français : 4 700 kWh par an, toutes énergies de chauffage confondues.</p>
   </section>
 
   <section class="slide">
     <h1>Se servir d'un modèle</h1>
     <p class="chapeau">Exemple : OpenAI / GPT-5, pour écrire un texte de cinq pages (5 000 jetons).</p>
-    <!-- CHIFFRE À CONFIRMER -->
-    <p class="chiffre">8,68 Wh</p>
+    <p class="chiffre">8,7 Wh</p>
     <p>soit <strong>50 à 70 % de la batterie d'un smartphone</strong>.</p>
-    <p class="source">Estimation EcoLogits. Sur compar:IA, la batterie de référence vaut 15 Wh pour 100 %.</p>
+    <div class="nuance">
+      <p>Ce n'est pas une mesure, c'est une <strong>simulation</strong>. OpenAI ne publie ni la taille ni l'architecture de GPT-5 : EcoLogits estime lui-même 300 milliards de paramètres, dont 10 à 30 % actifs, et sort une fourchette de <strong>6,7 à 10 Wh</strong>, pas une valeur unique.</p>
+    </div>
+    <p class="source">EcoLogits 0.10.2, mix électrique mondial moyen, PUE 1,2, 5 000 jetons de sortie. Batterie de référence : 14 à 15 Wh, celle d'un iPhone récent.</p>
   </section>
 
   <section class="slide">
     <h1>Et si tout le monde s'y met</h1>
     <p>Si <strong>1 % de la population mondiale</strong> écrivait ce texte de cinq pages tous les jours pendant un an, il faudrait, pour fournir cette électricité, la production annuelle de :</p>
-    <!-- CHIFFRE À CONFIRMER -->
     <p class="chiffre">60 éoliennes</p>
     <p>Une demande minuscule, répétée, finit par se compter en parc éolien.</p>
-    <p class="source">Projection du support d'atelier, à partir de l'estimation EcoLogits de 8,68 Wh.</p>
+    <div class="nuance">
+      <p>Soixante éoliennes de <strong>2 MW</strong>, la moyenne du parc français existant. Avec les machines qu'on installe aujourd'hui, 3,5 MW, la réponse serait plutôt <strong>trente</strong>. En mer, une dizaine. Annoncez la taille d'éolienne, sinon le chiffre ne veut rien dire.</p>
+    </div>
+    <p class="source">Calcul : 82 millions de personnes × 8,7 Wh × 365 jours = 260 GWh par an. Une éolienne de 2 MW à 25 % de facteur de charge produit 4,4 GWh par an. Population mondiale : ONU, <em>World Population Prospects</em> 2024. Parc éolien : RTE, bilan électrique 2025.</p>
   </section>
 
   <section class="slide">
