@@ -17,7 +17,8 @@
   // On garde le widget sur tout le site : l'arène est à la racine depuis la refonte,
   // et le site navigue côté client, donc un test de chemin à l'injection ne tient pas.
   const host = window.location.hostname;
-  const hostCheck = host === 'comparia.beta.gouv.fr' || host.endsWith('.comparia.beta.gouv.fr') || host === 'localhost';
+  const hostCheck = host === 'comparia.beta.gouv.fr' || host.endsWith('.comparia.beta.gouv.fr') ||
+    host === 'localhost' || host === '127.0.0.1';
   console.log('✅ Hôte compar:IA ?', hostCheck);
 
   if (!hostCheck) {

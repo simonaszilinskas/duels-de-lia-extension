@@ -10,7 +10,9 @@
         "*://*.comparia.beta.gouv.fr/*",
         "*://comparia.beta.gouv.fr/*",
         "http://localhost/*",
-        "http://localhost:*/*"
+        "http://localhost:*/*",
+        "http://127.0.0.1/*",
+        "http://127.0.0.1:*/*"
       ],
       "js": [
         "js/content-redesign.js"
@@ -33,7 +35,9 @@
         "*://*.comparia.beta.gouv.fr/*",
         "*://comparia.beta.gouv.fr/*",
         "http://localhost/*",
-        "http://localhost:*/*"
+        "http://localhost:*/*",
+        "http://127.0.0.1/*",
+        "http://127.0.0.1:*/*"
       ]
     }
   ],
