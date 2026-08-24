@@ -162,8 +162,15 @@ body { display: flex; }
   min-height: 0;
 }
 .duo > * { flex: 1 1 0; min-width: 0; min-height: 0; }
+/* Posé après .duo > * : la carte partage la largeur comme les autres colonnes,
+   mais sa hauteur suit l'image. Sans ça, une image large et basse flottait au
+   milieu d'un grand aplat blanc étiré sur toute la hauteur. */
+.duo > .visuel, .compare .visuel, .carte .visuel {
+  align-self: center;
+  height: auto;
+  max-height: 100%;
+}
 .duo .colonne { display: flex; flex-direction: column; gap: 0.8em; justify-content: center; min-width: 0; }
-.duo > .visuel { align-self: stretch; }
 
 /* Image seule, plein cadre. */
 .plein { flex: 1; min-height: 0; display: flex; }
@@ -182,7 +189,6 @@ figcaption { font-size: 1em; color: var(--gris); }
   object-fit: contain;
   padding: 0.6cqw;
   width: 100%;
-  flex: 1 1 0;
   min-height: 0;
   min-width: 0;
 }
@@ -216,7 +222,7 @@ figcaption { font-size: 1em; color: var(--gris); }
   gap: 0.5em;
 }
 .carte ul { gap: 0.35em; }
-.carte .visuel { flex: 1 1 0; min-height: 0; }
+
 
 /* Tableau. */
 .slide img { max-width: 100%; max-height: 100%; }
