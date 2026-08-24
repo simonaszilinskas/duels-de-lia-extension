@@ -18,6 +18,6 @@ https://github.com/user-attachments/assets/d8730b18-2955-46f2-a575-dc8ffe3d4454
 
 ## Utilisation
 
-1. Naviguez vers https://comparia.beta.gouv.fr/arene
+1. Naviguez vers https://comparia.beta.gouv.fr
 2. Un bouton flottant (FAB) apparaîtra en bas à droite
 3. Cliquez sur le bouton pour ouvrir l'interface

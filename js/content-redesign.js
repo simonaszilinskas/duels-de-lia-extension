@@ -14,14 +14,14 @@
   console.log('📌 Hash:', window.location.hash);
   console.log('====================================');
   
-  // Check if we're on the correct page
-  const currentUrl = window.location.href;
-  const urlCheck = currentUrl.includes('comparia.beta.gouv.fr/arene');
-  console.log('✅ URL contient "comparia.beta.gouv.fr/arene/"?', urlCheck);
-  
-  if (!urlCheck) {
-    console.warn('⚠️ Duels de l\'IA - Pas sur la page arène, arrêt de l\'initialisation');
-    console.log('💡 L\'extension s\'active uniquement sur les URLs contenant "comparia.beta.gouv.fr/arene/"');
+  // On garde le widget sur tout le site : l'arène est à la racine depuis la refonte,
+  // et le site navigue côté client, donc un test de chemin à l'injection ne tient pas.
+  const host = window.location.hostname;
+  const hostCheck = host === 'comparia.beta.gouv.fr' || host.endsWith('.comparia.beta.gouv.fr') || host === 'localhost';
+  console.log('✅ Hôte compar:IA ?', hostCheck);
+
+  if (!hostCheck) {
+    console.warn('⚠️ Duels de l\'IA - Hors du site compar:IA, arrêt de l\'initialisation');
     return;
   }
   console.log('🚀 Duels de l\'IA - Début de l\'initialisation');
