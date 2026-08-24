@@ -16,19 +16,19 @@ This is a **no-build, vanilla JS/CSS** Chrome extension. There is no bundler, tr
 
 ## Architecture
 
-- **`manifest.json`** — Manifest V3 config. Content script auto-injects on `comparia.beta.gouv.fr/*`.
-- **`js/content-redesign.js`** — Main content script (single IIFE). Creates the FAB button, draggable panel, and all views (main grid, prompts/personas, debate cards, FAQ, resources, feedback, debate final). All DOM is built programmatically.
-- **`css/new-styles.css`** — All extension styles, prefixed with `duelsia-` to avoid conflicts with the host page.
-- **`data/content-data.json`** — All workshop content (steps, personas/prompts, debate cards, FAQ Q&A, resource links). This is the primary file to edit when updating content.
-- **`data/slides/`** — Slide decks, one HTML file per deck, referenced by resources in `content-data.json` (type `slides`). `slides.css` holds the shared styles and the class vocabulary (`.stage`, `.slide`, `.cartes`, `.nuance`, `.source`…); `slides.js` handles navigation. A deck is pure markup: no `<style>`, no `<script>`, no inline handlers — the MV3 CSP (`script-src 'self'`) rejects them and the slide renders blank.
-- **`fonts/`** — Marianne, self-hosted. The systeme-de-design.gouv.fr URL the CSS used to import returns 404, and `privacy.md` promises no third-party requests.
+- **`manifest.json`**: Manifest V3 config. Content script auto-injects on `comparia.beta.gouv.fr/*`.
+- **`js/content-redesign.js`**: main content script (single IIFE). Creates the FAB button, draggable panel, and all views (main grid, prompts/personas, debate cards, FAQ, resources, feedback, debate final). All DOM is built programmatically.
+- **`css/new-styles.css`**: all extension styles, prefixed with `duelsia-` to avoid conflicts with the host page.
+- **`data/content-data.json`**: all workshop content (steps, personas/prompts, debate cards, FAQ Q&A, resource links). This is the primary file to edit when updating content.
+- **`data/slides/`**: slide decks, one HTML file per deck, referenced by resources in `content-data.json` (type `slides`). `slides.css` holds the shared styles and the class vocabulary (`.stage`, `.slide`, `.cartes`, `.nuance`, `.source`…); `slides.js` handles navigation. A deck is pure markup: no `<style>`, no `<script>`, no inline handlers. The MV3 CSP (`script-src 'self'`) rejects them and the slide renders blank.
+- **`fonts/`**: Marianne, self-hosted. The systeme-de-design.gouv.fr URL the CSS used to import returns 404, and `privacy.md` promises no third-party requests.
 
 ## Key Conventions
 
 - All DOM element IDs and CSS classes are prefixed with `duelsia-` to namespace them from the host page.
 - Content is data-driven: edit `data/content-data.json` to change prompts, debate cards, FAQ entries, or resource links. The JS renders from this JSON.
 - Resources support two types: `slides` (an HTML deck bundled in `data/slides/`) and `google-drive` (embedded via iframe preview URL). `local-pdf` is still accepted for backwards compatibility.
-- The extension has no background script, no popup, and no permissions — it's purely a content script.
+- The extension has no background script, no popup, and no permissions. It's purely a content script.
 - The project language is French (UI text, content, comments).
 
 ## Slide decks
@@ -48,7 +48,7 @@ Rules that matter:
 - Every figure carries a visible source, in a `<p class="source">`.
 - Content must stay aligned with what compar:IA actually shows. The product presents
   energy in mWh, an A–F energy class, XS–XL size classes, required hardware, cost, and
-  three usage scenarios. It shows **no CO2** and no ADEME-style equivalences — do not
+  three usage scenarios. It shows **no CO2** and no ADEME-style equivalences. Do not
   reintroduce them.
 - Decks are plain text on purpose: the previous PDFs made it impossible to review or
   correct a figure.

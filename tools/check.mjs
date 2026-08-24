@@ -25,6 +25,7 @@ for (const nom of decks) {
   if (!s.includes('<html lang="fr">')) fail(nom, 'attribut lang absent');
   if (!/<section class="slide/.test(s)) fail(nom, 'aucune diapositive');
   if (/CONFIRMER|À AJOUTER|TODO/.test(s)) fail(nom, 'marqueur de relecture encore présent');
+  if (s.includes('\u2014')) fail(nom, 'tiret cadratin : préférer la virgule, le deux-points ou le point');
 
   // Une diapositive s'adresse à la salle, pas à l'animateur.
   const notes = [
@@ -72,6 +73,9 @@ for (const item of items) {
 }
 for (const nom of decks) {
   if (!cites.has(nom)) fail('content-data.json', `support jamais cité, donc invisible : ${nom}`);
+}
+if (readFileSync(join(racine, 'data/content-data.json'), 'utf8').includes('\u2014')) {
+  fail('content-data.json', 'tiret cadratin : préférer la virgule, le deux-points ou le point');
 }
 
 if (erreurs.length) {

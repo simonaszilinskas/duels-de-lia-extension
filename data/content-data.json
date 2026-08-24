@@ -227,7 +227,7 @@
             {
               "emoji": "🔍",
               "question": "Comment est estimé l'impact environnemental sur compar:IA ?",
-              "answer": "compar:IA utilise **EcoLogits**, une méthode maintenue par l'ONG GenAI Impact. L'estimation porte **uniquement sur l'inférence** — l'utilisation du modèle — et non sur son entraînement. Elle s'appuie sur la taille du modèle, son architecture et le nombre de jetons produits, et suppose le **mix électrique mondial moyen**. Elle s'affiche en **milliwattheures (mWh)**, accompagnée d'une classe énergétique de **A à F**."
+              "answer": "compar:IA utilise **EcoLogits**, une méthode maintenue par l'ONG GenAI Impact. L'estimation porte **uniquement sur l'inférence**, c'est-à-dire l'utilisation du modèle, et non sur son entraînement. Elle s'appuie sur la taille du modèle, son architecture et le nombre de jetons produits, et suppose le **mix électrique mondial moyen**. Elle s'affiche en **milliwattheures (mWh)**, accompagnée d'une classe énergétique de **A à F**."
             },
             {
               "emoji": "🧾",
@@ -247,12 +247,12 @@
             {
               "emoji": "🎚️",
               "question": "Pourquoi peut-on changer de scénario dans le bilan ?",
-              "answer": "Parce qu'une discussion d'atelier ne dit pas grand-chose d'un usage réel. Trois scénarios sont proposés : **cette discussion**, une **recherche approfondie** (310 000 jetons) et une **session de code agentique** (500 000 jetons). Les projections ne comptent que les **jetons de sortie** et supposent une exécution **sans cache** — donc plutôt une borne haute."
+              "answer": "Parce qu'une discussion d'atelier ne dit pas grand-chose d'un usage réel. Trois scénarios sont proposés : **cette discussion**, une **recherche approfondie** (310 000 jetons) et une **session de code agentique** (500 000 jetons). Les projections ne comptent que les **jetons de sortie** et supposent une exécution **sans cache** : c'est donc plutôt une borne haute."
             },
             {
               "emoji": "🚫",
               "question": "Pourquoi le bilan n'affiche-t-il plus d'émissions de CO₂ ?",
-              "answer": "Convertir de l'énergie en CO₂ suppose de savoir **où** tournent les serveurs et avec quelle électricité. Les fournisseurs ne publient pas cette information, et les rares chiffres qu'ils communiquent reposent sur des méthodes trop différentes pour être comparées. compar:IA s'en tient donc à ce qu'il peut estimer sérieusement : l'énergie. Le débat sur le carbone reste entier — il se mène avec le support « Localisation des serveurs »."
+              "answer": "Convertir de l'énergie en CO₂ suppose de savoir **où** tournent les serveurs et avec quelle électricité. Les fournisseurs ne publient pas cette information, et les rares chiffres qu'ils communiquent reposent sur des méthodes trop différentes pour être comparées. compar:IA s'en tient donc à ce qu'il peut estimer sérieusement : l'énergie. Le débat sur le carbone reste entier : il se mène avec le support « Localisation des serveurs »."
             },
             {
               "emoji": "⚡",
@@ -277,7 +277,7 @@
             {
               "emoji": "📊",
               "question": "Pourquoi les grands modèles consomment-ils plus ?",
-              "answer": "Plus de paramètres mobilisés, c'est plus de calculs, donc plus d'électricité pour chaque jeton produit. Attention toutefois : ce qui compte, ce sont les paramètres **réellement activés**. Un modèle à mélange d'experts n'en active qu'une fraction, et un modèle de raisonnement produit beaucoup plus de jetons — ces deux effets pèsent autant que la taille brute."
+              "answer": "Plus de paramètres mobilisés, c'est plus de calculs, donc plus d'électricité pour chaque jeton produit. Attention toutefois : ce qui compte, ce sont les paramètres **réellement activés**. Un modèle à mélange d'experts n'en active qu'une fraction, et un modèle de raisonnement produit beaucoup plus de jetons. Ces deux effets pèsent autant que la taille brute."
             },
             {
               "emoji": "🧩",
@@ -287,7 +287,7 @@
             {
               "emoji": "📉",
               "question": "Pourquoi les modèles propriétaires sont-ils absents du graphique du classement ?",
-              "answer": "L'onglet **Focus énergie** croise satisfaction et consommation moyenne. Il n'accepte que les modèles dont la taille et l'architecture sont publiées, ce qui exclut les modèles propriétaires. Ils reçoivent tout de même une classe A–F sur l'écran de bilan, calculée à partir d'une estimation interne — une incohérence qu'il vaut mieux dire à voix haute en atelier."
+              "answer": "L'onglet **Focus énergie** croise satisfaction et consommation moyenne. Il n'accepte que les modèles dont la taille et l'architecture sont publiées, ce qui exclut les modèles propriétaires. Ils reçoivent tout de même une classe A–F sur l'écran de bilan, calculée à partir d'une estimation interne. Une incohérence qu'il vaut mieux dire à voix haute en atelier."
             },
             {
               "emoji": "🔄",
@@ -307,12 +307,12 @@
             {
               "emoji": "🏭",
               "question": "Quelle est la consommation d'un data center dédié à l'IA ?",
-              "answer": "Un centre de données **type** orienté IA consomme autant d'électricité que **100 000 foyers**. Les plus grands, actuellement en construction, en consommeront **20 fois plus** — environ deux millions de foyers, l'ordre de grandeur de deux réacteurs nucléaires. Source : Agence internationale de l'énergie, « Energy and AI », avril 2025."
+              "answer": "Un centre de données **type** orienté IA consomme autant d'électricité que **100 000 foyers**. Les plus grands, actuellement en construction, en consommeront **20 fois plus**, soit environ deux millions de foyers, l'ordre de grandeur de deux réacteurs nucléaires. Source : Agence internationale de l'énergie, « Energy and AI », avril 2025."
             },
             {
               "emoji": "💧",
               "question": "Pourquoi les IA consomment-elles de l'eau ?",
-              "answer": "L'eau sert à **refroidir** les machines des data centers, qui dégagent énormément de chaleur. S'ajoute l'eau consommée en amont pour produire l'électricité et fabriquer le matériel — c'est là que les fournisseurs divergent : Google ne compte que le refroidissement, Mistral compte toute la chaîne. D'où des chiffres qui varient d'un facteur 173 pour une même unité."
+              "answer": "L'eau sert à **refroidir** les machines des data centers, qui dégagent énormément de chaleur. S'ajoute l'eau consommée en amont pour produire l'électricité et fabriquer le matériel. C'est là que les fournisseurs divergent : Google ne compte que le refroidissement, Mistral compte toute la chaîne. D'où des chiffres qui varient d'un facteur 173 pour une même unité."
             },
             {
               "emoji": "🔋",
