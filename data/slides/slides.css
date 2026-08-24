@@ -49,12 +49,12 @@ body { display: flex; }
 .slide {
   position: absolute;
   inset: 0;
-  padding: 5cqw 6cqw 7cqw;
+  padding: 4.5cqw 6cqw 6.5cqw;
   display: flex;
   flex-direction: column;
-  gap: 0.8em;
-  font-size: 2.1cqw;
-  line-height: 1.45;
+  gap: 0.65em;
+  font-size: 2cqw;
+  line-height: 1.4;
 }
 /* Sans JavaScript on empile tout, ce qui reste lisible. */
 .deck-ready .slide { display: none; }
@@ -73,7 +73,7 @@ body { display: flex; }
 }
 .slide h1 + .chapeau, .slide h2 + .chapeau { color: var(--gris); }
 .slide p, .slide li { margin: 0; }
-.slide ul, .slide ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 0.4em; }
+.slide ul, .slide ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 0.35em; }
 .slide strong { color: var(--violet); }
 .slide a { color: var(--violet); }
 

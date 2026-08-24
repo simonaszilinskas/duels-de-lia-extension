@@ -52,3 +52,7 @@ Rules that matter:
   reintroduce them.
 - Decks are plain text on purpose: the previous PDFs made it impossible to review or
   correct a figure.
+
+Run `node tools/check.mjs` after editing a deck. It catches the failures that are silent
+otherwise: an inline script (blank slide), a missing image, a deck renamed but not updated
+in `content-data.json` (invisible in the panel), and a leftover review marker.
