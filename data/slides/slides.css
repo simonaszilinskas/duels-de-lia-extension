@@ -1,0 +1,162 @@
+/* Feuille de style commune aux supports de l'atelier Duels de l'IA.
+   Une diapositive = une <section class="slide">. Tout est dimensionné en cqw
+   pour que le texte suive la taille de la fenêtre sans calcul en JavaScript. */
+
+@font-face {
+  font-family: 'Marianne';
+  src: url('../../fonts/Marianne-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Marianne';
+  src: url('../../fonts/Marianne-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --violet: #715cf6;
+  --violet-clair: #ede9ff;
+  --encre: #161616;
+  --gris: #666;
+  --trait: #ddd;
+  --alerte: #b34000;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #1b1b1b;
+  font-family: 'Marianne', system-ui, sans-serif;
+  color: var(--encre);
+}
+
+/* Boîte 16/9 centrée, la plus grande qui tienne dans la fenêtre. */
+.stage {
+  container-type: size;
+  width: min(100vw, 177.78vh);
+  height: min(56.25vw, 100vh);
+  margin: auto;
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+}
+body { display: flex; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 5cqw 6cqw 7cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  font-size: 2.1cqw;
+  line-height: 1.45;
+}
+/* Sans JavaScript on empile tout, ce qui reste lisible. */
+.deck-ready .slide { display: none; }
+.deck-ready .slide.is-current { display: flex; }
+
+.slide h1 {
+  font-size: 2.1em;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--violet);
+}
+.slide h2 {
+  font-size: 1.5em;
+  line-height: 1.15;
+  margin: 0;
+}
+.slide h1 + .chapeau, .slide h2 + .chapeau { color: var(--gris); }
+.slide p, .slide li { margin: 0; }
+.slide ul, .slide ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 0.4em; }
+.slide strong { color: var(--violet); }
+.slide a { color: var(--violet); }
+
+/* Diapositive de titre. */
+.slide.titre { justify-content: center; background: var(--violet-clair); }
+.slide.titre h1 { font-size: 3em; }
+
+/* Chiffre mis en avant. */
+.chiffre { font-size: 3.2em; font-weight: 700; color: var(--violet); line-height: 1; }
+
+/* Rangée de cartes. */
+.cartes { display: flex; gap: 1em; flex: 1; align-items: stretch; }
+.carte {
+  flex: 1;
+  border: 0.1em solid var(--trait);
+  border-radius: 0.4em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+.carte h3 { margin: 0; font-size: 1.1em; }
+
+/* Tableau. */
+.slide table { border-collapse: collapse; width: 100%; font-size: 0.95em; }
+.slide th, .slide td { border-bottom: 0.06em solid var(--trait); padding: 0.5em 0.6em; text-align: left; }
+.slide th { color: var(--gris); font-weight: 400; }
+
+/* Encadré de nuance ou d'avertissement. */
+.nuance {
+  border-left: 0.25em solid var(--alerte);
+  padding: 0.6em 0 0.6em 0.9em;
+  background: #fdf4ee;
+}
+
+figure { margin: 0; flex: 1; display: flex; flex-direction: column; gap: 0.4em; min-height: 0; }
+figure img { flex: 1; min-height: 0; object-fit: contain; object-position: left center; }
+figcaption { font-size: 0.8em; color: var(--gris); }
+
+/* Ligne de source, toujours visible, en bas de la diapositive. */
+.source {
+  position: absolute;
+  left: 6cqw;
+  right: 6cqw;
+  bottom: 3.2cqw;
+  font-size: 0.75em;
+  color: var(--gris);
+}
+
+/* Barre de navigation. */
+.nav {
+  position: fixed;
+  bottom: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 2rem;
+  padding: 0.3rem 0.5rem;
+  font-family: 'Marianne', system-ui, sans-serif;
+  color: #fff;
+  font-size: 0.85rem;
+}
+.nav button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.25rem 0.6rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.nav button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.2); }
+.nav button:disabled { opacity: 0.35; cursor: default; }
+.nav [aria-live] { min-width: 3.5rem; text-align: center; font-variant-numeric: tabular-nums; }
+
+@media print {
+  html, body { background: #fff; }
+  .nav { display: none; }
+  .deck-ready .slide { display: flex; }
+  .stage { width: 100%; height: auto; }
+  .slide { position: static; page-break-after: always; aspect-ratio: 16 / 9; }
+}

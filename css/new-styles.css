@@ -1,9 +1,24 @@
 /* Duels de l'IA - New Design Based on Example */
 
-/* Import Marianne font with all available weights */
-@import url('https://www.systeme-de-design.gouv.fr/fonts/marianne/marianne.css');
+/* Marianne est embarquée : l'URL du systeme-de-design.gouv.fr renvoie un 404
+   depuis un moment, et privacy.md promet qu'aucune donnée ne part chez un tiers. */
+@font-face {
+  font-family: 'Marianne';
+  src: url('../fonts/Marianne-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Marianne';
+  src: url('../fonts/Marianne-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
 
-body {
+/* La police ne s'applique qu'à nos éléments : elle écrasait celle de compar:IA. */
+#duelsia-fab,
+#duelsia-panel,
+.duelsia-slide-overlay {
   font-family: 'Marianne', sans-serif;
 }
 
@@ -808,8 +823,8 @@ body {
   font-weight: 600;
 }
 
-/* PDF Overlay styles */
-.duelsia-pdf-overlay {
+/* Vue plein écran des supports */
+.duelsia-slide-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -823,30 +838,19 @@ body {
   padding: 20px;
 }
 
-.duelsia-pdf-container {
+.duelsia-slide-container {
   position: relative;
-  width: 90%;
-  height: 90%;
-  max-width: 1200px;
-  max-height: 800px;
-  background: white;
+  width: 95%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  background: #1b1b1b;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.duelsia-fullscreen-container {
-  position: relative;
-  width: 95%;
-  height: 95%; 
-  max-width: none;
-  max-height: none;
-  display: flex;
-  flex-direction: column;
-  background: white;
-}
-
-.duelsia-pdf-close {
+.duelsia-slide-close {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -866,13 +870,13 @@ body {
   transition: background-color 0.2s;
 }
 
-.duelsia-pdf-close:hover {
+.duelsia-slide-close:hover {
   background-color: #f3f4f6;
 }
 
-#duelsia-pdf-frame, 
-#duelsia-global-pdf-frame,
-.duelsia-pdf-frame {
+#duelsia-slide-frame, 
+#duelsia-global-slide-frame,
+.duelsia-slide-frame {
   width: 100%;
   height: 100%;
   border: none;

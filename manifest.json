@@ -12,8 +12,12 @@
         "http://localhost/*",
         "http://localhost:*/*"
       ],
-      "js": ["js/content-redesign.js"],
-      "css": ["css/new-styles.css"]
+      "js": [
+        "js/content-redesign.js"
+      ],
+      "css": [
+        "css/new-styles.css"
+      ]
     }
   ],
   "web_accessible_resources": [
@@ -22,7 +26,8 @@
         "css/new-styles.css",
         "data/content-data.json",
         "data/qr_code_transparent_fixed.png",
-        "data/slides/*"
+        "data/slides/*",
+        "fonts/*"
       ],
       "matches": [
         "*://*.comparia.beta.gouv.fr/*",

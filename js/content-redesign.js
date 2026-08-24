@@ -489,44 +489,43 @@
       const fileId = resource.url.match(/d\/([a-zA-Z0-9-_]+)/)?.[1];
       if (fileId) {
         const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-        openPdfOverlay(embedUrl);
+        openSlideOverlay(embedUrl);
       } else {
         // Fallback to opening in new tab if can't extract file ID
         window.open(resource.url, '_blank');
       }
-    } else if (resource.type === 'local-pdf') {
-      // Handle local PDF files
-      const pdfUrl = chrome.runtime.getURL(resource.url);
-      openPdfOverlay(pdfUrl);
+    } else if (resource.type === 'slides' || resource.type === 'local-pdf') {
+      // Supports embarqués dans l'extension (HTML, et PDF pour l'ancien format)
+      openSlideOverlay(chrome.runtime.getURL(resource.url), resource.title);
     } else {
       // Open external links in new tab
       window.open(resource.url, '_blank');
     }
   }
   
-  // Open PDF overlay
-  function openPdfOverlay(embedUrl) {
+  // Ouvre un support en plein écran
+  function openSlideOverlay(embedUrl, title) {
     // Create overlay at document level if it doesn't exist
-    let overlay = document.getElementById('duelsia-global-pdf-overlay');
-    let frame = document.getElementById('duelsia-global-pdf-frame');
+    let overlay = document.getElementById('duelsia-global-slide-overlay');
+    let frame = document.getElementById('duelsia-global-slide-frame');
     
     if (!overlay) {
       overlay = document.createElement('div');
-      overlay.id = 'duelsia-global-pdf-overlay';
-      overlay.className = 'duelsia-pdf-overlay';
+      overlay.id = 'duelsia-global-slide-overlay';
+      overlay.className = 'duelsia-slide-overlay';
       
       const container = document.createElement('div');
-      container.className = 'duelsia-pdf-container duelsia-fullscreen-container';
+      container.className = 'duelsia-slide-container';
       
       const closeBtn = document.createElement('button');
-      closeBtn.id = 'duelsia-global-pdf-close';
-      closeBtn.className = 'duelsia-pdf-close';
+      closeBtn.id = 'duelsia-global-slide-close';
+      closeBtn.className = 'duelsia-slide-close';
       closeBtn.innerHTML = '✕';
-      closeBtn.addEventListener('click', closePdfOverlay);
+      closeBtn.addEventListener('click', closeSlideOverlay);
       
       frame = document.createElement('iframe');
-      frame.id = 'duelsia-global-pdf-frame';
-      frame.className = 'duelsia-pdf-frame';
+      frame.id = 'duelsia-global-slide-frame';
+      frame.className = 'duelsia-slide-frame';
       frame.frameBorder = '0';
       
       container.appendChild(closeBtn);
@@ -536,15 +535,17 @@
       // Close when clicking outside
       overlay.addEventListener('click', (e) => {
         if (e.target === overlay) {
-          closePdfOverlay();
+          closeSlideOverlay();
         }
       });
       
       document.body.appendChild(overlay);
     }
     
+    frame.title = title || 'Support de présentation';
     frame.src = embedUrl;
     overlay.style.display = 'flex';
+    frame.focus();
     
     // Hide the panel while viewing the document
     const panel = document.getElementById('duelsia-panel');
@@ -553,10 +554,10 @@
     }
   }
   
-  // Close PDF overlay
-  function closePdfOverlay() {
-    const overlay = document.getElementById('duelsia-global-pdf-overlay');
-    const frame = document.getElementById('duelsia-global-pdf-frame');
+  // Ferme le support
+  function closeSlideOverlay() {
+    const overlay = document.getElementById('duelsia-global-slide-overlay');
+    const frame = document.getElementById('duelsia-global-slide-frame');
     
     if (overlay && frame) {
       overlay.style.display = 'none';
@@ -570,6 +571,16 @@
     }
   }
   
+  // Le support tourne dans une iframe : c'est lui qui signale la fermeture.
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.duelsia === 'fermer') closeSlideOverlay();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const overlay = document.getElementById('duelsia-global-slide-overlay');
+    if (e.key === 'Escape' && overlay && overlay.style.display === 'flex') closeSlideOverlay();
+  });
+
   // Toggle persona display
   function togglePersona(index) {
     const content = document.getElementById(`persona-content-${index}`);
@@ -795,7 +806,7 @@
       const fileId = recapUrl.match(/d\/([a-zA-Z0-9-_]+)/)?.[1];
       if (fileId) {
         const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-        openPdfOverlay(embedUrl);
+        openSlideOverlay(embedUrl);
       } else {
         // Fallback to opening in new tab
         window.open(recapUrl, '_blank');
