@@ -283,3 +283,53 @@ figcaption { font-size: 1em; color: var(--gris); }
   .stage { width: 100%; height: auto; }
   .slide { position: static; page-break-after: always; aspect-ratio: 16 / 9; }
 }
+
+/* --- Échelle énergétique A à F, reprise de compar:IA -----------------------
+   Mêmes couleurs DSFR, mêmes largeurs et même chevron que le produit
+   (ENERGY_CLASS_COLORS dans frontend/src/lib/models.ts, et la règle de
+   largeur 50 + 50/6 × rang de ModelInfoModal.svelte). La classe du modèle
+   est en pleine couleur, les autres sont estompées. */
+
+.energie {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  max-width: none;
+}
+.energie li {
+  position: relative;
+  font-weight: 700;
+  padding: 0.2em 0.7em;
+  line-height: 1.25;
+  clip-path: polygon(0 0, calc(100% - 0.75em) 0, 100% 50%, calc(100% - 0.75em) 100%, 0 100%);
+}
+.energie li::marker { content: none; }
+/* Les quatre premières classes sont claires : le blanc du produit y passe mal
+   une fois projeté, on garde donc l'encre. */
+.energie .a { width: 58.3%; background: #6fe49d; color: var(--encre); }
+.energie .b { width: 66.7%; background: #73e0cf; color: var(--encre); }
+.energie .c { width: 75%;   background: #fcc63a; color: var(--encre); }
+.energie .d { width: 83.3%; background: #c8aa39; color: var(--encre); }
+.energie .e { width: 91.7%; background: #e4794a; color: #fff; }
+.energie .f { width: 100%;  background: #e1000f; color: #fff; }
+
+
+/* Le seuil de la classe, posé à droite du chevron. */
+.energie li span {
+  font-weight: 400;
+  margin-left: 0.6em;
+}
+
+
+/* Badge de classe de taille, repris des cartes de modèle. */
+.badge-taille {
+  display: inline-block;
+  background: var(--violet-pale);
+  color: var(--violet);
+  font-weight: 700;
+  border-radius: 0.25em;
+  padding: 0.1em 0.5em;
+}

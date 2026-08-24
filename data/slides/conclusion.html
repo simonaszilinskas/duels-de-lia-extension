@@ -141,24 +141,16 @@
   </section>
 
   <section class="slide">
-    <h1>La classe énergétique, de <em>A à F</em></h1>
+    <h1>Une classe, de <em>A à F</em></h1>
     <p class="chapeau">Pour un million de jetons de sortie.</p>
-    <div class="compare">
-      <div>
-        <table>
-          <tr><td><strong>A</strong></td><td>moins de 100 Wh</td></tr>
-          <tr><td><strong>B</strong></td><td>moins de 300 Wh</td></tr>
-          <tr><td><strong>C</strong></td><td>moins de 1 000 Wh</td></tr>
-        </table>
-      </div>
-      <div>
-        <table>
-          <tr><td><strong>D</strong></td><td>moins de 3 000 Wh</td></tr>
-          <tr><td><strong>E</strong></td><td>moins de 10 000 Wh</td></tr>
-          <tr><td><strong>F</strong></td><td>10 000 Wh et au-delà</td></tr>
-        </table>
-      </div>
-    </div>
+    <ul class="energie">
+      <li class="a">A <span>moins de 100 Wh</span></li>
+      <li class="b">B <span>moins de 300 Wh</span></li>
+      <li class="c">C <span>moins de 1 000 Wh</span></li>
+      <li class="d">D <span>moins de 3 000 Wh</span></li>
+      <li class="e">E <span>moins de 10 000 Wh</span></li>
+      <li class="f">F <span>10 000 Wh et au-delà</span></li>
+    </ul>
     <p class="source">Estimation EcoLogits 0.10.2, PUE 1,2, mix électrique mondial moyen.</p>
   </section>
 
@@ -184,7 +176,7 @@
       </div>
       <div>
         <h2>Modèle propriétaire</h2>
-        <p>Il n'affiche que sa classe, marquée « Taille estimée ».</p>
+        <p>Il n'affiche que sa classe : <span class="badge-taille">Taille estimée XL</span></p>
       </div>
     </div>
     <p class="source">Les laboratoires propriétaires ne publient pas leur compte de paramètres.</p>
