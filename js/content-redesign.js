@@ -35,6 +35,7 @@
   let currentSection = 'comment-se-deroule';
   let currentBlock = null;
   let lastCardIndex = -1;
+  let groupOpinion = '';
   let slideOverlayOpener = null;
   const extensionUrl = new URL(chrome.runtime.getURL('/'));
   const extensionOrigin = `${extensionUrl.protocol}//${extensionUrl.host}`;
@@ -104,7 +105,7 @@
     panel.innerHTML = `
       <div class="duelsia-panel-content">
         <div class="duelsia-header duelsia-draggable">
-          <span>Bienvenue dans les duels de l'IA</span>
+          <span>Kit d’animation</span>
           <div class="duelsia-header-actions">
             <button type="button" class="duelsia-feedback-btn" title="Retours" aria-label="Ouvrir les formulaires de retour">💬</button>
             <button type="button" class="duelsia-close" aria-label="Fermer les ressources">✕</button>
@@ -113,8 +114,10 @@
         
         <div class="duelsia-main-content">
           <div class="duelsia-dropdown-container" id="duelsia-dropdown">
-            <span>Comment se déroule un duel ?</span>
-            <span class="duelsia-dropdown-icon">⌄</span>
+            <button type="button" class="duelsia-dropdown-trigger" aria-expanded="false" aria-controls="duelsia-dropdown-content">
+              <span>Comment se déroule un duel ?</span>
+              <span class="duelsia-dropdown-icon" aria-hidden="true">⌄</span>
+            </button>
             
             <div class="duelsia-dropdown-content" id="duelsia-dropdown-content">
               <ol id="duelsia-steps-list">
@@ -183,7 +186,7 @@
       button.addEventListener('click', showMainView);
     });
     
-    panel.querySelector('.duelsia-dropdown-container').addEventListener('click', toggleDropdown);
+    panel.querySelector('.duelsia-dropdown-trigger').addEventListener('click', toggleDropdown);
     
     // Add feedback button click handler
     panel.querySelector('.duelsia-feedback-btn').addEventListener('click', showFeedbackView);
@@ -287,11 +290,11 @@
     }
     
     const cardsHTML = Object.entries(sectionData.blocks).map(([key, block]) => `
-      <div class="duelsia-card" data-block="${key}">
+      <button type="button" class="duelsia-card" data-block="${key}">
         <div class="duelsia-emoji">${block.icon}</div>
         <h3>${block.title}</h3>
         <p>${block.description}</p>
-      </div>
+      </button>
     `).join('');
     
     cardsContainer.innerHTML = cardsHTML;
@@ -355,7 +358,7 @@
       <div class="duelsia-personas-list">
         ${personas.map((persona, index) => `
           <div class="duelsia-persona-item" id="persona-${index}">
-            <div class="duelsia-persona-header" data-index="${index}">
+            <div class="duelsia-persona-header" data-index="${index}" role="button" tabindex="0" aria-expanded="false" aria-controls="persona-content-${index}">
               <div class="duelsia-persona-info">
                 <span class="duelsia-persona-emoji">${persona.emoji}</span>
                 <div class="duelsia-persona-details">
@@ -364,12 +367,12 @@
                   <span class="duelsia-persona-category-inline">${persona.category}</span>
                 </div>
               </div>
-              <span class="duelsia-persona-arrow">⌄</span>
+              <span class="duelsia-persona-arrow" aria-hidden="true">⌄</span>
             </div>
             <div class="duelsia-persona-content" id="persona-content-${index}">
               <div class="duelsia-persona-prompt-container">
                 <div class="duelsia-persona-prompt">${persona.prompt}</div>
-                <button class="duelsia-copy-btn" data-prompt="${persona.prompt.replace(/"/g, '&quot;')}">
+                <button class="duelsia-copy-btn" data-prompt="${persona.prompt.replace(/"/g, '&quot;')}" aria-live="polite">
                   Copier
                 </button>
               </div>
@@ -387,6 +390,12 @@
         const index = header.dataset.index;
         togglePersona(index);
       });
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
     });
     
     // Add copy button handlers
@@ -398,7 +407,7 @@
         
         // Update button text temporarily
         const originalText = btn.textContent;
-        btn.textContent = 'Copié!';
+        btn.textContent = 'Copié';
         setTimeout(() => {
           btn.textContent = originalText;
         }, 1500);
@@ -424,14 +433,14 @@
       <div class="duelsia-faq-list">
         ${questions.map((item, index) => `
           <div class="duelsia-faq-item" id="faq-${index}">
-            <div class="duelsia-faq-header" data-index="${index}">
+            <div class="duelsia-faq-header" data-index="${index}" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-content-${index}">
               <div class="duelsia-faq-info">
                 <span class="duelsia-faq-emoji">${item.emoji}</span>
                 <div class="duelsia-faq-question">
                   ${item.question}
                 </div>
               </div>
-              <span class="duelsia-faq-arrow">⌄</span>
+              <span class="duelsia-faq-arrow" aria-hidden="true">⌄</span>
             </div>
             <div class="duelsia-faq-content" id="faq-content-${index}">
               <div class="duelsia-faq-answer">
@@ -451,6 +460,12 @@
         const index = header.dataset.index;
         toggleFAQ(index);
       });
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
     });
   }
   
@@ -458,13 +473,16 @@
   function toggleFAQ(index) {
     const content = document.getElementById(`faq-content-${index}`);
     const arrow = document.querySelector(`#faq-${index} .duelsia-faq-arrow`);
+    const header = document.querySelector(`#faq-${index} .duelsia-faq-header`);
     
     if (content.classList.contains('show')) {
       content.classList.remove('show');
       arrow.classList.remove('rotate');
+      header.setAttribute('aria-expanded', 'false');
     } else {
       content.classList.add('show');
       arrow.classList.add('rotate');
+      header.setAttribute('aria-expanded', 'true');
     }
   }
   
@@ -626,6 +644,14 @@
     if (e.key === 'Escape' && overlay && overlay.style.display === 'flex') {
       e.preventDefault();
       closeSlideOverlay();
+      return;
+    }
+
+    const dropdown = document.getElementById('duelsia-dropdown-content');
+    if (e.key === 'Escape' && dropdown?.classList.contains('show')) {
+      e.preventDefault();
+      toggleDropdown();
+      document.querySelector('.duelsia-dropdown-trigger')?.focus();
     }
   });
 
@@ -641,18 +667,26 @@
   function togglePersona(index) {
     const content = document.getElementById(`persona-content-${index}`);
     const arrow = document.querySelector(`#persona-${index} .duelsia-persona-arrow`);
+    const header = document.querySelector(`#persona-${index} .duelsia-persona-header`);
     
     if (content.classList.contains('show')) {
       content.classList.remove('show');
       arrow.classList.remove('rotate');
+      header.setAttribute('aria-expanded', 'false');
     } else {
       content.classList.add('show');
       arrow.classList.add('rotate');
+      header.setAttribute('aria-expanded', 'true');
     }
   }
   
   // Show random debate card
   function showRandomCard() {
+    const existingOpinion = document.getElementById('duelsia-group-opinion');
+    if (existingOpinion) {
+      groupOpinion = existingOpinion.value;
+    }
+
     const sectionData = CONTENT_DATA[currentSection];
     const cards = sectionData.blocks.cartes.cards || [];
     
@@ -692,6 +726,12 @@
     `;
     
     document.getElementById('duelsia-content-display').innerHTML = content;
+
+    const opinionField = document.getElementById('duelsia-group-opinion');
+    opinionField.value = groupOpinion;
+    opinionField.addEventListener('input', () => {
+      groupOpinion = opinionField.value;
+    });
     
     // Add click handler after inserting the content
     document.getElementById('duelsia-random-btn').addEventListener('click', showRandomCard);
@@ -730,10 +770,12 @@
     const content = document.getElementById('duelsia-dropdown-content');
     const overlay = document.getElementById('duelsia-overlay');
     const icon = document.querySelector('.duelsia-dropdown-icon');
+    const trigger = document.querySelector('.duelsia-dropdown-trigger');
     
     content.classList.toggle('show');
     overlay.classList.toggle('show');
     icon.classList.toggle('rotate');
+    trigger.setAttribute('aria-expanded', String(content.classList.contains('show')));
   }
   
   // Close dropdown when clicking overlay
@@ -751,9 +793,6 @@
     const ouvert = !panel.classList.contains('duelsia-hidden');
     document.getElementById('duelsia-fab')?.setAttribute('aria-expanded', String(ouvert));
     
-    if (ouvert && currentView === 'content') {
-      showMainView();
-    }
   }
 
   // Make element draggable
@@ -762,31 +801,43 @@
     let isDragging = false;
     let currentX;
     let currentY;
-    let initialX;
-    let initialY;
     let xOffset = 0;
     let yOffset = 0;
+    let startOffsetX = 0;
+    let startOffsetY = 0;
+    let startPointerX = 0;
+    let startPointerY = 0;
+    let startRect = null;
+    const viewportMargin = 8;
 
     header.addEventListener('mousedown', dragStart);
     document.addEventListener('mousemove', drag);
     document.addEventListener('mouseup', dragEnd);
+    window.addEventListener('resize', constrainToViewport);
 
     function dragStart(e) {
-      if (e.target.closest('.duelsia-close')) return;
-      
-      initialX = e.clientX - xOffset;
-      initialY = e.clientY - yOffset;
+      if (e.target.closest('button, a')) return;
 
       if (e.target.closest('.duelsia-draggable')) {
         isDragging = true;
+        startPointerX = e.clientX;
+        startPointerY = e.clientY;
+        startOffsetX = xOffset;
+        startOffsetY = yOffset;
+        startRect = element.getBoundingClientRect();
       }
     }
 
     function drag(e) {
       if (isDragging) {
         e.preventDefault();
-        currentX = e.clientX - initialX;
-        currentY = e.clientY - initialY;
+        const maxLeft = Math.max(viewportMargin, window.innerWidth - startRect.width - viewportMargin);
+        const maxTop = Math.max(viewportMargin, window.innerHeight - startRect.height - viewportMargin);
+        const nextLeft = Math.min(maxLeft, Math.max(viewportMargin, startRect.left + e.clientX - startPointerX));
+        const nextTop = Math.min(maxTop, Math.max(viewportMargin, startRect.top + e.clientY - startPointerY));
+
+        currentX = startOffsetX + nextLeft - startRect.left;
+        currentY = startOffsetY + nextTop - startRect.top;
 
         xOffset = currentX;
         yOffset = currentY;
@@ -796,9 +847,24 @@
     }
 
     function dragEnd(e) {
-      initialX = currentX;
-      initialY = currentY;
       isDragging = false;
+    }
+
+    function constrainToViewport() {
+      const rect = element.getBoundingClientRect();
+      const maxRight = window.innerWidth - viewportMargin;
+      const maxBottom = window.innerHeight - viewportMargin;
+      let adjustmentX = 0;
+      let adjustmentY = 0;
+
+      if (rect.left < viewportMargin) adjustmentX = viewportMargin - rect.left;
+      if (rect.right > maxRight) adjustmentX = maxRight - rect.right;
+      if (rect.top < viewportMargin) adjustmentY = viewportMargin - rect.top;
+      if (rect.bottom > maxBottom) adjustmentY = maxBottom - rect.bottom;
+
+      xOffset += adjustmentX;
+      yOffset += adjustmentY;
+      element.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
     }
   }
   
@@ -836,14 +902,14 @@
         </div>
         
         <div class="duelsia-session-recap">
-          <div class="duelsia-resource-item" id="duelsia-recap-btn">
+          <div class="duelsia-resource-item" id="duelsia-recap-btn" role="button" tabindex="0">
             <span class="duelsia-resource-emoji">📄</span>
             <div class="duelsia-resource-content">
               <h4>Récapitulatif de la session</h4>
             </div>
             <span class="duelsia-resource-arrow">→</span>
           </div>
-          <div class="duelsia-resource-item duelsia-secondary-btn" id="duelsia-more-questions-btn">
+          <div class="duelsia-resource-item duelsia-secondary-btn" id="duelsia-more-questions-btn" role="button" tabindex="0">
             <span class="duelsia-resource-emoji">🃏</span>
             <div class="duelsia-resource-content">
               <h4>Plus de questions de débat</h4>
@@ -858,7 +924,8 @@
     document.getElementById('duelsia-content-display').innerHTML = content;
     
     // Add click handler for recap button
-    document.getElementById('duelsia-recap-btn').addEventListener('click', () => {
+    const recapButton = document.getElementById('duelsia-recap-btn');
+    recapButton.addEventListener('click', () => {
       const recapUrl = 'https://drive.google.com/file/d/19GvpbS1c4kIyUaJyWwdWyyJ6WsNefD2M/view?usp=drive_link';
       // Extract file ID and convert to embed URL
       const fileId = recapUrl.match(/d\/([a-zA-Z0-9-_]+)/)?.[1];
@@ -872,13 +939,23 @@
     });
     
     // Add click handler for more debate questions button
-    document.getElementById('duelsia-more-questions-btn').addEventListener('click', () => {
+    const moreQuestionsButton = document.getElementById('duelsia-more-questions-btn');
+    moreQuestionsButton.addEventListener('click', () => {
       // Back to main view, then navigate to debate cards
       showMainView();
       // After a short delay to ensure the main view is shown, show cards content
       setTimeout(() => {
         showBlockContent('cartes');
       }, 100);
+    });
+
+    [recapButton, moreQuestionsButton].forEach(button => {
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          button.click();
+        }
+      });
     });
     
     document.querySelector('.duelsia-main-content').style.display = 'none';
@@ -890,13 +967,14 @@
       <div class="duelsia-error-container">
         <div class="duelsia-error-icon">⚠️</div>
         <div class="duelsia-error-message">${message}</div>
-        <button class="duelsia-retry-btn" onclick="location.reload()">Réessayer</button>
+        <button type="button" class="duelsia-retry-btn">Réessayer</button>
       </div>
     `;
     
     const display = document.getElementById('duelsia-content-display');
     if (display) {
       display.innerHTML = content;
+      display.querySelector('.duelsia-retry-btn').addEventListener('click', () => location.reload());
     }
   }
 
