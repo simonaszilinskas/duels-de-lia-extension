@@ -1,69 +1,69 @@
-# Guide de débogage - Duels de l'IA
+# Guide de débogage – Duels de l'IA
 
-## Si le FAB n'apparaît pas sur comparia.beta.gouv.fr/arene/
+## Si le bouton flottant n'apparaît pas
 
-### 1. Ouvrir la console du navigateur
-- Appuyez sur **F12** ou **Ctrl+Shift+I** (Cmd+Option+I sur Mac)
-- Cliquez sur l'onglet **Console**
+L'extension s'affiche sur tout le site `comparia.beta.gouv.fr`, y compris ses
+sous-domaines. L'arène se trouve à la racine : `https://comparia.beta.gouv.fr/`.
 
-### 2. Vérifier les logs
-Vous devriez voir une série de messages commençant par des emojis :
+### 1. Vérifier l'installation
 
-```
-====================================
+1. Ouvrez `chrome://extensions/`.
+2. Vérifiez que l'extension est installée et activée.
+3. Après une modification locale, cliquez sur l'icône de rechargement de
+   l'extension, puis rechargez l'onglet compar:IA.
+
+### 2. Ouvrir la console
+
+Ouvrez les outils de développement avec F12, Ctrl+Maj+I sous Windows et Linux,
+ou Cmd+Option+I sous macOS, puis choisissez l'onglet « Console ».
+
+Au chargement, le script journalise notamment :
+
+```text
 🎯 Duels de l'IA - Script chargé
-⏰ Timestamp: 2025-01-23T10:30:00.000Z
-🔧 Extension ID: [id de l'extension]
-====================================
-📍 URL complète: https://comparia.beta.gouv.fr/arene/...
+📍 URL complète: https://comparia.beta.gouv.fr/...
 🌐 Hostname: comparia.beta.gouv.fr
-📄 Pathname: /arene/...
-====================================
+📄 Pathname: /...
+✅ Hôte compar:IA ? true
 ```
 
-### 3. Points de vérification
+Si le message `Script chargé` est absent, rechargez l'extension et contrôlez
+son accès au site. Si `Hôte compar:IA ?` vaut `false`, vérifiez le domaine
+ouvert.
 
-#### ✅ Le script se charge-t-il ?
-- Si vous ne voyez pas "🎯 Duels de l'IA - Script chargé", l'extension n'est pas active
-- Vérifiez que l'extension est bien installée et activée
+### 3. Vérifier l'initialisation
 
-#### ✅ L'URL est-elle correcte ?
-- Vérifiez que l'URL contient bien "comparia.beta.gouv.fr/arene/"
-- Si vous voyez "⚠️ Pas sur la page arène", l'URL ne correspond pas
+Les messages suivants permettent de localiser l'échec :
 
-#### ✅ Le FAB est-il créé ?
-- Cherchez "🔨 Création du FAB..."
-- Si vous voyez "✅ FAB créé avec succès", vérifiez les styles affichés
-- Si vous voyez "❌ document.body n'existe pas", la page n'est pas prête
+- `🔨 Création du FAB...`, puis `✅ FAB créé avec succès` : le bouton a
+  été injecté ;
+- `📚 Chargement des données JSON...`, puis `✅ Données JSON chargées` :
+  le contenu embarqué est disponible ;
+- `🎉 Initialisation terminée avec succès!` : le panneau est prêt.
 
-#### ✅ Les données se chargent-elles ?
-- Cherchez "📚 Chargement des données JSON..."
-- Si vous voyez "❌ Erreur de chargement", il y a un problème avec les ressources
+Une erreur `document.body n'existe pas` signale une initialisation trop tôt.
+Une erreur de chargement JSON concerne la ressource embarquée
+`data/content-data.json`.
 
-### 4. Problèmes courants
+### 4. Si le bouton existe mais reste invisible
 
-#### Le FAB est créé mais invisible
-Vérifiez les styles du FAB dans les logs :
-```
-🎨 Styles du FAB: {
-  display: "block",     // Doit être "block" ou "flex"
-  visibility: "visible", // Doit être "visible"
-  position: "fixed",     // Doit être "fixed"
-  zIndex: "9999",       // Doit être un nombre élevé
-}
-```
+Le journal `🎨 Styles du FAB` affiche ses styles calculés. Contrôlez surtout
+que `display` n'est pas `none`, que `visibility` vaut `visible`, que `position`
+vaut `fixed` et que le `zIndex` est suffisamment élevé.
 
-#### Erreur de chargement des ressources
-- L'extension pourrait être corrompue
-- Essayez de la désinstaller et réinstaller
+### 5. Si le panneau s'ouvre mais que son contenu manque
 
-### 5. Partager les logs
-Si le problème persiste, copiez tous les logs de la console et partagez-les avec le support technique.
+Le panneau actuel contient une liste d'étapes, quatre entrées (prompts, cartes
+débat, ressources et FAQ), une conclusion et une rubrique de retours. Il ne
+comporte pas d'onglets thématiques. Cherchez une erreur `Erreur de chargement
+des données` ou `Données invalides` dans la console.
 
-### 6. Solutions rapides à essayer
+### 6. Derniers essais
 
-1. **Rafraîchir la page** (F5)
-2. **Vider le cache** (Ctrl+Shift+R)
-3. **Désactiver d'autres extensions** qui pourraient interférer
-4. **Tester en mode incognito** (en autorisant l'extension)
-5. **Vérifier les permissions** de l'extension sur chrome://extensions/
+1. Rechargez la page.
+2. Rechargez l'extension depuis `chrome://extensions/`.
+3. Testez dans une fenêtre privée après y avoir autorisé l'extension.
+4. Désactivez temporairement les extensions susceptibles de modifier la page.
+
+Si le problème persiste, transmettez les messages d'erreur utiles de la console,
+sans inclure de données personnelles.

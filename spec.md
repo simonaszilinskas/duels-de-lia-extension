@@ -1,71 +1,52 @@
-# Duels de l'IA - extension Chrome
+# Duels de l'IA – extension Chrome
 
-### 🎯 Objectif
+## Objectif
 
-Créer une **extension Chrome** activée **uniquement** sur l'URL `https://comparia.beta.gouv.fr/arene`, destinée à un atelier pédagogique nommé **Duel de l'IA**.
+L'extension fournit un kit d'animation pour l'atelier pédagogique « Les Duels
+de l'IA ». Elle accompagne compar:IA sans modifier le fonctionnement de l'arène.
 
----
+## Périmètre d'activation
 
-### ✅ Fonctionnalités principales
+Le script de contenu est injecté sur tout le domaine
+`comparia.beta.gouv.fr` et ses sous-domaines. L'arène se trouve à la racine du
+site, `https://comparia.beta.gouv.fr/`. Le panneau reste donc disponible lors
+de la navigation vers le catalogue `/models`, le classement `/ranking` et les
+autres pages du site.
 
-#### 1. **Activation contextuelle**
+## Interface
 
-* L’extension n’apparaît **que sur** `comparia.beta.gouv.fr/arene`.
+- Un bouton flottant, placé en bas à droite, ouvre et ferme le kit d'animation.
+- Le panneau est déplaçable par son en-tête et reste contenu dans la fenêtre.
+  Il ne bloque pas les interactions avec compar:IA.
+- La vue principale affiche le déroulé d'un duel et quatre entrées : prompts,
+  cartes débat, ressources et FAQ.
+- Les prompts et la FAQ se déplient dans le panneau. Les cartes débat sont
+  tirées aléatoirement et peuvent recevoir une note temporaire.
+- Les sept supports HTML s'ouvrent dans une visionneuse plein écran embarquée.
+- Le lien « Le jeu en vaut-il la chandelle ? » ouvre le débat final, puis donne
+  accès au récapitulatif de session ou à d'autres cartes débat.
+- La rubrique « Retours » présente un QR code vers le formulaire participant
+  et un bouton ouvrant le formulaire facilitateur.
 
-#### 2. **FAB (Floating Action Button)**
+Le panneau ne comporte pas d'onglets thématiques « Impact environnemental »,
+« Biais » ou « Souveraineté numérique ».
 
-* Bouton flottant toujours visible en bas à droite.
-* Au clic, ouvre un **panneau flottant déplaçable** (pas un modal plein écran).
-* Le panneau apparaît par défaut au centre-droit de l'écran.
-* L'utilisateur peut déplacer le panneau en cliquant et glissant sur l'en-tête.
-* Le reste de la page reste complètement utilisable (pas de backdrop).
-* L'utilisateur peut continuer à voir et interagir avec le contenu de la page principale.
+## Architecture technique
 
-#### 3. **Interface principale**
+L'extension utilise Manifest V3, sans étape de compilation, script d'arrière-plan
+ni permission Chrome. Le script `js/content-redesign.js` construit l'interface
+en JavaScript natif ; `css/new-styles.css` fournit les styles.
 
-* **3 onglets thématiques (tabs)** :
+Les contenus de l'atelier sont centralisés dans `data/content-data.json`. Les
+supports sont des pages HTML autonomes dans `data/slides/`, avec une feuille de
+style et un script de navigation communs. Les ressources nécessaires au panneau
+sont déclarées dans `web_accessible_resources` du manifeste.
 
-  * Impact environnemental (💡 contenu prêt)
-  * Biais
-  * Souveraineté numérique
+## Contraintes
 
-* Chaque tab contient :
-
-  * **4 "carrés" (gros boutons)** :
-
-    * Prompt
-    * Cartes débat
-    * Ressource pédagogique
-    * FAQ
-
-  * **Un bouton principal** :
-    `Révéler la question ultime`
-
-    * Affiche un bloc de texte (question)
-    * Affiche un **lien hypertexte** vers une **conclusion** (ouvre un nouvel onglet)
-
----
-
-### 🧩 Structure technique
-
-#### Composants modulaires
-
-* Chaque **onglet** est une section indépendante.
-* Chaque **carré** ouvre un contenu riche (HTML/CSS/JS possibles).
-* Tous les contenus doivent être **facilement modifiables** (via fichiers JSON, Markdown ou CMS headless si nécessaire à terme).
-
-#### Architecture scalable
-
-* Prévoir structure de code/extensible :
-
-  * Composants réutilisables (React ou vanilla avec modularisation)
-  * Données séparées de la logique (contenu = fichiers de config)
-  * Préparer les hooks ou points d’extension pour ajouter des onglets ou des blocs de contenu facilement
-
----
-
-### 🛠 Priorité de développement
-
-1. Focus sur **Impact environnemental** uniquement pour l’instant
-2. Placeholder dans les autres tabs
-3. Interface propre et légère, pensée pour le scaling futur et maintenabilité - jamais de fichiers très longs et prioriser les techniques qui nécessitent pas de build ou de compilation.
+- Le panneau et le bouton utilisent le préfixe `duelsia-` pour limiter les
+  collisions avec la page hôte.
+- Aucun script en ligne ni gestionnaire HTML de type `onclick` n'est admis dans
+  les supports, conformément à la politique de sécurité de Manifest V3.
+- L'extension ne collecte ni ne transmet automatiquement de données. Les deux
+  formulaires Typeform ne sont accessibles qu'à la suite d'une action volontaire.

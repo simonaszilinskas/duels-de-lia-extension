@@ -17,8 +17,7 @@
   // On garde le widget sur tout le site : l'arène est à la racine depuis la refonte,
   // et le site navigue côté client, donc un test de chemin à l'injection ne tient pas.
   const host = window.location.hostname;
-  const hostCheck = host === 'comparia.beta.gouv.fr' || host.endsWith('.comparia.beta.gouv.fr') ||
-    host === 'localhost' || host === '127.0.0.1';
+  const hostCheck = host === 'comparia.beta.gouv.fr' || host.endsWith('.comparia.beta.gouv.fr');
   console.log('✅ Hôte compar:IA ?', hostCheck);
 
   if (!hostCheck) {
@@ -29,11 +28,7 @@
   
   // Content data will be loaded from JSON
   let CONTENT_DATA = null;
-  let isLoading = true;
-
-  let currentView = 'main';
-  let currentSection = 'comment-se-deroule';
-  let currentBlock = null;
+  const mainSectionKey = 'comment-se-deroule';
   let lastCardIndex = -1;
   let groupOpinion = '';
   let slideOverlayOpener = null;
@@ -193,7 +188,7 @@
     
     // Add facilitator feedback button handler
     panel.querySelector('.duelsia-facilitator-feedback-btn').addEventListener('click', () => {
-      window.open('https://adtk8x51mbw.eu.typeform.com/facilit-duel', '_blank');
+      window.open('https://adtk8x51mbw.eu.typeform.com/facilit-duel', '_blank', 'noopener');
     });
     
     // Add debate final click handler
@@ -224,14 +219,12 @@
       console.log('✅ Données JSON chargées:', Object.keys(data));
       
       CONTENT_DATA = data.duels;
-      isLoading = false;
       
       // Update UI with loaded content
       updateUIWithContent();
     } catch (error) {
       console.error('❌ Erreur de chargement des données:', error);
       console.error('Stack trace:', error.stack);
-      isLoading = false;
       showError('Erreur de chargement des données');
     }
   }
@@ -283,7 +276,7 @@
       return;
     }
     
-    const sectionData = CONTENT_DATA[currentSection];
+    const sectionData = CONTENT_DATA[mainSectionKey];
     if (!sectionData) {
       cardsContainer.innerHTML = '<div class="duelsia-error">Section non trouvée</div>';
       return;
@@ -315,7 +308,7 @@
       return;
     }
     
-    const sectionData = CONTENT_DATA[currentSection];
+    const sectionData = CONTENT_DATA[mainSectionKey];
     if (!sectionData || !sectionData.blocks) {
       showError('Section non trouvée');
       return;
@@ -326,9 +319,6 @@
       showError('Contenu non disponible');
       return;
     }
-    
-    currentBlock = blockKey;
-    currentView = 'content';
     
     document.getElementById('duelsia-content-title').textContent = block.title;
     
@@ -342,7 +332,8 @@
     } else if (blockKey === 'ressources') {
       showRessources();
     } else {
-      document.getElementById('duelsia-content-display').innerHTML = block.content || 'Contenu non disponible';
+      showError('Contenu non disponible');
+      return;
     }
     
     document.querySelector('.duelsia-main-content').style.display = 'none';
@@ -351,7 +342,7 @@
   
   // Show personas
   function showPersonas() {
-    const sectionData = CONTENT_DATA[currentSection];
+    const sectionData = CONTENT_DATA[mainSectionKey];
     const personas = sectionData.blocks.prompts.personas || [];
     
     const content = `
@@ -426,7 +417,7 @@
   
   // Show FAQ section
   function showFAQ() {
-    const sectionData = CONTENT_DATA[currentSection];
+    const sectionData = CONTENT_DATA[mainSectionKey];
     const questions = sectionData.blocks.faq.questions || [];
     
     const content = `
@@ -488,7 +479,7 @@
   
   // Show resources section
   function showRessources() {
-    const sectionData = CONTENT_DATA[currentSection];
+    const sectionData = CONTENT_DATA[mainSectionKey];
     const resources = sectionData.blocks.ressources.items || [];
     
     const content = `
@@ -526,23 +517,12 @@
   
   // Handle resource click
   function handleResourceClick(resource) {
-    if (resource.type === 'google-drive') {
-      // Convert Google Drive view link to embed link
-      const fileId = resource.url.match(/d\/([a-zA-Z0-9-_]+)/)?.[1];
-      if (fileId) {
-        const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-        openSlideOverlay(embedUrl);
-      } else {
-        // Fallback to opening in new tab if can't extract file ID
-        window.open(resource.url, '_blank');
-      }
-    } else if (resource.type === 'slides' || resource.type === 'local-pdf') {
-      // Supports embarqués dans l'extension (HTML, et PDF pour l'ancien format)
-      openSlideOverlay(chrome.runtime.getURL(resource.url), resource.title);
-    } else {
-      // Open external links in new tab
-      window.open(resource.url, '_blank');
+    if (resource.type !== 'slides') {
+      showError('Type de ressource non pris en charge');
+      return;
     }
+
+    openSlideOverlay(chrome.runtime.getURL(resource.url), resource.title);
   }
   
   // Ouvre un support en plein écran
@@ -687,7 +667,7 @@
       groupOpinion = existingOpinion.value;
     }
 
-    const sectionData = CONTENT_DATA[currentSection];
+    const sectionData = CONTENT_DATA[mainSectionKey];
     const cards = sectionData.blocks.cartes.cards || [];
     
     if (cards.length === 0) {
@@ -739,9 +719,6 @@
 
   // Show main view
   function showMainView() {
-    currentView = 'main';
-    currentBlock = null;
-    
     document.querySelector('.duelsia-main-content').style.display = 'block';
     document.querySelector('.duelsia-content-view').style.display = 'none';
     document.querySelector('.duelsia-feedback-view').style.display = 'none';
@@ -749,8 +726,6 @@
   
   // Show feedback view
   function showFeedbackView() {
-    currentView = 'feedback';
-    
     document.querySelector('.duelsia-main-content').style.display = 'none';
     document.querySelector('.duelsia-content-view').style.display = 'none';
     document.querySelector('.duelsia-feedback-view').style.display = 'block';
@@ -870,8 +845,6 @@
   
   // Show debate final screen
   function showDebateFinal() {
-    currentView = 'content';
-    
     const content = `
       <div class="duelsia-debate-final">
         <p class="duelsia-debate-subquestion">Maintenant que vous avez vu l'énergie consommée et la classe énergétique de chaque modèle, cela change-t-il votre vote ?</p>
@@ -933,12 +906,8 @@
     // Add click handler for more debate questions button
     const moreQuestionsButton = document.getElementById('duelsia-more-questions-btn');
     moreQuestionsButton.addEventListener('click', () => {
-      // Back to main view, then navigate to debate cards
       showMainView();
-      // After a short delay to ensure the main view is shown, show cards content
-      setTimeout(() => {
-        showBlockContent('cartes');
-      }, 100);
+      showBlockContent('cartes');
     });
 
     [recapButton, moreQuestionsButton].forEach(button => {
@@ -978,17 +947,6 @@
     console.log('🏷️ Head existe?', !!document.head);
     
     try {
-      // Create styles
-      console.log('🎨 Ajout des styles CSS...');
-      const styleUrl = chrome.runtime.getURL('css/new-styles.css');
-      console.log('🔗 URL du CSS:', styleUrl);
-      
-      const style = document.createElement('link');
-      style.rel = 'stylesheet';
-      style.href = styleUrl;
-      document.head.appendChild(style);
-      console.log('✅ Styles CSS ajoutés');
-      
       // Create UI elements
       console.log('🏗️ Création des éléments UI...');
       createFAB();
