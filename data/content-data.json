@@ -140,69 +140,15 @@
           "description": "Supports de présentation, à projeter pendant l'atelier",
           "items": [
             {
-              "emoji": "📖",
-              "title": "Introduction",
-              "url": "data/slides/introduction.html",
+              "emoji": "🧠",
+              "title": "C'est quoi l'IA générative ?",
+              "url": "data/slides/comprendre-lia-generative.html",
               "type": "slides"
             },
             {
-              "emoji": "📏",
-              "title": "Comment calculer l'impact ?",
-              "url": "data/slides/comment-calculer-l-impact.html",
-              "type": "slides"
-            },
-            {
-              "emoji": "🔄",
-              "title": "Le paradoxe de Jevons",
-              "url": "data/slides/paradoxe-de-jevons.html",
-              "type": "slides"
-            },
-            {
-              "emoji": "🎓",
-              "title": "Comment est entraîné un modèle d'IA ?",
-              "url": "data/slides/comment-est-entraine-un-modele.html",
-              "type": "slides"
-            },
-            {
-              "emoji": "💧",
-              "title": "Pourquoi les IA consomment-elles de l'électricité et de l'eau ?",
-              "url": "data/slides/pourquoi-ca-consomme.html",
-              "type": "slides"
-            },
-            {
-              "emoji": "📐",
-              "title": "C'est quoi la taille d'un modèle ?",
-              "url": "data/slides/taille-dun-modele.html",
-              "type": "slides"
-            },
-            {
-              "emoji": "🌐",
-              "title": "L'IA et Internet",
-              "url": "data/slides/ia-et-internet.html",
-              "type": "slides"
-            },
-            {
-              "emoji": "♻️",
-              "title": "Entraînement vs Inférence",
-              "url": "data/slides/entrainement-vs-inference.html",
-              "type": "slides"
-            },
-            {
-              "emoji": "⚙️",
-              "title": "Facteurs qui influencent la consommation d'un modèle d'IA",
-              "url": "data/slides/consommation-dun-modele.html",
-              "type": "slides"
-            },
-            {
-              "emoji": "🔧",
-              "title": "Modèles de raisonnement",
-              "url": "data/slides/modeles-de-raisonnement.html",
-              "type": "slides"
-            },
-            {
-              "emoji": "📍",
-              "title": "Localisation des serveurs",
-              "url": "data/slides/localisation-des-serveurs.html",
+              "emoji": "⚡",
+              "title": "Ce qui fait consommer un modèle",
+              "url": "data/slides/ce-qui-fait-consommer.html",
               "type": "slides"
             },
             {
@@ -212,9 +158,27 @@
               "type": "slides"
             },
             {
-              "emoji": "📊",
-              "title": "Conclusion / récapitulatif",
-              "url": "data/slides/conclusion.html",
+              "emoji": "🔍",
+              "title": "Peut-on croire les chiffres ?",
+              "url": "data/slides/peut-on-croire-les-chiffres.html",
+              "type": "slides"
+            },
+            {
+              "emoji": "🏭",
+              "title": "Le poids physique de l'IA",
+              "url": "data/slides/le-poids-physique.html",
+              "type": "slides"
+            },
+            {
+              "emoji": "🔄",
+              "title": "L'effet rebond",
+              "url": "data/slides/l-effet-rebond.html",
+              "type": "slides"
+            },
+            {
+              "emoji": "🎯",
+              "title": "Ce qu'on retient",
+              "url": "data/slides/ce-quon-retient.html",
               "type": "slides"
             }
           ]
@@ -227,7 +191,7 @@
             {
               "emoji": "🔍",
               "question": "Comment est estimé l'impact environnemental sur compar:IA ?",
-              "answer": "compar:IA utilise **EcoLogits**, une méthode maintenue par l'ONG GenAI Impact. L'estimation porte **uniquement sur l'inférence**, c'est-à-dire l'utilisation du modèle, et non sur son entraînement. Elle s'appuie sur la taille du modèle, son architecture et le nombre de jetons produits, et suppose le **mix électrique mondial moyen**. Elle s'affiche en **milliwattheures (mWh)**, accompagnée d'une classe énergétique de **A à F**."
+              "answer": "compar:IA utilise **EcoLogits**, une méthode maintenue par l'ONG GenAI Impact. L'estimation porte **uniquement sur l'inférence**, c'est-à-dire l'utilisation du modèle, et non sur son entraînement. Elle s'appuie sur la taille du modèle, son architecture et le nombre de jetons produits, et suppose le **mix électrique mondial moyen**. EcoLogits rend une énergie en **milliwattheures (mWh)** ; c'est ensuite **compar:IA** qui la rapporte à un million de jetons de sortie et applique ses propres seuils pour poser la classe **A à F**."
             },
             {
               "emoji": "🧾",
@@ -237,7 +201,7 @@
             {
               "emoji": "🔤",
               "question": "Que veut dire la classe énergétique A à F ?",
-              "answer": "C'est l'énergie estimée pour produire **un million de jetons de sortie**, rangée en six paliers : **A** sous 100 Wh, **B** sous 300, **C** sous 1 000, **D** sous 3 000, **E** sous 10 000, **F** au-delà. Plus la lettre est proche de A, plus le modèle est économe. Ce n'est pas une mesure du fournisseur : le matériel réel, la quantification et la longueur des échanges peuvent déplacer le résultat."
+              "answer": "Une lettre de **A à F** qui situe le modèle par rapport aux autres, sur l'énergie qu'il dépense pour produire **un million de jetons de sortie**. A : moins de 100 Wh. B : moins de 300. C : moins de 1 000. D : moins de 3 000. E : moins de 10 000. F : au-delà. L'énergie vient d'EcoLogits ; **les seuils et la lettre sont une règle de compar:IA**. La classe mesure le prix d'un jeton, pas le coût d'une réponse : un modèle de raisonnement en produit beaucoup plus."
             },
             {
               "emoji": "💡",
@@ -252,7 +216,7 @@
             {
               "emoji": "🚫",
               "question": "Pourquoi le bilan parle-t-il d'énergie et pas d'émissions de CO₂ ?",
-              "answer": "Convertir de l'énergie en CO₂ suppose de savoir **où** tournent les serveurs et avec quelle électricité. Les fournisseurs ne publient pas cette information, et les rares chiffres qu'ils communiquent reposent sur des méthodes trop différentes pour être comparées. compar:IA s'en tient donc à ce qu'il peut estimer sérieusement : l'énergie. Le débat sur le carbone reste entier : il se mène avec le support « Localisation des serveurs »."
+              "answer": "Convertir de l'énergie en CO₂ suppose de savoir **où** tournent les serveurs et avec quelle électricité. Les fournisseurs ne publient pas cette information, et les rares chiffres qu'ils communiquent reposent sur des méthodes trop différentes pour être comparées. compar:IA s'en tient donc à ce qu'il peut estimer sérieusement : l'énergie. Le débat sur le carbone reste entier : il se mène avec le support « Le poids physique de l'IA »."
             },
             {
               "emoji": "⚡",

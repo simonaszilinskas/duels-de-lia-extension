@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Comment calculer l'impact ? · Les duels de l'IA</title>
+  <title>Peut-on croire les chiffres ? · Les duels de l'IA</title>
   <link rel="stylesheet" href="slides.css">
   <script src="slides.js" defer></script>
 </head>
@@ -16,8 +16,8 @@
   </div>
 
   <section class="slide titre">
-    <h1>Comment calculer <em>l'impact</em> ?</h1>
-    <p class="chapeau">Trois fournisseurs publient des chiffres. Ces chiffres ne se comparent pas.</p>
+    <h1>Peut-on croire les <em>chiffres</em> ?</h1>
+    <p class="chapeau">Qui publie quoi, avec quelle méthode, et ce qu'on peut en faire.</p>
   </section>
 
   <section class="slide">
@@ -52,76 +52,32 @@
   </section>
 
   <section class="slide">
-    <h1>Deux chiffres <em>d'électricité</em></h1>
-    <div class="compare">
-      <div>
-        <h2>OpenAI</h2>
-        <img class="visuel" src="img/comment-calculer-l-impact-p1-1.webp" alt="Logo d'OpenAI : le nœud à six branches, suivi du mot OpenAI en noir.">
-        <p class="chiffre">0,34 Wh</p>
-        <p class="chapeau">Annoncé sur un blog personnel, sans méthode.</p>
-      </div>
-      <div>
-        <h2>Gemini</h2>
-        <img class="visuel" src="img/comment-calculer-l-impact-p1-2.webp" alt="Logo de Gemini : le mot Gemini en dégradé du bleu au rose, surmonté d'une étoile à quatre branches.">
-        <p class="chiffre">0,24 Wh</p>
-        <p class="chapeau">Médiane sur tous les usages, méthode publiée.</p>
-      </div>
-    </div>
-    <p class="source">OpenAI : blog de Sam Altman, juin 2025. Google : Elsworth et coll., août 2025.</p>
-  </section>
-
-  <section class="slide">
-    <h1>Gemini émet-il <em>38 fois</em> moins de CO₂ que Mistral AI ?</h1>
+    <h1><em>38 fois</em> moins de CO₂ ?</h1>
     <p class="chapeau">Probablement pas.</p>
     <p>L'écart tient surtout aux méthodes de calcul, qui divergent entre les deux acteurs.</p>
   </section>
 
   <section class="slide">
-    <h1>Le périmètre de <em>l'eau</em></h1>
-    <div class="compare">
-      <div>
-        <h2>Google</h2>
-        <p>Compte l'eau de refroidissement des serveurs.</p>
+    <h1>Trois raisons de ne pas <em>comparer</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Pas le même périmètre</h3>
+        <p>Google ne compte que l'eau de refroidissement. Mistral AI compte aussi l'eau dépensée en amont.</p>
       </div>
-      <div>
-        <h2>Mistral AI</h2>
-        <p>Compte aussi l'eau dépensée en amont : produire l'électricité, fabriquer le matériel.</p>
+      <div class="carte">
+        <h3>Pas la même comptabilité</h3>
+        <p>Google retient une méthode « marché », qui crédite ses achats d'électricité renouvelable. Mistral AI prend le réseau tel qu'il est.</p>
       </div>
-    </div>
-    <p>Le périmètre explique l'essentiel du facteur 173 entre les deux chiffres. Le modèle mesuré et le lieu des serveurs font le reste.</p>
-  </section>
-
-  <section class="slide">
-    <h1>Compter le <em>carbone</em></h1>
-    <div class="compare">
-      <div>
-        <h2>Google</h2>
-        <p>Retient une méthode « marché », qui crédite ses achats d'électricité renouvelable.</p>
-      </div>
-      <div>
-        <h2>Mistral AI</h2>
-        <p>Prend le réseau électrique tel qu'il est.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="slide">
-    <h1>Ce ne sont pas les <em>mêmes modèles</em></h1>
-    <div class="compare">
-      <div>
-        <h2>Google</h2>
-        <p>Donne une médiane sur tous ses usages, dominés par de petits modèles rapides.</p>
-      </div>
-      <div>
-        <h2>Mistral AI</h2>
-        <p>Mesure un grand modèle dense.</p>
+      <div class="carte">
+        <h3>Pas les mêmes modèles</h3>
+        <p>Une médiane sur tous les usages, dominée par de petits modèles rapides, face à un seul grand modèle dense.</p>
       </div>
     </div>
     <p class="source">Google reconnaît lui-même qu'une comparaison n'a de sens qu'à périmètre de mesure identique.</p>
   </section>
 
   <section class="slide">
-    <h1>Trois chiffres, trois <em>niveaux de sérieux</em></h1>
+    <h1>Trois <em>niveaux de sérieux</em></h1>
     <table>
       <tr><th></th><th>Méthode publiée</th><th>Relu par des tiers</th></tr>
       <tr><td>OpenAI</td><td>Aucune : deux phrases sur un blog</td><td>Non</td></tr>
@@ -129,14 +85,6 @@
       <tr><td>Mistral AI</td><td>Analyse de cycle de vie complète</td><td>Oui</td></tr>
     </table>
     <p class="source">Mistral AI a fait relire son analyse par Carbone 4, l'ADEME, Resilio et Hubblo.</p>
-  </section>
-
-  <section class="slide">
-    <h1>Ce que ce tableau <em>ne dit pas</em></h1>
-    <p>Il ne dit pas quel assistant est le plus propre.</p>
-    <div class="nuance">
-      <p>Il dit à quel point les entreprises comptent différemment, et à quel point elles s'exposent inégalement à la vérification.</p>
-    </div>
   </section>
 
   <section class="slide">
@@ -183,41 +131,71 @@
   </section>
 
   <section class="slide">
-    <h1>Ce qu'EcoLogits donne <em>à l'écran</em></h1>
+    <h1>Qui calcule <em>quoi</em></h1>
+    <div class="compare">
+      <div>
+        <h2>EcoLogits</h2>
+        <p>Rend une <strong>énergie</strong>, en milliwattheures, à partir de la taille du modèle, de son architecture et des jetons produits.</p>
+      </div>
+      <div>
+        <h2>compar:IA</h2>
+        <p>Rapporte cette énergie à un million de jetons de sortie, puis applique <strong>ses propres seuils</strong> pour poser la lettre A à F.</p>
+      </div>
+    </div>
+    <p>La classe énergétique est donc une règle de compar:IA, pas une sortie d'EcoLogits.</p>
+    <p class="source">EcoLogits 0.10.2, méthode ouverte maintenue par l'association GenAI Impact. Seuils de classe définis par compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le cas des modèles <em>propriétaires</em></h1>
     <div class="cartes">
       <div class="carte">
-        <h3>Une énergie</h3>
-        <p>L'électricité mobilisée pour générer la réponse, en <strong>milliwattheures</strong> (mWh).</p>
+        <h3>Aucun chiffre publié</h3>
+        <p>Les laboratoires gardent la taille de leurs modèles. Un chiffre serait une estimation, jamais une donnée.</p>
       </div>
       <div class="carte">
-        <h3>Une classe</h3>
-        <p>Une lettre de <strong>A à F</strong>, qui situe le modèle par rapport aux autres.</p>
+        <h3>Une classe quand même</h3>
+        <p>Le modèle reçoit sa classe A à F, calculée à partir d'une estimation interne.</p>
+      </div>
+      <div class="carte">
+        <h3>Hors du classement énergie</h3>
+        <p>Il reste écarté du « Focus énergie », faute de données publiées.</p>
       </div>
     </div>
-    <div class="nuance">
-      <p>Pas d'émissions de CO₂ : les fournisseurs ne publient pas où tournent les serveurs ni avec quelle électricité. L'écran s'en tient à ce qui s'estime.</p>
+    <p class="source">Règles d'affichage de compar:IA pour les modèles propriétaires.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux ordres de <em>grandeur</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Entraîner Llama 4</h2>
+        <p class="chiffre">≈ 5 GWh</p>
+        <p>une fois, soit la consommation d'environ <strong>1 100 ménages</strong> pendant un an.</p>
+      </div>
+      <div>
+        <h2>Écrire cinq pages avec GPT 5.5</h2>
+        <p class="chiffre">15,5 Wh</p>
+        <p>à chaque fois, soit à peu près <strong>une charge de téléphone</strong>.</p>
+      </div>
     </div>
-    <p class="source">Panneau « Bilan » de compar:IA. Le calcul suppose le mix électrique mondial moyen, pas le mix français.</p>
+    <p class="source">Meta, <em>Llama 4 Model Card</em>, 2025 : 7,4 millions d'heures de carte graphique à 700 W, sur deux modèles publiés sur trois. Catalogue compar:IA pour GPT 5.5 : 3 096 Wh par million de jetons de sortie, ici 5 000 jetons.</p>
   </section>
 
   <section class="slide">
-    <h1>Une classe, de <em>A à F</em></h1>
-    <p class="chapeau">Elle se lit par million de jetons produits en sortie.</p>
-    <ul class="energie">
-      <li class="a">A <span>moins de 100 Wh</span></li>
-      <li class="b">B <span>moins de 300 Wh</span></li>
-      <li class="c">C <span>moins de 1 000 Wh</span></li>
-      <li class="d">D <span>moins de 3 000 Wh</span></li>
-      <li class="e">E <span>moins de 10 000 Wh</span></li>
-      <li class="f">F <span>10 000 Wh et au-delà</span></li>
-    </ul>
-    <p class="source">Seuils compar:IA, estimation EcoLogits 0.10.2, PUE 1,2, mix électrique mondial moyen.</p>
-  </section>
-
-  <section class="slide">
-    <h1>Le cas des modèles <em>fermés</em></h1>
-    <p>Un modèle propriétaire reçoit quand même sa classe A–F, calculée à partir d'une estimation interne.</p>
-    <p>Il reste écarté du classement <strong>« Focus énergie »</strong>, faute de données publiées.</p>
+    <h1>L'analogie de la <em>voiture</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Construire la voiture</h2>
+        <p>C'est l'entraînement : une opération unique, très gourmande.</p>
+      </div>
+      <div>
+        <h2>Rouler avec</h2>
+        <p>C'est l'inférence : chaque trajet coûte peu, mais on roule tous les jours, et le nombre de trajets n'a pas de limite visible.</p>
+      </div>
+    </div>
+    <p>Cumulé sur des millions de gens, l'usage peut dépasser l'entraînement. Or le bilan ne compte que l'usage : c'est un plancher.</p>
+    <p class="source">L'« Énergie de génération estimée » ne couvre que l'inférence. EcoLogits ne modélise pas l'entraînement.</p>
   </section>
 
   <section class="slide">
@@ -225,7 +203,8 @@
     <ul>
       <li>Les chiffres publiés par les fournisseurs <strong>ne se comparent pas entre eux</strong>.</li>
       <li>Une méthode commune vaut mieux qu'un chiffre officiel : c'est le rôle d'EcoLogits.</li>
-      <li>Une estimation reste une estimation. Elle donne un <strong>ordre de grandeur</strong>, pas une mesure.</li>
+      <li>Une estimation donne un <strong>ordre de grandeur</strong>, pas une mesure.</li>
+      <li>Avant de reprendre un chiffre : que couvre-t-il, sur quel matériel, avec quelle électricité ?</li>
     </ul>
   </section>
 

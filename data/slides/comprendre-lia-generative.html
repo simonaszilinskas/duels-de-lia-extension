@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Comment est entraîné un modèle d'IA · Les duels de l'IA</title>
+  <title>C'est quoi l'IA générative ? · Les duels de l'IA</title>
   <link rel="stylesheet" href="slides.css">
   <script src="slides.js" defer></script>
 </head>
@@ -16,8 +16,31 @@
   </div>
 
   <section class="slide titre">
-    <h1>Comment est <em>entraîné</em> un modèle d'IA ?</h1>
-    <p class="chapeau">Des données, beaucoup de calculs, et au bout un modèle qui prédit.</p>
+    <h1>C'est quoi l'<em>IA générative</em> ?</h1>
+    <p class="chapeau">Ce qu'est un modèle, comment il apprend, et ce qu'on va comparer.</p>
+  </section>
+
+  <section class="slide">
+    <h1>C'est quoi <em>l'IA</em> ?</h1>
+    <p class="chapeau">Faire faire à un ordinateur des tâches qui relèvent d'habitude de la cognition.</p>
+    <p>Une création humaine : des instructions en entrée, un résultat en sortie.</p>
+    <p>Reconnaître un visage, produire du langage, anticiper la météo.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'IA existait <em>avant</em></h1>
+    <div class="compare">
+      <div>
+        <h2>IA</h2>
+        <img class="visuel" src="img/introduction-p1-1.webp" alt="Des photos de chats et de chiens étiquetées alimentent un réseau de neurones, qui produit un résultat.">
+        <p class="chapeau">Elle trie, reconnaît, prédit. Traduction, imagerie médicale, prévision météo.</p>
+      </div>
+      <div>
+        <h2>IA générative</h2>
+        <img class="visuel" src="img/introduction-p2-3.webp" alt="Image de synthèse : des personnages en robes de cérémonie devant une immense baie circulaire ouvrant sur une cité.">
+        <p class="chapeau">Elle produit. Explosion depuis le lancement de ChatGPT, fin 2022.</p>
+      </div>
+    </div>
   </section>
 
   <section class="slide">
@@ -42,7 +65,7 @@
   </section>
 
   <section class="slide">
-    <h1>Sur quoi s'entraîne une IA <em>conversationnelle</em> ?</h1>
+    <h1>Sur quoi s'entraîne un <em>modèle</em> ?</h1>
     <ul>
       <li><strong>Quasiment tout Internet public.</strong></li>
       <li><strong>Peu de filtrage</strong> des contenus sous droits d'auteur.</li>
@@ -50,7 +73,7 @@
   </section>
 
   <section class="slide">
-    <h1>Un jeu de données de taille <em>moyenne</em></h1>
+    <h1>Un jeu de données <em>moyen</em></h1>
     <p class="chapeau">Exemple : FineWeb.</p>
     <p class="chiffre">51 To</p>
     <p>de texte, soit 18 500 milliards de jetons.</p>
@@ -69,27 +92,32 @@
   </section>
 
   <section class="slide">
-    <h1>Où tournent ces <em>calculs</em></h1>
-    <div class="duo">
-      <div class="colonne">
-        <p>Pas sur un ordinateur de bureau.</p>
-        <p>Dans des centres de données remplis de cartes graphiques, des semaines durant.</p>
-      </div>
-      <img class="visuel" src="img/comment-est-entraine-un-modele-p2-4.webp" alt="Une allée de centre de données bordée de baies de serveurs hérissées de câbles de couleur.">
-    </div>
-  </section>
-
-  <section class="slide">
     <h1>Ce qu'on obtient <em>au bout</em></h1>
     <p class="chapeau">Pas une base de connaissances, pas un moteur de recherche.</p>
     <p>Un <strong>ensemble de chiffres</strong> qui servent à prédire la réponse <strong>la plus probable</strong> à la requête.</p>
   </section>
 
   <section class="slide">
-    <h1>Ces chiffres, ce sont les <em>paramètres</em></h1>
+    <h1>Ces chiffres : les <em>paramètres</em></h1>
     <p>compar:IA affiche leur nombre pour les modèles ouverts.</p>
     <p>Pour les modèles propriétaires, dont les laboratoires ne publient rien, il n'affiche qu'une classe de taille.</p>
     <p class="source">Catalogue des modèles de compar:IA, page /models.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'arène du <em>duel</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <ol>
+          <li>Vous posez une question.</li>
+          <li>Deux modèles anonymes répondent.</li>
+          <li>Vous évaluez les réponses à l'aveugle.</li>
+          <li>Les modèles sont révélés, avec le bilan de la discussion.</li>
+        </ol>
+      </div>
+      <img class="visuel" src="img/introduction-p5-9.webp" alt="Page d'accueil de compar:IA, avec le champ de question et les suggestions de prompts.">
+    </div>
+    <p class="source">comparia.beta.gouv.fr</p>
   </section>
 
 </main>

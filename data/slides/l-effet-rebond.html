@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Le paradoxe de Jevons · Les duels de l'IA</title>
+  <title>L'effet rebond · Les duels de l'IA</title>
   <link rel="stylesheet" href="slides.css">
   <script src="slides.js" defer></script>
 </head>
@@ -27,14 +27,6 @@
       <li>Tout le monde attendait une baisse de la consommation de charbon. C'est l'inverse qui est arrivé.</li>
     </ul>
     <p class="source">William Stanley Jevons, <em>The Coal Question</em>, 1865.</p>
-  </section>
-
-  <section class="slide">
-    <h1>L'économie avalée par le <em>nombre</em></h1>
-    <ul>
-      <li>Le charbon revient moins cher à l'usage. On met donc des machines partout : mines, filatures, trains, navires.</li>
-      <li>Le gain fait sur chaque machine est avalé par le nombre de machines.</li>
-    </ul>
   </section>
 
   <section class="slide">
@@ -82,7 +74,6 @@
     </div>
   </section>
 
-
   <section class="slide">
     <h1>Un agent, ce n'est pas un <em>message</em></h1>
     <p class="chapeau">Vous tapez une consigne. L'agent, lui, découpe le travail.</p>
@@ -108,24 +99,13 @@
   </section>
 
   <section class="slide">
-    <h1>L'agent passe son temps à se <em>relire</em></h1>
-    <p class="chapeau">Sur ces 3,2 milliards de jetons :</p>
-    <div class="cartes">
-      <div class="carte">
-        <h3>Relecture du contexte</h3>
-        <p class="chiffre">96 %</p>
-      </div>
-      <div class="carte">
-        <h3>Contenu neuf</h3>
-        <p class="chiffre">3,6 %</p>
-      </div>
-      <div class="carte">
-        <h3>Réponse visible</h3>
-        <p class="chiffre">0,4 %</p>
-      </div>
+    <h1>L'agent se <em>relit</em> sans arrêt</h1>
+    <p class="chapeau">Sur ces 3,2 milliards de jetons : 96 % de relecture du contexte, 3,6 % de contenu neuf, 0,4 % de réponse visible.</p>
+    <div class="nuance">
+      <p>Ces relectures passent par le <strong>cache</strong> : le fournisseur garde le contexte déjà calculé, le facture cinq à dix fois moins, et refait moins de calcul. Un jeton relu ne coûte donc pas un jeton neuf.</p>
     </div>
-    <p>Ce que vous lisez à l'écran est la plus petite part de ce que la machine a produit.</p>
-    <p class="source">Hausfather, mesure sur son propre usage, 2026.</p>
+    <p>L'ordre de grandeur tient quand même : c'est le volume qui fait la facture, pas la longueur de la réponse.</p>
+    <p class="source">Répartition mesurée par Hausfather, 2026. Les tarifs de cache sont publiés par les fournisseurs ; le gain en énergie, lui, n'est pas publié.</p>
   </section>
 
   <section class="slide">
@@ -139,18 +119,14 @@
   </section>
 
   <section class="slide">
-    <h1>Le <em>raisonnement</em> ajoute sa part</h1>
-    <div class="duo">
-      <div class="colonne">
-        <p>Un modèle de raisonnement dépense beaucoup plus de jetons pour une même question.</p>
-        <p>Le détail est dans le support <strong>Les modèles de raisonnement</strong>.</p>
-      </div>
-      <img class="visuel" src="img/IA-et-internet-p1-1.webp" alt="Barre de saisie « Poser une question », avec les boutons « Rechercher » et « Raisonner ».">
-    </div>
+    <h1>Et si <em>tout le monde</em> s'y met</h1>
+    <p>1 % de la population mondiale écrit ce texte de cinq pages chaque jour, pendant un an. Pour fournir cette électricité, il faut la production annuelle de :</p>
+    <p class="chiffre">105 éoliennes</p>
+    <p class="source">Calcul : 82 millions de personnes × 15,5 Wh × 365 jours = 464 GWh par an. Une éolienne de 2 MW à 25 % de facteur de charge produit 4,4 GWh par an. Population mondiale : ONU, <em>World Population Prospects</em> 2024. Parc éolien : RTE, bilan électrique 2025.</p>
   </section>
 
   <section class="slide">
-    <h1>Les deux faits, chez le même <em>acteur</em></h1>
+    <h1>Les deux faits, même <em>acteur</em></h1>
     <p class="chapeau">Google publie les deux, sur la même année.</p>
     <div class="compare">
       <div>
@@ -168,7 +144,7 @@
   </section>
 
   <section class="slide">
-    <h1>Le même effet à l'échelle d'un <em>pays</em></h1>
+    <h1>À l'échelle d'un <em>pays</em></h1>
     <div class="compare">
       <div>
         <h2>États-Unis, 2023</h2>
@@ -186,21 +162,12 @@
   </section>
 
   <section class="slide">
-    <h1>Dire « effet <em>rebond</em> », pas « paradoxe »</h1>
+    <h1>Un <em>rebond</em>, pas un paradoxe</h1>
     <div class="nuance">
       <p>Les deux faits sont mesurés. Le <strong>lien de cause à effet</strong>, lui, ne l'est pas.</p>
     </div>
     <p>La croissance vient aussi de l'argent investi et de fonctionnalités plus gourmandes : vidéo, raisonnement, agents.</p>
     <p class="source">Luccioni, Strubell et Crawford, « From Efficiency Gains to Rebound Effects », FAccT 2025, qui juge l'effet « hautement plausible » sans le démontrer.</p>
-  </section>
-
-  <section class="slide">
-    <h1>Un rebond <em>partiel</em></h1>
-    <ul>
-      <li>En économie de l'énergie, le rebond mesuré va de 20 à 60 %. L'efficacité économise quand même, simplement moins qu'annoncé.</li>
-      <li>Le mot « paradoxe » suppose un rebond supérieur à 100 %. Personne ne l'a montré pour l'IA.</li>
-    </ul>
-    <p class="source">Gillingham, Rapson et Wagner, <em>Review of Environmental Economics and Policy</em>, 2016, pour l'amplitude du rebond.</p>
   </section>
 
   <section class="slide">

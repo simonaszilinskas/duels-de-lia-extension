@@ -35,7 +35,7 @@
   --jaune-tournesol: #c8aa39;
 
   --display: 3.2em;
-  --titre: 1.75em;
+  --titre: 1.45em;
   --source: 0.7em;
 }
 
@@ -106,8 +106,11 @@ body { display: flex; }
   margin: 0;
   font-weight: 700;
   letter-spacing: -0.02em;
-  max-width: 26ch;
-  padding-right: 22cqw; /* laisse la place au bloc de marque */
+  max-width: 44ch;
+  text-wrap: balance;
+  /* Le bloc de marque fait 25,5cqw et déborde de la marge droite : on réserve
+     juste ce qu'il faut, sinon le titre passe à deux lignes pour rien. */
+  padding-right: 19cqw;
 }
 /* Un mot en violet dans le titre, comme sur les supports d'origine. */
 .slide h1 em { font-style: normal; color: var(--violet); }
@@ -219,7 +222,7 @@ figcaption { font-size: 1em; color: var(--gris); }
   gap: 0.7em;
 }
 .compare > * + * { border-left: 1px solid var(--trait); padding-left: 2.5cqw; }
-.compare h2 { text-align: center; }
+.compare h2 { text-align: left; }
 
 /* Cartes côte à côte. */
 .cartes { display: flex; gap: 1.4cqw; flex: 1; align-items: stretch; min-height: 0; }
@@ -521,3 +524,23 @@ figcaption { font-size: 1em; color: var(--gris); }
   color: var(--gris-fonce);
 }
 .onglets span.actif { background: #fff; font-weight: 700; color: var(--violet); }
+
+
+/* Une phrase découpée en jetons, chaque jeton dans sa pastille. */
+.jetons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
+  align-items: center;
+  font-weight: 700;
+}
+.jetons span {
+  background: var(--violet-pale);
+  color: var(--violet);
+  border-radius: 0.2em;
+  padding: 0.12em 0.4em;
+  white-space: pre;
+}
+/* L'espace fait partie du jeton suivant : c'est ce que fait le tokeniseur. */
+.jetons span.espace { background: var(--violet-clair); }
+.jetons .compte { background: none; color: var(--gris); font-weight: 400; padding-left: 0.6em; }

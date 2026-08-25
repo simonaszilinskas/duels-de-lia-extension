@@ -39,6 +39,9 @@ for (const nom of decks) {
     if (re.test(s)) fail(nom, `note d'animateur ou erratum sur la diapositive : ${re}`);
   }
 
+  // Les logos d'éditeurs arrivent sur plaque noire et ne portent aucune idée.
+  if (/alt="Logo/i.test(s)) fail(nom, "logo d'éditeur : garder le nom, pas l'image");
+
   // La salle découvre le produit tel qu'il est : on ne raconte pas son historique.
   const avantApres = [
     /(publiait|affichait|montrait|comptait|proposait|calculait|utilisait)\b/i,

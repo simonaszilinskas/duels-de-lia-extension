@@ -43,6 +43,12 @@ content script. Structure:
 </main>
 ```
 
+Les sept supports suivent un fil : ce qu'est un modèle, ce qui le fait
+consommer, comment lire le bilan d'un duel, d'où viennent les chiffres, le poids
+physique de l'IA, l'effet rebond, et ce qu'on retient. Une notion se traite dans
+un seul support : l'échelle A à F est dans « Lire le bilan », les classes de
+taille dans « Ce qui fait consommer ». Ne pas les reprendre ailleurs.
+
 Rules that matter:
 
 - Every figure carries a visible source, in a `<p class="source">`.
@@ -52,6 +58,11 @@ Rules that matter:
   reintroduce them.
 - Decks are plain text on purpose: the previous PDFs made it impossible to review or
   correct a figure.
+- Un titre tient sur une ligne. Au-delà d'une quarantaine de signes, le raccourcir.
+- Pas de logo d'éditeur : ils arrivent sur plaque noire et n'apprennent rien.
+- Un modèle non ouvert se dit « propriétaire », jamais « fermé ».
+- EcoLogits rend une énergie ; la classe A à F est une règle de compar:IA.
+- Les exemples de modèles se prennent dans le catalogue, parmi ceux en service.
 
 Run `node tools/check.mjs` after editing a deck. It catches the failures that are silent
 otherwise: an inline script (blank slide), a missing image, a deck renamed but not updated

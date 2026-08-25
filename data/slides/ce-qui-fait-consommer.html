@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ce qui fait consommer un modèle · Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
+  <section class="slide titre">
+    <h1>Ce qui fait <em>consommer</em> un modèle</h1>
+    <p class="chapeau">La taille, le texte produit, l'architecture. Et ce que la mesure en dit.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Une quantité de <em>paramètres</em></h1>
+    <p class="chiffre">8B = 8 milliards</p>
+    <p>Un paramètre est un nombre appris pendant l'entraînement. Il règle comment le modèle transforme une entrée en sortie.</p>
+    <p>Sur compar:IA, le compte s'affiche en tête de la fiche : « 8 mds de paramètres ».</p>
+    <p class="source">Fiche IBM/Granite 4.1 8B sur compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Les classes de <em>taille</em></h1>
+    <table>
+      <tr>
+        <th>Classe</th>
+        <th>Paramètres</th>
+      </tr>
+      <tr><td><strong>XS</strong></td><td>moins de 15 milliards</td></tr>
+      <tr><td><strong>S</strong></td><td>de 15 à 60 milliards</td></tr>
+      <tr><td><strong>M</strong></td><td>de 60 à 100 milliards</td></tr>
+      <tr><td><strong>L</strong></td><td>de 100 à 400 milliards</td></tr>
+      <tr><td><strong>XL</strong></td><td>plus de 400 milliards</td></tr>
+    </table>
+    <p class="source">Seuils de classe de taille appliqués par compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Quatre modèles, <em>quatre tailles</em></h1>
+    <table>
+      <tr>
+        <th>Modèle</th>
+        <th>Paramètres</th>
+        <th>Classe</th>
+      </tr>
+      <tr>
+        <td>Anthropic/Claude Sonnet 5</td>
+        <td>non publié</td>
+        <td><span class="badge-taille">Taille estimée XL</span></td>
+      </tr>
+      <tr>
+        <td>Mistral AI/Mistral Small 4</td>
+        <td>119 milliards</td>
+        <td><strong>L</strong></td>
+      </tr>
+      <tr>
+        <td>Swiss AI/Apertus 70B</td>
+        <td>70 milliards</td>
+        <td><strong>M</strong></td>
+      </tr>
+      <tr>
+        <td>Google/Gemma 4 26B A4B</td>
+        <td>26 milliards</td>
+        <td><strong>S</strong></td>
+      </tr>
+    </table>
+    <p class="source">Catalogue compar:IA, modèles en service. Lettres calculées avec les seuils de la diapositive suivante.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le texte devient des <em>jetons</em></h1>
+    <p class="chapeau">Le modèle ne lit pas des lettres ni des mots : il lit des morceaux.</p>
+    <div class="jetons"><span>Salut</span><span class="compte">1 jeton</span></div>
+    <div class="jetons"><span>Salut</span><span>,</span><span class="espace"> ça</span><span class="espace"> va</span><span class="espace"> ?</span><span class="compte">5 jetons</span></div>
+    <div class="jetons"><span>anti</span><span>constitution</span><span>nel</span><span>lement</span><span class="compte">4 jetons</span></div>
+    <p>Un mot courant tient en un jeton. Un mot rare est découpé. L'espace part avec le morceau qui suit.</p>
+    <p class="source">Découpage indicatif : les tokeniseurs varient d'un modèle à l'autre. Sur compar:IA, un jeton vaut à peu près quatre lettres.</p>
+  </section>
+
+  <section class="slide">
+    <h1>À quoi servent les <em>jetons</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Découper</h3>
+        <p>Le texte devient des morceaux que le modèle sait traiter.</p>
+      </div>
+      <div class="carte">
+        <h3>Mesurer</h3>
+        <p>Ils disent ce que le modèle peut traiter d'un coup.</p>
+      </div>
+      <div class="carte">
+        <h3>Facturer</h3>
+        <p>Le coût d'utilisation se compte au jeton, en entrée et en sortie.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Les <em>mélanges d'experts</em></h1>
+    <p class="chapeau">Plusieurs experts dans un même modèle, dont une poignée seulement travaille pour chaque jeton.</p>
+    <ol>
+      <li>Le jeton entre.</li>
+      <li>Un routeur choisit les experts les plus adaptés.</li>
+      <li>Seuls ceux-là calculent.</li>
+      <li>La sortie part.</li>
+    </ol>
+  </section>
+
+  <section class="slide">
+    <h1>Au total, et vraiment <em>actifs</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Au total</h2>
+        <p class="chiffre">119 mds</p>
+        <p class="chapeau">Tout doit tenir dans la mémoire de la machine.</p>
+      </div>
+      <div>
+        <h2>Actifs par jeton</h2>
+        <p class="chiffre">6 mds</p>
+        <p class="chapeau">Seuls ceux-là calculent, et dépensent de l'électricité.</p>
+      </div>
+    </div>
+    <p>La fiche d'un modèle ouvert en mélange d'experts porte la ligne <strong>« Dont N mds actifs »</strong>.</p>
+    <p class="source">Fiche de Mistral AI/Mistral Small 4 sur compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Avantages et <em>limites</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Avantages</h2>
+        <ul>
+          <li>Moins de calcul pour chaque jeton produit.</li>
+          <li><strong>45 % d'électricité en moins</strong> qu'un modèle dense de taille comparable.</li>
+          <li>Donc moins cher à utiliser.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Désavantages</h2>
+        <ul>
+          <li>Prend beaucoup de place dans la mémoire de la machine.</li>
+          <li>Plus complexe à développer.</li>
+          <li>Peut moins bien généraliser.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="source">Arcep et PEReN, mai 2026, pour l'écart moyen entre mélanges d'experts et modèles denses de taille équivalente.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux façons de <em>répondre</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Modèle « classique »</h2>
+        <p>Il écrit la réponse directement. Ce que vous lisez, c'est tout ce qu'il a produit.</p>
+      </div>
+      <div>
+        <h2>Modèle de raisonnement</h2>
+        <p>Il écrit d'abord un brouillon pour lui-même : il pose le problème, essaie, se corrige. Puis il rédige la réponse.</p>
+      </div>
+    </div>
+    <p>Même architecture, mêmes paramètres : seule change la quantité de texte produite.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le brouillon, à <em>l'écran</em></h1>
+    <p class="chapeau">À gauche, le raisonnement déplié ; à droite, la réponse directe. Le brouillon est souvent replié ou caché.</p>
+    <div class="plein">
+      <img class="visuel" src="img/modeles-de-raisonnement-p1-2.webp" alt="Deux réponses côte à côte : à gauche, un modèle de raisonnement avec un bloc « Raisonnement » déplié où il se parle à lui-même ; à droite, un modèle classique qui donne directement des reformulations.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Le brouillon se <em>paie</em> aussi</h1>
+    <div class="compare">
+      <div>
+        <h2>Réponse directe</h2>
+        <p class="chiffre">38</p>
+        <p>jetons produits par question.</p>
+      </div>
+      <div>
+        <h2>Réponse raisonnée</h2>
+        <p class="chiffre">543</p>
+        <p>jetons de réflexion par question, avant la réponse.</p>
+      </div>
+    </div>
+    <p>Ces jetons de réflexion sont des <strong>jetons de sortie</strong>, comme la réponse. Invisibles pour le lecteur, ils comptent dans le total.</p>
+    <p class="source">Dauner et Socher, « Energy costs of communicating with AI », <em>Frontiers in Communication</em>, 2025.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Trois leviers, une fois <em>mesurés</em></h1>
+    <p class="chapeau">Le régulateur français a fait tourner 22 modèles ouverts sur un même calculateur.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Mélange d'experts</h3>
+        <p class="chiffre">− 45 %</p>
+        <p>face à un modèle dense de taille comparable.</p>
+      </div>
+      <div class="carte">
+        <h3>Quantification</h3>
+        <p class="chiffre">− 39 %</p>
+        <p>en arrondissant les paramètres à 8 ou 4 bits.</p>
+      </div>
+      <div class="carte">
+        <h3>Raisonnement</h3>
+        <p class="chiffre">+ 92 %</p>
+        <p>quand le mode réflexion est activé.</p>
+      </div>
+    </div>
+    <p class="source">Arcep et PEReN, mai 2026. Moyennes sur 22 modèles ouverts, calculateur Jean Zay.</p>
+  </section>
+
+  <section class="slide">
+    <h1>La taille ne dit pas <em>tout</em></h1>
+    <p class="chapeau">Le régulateur français a fait tourner 22 modèles ouverts sur un même calculateur, à usage et matériel identiques.</p>
+    <ul>
+      <li>Des modèles de tailles très différentes peuvent dépenser autant l'un que l'autre.</li>
+      <li>Des modèles à faible consommation obtiennent des résultats équivalents à des modèles bien plus gourmands.</li>
+    </ul>
+    <p>Choisir sobre ne revient donc pas forcément à sacrifier la qualité.</p>
+    <p class="source">Arcep et PEReN, « Intelligence artificielle générative : quels défis environnementaux ? », mai 2026. Modèles de 3 à 123 milliards de paramètres, calculateur Jean Zay.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux modèles, la <em>démonstration</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Alibaba/Qwen 3.5 35B A3B</h2>
+        <p><strong>35 mds</strong>, dont 3 actifs.</p>
+        <div class="chevron b">B</div>
+      </div>
+      <div>
+        <h2>Swiss AI/Apertus 70B</h2>
+        <p><strong>70 mds</strong>, tous actifs.</p>
+        <div class="chevron c">C</div>
+      </div>
+    </div>
+    <p>Deux fois moins de paramètres, quatre fois moins d'énergie par jeton, et une classe d'écart. Les deux sont dans l'arène.</p>
+    <p class="source">Catalogue compar:IA : 166 Wh par million de jetons pour le premier, 658 pour le second.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'il faut <em>retenir</em></h1>
+    <ul>
+      <li>Le compteur, ce sont les <strong>jetons</strong> produits. Une réponse longue coûte plus qu'une réponse courte.</li>
+      <li>Un mélange d'experts n'active qu'une part de ses paramètres : 45 % d'électricité en moins qu'un dense de taille comparable.</li>
+      <li>Les plus grands modèles restent les plus gourmands, mais entre tailles voisines le classement se joue ailleurs.</li>
+      <li>Le raisonnement se réserve aux questions qui le méritent.</li>
+    </ul>
+  </section>
+
+</main>
+</body>
+</html>

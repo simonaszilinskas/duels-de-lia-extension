@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le poids physique de l'IA · Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
+  <section class="slide titre">
+    <h1>Le poids <em>physique</em> de l'IA</h1>
+    <p class="chapeau">Des machines, un bâtiment, de l'électricité, de l'eau, des métaux.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Un impact <em>invisible</em></h1>
+    <p class="chapeau">Rien à l'écran ne dit ce qu'une réponse a coûté.</p>
+    <p>Pas de compteur, pas de facture, pas de bruit de moteur. L'électricité est dépensée à des milliers de kilomètres, dans un bâtiment que personne ne visite.</p>
+    <p>C'est ce que cet atelier rend visible.</p>
+  </section>
+
+  <section class="slide">
+    <h1>À chaque question, des <em>calculs</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Générer du texte, pour un ordinateur, c'est enchaîner des multiplications de tableaux de chiffres, des milliers de fois par réponse.</p>
+        <p>N'essayez pas de les faire de tête.</p>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p1-1.webp" alt="Schéma des étapes de calcul d'un modèle de langage : les jetons entrent, sont convertis en vecteurs, passent par des têtes d'attention puis une couche MLP, et ressortent en logits. Chaque étape porte sa formule.">
+    </div>
+    <p class="source">Schéma tiré de « A Mathematical Framework for Transformer Circuits », Anthropic, 2021.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Gros modèle, grosse <em>machine</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p class="chapeau">Ce qui compte, c'est la mémoire qu'il faut pour charger les paramètres.</p>
+        <ul>
+          <li>Un smartphone : jusqu'à 3 Go.</li>
+          <li>Un ordinateur portable : jusqu'à 16 Go, pour un petit modèle.</li>
+        </ul>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p2-4.webp" alt="Un ordinateur portable argenté, ouvert, vu de trois quarts, écran allumé.">
+    </div>
+    <p class="source">Seuils affichés par compar:IA dans la fiche « Matériel nécessaire » de chaque modèle.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Au-delà, des <em>cartes graphiques</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Une tour</h2>
+        <img class="visuel" src="img/pourquoi-ca-consomme-p2-2.webp" alt="Une tour d'ordinateur noire, façade ajourée soulignée d'un liseré lumineux orange.">
+        <p>Une carte graphique, jusqu'à 80 Go, pour un modèle moyen.</p>
+      </div>
+      <div>
+        <h2>Un serveur</h2>
+        <img class="visuel" src="img/pourquoi-ca-consomme-p2-5.webp" alt="Un serveur en rack ouvert, surmonté de quatre modules de calcul prêts à être glissés dedans.">
+        <p>Plusieurs cartes, au-delà de 80 Go, pour un grand modèle.</p>
+      </div>
+    </div>
+    <p class="source">Seuils affichés par compar:IA, fiche « Matériel nécessaire », à 80 Go par carte graphique.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que consomme un <em>centre</em></h1>
+    <p>Un centre orienté IA consomme autant d'électricité que :</p>
+    <p class="chiffre">100 000 ménages</p>
+    <p>Les plus grands, en construction aujourd'hui, en consommeront <strong>20 fois plus</strong>, soit deux millions de ménages.</p>
+    <p class="source">Agence internationale de l'énergie, « Energy and AI », avril 2025. Le rapport parle d'un centre « type », pas d'un centre quelconque.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Rallumer une centrale <em>nucléaire</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>En septembre 2024, Microsoft a signé un contrat d'achat d'électricité sur <strong>20 ans</strong> avec Constellation Energy, propriétaire de la centrale de Three Mile Island.</p>
+        <p class="chiffre">835 MW</p>
+        <p>promis à des centres de données.</p>
+        <div class="nuance">
+          <p>Microsoft n'a pas acheté la centrale, et le réacteur n'a pas redémarré : il attend une décision de licence prévue en 2027.</p>
+        </div>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p4-7.webp" alt="Les tours de refroidissement de la centrale nucléaire de Three Mile Island, en Pennsylvanie : un panache de vapeur blanche et un drapeau américain.">
+    </div>
+    <p class="source">Constellation Energy, communiqué du 20 septembre 2024. Département américain de l'Énergie, « Crane Restart ».</p>
+  </section>
+
+  <section class="slide">
+    <h1>Et des matières <em>premières</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>L'essor de l'IA fera passer la part des centres de données dans la demande annuelle de cuivre :</p>
+        <table>
+          <tr>
+            <th>Aujourd'hui</th>
+            <th>D'ici 2050</th>
+          </tr>
+          <tr>
+            <td>moins de 1 %</td>
+            <td>6 à 7 %</td>
+          </tr>
+        </table>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p5-8.webp" alt="Faisceaux de câbles réseau de couleur reliant des baies dans un centre de données.">
+    </div>
+    <p class="source">Pourcentages donnés au Financial Times par la directrice financière de BHP, septembre 2024.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le cuivre manque <em>ailleurs</em></h1>
+    <p>En tonnes : de 0,5 à 3 millions par an, la production cumulée des quatre plus grandes mines du monde.</p>
+    <p>Or la <strong>transition énergétique</strong> a besoin du même métal, au même moment.</p>
+    <div class="nuance">
+      <p>BHP est le premier minier mondial, et il vend du cuivre.</p>
+    </div>
+    <p class="source">BHP Insights, « Why AI tools and data centres are driving copper demand », janvier 2025.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Prélever n'est pas <em>consommer</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Prélèvement</h2>
+        <p>L'eau prise à la rivière ou au réseau. Une bonne part y retourne.</p>
+      </div>
+      <div>
+        <h2>Consommation</h2>
+        <p>La part qui ne revient pas, évaporée dans les tours de refroidissement.</p>
+      </div>
+    </div>
+    <p>Les deux mots sont souvent confondus. Les chiffres les plus spectaculaires portent le plus souvent sur des prélèvements.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'ordre de grandeur, en <em>France</em></h1>
+    <p class="chiffre">6,5 millions de m³</p>
+    <p class="chapeau">Eau prélevée ou consommée en 2024 par l'ensemble des centres de données français, tous usages confondus, pas seulement l'IA.</p>
+    <p>Soit la consommation annuelle moyenne d'un peu plus de 100 000 personnes, sur 68 millions d'habitants.</p>
+    <p class="source">Arcep, enquête « Pour un numérique soutenable », données 2024. Le volume progresse d'environ 8 % en un an.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le sujet est <em>local</em></h1>
+    <div class="nuance">
+      <p>À l'échelle d'un pays, le chiffre est petit. À l'échelle d'une commune déjà en tension sur l'eau, un seul centre peut créer un conflit d'usage réel.</p>
+    </div>
+    <p>C'est la moyenne nationale qui trompe, et elle trompe dans les deux sens.</p>
+    <p class="source">Arcep et PEReN, mai 2026, qui citent les oppositions aux Pays-Bas et l'effet du changement climatique sur le cycle de l'eau.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Moins d'électricité, plus d'<em>eau</em></h1>
+    <p class="chapeau">Les deux ressources tirent souvent en sens inverse.</p>
+    <div class="compare">
+      <div>
+        <h2>Refroidir par air</h2>
+        <p>Peu d'eau, beaucoup d'électricité pour la ventilation.</p>
+      </div>
+      <div>
+        <h2>Refroidir par liquide</h2>
+        <p>Jusqu'à 50 % d'électricité de refroidissement en moins, mais souvent plus d'eau.</p>
+      </div>
+    </div>
+    <p class="source">Patel et coll., 2025, cités par l'Arcep, mai 2026. Un centre qui ne refroidit pas à l'eau a un indicateur WUE nul.</p>
+  </section>
+
+  <section class="slide">
+    <h1>La bouteille d'eau par <em>message</em></h1>
+    <p class="chapeau">Vous entendrez ce chiffre dans la salle.</p>
+    <p>Google mesure 0,26 mL par requête médiane, Mistral AI 45 mL en comptant l'eau dépensée en amont. Selon le périmètre, la demi-bouteille demande deux mille messages, ou une dizaine.</p>
+    <div class="nuance">
+      <p>Le chiffre ne dit rien sans son périmètre.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Le même kWh, pas le même <em>carbone</em></h1>
+    <p class="chapeau">C'est l'électricité du pays d'hébergement qui compte, pas celle des utilisateurs.</p>
+    <div class="compare">
+      <div>
+        <h2>France</h2>
+        <p class="chiffre">41 g</p>
+        <p>de CO₂ par kWh produit, en 2024.</p>
+      </div>
+      <div>
+        <h2>États-Unis</h2>
+        <p class="chiffre">384 g</p>
+        <p>de CO₂ par kWh produit, en 2024. <strong>Neuf fois plus.</strong></p>
+      </div>
+    </div>
+    <p class="source">Ember, <em>Global Electricity Review</em>, 2025, même méthode pour les deux pays. RTE publie 20 g pour la France en comptant les seules émissions directes de production ; l'écart avec Ember vient du bois-énergie.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Des serveurs surtout <em>américains</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Les principaux éditeurs de modèles sont des entreprises américaines. Leurs centres de données se concentrent donc sur le territoire américain.</p>
+        <p>À modèle égal et à réponse égale, le carbone dépend de la <strong>prise de courant</strong>.</p>
+      </div>
+      <img class="visuel" src="img/localisation-des-serveurs-p2-1.webp" alt="Allée d'un centre de données bordée de canalisations de refroidissement peintes en bleu, rouge, jaune et vert.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>La France a un <em>atout</em></h1>
+    <p class="chapeau">Son mix électrique est largement décarboné, porté par le nucléaire.</p>
+    <p>Un serveur qui tourne en France émet donc peu, à calcul égal.</p>
+    <div class="nuance">
+      <p>Mais la place sur le réseau n'est pas illimitée : les raccordements de centres de données entrent en concurrence avec l'électrification des transports et de l'industrie.</p>
+    </div>
+    <p class="source">RTE a mis en consultation la refonte des règles de raccordement, citée par l'Arcep, mai 2026.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que l'écran ne <em>mesure pas</em></h1>
+    <div class="nuance">
+      <p>compar:IA calcule sur le <strong>mix électrique mondial moyen</strong>, jamais sur celui du pays d'hébergement. Le bilan affiche donc une <strong>énergie</strong>, pas des émissions.</p>
+    </div>
+    <p>Il faudrait savoir où chaque fournisseur fait tourner ses serveurs. Presque aucun ne le publie site par site. Le débat reste donc entier.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'il faut <em>retenir</em></h1>
+    <ul>
+      <li>Une réponse mobilise une machine réelle, dans un bâtiment réel, branché à un réseau réel.</li>
+      <li>L'eau et l'électricité tirent en sens inverse : refroidir autrement, c'est déplacer le problème.</li>
+      <li>À l'échelle d'un pays, les volumes sont modestes. À l'échelle d'une commune, ils peuvent ne pas l'être.</li>
+      <li>Le bilan de compar:IA suppose le <strong>mix mondial moyen</strong>, pas celui du pays d'hébergement.</li>
+    </ul>
+  </section>
+
+</main>
+</body>
+</html>
