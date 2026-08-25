@@ -39,6 +39,19 @@ for (const nom of decks) {
     if (re.test(s)) fail(nom, `note d'animateur ou erratum sur la diapositive : ${re}`);
   }
 
+  // La salle découvre le produit tel qu'il est : on ne raconte pas son historique.
+  const avantApres = [
+    /(publiait|affichait|montrait|comptait|proposait|calculait|utilisait)\b/i,
+    /plus aucun CO/i,
+    /n['’]affiche plus/i,
+    /ne montre plus/i,
+    /\bavant la refonte\b/i,
+    /\bnouvelle version du site\b/i,
+  ];
+  for (const re of avantApres) {
+    if (re.test(s)) fail(nom, `comparaison avant/après sur compar:IA : ${re}`);
+  }
+
   // Le produit n'affiche plus de CO2 : ne pas réintroduire l'ancien discours.
   for (const mot of ['tonnes de CO', 'baguette', 'Paris - NYC', 'Paris-NYC', 'mangue', 'piscine']) {
     if (s.includes(mot)) fail(nom, `vocabulaire de l'ancien écran CO2 : « ${mot} »`);
