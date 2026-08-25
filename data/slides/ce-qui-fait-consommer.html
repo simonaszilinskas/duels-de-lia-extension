@@ -91,27 +91,22 @@
       <svg class="graphe schema" viewBox="0 0 1000 300" role="img" aria-labelledby="s-boucle">
       <title id="s-boucle">Schema : le texte est decoupe en jetons, le modele en produit un seul a la fois, et chaque jeton produit repart en entree avec tout ce qui precede.</title>
       <defs><marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
-      <rect class="b-clair" x="0" y="48" width="170" height="84" rx="9"/>
-      <text class="s-titre" x="85.0" y="88.0" text-anchor="middle">Salut, ça va ?</text>
-      <text class="s-sous" x="85.0" y="114.0" text-anchor="middle">votre message</text>
-      <line class="s-fleche" x1="180" y1="90.0" x2="214" y2="90.0" marker-end="url(#fl)"/>
-      <rect class="b-clair" x="224" y="48" width="120" height="84" rx="9"/>
-      <text class="s-titre" x="284.0" y="88.0" text-anchor="middle">5 jetons</text>
-      <text class="s-sous" x="284.0" y="114.0" text-anchor="middle">le découpage</text>
-      <line class="s-fleche" x1="354" y1="90.0" x2="388" y2="90.0" marker-end="url(#fl)"/>
-      <rect class="b-plein" x="398" y="30" width="186" height="120" rx="9"/>
-      <text class="s-titre sur-plein" x="491.0" y="88.0" text-anchor="middle">Le modèle</text>
-      <text class="s-sous sur-plein" x="491.0" y="114.0" text-anchor="middle">un seul passage</text>
-      <line class="s-fleche" x1="594" y1="90.0" x2="628" y2="90.0" marker-end="url(#fl)"/>
-      <rect class="b-clair" x="638" y="48" width="190" height="84" rx="9"/>
-      <text class="s-titre" x="733.0" y="88.0" text-anchor="middle">1 jeton</text>
-      <text class="s-sous" x="733.0" y="114.0" text-anchor="middle">la suite la plus probable</text>
-      <line class="s-fleche" x1="838" y1="90.0" x2="872" y2="90.0" marker-end="url(#fl)"/>
-      <rect class="b-clair" x="882" y="48" width="118" height="84" rx="9"/>
-      <text class="s-titre" x="941.0" y="88.0" text-anchor="middle">…</text>
-      <text class="s-sous" x="941.0" y="114.0" text-anchor="middle">la réponse</text>
-      <path class="s-boucle" d="M733 132 V244 H491 V162" marker-end="url(#fl)"/>
-      <text class="s-sous" x="612" y="272" text-anchor="middle">le jeton produit repart en entrée, avec tout ce qui précède</text>
+      <rect class="b-clair" x="0" y="54" width="214" height="76" rx="9"/>
+      <text class="s-titre" x="107.0" y="100.0" text-anchor="middle">Salut, ça va ?</text>
+      <line class="s-fleche" x1="226" y1="92.0" x2="262" y2="92.0" marker-end="url(#fl)"/>
+      <rect class="b-clair" x="274" y="54" width="150" height="76" rx="9"/>
+      <text class="s-titre" x="349.0" y="100.0" text-anchor="middle">5 jetons</text>
+      <line class="s-fleche" x1="436" y1="92.0" x2="472" y2="92.0" marker-end="url(#fl)"/>
+      <rect class="b-plein" x="484" y="38" width="190" height="108" rx="9"/>
+      <text class="s-titre sur-plein" x="579.0" y="100.0" text-anchor="middle">Le modèle</text>
+      <line class="s-fleche" x1="686" y1="92.0" x2="722" y2="92.0" marker-end="url(#fl)"/>
+      <rect class="b-clair" x="734" y="54" width="150" height="76" rx="9"/>
+      <text class="s-titre" x="809.0" y="100.0" text-anchor="middle">1 jeton</text>
+      <line class="s-fleche" x1="896" y1="92.0" x2="932" y2="92.0" marker-end="url(#fl)"/>
+      <rect class="b-clair" x="944" y="54" width="56" height="76" rx="9"/>
+      <text class="s-titre" x="972.0" y="100.0" text-anchor="middle">…</text>
+      <path class="s-boucle" d="M809 130 V232 H579 V166" marker-end="url(#fl)"/>
+      <text class="s-sous" x="694" y="262" text-anchor="middle">et tout repart en entrée, avec ce qui précède</text>
       </svg>
     <p>Le modèle ne rédige pas une réponse : il ajoute un jeton, puis relit tout, puis en ajoute un autre.</p>
     <p class="source">Une réponse de trois cents mots demande de l'ordre de quatre cents tours de cette boucle. C'est pourquoi la consommation se compte par jeton produit, et non par message.</p>

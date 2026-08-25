@@ -558,11 +558,15 @@ figcaption { font-size: 1em; color: var(--gris); }
   width: 100%;
   overflow: visible;
 }
+/* Les tailles sont en unités du dessin, pas en cqw : un libellé posé en unité
+   de page ne suit pas l'échelle du SVG, et déborde de sa boîte dès que le
+   dessin est contraint par la hauteur ou que le navigateur impose une taille
+   de police minimale. */
 .graphe text { font-family: inherit; fill: var(--gris-fonce); }
-.g-tick { font-size: 1.05cqw; fill: var(--gris); }
-.g-axe-titre { font-size: 1.05cqw; fill: var(--gris); }
-.g-etiq { font-size: 1.1cqw; fill: var(--encre); font-weight: 700; }
-.g-classe { font-size: 1.5cqw; font-weight: 700; dominant-baseline: middle; }
+.g-tick { font-size: 15px; fill: var(--gris); }
+.g-axe-titre { font-size: 15px; fill: var(--gris); }
+.g-etiq { font-size: 16px; fill: var(--encre); font-weight: 700; }
+.g-classe { font-size: 21px; font-weight: 700; dominant-baseline: middle; }
 .g-axe { stroke: var(--trait); stroke-width: 1.5; }
 .g-grille { stroke: var(--trait); stroke-width: 1; stroke-dasharray: 3 4; }
 .g-pt { fill: var(--violet); }
@@ -717,15 +721,15 @@ figcaption { font-size: 1em; color: var(--gris); }
 /* --- Schémas : boîtes reliées par des flèches ------------------------------ */
 .schema .b-clair { fill: var(--violet-clair); stroke: var(--violet-pale); stroke-width: 2; }
 .schema .b-plein { fill: var(--violet); }
-.schema .s-titre { font-size: 1.35cqw; font-weight: 700; fill: var(--encre); }
-.schema .s-sous { font-size: 1.05cqw; fill: var(--gris); }
+.schema .s-titre { font-size: 22px; font-weight: 700; fill: var(--encre); }
+.schema .s-sous { font-size: 17px; fill: var(--gris); }
 .schema .s-fleche, .schema .s-boucle { stroke: var(--gris); stroke-width: 2; fill: none; }
 .schema .s-boucle { stroke-dasharray: 5 4; }
 .schema .sur-plein { fill: #fff; opacity: 1; }
 .schema text.s-sous.sur-plein { fill: #fff; opacity: 0.8; }
 
 /* Le chiffre à retenir, posé dans un schéma. */
-.schema .g-chiffre { font-size: 3cqw; font-weight: 700; fill: var(--violet); letter-spacing: -0.02em; }
+.schema .g-chiffre { font-size: 46px; font-weight: 700; fill: var(--violet); letter-spacing: -0.02em; }
 
 /* --- Le cycle de vie, une étape éclairée -----------------------------------
    Les segments sont de largeur égale à dessein : la part réelle de chaque
