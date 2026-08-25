@@ -8,11 +8,7 @@
     {
       "matches": [
         "*://*.comparia.beta.gouv.fr/*",
-        "*://comparia.beta.gouv.fr/*",
-        "http://localhost/*",
-        "http://localhost:*/*",
-        "http://127.0.0.1/*",
-        "http://127.0.0.1:*/*"
+        "*://comparia.beta.gouv.fr/*"
       ],
       "js": [
         "js/content-redesign.js"
@@ -33,11 +29,7 @@
       ],
       "matches": [
         "*://*.comparia.beta.gouv.fr/*",
-        "*://comparia.beta.gouv.fr/*",
-        "http://localhost/*",
-        "http://localhost:*/*",
-        "http://127.0.0.1/*",
-        "http://127.0.0.1:*/*"
+        "*://comparia.beta.gouv.fr/*"
       ]
     }
   ],

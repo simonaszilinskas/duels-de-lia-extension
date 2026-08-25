@@ -10,13 +10,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a **no-build, vanilla JS/CSS** Chrome extension. There is no bundler, transpiler, or package manager.
 
-**To test:** Load as an unpacked extension in `chrome://extensions/` (enable Developer Mode), then navigate to `https://comparia.beta.gouv.fr`. The arena is at the site root; the model catalogue is at `/models`. The content script also injects on `localhost`, so it can be tested against a local compar:IA build.
+**To test:** Load as an unpacked extension in `chrome://extensions/` (enable Developer Mode), then navigate to `https://comparia.beta.gouv.fr`. The arena is at the site root; the model catalogue is at `/models`.
 
 **To reload after changes:** Click the refresh icon on the extension card in `chrome://extensions/`, then refresh the target page.
 
 ## Architecture
 
-- **`manifest.json`**: Manifest V3 config. The content script auto-injects on `comparia.beta.gouv.fr`, its subdomains, `localhost`, and `127.0.0.1` (with or without an explicit port).
+- **`manifest.json`**: Manifest V3 config. The content script auto-injects on `comparia.beta.gouv.fr` and its subdomains.
 - **`js/content-redesign.js`**: main content script (single IIFE). Creates the FAB button, draggable panel, and all views (main grid, prompts/personas, debate cards, FAQ, resources, feedback, debate final). All DOM is built programmatically.
 - **`css/new-styles.css`**: all styles injected into the host page, prefixed with `duelsia-` to avoid conflicts.
 - **`data/content-data.json`**: all workshop content (steps, personas/prompts, debate cards, FAQ Q&A, resource links). This is the primary file to edit when updating content.
