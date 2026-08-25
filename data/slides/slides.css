@@ -767,3 +767,7 @@ figcaption { font-size: 1em; color: var(--gris); }
   font-weight: 700;
   flex-grow: 1.4;
 }
+
+/* Tableau resserré : au-delà de cinq lignes, l'interligne par défaut fait
+   déborder la diapositive dès que le navigateur impose une police plancher. */
+.slide table.serre th, .slide table.serre td { padding: 0.3em 0.7em 0.3em 0; }

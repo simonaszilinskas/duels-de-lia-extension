@@ -372,6 +372,11 @@
               "emoji": "⚖️",
               "question": "Pourquoi deux fournisseurs annoncent-ils des chiffres si différents ?",
               "answer": "Le plus souvent parce qu'ils ne comptent pas la même chose. Sur l'eau, Google mesure le **refroidissement sur site** et annonce 0,26 mL par requête ; Mistral AI mène une analyse de cycle de vie qui remonte à la production d'électricité et à la fabrication des serveurs, et annonce 45 mL. Même effet à l'échelle d'un pays : dans l'évaluation ADEME et Arcep de janvier 2025, ajouter les centres de données étrangers qui servent les usages français relève le total de près de moitié, sans qu'aucune mesure change."
+            },
+            {
+              "emoji": "🇫🇷",
+              "question": "Et Albert, l'IA de l'État ?",
+              "answer": "Albert n'est pas ouvert au public. L'API est réservée aux administrations, sur demande auprès de la DINUM. L'assistant conversationnel est resté au stade du pilote, avec environ 10 000 agents jusqu'à juin 2026, et il ne sera pas généralisé sous sa forme actuelle. Les agents publics disposant d'un compte LaSuite peuvent s'inscrire sur une liste d'attente."
             }
           ]
         }
