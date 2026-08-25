@@ -103,21 +103,15 @@
 
   <section class="slide">
     <h1>Ce que le bilan <em>affiche</em></h1>
-    <div class="cartes">
-      <div class="carte">
-        <h3>Texte généré</h3>
-        <p>Le nombre de jetons produits. Un jeton vaut à peu près quatre lettres.</p>
-      </div>
-      <div class="carte">
-        <h3>Coût</h3>
-        <p>Le tarif public du modèle, entrée et sortie comprises.</p>
-      </div>
-      <div class="carte">
-        <h3>Énergie</h3>
-        <p class="chiffre">mWh</p>
-        <p>L'énergie de génération estimée, en milliwattheures.</p>
+    <div class="bilan">
+      <h2>Bilan <span class="scenario">de cette discussion ⌄</span></h2>
+      <div class="infocards">
+        <div class="infocard"><h4>Texte généré</h4><b>800 jetons</b><small>Contexte max : 1 000 k jetons</small></div>
+        <div class="infocard"><h4>Coût</h4><b>0,007 €</b><small>Tarif standard</small></div>
+        <div class="infocard"><h4>Énergie de génération estimée</h4><b>3 145 mWh</b><span class="hausse">▲ ≈ 46,6× plus d'énergie que l'autre modèle</span></div>
       </div>
     </div>
+    <p class="source">Valeurs réelles pour Anthropic/Claude Sonnet 5 face à Google/Gemma 4 26B A4B.</p>
   </section>
 
   <section class="slide">
@@ -184,21 +178,13 @@
 
   <section class="slide">
     <h1>Trois <em>équivalences</em> pour se figurer l'énergie</h1>
-    <div class="cartes">
-      <div class="carte">
-        <h3>Streaming vidéo</h3>
-        <p>Référence : 80 W pour une heure de lecture.</p>
-      </div>
-      <div class="carte">
-        <h3>Ampoule LED</h3>
-        <p>Référence : 6 W allumés.</p>
-      </div>
-      <div class="carte">
-        <h3>Batterie de smartphone</h3>
-        <p>Référence : 15 Wh pour une charge complète.</p>
-      </div>
+    <div class="onglets"><span>Explication</span><span class="actif">Équivalences</span></div>
+    <div class="equiv">
+      <div class="video"><h3>Streaming vidéo</h3><b>140 s</b><small>référence 80 Wh par heure</small></div>
+      <div class="led"><h3>Ampoule LED</h3><b>31 min</b><small>ampoule de 6 W</small></div>
+      <div class="batterie"><h3>Batterie de smartphone</h3><b>21 %</b><small>batterie de 15 Wh</small></div>
     </div>
-    <p class="source">Équivalences de l'onglet du même nom, exprimées en énergie et non en carbone.</p>
+    <p class="source">Valeurs du produit pour les 3 145 mWh de la diapositive précédente. Ces équivalences sont en énergie, pas en carbone.</p>
   </section>
 
   <section class="slide">

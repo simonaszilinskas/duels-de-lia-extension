@@ -206,9 +206,9 @@
               "type": "slides"
             },
             {
-              "emoji": "🤖",
-              "title": "DeepSeek est-il frugal ?",
-              "url": "data/slides/deepseek-est-il-frugal.html",
+              "emoji": "🧾",
+              "title": "Lire le bilan d'un duel",
+              "url": "data/slides/lire-le-bilan.html",
               "type": "slides"
             },
             {
@@ -363,6 +363,21 @@
               "emoji": "🛠️",
               "question": "Qu'est-ce que la quantification ?",
               "answer": "Arrondir les paramètres d'un modèle : passer de 16 bits à 8, ou à 4, comme on garderait moins de décimales. Le modèle occupe moins de mémoire, calcule plus vite et dépense **39 % d'électricité en moins** en moyenne à l'inférence, sans que la qualité s'effondre. C'est le levier le plus discret des trois : il ne change ni la taille annoncée, ni ce que voit l'utilisateur. Source : Arcep et PEReN, mai 2026."
+            },
+            {
+              "emoji": "🤖",
+              "question": "Un agent d'IA, ça consomme combien ?",
+              "answer": "Bien plus qu'un message. Un agent découpe votre consigne en étapes : il lit des fichiers, appelle des outils, relit ses propres notes, se corrige. Une seule consigne déclenche des dizaines d'allers-retours avec le modèle. Zeke Hausfather a mesuré huit semaines de son propre usage : **1 138 consignes, plus de 14 000 appels au modèle, environ 170 kWh**, soit **~150 Wh par consigne**, à peu près **600 fois** un message de chat médian. Il annonce lui-même une incertitude d'un facteur 2. Détail frappant : **96 % des jetons servent à relire le contexte**, 3,6 % au contenu neuf, 0,4 % à la réponse visible."
+            },
+            {
+              "emoji": "📉",
+              "question": "Le scénario « session de code agentique » donne-t-il le vrai coût ?",
+              "answer": "Non, c'est un **plancher**. Le scénario compte 450 k jetons en entrée et 50 k en sortie, mais l'estimation d'énergie ne retient que la **sortie**. Or c'est justement en entrée qu'un agent dépense presque tout, à relire son contexte. Le chiffre affiché est donc le plus bas là où le coût réel est le plus haut. Le produit prévient d'ailleurs : hypothèse d'exécution **sans cache**."
+            },
+            {
+              "emoji": "📇",
+              "question": "Comment lire la fiche d'un modèle après un duel ?",
+              "answer": "De haut en bas : le nom, sous la forme **Éditeur/Modèle** ; des badges (licence, classe de taille, date de sortie) ; puis cinq cartes : **Taille**, **Architecture**, **Niveau d'ouverture**, **Rang classement** et **Score énergie**, cette dernière portant le chevron A à F. Vient ensuite le bloc **Bilan**, avec le texte généré, le coût et l'énergie de génération estimée, chacun comparé à l'autre modèle du duel. Le support « Lire le bilan d'un duel » déroule l'écran carte par carte."
             }
           ]
         }

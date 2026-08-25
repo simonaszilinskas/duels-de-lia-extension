@@ -22,10 +22,10 @@
 
   <section class="slide">
     <h1>Une quantité de <em>paramètres</em></h1>
-    <p class="chiffre">4B = 4 milliards</p>
+    <p class="chiffre">8B = 8 milliards</p>
     <p>Un paramètre est un nombre appris pendant l'entraînement. Il règle comment le modèle transforme une entrée en sortie.</p>
-    <p>Sur compar:IA, le compte s'affiche en tête de la fiche : « 4 mds de paramètres ».</p>
-    <p class="source">Fiche Google/Gemma 3 4B sur compar:IA.</p>
+    <p>Sur compar:IA, le compte s'affiche en tête de la fiche : « 8 mds de paramètres ».</p>
+    <p class="source">Fiche IBM/Granite 4.1 8B sur compar:IA.</p>
   </section>
 
   <section class="slide">
@@ -37,27 +37,27 @@
         <th>Classe</th>
       </tr>
       <tr>
-        <td>Anthropic/Claude Sonnet</td>
+        <td>Anthropic/Claude Sonnet 5</td>
         <td>non publié</td>
         <td><span class="badge-taille">Taille estimée XL</span></td>
       </tr>
       <tr>
-        <td>Meta/Llama 3.3 70B</td>
+        <td>Mistral AI/Mistral Small 4</td>
+        <td>119 milliards</td>
+        <td><strong>L</strong></td>
+      </tr>
+      <tr>
+        <td>Swiss AI/Apertus 70B</td>
         <td>70 milliards</td>
         <td><strong>M</strong></td>
       </tr>
       <tr>
-        <td>Mistral/Mistral Small</td>
-        <td>24 milliards</td>
+        <td>Google/Gemma 4 26B A4B</td>
+        <td>26 milliards</td>
         <td><strong>S</strong></td>
       </tr>
-      <tr>
-        <td>Google/Gemma 3 4B</td>
-        <td>4 milliards</td>
-        <td><strong>XS</strong></td>
-      </tr>
     </table>
-    <p class="source">Comptes publiés par Meta, Mistral AI et Google. Lettres calculées avec les seuils de la diapositive suivante.</p>
+    <p class="source">Catalogue compar:IA, modèles en service. Lettres calculées avec les seuils de la diapositive suivante.</p>
   </section>
 
   <section class="slide">
@@ -90,6 +90,24 @@
     </div>
     <p>Choisir sobre ne revient donc pas forcément à sacrifier la qualité. C'est tout l'intérêt de comparer avant de choisir.</p>
     <p class="source">Arcep et PEReN, mai 2026.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux modèles, la <em>démonstration</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Alibaba/Qwen 3.5 35B A3B</h2>
+        <p><strong>35 mds</strong>, dont 3 actifs.</p>
+        <div class="chevron b">B</div>
+      </div>
+      <div>
+        <h2>Swiss AI/Apertus 70B</h2>
+        <p><strong>70 mds</strong>, tous actifs.</p>
+        <div class="chevron c">C</div>
+      </div>
+    </div>
+    <p>Deux fois moins de paramètres, quatre fois moins d'énergie par jeton, et une classe d'écart. Les deux sont dans l'arène.</p>
+    <p class="source">Catalogue compar:IA : 166 Wh par million de jetons pour le premier, 658 pour le second.</p>
   </section>
 
   <section class="slide">
@@ -136,20 +154,20 @@
     <h1>Une famille, <em>trois tailles</em></h1>
     <div class="cartes">
       <div class="carte">
-        <h3>Meta/Llama 3.1 405B</h3>
-        <p>405 milliards de paramètres. Le modèle d'origine.</p>
+        <h3>Alibaba/Qwen3.7 Max</h3>
+        <p>1 000 milliards de paramètres, dont 32 actifs.</p>
       </div>
       <div class="carte">
-        <h3>Meta/Llama 3.3 70B</h3>
-        <p>70 milliards. Il apprend à reproduire les sorties du précédent.</p>
+        <h3>Alibaba/Qwen 3.5 397B</h3>
+        <p>397 milliards, dont 17 actifs.</p>
       </div>
       <div class="carte">
-        <h3>Meta/Llama 3.1 8B</h3>
-        <p>8 milliards. Assez petit pour tourner sur une seule carte.</p>
+        <h3>Alibaba/Qwen 3.5 35B A3B</h3>
+        <p>35 milliards, dont 3 actifs. Tient sur une seule carte.</p>
       </div>
     </div>
-    <p>Une même famille couvre ainsi trois classes : XL, M et XS.</p>
-    <p class="source">Famille Llama 3, comptes publiés par Meta.</p>
+    <p>Une même famille couvre ainsi trois classes : XL, L et S.</p>
+    <p class="source">Catalogue compar:IA, famille Qwen 3.5 et suivantes.</p>
   </section>
 
   <section class="slide">

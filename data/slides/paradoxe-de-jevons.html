@@ -82,6 +82,62 @@
     </div>
   </section>
 
+
+  <section class="slide">
+    <h1>Un agent, ce n'est pas un <em>message</em></h1>
+    <p class="chapeau">Vous tapez une consigne. L'agent, lui, découpe le travail.</p>
+    <p>Il lit des fichiers, appelle des outils, relit ses propres notes, se corrige, recommence. Une seule consigne déclenche des dizaines d'allers-retours avec le modèle.</p>
+    <p>Chacun de ces allers-retours est facturé en jetons, et donc en électricité.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le prix d'une <em>consigne</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Un message de chat</h2>
+        <p class="chiffre">0,24 Wh</p>
+        <p>médiane mesurée par Google.</p>
+      </div>
+      <div>
+        <h2>Une consigne à un agent</h2>
+        <p class="chiffre">≈ 150 Wh</p>
+        <p>soit environ <strong>600 fois</strong> plus.</p>
+      </div>
+    </div>
+    <p class="source">Zeke Hausfather, 2026 : huit semaines d'usage réel, 1 138 consignes, plus de 14 000 appels au modèle, environ 170 kWh. Incertitude annoncée d'un facteur 2, soit 60 à 290 Wh.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'agent passe son temps à se <em>relire</em></h1>
+    <p class="chapeau">Sur ces 3,2 milliards de jetons :</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Relecture du contexte</h3>
+        <p class="chiffre">96 %</p>
+      </div>
+      <div class="carte">
+        <h3>Contenu neuf</h3>
+        <p class="chiffre">3,6 %</p>
+      </div>
+      <div class="carte">
+        <h3>Réponse visible</h3>
+        <p class="chiffre">0,4 %</p>
+      </div>
+    </div>
+    <p>Ce que vous lisez à l'écran est la plus petite part de ce que la machine a produit.</p>
+    <p class="source">Hausfather, mesure sur son propre usage, 2026.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Sur <em>compar:IA</em>, un plancher</h1>
+    <p class="chapeau">Le scénario « session de code agentique » compte 450 k jetons en entrée et 50 k en sortie.</p>
+    <div class="nuance">
+      <p>L'estimation d'énergie ne retient que la <strong>sortie</strong>. Les 450 k jetons d'entrée, là où l'agent dépense presque tout, n'entrent pas dans le calcul.</p>
+    </div>
+    <p>Le chiffre affiché est donc un plancher, et il est le plus bas là où le coût réel est le plus haut.</p>
+    <p class="source">Formule du produit : énergie = Wh par million de jetons × jetons de sortie. Hypothèse affichée : exécution sans cache.</p>
+  </section>
+
   <section class="slide">
     <h1>Le <em>raisonnement</em> ajoute sa part</h1>
     <div class="duo">
@@ -148,14 +204,18 @@
   </section>
 
   <section class="slide">
-    <h1>Qui invoque le <em>paradoxe</em> ?</h1>
-    <div class="duo">
-      <div class="colonne">
-        <p>Le PDG de Microsoft l'a fait le jour où DeepSeek a fait chuter l'action Nvidia.</p>
-        <p>Un argument sert aussi celui qui le tient.</p>
+    <h1>À qui profite <em>l'argument</em></h1>
+    <div class="compare">
+      <div>
+        <h2>« L'efficacité va tout régler »</h2>
+        <p>Phrase commode pour qui vend du calcul : elle promet la croissance sans la facture.</p>
       </div>
-      <img class="visuel" src="img/conclusion-p1-3.webp" alt="Logo de Microsoft : quatre carrés rouge, vert, bleu et jaune sur fond noir.">
+      <div>
+        <h2>« L'IA va tout engloutir »</h2>
+        <p>Phrase commode pour qui vend de l'attention : elle se passe de chiffres.</p>
+      </div>
     </div>
+    <p>Un argument sert aussi celui qui le tient. Demandez toujours qui parle.</p>
   </section>
 
   <section class="slide">

@@ -16,13 +16,23 @@
   font-display: swap;
 }
 
+/* Palette reprise telle quelle de compar:IA : frontend/src/css/app.css pour la
+   marque, dsfr.min.css pour les gris et les couleurs d'état. */
 :root {
-  --violet: #715cf6;
-  --violet-pale: #f0edff;
+  --violet: #6464f3;        /* --brand-primary */
+  --violet-pale: #e6e6fd;   /* --brand-primary-soft */
+  --violet-clair: #f4f4fe;  /* --brand-primary-softest */
   --encre: #161616;
-  --gris: #6a6a6a;
-  --trait: #e3e3e3;
+  --gris: #666;             /* --text-mention-grey */
+  --gris-fonce: #3a3a3a;
+  --trait: #ddd;            /* --border-default-grey */
   --fond: #f5f5f8;
+  --gris-clair: #f3f5f9;    /* --cg-light-grey */
+  --info: #0063cb;
+  --erreur: #ce0500;
+  --succes: #18753c;
+  --rouge-marianne: #e1000f;
+  --jaune-tournesol: #c8aa39;
 
   --display: 3.2em;
   --titre: 1.75em;
@@ -145,7 +155,7 @@ body { display: flex; }
 
 .slide.titre {
   justify-content: center;
-  background: var(--violet-pale);
+  background: var(--violet-clair);
   padding-left: 9cqw;
 }
 .slide.titre h1 { font-size: var(--display); letter-spacing: -0.03em; }
@@ -332,3 +342,182 @@ figcaption { font-size: 1em; color: var(--gris); }
   border-radius: 0.25em;
   padding: 0.1em 0.5em;
 }
+
+
+/* --- Éléments d'interface repris de compar:IA -----------------------------
+   L'écran de révélation, reproduit en CSS d'après RevealCard.svelte, pour que
+   la salle reconnaisse ce qu'elle a sous les yeux quand elle vote. Mêmes
+   couleurs, mêmes libellés que le produit. */
+
+.fiche {
+  background: #fff;
+  border: 1px solid var(--trait);
+  border-radius: 0.35em;
+  padding: 0.9em 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+  min-width: 0;
+  flex: 1;
+}
+.fiche-tete {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.fiche-tete .lab { font-weight: 400; }
+.fiche-tete .vous {
+  margin-left: auto;
+  border: 1px solid var(--violet);
+  color: var(--violet);
+  background: var(--violet-clair);
+  border-radius: 3.75em;
+  padding: 0.1em 0.7em;
+  font-size: var(--source);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Groupe de badges DSFR : licence, taille, date de sortie. */
+/* Posé après la règle générale sur .slide ul, qui empile en colonne. */
+.slide ul.badges {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.3em;
+  list-style: none;
+  padding: 0;
+  max-width: none;
+}
+.badges li {
+  background: var(--violet-pale);
+  color: var(--gris-fonce);
+  border-radius: 0.25em;
+  padding: 0.15em 0.55em;
+  font-size: var(--source);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* Grille de cartes d'information, comme sous le nom du modèle. */
+.infocards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5em, 1fr));
+  gap: 0.5em;
+}
+.infocard {
+  background: var(--gris-clair);
+  border: 1px solid var(--trait);
+  border-radius: 0.35em;
+  padding: 0.5em 0.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  min-width: 0;
+}
+.infocard h3, .infocard h4 {
+  font-size: var(--source);
+  color: var(--gris);
+  font-weight: 400;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.infocard b { font-weight: 700; }
+.infocard small { font-size: var(--source); color: var(--gris); }
+.infocard .hausse { font-size: var(--source); color: var(--erreur); }
+.infocard .baisse { font-size: var(--source); color: var(--succes); }
+
+/* Le chevron de classe, tel qu'il tient dans la carte « Score énergie ». */
+.chevron {
+  color: #fff;
+  font-weight: 700;
+  padding: 0.05em 0.55em;
+  width: 80%;
+  margin-top: 0.15em;
+  clip-path: polygon(0 0, calc(100% - 0.55em) 0, 100% 50%, calc(100% - 0.55em) 100%, 0 100%);
+}
+.chevron.a { background: #6fe49d; }
+.chevron.b { background: #73e0cf; }
+.chevron.c { background: #fcc63a; }
+.chevron.d { background: #c8aa39; }
+.chevron.e { background: #e4794a; }
+.chevron.f { background: #e1000f; }
+
+/* Le bloc « Bilan » et son sélecteur de scénario. */
+.bilan {
+  background: var(--gris-clair);
+  border: 1px solid var(--trait);
+  border-radius: 0.35em;
+  padding: 0.7em 0.8em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  min-width: 0;
+}
+.bilan > h2 {
+  font-size: 1em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  flex-wrap: wrap;
+  text-align: left;
+}
+.scenario {
+  border: 1px solid var(--violet);
+  color: var(--violet);
+  background: #fff;
+  border-radius: 3.75em;
+  padding: 0.1em 0.7em;
+  font-weight: 700;
+  font-size: var(--source);
+  white-space: nowrap;
+}
+
+/* Les trois équivalences en énergie, avec la pastille de couleur du produit. */
+.equiv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; }
+.equiv > div {
+  background: #fff;
+  border: 1px solid var(--trait);
+  border-radius: 0.35em;
+  padding: 0.5em 0.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  min-width: 0;
+}
+.equiv h3 { font-size: var(--source); color: var(--gris); font-weight: 400; margin: 0; }
+.equiv h3::before {
+  content: '';
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  margin-right: 0.4em;
+  background: currentColor;
+}
+.equiv .video h3::before { color: var(--rouge-marianne); }
+.equiv .led h3::before { color: var(--jaune-tournesol); }
+.equiv .batterie h3::before { color: var(--info); }
+.equiv b { font-weight: 700; }
+.equiv small { font-size: var(--source); color: var(--gris); }
+
+/* Bandeau d'onglets, comme « Explication / Équivalences ». */
+.onglets {
+  display: inline-flex;
+  gap: 0.25em;
+  background: var(--violet-clair);
+  border-radius: 0.35em;
+  padding: 0.25em;
+  align-self: flex-start;
+}
+.onglets span {
+  padding: 0.15em 0.7em;
+  border-radius: 0.25em;
+  font-size: var(--source);
+  color: var(--gris-fonce);
+}
+.onglets span.actif { background: #fff; font-weight: 700; color: var(--violet); }

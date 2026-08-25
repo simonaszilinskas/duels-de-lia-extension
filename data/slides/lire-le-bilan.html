@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lire le bilan d'un duel · Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
+  <section class="slide titre">
+    <h1>Lire le <em>bilan</em> d'un duel</h1>
+    <p class="chapeau">L'écran qui s'ouvre une fois que vous avez voté.</p>
+  </section>
+
+  <section class="slide">
+    <h1>La fiche d'un <em>modèle</em></h1>
+    <div class="fiche">
+      <div class="fiche-tete"><span class="lab">Google/</span>Gemma 4 26B A4B<span class="vous">Votre choix</span></div>
+      <ul class="badges">
+        <li>Apache 2.0</li>
+        <li>Taille S</li>
+        <li>04/2026</li>
+      </ul>
+      <div class="infocards">
+        <div class="infocard"><h3>Taille</h3><b>26 mds</b><small>Dont 4 mds actifs</small></div>
+        <div class="infocard"><h3>Architecture</h3><b>Mélange d'experts</b></div>
+        <div class="infocard"><h3>Contexte</h3><b>262 k jetons</b></div>
+        <div class="infocard"><h3>Score énergie</h3><div class="chevron a">A</div></div>
+      </div>
+    </div>
+    <p class="source">Fiche réelle du catalogue compar:IA, comparia.beta.gouv.fr/models</p>
+  </section>
+
+  <section class="slide">
+    <h1>Et celle d'en <em>face</em></h1>
+    <div class="fiche">
+      <div class="fiche-tete"><span class="lab">Anthropic/</span>Claude Sonnet 5</div>
+      <ul class="badges">
+        <li>Propriétaire</li>
+        <li>Taille estimée XL</li>
+        <li>06/2026</li>
+      </ul>
+      <div class="infocards">
+        <div class="infocard"><h3>Taille estimée</h3><b>440 mds</b><small>Dont 137,5 mds actifs</small></div>
+        <div class="infocard"><h3>Architecture</h3><b>Non communiquée</b></div>
+        <div class="infocard"><h3>Contexte</h3><b>1 000 k jetons</b></div>
+        <div class="infocard"><h3>Score énergie</h3><div class="chevron e">E</div></div>
+      </div>
+    </div>
+    <p class="source">Fiche réelle du catalogue compar:IA. Anthropic ne publie ni taille ni architecture : les deux chiffres sont des estimations.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Cinq cartes sous le <em>nom</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Taille et architecture</h3>
+        <p>Combien de paramètres, combien tournent vraiment, et comment le modèle est bâti.</p>
+      </div>
+      <div class="carte">
+        <h3>Niveau d'ouverture</h3>
+        <p>Un score : licence, poids, données et code d'entraînement.</p>
+      </div>
+      <div class="carte">
+        <h3>Rang et score énergie</h3>
+        <p>La place au classement, et la lettre A à F.</p>
+      </div>
+    </div>
+    <p class="source">Cartes affichées sous le nom du modèle sur l'écran de révélation.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le bloc <em>Bilan</em></h1>
+    <div class="bilan">
+      <h2>Bilan <span class="scenario">de cette discussion ⌄</span></h2>
+      <div class="infocards">
+        <div class="infocard"><h4>Texte généré</h4><b>800 jetons</b><small>Contexte max : 1 000 k jetons</small></div>
+        <div class="infocard"><h4>Coût</h4><b>0,007 €</b><small>Tarif standard</small><span class="hausse">▲ ≈ 31× plus cher que l'autre modèle</span></div>
+        <div class="infocard"><h4>Énergie de génération estimée</h4><b>3 145 mWh</b><span class="hausse">▲ ≈ 46,6× plus d'énergie que l'autre modèle</span></div>
+      </div>
+    </div>
+    <p class="source">Valeurs calculées avec la formule du produit pour Claude Sonnet 5 face à Gemma 4 26B A4B, sur 300 jetons d'entrée et 800 de sortie.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Trois <em>scénarios</em></h1>
+    <p class="chapeau">La pastille bleue ouvre un menu. On peut projeter la même question sur un usage plus lourd.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Cette discussion</h3>
+        <p>Ce que vous venez de faire.</p>
+      </div>
+      <div class="carte">
+        <h3>Recherche approfondie</h3>
+        <p>310 k jetons : recherches web, lecture de sources, synthèse citée.</p>
+      </div>
+      <div class="carte">
+        <h3>Session de code agentique</h3>
+        <p>500 k jetons, dont 450 k en entrée.</p>
+      </div>
+    </div>
+    <p class="source">Libellés et volumes du sélecteur de scénario de compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux onglets, sous le <em>bilan</em></h1>
+    <div class="onglets"><span>Explication</span><span class="actif">Équivalences</span></div>
+    <p>Le premier raconte d'où vient le chiffre. Le second le traduit en gestes du quotidien.</p>
+    <div class="equiv">
+      <div class="video"><h3>Streaming vidéo</h3><b>140 s</b><small>référence 80 Wh par heure</small></div>
+      <div class="led"><h3>Ampoule LED</h3><b>31 min</b><small>ampoule de 6 W</small></div>
+      <div class="batterie"><h3>Batterie de smartphone</h3><b>21 %</b><small>batterie de 15 Wh</small></div>
+    </div>
+    <p class="source">Équivalences du produit pour les 3 145 mWh de la diapositive précédente.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le résumé en une <em>phrase</em></h1>
+    <div class="nuance">
+      <p><strong>Claude Sonnet 5</strong> est un modèle propriétaire <strong>de très grande taille</strong> dont l'architecture n'est pas communiquée.</p>
+    </div>
+    <p>Vient ensuite la comparaison chiffrée avec l'autre modèle du duel : combien de fois plus, ou combien de fois moins.</p>
+    <p class="source">Gabarit de phrase du produit, rempli avec les données réelles du modèle.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Même éditeur, presque la même <em>taille</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Mistral Small 4</h2>
+        <p><strong>119 mds</strong>, dont 6 actifs. Mélange d'experts.</p>
+        <div class="chevron c">C</div>
+        <p>347 Wh par million de jetons.</p>
+      </div>
+      <div>
+        <h2>Mistral Medium 3.5</h2>
+        <p><strong>128 mds</strong>, tous actifs. Dense.</p>
+        <div class="chevron c">C</div>
+        <p>939 Wh par million de jetons.</p>
+      </div>
+    </div>
+    <p>Neuf milliards de paramètres d'écart, et un rapport de <strong>2,7</strong>. C'est l'architecture qui décide, pas la taille.</p>
+    <p class="source">Catalogue compar:IA. Les deux modèles portent la même lettre : la classe est un palier large.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que le bilan ne <em>compte pas</em></h1>
+    <ul>
+      <li>Seuls les <strong>jetons de sortie</strong> entrent dans l'énergie. L'entrée compte pour le coût, pas pour l'estimation.</li>
+      <li>Les scénarios supposent une <strong>exécution sans cache</strong>.</li>
+      <li>Ni l'entraînement, ni la fabrication du matériel.</li>
+    </ul>
+    <p class="source">Hypothèses affichées par le produit sous le sélecteur de scénario.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'il faut <em>retenir</em></h1>
+    <ul>
+      <li>La fiche dit ce qu'est le modèle. Le bilan dit ce que votre question a coûté.</li>
+      <li>Deux modèles de taille voisine peuvent être séparés d'un facteur trois.</li>
+      <li>Le chiffre affiché est un <strong>plancher</strong> : il ne compte que la sortie.</li>
+    </ul>
+  </section>
+
+</main>
+</body>
+</html>
