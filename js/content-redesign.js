@@ -14,14 +14,15 @@
   console.log('📌 Hash:', window.location.hash);
   console.log('====================================');
   
-  // Check if we're on the correct page
-  const currentUrl = window.location.href;
-  const urlCheck = currentUrl.includes('comparia.beta.gouv.fr/arene');
-  console.log('✅ URL contient "comparia.beta.gouv.fr/arene/"?', urlCheck);
-  
-  if (!urlCheck) {
-    console.warn('⚠️ Duels de l\'IA - Pas sur la page arène, arrêt de l\'initialisation');
-    console.log('💡 L\'extension s\'active uniquement sur les URLs contenant "comparia.beta.gouv.fr/arene/"');
+  // On garde le widget sur tout le site : l'arène est à la racine depuis la refonte,
+  // et le site navigue côté client, donc un test de chemin à l'injection ne tient pas.
+  const host = window.location.hostname;
+  const hostCheck = host === 'comparia.beta.gouv.fr' || host.endsWith('.comparia.beta.gouv.fr') ||
+    host === 'localhost' || host === '127.0.0.1';
+  console.log('✅ Hôte compar:IA ?', hostCheck);
+
+  if (!hostCheck) {
+    console.warn('⚠️ Duels de l\'IA - Hors du site compar:IA, arrêt de l\'initialisation');
     return;
   }
   console.log('🚀 Duels de l\'IA - Début de l\'initialisation');
@@ -34,6 +35,18 @@
   let currentSection = 'comment-se-deroule';
   let currentBlock = null;
   let lastCardIndex = -1;
+  let groupOpinion = '';
+  let slideOverlayOpener = null;
+  const extensionUrl = new URL(chrome.runtime.getURL('/'));
+  const extensionOrigin = `${extensionUrl.protocol}//${extensionUrl.host}`;
+
+  // Les réponses de la FAQ sont écrites avec des **gras** en markdown : on les rend,
+  // sinon les astérisques s'affichent telles quelles devant le public.
+  function enGras(texte) {
+    return String(texte)
+      .replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  }
 
   // Create FAB button
   function createFAB() {
@@ -53,8 +66,11 @@
     
     const fab = document.createElement('button');
     fab.id = 'duelsia-fab';
-    fab.innerHTML = '⚔️';
+    fab.textContent = '⚔️';
     fab.title = 'Duels de l\'IA';
+    fab.setAttribute('aria-label', 'Ouvrir les ressources des Duels de l’IA');
+    fab.setAttribute('aria-controls', 'duelsia-panel');
+    fab.setAttribute('aria-expanded', 'false');
     fab.addEventListener('click', toggleModal);
     
     console.log('📐 Ajout du FAB au body...');
@@ -83,21 +99,25 @@
     const panel = document.createElement('div');
     panel.id = 'duelsia-panel';
     panel.className = 'duelsia-hidden';
+    panel.setAttribute('role', 'region');
+    panel.setAttribute('aria-label', 'Ressources des Duels de l’IA');
     
     panel.innerHTML = `
       <div class="duelsia-panel-content">
         <div class="duelsia-header duelsia-draggable">
-          <span>Bienvenue dans les duels de l'IA</span>
+          <span>Kit d’animation</span>
           <div class="duelsia-header-actions">
-            <button class="duelsia-feedback-btn" title="Retours">💬</button>
-            <button class="duelsia-close">✕</button>
+            <button type="button" class="duelsia-feedback-btn" title="Retours" aria-label="Ouvrir les formulaires de retour">💬</button>
+            <button type="button" class="duelsia-close" aria-label="Fermer les ressources">✕</button>
           </div>
         </div>
         
         <div class="duelsia-main-content">
           <div class="duelsia-dropdown-container" id="duelsia-dropdown">
-            <span>Comment se déroule un duel ?</span>
-            <span class="duelsia-dropdown-icon">⌄</span>
+            <button type="button" class="duelsia-dropdown-trigger" aria-expanded="false" aria-controls="duelsia-dropdown-content">
+              <span>Comment se déroule un duel ?</span>
+              <span class="duelsia-dropdown-icon" aria-hidden="true">⌄</span>
+            </button>
             
             <div class="duelsia-dropdown-content" id="duelsia-dropdown-content">
               <ol id="duelsia-steps-list">
@@ -119,9 +139,9 @@
         
         <div class="duelsia-content-view" style="display: none;">
           <div class="duelsia-content-nav">
-            <button class="duelsia-back-button">←</button>
+            <button type="button" class="duelsia-back-button" aria-label="Revenir à la liste">←</button>
             <h3 id="duelsia-content-title"></h3>
-            <button class="duelsia-close duelsia-close-content">✕</button>
+            <button type="button" class="duelsia-close duelsia-close-content" aria-label="Fermer les ressources">✕</button>
           </div>
           <div class="duelsia-content-display" id="duelsia-content-display">
             <!-- Content will be dynamically inserted here -->
@@ -130,9 +150,9 @@
         
         <div class="duelsia-feedback-view" style="display: none;">
           <div class="duelsia-content-nav">
-            <button class="duelsia-back-button">←</button>
+            <button type="button" class="duelsia-back-button" aria-label="Revenir à la liste">←</button>
             <h3>Retours</h3>
-            <button class="duelsia-close duelsia-close-feedback">✕</button>
+            <button type="button" class="duelsia-close duelsia-close-feedback" aria-label="Fermer les ressources">✕</button>
           </div>
           <div class="duelsia-feedback-content">
             <div class="duelsia-feedback-participants">
@@ -166,7 +186,7 @@
       button.addEventListener('click', showMainView);
     });
     
-    panel.querySelector('.duelsia-dropdown-container').addEventListener('click', toggleDropdown);
+    panel.querySelector('.duelsia-dropdown-trigger').addEventListener('click', toggleDropdown);
     
     // Add feedback button click handler
     panel.querySelector('.duelsia-feedback-btn').addEventListener('click', showFeedbackView);
@@ -270,11 +290,11 @@
     }
     
     const cardsHTML = Object.entries(sectionData.blocks).map(([key, block]) => `
-      <div class="duelsia-card" data-block="${key}">
+      <button type="button" class="duelsia-card" data-block="${key}">
         <div class="duelsia-emoji">${block.icon}</div>
         <h3>${block.title}</h3>
         <p>${block.description}</p>
-      </div>
+      </button>
     `).join('');
     
     cardsContainer.innerHTML = cardsHTML;
@@ -338,7 +358,7 @@
       <div class="duelsia-personas-list">
         ${personas.map((persona, index) => `
           <div class="duelsia-persona-item" id="persona-${index}">
-            <div class="duelsia-persona-header" data-index="${index}">
+            <div class="duelsia-persona-header" data-index="${index}" role="button" tabindex="0" aria-expanded="false" aria-controls="persona-content-${index}">
               <div class="duelsia-persona-info">
                 <span class="duelsia-persona-emoji">${persona.emoji}</span>
                 <div class="duelsia-persona-details">
@@ -347,12 +367,12 @@
                   <span class="duelsia-persona-category-inline">${persona.category}</span>
                 </div>
               </div>
-              <span class="duelsia-persona-arrow">⌄</span>
+              <span class="duelsia-persona-arrow" aria-hidden="true">⌄</span>
             </div>
             <div class="duelsia-persona-content" id="persona-content-${index}">
               <div class="duelsia-persona-prompt-container">
                 <div class="duelsia-persona-prompt">${persona.prompt}</div>
-                <button class="duelsia-copy-btn" data-prompt="${persona.prompt.replace(/"/g, '&quot;')}">
+                <button class="duelsia-copy-btn" data-prompt="${persona.prompt.replace(/"/g, '&quot;')}" aria-live="polite">
                   Copier
                 </button>
               </div>
@@ -370,6 +390,12 @@
         const index = header.dataset.index;
         togglePersona(index);
       });
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
     });
     
     // Add copy button handlers
@@ -381,7 +407,7 @@
         
         // Update button text temporarily
         const originalText = btn.textContent;
-        btn.textContent = 'Copié!';
+        btn.textContent = 'Copié';
         setTimeout(() => {
           btn.textContent = originalText;
         }, 1500);
@@ -407,18 +433,18 @@
       <div class="duelsia-faq-list">
         ${questions.map((item, index) => `
           <div class="duelsia-faq-item" id="faq-${index}">
-            <div class="duelsia-faq-header" data-index="${index}">
+            <div class="duelsia-faq-header" data-index="${index}" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-content-${index}">
               <div class="duelsia-faq-info">
                 <span class="duelsia-faq-emoji">${item.emoji}</span>
                 <div class="duelsia-faq-question">
                   ${item.question}
                 </div>
               </div>
-              <span class="duelsia-faq-arrow">⌄</span>
+              <span class="duelsia-faq-arrow" aria-hidden="true">⌄</span>
             </div>
             <div class="duelsia-faq-content" id="faq-content-${index}">
               <div class="duelsia-faq-answer">
-                ${item.answer}
+                ${enGras(item.answer)}
               </div>
             </div>
           </div>
@@ -434,6 +460,12 @@
         const index = header.dataset.index;
         toggleFAQ(index);
       });
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
     });
   }
   
@@ -441,13 +473,16 @@
   function toggleFAQ(index) {
     const content = document.getElementById(`faq-content-${index}`);
     const arrow = document.querySelector(`#faq-${index} .duelsia-faq-arrow`);
+    const header = document.querySelector(`#faq-${index} .duelsia-faq-header`);
     
     if (content.classList.contains('show')) {
       content.classList.remove('show');
       arrow.classList.remove('rotate');
+      header.setAttribute('aria-expanded', 'false');
     } else {
       content.classList.add('show');
       arrow.classList.add('rotate');
+      header.setAttribute('aria-expanded', 'true');
     }
   }
   
@@ -459,7 +494,7 @@
     const content = `
       <div class="duelsia-resources-list">
         ${resources.map((resource, index) => `
-          <div class="duelsia-resource-item" data-index="${index}">
+          <div class="duelsia-resource-item" data-index="${index}" role="button" tabindex="0">
             <span class="duelsia-resource-emoji">${resource.emoji}</span>
             <div class="duelsia-resource-content">
               <h4>${resource.title}</h4>
@@ -475,7 +510,14 @@
     // Add click handlers after inserting the content
     document.querySelectorAll('.duelsia-resource-item').forEach((item, index) => {
       item.addEventListener('click', () => {
+        item.focus();
         handleResourceClick(resources[index]);
+      });
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          item.click();
+        }
       });
     });
     
@@ -489,44 +531,47 @@
       const fileId = resource.url.match(/d\/([a-zA-Z0-9-_]+)/)?.[1];
       if (fileId) {
         const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-        openPdfOverlay(embedUrl);
+        openSlideOverlay(embedUrl);
       } else {
         // Fallback to opening in new tab if can't extract file ID
         window.open(resource.url, '_blank');
       }
-    } else if (resource.type === 'local-pdf') {
-      // Handle local PDF files
-      const pdfUrl = chrome.runtime.getURL(resource.url);
-      openPdfOverlay(pdfUrl);
+    } else if (resource.type === 'slides' || resource.type === 'local-pdf') {
+      // Supports embarqués dans l'extension (HTML, et PDF pour l'ancien format)
+      openSlideOverlay(chrome.runtime.getURL(resource.url), resource.title);
     } else {
       // Open external links in new tab
       window.open(resource.url, '_blank');
     }
   }
   
-  // Open PDF overlay
-  function openPdfOverlay(embedUrl) {
+  // Ouvre un support en plein écran
+  function openSlideOverlay(embedUrl, title) {
     // Create overlay at document level if it doesn't exist
-    let overlay = document.getElementById('duelsia-global-pdf-overlay');
-    let frame = document.getElementById('duelsia-global-pdf-frame');
+    let overlay = document.getElementById('duelsia-global-slide-overlay');
+    let frame = document.getElementById('duelsia-global-slide-frame');
     
     if (!overlay) {
       overlay = document.createElement('div');
-      overlay.id = 'duelsia-global-pdf-overlay';
-      overlay.className = 'duelsia-pdf-overlay';
+      overlay.id = 'duelsia-global-slide-overlay';
+      overlay.className = 'duelsia-slide-overlay';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
       
       const container = document.createElement('div');
-      container.className = 'duelsia-pdf-container duelsia-fullscreen-container';
+      container.className = 'duelsia-slide-container';
       
       const closeBtn = document.createElement('button');
-      closeBtn.id = 'duelsia-global-pdf-close';
-      closeBtn.className = 'duelsia-pdf-close';
-      closeBtn.innerHTML = '✕';
-      closeBtn.addEventListener('click', closePdfOverlay);
+      closeBtn.id = 'duelsia-global-slide-close';
+      closeBtn.className = 'duelsia-slide-close';
+      closeBtn.type = 'button';
+      closeBtn.textContent = '✕';
+      closeBtn.setAttribute('aria-label', 'Fermer le support');
+      closeBtn.addEventListener('click', closeSlideOverlay);
       
       frame = document.createElement('iframe');
-      frame.id = 'duelsia-global-pdf-frame';
-      frame.className = 'duelsia-pdf-frame';
+      frame.id = 'duelsia-global-slide-frame';
+      frame.className = 'duelsia-slide-frame';
       frame.frameBorder = '0';
       
       container.appendChild(closeBtn);
@@ -536,56 +581,112 @@
       // Close when clicking outside
       overlay.addEventListener('click', (e) => {
         if (e.target === overlay) {
-          closePdfOverlay();
+          closeSlideOverlay();
         }
       });
       
       document.body.appendChild(overlay);
     }
-    
+
+    slideOverlayOpener = document.activeElement;
+    overlay.setAttribute('aria-label', title || 'Support de présentation');
+    frame.title = title || 'Support de présentation';
     frame.src = embedUrl;
     overlay.style.display = 'flex';
-    
+
     // Hide the panel while viewing the document
     const panel = document.getElementById('duelsia-panel');
     if (panel) {
       panel.classList.add('duelsia-hidden');
     }
+
+    document.getElementById('duelsia-global-slide-close').focus();
   }
   
-  // Close PDF overlay
-  function closePdfOverlay() {
-    const overlay = document.getElementById('duelsia-global-pdf-overlay');
-    const frame = document.getElementById('duelsia-global-pdf-frame');
+  // Ferme le support
+  function closeSlideOverlay() {
+    const overlay = document.getElementById('duelsia-global-slide-overlay');
+    const frame = document.getElementById('duelsia-global-slide-frame');
     
     if (overlay && frame) {
       overlay.style.display = 'none';
-      frame.src = '';
+      frame.src = 'about:blank';
       
       // Show the panel again when closing the document
       const panel = document.getElementById('duelsia-panel');
       if (panel) {
         panel.classList.remove('duelsia-hidden');
       }
+
+      if (slideOverlayOpener instanceof HTMLElement && slideOverlayOpener.isConnected) {
+        slideOverlayOpener.focus();
+      }
+      slideOverlayOpener = null;
     }
   }
   
+  // Le support tourne dans une iframe : c'est lui qui signale la fermeture.
+  window.addEventListener('message', (e) => {
+    const frame = document.getElementById('duelsia-global-slide-frame');
+    if (
+      frame &&
+      e.source === frame.contentWindow &&
+      e.origin === extensionOrigin &&
+      e.data &&
+      e.data.duelsia === 'fermer'
+    ) {
+      closeSlideOverlay();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const overlay = document.getElementById('duelsia-global-slide-overlay');
+    if (e.key === 'Escape' && overlay && overlay.style.display === 'flex') {
+      e.preventDefault();
+      closeSlideOverlay();
+      return;
+    }
+
+    const dropdown = document.getElementById('duelsia-dropdown-content');
+    if (e.key === 'Escape' && dropdown?.classList.contains('show')) {
+      e.preventDefault();
+      toggleDropdown();
+      document.querySelector('.duelsia-dropdown-trigger')?.focus();
+    }
+  });
+
+  // Le focus reste dans le dialogue tant que le support est ouvert.
+  document.addEventListener('focusin', (e) => {
+    const overlay = document.getElementById('duelsia-global-slide-overlay');
+    if (overlay && overlay.style.display === 'flex' && !overlay.contains(e.target)) {
+      document.getElementById('duelsia-global-slide-close').focus();
+    }
+  });
+
   // Toggle persona display
   function togglePersona(index) {
     const content = document.getElementById(`persona-content-${index}`);
     const arrow = document.querySelector(`#persona-${index} .duelsia-persona-arrow`);
+    const header = document.querySelector(`#persona-${index} .duelsia-persona-header`);
     
     if (content.classList.contains('show')) {
       content.classList.remove('show');
       arrow.classList.remove('rotate');
+      header.setAttribute('aria-expanded', 'false');
     } else {
       content.classList.add('show');
       arrow.classList.add('rotate');
+      header.setAttribute('aria-expanded', 'true');
     }
   }
   
   // Show random debate card
   function showRandomCard() {
+    const existingOpinion = document.getElementById('duelsia-group-opinion');
+    if (existingOpinion) {
+      groupOpinion = existingOpinion.value;
+    }
+
     const sectionData = CONTENT_DATA[currentSection];
     const cards = sectionData.blocks.cartes.cards || [];
     
@@ -625,6 +726,12 @@
     `;
     
     document.getElementById('duelsia-content-display').innerHTML = content;
+
+    const opinionField = document.getElementById('duelsia-group-opinion');
+    opinionField.value = groupOpinion;
+    opinionField.addEventListener('input', () => {
+      groupOpinion = opinionField.value;
+    });
     
     // Add click handler after inserting the content
     document.getElementById('duelsia-random-btn').addEventListener('click', showRandomCard);
@@ -663,10 +770,12 @@
     const content = document.getElementById('duelsia-dropdown-content');
     const overlay = document.getElementById('duelsia-overlay');
     const icon = document.querySelector('.duelsia-dropdown-icon');
+    const trigger = document.querySelector('.duelsia-dropdown-trigger');
     
     content.classList.toggle('show');
     overlay.classList.toggle('show');
     icon.classList.toggle('rotate');
+    trigger.setAttribute('aria-expanded', String(content.classList.contains('show')));
   }
   
   // Close dropdown when clicking overlay
@@ -681,10 +790,9 @@
   function toggleModal() {
     const panel = document.getElementById('duelsia-panel');
     panel.classList.toggle('duelsia-hidden');
+    const ouvert = !panel.classList.contains('duelsia-hidden');
+    document.getElementById('duelsia-fab')?.setAttribute('aria-expanded', String(ouvert));
     
-    if (!panel.classList.contains('duelsia-hidden') && currentView === 'content') {
-      showMainView();
-    }
   }
 
   // Make element draggable
@@ -693,31 +801,43 @@
     let isDragging = false;
     let currentX;
     let currentY;
-    let initialX;
-    let initialY;
     let xOffset = 0;
     let yOffset = 0;
+    let startOffsetX = 0;
+    let startOffsetY = 0;
+    let startPointerX = 0;
+    let startPointerY = 0;
+    let startRect = null;
+    const viewportMargin = 8;
 
     header.addEventListener('mousedown', dragStart);
     document.addEventListener('mousemove', drag);
     document.addEventListener('mouseup', dragEnd);
+    window.addEventListener('resize', constrainToViewport);
 
     function dragStart(e) {
-      if (e.target.closest('.duelsia-close')) return;
-      
-      initialX = e.clientX - xOffset;
-      initialY = e.clientY - yOffset;
+      if (e.target.closest('button, a')) return;
 
       if (e.target.closest('.duelsia-draggable')) {
         isDragging = true;
+        startPointerX = e.clientX;
+        startPointerY = e.clientY;
+        startOffsetX = xOffset;
+        startOffsetY = yOffset;
+        startRect = element.getBoundingClientRect();
       }
     }
 
     function drag(e) {
       if (isDragging) {
         e.preventDefault();
-        currentX = e.clientX - initialX;
-        currentY = e.clientY - initialY;
+        const maxLeft = Math.max(viewportMargin, window.innerWidth - startRect.width - viewportMargin);
+        const maxTop = Math.max(viewportMargin, window.innerHeight - startRect.height - viewportMargin);
+        const nextLeft = Math.min(maxLeft, Math.max(viewportMargin, startRect.left + e.clientX - startPointerX));
+        const nextTop = Math.min(maxTop, Math.max(viewportMargin, startRect.top + e.clientY - startPointerY));
+
+        currentX = startOffsetX + nextLeft - startRect.left;
+        currentY = startOffsetY + nextTop - startRect.top;
 
         xOffset = currentX;
         yOffset = currentY;
@@ -727,9 +847,24 @@
     }
 
     function dragEnd(e) {
-      initialX = currentX;
-      initialY = currentY;
       isDragging = false;
+    }
+
+    function constrainToViewport() {
+      const rect = element.getBoundingClientRect();
+      const maxRight = window.innerWidth - viewportMargin;
+      const maxBottom = window.innerHeight - viewportMargin;
+      let adjustmentX = 0;
+      let adjustmentY = 0;
+
+      if (rect.left < viewportMargin) adjustmentX = viewportMargin - rect.left;
+      if (rect.right > maxRight) adjustmentX = maxRight - rect.right;
+      if (rect.top < viewportMargin) adjustmentY = viewportMargin - rect.top;
+      if (rect.bottom > maxBottom) adjustmentY = maxBottom - rect.bottom;
+
+      xOffset += adjustmentX;
+      yOffset += adjustmentY;
+      element.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
     }
   }
   
@@ -739,7 +874,7 @@
     
     const content = `
       <div class="duelsia-debate-final">
-        <p class="duelsia-debate-subquestion">Maintenant que vous connaissez l'impact environnemental des modèles, cela change-t-il votre vote ?</p>
+        <p class="duelsia-debate-subquestion">Maintenant que vous avez vu l'énergie consommée et la classe énergétique de chaque modèle, cela change-t-il votre vote ?</p>
         
         <div class="duelsia-radio-options">
           <h3>Votre avis :</h3>
@@ -747,7 +882,7 @@
             <input type="radio" name="debate-opinion" value="yes" class="duelsia-radio-input">
             <div class="duelsia-radio-text">
               <strong>Non, il ne change pas</strong>
-              <span class="duelsia-radio-subtext">Les modèles d'IA me sont utiles et l'impact environnemental est acceptable pour cette requête.</span>
+              <span class="duelsia-radio-subtext">Les modèles d'IA me sont utiles et l'énergie dépensée est acceptable pour cette requête.</span>
             </div>
           </label>
           <label class="duelsia-radio-label">
@@ -761,20 +896,20 @@
             <input type="radio" name="debate-opinion" value="complex" class="duelsia-radio-input">
             <div class="duelsia-radio-text">
               <strong>Ce n'est pas si simple</strong>
-              <span class="duelsia-radio-subtext">L'assistance des modèles est utile mais l'impact environnemental me fait réfléchir</span>
+              <span class="duelsia-radio-subtext">L'assistance des modèles est utile, mais l'énergie dépensée me fait réfléchir</span>
             </div>
           </label>
         </div>
         
         <div class="duelsia-session-recap">
-          <div class="duelsia-resource-item" id="duelsia-recap-btn">
+          <div class="duelsia-resource-item" id="duelsia-recap-btn" role="button" tabindex="0">
             <span class="duelsia-resource-emoji">📄</span>
             <div class="duelsia-resource-content">
               <h4>Récapitulatif de la session</h4>
             </div>
             <span class="duelsia-resource-arrow">→</span>
           </div>
-          <div class="duelsia-resource-item duelsia-secondary-btn" id="duelsia-more-questions-btn">
+          <div class="duelsia-resource-item duelsia-secondary-btn" id="duelsia-more-questions-btn" role="button" tabindex="0">
             <span class="duelsia-resource-emoji">🃏</span>
             <div class="duelsia-resource-content">
               <h4>Plus de questions de débat</h4>
@@ -789,13 +924,14 @@
     document.getElementById('duelsia-content-display').innerHTML = content;
     
     // Add click handler for recap button
-    document.getElementById('duelsia-recap-btn').addEventListener('click', () => {
+    const recapButton = document.getElementById('duelsia-recap-btn');
+    recapButton.addEventListener('click', () => {
       const recapUrl = 'https://drive.google.com/file/d/19GvpbS1c4kIyUaJyWwdWyyJ6WsNefD2M/view?usp=drive_link';
       // Extract file ID and convert to embed URL
       const fileId = recapUrl.match(/d\/([a-zA-Z0-9-_]+)/)?.[1];
       if (fileId) {
         const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-        openPdfOverlay(embedUrl);
+        openSlideOverlay(embedUrl);
       } else {
         // Fallback to opening in new tab
         window.open(recapUrl, '_blank');
@@ -803,13 +939,23 @@
     });
     
     // Add click handler for more debate questions button
-    document.getElementById('duelsia-more-questions-btn').addEventListener('click', () => {
+    const moreQuestionsButton = document.getElementById('duelsia-more-questions-btn');
+    moreQuestionsButton.addEventListener('click', () => {
       // Back to main view, then navigate to debate cards
       showMainView();
       // After a short delay to ensure the main view is shown, show cards content
       setTimeout(() => {
         showBlockContent('cartes');
       }, 100);
+    });
+
+    [recapButton, moreQuestionsButton].forEach(button => {
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          button.click();
+        }
+      });
     });
     
     document.querySelector('.duelsia-main-content').style.display = 'none';
@@ -821,13 +967,14 @@
       <div class="duelsia-error-container">
         <div class="duelsia-error-icon">⚠️</div>
         <div class="duelsia-error-message">${message}</div>
-        <button class="duelsia-retry-btn" onclick="location.reload()">Réessayer</button>
+        <button type="button" class="duelsia-retry-btn">Réessayer</button>
       </div>
     `;
     
     const display = document.getElementById('duelsia-content-display');
     if (display) {
       display.innerHTML = content;
+      display.querySelector('.duelsia-retry-btn').addEventListener('click', () => location.reload());
     }
   }
 

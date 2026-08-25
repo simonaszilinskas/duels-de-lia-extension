@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ce qui fait consommer un modèle · Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
+  <section class="slide titre">
+    <h1>Ce qui fait <em>consommer</em> un modèle</h1>
+    <p class="chapeau">La taille, le texte produit, l'architecture. Et ce que la mesure en dit.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Une quantité de <em>paramètres</em></h1>
+    <p class="chiffre">8B = 8 milliards</p>
+    <p>Un paramètre est un nombre appris pendant l'entraînement. Il règle comment le modèle transforme une entrée en sortie.</p>
+    <p>Sur compar:IA, le compte s'affiche en tête de la fiche : « 8 mds de paramètres ».</p>
+    <p class="source">Fiche IBM/Granite 4.1 8B sur compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Les classes de <em>taille</em></h1>
+    <table>
+      <tr>
+        <th>Classe</th>
+        <th>Paramètres</th>
+      </tr>
+      <tr><td><strong>XS</strong></td><td>moins de 15 milliards</td></tr>
+      <tr><td><strong>S</strong></td><td>de 15 à 60 milliards</td></tr>
+      <tr><td><strong>M</strong></td><td>de 60 à 100 milliards</td></tr>
+      <tr><td><strong>L</strong></td><td>de 100 à 400 milliards</td></tr>
+      <tr><td><strong>XL</strong></td><td>plus de 400 milliards</td></tr>
+    </table>
+    <p class="source">Seuils de classe de taille appliqués par compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Quatre modèles, <em>quatre tailles</em></h1>
+    <table>
+      <tr>
+        <th>Modèle</th>
+        <th>Paramètres</th>
+        <th>Classe</th>
+      </tr>
+      <tr>
+        <td>Anthropic/Claude Sonnet 5</td>
+        <td>non publié</td>
+        <td><span class="badge-taille">Taille estimée XL</span></td>
+      </tr>
+      <tr>
+        <td>Mistral AI/Mistral Small 4</td>
+        <td>119 milliards</td>
+        <td><strong>L</strong></td>
+      </tr>
+      <tr>
+        <td>Swiss AI/Apertus 70B Instruct</td>
+        <td>70 milliards</td>
+        <td><strong>M</strong></td>
+      </tr>
+      <tr>
+        <td>Google/Gemma 4 26B A4B</td>
+        <td>26 milliards</td>
+        <td><strong>S</strong></td>
+      </tr>
+    </table>
+    <p class="source">Catalogue compar:IA, modèles en service. Classes calculées avec les seuils de la diapositive précédente.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le texte devient des <em>jetons</em></h1>
+    <p class="chapeau">Le modèle ne lit pas des lettres ni des mots : il lit des morceaux.</p>
+    <div class="jetons"><span>Salut</span><span class="compte">1 jeton</span></div>
+    <div class="jetons"><span>Salut</span><span>,</span><span class="espace"> ça</span><span class="espace"> va</span><span class="espace"> ?</span><span class="compte">5 jetons</span></div>
+    <div class="jetons"><span>anti</span><span>constitution</span><span>nel</span><span>lement</span><span class="compte">4 jetons</span></div>
+    <p>Un mot courant tient en un jeton. Un mot rare est découpé. L'espace part avec le morceau qui suit.</p>
+    <p class="source">Découpage indicatif : les tokeniseurs varient d'un modèle à l'autre. Sur compar:IA, un jeton vaut à peu près quatre lettres.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Un jeton, puis <em>on recommence</em></h1>
+      <svg class="graphe schema" viewBox="0 0 1000 300" role="img" aria-labelledby="s-boucle">
+      <title id="s-boucle">Schema : le texte est decoupe en jetons, le modele en produit un seul a la fois, et chaque jeton produit repart en entree avec tout ce qui precede.</title>
+      <defs><marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
+      <rect class="b-clair" x="0" y="54" width="214" height="76" rx="9"/>
+      <text class="s-titre" x="107.0" y="100.0" text-anchor="middle">Salut, ça va ?</text>
+      <line class="s-fleche" x1="226" y1="92.0" x2="262" y2="92.0" marker-end="url(#fl)"/>
+      <rect class="b-clair" x="274" y="54" width="150" height="76" rx="9"/>
+      <text class="s-titre" x="349.0" y="100.0" text-anchor="middle">5 jetons</text>
+      <line class="s-fleche" x1="436" y1="92.0" x2="472" y2="92.0" marker-end="url(#fl)"/>
+      <rect class="b-plein" x="484" y="38" width="190" height="108" rx="9"/>
+      <text class="s-titre sur-plein" x="579.0" y="100.0" text-anchor="middle">Le modèle</text>
+      <line class="s-fleche" x1="686" y1="92.0" x2="722" y2="92.0" marker-end="url(#fl)"/>
+      <rect class="b-clair" x="734" y="54" width="150" height="76" rx="9"/>
+      <text class="s-titre" x="809.0" y="100.0" text-anchor="middle">1 jeton</text>
+      <line class="s-fleche" x1="896" y1="92.0" x2="932" y2="92.0" marker-end="url(#fl)"/>
+      <rect class="b-clair" x="944" y="54" width="56" height="76" rx="9"/>
+      <text class="s-titre" x="972.0" y="100.0" text-anchor="middle">…</text>
+      <path class="s-boucle" d="M809 130 V232 H579 V166" marker-end="url(#fl)"/>
+      <text class="s-sous" x="694" y="262" text-anchor="middle">et tout repart en entrée, avec ce qui précède</text>
+      </svg>
+    <p>Le modèle ne rédige pas une réponse : il ajoute un jeton, puis relit tout, puis en ajoute un autre.</p>
+    <p class="source">Une réponse de trois cents mots demande de l'ordre de quatre cents tours de cette boucle. C'est pourquoi la consommation se compte par jeton produit, et non par message.</p>
+  </section>
+
+  <section class="slide">
+    <h1>À quoi servent les <em>jetons</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Découper</h3>
+        <p>Le texte devient des morceaux que le modèle sait traiter.</p>
+      </div>
+      <div class="carte">
+        <h3>Mesurer</h3>
+        <p>Ils mesurent ce que le modèle peut lire d'un coup : c'est la taille du contexte.</p>
+      </div>
+      <div class="carte">
+        <h3>Facturer</h3>
+        <p>Le coût d'utilisation se compte au jeton, en entrée et en sortie.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Les <em>mélanges d'experts</em></h1>
+    <p class="chapeau">Plusieurs experts dans un même modèle, dont une poignée seulement travaille pour chaque jeton.</p>
+    <ol>
+      <li>Le jeton entre.</li>
+      <li>Un routeur choisit les experts les plus adaptés.</li>
+      <li>Seuls ceux-là calculent.</li>
+      <li>La sortie part.</li>
+    </ol>
+  </section>
+
+  <section class="slide">
+    <h1>Au total, et vraiment <em>actifs</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Au total</h2>
+        <p class="chiffre">119 mds</p>
+        <p class="chapeau">Tout doit tenir dans la mémoire de la machine.</p>
+      </div>
+      <div>
+        <h2>Actifs par jeton</h2>
+        <p class="chiffre">6 mds</p>
+        <p class="chapeau">Seuls ceux-là calculent, et dépensent de l'électricité.</p>
+      </div>
+    </div>
+    <p>La fiche d'un modèle ouvert en mélange d'experts porte la ligne <strong>« Dont N mds actifs »</strong>.</p>
+    <p class="source">Fiche de Mistral AI/Mistral Small 4 sur compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Avantages et <em>limites</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Avantages</h2>
+        <ul>
+          <li>Moins de calcul pour chaque jeton produit.</li>
+          <li>Moins d'électricité, à taille comparable.</li>
+          <li>Donc moins cher à utiliser.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Inconvénients</h2>
+        <ul>
+          <li>Prend beaucoup de place dans la mémoire de la machine.</li>
+          <li>Plus complexe à développer.</li>
+          <li>Se débrouille parfois moins bien hors de ce qu'il a vu.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Deux façons de <em>répondre</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Modèle « classique »</h2>
+        <p>Il écrit la réponse directement. Ce que vous lisez, c'est tout ce qu'il a produit.</p>
+      </div>
+      <div>
+        <h2>Modèle de raisonnement</h2>
+        <p>Il écrit d'abord un brouillon pour lui-même : il pose le problème, essaie, se corrige. Puis il rédige la réponse.</p>
+      </div>
+    </div>
+    <p>Même architecture, mêmes paramètres : seule change la quantité de texte produite.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le brouillon, à <em>l'écran</em></h1>
+    <p class="chapeau">À gauche, le raisonnement déplié ; à droite, la réponse directe. Le brouillon est souvent replié ou caché.</p>
+    <div class="plein">
+      <img class="visuel" src="img/modeles-de-raisonnement-p1-2.webp" alt="Deux réponses côte à côte : à gauche, un modèle de raisonnement avec un bloc « Raisonnement » déplié où il se parle à lui-même ; à droite, un modèle classique qui donne directement des reformulations.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Le brouillon se <em>paie</em> aussi</h1>
+    <div class="compare">
+      <div>
+        <h2>Réponse directe</h2>
+        <p class="chiffre">38</p>
+        <p>jetons produits par question.</p>
+      </div>
+      <div>
+        <h2>Réponse raisonnée</h2>
+        <p class="chiffre">543</p>
+        <p>jetons de réflexion par question, avant la réponse.</p>
+      </div>
+    </div>
+    <p>Ces jetons de réflexion sont des <strong>jetons de sortie</strong>, comme la réponse. Invisibles pour le lecteur, ils comptent dans le total.</p>
+    <p class="source">Dauner et Socher, « Energy costs of communicating with AI », <em>Frontiers in Communication</em>, 2025.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Trois leviers, une fois <em>mesurés</em></h1>
+    <p class="chapeau">L'Arcep et le PEReN ont mesuré l'électricité dépensée par 22 modèles ouverts, sur le même supercalculateur et pour un même travail.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Mélange d'experts</h3>
+        <p class="chiffre">− 45 %</p>
+        <p>d'électricité, face à un modèle dense de taille comparable.</p>
+      </div>
+      <div class="carte">
+        <h3>Paramètres arrondis</h3>
+        <p class="chiffre">− 39 %</p>
+        <p>d'électricité, quand chaque paramètre est arrondi à 8 ou 4 bits.</p>
+      </div>
+      <div class="carte">
+        <h3>Mode réflexion</h3>
+        <p class="chiffre">+ 92 %</p>
+        <p>d'électricité, quand le modèle écrit un brouillon avant de répondre.</p>
+      </div>
+    </div>
+    <p class="source">Arcep, autorité de régulation des communications, et PEReN, pôle d'expertise de la régulation numérique, mai 2026. Moyennes sur 22 modèles, supercalculateur public Jean Zay.</p>
+  </section>
+
+  <section class="slide">
+    <h1>La taille ne dit pas <em>tout</em></h1>
+    <p class="chapeau">Sur ces mêmes 22 modèles, à travail et matériel identiques.</p>
+    <ul>
+      <li>Des modèles de tailles très différentes peuvent dépenser autant l'un que l'autre.</li>
+      <li>Des modèles à faible consommation obtiennent des résultats équivalents à des modèles consommant davantage.</li>
+    </ul>
+    <p>La consommation ne suffit donc pas, à elle seule, à prédire la qualité.</p>
+    <p class="source">Arcep et PEReN, « Intelligence artificielle générative : quels défis environnementaux ? », mai 2026. Modèles de 3 à 123 milliards de paramètres, supercalculateur Jean Zay.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux modèles, la <em>démonstration</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Alibaba/Qwen 3.5 35B A3B</h2>
+        <p><strong>35 mds</strong>, dont 3 actifs.</p>
+        <div class="chevron b">B</div>
+      </div>
+      <div>
+        <h2>Swiss AI/Apertus 70B Instruct</h2>
+        <p><strong>70 mds</strong>, tous actifs.</p>
+        <div class="chevron c">C</div>
+      </div>
+    </div>
+    <p>Deux fois moins de paramètres, quatre fois moins d'énergie par jeton, et une classe d'écart. Les deux sont dans l'arène.</p>
+    <p class="source">Catalogue compar:IA : 166 Wh par million de jetons pour le premier, 658 pour le second.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Tout le catalogue, d'un <em>coup d'œil</em></h1>
+      <svg class="graphe" viewBox="0 0 1000 370" role="img" aria-labelledby="g-cat">
+      <title id="g-cat">Nuage de points : consommation par million de jetons produits selon la taille totale du modele. Les melanges d experts se placent nettement sous les modeles denses de meme taille, et les modeles proprietaires occupent le haut du nuage.</title>
+      <rect x="84" y="300.2" width="788" height="23.8" fill="#6fe49d" opacity="0.14"/>
+      <text class="g-classe" x="884" y="312.1" fill="#6fe49d">A</text>
+      <rect x="84" y="245.6" width="788" height="54.6" fill="#73e0cf" opacity="0.14"/>
+      <text class="g-classe" x="884" y="272.9" fill="#73e0cf">B</text>
+      <rect x="84" y="185.8" width="788" height="59.8" fill="#fcc63a" opacity="0.14"/>
+      <text class="g-classe" x="884" y="215.7" fill="#fcc63a">C</text>
+      <rect x="84" y="131.2" width="788" height="54.6" fill="#c8aa39" opacity="0.14"/>
+      <text class="g-classe" x="884" y="158.5" fill="#c8aa39">D</text>
+      <rect x="84" y="71.3" width="788" height="59.8" fill="#e4794a" opacity="0.14"/>
+      <text class="g-classe" x="884" y="101.3" fill="#e4794a">E</text>
+      <rect x="84" y="12.0" width="788" height="59.3" fill="#e1000f" opacity="0.14"/>
+      <text class="g-classe" x="884" y="41.7" fill="#e1000f">F</text>
+      <line class="g-grille" x1="147.5" y1="12" x2="147.5" y2="324"/>
+      <text class="g-tick" x="147.5" y="346" text-anchor="middle">10</text>
+      <line class="g-grille" x1="284.0" y1="12" x2="284.0" y2="324"/>
+      <text class="g-tick" x="284.0" y="346" text-anchor="middle">30</text>
+      <line class="g-grille" x1="433.7" y1="12" x2="433.7" y2="324"/>
+      <text class="g-tick" x="433.7" y="346" text-anchor="middle">100</text>
+      <line class="g-grille" x1="570.2" y1="12" x2="570.2" y2="324"/>
+      <text class="g-tick" x="570.2" y="346" text-anchor="middle">300</text>
+      <line class="g-grille" x1="719.9" y1="12" x2="719.9" y2="324"/>
+      <text class="g-tick" x="719.9" y="346" text-anchor="middle">1000</text>
+      <line class="g-grille" x1="856.4" y1="12" x2="856.4" y2="324"/>
+      <text class="g-tick" x="856.4" y="346" text-anchor="middle">3000</text>
+      <text class="g-tick" x="73" y="304.2" text-anchor="end">100 Wh</text>
+      <text class="g-tick" x="73" y="189.8" text-anchor="end">1 000</text>
+      <text class="g-tick" x="73" y="75.3" text-anchor="end">10 000</text>
+      <line class="g-axe" x1="84" y1="324" x2="872" y2="324"/>
+      <line class="g-axe" x1="84" y1="12" x2="84" y2="324"/>
+      <text class="g-axe-titre" x="18" y="168" text-anchor="middle" transform="rotate(-90 18 168)">Wh par million de jetons</text>
+      <text class="g-axe-titre" x="478" y="364" text-anchor="middle">Taille totale, en milliards de paramètres</text>
+      <circle class="g-pt g-dense" cx="119.8" cy="305.9" r="6.5"/>
+      <circle class="g-pt g-dense" cx="119.8" cy="305.9" r="6.5"/>
+      <path class="g-pt g-moe" d="M239.7 301.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-dense" cx="245.5" cy="297.2" r="6.5"/>
+      <path class="g-pt g-moe" d="M256.3 302.6l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M266.3 301.2l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-dense" cx="288.1" cy="292.4" r="6.5"/>
+      <path class="g-pt g-moe" d="M303.2 267.5l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-dense" cx="389.4" cy="206.6" r="6.5"/>
+      <path class="g-pt g-moe" d="M444.4 223.8l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M453.2 231.6l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M455.3 230.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M456.4 226.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-estime" cx="459.4" cy="190.2" r="6"/>
+      <circle class="g-pt g-dense" cx="464.4" cy="188.9" r="6.5"/>
+      <circle class="g-pt g-estime" cx="547.6" cy="192.2" r="6"/>
+      <circle class="g-pt g-estime" cx="547.6" cy="130.1" r="6"/>
+      <path class="g-pt g-moe" d="M563.4 157.3l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-estime" cx="570.3" cy="129.6" r="6"/>
+      <circle class="g-pt g-estime" cx="570.3" cy="129.6" r="6"/>
+      <circle class="g-pt g-estime" cx="570.3" cy="129.6" r="6"/>
+      <circle class="g-pt g-estime" cx="592.2" cy="81.0" r="6"/>
+      <circle class="g-pt g-estime" cx="592.2" cy="81.0" r="6"/>
+      <path class="g-pt g-moe" d="M605.1 154.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M605.4 157.3l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M606.0 154.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M614.4 151.4l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-estime" cx="617.9" cy="117.7" r="6"/>
+      <circle class="g-pt g-estime" cx="617.9" cy="117.7" r="6"/>
+      <circle class="g-pt g-estime" cx="617.9" cy="72.2" r="6"/>
+      <circle class="g-pt g-estime" cx="617.9" cy="72.2" r="6"/>
+      <circle class="g-pt g-estime" cx="633.7" cy="66.7" r="6"/>
+      <circle class="g-pt g-estime" cx="633.7" cy="66.7" r="6"/>
+      <path class="g-pt g-moe" d="M671.0 107.7l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M683.1 108.2l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-estime" cx="684.1" cy="113.4" r="6"/>
+      <path class="g-pt g-moe" d="M719.9 112.1l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-estime" cx="719.9" cy="119.6" r="6"/>
+      <path class="g-pt g-moe" d="M778.3 69.6l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M847.9 15.7l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <line class="g-rappel" x1="266.3" y1="308.7" x2="325.8" y2="316.9"/>
+      <text class="g-etiq" x="319.8" y="320.9" text-anchor="start">Gemma 4 26B A4B</text>
+      <line class="g-rappel" x1="606.0" y1="162.4" x2="644.6" y2="210.6"/>
+      <text class="g-etiq" x="638.6" y="214.6" text-anchor="start">Llama 4 Maverick</text>
+      <line class="g-rappel" x1="617.8" y1="72.3" x2="541.6" y2="35.4"/>
+      <text class="g-etiq" x="547.6" y="39.4" text-anchor="end">Gemini 3.5 Flash</text>
+      <line class="g-rappel" x1="847.9" y1="23.2" x2="720.0" y2="19.2"/>
+      <text class="g-etiq" x="726.0" y="23.2" text-anchor="end">Kimi K3</text>
+      </svg>
+      <p class="legende">
+        <span><i></i>Ouvert, dense</span>
+        <span><i class="moe"></i>Ouvert, mélange d'experts</span>
+        <span><i class="estime"></i>Propriétaire, taille estimée</span>
+      </p>
+    <p class="source">Catalogue compar:IA, 40 modèles en service. Consommation calculée par EcoLogits 0.10.2 ; les seuils de classe sont ceux de compar:IA. Les deux axes sont logarithmiques : les graduations horizontales alternent environ ×3 et ×3,3 ; les verticales progressent par facteur 10.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que le nuage <em>montre</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>La taille compte</h3>
+        <p>Le nuage de points monte de gauche à droite : à architecture comparable, un modèle plus gros consomme plus.</p>
+      </div>
+      <div class="carte">
+        <h3>L'architecture aussi</h3>
+        <p>Llama 4 Maverick active 17 milliards de paramètres sur 400 : il est en D. Tous actifs, la même estimation donnerait E.</p>
+      </div>
+      <div class="carte">
+        <h3>Les losanges sont plus bas</h3>
+        <p>Les mélanges d'experts occupent presque tout le bas du nuage.</p>
+      </div>
+    </div>
+    <p>La consommation suit surtout la moyenne entre la taille totale et la taille active. Ni l'une ni l'autre ne suffit seule.</p>
+    <p class="source">Coefficient de corrélation de 0,97 entre le logarithme de la consommation et celui de cette moyenne, sur les 40 modèles, contre 0,92 pour la taille totale seule et 0,80 pour la taille active seule.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Et les <em>images</em> ?</h1>
+    <p class="chapeau">En 2024, une mesure sur 88 modèles donnait un ordre de grandeur net.</p>
+    <div class="compare">
+      <div>
+        <h2>Écrire du texte</h2>
+        <p class="chiffre">0,05 Wh</p>
+        <p>par génération, en moyenne.</p>
+      </div>
+      <div>
+        <h2>Produire une image</h2>
+        <p class="chiffre">2,9 Wh</p>
+        <p>par image, en moyenne. <strong>Soixante fois plus.</strong></p>
+      </div>
+    </div>
+    <p class="source">Luccioni, Jernite et Strubell, « Power Hungry Processing: Watts Driving the Cost of AI Deployment? », FAccT 2024. Mesures sur cartes A100, une requête à la fois, sur des modèles de 2023.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le rapport s'est <em>resserré</em></h1>
+    <p class="chapeau">Mesures de 2025, sur des modèles ouverts.</p>
+    <table>
+      <tr><th></th><th>Énergie par réponse ou par image</th></tr>
+      <tr><td>Llama 3.1 8B, une réponse</td><td>0,03 Wh</td></tr>
+      <tr><td>Stable Diffusion 3, une image</td><td>0,63 Wh</td></tr>
+      <tr><td>Llama 3.1 405B, une réponse</td><td>1,86 Wh</td></tr>
+    </table>
+    <p>Une réponse d'un très grand modèle coûte aujourd'hui trois fois une image. Les modèles de diffusion se sont optimisés pendant que le texte s'allongeait.</p>
+    <p class="source">Mesures de Jae-Won Chung, ML.Energy, rapportées par la <em>MIT Technology Review</em>, mai 2025. L'énergie des cartes y est doublée pour couvrir le reste du centre : c'est une hypothèse.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Et la <em>vidéo</em> ?</h1>
+    <div class="nuance">
+      <p>Aucun fournisseur ne publie de chiffre. Ni pour Sora, ni pour Veo, ni pour Runway.</p>
+    </div>
+    <p>Le seul repère mesuré vient d'un modèle ouvert, CogVideoX : environ <strong>940 Wh pour cinq secondes</strong> de vidéo, soit l'ordre de grandeur d'un millier de réponses écrites.</p>
+    <p>Les chiffres qui circulent pour les modèles propriétaires sont déduits du temps de réponse. Ils mesurent surtout les hypothèses de leurs auteurs.</p>
+    <p class="source">Mesure de Sasha Luccioni sur CogVideoX, rapportée par la <em>MIT Technology Review</em>, mai 2025. Cinq secondes à seize images par seconde, sur un seul modèle et une seule configuration.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'il faut <em>retenir</em></h1>
+    <ul>
+      <li>Le compteur, ce sont les <strong>jetons</strong> produits. Une réponse longue coûte plus qu'une réponse courte.</li>
+      <li>Un mélange d'experts n'active qu'une part de ses paramètres : 45 % d'électricité en moins qu'un dense de taille comparable.</li>
+      <li>Les plus grands modèles restent généralement les plus consommateurs, mais l'architecture distingue les tailles voisines.</li>
+      <li>Le mode raisonnement augmente la consommation ; son gain dépend de la tâche.</li>
+    </ul>
+  </section>
+
+</main>
+</body>
+</html>

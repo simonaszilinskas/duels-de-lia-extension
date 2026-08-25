@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ce qu'on retient · Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
+  <section class="slide titre">
+    <h1>Ce qu'on <em>retient</em></h1>
+    <p class="chapeau">Des repères pour comparer les usages et choisir en connaissance de cause.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'IA, ce n'est pas que <em>ChatGPT</em></h1>
+    <div class="compare">
+      <div>
+        <h2>IA génératives conversationnelles</h2>
+        <p>Elles produisent du texte. C'est la famille que compar:IA fait s'affronter dans l'arène.</p>
+      </div>
+      <div>
+        <h2>D'autres IA</h2>
+        <p>Elles trient, reconnaissent, prédisent. Elles travaillent depuis longtemps, sans faire parler d'elles.</p>
+      </div>
+    </div>
+    <p class="source">Pour en découvrir plus : comparia.beta.gouv.fr</p>
+  </section>
+
+
+
+  <section class="slide">
+    <h1>Regarder <em>deux</em> choses à la fois</h1>
+    <div class="compare">
+      <div>
+        <h2>Une réponse</h2>
+        <p>Ce que coûte la question que je viens de poser.</p>
+      </div>
+      <div>
+        <h2>Le même geste, partout</h2>
+        <p>Ce que coûterait cette même question, posée par tout le monde, tous les jours.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>La politesse, un effet <em>marginal</em></h1>
+    <p>Dire « s'il te plaît » ou « merci » ajoute quelques jetons, mais cet effet reste limité.</p>
+    <p>Les écarts les plus importants viennent du <strong>modèle choisi</strong>, de la <strong>longueur de la réponse</strong> et des chaînes d'appels automatiques.</p>
+    <p class="source">Le bilan de compar:IA estime l'énergie à partir du modèle et du nombre de jetons produits.</p>
+  </section>
+
+  <section class="slide">
+    <h1>La taille ne garantit pas la <em>qualité</em></h1>
+    <p class="chapeau">Selon la tâche, certains petits modèles obtiennent des résultats comparables en consommant moins.</p>
+    <p>L'onglet <strong>Focus énergie</strong> du classement place chaque modèle selon son score de satisfaction et sa consommation moyenne pour 1 000 jetons. On y voit des petits modèles bien classés et sobres.</p>
+    <p class="source">comparia.beta.gouv.fr/ranking. Score de satisfaction calculé sur les votes de l'arène, par la méthode Bradley-Terry.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Où les essayer, dans un <em>navigateur</em></h1>
+    <table class="serre">
+      <tr><th>Service</th><th>Éditeur</th><th>Compte</th></tr>
+      <tr><td>compar:IA</td><td>État français</td><td>Non</td></tr>
+      <tr><td>Euria</td><td>Infomaniak, Suisse</td><td>Non</td></tr>
+      <tr><td>Duck.ai</td><td>DuckDuckGo</td><td>Non</td></tr>
+      <tr><td>Vibe, ex-Le Chat</td><td>Mistral AI, France</td><td>Oui</td></tr>
+      <tr><td>HuggingChat</td><td>Hugging Face</td><td>Oui</td></tr>
+    </table>
+    <p>Tous gratuits. Euria et Duck.ai n'entraînent rien sur vos conversations.</p>
+    <p class="source">comparia.beta.gouv.fr, euria.infomaniak.com, duck.ai, chat.mistral.ai, hf.co/chat. Adresses vérifiées en août 2026.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ou sur votre <em>propre machine</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Jan</h3>
+        <p>Ressemble à ChatGPT, tourne hors ligne. Le plus simple : on télécharge, on clique.</p>
+      </div>
+      <div class="carte">
+        <h3>LM Studio</h3>
+        <p>Pour essayer beaucoup de modèles sans ligne de commande.</p>
+      </div>
+      <div class="carte">
+        <h3>AnythingLLM</h3>
+        <p>Même chose, et il lit vos documents sans qu'ils quittent la machine.</p>
+      </div>
+    </div>
+    <p>Un modèle de <strong>4 milliards de paramètres</strong> tourne sur 8 Go de mémoire, sans carte graphique. Pour 8 milliards, comptez 16 Go.</p>
+    <p class="source">jan.ai, lmstudio.ai, anythingllm.com, tous gratuits, macOS, Windows et Linux. Ollama, en ligne de commande, pour qui est à l'aise avec un terminal. Tailles données pour des modèles quantifiés en 4 bits.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'environnement n'est pas le <em>seul sujet</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Données et droits</h3>
+        <p>Quels contenus peuvent être utilisés, et dans quelles conditions juridiques ?</p>
+      </div>
+      <div class="carte">
+        <h3>Le travail derrière</h3>
+        <p>Quelles tâches humaines participent à la préparation et à l'évaluation des modèles ?</p>
+      </div>
+      <div class="carte">
+        <h3>Biais et fiabilité</h3>
+        <p>Comment mesurer les erreurs, les biais et leurs conséquences selon les usages ?</p>
+      </div>
+    </div>
+    <p>Cet atelier se concentre sur l'énergie ; ces autres dimensions ne sont pas développées ici.</p>
+    <p class="source">Périmètre de l'atelier : compar:IA mesure et affiche la consommation d'énergie.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Trois repères pour <em>choisir</em></h1>
+    <ol>
+      <li>Comparez la <strong>qualité et la consommation</strong> pour la tâche visée.</li>
+      <li>Intégrez la <strong>durée de vie des appareils</strong> dans le bilan.</li>
+      <li>Utilisez <strong>compar:IA</strong> pour éclairer ce choix entre modèles.</li>
+    </ol>
+    <p class="source">L'arène est à la racine du site, comparia.beta.gouv.fr, et le catalogue à comparia.beta.gouv.fr/models</p>
+  </section>
+
+
+</main>
+</body>
+</html>

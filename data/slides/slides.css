@@ -1,0 +1,776 @@
+/* Supports de l'atelier Duels de l'IA.
+   Une diapositive = une <section class="slide">.
+   Quatre tailles de texte, pas une de plus : display, titre, corps, source.
+   Tout est en unités de conteneur, la boîte 16/9 fait le reste. */
+
+@font-face {
+  font-family: 'Marianne';
+  src: url('../../fonts/Marianne-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Marianne';
+  src: url('../../fonts/Marianne-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Palette reprise telle quelle de compar:IA : frontend/src/css/app.css pour la
+   marque, dsfr.min.css pour les gris et les couleurs d'état. */
+:root {
+  --violet: #6464f3;        /* --brand-primary */
+  --violet-pale: #e6e6fd;   /* --brand-primary-soft */
+  --violet-clair: #f4f4fe;  /* --brand-primary-softest */
+  --encre: #161616;
+  --gris: #666;             /* --text-mention-grey */
+  --gris-fonce: #3a3a3a;
+  --trait: #ddd;            /* --border-default-grey */
+  --fond: #f5f5f8;
+  --gris-clair: #f3f5f9;    /* --cg-light-grey */
+  --info: #0063cb;
+  --erreur: #ce0500;
+  --succes: #18753c;
+  --rouge-marianne: #e1000f;
+  --jaune-tournesol: #c8aa39;
+
+  --display: 3.2em;
+  --titre: 1.45em;
+  --source: 0.7em;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #111;
+  font-family: 'Marianne', system-ui, sans-serif;
+  color: var(--encre);
+  -webkit-font-smoothing: antialiased;
+}
+body { display: flex; }
+
+/* La plus grande boîte 16/9 qui tienne dans la fenêtre. */
+.stage {
+  container-type: size;
+  width: min(100vw, 177.78vh);
+  height: min(56.25vw, 100vh);
+  margin: auto;
+  position: relative;
+  background: var(--fond);
+  overflow: hidden;
+}
+
+/* Bloc de marque, en haut à droite de chaque support. Un seul par fichier. */
+.marque {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  background: var(--violet);
+  color: #fff;
+  border-bottom-left-radius: 1.2cqw;
+  padding: 1.4cqw 2.2cqw 1.4cqw 1.8cqw;
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  font-size: 1.6cqw;
+  line-height: 1.15;
+}
+.marque img { width: 3.4cqw; height: auto; }
+.marque strong { display: block; font-size: 1.35em; font-weight: 700; }
+.marque span { opacity: 0.85; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  /* Le bas réserve la bande où .source est posée en absolu : sans cette marge,
+     une source sur deux lignes vient buter dans le contenu. */
+  padding: 6cqw 7cqw 8.5cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-size: 2.15cqw;
+  line-height: 1.5;
+}
+/* Sans JavaScript les diapositives s'empilent, ce qui reste lisible. */
+.deck-ready .slide { display: none; }
+.deck-ready .slide.is-current { display: flex; }
+
+/* --- Texte : quatre tailles --- */
+
+.slide h1 {
+  font-size: var(--titre);
+  line-height: 1.1;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  max-width: 44ch;
+  text-wrap: balance;
+  /* Le bloc de marque fait 25,5cqw et déborde de la marge droite : on réserve
+     juste ce qu'il faut, sinon le titre passe à deux lignes pour rien. */
+  padding-right: 19cqw;
+}
+/* Un mot en violet dans le titre, comme sur les supports d'origine. */
+.slide h1 em { font-style: normal; color: var(--violet); }
+.slide p, .slide li, .slide td, .slide th, .slide h2, .slide h3 {
+  font-size: 1em;
+  font-weight: 400;
+  margin: 0;
+}
+.slide h2, .slide h3, .slide th { font-weight: 700; }
+.slide .chapeau { color: var(--gris); max-width: 44ch; }
+.slide ul, .slide ol {
+  margin: 0;
+  padding-left: 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  max-width: 52ch;
+}
+.slide li::marker { color: var(--violet); }
+.slide strong { font-weight: 700; }
+.slide a { color: var(--violet); }
+
+/* Le chiffre qu'on veut voir du fond de la salle. */
+.chiffre {
+  font-size: var(--display) !important;
+  font-weight: 700;
+  color: var(--violet);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* Source, toujours au même endroit, discrète. */
+.source {
+  position: absolute;
+  left: 7cqw;
+  right: 7cqw;
+  bottom: 2.6cqw;
+  font-size: var(--source) !important;
+  color: var(--gris);
+  line-height: 1.4;
+  max-width: none;
+}
+
+/* --- Diapositive d'ouverture --- */
+
+.slide.titre {
+  justify-content: center;
+  background: var(--violet-clair);
+  padding-left: 9cqw;
+}
+.slide.titre h1 { font-size: var(--display); letter-spacing: -0.03em; }
+.slide.titre .chapeau { font-size: 1em; max-width: 34ch; }
+
+/* --- Mises en page --- */
+
+/* Texte à gauche, image à droite. La mise en page par défaut dès qu'il y a un visuel. */
+.duo {
+  display: flex;
+  gap: 3cqw;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+.duo > * { flex: 1 1 0; min-width: 0; min-height: 0; }
+/* Posé après .duo > * : la carte partage la largeur comme les autres colonnes,
+   mais sa hauteur suit l'image. Sans ça, une image large et basse flottait au
+   milieu d'un grand aplat blanc étiré sur toute la hauteur. */
+.duo > .visuel, .compare .visuel, .carte .visuel {
+  align-self: center;
+  height: auto;
+  max-height: 100%;
+}
+.duo .colonne { display: flex; flex-direction: column; gap: 0.8em; justify-content: center; min-width: 0; }
+
+/* Image seule, plein cadre. */
+.plein { flex: 1; min-height: 0; display: flex; }
+.plein img { width: 100%; height: 100%; object-fit: contain; }
+
+figure { margin: 0; display: flex; flex-direction: column; gap: 0.6em; min-height: 0; flex: 1; }
+figure img { flex: 1; min-height: 0; width: 100%; object-fit: contain; }
+figcaption { font-size: 1em; color: var(--gris); }
+
+/* Un visuel se pose comme une carte, pas comme une image collée.
+   flex + min-height:0 : sans ça une image haute pousse la diapositive hors cadre. */
+.visuel {
+  border-radius: 0.9cqw;
+  background: #fff;
+  box-shadow: 0 0.15cqw 1.2cqw rgba(22, 22, 22, 0.1);
+  object-fit: contain;
+  padding: 0.6cqw;
+  width: 100%;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* Comparaison en deux colonnes séparées par un filet, comme « IA / IA générative ». */
+.compare {
+  display: flex;
+  gap: 2.5cqw;
+  flex: 1;
+  min-height: 0;
+}
+.compare > * {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+.compare > * + * { border-left: 1px solid var(--trait); padding-left: 2.5cqw; }
+.compare h2 { text-align: left; }
+
+/* Cartes côte à côte. */
+.cartes { display: flex; gap: 1.4cqw; flex: 1; align-items: stretch; min-height: 0; }
+.carte {
+  flex: 1;
+  border-top: 0.2em solid var(--violet);
+  padding-top: 0.7em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.carte ul { gap: 0.35em; }
+
+
+/* Tableau. */
+.slide img { max-width: 100%; max-height: 100%; }
+.slide table { border-collapse: collapse; width: 100%; }
+.slide th, .slide td {
+  border-bottom: 0.07em solid var(--trait);
+  padding: 0.55em 0.7em 0.55em 0;
+  text-align: left;
+  vertical-align: top;
+}
+.slide thead th, .slide tr:first-child th { color: var(--gris); font-weight: 400; }
+
+/* Encadré : une nuance que la salle doit lire, pas une note à l'animateur. */
+.nuance {
+  border-left: 0.25em solid var(--violet);
+  padding: 0.1em 0 0.1em 1em;
+  color: var(--encre);
+  max-width: 56ch;
+}
+
+/* --- Navigation --- */
+
+.nav {
+  position: fixed;
+  bottom: 0.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 2rem;
+  padding: 0.25rem 0.45rem;
+  color: #fff;
+  font-size: 0.8rem;
+  opacity: 0.35;
+  transition: opacity 0.15s;
+}
+.nav:hover, .nav:focus-within { opacity: 1; }
+.nav button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.25rem 0.55rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.nav button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.22); }
+.nav button:disabled { opacity: 0.3; cursor: default; }
+.nav [aria-live] { min-width: 3.2rem; text-align: center; font-variant-numeric: tabular-nums; }
+
+@media print {
+  @page { size: 16in 9in; margin: 0; }
+  html, body { width: 100%; height: auto; display: block; background: #fff; }
+  .nav { display: none; }
+  .deck-ready .slide { display: flex; }
+  .stage { container-type: inline-size; width: 100%; height: auto; margin: 0; overflow: visible; }
+  .marque { position: fixed; }
+  .slide { position: relative; min-height: 56.25vw; break-after: page; aspect-ratio: 16 / 9; }
+  .slide:last-child { break-after: auto; }
+}
+
+/* --- Échelle énergétique A à F, reprise de compar:IA -----------------------
+   Mêmes couleurs DSFR, mêmes largeurs et même chevron que le produit
+   (ENERGY_CLASS_COLORS dans frontend/src/lib/models.ts, et la règle de
+   largeur 50 + 50/6 × rang de ModelInfoModal.svelte). Texte blanc sur les six
+   classes, comme sur le produit. */
+
+.energie {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  max-width: none;
+}
+.energie li {
+  position: relative;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.2em 0.7em;
+  line-height: 1.25;
+  clip-path: polygon(0 0, calc(100% - 0.75em) 0, 100% 50%, calc(100% - 0.75em) 100%, 0 100%);
+}
+.energie li::marker { content: none; }
+.energie .a { width: 58.3%; background: #6fe49d; }
+.energie .b { width: 66.7%; background: #73e0cf; }
+.energie .c { width: 75%;   background: #fcc63a; }
+.energie .d { width: 83.3%; background: #c8aa39; }
+.energie .e { width: 91.7%; background: #e4794a; }
+.energie .f { width: 100%;  background: #e1000f; }
+
+
+/* Le seuil de la classe, posé à droite du chevron. */
+.energie li span {
+  font-weight: 400;
+  margin-left: 0.6em;
+}
+
+
+/* Badge de classe de taille, repris des cartes de modèle. */
+.badge-taille {
+  display: inline-block;
+  background: var(--violet-pale);
+  color: var(--violet);
+  font-weight: 700;
+  border-radius: 0.25em;
+  padding: 0.1em 0.5em;
+}
+
+
+/* --- Éléments d'interface repris de compar:IA -----------------------------
+   L'écran de révélation, reproduit en CSS d'après RevealCard.svelte, pour que
+   la salle reconnaisse ce qu'elle a sous les yeux quand elle vote. Mêmes
+   couleurs, mêmes libellés que le produit. */
+
+.fiche {
+  background: #fff;
+  border: 1px solid var(--trait);
+  border-radius: 0.35em;
+  padding: 0.9em 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+  min-width: 0;
+  flex: 1;
+}
+.fiche-tete {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.fiche-tete .lab { font-weight: 400; }
+.fiche-tete .vous {
+  margin-left: auto;
+  border: 1px solid var(--violet);
+  color: var(--violet);
+  background: var(--violet-clair);
+  border-radius: 3.75em;
+  padding: 0.1em 0.7em;
+  font-size: var(--source);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Groupe de badges DSFR : licence, taille, date de sortie. */
+/* Posé après la règle générale sur .slide ul, qui empile en colonne. */
+.slide ul.badges {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.3em;
+  list-style: none;
+  padding: 0;
+  max-width: none;
+}
+.badges li {
+  background: var(--violet-pale);
+  color: var(--gris-fonce);
+  border-radius: 0.25em;
+  padding: 0.15em 0.55em;
+  font-size: var(--source);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* Grille de cartes d'information, comme sous le nom du modèle. */
+.infocards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5em, 1fr));
+  gap: 0.5em;
+}
+.infocard {
+  background: var(--gris-clair);
+  border: 1px solid var(--trait);
+  border-radius: 0.35em;
+  padding: 0.5em 0.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  min-width: 0;
+}
+.infocard h3, .infocard h4 {
+  font-size: var(--source);
+  color: var(--gris);
+  font-weight: 400;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.infocard b { font-weight: 700; }
+.infocard small { font-size: var(--source); color: var(--gris); }
+.infocard .hausse { font-size: var(--source); color: var(--erreur); }
+.infocard .baisse { font-size: var(--source); color: var(--succes); }
+
+/* Le chevron de classe, tel qu'il tient dans la carte « Score énergie ». */
+.chevron {
+  color: #fff;
+  font-weight: 700;
+  padding: 0.05em 0.55em;
+  width: 80%;
+  margin-top: 0.15em;
+  clip-path: polygon(0 0, calc(100% - 0.55em) 0, 100% 50%, calc(100% - 0.55em) 100%, 0 100%);
+}
+.chevron.a { background: #6fe49d; }
+.chevron.b { background: #73e0cf; }
+.chevron.c { background: #fcc63a; }
+.chevron.d { background: #c8aa39; }
+.chevron.e { background: #e4794a; }
+.chevron.f { background: #e1000f; }
+
+/* Le bloc « Bilan » et son sélecteur de scénario. */
+.bilan {
+  background: var(--gris-clair);
+  border: 1px solid var(--trait);
+  border-radius: 0.35em;
+  padding: 0.7em 0.8em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  min-width: 0;
+}
+.bilan > h2 {
+  font-size: 1em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  flex-wrap: wrap;
+  text-align: left;
+}
+.scenario {
+  border: 1px solid var(--violet);
+  color: var(--violet);
+  background: #fff;
+  border-radius: 3.75em;
+  padding: 0.1em 0.7em;
+  font-weight: 700;
+  font-size: var(--source);
+  white-space: nowrap;
+}
+
+/* Les trois équivalences en énergie, avec la pastille de couleur du produit. */
+.equiv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em; }
+.equiv > div {
+  background: #fff;
+  border: 1px solid var(--trait);
+  border-radius: 0.35em;
+  padding: 0.5em 0.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  min-width: 0;
+}
+.equiv h3 { font-size: var(--source); color: var(--gris); font-weight: 400; margin: 0; }
+.equiv h3::before {
+  content: '';
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  margin-right: 0.4em;
+  background-color: currentcolor;
+}
+.equiv .video h3::before { color: var(--rouge-marianne); }
+.equiv .led h3::before { color: var(--jaune-tournesol); }
+.equiv .batterie h3::before { color: var(--info); }
+.equiv b { font-weight: 700; }
+.equiv small { font-size: var(--source); color: var(--gris); }
+
+/* Bandeau d'onglets, comme « Explication / Équivalences ». */
+.onglets {
+  display: inline-flex;
+  gap: 0.25em;
+  background: var(--violet-clair);
+  border-radius: 0.35em;
+  padding: 0.25em;
+  align-self: flex-start;
+}
+.onglets span {
+  padding: 0.15em 0.7em;
+  border-radius: 0.25em;
+  font-size: var(--source);
+  color: var(--gris-fonce);
+}
+.onglets span.actif { background: #fff; font-weight: 700; color: var(--violet); }
+
+
+/* Une phrase découpée en jetons, chaque jeton dans sa pastille. */
+.jetons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
+  align-items: center;
+  font-weight: 700;
+}
+.jetons span {
+  background: var(--violet-pale);
+  color: var(--violet);
+  border-radius: 0.2em;
+  padding: 0.12em 0.4em;
+  white-space: pre;
+}
+/* L'espace fait partie du jeton suivant : c'est ce que fait le tokeniseur. */
+.jetons span.espace { background: var(--violet-clair); }
+.jetons .compte { background: none; color: var(--gris); font-weight: 400; padding-left: 0.6em; }
+
+
+/* --- Graphiques ------------------------------------------------------------
+   Tout est en SVG écrit à la main, dans le flux du document : la police et les
+   couleurs sont celles de la page, et rien n'est chargé depuis l'extérieur.
+   Les tailles de texte sont en unités de conteneur, pas en unités SVG, sinon
+   les libellés grossissent avec le dessin et deviennent illisibles. */
+
+.graphe {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow: visible;
+}
+/* Les tailles sont en unités du dessin, pas en cqw : un libellé posé en unité
+   de page ne suit pas l'échelle du SVG, et déborde de sa boîte dès que le
+   dessin est contraint par la hauteur ou que le navigateur impose une taille
+   de police minimale. */
+.graphe text { font-family: inherit; fill: var(--gris-fonce); }
+.g-tick { font-size: 15px; fill: var(--gris); }
+.g-axe-titre { font-size: 15px; fill: var(--gris); }
+.g-etiq { font-size: 16px; fill: var(--encre); font-weight: 700; }
+.g-classe { font-size: 21px; font-weight: 700; dominant-baseline: middle; }
+.g-axe { stroke: var(--trait); stroke-width: 1.5; }
+.g-grille { stroke: var(--trait); stroke-width: 1; stroke-dasharray: 3 4; }
+.g-pt { fill: var(--violet); }
+.g-dense { fill: var(--encre); }
+.g-moe { fill: var(--violet); }
+/* Taille estimée : cercle vide. Le trait dit qu'on ne connaît pas le chiffre. */
+.g-estime { fill: #fff; stroke: var(--gris); stroke-width: 2; }
+
+/* Légende : la forme du repère, puis ce qu'elle veut dire. */
+.legende {
+  display: flex;
+  gap: 1.6em;
+  flex-wrap: wrap;
+  color: var(--gris);
+  font-size: var(--source) !important;
+}
+.legende span { display: inline-flex; align-items: center; gap: 0.45em; }
+.legende i {
+  width: 0.75em;
+  height: 0.75em;
+  display: inline-block;
+  background: var(--encre);
+  border-radius: 50%;
+  font-style: normal;
+}
+.legende .moe { background: var(--violet); border-radius: 0; transform: rotate(45deg); }
+.legende .estime { background: #fff; box-shadow: inset 0 0 0 0.13em var(--gris); }
+
+/* --- L'échelle des ordres de grandeur --------------------------------------
+   Six barreaux, chacun vaut mille fois le précédent. Le violet fonce en
+   descendant : c'est la seule chose que l'œil doit suivre. */
+
+.slide ol.echelle {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+  max-width: none;
+}
+.echelle li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9em;
+  padding: 0.16em 0.8em;
+  border-radius: 0.25em;
+  line-height: 1.2;
+}
+.echelle li::marker { content: none; }
+.echelle b {
+  font-weight: 700;
+  min-width: 5.5em;
+  font-variant-numeric: tabular-nums;
+}
+.echelle span { color: var(--gris-fonce); }
+.echelle em { font-style: normal; font-weight: 700; }
+/* Six paliers de violet, du plus clair au plus soutenu. */
+.echelle .p1 { background: #ededfd; }
+.echelle .p2 { background: #dedefc; }
+.echelle .p3 { background: #cacafa; }
+.echelle .p4 { background: #aeaef8; }
+.echelle .p5 { background: #8b8bf5; color: #fff; }
+.echelle .p6 { background: #6464f3; color: #fff; }
+.echelle .p5 span, .echelle .p6 span { color: #fff; }
+/* Le facteur mille, glissé entre deux barreaux. */
+.echelle .pas {
+  padding: 0;
+  font-size: var(--source);
+  color: var(--gris);
+  gap: 0.4em;
+  align-items: center;
+  line-height: 1.1;
+}
+.echelle .pas::before {
+  content: '';
+  width: 5.5em;
+  border-top: 1px dashed var(--trait);
+  display: inline-block;
+}
+
+/* --- Barres horizontales ---------------------------------------------------
+   Un libellé, une barre à l'échelle, la valeur au bout. Sert au mix
+   électrique et à tout classement à une seule dimension. */
+
+.slide ul.barres {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+  max-width: none;
+}
+.barres li {
+  display: grid;
+  grid-template-columns: 11em 1fr;
+  align-items: center;
+  gap: 0.8em;
+}
+.barres li::marker { content: none; }
+.barres .nom { font-weight: 700; }
+.barres .piste { display: flex; align-items: center; gap: 0.6em; min-width: 0; }
+.barres .barre {
+  height: 1.7em;
+  border-radius: 0.15em;
+  background: var(--violet);
+  flex: none;
+}
+.barres .val { color: var(--gris-fonce); font-variant-numeric: tabular-nums; }
+.barres .sobre .barre { background: var(--succes); }
+.barres .lourd .barre { background: var(--erreur); }
+.barres .neutre .barre { background: var(--gris); }
+
+/* --- Barre empilée : fabriquer la machine, ou la faire tourner ------------- */
+
+.parts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9em;
+  flex: 1;
+  min-height: 0;
+  justify-content: center;
+}
+.parts > div { display: flex; flex-direction: column; gap: 0.25em; }
+.parts h3 { font-size: 1em; font-weight: 700; }
+.parts .pile { display: flex; height: 1.9em; border-radius: 0.2em; overflow: hidden; }
+.parts .pile > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--source);
+  white-space: nowrap;
+  min-width: 0;
+}
+.parts .fab { background: var(--violet); }
+.parts .use { background: var(--gris-fonce); }
+.parts .autre { background: var(--trait); color: var(--gris-fonce); }
+.parts small { color: var(--gris); font-size: var(--source); }
+
+/* Trait de rappel entre un point et son étiquette. */
+.g-rappel { stroke: var(--gris); stroke-width: 1; opacity: 0.55; }
+
+/* --- Schémas : boîtes reliées par des flèches ------------------------------ */
+.schema .b-clair { fill: var(--violet-clair); stroke: var(--violet-pale); stroke-width: 2; }
+.schema .b-plein { fill: var(--violet); }
+.schema .s-titre { font-size: 22px; font-weight: 700; fill: var(--encre); }
+.schema .s-sous { font-size: 17px; fill: var(--gris); }
+.schema .s-fleche, .schema .s-boucle { stroke: var(--gris); stroke-width: 2; fill: none; }
+.schema .s-boucle { stroke-dasharray: 5 4; }
+.schema .sur-plein { fill: #fff; opacity: 1; }
+.schema text.s-sous.sur-plein { fill: #fff; opacity: 0.8; }
+
+/* Le chiffre à retenir, posé dans un schéma. */
+.schema .g-chiffre { font-size: 46px; font-weight: 700; fill: var(--violet); letter-spacing: -0.02em; }
+
+/* --- Le cycle de vie, une étape éclairée -----------------------------------
+   Les segments sont de largeur égale à dessein : la part réelle de chaque
+   étape n'est pas connue, et un dessin à l'échelle mentirait. */
+
+.slide ul.cycle {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.3em;
+  max-width: none;
+  flex-direction: row;
+}
+.cycle li {
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--gris-clair);
+  color: var(--gris);
+  border: 1px dashed var(--trait);
+  border-radius: 0.3em;
+  padding: 0.7em 0.6em;
+  text-align: center;
+  font-size: var(--source);
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cycle li::marker { content: none; }
+.cycle li.compte {
+  background: var(--violet);
+  border: 1px solid var(--violet);
+  color: #fff;
+  font-weight: 700;
+  flex-grow: 1.4;
+}
+
+/* Tableau resserré : au-delà de cinq lignes, l'interligne par défaut fait
+   déborder la diapositive dès que le navigateur impose une police plancher. */
+.slide table.serre th, .slide table.serre td { padding: 0.3em 0.7em 0.3em 0; }

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C'est quoi l'IA générative ? · Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
+  <section class="slide titre">
+    <h1>C'est quoi l'<em>IA générative</em> ?</h1>
+    <p class="chapeau">Ce qu'est un modèle, comment il apprend, et ce qu'on va comparer.</p>
+  </section>
+
+  <section class="slide">
+    <h1>C'est quoi <em>l'IA</em> ?</h1>
+    <p class="chapeau">Faire faire à une machine des tâches qui demandent d'ordinaire de l'intelligence humaine.</p>
+    <p>Une création humaine : des instructions en entrée, un résultat en sortie.</p>
+    <p>Reconnaître un visage, produire du langage, anticiper la météo.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'IA existait <em>avant</em></h1>
+    <div class="compare">
+      <div>
+        <h2>IA</h2>
+        <img class="visuel" src="img/introduction-p1-1.webp" alt="Des photos de chats et de chiens étiquetées alimentent un réseau de neurones, qui produit un résultat.">
+        <p class="chapeau">Elle trie, reconnaît, prédit. Traduction, imagerie médicale, prévision météo.</p>
+      </div>
+      <div>
+        <h2>IA générative</h2>
+        <img class="visuel" src="img/introduction-p2-3.webp" alt="Image de synthèse : des personnages en robes de cérémonie devant une immense baie circulaire ouvrant sur une cité.">
+        <p class="chapeau">Elle produit. Son usage s'est rapidement diffusé depuis le lancement de ChatGPT, fin 2022.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>La <em>recette</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Des données</h3>
+        <img class="visuel" src="img/comment-est-entraine-un-modele-p1-1.webp" alt="Une grille de photos de chats et de chiens, chacune légendée « cat (0) » ou « dog (1) ».">
+        <p>Des textes, des images, avec ce qu'ils représentent.</p>
+      </div>
+      <div class="carte">
+        <h3>+ beaucoup de calculs</h3>
+        <img class="visuel" src="img/comment-est-entraine-un-modele-p1-2.webp" alt="Une photo de chat et une photo de chien entrent dans un réseau de neurones à quatre couches, qui produit la sortie « Cat ».">
+        <p>La machine ajuste ses chiffres jusqu'à retomber sur les bonnes réponses.</p>
+      </div>
+      <div class="carte">
+        <h3>= un modèle d'IA</h3>
+        <img class="visuel" src="img/comment-est-entraine-un-modele-p1-3.webp" alt="Une photo d'un chien et d'un chat, chacun entouré d'un cadre bleu portant l'étiquette « Dog » ou « Cat ».">
+        <p>Qui prédit ensuite sur des données qu'il n'a jamais vues.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Sur quoi s'entraîne un <em>modèle</em> ?</h1>
+    <ul>
+      <li>Des pages web issues de collectes comme <strong>Common Crawl</strong>.</li>
+      <li>Des corpus ensuite <strong>nettoyés, dédupliqués et filtrés</strong>.</li>
+    </ul>
+    <p class="source">Exemple : carte du jeu de données FineWeb, Hugging Face.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Un jeu de données <em>type</em></h1>
+    <p class="chapeau">Exemple : FineWeb.</p>
+    <p class="chiffre">51 To</p>
+    <p>de texte, soit 18 500 milliards de jetons.</p>
+    <p class="source">Carte du jeu de données FineWeb, HuggingFace : le tableau de la carte totalise aujourd'hui 50 447 Go, pour 18 500 milliards de jetons.</p>
+  </section>
+
+  <section class="slide">
+    <h1>« Apprendre », pour une <em>machine</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Un modèle, c'est un empilement de formules. Apprendre, c'est en régler les chiffres, un peu mieux à chaque exemple.</p>
+        <p>Personne ne les règle à la main : la machine se corrige elle-même, des milliards de fois.</p>
+      </div>
+      <img class="visuel" src="img/comment-est-entraine-un-modele-p2-8.webp" alt="Un bloc de formules mathématiques décrivant une couche de transformeur : normalisation, attention, réseau à propagation avant.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'on obtient <em>au bout</em></h1>
+    <p class="chapeau">Pas une base de connaissances, pas un moteur de recherche.</p>
+    <p>Un <strong>ensemble de chiffres</strong> qui servent à prédire la réponse <strong>la plus probable</strong> à la question posée.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ces chiffres : les <em>paramètres</em></h1>
+    <p>compar:IA affiche leur nombre pour les modèles ouverts.</p>
+    <p>Pour les modèles propriétaires, dont les laboratoires ne publient rien, il n'affiche qu'une classe de taille.</p>
+    <p class="source">Catalogue des modèles de compar:IA, page /models.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'arène du <em>duel</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <ol>
+          <li>Vous posez une question.</li>
+          <li>Deux modèles anonymes répondent.</li>
+          <li>Vous évaluez les réponses à l'aveugle.</li>
+          <li>Les modèles sont révélés, avec le bilan de la discussion.</li>
+        </ol>
+      </div>
+      <img class="visuel" src="img/introduction-p5-9.webp" alt="Page d'accueil de compar:IA, avec le champ de question et les suggestions de prompts.">
+    </div>
+    <p class="source">comparia.beta.gouv.fr</p>
+  </section>
+
+</main>
+</body>
+</html>

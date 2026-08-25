@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peut-on croire les chiffres ? · Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
+  <section class="slide titre">
+    <h1>Peut-on croire les <em>chiffres</em> ?</h1>
+    <p class="chapeau">Qui publie quoi, avec quelle méthode, et ce qu'on peut en faire.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que publient <em>les fournisseurs</em></h1>
+    <table>
+      <tr>
+        <th></th>
+        <th>OpenAI</th>
+        <th>Google</th>
+        <th>Mistral AI</th>
+      </tr>
+      <tr>
+        <td>Électricité</td>
+        <td>0,34 Wh</td>
+        <td>0,24 Wh</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>Émissions</td>
+        <td>?</td>
+        <td>0,03 g CO₂e</td>
+        <td>1,14 g CO₂e</td>
+      </tr>
+      <tr>
+        <td>Eau</td>
+        <td>0,3 mL</td>
+        <td>0,26 mL</td>
+        <td>45 mL</td>
+      </tr>
+    </table>
+    <p class="source">OpenAI : Sam Altman, « The Gentle Singularity », blog personnel, juin 2025. Google : Elsworth et coll., « Measuring the environmental impact of delivering AI at Google Scale », août 2025. Mistral AI : « Our contribution to a global environmental standard for AI », juillet 2025.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux chiffres, deux <em>périmètres</em></h1>
+    <p class="chapeau">38 fois plus de CO₂, 170 fois plus d'eau : avant de conclure, regardez où chacun s'arrête de compter.</p>
+      <svg class="graphe schema" viewBox="0 0 1000 340" role="img" aria-labelledby="s-per">
+      <title id="s-per">Schema : trois perimetres emboites. Google ne compte que l eau de refroidissement du centre. Mistral AI compte aussi l eau de la production d electricite et celle de la fabrication du materiel.</title>
+      <defs><marker id="fl2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
+      <rect x="0" y="0" width="560" height="340" rx="10" fill="#d4d4fb" stroke="#6464f3" stroke-opacity="0.35" stroke-width="2"/>
+      <text class="s-sous" x="16" y="30">Fabrication, réseau, amont</text>
+      <rect x="44" y="52" width="472" height="236" rx="10" fill="#e6e6fd" stroke="#6464f3" stroke-opacity="0.35" stroke-width="2"/>
+      <text class="s-sous" x="60" y="82">Production de l'électricité</text>
+      <rect x="88" y="104" width="384" height="132" rx="10" fill="#f4f4fe" stroke="#6464f3" stroke-opacity="0.35" stroke-width="2"/>
+      <text class="s-sous" x="104" y="134">Refroidissement</text>
+      <line class="s-fleche" x1="612" y1="170" x2="476" y2="170" marker-end="url(#fl2)"/>
+      <text class="s-titre" x="628" y="152">Google</text>
+      <text class="g-chiffre" x="628" y="204">0,26 mL</text>
+      <line class="s-fleche" x1="612" y1="300" x2="564" y2="300" marker-end="url(#fl2)"/>
+      <text class="s-titre" x="628" y="282">Mistral AI</text>
+      <text class="g-chiffre" x="628" y="334">45 mL</text>
+      </svg>
+    <p class="source">Google : eau consommée sur site, pour le refroidissement. Mistral AI : analyse de cycle de vie, qui remonte à la production d'électricité et à la fabrication des serveurs. Périmètres reconstitués d'après les deux publications.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Trois écarts avant de <em>comparer</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Pas le même périmètre</h3>
+        <p>Google ne compte que l'eau de refroidissement. Mistral AI compte aussi l'eau dépensée en amont.</p>
+      </div>
+      <div class="carte">
+        <h3>Pas la même comptabilité</h3>
+        <p>Google retient une méthode « marché », qui crédite ses achats d'électricité renouvelable. Mistral AI prend le réseau tel qu'il est.</p>
+      </div>
+      <div class="carte">
+        <h3>Pas les mêmes modèles</h3>
+        <p>Une médiane sur tous les usages, dominée par de petits modèles rapides, face à un seul grand modèle dense.</p>
+      </div>
+    </div>
+    <p class="source">Google reconnaît lui-même qu'une comparaison n'a de sens qu'à périmètre de mesure identique.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Trois niveaux de <em>documentation</em></h1>
+    <table>
+      <tr><th></th><th>Méthode publiée</th><th>Relu par des tiers</th></tr>
+      <tr><td>OpenAI</td><td>Indications succinctes dans un billet de blog</td><td>Non</td></tr>
+      <tr><td>Google</td><td>Article technique détaillé</td><td>Non</td></tr>
+      <tr><td>Mistral AI</td><td>Analyse de cycle de vie complète</td><td>Oui</td></tr>
+    </table>
+    <p class="source">Mistral AI a fait relire son analyse par Carbone 4, l'ADEME, Resilio et Hubblo.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'information reste <em>rare</em></h1>
+    <p class="chiffre">84 %</p>
+    <p class="chapeau">des modèles d'IA ne font l'objet d'aucune information environnementale.</p>
+    <p>Les trois colonnes précédentes sont des exceptions, pas un échantillon. Et la transparence recule depuis son pic de 2022.</p>
+    <p class="source">Arcep et PEReN, mai 2026, pour les 84 %. Luccioni et coll., « Misinformation by Omission », 2025, pour le recul depuis 2022, sur un périmètre plus étroit : les modèles marquants.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Un chiffre sans son <em>périmètre</em></h1>
+    <div class="nuance">
+      <p>Faute de données, des estimations peuvent être reprises sans être distinguées de mesures.</p>
+    </div>
+    <p>Avant de reprendre un chiffre, trois questions : que couvre-t-il, sur quel matériel, avec quelle électricité ?</p>
+    <p class="source">Luccioni et coll., « Misinformation by Omission: The Need for More Environmental Transparency in AI », 2025.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Un total, et sa <em>fourchette</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Le chiffre annoncé</h2>
+        <p class="chiffre">29,5</p>
+        <p>millions de tonnes équivalent CO₂ pour le numérique français, soit 4,4 % de l'empreinte du pays.</p>
+      </div>
+      <div>
+        <h2>L'incertitude publiée</h2>
+        <p class="chiffre">15 à 54</p>
+        <p>La même étude donne cette fourchette. Elle est rarement citée.</p>
+      </div>
+    </div>
+    <p>Compter les centres de données étrangers qui servent la France relève à lui seul le total de près de moitié.</p>
+    <p class="source">ADEME et Arcep, <em>Évaluation de l'impact environnemental du numérique en France</em>, janvier 2025, données 2022. Les 4,4 % portent sur l'empreinte française au sens de la consommation, importations comprises.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que cette étude ne <em>couvre pas</em></h1>
+    <div class="nuance">
+      <p>Ses auteurs écrivent qu'elle ne prend <strong>pas en compte le développement de l'IA générative</strong>.</p>
+    </div>
+    <p>Citer ces 29,5 millions de tonnes comme « le coût de l'IA en France » est donc un contresens. C'est l'empreinte du numérique français avant l'arrivée des modèles de langage.</p>
+    <p>Les limites publiées précisent le périmètre dans lequel le résultat peut être interprété.</p>
+    <p class="source">ADEME et Arcep, janvier 2025, chapitre sur les limites de l'étude. La surface des centres de données français y est également signalée comme obsolète.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Une <em>méthode commune</em></h1>
+    <p>Pour obtenir des données comparables, compar:IA s'appuie sur <strong>EcoLogits</strong>, maintenu par une ONG.</p>
+    <p>Le même calcul s'applique à tous les modèles. La méthode est publique : on peut la discuter, la refaire, la corriger.</p>
+    <p class="source">EcoLogits, méthodologie ouverte maintenue par l'association GenAI Impact.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'EcoLogits <em>prend en compte</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Les paramètres</h3>
+        <p>Combien le modèle en compte, en milliards.</p>
+      </div>
+      <div class="carte">
+        <h3>L'architecture</h3>
+        <p>La façon dont le modèle est construit.</p>
+      </div>
+      <div class="carte">
+        <h3>L'électricité utilisée</h3>
+        <p>L'électricité qui alimente les serveurs.</p>
+      </div>
+    </div>
+    <p>Et d'autres éléments de calcul.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Qui calcule <em>quoi</em></h1>
+    <div class="compare">
+      <div>
+        <h2>EcoLogits</h2>
+        <p>Rend une <strong>énergie</strong>, en milliwattheures, à partir de la taille du modèle, de son architecture et des jetons produits.</p>
+      </div>
+      <div>
+        <h2>compar:IA</h2>
+        <p>Rapporte cette énergie à un million de jetons de sortie, puis applique <strong>ses propres seuils</strong> pour poser la lettre A à F.</p>
+      </div>
+    </div>
+    <p>La classe énergétique est donc une règle de compar:IA, pas une sortie d'EcoLogits.</p>
+    <p class="source">EcoLogits 0.10.2, méthode ouverte maintenue par l'association GenAI Impact. Seuils de classe définis par compar:IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le cas des modèles <em>propriétaires</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Aucun chiffre publié</h3>
+        <p>Les laboratoires ne publient pas la taille de ces modèles. Tout chiffre présenté est donc une estimation.</p>
+      </div>
+      <div class="carte">
+        <h3>Une classe quand même</h3>
+        <p>Le modèle reçoit sa classe A à F, calculée à partir d'une estimation interne.</p>
+      </div>
+      <div class="carte">
+        <h3>Hors du classement énergie</h3>
+        <p>Il reste écarté du « Focus énergie », faute de données publiées.</p>
+      </div>
+    </div>
+    <p class="source">Règles d'affichage de compar:IA pour les modèles propriétaires.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux ordres de <em>grandeur</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Entraîner Llama 4</h2>
+        <p class="chiffre">≈ 5 GWh</p>
+        <p>ordre de grandeur dérivé des heures de calcul publiées, soit la consommation annuelle d'environ <strong>1 100 ménages</strong>.</p>
+      </div>
+      <div>
+        <h2>Écrire cinq pages avec GPT 5.5</h2>
+        <p class="chiffre">15,5 Wh</p>
+        <p>à chaque fois, soit à peu près <strong>une charge de téléphone</strong>.</p>
+      </div>
+    </div>
+    <p class="source">Estimation dérivée de Meta, <em>Llama 4 Model Card</em>, 2025 : 7,4 millions d'heures de carte graphique multipliées par une puissance nominale de 700 W, pour deux modèles publiés sur trois. Ce n'est pas une consommation totale d'entraînement publiée par Meta. Catalogue compar:IA pour GPT 5.5 : 3 096 Wh par million de jetons de sortie, ici 5 000 jetons.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'analogie de la <em>voiture</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Construire la voiture</h2>
+        <p>C'est l'entraînement : une opération unique, très gourmande.</p>
+      </div>
+      <div>
+        <h2>Rouler avec</h2>
+        <p>C'est l'utilisation, ce que fait le modèle à chaque question : chaque trajet coûte peu, mais on roule tous les jours, et le nombre de trajets n'a pas de limite visible.</p>
+      </div>
+    </div>
+    <p>Cumulé sur des millions de gens, l'usage peut dépasser l'entraînement. Or le bilan ne compte que l'usage : la comparaison reste partielle.</p>
+    <p class="source">L'« Énergie de génération estimée » ne couvre que l'inférence. EcoLogits ne modélise pas l'entraînement.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce qu'il faut <em>retenir</em></h1>
+    <ul>
+      <li>Les chiffres publiés par les fournisseurs ne sont <strong>pas directement comparables</strong>.</li>
+      <li>Une méthode commune permet de comparer des estimations calculées sur le même périmètre.</li>
+      <li>Une estimation donne un <strong>ordre de grandeur</strong>, pas une mesure.</li>
+      <li>Avant de reprendre un chiffre : que couvre-t-il, sur quel matériel, avec quelle électricité ?</li>
+    </ul>
+  </section>
+
+</main>
+</body>
+</html>

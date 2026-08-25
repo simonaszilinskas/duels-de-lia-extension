@@ -1,10 +1,30 @@
 /* Duels de l'IA - New Design Based on Example */
 
-/* Import Marianne font with all available weights */
-@import url('https://www.systeme-de-design.gouv.fr/fonts/marianne/marianne.css');
+/* Marianne est embarquée : l'URL du systeme-de-design.gouv.fr renvoie un 404
+   depuis un moment, et privacy.md promet qu'aucune donnée ne part chez un tiers. */
+@font-face {
+  font-family: 'Marianne';
+  src: url('../fonts/Marianne-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Marianne';
+  src: url('../fonts/Marianne-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
 
-body {
+/* La police ne s'applique qu'à nos éléments : elle écrasait celle de compar:IA. */
+#duelsia-fab,
+#duelsia-panel,
+.duelsia-slide-overlay {
   font-family: 'Marianne', sans-serif;
+  --duelsia-primary: #6464f3;
+  --duelsia-primary-hover: #5454e3;
+  --duelsia-primary-active: #4545d3;
+  --duelsia-focus: #0a76f6;
+  --duelsia-primary-soft: #f5f5fe;
 }
 
 /* Modal/Panel styling inspired by example */
@@ -13,7 +33,7 @@ body {
   top: 50px;
   right: 50px;
   width: 370px;
-  height: 650px;
+  height: min(650px, calc(100dvh - 100px));
   background: white;
   z-index: 999999;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -38,11 +58,12 @@ body {
   overflow: hidden;
 }
 
-/* Header with purple background */
+/* En-tête léger, cohérent avec compar:IA */
 .duelsia-header {
-  background-color: #715CF6;
-  color: white;
+  background-color: var(--duelsia-primary-soft);
+  color: #161616;
   padding: 1rem;
+  border-bottom: 1px solid #e3e3fd;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,12 +82,12 @@ body {
 .duelsia-header h2 {
   margin: 0;
   font-size: 16px;
-  color: white;
+  color: #161616;
   font-weight: 600;
 }
 
 .duelsia-header span {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 16px;
 }
 
@@ -79,7 +100,7 @@ body {
 .duelsia-feedback-btn {
   background: none;
   border: none;
-  color: white;
+  color: var(--duelsia-primary);
   font-size: 1.1rem;
   cursor: pointer;
   padding: 4px;
@@ -93,13 +114,13 @@ body {
 }
 
 .duelsia-feedback-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #e3e3fd;
 }
 
 .duelsia-close {
   background: none;
   border: none;
-  color: white;
+  color: #3a3a3a;
   font-size: 1.2rem;
   cursor: pointer;
   padding: 0;
@@ -111,21 +132,35 @@ body {
 }
 
 .duelsia-close:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #e3e3fd;
   border-radius: 4px;
 }
 
 /* Dropdown container */
 .duelsia-dropdown-container {
+  padding: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.duelsia-dropdown-trigger {
+  width: 100%;
   padding: 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--duelsia-primary);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font: inherit;
   font-weight: 600;
-  position: relative;
-  z-index: 2;
-  color: #715CF6;
+  text-align: left;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.duelsia-dropdown-trigger:hover {
+  background: #f8f8ff;
 }
 
 .duelsia-dropdown-icon {
@@ -148,15 +183,21 @@ body {
   margin: 0 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  display: none;
-  animation: slideDown 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
   z-index: 10;
   max-height: 60vh;
   overflow-y: auto;
 }
 
 .duelsia-dropdown-content.show {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .duelsia-dropdown-content ol {
@@ -228,7 +269,9 @@ body {
   border-radius: 12px;
   padding: 1rem;
   text-align: center;
-  transition: box-shadow 0.2s;
+  font: inherit;
+  width: 100%;
+  transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease, transform 120ms ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -238,7 +281,15 @@ body {
 
 .duelsia-block:hover,
 .duelsia-card:hover {
+  border-color: #cfcffd;
+  background: #fafaff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.duelsia-block:active,
+.duelsia-card:active {
+  transform: translateY(1px);
+  background: var(--duelsia-primary-soft);
 }
 
 .duelsia-block-icon,
@@ -285,25 +336,25 @@ body {
   display: block;
   padding: 16px 24px;
   border-radius: 12px;
-  background-color: #715CF6;
+  background-color: var(--duelsia-primary);
   transition: all 0.3s ease;
   text-align: center;
   width: 100%;
-  box-shadow: 0 2px 8px rgba(113, 92, 246, 0.2);
+  box-shadow: 0 2px 8px rgba(100, 100, 243, 0.18);
 }
 
 .duelsia-footer-link a:hover {
   background-color: #f7f6ff;
-  color: #715CF6;
-  border: 2px solid #715CF6;
+  color: var(--duelsia-primary);
+  border: 2px solid var(--duelsia-primary);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(113, 92, 246, 0.3);
+  box-shadow: 0 6px 16px rgba(100, 100, 243, 0.24);
   padding: 14px 22px; /* Adjust padding to account for border */
 }
 
 .duelsia-footer-link a:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(113, 92, 246, 0.2);
+  box-shadow: 0 2px 8px rgba(100, 100, 243, 0.18);
 }
 
 /* Content view */
@@ -329,7 +380,7 @@ body {
 .duelsia-back-button {
   background: none;
   border: none;
-  color: #715CF6;
+  color: var(--duelsia-primary);
   font-size: 20px;
   cursor: pointer;
   padding: 8px 12px;
@@ -342,13 +393,13 @@ body {
 }
 
 .duelsia-back-button:hover {
-  background-color: rgba(113, 92, 246, 0.1);
+  background-color: rgba(100, 100, 243, 0.1);
 }
 
 .duelsia-content-nav h3 {
   margin: 0;
   font-size: 16px;
-  color: #715CF6;
+  color: var(--duelsia-primary);
   flex: 1;
 }
 
@@ -369,7 +420,7 @@ body {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background-color: #715CF6;
+  background-color: var(--duelsia-primary);
   color: white;
   border: none;
   font-size: 28px;
@@ -380,7 +431,7 @@ body {
 }
 
 #duelsia-fab:hover {
-  background-color: #5C49D9;
+  background-color: var(--duelsia-primary-hover);
   transform: scale(1.05);
 }
 
@@ -410,7 +461,7 @@ body {
   margin: 1rem;
   padding: 1rem;
   background-color: #f7f6ff;
-  border: 2px solid #715CF6;
+  border: 2px solid var(--duelsia-primary);
   border-radius: 8px;
   text-align: center;
 }
@@ -434,7 +485,7 @@ body {
 /* Style adjustments for content */
 .duelsia-content-display h3 {
   margin-top: 0;
-  color: #715CF6;
+  color: var(--duelsia-primary);
   font-size: 18px;
 }
 
@@ -444,7 +495,7 @@ body {
 }
 
 .duelsia-content-display a {
-  color: #715CF6;
+  color: var(--duelsia-primary);
   text-decoration: none;
 }
 
@@ -473,18 +524,18 @@ body {
 
 .duelsia-debate-card {
   background: #f7f6ff;
-  border: 2px solid #715CF6;
+  border: 2px solid var(--duelsia-primary);
   border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
   max-width: 400px;
   width: 100%;
-  box-shadow: 0 4px 12px rgba(113, 92, 246, 0.1);
+  box-shadow: 0 4px 12px rgba(100, 100, 243, 0.1);
   animation: fadeIn 0.3s ease-in-out;
 }
 
 .duelsia-debate-theme {
-  color: #715CF6;
+  color: var(--duelsia-primary);
   font-weight: 600;
   font-size: 14px;
   text-transform: uppercase;
@@ -500,7 +551,7 @@ body {
 }
 
 .duelsia-random-card-btn {
-  background-color: #715CF6;
+  background-color: var(--duelsia-primary);
   color: white;
   border: none;
   border-radius: 8px;
@@ -512,7 +563,7 @@ body {
 }
 
 .duelsia-random-card-btn:hover {
-  background-color: #5C49D9;
+  background-color: var(--duelsia-primary-hover);
 }
 
 /* Opinion section styles */
@@ -544,7 +595,7 @@ body {
 
 .duelsia-opinion-textarea:focus {
   outline: none;
-  border-color: #715CF6;
+  border-color: var(--duelsia-primary);
 }
 
 .duelsia-opinion-textarea::placeholder {
@@ -561,12 +612,12 @@ body {
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   overflow: hidden;
-  transition: border-color 0.2s;
+  transition: border-color 180ms ease, background-color 180ms ease;
   margin-bottom: 12px;
 }
 
 .duelsia-persona-item:hover {
-  border-color: #715CF6;
+  border-color: var(--duelsia-primary);
 }
 
 .duelsia-persona-header {
@@ -575,6 +626,15 @@ body {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  transition: background-color 180ms ease;
+}
+
+.duelsia-persona-header:hover {
+  background: #f5f5fe;
+}
+
+.duelsia-persona-header:active {
+  background: #e3e3fd;
 }
 
 .duelsia-persona-info {
@@ -606,7 +666,7 @@ body {
 
 .duelsia-persona-category-inline {
   font-size: 12px;
-  color: #715CF6;
+  color: var(--duelsia-primary);
   font-weight: 600;
   margin-top: 4px;
 }
@@ -622,19 +682,31 @@ body {
 }
 
 .duelsia-persona-content {
-  display: none;
-  padding: 0 16px 16px;
-  border-top: 1px solid #e5e7eb;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  padding: 0 16px;
+  border-top: 0 solid #e5e7eb;
+  transition: grid-template-rows 220ms ease, opacity 180ms ease, padding 220ms ease, border-width 220ms ease, visibility 220ms ease;
 }
 
 .duelsia-persona-content.show {
-  display: block;
-  animation: slideDown 0.3s ease-in-out;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  padding-bottom: 16px;
+  border-top-width: 1px;
+}
+
+.duelsia-persona-content > * {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .duelsia-persona-category {
   font-size: 12px;
-  color: #715CF6;
+  color: var(--duelsia-primary);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -663,7 +735,7 @@ body {
 }
 
 .duelsia-copy-btn {
-  background: #715CF6;
+  background: var(--duelsia-primary);
   color: white;
   border: none;
   padding: 8px 16px;
@@ -677,7 +749,7 @@ body {
 }
 
 .duelsia-copy-btn:hover {
-  background-color: #5C49D9;
+  background-color: var(--duelsia-primary-hover);
 }
 
 /* FAQ styles - similar to personas */
@@ -690,12 +762,12 @@ body {
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   overflow: hidden;
-  transition: border-color 0.2s;
+  transition: border-color 180ms ease, background-color 180ms ease;
   margin-bottom: 12px;
 }
 
 .duelsia-faq-item:hover {
-  border-color: #715CF6;
+  border-color: var(--duelsia-primary);
 }
 
 .duelsia-faq-header {
@@ -705,6 +777,15 @@ body {
   align-items: center;
   cursor: pointer;
   user-select: none;
+  transition: background-color 180ms ease;
+}
+
+.duelsia-faq-header:hover {
+  background: #f5f5fe;
+}
+
+.duelsia-faq-header:active {
+  background: #e3e3fd;
 }
 
 .duelsia-faq-info {
@@ -731,7 +812,7 @@ body {
 }
 
 .duelsia-faq-arrow {
-  color: #715CF6;
+  color: var(--duelsia-primary);
   font-size: 18px;
   font-weight: 600;
   transition: transform 0.3s ease;
@@ -742,14 +823,26 @@ body {
 }
 
 .duelsia-faq-content {
-  display: none;
-  padding: 0 16px 16px;
-  border-top: 1px solid #e5e7eb;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  padding: 0 16px;
+  border-top: 0 solid #e5e7eb;
+  transition: grid-template-rows 220ms ease, opacity 180ms ease, padding 220ms ease, border-width 220ms ease, visibility 220ms ease;
 }
 
 .duelsia-faq-content.show {
-  display: block;
-  animation: slideDown 0.3s ease-in-out;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  padding-bottom: 16px;
+  border-top-width: 1px;
+}
+
+.duelsia-faq-content > * {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .duelsia-faq-answer {
@@ -774,13 +867,18 @@ body {
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 180ms ease, background-color 180ms ease, transform 120ms ease;
 }
 
 .duelsia-resource-item:hover {
-  border-color: #715CF6;
+  border-color: var(--duelsia-primary);
   background: #fafafe;
   transform: translateX(2px);
+}
+
+.duelsia-resource-item:active {
+  transform: translateX(2px) translateY(1px);
+  background: #f5f5fe;
 }
 
 .duelsia-resource-emoji {
@@ -804,12 +902,12 @@ body {
 
 .duelsia-resource-arrow {
   font-size: 20px;
-  color: #715CF6;
+  color: var(--duelsia-primary);
   font-weight: 600;
 }
 
-/* PDF Overlay styles */
-.duelsia-pdf-overlay {
+/* Vue plein écran des supports */
+.duelsia-slide-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -823,30 +921,19 @@ body {
   padding: 20px;
 }
 
-.duelsia-pdf-container {
+.duelsia-slide-container {
   position: relative;
-  width: 90%;
-  height: 90%;
-  max-width: 1200px;
-  max-height: 800px;
-  background: white;
+  width: 95%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  background: #1b1b1b;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.duelsia-fullscreen-container {
-  position: relative;
-  width: 95%;
-  height: 95%; 
-  max-width: none;
-  max-height: none;
-  display: flex;
-  flex-direction: column;
-  background: white;
-}
-
-.duelsia-pdf-close {
+.duelsia-slide-close {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -866,13 +953,13 @@ body {
   transition: background-color 0.2s;
 }
 
-.duelsia-pdf-close:hover {
+.duelsia-slide-close:hover {
   background-color: #f3f4f6;
 }
 
-#duelsia-pdf-frame, 
-#duelsia-global-pdf-frame,
-.duelsia-pdf-frame {
+#duelsia-slide-frame,
+#duelsia-global-slide-frame,
+.duelsia-slide-frame {
   width: 100%;
   height: 100%;
   border: none;
@@ -914,7 +1001,7 @@ body {
 }
 
 .duelsia-retry-btn {
-  background: #715CF6;
+  background: var(--duelsia-primary);
   color: white;
   border: none;
   padding: 10px 24px;
@@ -925,7 +1012,7 @@ body {
 }
 
 .duelsia-retry-btn:hover {
-  background-color: #5C49D9;
+  background-color: var(--duelsia-primary-hover);
 }
 
 /* Skeleton loader animation */
@@ -1053,7 +1140,7 @@ body {
   margin-top: 4px;
   width: 16px;
   height: 16px;
-  accent-color: #715CF6;
+  accent-color: var(--duelsia-primary);
   cursor: pointer;
 }
 
@@ -1078,7 +1165,7 @@ body {
 }
 
 .duelsia-main-question {
-  color: #715CF6;
+  color: var(--duelsia-primary);
   font-size: 24px;
   font-weight: 600;
   text-align: center;
@@ -1153,7 +1240,7 @@ body {
 
 .duelsia-feedback-participants h4,
 .duelsia-feedback-facilitator h4 {
-  color: #715CF6;
+  color: var(--duelsia-primary);
   font-size: 18px;
   margin-bottom: 12px;
   font-weight: 700;
@@ -1209,13 +1296,13 @@ body {
 
 .duelsia-qr-url {
   text-align: center;
-  color: #715CF6;
+  color: var(--duelsia-primary);
   font-size: 12px;
   word-break: break-all;
 }
 
 .duelsia-facilitator-feedback-btn {
-  background-color: #715CF6;
+  background-color: var(--duelsia-primary);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -1228,7 +1315,7 @@ body {
 }
 
 .duelsia-facilitator-feedback-btn:hover {
-  background-color: #5940d8;
+  background-color: var(--duelsia-primary-hover);
 }
 
 .duelsia-close-feedback {
@@ -1242,4 +1329,36 @@ body {
 
 .duelsia-close-feedback:hover {
   background-color: #ede9fe !important;
+}
+
+/* États interactifs cohérents dans toute l'extension */
+#duelsia-panel :is(button, a, input, textarea, [role="button"]):focus-visible,
+#duelsia-fab:focus-visible,
+.duelsia-slide-overlay button:focus-visible {
+  outline: 3px solid var(--duelsia-focus);
+  outline-offset: 2px;
+}
+
+#duelsia-panel button:active,
+#duelsia-panel [role="button"]:active,
+.duelsia-slide-overlay button:active {
+  transform: translateY(1px);
+}
+
+#duelsia-fab:active {
+  background-color: var(--duelsia-primary-active);
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #duelsia-panel,
+  #duelsia-panel *,
+  #duelsia-fab,
+  .duelsia-slide-overlay,
+  .duelsia-slide-overlay * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

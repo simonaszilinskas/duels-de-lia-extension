@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>L'effet rebond · Les duels de l'IA</title>
+  <link rel="stylesheet" href="slides.css">
+  <script src="slides.js" defer></script>
+</head>
+<body>
+<main class="stage">
+
+  <div class="marque">
+    <img src="img/logo-duels.png" alt="">
+    <div><strong>Les duels de l'IA</strong><span>par compar:IA</span></div>
+  </div>
+
+  <section class="slide titre">
+    <h1>Le paradoxe de <em>Jevons</em></h1>
+    <p class="chapeau">L'efficacité réduit le coût d'un usage. L'effet sur le total dépend aussi de l'évolution de la demande.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que Jevons a vu dans le <em>charbon</em></h1>
+    <ul>
+      <li>Au XIX<sup>e</sup> siècle, les machines à vapeur brûlent de moins en moins de charbon pour le même travail.</li>
+      <li>Jevons a observé que la consommation totale de charbon augmentait malgré ces gains.</li>
+    </ul>
+    <p class="source">William Stanley Jevons, <em>The Coal Question</em>, 1865.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Un mécanisme <em>possible</em></h1>
+    <div class="cartes">
+      <div class="carte">
+        <h3>1. Modèles plus efficaces</h3>
+        <p>Chaque génération fait mieux avec moins de calcul.</p>
+      </div>
+      <div class="carte">
+        <h3>2. Coûts en baisse</h3>
+        <p>Le prix du million de jetons descend.</p>
+      </div>
+      <div class="carte">
+        <h3>3. Nouveaux usages</h3>
+        <p>La baisse du coût peut accroître la demande.</p>
+      </div>
+      <div class="carte">
+        <h3>4. Effet sur le total</h3>
+        <p>Il dépend des gains et de la demande.</p>
+      </div>
+    </div>
+    <p>C'est le mécanisme proposé par l'effet rebond ; son ampleur doit être mesurée.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Le calcul revient <em>moins cher</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Certains modèles récents atteignent un niveau comparable avec moins de calcul par jeton.</p>
+        <p>Le tarif au jeton baisse également, ce qui rend de nouveaux usages accessibles.</p>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p5-8.webp" alt="Baies de serveurs traversées par des faisceaux de câbles réseau jaunes, verts, rouges et bleus.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>De nouveaux <em>usages</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <p>Résumés, correction, traduction, autocomplétion, agents qui tournent seuls pendant des heures.</p>
+        <p>Le coût d'une requête baisse. Le nombre de requêtes, lui, se compte en milliards.</p>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p3-6.webp" alt="Page d'accueil de ChatGPT : « What can I help with? », un champ de saisie et les boutons Search, Talk, Research, Sora.">
+    </div>
+  </section>
+
+  <section class="slide">
+    <h1>Un agent, ce n'est pas un <em>message</em></h1>
+    <p class="chapeau">Vous tapez une consigne. L'agent, lui, découpe le travail.</p>
+    <p>Il lit des fichiers, appelle des outils, relit ses propres notes, se corrige, recommence. Une seule consigne déclenche des dizaines d'allers-retours avec le modèle.</p>
+    <p>Chacun de ces allers-retours est facturé en jetons, et donc en électricité.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Un cas d'usage <em>mesuré</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Un message de chat</h2>
+        <p class="chiffre">0,24 Wh</p>
+        <p>médiane mesurée par Google.</p>
+      </div>
+      <div>
+        <h2>Une consigne à un agent</h2>
+        <p class="chiffre">≈ 150 Wh</p>
+        <p>soit environ <strong>600 fois</strong> plus dans cet exemple.</p>
+      </div>
+    </div>
+    <p class="source">Mesure publiée par le climatologue Zeke Hausfather, 2026 : huit semaines d'usage réel, 1 138 consignes, plus de 14 000 appels au modèle, environ 170 kWh. Incertitude annoncée d'un facteur 2, soit 60 à 290 Wh.</p>
+  </section>
+
+  <section class="slide">
+    <h1>L'agent se <em>relit</em> sans arrêt</h1>
+    <p class="chapeau">Sur ces 3,2 milliards de jetons : 96 % de relecture du contexte, 3,6 % de contenu neuf, 0,4 % de réponse visible.</p>
+    <div class="nuance">
+      <p>Ces relectures passent par le <strong>cache</strong> : le fournisseur garde le contexte déjà calculé, le facture cinq à dix fois moins, et refait moins de calcul. Un jeton relu ne coûte donc pas un jeton neuf.</p>
+    </div>
+    <p>Dans cette mesure, le volume total traité explique l'essentiel de la consommation, pas la seule réponse visible.</p>
+    <p class="source">Répartition mesurée par Hausfather, 2026. Les tarifs de cache sont publiés par les fournisseurs ; le gain en énergie, lui, n'est pas publié.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Sur <em>compar:IA</em>, un repère</h1>
+    <p class="chapeau">Le scénario « session de code agentique » compte 450 k jetons en entrée et 50 k en sortie.</p>
+    <div class="nuance">
+      <p>L'estimation d'énergie ne retient que la <strong>sortie</strong>. Les 450 k jetons d'entrée, qui forment ici l'essentiel du volume, n'entrent pas dans le calcul.</p>
+    </div>
+    <p>L'entrée omise tire l'estimation vers le bas ; l'hypothèse d'une exécution sans cache peut la tirer vers le haut. Le chiffre donne un ordre de grandeur, pas une borne démontrée.</p>
+    <p class="source">Formule du produit : énergie = Wh par million de jetons × jetons de sortie. Hypothèse affichée : exécution sans cache.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Et à <em>grande échelle</em></h1>
+    <p>Scénario hypothétique : 1 % de la population mondiale fait écrire cinq pages par une IA chaque jour, pendant un an, à 15,5 Wh le texte. Cela représente la production annuelle de :</p>
+    <p class="chiffre">105 éoliennes</p>
+    <p class="source">Calcul : 82 millions de personnes × 15,5 Wh × 365 jours = 464 GWh par an. Une éolienne de 2 MW à 25 % de facteur de charge produit 4,4 GWh par an. Population mondiale : ONU, <em>World Population Prospects</em> 2024. Parc éolien : RTE, bilan électrique 2025.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Les deux faits, même <em>acteur</em></h1>
+    <p class="chapeau">Google publie les deux, sur la même année.</p>
+    <div class="compare">
+      <div>
+        <h2>Par requête, ça baisse</h2>
+        <p class="chiffre">÷ 33</p>
+        <p>d'énergie par requête texte sur Gemini, en douze mois. Médiane : 0,24 Wh.</p>
+      </div>
+      <div>
+        <h2>Au total, ça monte</h2>
+        <p class="chiffre">+ 37 %</p>
+        <p>d'électricité pour ses centres de données en 2025, soit environ 42 TWh.</p>
+      </div>
+    </div>
+    <p class="source">Google, « Measuring the environmental impact of delivering AI at Google Scale », août 2025, et <em>Environmental Report</em> 2026.</p>
+  </section>
+
+  <section class="slide">
+    <h1>À l'échelle d'un <em>pays</em></h1>
+    <div class="compare">
+      <div>
+        <h2>États-Unis, 2023</h2>
+        <p class="chiffre">4,4 %</p>
+        <p>de l'électricité du pays, pour les centres de données.</p>
+      </div>
+      <div>
+        <h2>Projection 2028</h2>
+        <p class="chiffre">6,7 à 12 %</p>
+        <p>selon le scénario retenu.</p>
+      </div>
+    </div>
+    <p>De 176 TWh à une fourchette de 325 à 580 TWh. Une requête se compte en milliwattheures, un pays en térawattheures.</p>
+    <p class="source">Lawrence Berkeley National Laboratory, <em>United States Data Center Energy Usage Report</em>, décembre 2024. Ces projections couvrent tous les centres de données, pas la seule IA.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Et l'IA seule, dans <em>tout ça</em></h1>
+    <p class="chiffre">0,1 à 0,2 %</p>
+    <p class="chapeau">de l'électricité mondiale, pour les centres de données dédiés à l'IA en 2023.</p>
+    <p>Le chiffre est petit, et il croît vite : l'agence prévoit qu'il soit multiplié par six ou huit d'ici 2030. Les deux moitiés de la phrase comptent autant.</p>
+    <p class="source">Dérivé des estimations de l'Agence internationale de l'énergie, avril 2025 : 30 à 50 TWh en 2023 pour les centres dédiés à l'IA, 200 à 400 TWh projetés pour 2030. Calcul rapporté par Gauthier Roussilhe, Bon Pote, avril 2025.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Cinq fois <em>mille</em></h1>
+    <ol class="echelle">
+      <li class="p1"><b>1 mWh</b><span>Un jeton produit.</span></li>
+      <li class="pas">× 1 000</li>
+      <li class="p2"><b>1 Wh</b><span>Une réponse de quelques lignes.</span></li>
+      <li class="pas">× 1 000</li>
+      <li class="p3"><b>1 kWh</b><span>Un millier de réponses.</span></li>
+      <li class="pas">× 1 000</li>
+      <li class="p4"><b>1 MWh</b><span>Un logement français pendant trois mois.</span></li>
+      <li class="pas">× 1 000</li>
+      <li class="p5"><b>1 GWh</b><span>Environ 220 logements pendant un an.</span></li>
+      <li class="pas">× 1 000</li>
+      <li class="p6"><b>1 TWh</b><span>Environ dix-neuf heures d'électricité pour la France entière.</span></li>
+    </ol>
+    <p class="source">Ordres de grandeur. Le logement français est pris à 4,5 MWh d'électricité par an. La France consomme de l'ordre de 450 TWh par an, tous usages confondus.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux échelles <em>d'action</em></h1>
+    <div class="compare">
+      <div>
+        <h2>À l'échelle d'un usage</h2>
+        <p>Vos échanges de l'année tiennent dans quelques kilowattheures. Moins qu'un radiateur allumé une journée.</p>
+      </div>
+      <div>
+        <h2>À l'échelle du parc</h2>
+        <p>Les centres de données se comptent en térawattheures, et se construisent pour dix ans.</p>
+      </div>
+    </div>
+    <p>Le choix du modèle agit sur la consommation d'un usage. Les décisions d'investissement et de capacité agissent, elles, sur l'échelle du parc.</p>
+    <p class="source">Le premier ordre de grandeur se lit sur le bilan d'un duel, le second dans les rapports annuels des fournisseurs.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Un rebond <em>possible</em></h1>
+    <div class="nuance">
+      <p>Les gains par requête et la hausse du total sont mesurés ; la part du <strong>lien de cause à effet</strong> entre les deux ne l'est pas.</p>
+    </div>
+    <p>La croissance vient aussi de l'argent investi et de fonctionnalités plus gourmandes : vidéo, raisonnement, agents.</p>
+    <p class="source">Luccioni, Strubell et Crawford, « From Efficiency Gains to Rebound Effects », FAccT 2025, qui juge l'effet « hautement plausible » sans le démontrer.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Deux affirmations à <em>vérifier</em></h1>
+    <div class="compare">
+      <div>
+        <h2>« L'efficacité va tout régler »</h2>
+        <p>Cette hypothèse suppose que les gains d'efficacité compensent la croissance des usages.</p>
+      </div>
+      <div>
+        <h2>« L'IA va tout engloutir »</h2>
+        <p>Cette hypothèse suppose une croissance très forte des usages et de leur coût unitaire.</p>
+      </div>
+    </div>
+    <p>Pour les évaluer, il faut expliciter les hypothèses de volume, d'efficacité et de coût.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que ça change pour le <em>débat</em></h1>
+    <div class="duo">
+      <div class="colonne">
+        <div class="nuance">
+          <p>L'efficacité ne décide rien toute seule sur le total consommé.</p>
+        </div>
+        <ul>
+          <li>Un modèle plus sobre réduit ma consommation. Réduit-il celle du parc ?</li>
+          <li>Si l'IA ne coûte presque rien, qu'est-ce qui limite son usage ?</li>
+          <li>Agir sur la technique, le prix, la règle, ou nos habitudes ?</li>
+        </ul>
+      </div>
+      <img class="visuel" src="img/pourquoi-ca-consomme-p4-7.webp" alt="Trois tours de refroidissement d'une centrale, un panache de vapeur blanche et un drapeau américain.">
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
