@@ -251,7 +251,7 @@
             },
             {
               "emoji": "🚫",
-              "question": "Pourquoi le bilan n'affiche-t-il plus d'émissions de CO₂ ?",
+              "question": "Pourquoi le bilan parle-t-il d'énergie et pas d'émissions de CO₂ ?",
               "answer": "Convertir de l'énergie en CO₂ suppose de savoir **où** tournent les serveurs et avec quelle électricité. Les fournisseurs ne publient pas cette information, et les rares chiffres qu'ils communiquent reposent sur des méthodes trop différentes pour être comparées. compar:IA s'en tient donc à ce qu'il peut estimer sérieusement : l'énergie. Le débat sur le carbone reste entier : il se mène avec le support « Localisation des serveurs »."
             },
             {
@@ -277,12 +277,12 @@
             {
               "emoji": "📊",
               "question": "Pourquoi les grands modèles consomment-ils plus ?",
-              "answer": "Plus de paramètres mobilisés, c'est plus de calculs, donc plus d'électricité pour chaque jeton produit. Attention toutefois : ce qui compte, ce sont les paramètres **réellement activés**. Un modèle à mélange d'experts n'en active qu'une fraction, et un modèle de raisonnement produit beaucoup plus de jetons. Ces deux effets pèsent autant que la taille brute."
+              "answer": "Plus de paramètres mobilisés, c'est plus de calculs, donc plus d'électricité pour chaque jeton produit. Mais la taille n'explique pas tout. En mesurant 22 modèles ouverts sur un même calculateur, l'Arcep et le PEReN ont constaté que **des modèles de tailles très différentes peuvent consommer autant l'un que l'autre**. Ce qui compte aussi : les paramètres **réellement activés** (un mélange d'experts n'en active qu'une fraction) et le nombre de jetons produits (un modèle de raisonnement en produit beaucoup plus). Source : Arcep et PEReN, « Intelligence artificielle générative : quels défis environnementaux ? », mai 2026."
             },
             {
               "emoji": "🧩",
               "question": "Qu'est-ce qu'un modèle à mélange d'experts ?",
-              "answer": "Un modèle qui n'active qu'une partie de ses paramètres à chaque réponse, au lieu de les mobiliser tous. C'est ce que signale la ligne « **Dont N mds actifs** » sur la fiche du modèle. À taille totale égale, cette architecture consomme nettement moins par jeton."
+              "answer": "Un modèle qui n'active qu'une partie de ses paramètres à chaque réponse, au lieu de les mobiliser tous. C'est ce que signale la ligne « **Dont N mds actifs** » sur la fiche du modèle. Les mesures de l'Arcep et du PEReN donnent **45 % d'électricité en moins** qu'un modèle dense de taille comparable, en moyenne."
             },
             {
               "emoji": "📉",
@@ -292,7 +292,7 @@
             {
               "emoji": "🔄",
               "question": "Est-ce que les petites IA sont toujours moins performantes ?",
-              "answer": "Pas nécessairement. Comme vous l'avez vu dans les duels, un petit modèle donne souvent une réponse tout aussi satisfaisante."
+              "answer": "Pas nécessairement. Comme vous l'avez vu dans les duels, un petit modèle donne souvent une réponse tout aussi satisfaisante. Les mesures de l'Arcep et du PEReN vont dans le même sens : **des modèles à faible consommation obtiennent des résultats équivalents à des modèles bien plus gourmands**. Choisir sobre ne revient donc pas forcément à sacrifier la qualité."
             },
             {
               "emoji": "🤔",
@@ -312,7 +312,7 @@
             {
               "emoji": "💧",
               "question": "Pourquoi les IA consomment-elles de l'eau ?",
-              "answer": "L'eau sert à **refroidir** les machines des data centers, qui dégagent énormément de chaleur. S'ajoute l'eau consommée en amont pour produire l'électricité et fabriquer le matériel. C'est là que les fournisseurs divergent : Google ne compte que le refroidissement, Mistral compte toute la chaîne. D'où des chiffres qui varient d'un facteur 173 pour une même unité."
+              "answer": "L'eau sert à **refroidir** les machines des data centers, qui dégagent énormément de chaleur. S'ajoute l'eau dépensée en amont pour produire l'électricité et fabriquer le matériel. C'est là que les fournisseurs divergent : Google ne compte que le refroidissement (0,26 mL par requête médiane), Mistral AI compte toute la chaîne (45 mL). D'où un facteur 173 pour une même unité. Retenez la question à poser avant tout chiffre d'eau : **quel périmètre ?**"
             },
             {
               "emoji": "🔋",
@@ -333,6 +333,36 @@
               "emoji": "⚡",
               "question": "Qu'est-ce qui consomme le plus : une recherche Google ou une requête à une IA ?",
               "answer": "**On ne peut plus répondre honnêtement à cette question.** Le seul chiffre publié par Google pour une recherche web, 0,3 Wh, date de **2009** et n'a jamais été mis à jour. Or les chiffres mesurés par les fournisseurs en 2025 sont du même ordre : **0,24 Wh** pour un prompt texte médian sur Gemini, **0,34 Wh** pour une requête ChatGPT moyenne. L'écart intéressant n'est pas entre recherche et IA : il est **entre modèles**, où un facteur 100 sépare un petit modèle d'un modèle de raisonnement sur un prompt long."
+            },
+            {
+              "emoji": "💦",
+              "question": "L'impact de l'IA sur l'eau est-il exagéré ?",
+              "answer": "Les deux discours le sont, chacun à sa façon. Trois repères. **Prélever n'est pas consommer** : l'eau prise à la rivière y retourne en bonne part, seule celle qui s'évapore est consommée, et les chiffres les plus spectaculaires sont presque toujours des prélèvements. **L'ordre de grandeur national est modeste** : en 2024, l'ensemble des centres de données français ont prélevé ou consommé 6,5 millions de m³, soit la consommation annuelle moyenne d'un peu plus de 100 000 personnes, sur 68 millions d'habitants. **Mais le sujet est local** : dans une commune déjà en tension, un seul centre peut créer un conflit d'usage bien réel. La moyenne nationale trompe dans les deux sens. Source : Arcep, enquête « Pour un numérique soutenable », données 2024."
+            },
+            {
+              "emoji": "🥤",
+              "question": "C'est vrai qu'un message consomme une bouteille d'eau ?",
+              "answer": "Ce chiffre circule beaucoup. Il ne veut rien dire sans son périmètre. Google mesure **0,26 mL** pour une requête médiane, en ne comptant que le refroidissement ; Mistral AI annonce **45 mL** en comptant aussi l'eau dépensée en amont. Selon le périmètre retenu, une demi-bouteille demande donc deux mille messages, ou une dizaine. Même écart, même leçon : demandez toujours ce que le chiffre couvre."
+            },
+            {
+              "emoji": "❄️",
+              "question": "Pourquoi ne pas simplement refroidir sans eau ?",
+              "answer": "Parce que l'eau et l'électricité tirent en sens inverse. Refroidir par air consomme peu d'eau et beaucoup d'électricité pour la ventilation. Refroidir par liquide ou par immersion fait gagner **jusqu'à 50 % de l'électricité de refroidissement**, mais demande souvent plus d'eau. Un centre qui n'utilise pas d'eau affiche un indicateur **WUE nul**, et paie ce choix ailleurs. Source : Patel et coll., 2025, cités par l'Arcep, mai 2026."
+            },
+            {
+              "emoji": "🕵️",
+              "question": "Peut-on faire confiance aux chiffres publiés par les fournisseurs ?",
+              "answer": "Avec prudence, et en sachant qu'ils sont rares : **84 % des modèles d'IA ne font l'objet d'aucune information environnementale**. Pire, la transparence recule depuis son pic de 2022, où 10 % des modèles notables publiaient encore quelque chose. Résultat : faute de données, des estimations approximatives circulent, se recopient et finissent citées comme des mesures. C'est exactement ce qu'une méthode commune comme EcoLogits cherche à éviter. Sources : Arcep et PEReN, mai 2026 ; Luccioni et coll., « Misinformation by Omission », 2025."
+            },
+            {
+              "emoji": "🧠",
+              "question": "Combien coûte le mode raisonnement ?",
+              "answer": "Beaucoup, et de façon très variable. Sur 22 modèles ouverts testés à matériel constant, activer le raisonnement fait monter la consommation de **92 % en moyenne**, et jusqu'à **+ 849 % sur une tâche de génération de code**. Le gain de qualité, lui, est inégal selon les tâches. La bonne conclusion n'est pas d'interdire le raisonnement, mais de le réserver aux questions qui le méritent. Source : Arcep et PEReN, mai 2026."
+            },
+            {
+              "emoji": "🛠️",
+              "question": "Qu'est-ce que la quantification ?",
+              "answer": "Arrondir les paramètres d'un modèle : passer de 16 bits à 8, ou à 4, comme on garderait moins de décimales. Le modèle occupe moins de mémoire, calcule plus vite et dépense **39 % d'électricité en moins** en moyenne à l'inférence, sans que la qualité s'effondre. C'est le levier le plus discret des trois : il ne change ni la taille annoncée, ni ce que voit l'utilisateur. Source : Arcep et PEReN, mai 2026."
             }
           ]
         }

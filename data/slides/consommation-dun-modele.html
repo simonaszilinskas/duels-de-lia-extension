@@ -104,8 +104,8 @@
       <div>
         <h2>Avantages</h2>
         <ul>
-          <li>Moins de puissance de calcul nécessaire.</li>
-          <li>Donc moins d'électricité consommée.</li>
+          <li>Moins de calcul pour chaque jeton produit.</li>
+          <li><strong>45 % d'électricité en moins</strong> qu'un modèle dense de taille comparable.</li>
           <li>Donc moins cher à utiliser.</li>
         </ul>
       </div>
@@ -118,6 +118,7 @@
         </ul>
       </div>
     </div>
+    <p class="source">Arcep et PEReN, mai 2026, pour l'écart moyen entre mélanges d'experts et modèles denses de taille équivalente.</p>
   </section>
 
   <section class="slide">
@@ -155,6 +156,36 @@
   </section>
 
   <section class="slide">
+    <h1>Trois leviers, une fois <em>mesurés</em></h1>
+    <p class="chapeau">Le régulateur français a fait tourner 22 modèles ouverts sur un même calculateur.</p>
+    <div class="cartes">
+      <div class="carte">
+        <h3>Mélange d'experts</h3>
+        <p class="chiffre">− 45 %</p>
+        <p>face à un modèle dense de taille comparable.</p>
+      </div>
+      <div class="carte">
+        <h3>Quantification</h3>
+        <p class="chiffre">− 39 %</p>
+        <p>en arrondissant les paramètres à 8 ou 4 bits.</p>
+      </div>
+      <div class="carte">
+        <h3>Raisonnement</h3>
+        <p class="chiffre">+ 92 %</p>
+        <p>quand le mode réflexion est activé.</p>
+      </div>
+    </div>
+    <p class="source">Arcep et PEReN, mai 2026. Moyennes sur 22 modèles ouverts, calculateur Jean Zay.</p>
+  </section>
+
+  <section class="slide">
+    <h1>La <em>quantification</em></h1>
+    <p class="chapeau">Arrondir les paramètres : passer de 16 bits à 8, ou à 4. Comme garder moins de décimales.</p>
+    <p>Le modèle occupe moins de mémoire, calcule plus vite et dépense moins, sans que la qualité s'effondre.</p>
+    <p class="source">Arcep et PEReN, mai 2026 : 39 % d'électricité en moins en moyenne à l'inférence.</p>
+  </section>
+
+  <section class="slide">
     <h1>Tout cela tient en <em>une lettre</em></h1>
     <p class="chapeau">Pour un million de jetons de sortie.</p>
     <ul class="energie">
@@ -171,9 +202,9 @@
   <section class="slide">
     <h1>Ce qu'il faut <em>retenir</em></h1>
     <ul>
-      <li>Un gros modèle coûte plus cher à faire tourner qu'un petit, à texte égal.</li>
+      <li>Les plus grands modèles restent les plus gourmands, mais entre tailles voisines le classement se joue ailleurs.</li>
       <li>Une réponse longue coûte plus qu'une réponse courte : le compteur, ce sont les <strong>jetons</strong>.</li>
-      <li>Un mélange d'experts n'active qu'une part de ses paramètres, et consomme donc moins que sa taille totale ne le laisse croire.</li>
+      <li>Un mélange d'experts n'active qu'une part de ses paramètres : 45 % d'électricité en moins qu'un dense de taille comparable.</li>
     </ul>
     <p class="source">Le bilan de compar:IA affiche une énergie en mWh et une classe A–F. Ses équivalences sont en énergie.</p>
   </section>
