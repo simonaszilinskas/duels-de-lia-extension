@@ -27,7 +27,7 @@ This is a **no-build, vanilla JS/CSS** Chrome extension. There is no bundler, tr
 
 - DOM IDs and CSS classes injected into the compar:IA page are prefixed with `duelsia-`. Slide decks run in their own iframe, so their internal classes (`stage`, `slide`, `source`…) do not need that prefix.
 - Content is data-driven: edit `data/content-data.json` to change prompts, debate cards, FAQ entries, or resource links. The JS renders from this JSON.
-- Resources support two types: `slides` (an HTML deck bundled in `data/slides/`) and `google-drive` (embedded via iframe preview URL). `local-pdf` is still accepted for backwards compatibility.
+- Resources use the `slides` type and point to HTML decks bundled in `data/slides/`.
 - The extension has no background script, no popup, and no permissions. It's purely a content script.
 - The project language is French (UI text, content, comments).
 

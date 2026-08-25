@@ -235,14 +235,6 @@
   display: block;
 }
 
-/* Tab content / Main content area */
-.duelsia-tab-content {
-  padding: 0;
-  flex: 1;
-  overflow: hidden;
-  min-height: 0;
-}
-
 /* Main content wrapper */
 .duelsia-main-content {
   flex: 1;
@@ -254,7 +246,6 @@
 }
 
 /* Card grid inspired by example */
-.duelsia-blocks,
 .duelsia-card-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -262,7 +253,6 @@
   padding: 1rem;
 }
 
-.duelsia-block,
 .duelsia-card {
   background-color: #fefefe;
   border: 1px solid #eee;
@@ -279,34 +269,22 @@
   gap: 8px;
 }
 
-.duelsia-block:hover,
 .duelsia-card:hover {
   border-color: #cfcffd;
   background: #fafaff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.duelsia-block:active,
 .duelsia-card:active {
   transform: translateY(1px);
   background: var(--duelsia-primary-soft);
 }
 
-.duelsia-block-icon,
 .duelsia-emoji {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
-.duelsia-block-text {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1f2937;
-  text-align: center;
-  margin: 0;
-}
-
-.duelsia-block h3,
 .duelsia-card h3 {
   margin: 0.5rem 0;
   font-size: 16px;
@@ -314,7 +292,6 @@
   color: #1f2937;
 }
 
-.duelsia-block p,
 .duelsia-card p {
   margin: 0;
   font-size: 14px;
@@ -435,11 +412,6 @@
   transform: scale(1.05);
 }
 
-/* Remove tabs - using dropdown instead */
-.duelsia-tabs {
-  display: none;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
   #duelsia-panel {
@@ -450,36 +422,9 @@
     max-height: 80vh;
   }
   
-  .duelsia-blocks,
   .duelsia-card-grid {
     grid-template-columns: 1fr;
   }
-}
-
-/* Additional styling for the ultimate question section */
-.duelsia-ultimate-question {
-  margin: 1rem;
-  padding: 1rem;
-  background-color: #f7f6ff;
-  border: 2px solid var(--duelsia-primary);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.duelsia-ultimate-question.hidden {
-  display: none;
-}
-
-.duelsia-ultimate-question p {
-  font-size: 16px;
-  color: #1f2937;
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-/* Hide reveal button - not needed with new design */
-.duelsia-reveal {
-  display: none;
 }
 
 /* Style adjustments for content */
@@ -501,16 +446,6 @@
 
 .duelsia-content-display a:hover {
   text-decoration: underline;
-}
-
-/* For debugging section labels */
-.duelsia-section-label {
-  padding: 0.5rem 1rem;
-  background-color: #f3f4f6;
-  border-bottom: 1px solid #e5e7eb;
-  font-weight: 600;
-  color: #4b5563;
-  font-size: 14px;
 }
 
 /* Debate card styles */
@@ -957,7 +892,6 @@
   background-color: #f3f4f6;
 }
 
-#duelsia-slide-frame,
 #duelsia-global-slide-frame,
 .duelsia-slide-frame {
   width: 100%;
@@ -1164,17 +1098,6 @@
   display: block;
 }
 
-.duelsia-main-question {
-  color: var(--duelsia-primary);
-  font-size: 24px;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 15px;
-  padding: 20px;
-  background-color: #f7f6ff;
-  border-radius: 12px;
-}
-
 .duelsia-debate-subquestion {
   color: #000;
   font-size: 16px;
@@ -1182,18 +1105,6 @@
   text-align: center;
   margin-bottom: 25px;
   padding: 0 20px;
-}
-
-.duelsia-explanation {
-  margin-bottom: 25px;
-}
-
-.duelsia-explanation p {
-  color: #555;
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0;
-  text-align: center;
 }
 
 .duelsia-session-recap {
@@ -1264,34 +1175,6 @@
   width: 200px;
   height: 200px;
   border-radius: 8px;
-}
-
-.duelsia-qr-placeholder {
-  width: 200px;
-  height: 200px;
-  background: #f8f8f8;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.duelsia-qr-pattern {
-  width: 160px;
-  height: 160px;
-  background-image: 
-    repeating-linear-gradient(0deg, #333 0, #333 8px, transparent 8px, transparent 16px),
-    repeating-linear-gradient(90deg, #333 0, #333 8px, transparent 8px, transparent 16px);
-  opacity: 0.1;
-  margin-bottom: 8px;
-}
-
-.duelsia-qr-placeholder p {
-  color: #999;
-  font-size: 12px;
-  margin: 0;
 }
 
 .duelsia-qr-url {

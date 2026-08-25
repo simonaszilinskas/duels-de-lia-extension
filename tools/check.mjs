@@ -35,7 +35,7 @@ function ressourcesExternes(html) {
 const entitesNommees = new Map([
   ['amp', '&'], ['apos', "'"], ['gt', '>'], ['lt', '<'], ['quot', '"'],
   ['nbsp', ' '], ['ensp', ' '], ['emsp', ' '], ['thinsp', ' '],
-  ['rsquo', '’'], ['lsquo', '‘'], ['ndash', '–'], ['mdash', '—'],
+  ['rsquo', '’'], ['lsquo', '‘'], ['ndash', '–'], ['mdash', '\u2014'],
 ]);
 
 function decodeEntites(texte) {

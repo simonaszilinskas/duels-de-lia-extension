@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Duels de l'IA",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Extension pour l'atelier pédagogique Duel de l'IA",
   "permissions": [],
   "content_scripts": [
@@ -21,7 +21,6 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "css/new-styles.css",
         "data/content-data.json",
         "data/qr_code_transparent_fixed.png",
         "data/slides/*",
