@@ -52,9 +52,25 @@
   </section>
 
   <section class="slide">
-    <h1><em>38 fois</em> moins de CO₂ ?</h1>
-    <p class="chapeau">Probablement pas.</p>
-    <p>L'écart tient surtout aux méthodes de calcul, qui divergent entre les deux acteurs.</p>
+    <h1>Deux chiffres, deux <em>périmètres</em></h1>
+    <p class="chapeau">38 fois plus de CO₂, 170 fois plus d'eau : avant de conclure, regardez où chacun s'arrête de compter.</p>
+      <svg class="graphe schema" viewBox="0 0 1000 340" role="img" aria-labelledby="s-per">
+      <title id="s-per">Schema : trois perimetres emboites. Google ne compte que l eau de refroidissement du centre. Mistral AI compte aussi l eau de la production d electricite et celle de la fabrication du materiel.</title>
+      <rect x="0" y="0" width="600" height="340" rx="10" fill="#d4d4fb" stroke="#6464f3" stroke-opacity="0.35" stroke-width="2"/>
+      <text class="s-sous" x="16" y="26">Fabrication du matériel, réseau, amont</text>
+      <rect x="46" y="50" width="508" height="240" rx="10" fill="#e6e6fd" stroke="#6464f3" stroke-opacity="0.35" stroke-width="2"/>
+      <text class="s-sous" x="62" y="76">Production de l'électricité</text>
+      <rect x="92" y="100" width="416" height="140" rx="10" fill="#f4f4fe" stroke="#6464f3" stroke-opacity="0.35" stroke-width="2"/>
+      <text class="s-sous" x="108" y="126">Refroidissement du centre</text>
+      <defs><marker id="fl2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
+      <line class="s-fleche" x1="640" y1="170" x2="512" y2="170" marker-end="url(#fl2)"/>
+      <text class="s-titre" x="656" y="158">Google compte jusqu'ici</text>
+      <text class="g-chiffre" x="656" y="204">0,26 mL</text>
+      <line class="s-fleche" x1="640" y1="300" x2="604" y2="300" marker-end="url(#fl2)"/>
+      <text class="s-titre" x="656" y="288">Mistral AI, jusqu'ici</text>
+      <text class="g-chiffre" x="656" y="334">45 mL</text>
+      </svg>
+    <p class="source">Google : eau consommée sur site, pour le refroidissement. Mistral AI : analyse de cycle de vie, qui remonte à la production d'électricité et à la fabrication des serveurs. Périmètres reconstitués d'après les deux publications.</p>
   </section>
 
   <section class="slide">
@@ -102,6 +118,34 @@
     </div>
     <p>Avant de reprendre un chiffre, trois questions : que couvre-t-il, sur quel matériel, avec quelle électricité ?</p>
     <p class="source">Luccioni et coll., « Misinformation by Omission: The Need for More Environmental Transparency in AI », 2025.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Un total, et sa <em>fourchette</em></h1>
+    <div class="compare">
+      <div>
+        <h2>Le chiffre annoncé</h2>
+        <p class="chiffre">29,5</p>
+        <p>millions de tonnes équivalent CO₂ pour le numérique français, soit 4,4 % de l'empreinte du pays.</p>
+      </div>
+      <div>
+        <h2>L'incertitude publiée</h2>
+        <p class="chiffre">15 à 54</p>
+        <p>La même étude donne cette fourchette. Elle est rarement citée.</p>
+      </div>
+    </div>
+    <p>Compter les centres de données étrangers qui servent les usages français relève à lui seul le total de près de moitié. Le périmètre pèse autant que la mesure.</p>
+    <p class="source">ADEME et Arcep, <em>Évaluation de l'impact environnemental du numérique en France</em>, rapport final, janvier 2025, données 2022. La bande d'incertitude publiée va de 50,8 % à 183,2 % de la valeur centrale.</p>
+  </section>
+
+  <section class="slide">
+    <h1>Ce que cette étude ne <em>couvre pas</em></h1>
+    <div class="nuance">
+      <p>Ses auteurs écrivent qu'elle ne prend <strong>pas en compte le développement de l'IA générative</strong>.</p>
+    </div>
+    <p>Citer ces 29,5 millions de tonnes comme « le coût de l'IA en France » est donc un contresens. C'est l'empreinte du numérique français avant l'arrivée des modèles de langage.</p>
+    <p>Lire les limites d'une étude prend deux minutes et évite la plupart des erreurs.</p>
+    <p class="source">ADEME et Arcep, janvier 2025, chapitre sur les limites de l'étude. La surface des centres de données français y est également signalée comme obsolète.</p>
   </section>
 
   <section class="slide">

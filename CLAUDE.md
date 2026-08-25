@@ -63,6 +63,20 @@ Rules that matter:
 - Un modèle non ouvert se dit « propriétaire », jamais « fermé ».
 - EcoLogits rend une énergie ; la classe A à F est une règle de compar:IA.
 - Les exemples de modèles se prennent dans le catalogue, parmi ceux en service.
+- Un chiffre relayé se cite à sa source d'origine, pas à qui l'a repris.
+- Une comparaison entre deux chiffres exige le même périmètre et la même année.
+
+Graphiques : SVG écrit à la main, dans le flux du document. Rien n'est chargé de
+l'extérieur, la police est celle de la page, et les libellés se dimensionnent en
+`cqw` pour ne pas grossir avec le dessin. Le rapport largeur/hauteur du `viewBox`
+se cale sur la boîte mesurée dans la diapositive, sinon le dessin se centre et
+laisse deux bandes vides. Les données chiffrées viennent de
+`data/legacy/generated-models.json` dans le dépôt compar:IA, pas de valeurs
+recopiées à la main.
+
+Une nouvelle classe de liste (`.echelle`, `.barres`, `.cycle`) se déclare
+`.slide ul.<nom>` : la règle générale `.slide ul` est plus spécifique et
+impose sinon une largeur de 52ch.
 
 Run `node tools/check.mjs` after editing a deck. It catches the failures that are silent
 otherwise: an inline script (blank slide), a missing image, a deck renamed but not updated

@@ -342,6 +342,36 @@
               "emoji": "📇",
               "question": "Comment lire la fiche d'un modèle après un duel ?",
               "answer": "De haut en bas : le nom, sous la forme **Éditeur/Modèle** ; des badges (licence, classe de taille, date de sortie) ; puis cinq cartes : **Taille**, **Architecture**, **Niveau d'ouverture**, **Rang classement** et **Score énergie**, cette dernière portant le chevron A à F. Vient ensuite le bloc **Bilan**, avec le texte généré, le coût et l'énergie de génération estimée, chacun comparé à l'autre modèle du duel. Le support « Lire le bilan d'un duel » déroule l'écran carte par carte."
+            },
+            {
+              "emoji": "📱",
+              "question": "Le problème, ce sont bien les centres de données ?",
+              "answer": "Pas seulement. Dans l'empreinte carbone du numérique français, les **terminaux pèsent 50 %**, les centres de données 46 % et les réseaux 4 %. Les écrans, téléphones et ordinateurs comptent donc autant que tous les serveurs réunis. Source : ADEME et Arcep, *Évaluation de l'impact environnemental du numérique en France*, rapport final, janvier 2025."
+            },
+            {
+              "emoji": "🏭",
+              "question": "Fabriquer un appareil, ou s'en servir : qu'est-ce qui pèse le plus ?",
+              "answer": "La fabrication. Sur l'ensemble du numérique français, elle représente **60 %** de l'empreinte carbone contre 40 % pour l'utilisation. Pour les seuls terminaux, l'écart est bien plus net : environ 85 % contre 15 %. D'où le conseil le plus efficace du domaine : **garder son matériel plus longtemps**. Passer de deux à quatre ans d'usage améliore le bilan d'un ordinateur d'environ la moitié."
+            },
+            {
+              "emoji": "🌍",
+              "question": "Quelle part de l'électricité mondiale l'IA consomme-t-elle ?",
+              "answer": "De l'ordre de **0,1 à 0,2 %** en 2023 pour les centres de données dédiés à l'IA, d'après les estimations de l'Agence internationale de l'énergie (30 à 50 TWh sur l'année). L'agence projette 200 à 400 TWh en 2030, soit six à huit fois plus. Le chiffre est petit aujourd'hui et croît vite : les deux moitiés de la phrase comptent autant."
+            },
+            {
+              "emoji": "🔁",
+              "question": "Pourquoi la consommation se compte-t-elle par jeton et pas par message ?",
+              "answer": "Parce que le modèle ne rédige pas une réponse d'un coup. Il produit **un jeton**, relit tout ce qui précède, en produit un autre, et recommence. Une réponse de trois cents mots demande de l'ordre de quatre cents tours de cette boucle. C'est la longueur de la réponse, pas le nombre de messages, qui détermine le calcul."
+            },
+            {
+              "emoji": "📈",
+              "question": "Un gros modèle consomme-t-il forcément plus ?",
+              "answer": "En général oui, mais l'architecture compte autant. Sur les 32 modèles du catalogue, la consommation suit à peu près la **moyenne entre la taille totale et la taille active**. Un mélange d'experts de 400 milliards de paramètres dont 17 sont actifs tient en classe D, quand un modèle dense de taille voisine se retrouve en E. Ni la taille totale ni la taille active ne suffit seule."
+            },
+            {
+              "emoji": "⚖️",
+              "question": "Pourquoi deux fournisseurs annoncent-ils des chiffres si différents ?",
+              "answer": "Le plus souvent parce qu'ils ne comptent pas la même chose. Sur l'eau, Google mesure le **refroidissement sur site** et annonce 0,26 mL par requête ; Mistral AI mène une analyse de cycle de vie qui remonte à la production d'électricité et à la fabrication des serveurs, et annonce 45 mL. Même effet à l'échelle d'un pays : dans l'évaluation ADEME et Arcep de janvier 2025, ajouter les centres de données étrangers qui servent les usages français relève le total de près de moitié, sans qu'aucune mesure change."
             }
           ]
         }

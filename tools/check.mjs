@@ -22,6 +22,7 @@ for (const nom of decks) {
 
   if ((s.match(/<main class="stage">/g) || []).length !== 1) fail(nom, 'il faut exactement un <main class="stage">');
   if (!s.includes('slides.css') || !s.includes('slides.js')) fail(nom, 'feuille de style ou script commun absent');
+  if (!s.startsWith('<!doctype html>')) fail(nom, 'le fichier ne commence pas par <!doctype html>');
   if (!s.includes('<html lang="fr">')) fail(nom, 'attribut lang absent');
   if (!/<section class="slide/.test(s)) fail(nom, 'aucune diapositive');
   if (/CONFIRMER|À AJOUTER|TODO/.test(s)) fail(nom, 'marqueur de relecture encore présent');
@@ -67,6 +68,9 @@ for (const nom of decks) {
   diapos.forEach((d, i) => {
     const corps = d
       .replace(/<p class="source">[\s\S]*?<\/p>/g, '')
+      // Les libellés d'un graphique ne sont pas du texte à lire : un axe et
+      // trois étiquettes feraient sauter le plafond sans rien tasser.
+      .replace(/<svg[\s\S]*?<\/svg>/g, ' ')
       .replace(/<[^>]+>/g, ' ')
       .replace(/&[a-z]+;/g, ' ');
     const mots = corps.split(/\s+/).filter(Boolean).length;
