@@ -926,16 +926,8 @@
     // Add click handler for recap button
     const recapButton = document.getElementById('duelsia-recap-btn');
     recapButton.addEventListener('click', () => {
-      const recapUrl = 'https://drive.google.com/file/d/19GvpbS1c4kIyUaJyWwdWyyJ6WsNefD2M/view?usp=drive_link';
-      // Extract file ID and convert to embed URL
-      const fileId = recapUrl.match(/d\/([a-zA-Z0-9-_]+)/)?.[1];
-      if (fileId) {
-        const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-        openSlideOverlay(embedUrl);
-      } else {
-        // Fallback to opening in new tab
-        window.open(recapUrl, '_blank');
-      }
+      const recapUrl = chrome.runtime.getURL('data/slides/ce-quon-retient.html');
+      openSlideOverlay(recapUrl, 'Ce qu’on retient');
     });
     
     // Add click handler for more debate questions button
