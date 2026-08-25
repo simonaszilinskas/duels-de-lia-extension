@@ -4,8 +4,8 @@
       "title": "Comment se déroule un duel ?",
       "steps": [
         {
-          "title": "Choisissez David contre Goliath",
-          "description": "Ce mode permet de comparer un petit modèle économe avec un grand modèle"
+          "title": "Choisissez deux modèles contrastés",
+          "description": "Comparez un petit modèle économe avec un modèle plus grand"
         },
         {
           "title": "Envoyez votre prompt",
@@ -45,7 +45,7 @@
               "emoji": "💼",
               "profession": "Étudiant en école de commerce",
               "category": "Conseil",
-              "prompt": "Je prépare une note pour expliquer pourquoi il serait utile d’utiliser de petits modèles de langage plutôt que de grands dans l’entreprise où je suis en stage. Quelles questions mes supérieurs risquent-ils de me poser ?"
+              "prompt": "Je prépare une note pour aider mon entreprise à choisir entre petits et grands modèles de langage selon les tâches. Quelles questions mes supérieurs risquent-ils de me poser ?"
             },
             {
               "name": "Noa",
@@ -59,7 +59,7 @@
               "emoji": "🌿",
               "profession": "Consultante en transition écologique",
               "category": "Rédaction",
-              "prompt": "Reformule cette phrase : 'L’IA générative a un effet sur l’environnement, donc il est nécessaire de l’utiliser de manière consciente.'"
+              "prompt": "Reformule cette phrase : 'Les effets environnementaux de l’IA générative varient selon les modèles et les usages.'"
             },
             {
               "name": "Lina",
@@ -106,7 +106,7 @@
             },
             {
               "theme": "Responsabilité",
-              "question": "La sobriété numérique dans l’IA devrait-elle être portée par les utilisateurs, imposée par les régulateurs, ou conçue en amont par les entreprises ? Qui doit vraiment agir ?"
+              "question": "La sobriété numérique dans l’IA devrait-elle relever des utilisateurs, des régulateurs, des entreprises, ou d’une combinaison de ces acteurs ? Comment répartir cette responsabilité ?"
             },
             {
               "theme": "Frugalité et usages",
@@ -130,7 +130,7 @@
             },
             {
               "theme": "Définition",
-              "question": "Peut-on parler d'« intelligence artificielle responsable » tant que personne ne publie ce que consomment réellement les modèles les plus utilisés ?"
+              "question": "Quels critères devrait recouvrir l'expression « intelligence artificielle responsable » ? Quelle place la transparence sur la consommation devrait-elle y tenir ?"
             }
           ]
         },
@@ -211,7 +211,7 @@
             {
               "emoji": "🎚️",
               "question": "Pourquoi peut-on changer de scénario dans le bilan ?",
-              "answer": "Parce qu'une discussion d'atelier ne dit pas grand-chose d'un usage réel. Trois scénarios sont proposés : **cette discussion**, une **recherche approfondie** (310 000 jetons) et une **session de code agentique** (500 000 jetons). Les projections ne comptent que les **jetons de sortie**, ce qui écarte une partie du calcul, mais supposent une exécution **sans cache**, ce qui peut au contraire surestimer les relectures. Ce sont des repères, pas une borne haute ou basse démontrée."
+              "answer": "Parce qu'une discussion d'atelier ne dit pas grand-chose d'un usage réel. Trois scénarios sont proposés : **cette discussion**, une **recherche approfondie** (310 000 jetons) et une **session de code agentique** (500 000 jetons). Les projections ne comptent que les **jetons de sortie**, ce qui écarte une partie du calcul, mais supposent qu'aucun contexte déjà traité n'est réutilisé, ce qui peut au contraire surestimer les relectures. Ce sont des repères, pas une borne haute ou basse démontrée."
             },
             {
               "emoji": "🚫",
@@ -226,7 +226,7 @@
             {
               "emoji": "💻",
               "question": "Quel matériel faut-il pour faire tourner un modèle ?",
-              "answer": "compar:IA estime la mémoire nécessaire pour charger les paramètres, et la range en quatre paliers : jusqu'à **3 Go**, un smartphone suffit ; jusqu'à **16 Go**, un ordinateur portable ; jusqu'à **80 Go**, une station de travail avec une carte graphique ; au-delà, un **serveur multi-GPU**. C'est un minimum théorique : le contexte, la quantification et le moteur d'inférence font monter le besoin réel."
+              "answer": "compar:IA estime la mémoire nécessaire pour charger les paramètres, et la range en quatre paliers : jusqu'à **3 Go**, un smartphone suffit ; jusqu'à **16 Go**, un ordinateur portable ; jusqu'à **80 Go**, une station de travail avec une carte graphique ; au-delà, un **serveur équipé de plusieurs cartes graphiques**. C'est un minimum théorique : la longueur du texte à traiter et le logiciel utilisé font monter le besoin réel ; réduire la précision des paramètres peut le diminuer."
             },
             {
               "emoji": "📏",
@@ -236,7 +236,7 @@
             {
               "emoji": "🕵️",
               "question": "Pourquoi le nombre de paramètres des modèles propriétaires n'est-il pas affiché ?",
-              "answer": "Parce que les laboratoires ne le publient pas. Les chiffres qui circulent sont des estimations, y compris celles de compar:IA. Nommer une estimation déplace la discussion sur le chiffre au lieu de l'ordre de grandeur : les modèles propriétaires affichent donc seulement leur **classe de taille estimée**. Les modèles ouverts, eux, gardent leur compte exact."
+              "answer": "Parce que les laboratoires ne le publient pas. Les chiffres qui circulent sont des estimations, y compris celles de compar:IA. Afficher un chiffre précis donnerait une fausse impression de certitude : les modèles propriétaires affichent donc seulement leur **classe de taille estimée**. Pour les modèles ouverts, compar:IA affiche le nombre publié."
             },
             {
               "emoji": "📊",
@@ -251,17 +251,17 @@
             {
               "emoji": "📉",
               "question": "Pourquoi les modèles propriétaires sont-ils absents du graphique du classement ?",
-              "answer": "L'onglet **Focus énergie** croise satisfaction et consommation moyenne. Il n'accepte que les modèles dont la taille et l'architecture sont publiées, ce qui exclut les modèles propriétaires. Ils reçoivent tout de même une classe A–F sur l'écran de bilan, calculée à partir d'une estimation interne. Une incohérence qu'il vaut mieux dire à voix haute en atelier."
+              "answer": "L'onglet **Focus énergie** croise satisfaction et consommation moyenne. Il n'accepte que les modèles dont la taille et l'architecture sont publiées, ce qui exclut les modèles propriétaires. Ils reçoivent tout de même une classe A–F sur l'écran de bilan, calculée à partir d'une estimation interne. Il faut donc distinguer deux périmètres : le bilan accepte une estimation, tandis que le classement ne retient que des données publiées."
             },
             {
               "emoji": "🔄",
               "question": "Est-ce que les petites IA sont toujours moins performantes ?",
-              "answer": "Pas nécessairement. Comme vous l'avez vu dans les duels, un petit modèle donne souvent une réponse tout aussi satisfaisante. Les mesures de l'Arcep et du PEReN vont dans le même sens : **des modèles à faible consommation obtiennent des résultats équivalents à des modèles bien plus gourmands**. Choisir sobre ne revient donc pas forcément à sacrifier la qualité."
+              "answer": "Pas nécessairement. Les résultats varient selon le modèle et la tâche. Dans les mesures de l'Arcep et du PEReN, **certains modèles à faible consommation obtiennent des résultats équivalents à des modèles consommant davantage**. La consommation ne suffit donc pas, à elle seule, à prédire la qualité d'une réponse."
             },
             {
               "emoji": "🤔",
               "question": "Quelle IA devrais-je utiliser au quotidien ?",
-              "answer": "Cela dépend du besoin. Pour une question simple, un petit modèle ou même un moteur de recherche suffit. Pour une tâche complexe, un grand modèle se justifie. Le catalogue de compar:IA, à l'adresse comparia.beta.gouv.fr/models, permet de comparer taille, classe énergétique et matériel nécessaire."
+              "answer": "Cela dépend de la tâche et du niveau de qualité recherché. Un moteur de recherche, un petit modèle ou un grand modèle ne rendent pas le même service. Le catalogue de compar:IA, à l'adresse comparia.beta.gouv.fr/models, permet de comparer taille, classe énergétique et matériel nécessaire avant de choisir."
             },
             {
               "emoji": "🧪",
@@ -276,7 +276,7 @@
             {
               "emoji": "💧",
               "question": "Pourquoi les IA consomment-elles de l'eau ?",
-              "answer": "L'eau sert à **refroidir** les machines des data centers, qui dégagent énormément de chaleur. S'ajoute l'eau dépensée en amont pour produire l'électricité et fabriquer le matériel. C'est là que les fournisseurs divergent : Google ne compte que le refroidissement (0,26 mL par requête médiane), Mistral AI compte toute la chaîne (45 mL). D'où un facteur 173 pour une même unité. Retenez la question à poser avant tout chiffre d'eau : **quel périmètre ?**"
+              "answer": "L'eau sert à **refroidir** les machines des centres de données, qui dégagent de la chaleur. S'ajoute l'eau utilisée en amont pour produire l'électricité et fabriquer le matériel. Les fournisseurs retiennent des périmètres différents : Google ne compte que le refroidissement (0,26 mL par requête médiane), Mistral AI compte toute la chaîne (45 mL). L'écart d'un facteur 173 s'explique donc en grande partie par ce périmètre."
             },
             {
               "emoji": "🔋",
@@ -296,37 +296,37 @@
             {
               "emoji": "⚡",
               "question": "Qu'est-ce qui consomme le plus : une recherche Google ou une requête à une IA ?",
-              "answer": "**On ne peut plus répondre honnêtement à cette question.** Le seul chiffre publié par Google pour une recherche web, 0,3 Wh, date de **2009** et n'a jamais été mis à jour. Or les chiffres mesurés par les fournisseurs en 2025 sont du même ordre : **0,24 Wh** pour un prompt texte médian sur Gemini, **0,34 Wh** pour une requête ChatGPT moyenne. L'écart intéressant n'est pas entre recherche et IA : il est **entre modèles**, où un facteur 100 sépare un petit modèle d'un modèle de raisonnement sur un prompt long."
+              "answer": "Les données disponibles ne permettent pas une comparaison actuelle et robuste. Le seul chiffre publié par Google pour une recherche web, 0,3 Wh, date de **2009** et n'a pas été mis à jour. Les chiffres publiés par les fournisseurs en 2025 sont du même ordre : **0,24 Wh** pour un prompt texte médian sur Gemini, **0,34 Wh** pour une requête ChatGPT moyenne. Entre modèles d'IA, les estimations peuvent en revanche varier d'un facteur 100 selon le modèle et la longueur de la réponse."
             },
             {
               "emoji": "💦",
               "question": "L'impact de l'IA sur l'eau est-il exagéré ?",
-              "answer": "Les deux discours le sont, chacun à sa façon. Trois repères. **Prélever n'est pas consommer** : l'eau prise à la rivière y retourne en bonne part, seule celle qui s'évapore est consommée, et les chiffres les plus spectaculaires sont presque toujours des prélèvements. **L'ordre de grandeur national est modeste** : en 2024, l'ensemble des centres de données français ont prélevé ou consommé 6,5 millions de m³, soit la consommation annuelle moyenne d'un peu plus de 100 000 personnes, sur 68 millions d'habitants. **Mais le sujet est local** : dans une commune déjà en tension, un seul centre peut créer un conflit d'usage bien réel. La moyenne nationale trompe dans les deux sens. Source : Arcep, enquête « Pour un numérique soutenable », données 2024."
+              "answer": "La réponse dépend de l'échelle et du périmètre. **Prélever n'est pas consommer** : une partie de l'eau prélevée est restituée, tandis que l'eau évaporée est consommée. En 2024, l'ensemble des centres de données français ont déclaré 6,5 millions de m³, soit la consommation annuelle moyenne d'un peu plus de 100 000 personnes sur 68 millions d'habitants. La moyenne nationale ne décrit toutefois pas les effets locaux, notamment dans une commune déjà en tension sur l'eau. Source : Arcep, enquête « Pour un numérique soutenable », données 2024."
             },
             {
               "emoji": "🥤",
               "question": "C'est vrai qu'un message consomme une bouteille d'eau ?",
-              "answer": "Ce chiffre circule beaucoup. Il ne veut rien dire sans son périmètre. Google mesure **0,26 mL** pour une requête médiane, en ne comptant que le refroidissement ; Mistral AI annonce **45 mL** en comptant aussi l'eau dépensée en amont. Selon le périmètre retenu, une demi-bouteille demande donc deux mille messages, ou une dizaine. Même écart, même leçon : demandez toujours ce que le chiffre couvre."
+              "answer": "Ce chiffre ne peut pas être interprété sans connaître son périmètre. Google mesure **0,26 mL** pour une requête médiane, en ne comptant que le refroidissement ; Mistral AI annonce **45 mL** en comptant aussi l'eau utilisée en amont. Selon le périmètre retenu, une demi-bouteille correspond donc à environ deux mille messages, ou à une dizaine."
             },
             {
               "emoji": "❄️",
               "question": "Pourquoi ne pas simplement refroidir sans eau ?",
-              "answer": "Parce que l'eau et l'électricité tirent en sens inverse. Refroidir par air consomme peu d'eau et beaucoup d'électricité pour la ventilation. Refroidir par liquide ou par immersion fait gagner **jusqu'à 50 % de l'électricité de refroidissement**, mais demande souvent plus d'eau. Un centre qui n'utilise pas d'eau affiche un indicateur **WUE nul**, et paie ce choix ailleurs. Source : Patel et coll., 2025, cités par l'Arcep, mai 2026."
+              "answer": "Parce que les techniques de refroidissement arbitrent entre eau et électricité. Refroidir par air utilise peu d'eau mais davantage d'électricité pour la ventilation. Refroidir par liquide ou par immersion réduit **jusqu'à 50 % l'électricité de refroidissement**, mais utilise souvent plus d'eau. Un indicateur d'eau consommée sur place ne décrit donc qu'une dimension de cet arbitrage. Source : Patel et coll., 2025, cités par l'Arcep, mai 2026."
             },
             {
               "emoji": "🕵️",
               "question": "Peut-on faire confiance aux chiffres publiés par les fournisseurs ?",
-              "answer": "Avec prudence, et en sachant qu'ils sont rares : **84 % des modèles d'IA ne font l'objet d'aucune information environnementale**. Pire, la transparence recule depuis son pic de 2022, où 10 % des modèles notables publiaient encore quelque chose. Résultat : faute de données, des estimations approximatives circulent, se recopient et finissent citées comme des mesures. C'est exactement ce qu'une méthode commune comme EcoLogits cherche à éviter. Sources : Arcep et PEReN, mai 2026 ; Luccioni et coll., « Misinformation by Omission », 2025."
+              "answer": "Leur interprétation demande de vérifier la méthode et le périmètre : **84 % des modèles d'IA ne font l'objet d'aucune information environnementale**. Une autre étude constate que la part des modèles notables publiant une information a diminué depuis son pic de 2022. En l'absence de données, une estimation peut aussi être reprise comme s'il s'agissait d'une mesure. Une méthode commune comme EcoLogits vise à rendre ces estimations comparables. Sources : Arcep et PEReN, mai 2026 ; Luccioni et coll., « Misinformation by Omission », 2025."
             },
             {
               "emoji": "🧠",
-              "question": "Combien coûte le mode raisonnement ?",
-              "answer": "Beaucoup, et de façon très variable. Sur 22 modèles ouverts testés à matériel constant, activer le raisonnement fait monter la consommation de **92 % en moyenne**, et jusqu'à **+ 849 % sur une tâche de génération de code**. Le gain de qualité, lui, est inégal selon les tâches. La bonne conclusion n'est pas d'interdire le raisonnement, mais de le réserver aux questions qui le méritent. Source : Arcep et PEReN, mai 2026."
+              "question": "Combien consomme le mode raisonnement ?",
+              "answer": "L'effet est important et très variable. Sur 22 modèles ouverts testés à matériel constant, activer le raisonnement fait monter la consommation de **92 % en moyenne**, et jusqu'à **+ 849 % sur une tâche de génération de code**. Le gain de qualité varie lui aussi selon les tâches ; l'intérêt de ce mode s'évalue donc au cas par cas. Source : Arcep et PEReN, mai 2026."
             },
             {
               "emoji": "🛠️",
               "question": "Qu'est-ce que la quantification ?",
-              "answer": "Arrondir les paramètres d'un modèle : passer de 16 bits à 8, ou à 4, comme on garderait moins de décimales. Le modèle occupe moins de mémoire, calcule plus vite et dépense **39 % d'électricité en moins** en moyenne à l'inférence, sans que la qualité s'effondre. C'est le levier le plus discret des trois : il ne change ni la taille annoncée, ni ce que voit l'utilisateur. Source : Arcep et PEReN, mai 2026."
+              "answer": "Arrondir les paramètres d'un modèle : passer de 16 bits à 8, ou à 4, comme on garderait moins de décimales. Dans les mesures citées, le modèle occupe moins de mémoire, calcule plus vite et dépense **39 % d'électricité en moins** en moyenne à l'inférence. L'effet sur la qualité varie selon le modèle et le niveau de quantification. Source : Arcep et PEReN, mai 2026."
             },
             {
               "emoji": "🤖",
@@ -336,7 +336,7 @@
             {
               "emoji": "📉",
               "question": "Le scénario « session de code agentique » donne-t-il le vrai coût ?",
-              "answer": "Non, c'est un **repère partiel**. Le scénario compte 450 k jetons en entrée et 50 k en sortie, mais l'estimation d'énergie ne retient que la **sortie** : cette omission tire le chiffre vers le bas. À l'inverse, l'hypothèse d'une exécution **sans cache** peut le tirer vers le haut. Le produit ne donne donc ni un total, ni une borne démontrée."
+              "answer": "Non, c'est un **repère partiel**. Le scénario compte 450 k jetons en entrée et 50 k en sortie, mais l'estimation d'énergie ne retient que la **sortie** : cette omission tire le chiffre vers le bas. À l'inverse, supposer qu'aucun contexte déjà traité n'est réutilisé peut le tirer vers le haut. Le produit ne donne donc ni un total, ni une borne démontrée."
             },
             {
               "emoji": "📇",
@@ -351,7 +351,7 @@
             {
               "emoji": "🏭",
               "question": "Fabriquer un appareil, ou s'en servir : qu'est-ce qui pèse le plus ?",
-              "answer": "La fabrication. Sur l'ensemble du numérique français, elle représente **60 %** de l'empreinte carbone contre 40 % pour l'utilisation. Pour les seuls terminaux, l'écart est bien plus net : environ 85 % contre 15 %. D'où le conseil le plus efficace du domaine : **garder son matériel plus longtemps**. Passer de deux à quatre ans d'usage améliore le bilan d'un ordinateur d'environ la moitié."
+              "answer": "La fabrication. Sur l'ensemble du numérique français, elle représente **60 %** de l'empreinte carbone contre 40 % pour l'utilisation. Pour les seuls terminaux, l'écart est d'environ 85 % contre 15 %. D'après l'ADEME, passer de deux à quatre ans d'usage améliore le bilan d'un ordinateur d'environ la moitié."
             },
             {
               "emoji": "🌍",
@@ -361,7 +361,7 @@
             {
               "emoji": "🔁",
               "question": "Pourquoi la consommation se compte-t-elle par jeton et pas par message ?",
-              "answer": "Parce que le modèle ne rédige pas une réponse d'un coup. Il produit **un jeton**, relit tout ce qui précède, en produit un autre, et recommence. Une réponse de trois cents mots demande de l'ordre de quatre cents tours de cette boucle. C'est la longueur de la réponse, pas le nombre de messages, qui détermine le calcul."
+              "answer": "Parce que le modèle ne rédige pas une réponse d'un coup. Il produit **un jeton**, relit tout ce qui précède, en produit un autre, et recommence. Une réponse de trois cents mots demande de l'ordre de quatre cents tours de cette boucle. Le calcul dépend donc du volume de texte lu et produit, pas du seul nombre de messages."
             },
             {
               "emoji": "📈",
