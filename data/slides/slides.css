@@ -290,11 +290,14 @@ figcaption { font-size: 1em; color: var(--gris); }
 .nav [aria-live] { min-width: 3.2rem; text-align: center; font-variant-numeric: tabular-nums; }
 
 @media print {
-  html, body { background: #fff; }
+  @page { size: 16in 9in; margin: 0; }
+  html, body { width: 100%; height: auto; display: block; background: #fff; }
   .nav { display: none; }
   .deck-ready .slide { display: flex; }
-  .stage { width: 100%; height: auto; }
-  .slide { position: static; page-break-after: always; aspect-ratio: 16 / 9; }
+  .stage { container-type: inline-size; width: 100%; height: auto; margin: 0; overflow: visible; }
+  .marque { position: fixed; }
+  .slide { position: relative; min-height: 56.25vw; break-after: page; aspect-ratio: 16 / 9; }
+  .slide:last-child { break-after: auto; }
 }
 
 /* --- Échelle énergétique A à F, reprise de compar:IA -----------------------
@@ -500,7 +503,7 @@ figcaption { font-size: 1em; color: var(--gris); }
   height: 0.55em;
   border-radius: 50%;
   margin-right: 0.4em;
-  background: currentColor;
+  background-color: currentcolor;
 }
 .equiv .video h3::before { color: var(--rouge-marianne); }
 .equiv .led h3::before { color: var(--jaune-tournesol); }

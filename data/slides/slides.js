@@ -18,6 +18,7 @@
 
   const compteur = nav.querySelector('span');
   const [precedent, suivant] = nav.querySelectorAll('button');
+  const parentOrigin = location.ancestorOrigins && location.ancestorOrigins[0];
 
   function afficher(n) {
     index = Math.max(0, Math.min(slides.length - 1, n));
@@ -43,7 +44,11 @@
       case 'Home': afficher(0); break;
       case 'End': afficher(slides.length - 1); break;
       // Dans l'extension, le support est dans une iframe : le parent ferme la vue.
-      case 'Escape': parent.postMessage({ duelsia: 'fermer' }, '*'); return;
+      case 'Escape':
+        if (parent !== window && parentOrigin) {
+          parent.postMessage({ duelsia: 'fermer' }, parentOrigin);
+        }
+        return;
       default: return;
     }
     e.preventDefault();

@@ -211,7 +211,7 @@
             {
               "emoji": "🎚️",
               "question": "Pourquoi peut-on changer de scénario dans le bilan ?",
-              "answer": "Parce qu'une discussion d'atelier ne dit pas grand-chose d'un usage réel. Trois scénarios sont proposés : **cette discussion**, une **recherche approfondie** (310 000 jetons) et une **session de code agentique** (500 000 jetons). Les projections ne comptent que les **jetons de sortie** et supposent une exécution **sans cache** : c'est donc plutôt une borne haute."
+              "answer": "Parce qu'une discussion d'atelier ne dit pas grand-chose d'un usage réel. Trois scénarios sont proposés : **cette discussion**, une **recherche approfondie** (310 000 jetons) et une **session de code agentique** (500 000 jetons). Les projections ne comptent que les **jetons de sortie**, ce qui écarte une partie du calcul, mais supposent une exécution **sans cache**, ce qui peut au contraire surestimer les relectures. Ce sont des repères, pas une borne haute ou basse démontrée."
             },
             {
               "emoji": "🚫",
@@ -336,7 +336,7 @@
             {
               "emoji": "📉",
               "question": "Le scénario « session de code agentique » donne-t-il le vrai coût ?",
-              "answer": "Non, c'est un **plancher**. Le scénario compte 450 k jetons en entrée et 50 k en sortie, mais l'estimation d'énergie ne retient que la **sortie**. Or c'est justement en entrée qu'un agent dépense presque tout, à relire son contexte. Le chiffre affiché est donc le plus bas là où le coût réel est le plus haut. Le produit prévient d'ailleurs : hypothèse d'exécution **sans cache**."
+              "answer": "Non, c'est un **repère partiel**. Le scénario compte 450 k jetons en entrée et 50 k en sortie, mais l'estimation d'énergie ne retient que la **sortie** : cette omission tire le chiffre vers le bas. À l'inverse, l'hypothèse d'une exécution **sans cache** peut le tirer vers le haut. Le produit ne donne donc ni un total, ni une borne démontrée."
             },
             {
               "emoji": "📇",
@@ -366,7 +366,7 @@
             {
               "emoji": "📈",
               "question": "Un gros modèle consomme-t-il forcément plus ?",
-              "answer": "En général oui, mais l'architecture compte autant. Sur les 32 modèles du catalogue, la consommation suit à peu près la **moyenne entre la taille totale et la taille active**. Un mélange d'experts de 400 milliards de paramètres dont 17 sont actifs tient en classe D, quand un modèle dense de taille voisine se retrouve en E. Ni la taille totale ni la taille active ne suffit seule."
+              "answer": "En général oui, mais l'architecture compte autant. Sur les 40 modèles du catalogue, la consommation suit à peu près la **moyenne entre la taille totale et la taille active**. Un mélange d'experts de 400 milliards de paramètres dont 17 milliards sont actifs tient en classe D ; avec 400 milliards de paramètres actifs, la même estimation donnerait une classe E. Ni la taille totale ni la taille active ne suffit seule."
             },
             {
               "emoji": "⚖️",
@@ -376,7 +376,7 @@
             {
               "emoji": "🇫🇷",
               "question": "Et Albert, l'IA de l'État ?",
-              "answer": "Albert n'est pas ouvert au public. L'API est réservée aux administrations, sur demande auprès de la DINUM. L'assistant conversationnel est resté au stade du pilote, avec environ 10 000 agents jusqu'à juin 2026, et il ne sera pas généralisé sous sa forme actuelle. Les agents publics disposant d'un compte LaSuite peuvent s'inscrire sur une liste d'attente."
+              "answer": "Albert API n'est pas destinée au grand public : son accès expérimental est ouvert gratuitement à tous les agents de la fonction publique de l'État. L'Assistant, l'outil conversationnel qui s'appuie sur cette infrastructure, est généralisé à tous les agents de l'État depuis juin 2026, après dix mois d'expérimentation auprès de 10 000 agents."
             }
           ]
         }

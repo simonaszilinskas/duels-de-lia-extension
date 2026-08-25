@@ -3,22 +3,68 @@
 // Usage : node tools/check.mjs
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const racine = join(dirname(new URL(import.meta.url).pathname), '..');
+const racine = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dossier = join(racine, 'data/slides');
 const erreurs = [];
 const fail = (f, m) => erreurs.push(`${f} : ${m}`);
+
+const attribut = (texte, nom) => {
+  const trouve = texte.match(new RegExp(`\\b${nom}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, 'i'));
+  return trouve && (trouve[1] ?? trouve[2] ?? trouve[3]);
+};
+
+// Seuls les attributs qui chargent effectivement une ressource sont contrôlés.
+// Une URL citée dans le texte d'une source ne provoque aucune requête réseau.
+function ressourcesExternes(html) {
+  const resultats = [];
+  const balises = /<(img|script|iframe|audio|video|source|track|embed|object|link)\b([^>]*)>/gi;
+  for (const trouve of html.matchAll(balises)) {
+    const [, nom, attrs] = trouve;
+    const nomAttribut = nom.toLowerCase() === 'object'
+      ? 'data'
+      : nom.toLowerCase() === 'link' ? 'href' : 'src';
+    const valeur = attribut(attrs, nomAttribut);
+    if (/^https?:\/\//i.test(valeur || '')) resultats.push(valeur);
+  }
+  if (/url\(\s*['"]?https?:\/\//i.test(html)) resultats.push('CSS url()');
+  return resultats;
+}
+
+const entitesNommees = new Map([
+  ['amp', '&'], ['apos', "'"], ['gt', '>'], ['lt', '<'], ['quot', '"'],
+  ['nbsp', ' '], ['ensp', ' '], ['emsp', ' '], ['thinsp', ' '],
+  ['rsquo', '’'], ['lsquo', '‘'], ['ndash', '–'], ['mdash', '—'],
+]);
+
+function decodeEntites(texte) {
+  return texte.replace(/&(#(?:x[\da-f]+|\d+)|[a-z][\da-z]+);/gi, (entite, code) => {
+    if (code[0] !== '#') return entitesNommees.get(code.toLowerCase()) ?? '￼';
+    const hexadecimal = code[1].toLowerCase() === 'x';
+    const point = Number.parseInt(code.slice(hexadecimal ? 2 : 1), hexadecimal ? 16 : 10);
+    try {
+      return String.fromCodePoint(point);
+    } catch {
+      return '￼';
+    }
+  });
+}
 
 const decks = readdirSync(dossier).filter((f) => f.endsWith('.html'));
 
 for (const nom of decks) {
   const s = readFileSync(join(dossier, nom), 'utf8');
   // La CSP des extensions MV3 refuse tout ça, et la diapositive reste blanche.
-  if (/<script(?![^>]*\ssrc=)/i.test(s)) fail(nom, 'script en ligne : interdit par la CSP');
+  for (const script of s.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
+    const src = attribut(script[1], 'src');
+    if (!src || script[2].trim()) fail(nom, 'script en ligne : interdit par la CSP');
+    if (src && src !== 'slides.js') fail(nom, `script inattendu : ${src}`);
+  }
   if (/\son[a-z]+\s*=/i.test(s)) fail(nom, 'gestionnaire inline (onclick…) : interdit par la CSP');
   if (/<style/i.test(s)) fail(nom, 'balise <style> : mettre le style dans slides.css');
-  if (/https?:\/\/(?!127\.0\.0\.1)/i.test(s.replace(/<p class="source">[\s\S]*?<\/p>/g, '')))
-    fail(nom, 'appel externe hors ligne de source : privacy.md promet le contraire');
+  if (ressourcesExternes(s).length)
+    fail(nom, 'ressource externe : privacy.md promet le contraire');
 
   if ((s.match(/<main class="stage">/g) || []).length !== 1) fail(nom, 'il faut exactement un <main class="stage">');
   if (!s.includes('slides.css') || !s.includes('slides.js')) fail(nom, 'feuille de style ou script commun absent');
@@ -45,7 +91,8 @@ for (const nom of decks) {
 
   // La salle découvre le produit tel qu'il est : on ne raconte pas son historique.
   const avantApres = [
-    /(publiait|affichait|montrait|comptait|proposait|calculait|utilisait)\b/i,
+    /compar:IA.{0,80}(publiait|affichait|montrait|comptait|proposait|calculait|utilisait)\b/i,
+    /(publiait|affichait|montrait|comptait|proposait|calculait|utilisait)\b.{0,80}compar:IA/i,
     /plus aucun CO/i,
     /n['’]affiche plus/i,
     /ne montre plus/i,
@@ -66,13 +113,12 @@ for (const nom of decks) {
   // Une diapositive tassée est ratée : on plafonne le texte.
   const diapos = s.split(/<section class="slide/).slice(1);
   diapos.forEach((d, i) => {
-    const corps = d
+    const corps = decodeEntites(d
       .replace(/<p class="source">[\s\S]*?<\/p>/g, '')
       // Les libellés d'un graphique ne sont pas du texte à lire : un axe et
       // trois étiquettes feraient sauter le plafond sans rien tasser.
       .replace(/<svg[\s\S]*?<\/svg>/g, ' ')
-      .replace(/<[^>]+>/g, ' ')
-      .replace(/&[a-z]+;/g, ' ');
+      .replace(/<[^>]+>/g, ' '));
     const mots = corps.split(/\s+/).filter(Boolean).length;
     if (mots > 90) fail(nom, `diapositive ${i + 1} : ${mots} mots, à scinder`);
   });

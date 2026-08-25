@@ -34,8 +34,11 @@ changez le texte : plus besoin de rouvrir un outil de présentation et de
 réexporter un PDF.
 
 Une contrainte à connaître : la politique de sécurité des extensions Chrome
-interdit le script en ligne. Un `<script>` ou un `onclick` dans une diapositive
-la laisse blanche. Tout le comportement passe par `slides.js`.
+interdit le JavaScript en ligne. Les supports chargent donc le fichier empaqueté
+`slides.js` avec `<script src="slides.js" defer></script>`, ce qui est autorisé,
+mais ne doivent contenir ni code dans une balise `<script>`, ni attribut tel que
+`onclick`. Les styles communs vivent dans `slides.css`, jamais dans une balise
+`<style>` propre à un support.
 
 ## Ce que l'extension enseigne
 

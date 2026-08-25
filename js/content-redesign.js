@@ -35,6 +35,9 @@
   let currentSection = 'comment-se-deroule';
   let currentBlock = null;
   let lastCardIndex = -1;
+  let slideOverlayOpener = null;
+  const extensionUrl = new URL(chrome.runtime.getURL('/'));
+  const extensionOrigin = `${extensionUrl.protocol}//${extensionUrl.host}`;
 
   // Les réponses de la FAQ sont écrites avec des **gras** en markdown : on les rend,
   // sinon les astérisques s'affichent telles quelles devant le public.
@@ -62,8 +65,11 @@
     
     const fab = document.createElement('button');
     fab.id = 'duelsia-fab';
-    fab.innerHTML = '⚔️';
+    fab.textContent = '⚔️';
     fab.title = 'Duels de l\'IA';
+    fab.setAttribute('aria-label', 'Ouvrir les ressources des Duels de l’IA');
+    fab.setAttribute('aria-controls', 'duelsia-panel');
+    fab.setAttribute('aria-expanded', 'false');
     fab.addEventListener('click', toggleModal);
     
     console.log('📐 Ajout du FAB au body...');
@@ -92,14 +98,16 @@
     const panel = document.createElement('div');
     panel.id = 'duelsia-panel';
     panel.className = 'duelsia-hidden';
+    panel.setAttribute('role', 'region');
+    panel.setAttribute('aria-label', 'Ressources des Duels de l’IA');
     
     panel.innerHTML = `
       <div class="duelsia-panel-content">
         <div class="duelsia-header duelsia-draggable">
           <span>Bienvenue dans les duels de l'IA</span>
           <div class="duelsia-header-actions">
-            <button class="duelsia-feedback-btn" title="Retours">💬</button>
-            <button class="duelsia-close">✕</button>
+            <button type="button" class="duelsia-feedback-btn" title="Retours" aria-label="Ouvrir les formulaires de retour">💬</button>
+            <button type="button" class="duelsia-close" aria-label="Fermer les ressources">✕</button>
           </div>
         </div>
         
@@ -128,9 +136,9 @@
         
         <div class="duelsia-content-view" style="display: none;">
           <div class="duelsia-content-nav">
-            <button class="duelsia-back-button">←</button>
+            <button type="button" class="duelsia-back-button" aria-label="Revenir à la liste">←</button>
             <h3 id="duelsia-content-title"></h3>
-            <button class="duelsia-close duelsia-close-content">✕</button>
+            <button type="button" class="duelsia-close duelsia-close-content" aria-label="Fermer les ressources">✕</button>
           </div>
           <div class="duelsia-content-display" id="duelsia-content-display">
             <!-- Content will be dynamically inserted here -->
@@ -139,9 +147,9 @@
         
         <div class="duelsia-feedback-view" style="display: none;">
           <div class="duelsia-content-nav">
-            <button class="duelsia-back-button">←</button>
+            <button type="button" class="duelsia-back-button" aria-label="Revenir à la liste">←</button>
             <h3>Retours</h3>
-            <button class="duelsia-close duelsia-close-feedback">✕</button>
+            <button type="button" class="duelsia-close duelsia-close-feedback" aria-label="Fermer les ressources">✕</button>
           </div>
           <div class="duelsia-feedback-content">
             <div class="duelsia-feedback-participants">
@@ -468,7 +476,7 @@
     const content = `
       <div class="duelsia-resources-list">
         ${resources.map((resource, index) => `
-          <div class="duelsia-resource-item" data-index="${index}">
+          <div class="duelsia-resource-item" data-index="${index}" role="button" tabindex="0">
             <span class="duelsia-resource-emoji">${resource.emoji}</span>
             <div class="duelsia-resource-content">
               <h4>${resource.title}</h4>
@@ -484,7 +492,14 @@
     // Add click handlers after inserting the content
     document.querySelectorAll('.duelsia-resource-item').forEach((item, index) => {
       item.addEventListener('click', () => {
+        item.focus();
         handleResourceClick(resources[index]);
+      });
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          item.click();
+        }
       });
     });
     
@@ -522,6 +537,8 @@
       overlay = document.createElement('div');
       overlay.id = 'duelsia-global-slide-overlay';
       overlay.className = 'duelsia-slide-overlay';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
       
       const container = document.createElement('div');
       container.className = 'duelsia-slide-container';
@@ -529,7 +546,9 @@
       const closeBtn = document.createElement('button');
       closeBtn.id = 'duelsia-global-slide-close';
       closeBtn.className = 'duelsia-slide-close';
-      closeBtn.innerHTML = '✕';
+      closeBtn.type = 'button';
+      closeBtn.textContent = '✕';
+      closeBtn.setAttribute('aria-label', 'Fermer le support');
       closeBtn.addEventListener('click', closeSlideOverlay);
       
       frame = document.createElement('iframe');
@@ -550,17 +569,20 @@
       
       document.body.appendChild(overlay);
     }
-    
+
+    slideOverlayOpener = document.activeElement;
+    overlay.setAttribute('aria-label', title || 'Support de présentation');
     frame.title = title || 'Support de présentation';
     frame.src = embedUrl;
     overlay.style.display = 'flex';
-    frame.focus();
-    
+
     // Hide the panel while viewing the document
     const panel = document.getElementById('duelsia-panel');
     if (panel) {
       panel.classList.add('duelsia-hidden');
     }
+
+    document.getElementById('duelsia-global-slide-close').focus();
   }
   
   // Ferme le support
@@ -570,24 +592,49 @@
     
     if (overlay && frame) {
       overlay.style.display = 'none';
-      frame.src = '';
+      frame.src = 'about:blank';
       
       // Show the panel again when closing the document
       const panel = document.getElementById('duelsia-panel');
       if (panel) {
         panel.classList.remove('duelsia-hidden');
       }
+
+      if (slideOverlayOpener instanceof HTMLElement && slideOverlayOpener.isConnected) {
+        slideOverlayOpener.focus();
+      }
+      slideOverlayOpener = null;
     }
   }
   
   // Le support tourne dans une iframe : c'est lui qui signale la fermeture.
   window.addEventListener('message', (e) => {
-    if (e.data && e.data.duelsia === 'fermer') closeSlideOverlay();
+    const frame = document.getElementById('duelsia-global-slide-frame');
+    if (
+      frame &&
+      e.source === frame.contentWindow &&
+      e.origin === extensionOrigin &&
+      e.data &&
+      e.data.duelsia === 'fermer'
+    ) {
+      closeSlideOverlay();
+    }
   });
 
   document.addEventListener('keydown', (e) => {
     const overlay = document.getElementById('duelsia-global-slide-overlay');
-    if (e.key === 'Escape' && overlay && overlay.style.display === 'flex') closeSlideOverlay();
+    if (e.key === 'Escape' && overlay && overlay.style.display === 'flex') {
+      e.preventDefault();
+      closeSlideOverlay();
+    }
+  });
+
+  // Le focus reste dans le dialogue tant que le support est ouvert.
+  document.addEventListener('focusin', (e) => {
+    const overlay = document.getElementById('duelsia-global-slide-overlay');
+    if (overlay && overlay.style.display === 'flex' && !overlay.contains(e.target)) {
+      document.getElementById('duelsia-global-slide-close').focus();
+    }
   });
 
   // Toggle persona display
@@ -701,8 +748,10 @@
   function toggleModal() {
     const panel = document.getElementById('duelsia-panel');
     panel.classList.toggle('duelsia-hidden');
+    const ouvert = !panel.classList.contains('duelsia-hidden');
+    document.getElementById('duelsia-fab')?.setAttribute('aria-expanded', String(ouvert));
     
-    if (!panel.classList.contains('duelsia-hidden') && currentView === 'content') {
+    if (ouvert && currentView === 'content') {
       showMainView();
     }
   }
