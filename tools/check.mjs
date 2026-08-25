@@ -48,8 +48,10 @@ for (const nom of decks) {
     /\bavant la refonte\b/i,
     /\bnouvelle version du site\b/i,
   ];
+  // Sur le texte sans balises : un <em> au milieu suffirait sinon à passer au travers.
+  const texte = s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
   for (const re of avantApres) {
-    if (re.test(s)) fail(nom, `comparaison avant/après sur compar:IA : ${re}`);
+    if (re.test(texte)) fail(nom, `comparaison avant/après sur compar:IA : ${re}`);
   }
 
   // Le produit n'affiche plus de CO2 : ne pas réintroduire l'ancien discours.
