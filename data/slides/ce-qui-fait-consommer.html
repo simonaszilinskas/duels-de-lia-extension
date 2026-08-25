@@ -73,7 +73,7 @@
         <td><strong>S</strong></td>
       </tr>
     </table>
-    <p class="source">Catalogue compar:IA, modèles en service. Lettres calculées avec les seuils de la diapositive suivante.</p>
+    <p class="source">Catalogue compar:IA, modèles en service. Classes calculées avec les seuils de la diapositive précédente.</p>
   </section>
 
   <section class="slide">
@@ -121,7 +121,7 @@
       </div>
       <div class="carte">
         <h3>Mesurer</h3>
-        <p>Ils disent ce que le modèle peut traiter d'un coup.</p>
+        <p>Ils mesurent ce que le modèle peut lire d'un coup : c'est la taille du contexte.</p>
       </div>
       <div class="carte">
         <h3>Facturer</h3>
@@ -166,20 +166,19 @@
         <h2>Avantages</h2>
         <ul>
           <li>Moins de calcul pour chaque jeton produit.</li>
-          <li><strong>45 % d'électricité en moins</strong> qu'un modèle dense de taille comparable.</li>
+          <li>Moins d'électricité, à taille comparable.</li>
           <li>Donc moins cher à utiliser.</li>
         </ul>
       </div>
       <div>
-        <h2>Désavantages</h2>
+        <h2>Inconvénients</h2>
         <ul>
           <li>Prend beaucoup de place dans la mémoire de la machine.</li>
           <li>Plus complexe à développer.</li>
-          <li>Peut moins bien généraliser.</li>
+          <li>Se débrouille parfois moins bien hors de ce qu'il a vu.</li>
         </ul>
       </div>
     </div>
-    <p class="source">Arcep et PEReN, mai 2026, pour l'écart moyen entre mélanges d'experts et modèles denses de taille équivalente.</p>
   </section>
 
   <section class="slide">
@@ -225,36 +224,36 @@
 
   <section class="slide">
     <h1>Trois leviers, une fois <em>mesurés</em></h1>
-    <p class="chapeau">Le régulateur français a fait tourner 22 modèles ouverts sur un même calculateur.</p>
+    <p class="chapeau">L'Arcep et le PEReN ont mesuré l'électricité dépensée par 22 modèles ouverts, sur le même supercalculateur et pour un même travail.</p>
     <div class="cartes">
       <div class="carte">
         <h3>Mélange d'experts</h3>
         <p class="chiffre">− 45 %</p>
-        <p>face à un modèle dense de taille comparable.</p>
+        <p>d'électricité, face à un modèle dense de taille comparable.</p>
       </div>
       <div class="carte">
-        <h3>Quantification</h3>
+        <h3>Paramètres arrondis</h3>
         <p class="chiffre">− 39 %</p>
-        <p>en arrondissant les paramètres à 8 ou 4 bits.</p>
+        <p>d'électricité, quand chaque paramètre est arrondi à 8 ou 4 bits.</p>
       </div>
       <div class="carte">
-        <h3>Raisonnement</h3>
+        <h3>Mode réflexion</h3>
         <p class="chiffre">+ 92 %</p>
-        <p>quand le mode réflexion est activé.</p>
+        <p>d'électricité, quand le modèle écrit un brouillon avant de répondre.</p>
       </div>
     </div>
-    <p class="source">Arcep et PEReN, mai 2026. Moyennes sur 22 modèles ouverts, calculateur Jean Zay.</p>
+    <p class="source">Arcep, autorité de régulation des communications, et PEReN, pôle d'expertise de la régulation numérique, mai 2026. Moyennes sur 22 modèles, supercalculateur public Jean Zay.</p>
   </section>
 
   <section class="slide">
     <h1>La taille ne dit pas <em>tout</em></h1>
-    <p class="chapeau">Le régulateur français a fait tourner 22 modèles ouverts sur un même calculateur, à usage et matériel identiques.</p>
+    <p class="chapeau">Sur ces mêmes 22 modèles, à travail et matériel identiques.</p>
     <ul>
       <li>Des modèles de tailles très différentes peuvent dépenser autant l'un que l'autre.</li>
       <li>Des modèles à faible consommation obtiennent des résultats équivalents à des modèles bien plus gourmands.</li>
     </ul>
     <p>Choisir sobre ne revient donc pas forcément à sacrifier la qualité.</p>
-    <p class="source">Arcep et PEReN, « Intelligence artificielle générative : quels défis environnementaux ? », mai 2026. Modèles de 3 à 123 milliards de paramètres, calculateur Jean Zay.</p>
+    <p class="source">Arcep et PEReN, « Intelligence artificielle générative : quels défis environnementaux ? », mai 2026. Modèles de 3 à 123 milliards de paramètres, supercalculateur Jean Zay.</p>
   </section>
 
   <section class="slide">
@@ -363,7 +362,7 @@
     <div class="cartes">
       <div class="carte">
         <h3>La taille compte</h3>
-        <p>Le nuage monte de gauche à droite. Un modèle plus gros consomme plus, toutes choses égales.</p>
+        <p>Le nuage de points monte de gauche à droite : à architecture comparable, un modèle plus gros consomme plus.</p>
       </div>
       <div class="carte">
         <h3>L'architecture aussi</h3>
