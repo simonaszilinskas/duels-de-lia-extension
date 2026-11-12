@@ -25,18 +25,18 @@
     <p class="surtitre">La fiche</p>
     <h1>La fiche d'un <em>modèle</em></h1>
     <div class="fiche">
-      <div class="fiche-tete"><span class="lab">Google/</span>Gemma 4 26B A4B<span class="vous">Votre choix</span></div>
+      <div class="fiche-tete"><span class="lab">Qwen/</span>Qwen 3.8 27B<span class="vous">Votre choix</span></div>
       <ul class="badges">
         <li>Apache 2.0</li>
         <li>Taille S</li>
-        <li>04/2026</li>
+        <li>08/2026</li>
       </ul>
       <div class="infocards">
-        <div class="infocard"><h3>Taille</h3><b>26 mds</b><small>Dont 4 mds actifs</small></div>
-        <div class="infocard"><h3>Architecture</h3><b>Mélange d'experts</b></div>
+        <div class="infocard"><h3>Taille</h3><b>27 mds</b></div>
+        <div class="infocard"><h3>Architecture</h3><b>Dense</b></div>
         <div class="infocard"><h3>Niveau d'ouverture</h3><b>4/6</b><small>Critères atteints</small></div>
         <div class="infocard"><h3>Rang classement</h3><b>Selon les votes</b></div>
-        <div class="infocard"><h3>Score énergie</h3><div class="chevron a">A</div></div>
+        <div class="infocard"><h3>Score énergie</h3><div class="chevron b">B</div></div>
       </div>
     </div>
     <p class="source">Écran de révélation de compar:IA. Le rang évolue avec les votes, le reste vient de la fiche du modèle.</p>
@@ -46,15 +46,15 @@
     <p class="surtitre">La fiche</p>
     <h1>Et celle d'en <em>face</em></h1>
     <div class="fiche">
-      <div class="fiche-tete"><span class="lab">Anthropic/</span>Claude Sonnet 5</div>
+      <div class="fiche-tete"><span class="lab">Anthropic/</span>Claude Sonnet 5.5</div>
       <ul class="badges">
         <li>Propriétaire</li>
         <li>Taille estimée XL</li>
-        <li>06/2026</li>
+        <li>09/2026</li>
       </ul>
       <div class="infocards">
         <div class="infocard"><h3>Taille</h3><b>Taille estimée XL</b></div>
-        <div class="infocard"><h3>Architecture</h3><b>Non communiquée</b></div>
+        <div class="infocard"><h3>Architecture</h3><b>Mélange d'experts</b></div>
         <div class="infocard"><h3>Niveau d'ouverture</h3><b>1/6</b><small>Critère atteint</small></div>
         <div class="infocard"><h3>Rang classement</h3><b>Selon les votes</b></div>
         <div class="infocard"><h3>Score énergie</h3><div class="chevron e">E</div></div>
@@ -65,11 +65,11 @@
 
   <section class="slide">
     <p class="surtitre">La fiche</p>
-    <h1>Ce que disent ces <em>cartes</em></h1>
+    <h1>Ce que dit la <em>fiche</em></h1>
     <div class="cartes">
       <div class="carte">
         <h3>Taille</h3>
-        <p>Le nombre de paramètres, quand il est publié.</p>
+        <p>Le nombre total de paramètres, ou une classe estimée quand il n'est pas publié.</p>
       </div>
       <div class="carte">
         <h3>Architecture</h3>
@@ -77,15 +77,23 @@
       </div>
       <div class="carte">
         <h3>Niveau d'ouverture</h3>
-        <p>Six critères de publication et de réutilisation.</p>
+        <p>Le nombre de critères de publication et de réutilisation remplis, sur six.</p>
       </div>
+    </div>
+    <p class="source">Cartes affichées sous le nom du modèle sur l'écran de révélation.</p>
+  </section>
+
+  <section class="slide">
+    <p class="surtitre">La fiche</p>
+    <h1>Deux repères pour <em>comparer</em></h1>
+    <div class="cartes">
       <div class="carte">
         <h3>Rang classement</h3>
-        <p>La place établie à partir des votes.</p>
+        <p>La place du modèle, établie à partir des votes de l'arène.</p>
       </div>
       <div class="carte">
         <h3>Score énergie</h3>
-        <p>La classe de consommation de A à F.</p>
+        <p>La classe de consommation estimée, de A à F, pour un million de jetons produits.</p>
       </div>
     </div>
     <p class="source">Cartes affichées sous le nom du modèle sur l'écran de révélation.</p>
@@ -98,11 +106,11 @@
       <h2>Bilan <span class="scenario">de cette discussion ⌄</span></h2>
       <div class="infocards">
         <div class="infocard"><h4>Texte généré</h4><b>800 jetons</b><small>Contexte max : 1 000 k jetons</small></div>
-        <div class="infocard"><h4>Coût</h4><b>0,007457 EUR</b><small>Tarif standard (entrée et sortie)</small><span class="hausse">▲ ≈ 30,5× plus cher que l'autre modèle</span></div>
-        <div class="infocard"><h4>Énergie estimée</h4><b>3145 mWh</b><span class="hausse">▲ ≈ 46,6× plus d'énergie que l'autre modèle</span></div>
+        <div class="infocard"><h4>Coût</h4><b>0,008600 EUR</b><small>Tarif standard (entrée et sortie)</small><span class="hausse">▲ ≈ 3,7× plus cher que l'autre modèle</span></div>
+        <div class="infocard"><h4>Énergie estimée</h4><b>3145 mWh</b><span class="hausse">▲ ≈ 35,0× plus d'énergie que l'autre modèle</span></div>
       </div>
     </div>
-    <p class="source">Valeurs calculées avec la formule du produit pour Claude Sonnet 5 face à Gemma 4 26B A4B, sur 300 jetons d'entrée et 800 de sortie.</p>
+    <p class="source">Valeurs calculées avec la formule du produit pour Claude Sonnet 5.5 face à Qwen 3.8 27B, sur 300 jetons d'entrée et 800 de sortie.</p>
   </section>
 
   <section class="slide">
@@ -163,43 +171,54 @@
     <p class="surtitre">Comparer</p>
     <h1>Le résumé en une <em>phrase</em></h1>
     <div class="nuance">
-      <p><strong>Claude Sonnet 5</strong> est un modèle propriétaire <strong>de très grande taille (estimée)</strong> dont l'architecture n'est pas communiquée. Compte tenu de sa taille, sa classe énergétique est <strong>E</strong>.</p>
+      <p><strong>Claude Sonnet 5.5</strong> est un modèle propriétaire <strong>de très grande taille (estimée)</strong> à l'architecture <strong>par mélange d'experts</strong> : il n'active qu'une partie de ses paramètres à chaque réponse. Sa classe énergétique est <strong>E</strong>.</p>
     </div>
     <svg class="graphe ill" viewBox="0 0 1000 240" role="img" aria-labelledby="i-facteur">
-      <title id="i-facteur">Deux carrés dont les surfaces sont à l'échelle. Le grand : Claude Sonnet 5, 3 145 mWh. Le petit, à peine visible : Gemma 4 26B A4B, 67 mWh. Soit 46,6 fois plus d'énergie.</title>
+      <title id="i-facteur">Deux carrés dont les surfaces sont à l'échelle. Le grand : Claude Sonnet 5.5, 3 145 mWh. Le petit, à peine visible : Qwen 3.8 27B, 90 mWh. Soit 35 fois plus d'énergie.</title>
       <rect x="40" y="15" width="210" height="210" rx="4" fill="#6a6af4"/>
-      <text class="i-titre" x="280" y="186">Claude Sonnet 5</text>
+      <text class="i-titre" x="280" y="186">Claude Sonnet 5.5</text>
       <text class="i-leg" x="280" y="220">3 145 mWh</text>
-      <text class="i-grand" x="640" y="96">46,6</text>
+      <text class="i-grand" x="640" y="96">35,0</text>
       <text class="i-leg" x="640" y="136">fois plus d'énergie</text>
-      <rect x="640" y="194" width="31" height="31" rx="2" fill="#6a6af4"/>
-      <text class="i-titre" x="694" y="186">Gemma 4 26B A4B</text>
-      <text class="i-leg" x="694" y="220">67 mWh</text>
+      <rect x="640" y="189.5" width="35.5" height="35.5" rx="2" fill="#6a6af4"/>
+      <text class="i-titre" x="694" y="186">Qwen 3.8 27B</text>
+      <text class="i-leg" x="694" y="220">90 mWh</text>
     </svg>
     <p class="source">Gabarit de phrase du produit, suivi de la comparaison avec l'autre modèle du duel. Même réponse de 800 jetons pour les deux. Surfaces à l'échelle.</p>
   </section>
 
   <section class="slide">
     <p class="surtitre">Comparer</p>
-    <h1>Même éditeur, même <em>taille</em></h1>
+    <h1>À vous de <em>trancher</em></h1>
+    <p class="chapeau">Reprenez le duel que vous venez de faire.</p>
+    <ol>
+      <li>Quelle réponse avez-vous préférée, et pourquoi ?</li>
+      <li>L'écart d'énergie change-t-il votre choix pour cette tâche ?</li>
+      <li>Pour quelles tâches un modèle plus petit vous suffirait-il ?</li>
+    </ol>
+  </section>
+
+  <section class="slide">
+    <p class="surtitre">Comparer</p>
+    <h1>Même lettre, pas même <em>dépense</em></h1>
     <p class="chapeau">Énergie par million de jetons produits.</p>
-    <svg class="graphe ill" viewBox="0 0 1000 310" role="img" aria-labelledby="i-mistral">
-      <title id="i-mistral">Deux barres à l'échelle sur une plage de 0 à 1 000 Wh, avec la zone de la classe C, de 300 à 1 000 Wh, en fond. Mistral Small 4, 119 milliards de paramètres dont 6 actifs, mélange d'experts : 347 Wh. Mistral Medium 3.5, 128 milliards tous actifs, dense : 939 Wh. Les deux barres finissent dans la classe C.</title>
+    <svg class="graphe ill" viewBox="0 0 1000 310" role="img" aria-labelledby="i-classe">
+      <title id="i-classe">Deux barres à l'échelle sur une plage de 0 à 1 000 Wh, avec la zone de la classe C, de 300 à 1 000 Wh, en fond. Qwen 3.8 Flash Next, 125 milliards de paramètres dont 6 actifs : 347 Wh. Command A+, 218 milliards dont 25 actifs : 878 Wh. Les deux barres finissent dans la classe C.</title>
       <rect x="270" y="0" width="630" height="268" fill="#f4f4fe"/>
       <text class="i-leg" x="585" y="30" text-anchor="middle">classe C, de 300 à 1 000 Wh</text>
-      <text class="i-titre" x="0" y="92">Mistral Small 4 <tspan class="i-leg">119 mds, dont 6 actifs · mélange d'experts</tspan></text>
+      <text class="i-titre" x="0" y="92">Qwen 3.8 Flash Next <tspan class="i-leg">125 mds, dont 6 actifs</tspan></text>
       <rect x="0" y="108" width="312" height="36" rx="4" fill="#6a6af4"/>
       <text class="i-val" x="326" y="134">347 Wh</text>
-      <text class="i-titre" x="0" y="196">Mistral Medium 3.5 <tspan class="i-leg">128 mds, tous actifs · dense</tspan></text>
-      <rect x="0" y="212" width="845" height="36" rx="4" fill="#6a6af4"/>
-      <text class="i-val" x="859" y="238">939 Wh</text>
+      <text class="i-titre" x="0" y="196">Command A+ <tspan class="i-leg">218 mds, dont 25 actifs</tspan></text>
+      <rect x="0" y="212" width="790" height="36" rx="4" fill="#6a6af4"/>
+      <text class="i-val" x="804" y="238">878 Wh</text>
       <line class="g-axe" x1="0" y1="268" x2="900" y2="268"/>
       <text class="g-tick" x="0" y="294">0</text>
       <text class="g-tick" x="270" y="294" text-anchor="middle">300</text>
       <text class="g-tick" x="900" y="294" text-anchor="middle">1 000</text>
     </svg>
-    <p>Neuf milliards de paramètres d'écart, et un rapport de <strong>2,7</strong>. C'est l'architecture qui décide, pas la taille.</p>
-    <p class="source">Catalogue compar:IA, modèles en service. Barres à l'échelle : même lettre C, car la classe est un palier large.</p>
+    <p>La même lettre C, et pourtant un rapport de <strong>2,5</strong>. La classe est un palier large : lisez aussi les mWh du bilan.</p>
+    <p class="source">Catalogue compar:IA, deux modèles sortis en août et septembre 2026. Barres à l'échelle.</p>
   </section>
 
   <section class="slide">

@@ -131,22 +131,22 @@
         <p>Personne ne les règle à la main : la machine se corrige elle-même, tour après tour.</p>
       </div>
       <svg class="graphe schema" viewBox="0 0 560 470" role="img" aria-labelledby="s-apprendre">
-        <title id="s-apprendre">Boucle en quatre étapes : le modèle devine, par exemple « chien » ; on compare à la bonne réponse, « chat » ; il ajuste ses chiffres ; on passe à l'exemple suivant, et la boucle recommence.</title>
+        <title id="s-apprendre">Boucle en quatre étapes : le modèle devine la suite de « Le chat dort sur le », par exemple « toit » ; on compare au texte d'origine, « canapé » ; il ajuste ses chiffres ; on passe à la phrase suivante, et la boucle recommence.</title>
         <defs><marker id="fl2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
         <rect class="b-clair" x="10" y="60" width="230" height="110" rx="9"/>
         <text class="s-titre" x="125" y="108" text-anchor="middle">Il devine</text>
-        <text class="s-sous" x="125" y="138" text-anchor="middle">« chien »</text>
+        <text class="s-sous" x="125" y="138" text-anchor="middle">« … sur le toit »</text>
         <line class="s-fleche" x1="248" y1="115" x2="312" y2="115" marker-end="url(#fl2)"/>
         <rect class="b-clair" x="320" y="60" width="230" height="110" rx="9"/>
         <text class="s-titre" x="435" y="108" text-anchor="middle">On compare</text>
-        <text class="s-sous" x="435" y="138" text-anchor="middle">réponse : « chat »</text>
+        <text class="s-sous" x="435" y="138" text-anchor="middle">texte : « canapé »</text>
         <line class="s-fleche" x1="435" y1="178" x2="435" y2="292" marker-end="url(#fl2)"/>
         <rect class="b-plein" x="320" y="300" width="230" height="110" rx="9"/>
         <text class="s-titre sur-plein" x="435" y="348" text-anchor="middle">Il ajuste</text>
         <text class="s-sous sur-plein" x="435" y="378" text-anchor="middle">ses chiffres</text>
         <line class="s-fleche" x1="312" y1="355" x2="248" y2="355" marker-end="url(#fl2)"/>
         <rect class="b-clair" x="10" y="300" width="230" height="110" rx="9"/>
-        <text class="s-titre" x="125" y="348" text-anchor="middle">Exemple suivant</text>
+        <text class="s-titre" x="125" y="348" text-anchor="middle">Phrase suivante</text>
         <text class="s-sous" x="125" y="378" text-anchor="middle">et on recommence</text>
         <line class="s-fleche" x1="125" y1="292" x2="125" y2="178" marker-end="url(#fl2)"/>
       </svg>
@@ -156,7 +156,7 @@
   <section class="slide">
     <p class="surtitre">Le modèle</p>
     <h1>Ce qu'on obtient <em>au bout</em></h1>
-    <p class="chapeau">Ni une base de connaissances, ni un moteur de recherche : un <strong>ensemble de chiffres</strong> qui prédit la suite <strong>la plus probable</strong>.</p>
+    <p class="chapeau">Ni une base de connaissances, ni un moteur de recherche : un <strong>ensemble de chiffres</strong> qui donne à chaque suite possible une <strong>probabilité</strong>. La réponse se construit en tirant, mot après mot, parmi les plus probables.</p>
     <svg class="graphe ill" viewBox="0 0 1000 320" role="img" aria-labelledby="i-suite">
       <title id="i-suite">Exemple inventé. La phrase « Le chat dort sur le » mène à quatre mots possibles, chacun avec une barre : « canapé » a la plus longue et ressort en indigo, puis « lit », « tapis » et « toit ».</title>
       <defs><marker id="fl3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>

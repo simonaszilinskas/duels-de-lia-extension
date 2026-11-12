@@ -331,7 +331,7 @@
             {
               "emoji": "🤖",
               "question": "Un agent d'IA, ça consomme combien ?",
-              "answer": "Bien plus qu'un message. Un agent découpe votre consigne en étapes : il lit des fichiers, appelle des outils, relit ses propres notes, se corrige. Une seule consigne déclenche des dizaines d'allers-retours avec le modèle. Zeke Hausfather a mesuré huit semaines de son propre usage : **1 138 consignes, plus de 14 000 appels au modèle, environ 170 kWh**, soit **~150 Wh par consigne**, contre 0,24 Wh pour un message de chat médian mesuré par Google en 2025 : un ordre de grandeur, les deux mesures n'ayant pas le même périmètre. Il annonce lui-même une incertitude d'un facteur 2. Détail frappant : **96 % des jetons servent à relire le contexte**, 3,6 % au contenu neuf, 0,4 % à la réponse visible."
+              "answer": "Bien plus qu'un message. Un agent découpe votre consigne en étapes : il lit des fichiers, appelle des outils, relit ses propres notes, se corrige. Une seule consigne déclenche des dizaines d'allers-retours avec le modèle. Zeke Hausfather a compté les jetons de huit semaines de son propre usage, puis les a convertis en énergie : **1 138 consignes, plus de 14 000 appels au modèle, environ 170 kWh**, soit **~150 Wh par consigne**, contre 0,24 Wh pour un message de chat médian mesuré par Google en 2025 : un ordre de grandeur, les deux mesures n'ayant pas le même périmètre. Il annonce lui-même une incertitude d'un facteur 2. Détail frappant : **96 % des jetons servent à relire le contexte**, 3,6 % au contenu neuf, 0,4 % à la réponse visible."
             },
             {
               "emoji": "📉",

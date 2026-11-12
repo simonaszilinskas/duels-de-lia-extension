@@ -26,9 +26,9 @@
     <h1>Une quantité de <em>paramètres</em></h1>
     <div class="duo">
       <div class="colonne">
-        <p class="chiffre moyen">8B = 8 milliards</p>
+        <p class="chiffre moyen">27B = 27 milliards</p>
         <p>Un paramètre est un nombre appris pendant l'entraînement. Il règle comment le modèle transforme une entrée en sortie.</p>
-        <p>Sur compar:IA, le compte s'affiche en tête de la fiche : « 8 mds de paramètres ».</p>
+        <p>Sur compar:IA, le compte s'affiche en tête de la fiche : « 27 mds de paramètres ».</p>
       </div>
       <svg class="graphe ill" viewBox="0 0 640 460" role="img" aria-labelledby="i-param">
         <title id="i-param">Schéma d'un petit réseau de neurones : trois couches de ronds reliés par des traits. Trois traits portent un nombre, 0,82, moins 1,4 et 0,07 : chacun de ces nombres est un paramètre.</title>
@@ -38,7 +38,7 @@
         <text class="i-leg" x="300" y="450" text-anchor="middle">Chaque trait porte un nombre : un paramètre.</text>
       </svg>
     </div>
-    <p class="source">Fiche IBM/Granite 4.1 8B sur compar:IA.</p>
+    <p class="source">Fiche de Qwen/Qwen 3.8 27B sur compar:IA.</p>
   </section>
 
   <section class="slide">
@@ -64,27 +64,27 @@
         <th>Classe</th>
       </tr>
       <tr>
-        <td>Anthropic/Claude Sonnet 5</td>
+        <td>Anthropic/Claude Sonnet 5.5</td>
         <td>non publié</td>
         <td><span class="badge-taille">Taille estimée XL</span></td>
       </tr>
       <tr>
-        <td>Mistral AI/Mistral Small 4</td>
-        <td>119 milliards</td>
+        <td>Nvidia/Nemotron 3.5 Super VL</td>
+        <td>120 milliards</td>
         <td><strong>L</strong></td>
       </tr>
       <tr>
-        <td>Swiss AI/Apertus 70B Instruct</td>
+        <td>Swiss AI/Apertus 1.5 70B</td>
         <td>70 milliards</td>
         <td><strong>M</strong></td>
       </tr>
       <tr>
-        <td>Google/Gemma 4 26B A4B</td>
-        <td>26 milliards</td>
+        <td>Qwen/Qwen 3.8 27B</td>
+        <td>27 milliards</td>
         <td><strong>S</strong></td>
       </tr>
     </table>
-    <p class="source">Catalogue compar:IA, modèles en service. Classes calculées avec les seuils de la diapositive précédente.</p>
+    <p class="source">Catalogue compar:IA, modèles sortis depuis juillet 2026. Classes calculées avec les seuils de la diapositive précédente.</p>
   </section>
 
   <section class="slide">
@@ -121,7 +121,7 @@
       <path class="s-boucle" d="M809 130 V232 H579 V166" marker-end="url(#fl)"/>
       <text class="s-sous" x="694" y="262" text-anchor="middle">et tout repart en entrée, avec ce qui précède</text>
       </svg>
-    <p>Le modèle ne rédige pas une réponse : il ajoute un jeton, puis relit tout, puis en ajoute un autre.</p>
+    <p>Le modèle ne rédige pas une réponse d'un bloc : il ajoute un jeton, en tenant compte de tout ce qui précède, puis en ajoute un autre.</p>
     <p class="source">Une réponse de trois cents mots demande de l'ordre de quatre cents tours de cette boucle. C'est pourquoi la consommation se compte par jeton produit, et non par message.</p>
   </section>
 
@@ -148,7 +148,7 @@
     <p class="surtitre">Les jetons</p>
     <h1>Même un merci se <em>paie</em></h1>
     <p class="chiffre">245 mWh</p>
-    <p class="chapeau">pour répondre à un simple « merci », avec Llama 3.1 8B.</p>
+    <p class="chapeau">pour répondre à un simple « merci », avec Llama 3.1 8B. Soit 0,245 Wh, autant qu'une ampoule de 6 W allumée deux minutes et demie.</p>
     <p>Avant de répondre, le modèle relit toute la conversation. Plus elle est longue, plus cette lecture coûte : chaque jeton d'entrée ajoute un peu d'énergie.</p>
     <p class="source">Delavande, Pierrard et Luccioni, « Small Talk, Big Impact », prépublication, janvier 2026. Moyenne sur 10 000 échanges, une carte H100, une requête à la fois, refroidissement non compté.</p>
   </section>
@@ -183,19 +183,19 @@
     <h1>Au total, et vraiment <em>actifs</em></h1>
     <div class="duo">
       <div class="colonne">
-        <p class="chiffre moyen">119 mds</p>
+        <p class="chiffre moyen">125 mds</p>
         <p class="chapeau">au total, à loger dans la mémoire.</p>
         <p class="chiffre moyen">6 mds</p>
         <p class="chapeau">actifs par jeton : seuls ceux-là calculent.</p>
       </div>
-      <svg class="graphe ill" viewBox="0 0 470 240" role="img" aria-labelledby="i-actifs">
-        <title id="i-actifs">Grille de 119 carrés, un par milliard de paramètres. Six seulement sont colorés : ce sont les paramètres actifs pour chaque jeton.</title>
-        <rect class="i-case" x="0" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="0" width="22" height="22" rx="4"/><rect class="i-case vif" x="84" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="308" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="28" width="22" height="22" rx="4"/><rect class="i-case vif" x="196" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="308" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="56" width="22" height="22" rx="4"/><rect class="i-case vif" x="308" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="84" width="22" height="22" rx="4"/><rect class="i-case vif" x="308" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="308" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="140" width="22" height="22" rx="4"/><rect class="i-case vif" x="84" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="308" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="168" width="22" height="22" rx="4"/><rect class="i-case vif" x="140" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="308" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="168" width="22" height="22" rx="4"/>
-        <text class="i-leg" x="235" y="236" text-anchor="middle">un carré = un milliard</text>
+      <svg class="graphe ill" viewBox="0 0 470 266" role="img" aria-labelledby="i-actifs">
+        <title id="i-actifs">Grille de 125 carrés, un par milliard de paramètres. Six seulement sont colorés : ce sont les paramètres actifs pour chaque jeton.</title>
+        <rect class="i-case" x="0" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="0" width="22" height="22" rx="4"/><rect class="i-case vif" x="84" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="308" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="0" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="28" width="22" height="22" rx="4"/><rect class="i-case vif" x="196" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="308" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="28" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="56" width="22" height="22" rx="4"/><rect class="i-case vif" x="308" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="56" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="84" width="22" height="22" rx="4"/><rect class="i-case vif" x="308" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="84" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="308" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="112" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="308" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="140" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="84" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="168" width="22" height="22" rx="4"/><rect class="i-case vif" x="140" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="168" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="196" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="224" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="252" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="280" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="308" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="336" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="364" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="392" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="420" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="448" y="168" width="22" height="22" rx="4"/><rect class="i-case" x="0" y="196" width="22" height="22" rx="4"/><rect class="i-case" x="28" y="196" width="22" height="22" rx="4"/><rect class="i-case" x="56" y="196" width="22" height="22" rx="4"/><rect class="i-case vif" x="84" y="196" width="22" height="22" rx="4"/><rect class="i-case" x="112" y="196" width="22" height="22" rx="4"/><rect class="i-case" x="140" y="196" width="22" height="22" rx="4"/>
+        <text class="i-leg" x="235" y="262" text-anchor="middle">un carré = un milliard</text>
       </svg>
     </div>
     <p>La fiche d'un modèle ouvert en mélange d'experts porte la ligne <strong>« Dont N mds actifs »</strong>.</p>
-    <p class="source">Fiche de Mistral AI/Mistral Small 4 sur compar:IA.</p>
+    <p class="source">Fiche de Qwen/Qwen 3.8 Flash Next sur compar:IA.</p>
   </section>
 
   <section class="slide">
@@ -234,7 +234,7 @@
         <p>Il écrit d'abord un brouillon pour lui-même : il pose le problème, essaie, se corrige. Puis il rédige la réponse.</p>
       </div>
     </div>
-    <p>Même architecture, mêmes paramètres : seule change la quantité de texte produite.</p>
+    <p>Certains modèles proposent un mode raisonnement activable : il produit des jetons de réflexion avant la réponse finale.</p>
   </section>
 
   <section class="slide">
@@ -251,15 +251,14 @@
     <h1>Le brouillon se <em>paie</em> aussi</h1>
     <p class="chapeau">Jetons produits par question à choix multiples, en moyenne.</p>
     <svg class="graphe ill" viewBox="0 0 1000 250" role="img" aria-labelledby="i-brouillon">
-      <title id="i-brouillon">Deux barres à l'échelle. Réponse directe : 38 jetons de réponse. Réponse raisonnée : 543 jetons de réflexion avant la réponse, soit une barre environ quinze fois plus longue.</title>
-      <text class="i-titre" x="0" y="70">Réponse directe</text>
+      <title id="i-brouillon">Deux barres à l'échelle. La réponse finale : 38 jetons en moyenne, tous modèles confondus. Le raisonnement : 544 jetons de réflexion en plus, soit une barre environ quinze fois plus longue.</title>
+      <text class="i-titre" x="0" y="70">Réponse finale</text>
       <rect class="i-reponse" x="300" y="38" width="46" height="48" rx="6"/>
-      <text class="i-leg" x="362" y="70">38 jetons de réponse</text>
-      <text class="i-titre" x="0" y="168">Réponse raisonnée</text>
+      <text class="i-leg" x="362" y="70">38 jetons, tous modèles</text>
+      <text class="i-titre" x="0" y="168">Raisonnement</text>
       <rect class="i-reflexion" x="300" y="136" width="652" height="48" rx="6"/>
-      <text class="i-titre" x="320" y="168">543 jetons de réflexion</text>
-      <rect class="i-reponse" x="956" y="136" width="46" height="48" rx="6"/>
-      <text class="i-leg" x="300" y="230">puis la réponse elle-même</text>
+      <text class="i-titre" x="320" y="168">544 jetons de réflexion</text>
+      <text class="i-leg" x="300" y="230">en plus, pour les variantes qui raisonnent</text>
     </svg>
     <p>Ces jetons de réflexion sont des <strong>jetons de sortie</strong>, comme la réponse. Invisibles pour le lecteur, ils comptent dans le total.</p>
     <p class="source">Dauner et Socher, « Energy costs of communicating with AI », <em>Frontiers in Communication</em>, 2025. En réponse libre : 435 jetons de réponse et 859 de réflexion.</p>
@@ -283,7 +282,7 @@
       <div class="carte">
         <h3>Mode réflexion</h3>
         <p class="chiffre">+ 92 %</p>
-        <p>d'électricité au plus, avec un brouillon avant la réponse.</p>
+        <p>d'électricité en moyenne pour le modèle le plus touché, et + 849 % sur une tâche de code.</p>
       </div>
     </div>
     <p class="source">Arcep et PEReN, mai 2026. Moyennes sur 22 modèles, supercalculateur public Jean Zay. Les processeurs, exclus de la mesure, pèsent environ un tiers de l'énergie totale.</p>
@@ -306,37 +305,25 @@
     <h1>Deux modèles, la <em>démonstration</em></h1>
     <div class="compare">
       <div>
-        <h2>Alibaba/Qwen 3.5 35B A3B</h2>
-        <p><strong>35 mds</strong>, dont 3 actifs.</p>
-        <div class="chevron b">B</div>
+        <h2>Qwen/Qwen 3.8 Flash Next</h2>
+        <p><strong>125 mds</strong>, dont 6 actifs.</p>
+        <p class="chiffre moyen">347 Wh</p>
       </div>
       <div>
-        <h2>Swiss AI/Apertus 70B Instruct</h2>
+        <h2>Swiss AI/Apertus 1.5 70B</h2>
         <p><strong>70 mds</strong>, tous actifs.</p>
-        <div class="chevron c">C</div>
+        <p class="chiffre moyen">658 Wh</p>
       </div>
     </div>
-    <p>Deux fois moins de paramètres, quatre fois moins d'énergie par jeton, et une classe d'écart. Les deux sont dans l'arène.</p>
-    <p class="source">Catalogue compar:IA : 166 Wh par million de jetons pour le premier, 658 pour le second.</p>
+    <p>Presque deux fois plus de paramètres, et pourtant deux fois moins d'énergie par jeton. Les deux sont dans l'arène.</p>
+    <p class="source">Catalogue compar:IA, énergie estimée par million de jetons produits.</p>
   </section>
 
   <section class="slide">
     <p class="surtitre">Les mesures</p>
     <h1>Tout le catalogue, d'un <em>coup d'œil</em></h1>
       <svg class="graphe" viewBox="0 0 1000 370" role="img" aria-labelledby="g-cat">
-      <title id="g-cat">Nuage de points : consommation par million de jetons produits selon la taille totale du modele. Les melanges d experts se placent nettement sous les modeles denses de meme taille, et les modeles proprietaires occupent le haut du nuage.</title>
-      <rect x="84" y="300.2" width="788" height="23.8" fill="#6fe49d" opacity="0.14"/>
-      <text class="g-classe" x="884" y="312.1" fill="#6fe49d">A</text>
-      <rect x="84" y="245.6" width="788" height="54.6" fill="#73e0cf" opacity="0.14"/>
-      <text class="g-classe" x="884" y="272.9" fill="#73e0cf">B</text>
-      <rect x="84" y="185.8" width="788" height="59.8" fill="#fcc63a" opacity="0.14"/>
-      <text class="g-classe" x="884" y="215.7" fill="#fcc63a">C</text>
-      <rect x="84" y="131.2" width="788" height="54.6" fill="#c8aa39" opacity="0.14"/>
-      <text class="g-classe" x="884" y="158.5" fill="#c8aa39">D</text>
-      <rect x="84" y="71.3" width="788" height="59.8" fill="#e4794a" opacity="0.14"/>
-      <text class="g-classe" x="884" y="101.3" fill="#e4794a">E</text>
-      <rect x="84" y="12.0" width="788" height="59.3" fill="#e1000f" opacity="0.14"/>
-      <text class="g-classe" x="884" y="41.7" fill="#e1000f">F</text>
+      <title id="g-cat">Nuage de points : consommation par million de jetons produits selon la taille totale du modèle, pour les 34 modèles en service. Le nuage monte de gauche à droite. Vers 120 milliards de paramètres, les mélanges d'experts se placent nettement sous le modèle dense.</title>
       <line class="g-grille" x1="147.5" y1="12" x2="147.5" y2="324"/>
       <text class="g-tick" x="147.5" y="346" text-anchor="middle">10</text>
       <line class="g-grille" x1="284.0" y1="12" x2="284.0" y2="324"/>
@@ -356,61 +343,55 @@
       <line class="g-axe" x1="84" y1="12" x2="84" y2="324"/>
       <text class="g-axe-titre" x="18" y="168" text-anchor="middle" transform="rotate(-90 18 168)">Wh par million de jetons</text>
       <text class="g-axe-titre" x="478" y="364" text-anchor="middle">Taille totale, en milliards de paramètres</text>
-      <circle class="g-pt g-dense" cx="119.8" cy="305.9" r="6.5"/>
-      <circle class="g-pt g-dense" cx="119.8" cy="305.9" r="6.5"/>
-      <path class="g-pt g-moe" d="M239.7 301.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <circle class="g-pt g-dense" cx="245.5" cy="297.2" r="6.5"/>
-      <path class="g-pt g-moe" d="M256.3 302.6l7.5 7.5-7.5 7.5-7.5-7.5z"/>
       <path class="g-pt g-moe" d="M266.3 301.2l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-dense" cx="271.0" cy="294.5" r="6.5"/>
+      <circle class="g-pt g-dense" cx="284.1" cy="292.9" r="6.5"/>
+      <circle class="g-pt g-estime" cx="284.1" cy="309.4" r="6"/>
       <circle class="g-pt g-dense" cx="288.1" cy="292.4" r="6.5"/>
-      <path class="g-pt g-moe" d="M303.2 267.5l7.5 7.5-7.5 7.5-7.5-7.5z"/>
       <circle class="g-pt g-dense" cx="389.4" cy="206.6" r="6.5"/>
-      <path class="g-pt g-moe" d="M444.4 223.8l7.5 7.5-7.5 7.5-7.5-7.5z"/>
       <path class="g-pt g-moe" d="M453.2 231.6l7.5 7.5-7.5 7.5-7.5-7.5z"/>
       <path class="g-pt g-moe" d="M455.3 230.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
       <path class="g-pt g-moe" d="M456.4 226.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <circle class="g-pt g-estime" cx="459.4" cy="190.2" r="6"/>
+      <path class="g-pt g-moe" d="M461.4 230.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
       <circle class="g-pt g-dense" cx="464.4" cy="188.9" r="6.5"/>
-      <circle class="g-pt g-estime" cx="547.6" cy="192.2" r="6"/>
-      <circle class="g-pt g-estime" cx="547.6" cy="130.1" r="6"/>
-      <path class="g-pt g-moe" d="M563.4 157.3l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <circle class="g-pt g-estime" cx="570.3" cy="129.6" r="6"/>
-      <circle class="g-pt g-estime" cx="570.3" cy="129.6" r="6"/>
-      <circle class="g-pt g-estime" cx="570.3" cy="129.6" r="6"/>
-      <circle class="g-pt g-estime" cx="592.2" cy="81.0" r="6"/>
-      <circle class="g-pt g-estime" cx="592.2" cy="81.0" r="6"/>
-      <path class="g-pt g-moe" d="M605.1 154.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <path class="g-pt g-moe" d="M605.4 157.3l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <path class="g-pt g-moe" d="M606.0 154.9l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-estime" cx="519.9" cy="195.1" r="6"/>
+      <path class="g-pt g-moe" d="M530.6 184.8l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-estime" cx="547.6" cy="192.3" r="6"/>
+      <path class="g-pt g-moe" d="M559.9 158.0l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-estime" cx="570.3" cy="129.7" r="6"/>
+      <circle class="g-pt g-estime" cx="570.3" cy="163.6" r="6"/>
+      <path class="g-pt g-moe" d="M573.9 156.1l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M578.3 154.3l7.5 7.5-7.5 7.5-7.5-7.5z"/>
       <path class="g-pt g-moe" d="M614.4 151.4l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <circle class="g-pt g-estime" cx="617.9" cy="117.7" r="6"/>
-      <circle class="g-pt g-estime" cx="617.9" cy="117.7" r="6"/>
-      <circle class="g-pt g-estime" cx="617.9" cy="72.2" r="6"/>
-      <circle class="g-pt g-estime" cx="617.9" cy="72.2" r="6"/>
-      <circle class="g-pt g-estime" cx="633.7" cy="66.7" r="6"/>
-      <circle class="g-pt g-estime" cx="633.7" cy="66.7" r="6"/>
-      <path class="g-pt g-moe" d="M671.0 107.7l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <path class="g-pt g-moe" d="M683.1 108.2l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <circle class="g-pt g-estime" cx="684.1" cy="113.4" r="6"/>
-      <path class="g-pt g-moe" d="M719.9 112.1l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <circle class="g-pt g-estime" cx="719.9" cy="119.6" r="6"/>
-      <path class="g-pt g-moe" d="M778.3 69.6l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <path class="g-pt g-moe" d="M847.9 15.7l7.5 7.5-7.5 7.5-7.5-7.5z"/>
-      <line class="g-rappel" x1="266.3" y1="308.7" x2="325.8" y2="316.9"/>
-      <text class="g-etiq" x="319.8" y="320.9" text-anchor="start">Gemma 4 26B A4B</text>
-      <line class="g-rappel" x1="606.0" y1="162.4" x2="644.6" y2="210.6"/>
-      <text class="g-etiq" x="638.6" y="214.6" text-anchor="start">Llama 4 Maverick</text>
-      <line class="g-rappel" x1="617.8" y1="72.3" x2="541.6" y2="35.4"/>
-      <text class="g-etiq" x="547.6" y="39.4" text-anchor="end">Gemini 3.5 Flash</text>
-      <line class="g-rappel" x1="847.9" y1="23.2" x2="720.0" y2="19.2"/>
-      <text class="g-etiq" x="726.0" y="23.2" text-anchor="end">Kimi K3</text>
-      </svg>
+      <path class="g-pt g-moe" d="M614.4 151.4l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-estime" cx="617.9" cy="117.8" r="6"/>
+      <circle class="g-pt g-estime" cx="633.7" cy="150.2" r="6"/>
+      <path class="g-pt g-moe" d="M646.0 121.1l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M646.0 121.1l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M683.1 108.3l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M694.6 107.3l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M716.8 107.8l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M722.4 107.3l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M726.0 104.2l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <circle class="g-pt g-estime" cx="731.7" cy="56.0" r="6"/>
+      <path class="g-pt g-moe" d="M778.3 69.7l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M828.7 18.5l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <path class="g-pt g-moe" d="M847.9 15.8l7.5 7.5-7.5 7.5-7.5-7.5z"/>
+      <line class="g-rappel" x1="271.0" y1="294.5" x2="300.0" y2="268.0"/>
+      <text class="g-etiq" x="304.0" y="266.0" text-anchor="start">Qwen 3.8 27B</text>
+      <line class="g-rappel" x1="461.4" y1="238.4" x2="470.0" y2="268.0"/>
+      <text class="g-etiq" x="474.0" y="282.0" text-anchor="start">Qwen 3.8 Flash Next</text>
+      <line class="g-rappel" x1="617.9" y1="117.8" x2="560.0" y2="84.0"/>
+      <text class="g-etiq" x="554.0" y="82.0" text-anchor="end">Claude Sonnet 5.5</text>
+      <line class="g-rappel" x1="847.9" y1="23.3" x2="790.0" y2="23.3"/>
+      <text class="g-etiq" x="784.0" y="28.0" text-anchor="end">Kimi K3.1 Pro</text>
+    </svg>
       <p class="legende">
         <span><i></i>Ouvert, dense</span>
         <span><i class="moe"></i>Ouvert, mélange d'experts</span>
         <span><i class="estime"></i>Propriétaire, taille estimée</span>
       </p>
-    <p class="source">Catalogue compar:IA, 40 modèles en service. Consommation calculée par EcoLogits 0.10.2, seuils de classe de compar:IA. Deux axes logarithmiques : ×10 par graduation verticale.</p>
+    <p class="source">Catalogue compar:IA, 34 modèles en service au 12 novembre 2026. Consommation calculée par EcoLogits 0.10.2. Deux axes logarithmiques : ×10 par graduation verticale.</p>
   </section>
 
   <section class="slide">
@@ -423,15 +404,15 @@
       </div>
       <div class="carte">
         <h3>L'architecture aussi</h3>
-        <p>Llama 4 Maverick active 17 milliards de paramètres sur 400 : il est en D. Tous actifs, il serait en E.</p>
+        <p>Vers 120 milliards de paramètres, les mélanges d'experts consomment deux à trois fois moins que le modèle dense.</p>
       </div>
       <div class="carte">
-        <h3>Les losanges sont plus bas</h3>
-        <p>Les mélanges d'experts occupent presque tout le bas du nuage.</p>
+        <h3>Les ronds vides sont estimés</h3>
+        <p>Un modèle propriétaire ne publie pas sa taille : son point repose sur une estimation.</p>
       </div>
     </div>
-    <p>La consommation suit surtout la moyenne entre la taille totale et la taille active. Ni l'une ni l'autre ne suffit seule.</p>
-    <p class="source">Coefficient de corrélation de 0,97 entre le logarithme de la consommation et celui de cette moyenne, sur les 40 modèles, contre 0,92 pour la taille totale seule et 0,80 pour la taille active seule.</p>
+    <p>Ces points sont des estimations : EcoLogits les calcule à partir de la taille totale, qui fixe le nombre de cartes graphiques, et des paramètres actifs.</p>
+    <p class="source">Documentation d'EcoLogits et catalogue compar:IA, 34 modèles en service au 12 novembre 2026.</p>
   </section>
 
   <section class="slide">
@@ -454,15 +435,15 @@
 
   <section class="slide">
     <p class="surtitre">Images et vidéo</p>
-    <h1>Le rapport s'est <em>resserré</em></h1>
+    <h1>Le rapport dépend du <em>modèle</em></h1>
     <table class="serre">
       <tr><th>Modèles ouverts, mesures de 2025</th><th>Énergie par réponse ou par image</th></tr>
       <tr><td>Llama 3.1 8B, une réponse</td><td>0,03 Wh</td></tr>
-      <tr><td>Stable Diffusion 3, une image</td><td>0,63 Wh</td></tr>
+      <tr><td>Stable Diffusion 3 Medium, une image standard</td><td>0,63 Wh</td></tr>
       <tr><td>Llama 3.1 405B, une réponse</td><td>1,86 Wh</td></tr>
     </table>
-    <p>Une réponse du plus grand modèle coûte trois fois une image : l'image s'est optimisée, le texte s'est allongé.</p>
-    <p class="source">Jae-Won Chung, ML.Energy, dans la <em>MIT Technology Review</em>, mai 2025. Énergie des cartes doublée pour couvrir le reste du centre, par hypothèse.</p>
+    <p>Dans ces mesures, une réponse du plus grand modèle coûte trois fois une image ; une réponse du petit, vingt fois moins.</p>
+    <p class="source">Jae-Won Chung, ML.Energy, dans la <em>MIT Technology Review</em>, mai 2025. Image de 1 024 pixels de côté, qualité standard. Énergie des cartes doublée par hypothèse.</p>
   </section>
 
   <section class="slide">
@@ -471,9 +452,9 @@
     <div class="nuance">
       <p>Aucun fournisseur ne publie de chiffre. Ni pour Sora, ni pour Veo, ni pour Runway.</p>
     </div>
-    <p>Le seul repère mesuré vient d'un modèle ouvert, CogVideoX : environ <strong>940 Wh pour cinq secondes</strong> de vidéo, soit l'ordre de grandeur d'un millier de réponses écrites.</p>
+    <p>Les repères mesurés viennent de modèles ouverts. Pour une vidéo de quelques secondes : de <strong>0,1 Wh à 360 Wh</strong> selon le modèle et la définition de l'image.</p>
     <p>Les chiffres qui circulent pour les modèles propriétaires sont déduits du temps de réponse. Ils mesurent surtout les hypothèses de leurs auteurs.</p>
-    <p class="source">Mesure de Sasha Luccioni sur CogVideoX, rapportée par la <em>MIT Technology Review</em>, mai 2025. Cinq secondes à seize images par seconde, sur un seul modèle et une seule configuration.</p>
+    <p class="source">Delavande, Pierrard et Luccioni, arXiv 2509.19222, septembre 2025. Sept modèles ouverts, une carte H100, électricité de la carte seule.</p>
   </section>
 
   <section class="slide">
@@ -481,7 +462,7 @@
     <h1>Ce qu'il faut <em>retenir</em></h1>
     <ul>
       <li>Le compteur, ce sont les <strong>jetons</strong> produits. Une réponse longue coûte plus qu'une réponse courte.</li>
-      <li>Un mélange d'experts n'active qu'une part de ses paramètres : 45 % d'électricité en moins qu'un dense de taille comparable.</li>
+      <li>Un mélange d'experts n'active qu'une part de ses paramètres. Dans les essais de l'Arcep et du PEReN : 45 % d'électricité en moins qu'un dense de taille comparable.</li>
       <li>Les plus grands modèles restent généralement les plus consommateurs, mais l'architecture distingue les tailles voisines.</li>
       <li>Le mode raisonnement augmente la consommation ; son gain dépend de la tâche.</li>
     </ul>

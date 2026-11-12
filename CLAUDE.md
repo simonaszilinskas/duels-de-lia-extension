@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a **no-build, vanilla JS/CSS** Chrome extension. There is no bundler, transpiler, or package manager.
 
-**To test:** Load as an unpacked extension in `chrome://extensions/` (enable Developer Mode), then navigate to `https://comparia.beta.gouv.fr`. The arena is at the site root; the model catalogue is at `/models`.
+**To test:** Load as an unpacked extension in `chrome://extensions/` (enable Developer Mode), then navigate to `https://arene.comparia.beta.gouv.fr`, where the arena now lives; the model catalogue is at `/models` and its data at `/api/models/`.
 
 **To reload after changes:** Click the refresh icon on the extension card in `chrome://extensions/`, then refresh the target page.
 
@@ -73,9 +73,10 @@ Graphiques : SVG écrit à la main, dans le flux du document. Rien n'est chargé
 l'extérieur, la police est celle de la page, et les libellés se dimensionnent en
 `cqw` pour ne pas grossir avec le dessin. Le rapport largeur/hauteur du `viewBox`
 se cale sur la boîte mesurée dans la diapositive, sinon le dessin se centre et
-laisse deux bandes vides. Les données chiffrées viennent de
-`data/legacy/generated-models.json` dans le dépôt compar:IA, pas de valeurs
-recopiées à la main.
+laisse deux bandes vides. Les données chiffrées viennent du catalogue en ligne,
+`https://arene.comparia.beta.gouv.fr/api/models/` (modèles `enabled`), pas de
+valeurs recopiées à la main : `data/legacy/generated-models.json` dans le dépôt
+compar:IA n'est plus tenu à jour depuis l'été 2026.
 
 Une nouvelle classe de liste (`.echelle`, `.barres`, `.cycle`) se déclare
 `.slide ul.<nom>` : la règle générale `.slide ul` est plus spécifique et
