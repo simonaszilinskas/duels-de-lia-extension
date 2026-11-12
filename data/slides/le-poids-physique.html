@@ -78,14 +78,13 @@
     <h1>Rallumer une centrale <em>nucléaire</em></h1>
     <div class="duo">
       <div class="colonne">
-        <p>Microsoft a signé un contrat d'électricité sur <strong>20 ans</strong> avec le propriétaire de Three Mile Island.</p>
-        <p class="chiffre">835 MW</p>
-        <p>de puissance, dont Microsoft achètera la production pour ses centres de données.</p>
+        <p class="chiffre moyen">835 MW</p>
+        <p>de puissance à Three Mile Island. Microsoft en achètera la production pendant <strong>20 ans</strong>, pour ses centres de données.</p>
       </div>
       <img class="visuel" src="img/pourquoi-ca-consomme-p4-7.webp" alt="Les tours de refroidissement de la centrale nucléaire de Three Mile Island, en Pennsylvanie : un panache de vapeur blanche et un drapeau américain.">
     </div>
     <div class="nuance">
-      <p>La centrale n'a pas été vendue, et le réacteur n'a pas redémarré. Constellation vise 2027, mais plusieurs autorisations et inspections de la NRC restent nécessaires.</p>
+      <p>La centrale n'a pas été vendue, et le réacteur n'a pas redémarré : Constellation vise 2027, sous réserve des autorisations de la NRC.</p>
     </div>
     <p class="source">Constellation Energy, communiqué du 20 septembre 2024 et résultats du 2e trimestre 2025. Nuclear Regulatory Commission, « Christopher M. Crane Clean Energy Center », état des procédures de redémarrage.</p>
   </section>
@@ -166,9 +165,9 @@
   <section class="slide">
     <h1>L'ordre de grandeur, en <em>France</em></h1>
     <p class="chiffre">6,5 millions de m³</p>
-    <p class="chapeau">d'eau déclarés en 2024 par les centres de données français, tous usages confondus, pas seulement l'IA.</p>
+    <p class="chapeau">d'eau en 2024 pour les centres de données français, tous usages confondus, pas seulement l'IA : 575 000 m³ prélevés sur place, le reste pour produire leur électricité.</p>
     <p>Soit la consommation annuelle moyenne d'un peu plus de 100 000 personnes, sur 68 millions d'habitants.</p>
-    <p class="source">Arcep, enquête « Pour un numérique soutenable », données 2024. L'enquête ne sépare pas prélèvement et consommation. Le volume progresse d'environ 8 % en un an.</p>
+    <p class="source">Arcep, enquête « Pour un numérique soutenable », édition 2026, données 2024. Estimation de l'Arcep : l'eau prélevée par les centres (575 000 m³, en baisse de 15 %) plus l'eau consommée pour produire leur électricité. Ce total progresse d'environ 8 % en un an.</p>
   </section>
   <section class="slide">
     <h1>Le sujet est <em>local</em></h1>
@@ -183,15 +182,15 @@
     <p class="chapeau">Les deux ressources tirent souvent en sens inverse.</p>
     <div class="compare">
       <div>
-        <h2>Refroidir par air</h2>
-        <p>Peu d'eau, beaucoup d'électricité pour la ventilation.</p>
+        <h2>Refroidir par évaporation</h2>
+        <p>Moins d'électricité, surtout par temps chaud. L'eau évaporée est consommée.</p>
       </div>
       <div>
-        <h2>Refroidir par liquide</h2>
-        <p>Jusqu'à 50 % d'électricité de refroidissement en moins, mais souvent plus d'eau.</p>
+        <h2>Refroidir à l'air, sans eau</h2>
+        <p>Pas d'eau consommée sur place, davantage d'électricité.</p>
       </div>
     </div>
-    <p class="source">Patel et coll., 2025, cités par l'Arcep, mai 2026. Un centre qui ne refroidit pas à l'eau ne consomme pas d'eau sur place.</p>
+    <p class="source">Arcep, enquête « Pour un numérique soutenable », édition 2026 : près de 20 % des centres étudiés refroidissent avec un système qui consomme de l'eau, et un quart de ceux mis en service depuis moins de quatre ans.</p>
   </section>
   <section class="slide">
     <h1>La bouteille d'eau par <em>message</em></h1>
@@ -207,10 +206,10 @@
     <ul class="barres">
       <li><span class="nom">Monde</span><span class="piste"><span class="barre" style="width: 86.0%"></span><span class="val">458 g</span></span></li>
       <li><span class="nom">États-Unis</span><span class="piste"><span class="barre" style="width: 72.1%"></span><span class="val">384 g</span></span></li>
-      <li><span class="nom">Irlande</span><span class="piste"><span class="barre" style="width: 48.1%"></span><span class="val">256 g</span></span></li>
+      <li><span class="nom">Irlande</span><span class="piste"><span class="barre" style="width: 48.3%"></span><span class="val">257 g</span></span></li>
       <li><span class="nom">France</span><span class="piste"><span class="barre" style="width: 7.7%"></span><span class="val">41 g</span></span></li>
     </ul>
-    <p class="source">Table des mix électriques d'EcoLogits 0.10.2, celle qui sert au calcul, d'après Our World in Data. RTE publie 20 g pour la France en ne comptant que la combustion : le périmètre déplace le chiffre de moitié.</p>
+    <p class="source">Our World in Data, repris dans la table des mix électriques d'EcoLogits 0.10.2. Pour la France en 2025, RTE publie 19,6 g en ne comptant que la combustion et 29 g sur le cycle de vie : le périmètre change le chiffre.</p>
   </section>
   <section class="slide">
     <h1>La localisation <em>compte</em></h1>
@@ -237,7 +236,7 @@
       <li>Une réponse mobilise une machine réelle, dans un bâtiment réel, branché à un réseau réel.</li>
       <li>Les techniques de refroidissement impliquent un arbitrage entre eau et électricité.</li>
       <li>À l'échelle d'un pays, les volumes sont modestes. À l'échelle d'une commune, ils peuvent ne pas l'être.</li>
-      <li>Le bilan de compar:IA suppose le <strong>mix mondial moyen</strong>, pas celui du pays d'hébergement.</li>
+      <li>Le bilan de compar:IA donne de l'<strong>énergie</strong>, pas du carbone : le même kWh pèse plus ou moins lourd selon le pays qui le produit.</li>
     </ul>
   </section>
 

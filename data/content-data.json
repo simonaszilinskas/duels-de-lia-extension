@@ -191,12 +191,12 @@
             {
               "emoji": "🔍",
               "question": "Comment est estimé l'impact environnemental sur compar:IA ?",
-              "answer": "compar:IA utilise **EcoLogits**, une méthode maintenue par l'ONG GenAI Impact. L'estimation porte **uniquement sur l'inférence**, c'est-à-dire l'utilisation du modèle, et non sur son entraînement. Elle s'appuie sur la taille du modèle, son architecture et le nombre de jetons produits, et suppose le **mix électrique mondial moyen**. EcoLogits rend une énergie en **milliwattheures (mWh)** ; c'est ensuite **compar:IA** qui la rapporte à un million de jetons de sortie et applique ses propres seuils pour poser la classe **A à F**."
+              "answer": "compar:IA utilise **EcoLogits**, une méthode maintenue par l'ONG GenAI Impact. L'estimation porte **uniquement sur l'inférence**, c'est-à-dire l'utilisation du modèle, et non sur son entraînement. Elle s'appuie sur la taille du modèle, son architecture et le nombre de jetons produits. EcoLogits rend une énergie en **milliwattheures (mWh)** ; c'est ensuite **compar:IA** qui la rapporte à un million de jetons de sortie et applique ses propres seuils pour poser la classe **A à F**."
             },
             {
               "emoji": "🧾",
               "question": "Que montre le bilan à la fin d'un duel ?",
-              "answer": "Trois cartes. **Texte généré** : le nombre de jetons produits. **Coût** : le tarif public du modèle, entrée et sortie. **Énergie de génération estimée** : l'électricité mobilisée pour écrire la réponse, en mWh. Deux onglets complètent le tout : **Explication**, une phrase sur l'architecture du modèle et sa classe énergétique, et **Équivalences**, la même énergie traduite en gestes du quotidien."
+              "answer": "Trois cartes. **Texte généré** : le nombre de jetons produits. **Coût** : le tarif public du modèle, entrée et sortie. **Énergie estimée** : l'électricité mobilisée pour écrire la réponse, en mWh. Deux onglets complètent le tout : **Explication**, une phrase sur l'architecture du modèle et sa classe énergétique, et **Équivalences**, la même énergie traduite en gestes du quotidien."
             },
             {
               "emoji": "🔤",
@@ -246,7 +246,7 @@
             {
               "emoji": "🧩",
               "question": "Qu'est-ce qu'un modèle à mélange d'experts ?",
-              "answer": "Un modèle qui n'active qu'une partie de ses paramètres à chaque réponse, au lieu de les mobiliser tous. C'est ce que signale la ligne « **Dont N mds actifs** » sur la fiche du modèle. Les mesures de l'Arcep et du PEReN donnent **45 % d'électricité en moins** qu'un modèle dense de taille comparable, en moyenne."
+              "answer": "Un modèle qui n'active qu'une partie de ses paramètres à chaque réponse, au lieu de les mobiliser tous. C'est ce que signale la ligne « **Dont N mds actifs** » sur la fiche du modèle. Les mesures de l'Arcep et du PEReN, sur les cartes graphiques, donnent **45 % d'électricité en moins** qu'un modèle dense de taille comparable, en moyenne."
             },
             {
               "emoji": "📉",
@@ -301,7 +301,7 @@
             {
               "emoji": "💦",
               "question": "L'impact de l'IA sur l'eau est-il exagéré ?",
-              "answer": "La réponse dépend de l'échelle et du périmètre. **Prélever n'est pas consommer** : une partie de l'eau prélevée est restituée, tandis que l'eau évaporée est consommée. En 2024, l'ensemble des centres de données français ont déclaré 6,5 millions de m³, soit la consommation annuelle moyenne d'un peu plus de 100 000 personnes sur 68 millions d'habitants. La moyenne nationale ne décrit toutefois pas les effets locaux, notamment dans une commune déjà en tension sur l'eau. Source : Arcep, enquête « Pour un numérique soutenable », données 2024."
+              "answer": "La réponse dépend de l'échelle et du périmètre. **Prélever n'est pas consommer** : une partie de l'eau prélevée est restituée, tandis que l'eau évaporée est consommée. En 2024, les centres de données français ont prélevé 575 000 m³ sur place ; en ajoutant l'eau consommée pour produire leur électricité, l'Arcep estime le total à près de 6,5 millions de m³, soit la consommation annuelle moyenne d'un peu plus de 100 000 personnes sur 68 millions d'habitants. La moyenne nationale ne décrit toutefois pas les effets locaux, notamment dans une commune déjà en tension sur l'eau. Source : Arcep, enquête « Pour un numérique soutenable », données 2024."
             },
             {
               "emoji": "🥤",
@@ -311,17 +311,17 @@
             {
               "emoji": "❄️",
               "question": "Pourquoi ne pas simplement refroidir sans eau ?",
-              "answer": "Parce que les techniques de refroidissement arbitrent entre eau et électricité. Refroidir par air utilise peu d'eau mais davantage d'électricité pour la ventilation. Refroidir par liquide ou par immersion réduit **jusqu'à 50 % l'électricité de refroidissement**, mais utilise souvent plus d'eau. Un indicateur d'eau consommée sur place ne décrit donc qu'une dimension de cet arbitrage. Source : Patel et coll., 2025, cités par l'Arcep, mai 2026."
+              "answer": "Parce que les techniques de refroidissement arbitrent entre eau et électricité. Refroidir par évaporation consomme **moins d'électricité**, surtout par temps chaud, mais l'eau évaporée est perdue. Refroidir à l'air extérieur, sans eau, demande davantage d'électricité. Près de 20 % des centres français étudiés utilisent un système qui consomme de l'eau. Un indicateur d'eau consommée sur place ne décrit donc qu'une dimension de cet arbitrage. Source : Arcep, enquête « Pour un numérique soutenable », édition 2026."
             },
             {
               "emoji": "🕵️",
               "question": "Peut-on faire confiance aux chiffres publiés par les fournisseurs ?",
-              "answer": "Leur interprétation demande de vérifier la méthode et le périmètre : **84 % des modèles d'IA ne font l'objet d'aucune information environnementale**. Une autre étude constate que la part des modèles notables publiant une information a diminué depuis son pic de 2022. En l'absence de données, une estimation peut aussi être reprise comme s'il s'agissait d'une mesure. Une méthode commune comme EcoLogits vise à rendre ces estimations comparables. Sources : Arcep et PEReN, mai 2026 ; Luccioni et coll., « Misinformation by Omission », 2025."
+              "answer": "Leur interprétation demande de vérifier la méthode et le périmètre : **84 % des jetons consommés via OpenRouter passent par des modèles sans aucune information environnementale**. La même étude constate que la part des modèles notables publiant une information a diminué depuis son pic de 2022. En l'absence de données, une estimation peut aussi être reprise comme s'il s'agissait d'une mesure. Une méthode commune comme EcoLogits vise à rendre ces estimations comparables. Source : Luccioni et coll., « Misinformation by Omission », prépublication, juin 2025."
             },
             {
               "emoji": "🧠",
               "question": "Combien consomme le mode raisonnement ?",
-              "answer": "L'effet est important et très variable. Sur 22 modèles ouverts testés à matériel constant, activer le raisonnement fait monter la consommation de **92 % en moyenne**, et jusqu'à **+ 849 % sur une tâche de génération de code**. Le gain de qualité varie lui aussi selon les tâches ; l'intérêt de ce mode s'évalue donc au cas par cas. Source : Arcep et PEReN, mai 2026."
+              "answer": "L'effet est important et très variable. Sur 22 modèles ouverts testés à matériel constant, activer le raisonnement fait monter la consommation **jusqu'à 92 % en moyenne**, et jusqu'à **+ 849 % sur une tâche de génération de code**. Le gain de qualité varie lui aussi selon les tâches ; l'intérêt de ce mode s'évalue donc au cas par cas. Source : Arcep et PEReN, mai 2026."
             },
             {
               "emoji": "🛠️",
@@ -331,7 +331,7 @@
             {
               "emoji": "🤖",
               "question": "Un agent d'IA, ça consomme combien ?",
-              "answer": "Bien plus qu'un message. Un agent découpe votre consigne en étapes : il lit des fichiers, appelle des outils, relit ses propres notes, se corrige. Une seule consigne déclenche des dizaines d'allers-retours avec le modèle. Zeke Hausfather a mesuré huit semaines de son propre usage : **1 138 consignes, plus de 14 000 appels au modèle, environ 170 kWh**, soit **~150 Wh par consigne**, à peu près **600 fois** un message de chat médian. Il annonce lui-même une incertitude d'un facteur 2. Détail frappant : **96 % des jetons servent à relire le contexte**, 3,6 % au contenu neuf, 0,4 % à la réponse visible."
+              "answer": "Bien plus qu'un message. Un agent découpe votre consigne en étapes : il lit des fichiers, appelle des outils, relit ses propres notes, se corrige. Une seule consigne déclenche des dizaines d'allers-retours avec le modèle. Zeke Hausfather a mesuré huit semaines de son propre usage : **1 138 consignes, plus de 14 000 appels au modèle, environ 170 kWh**, soit **~150 Wh par consigne**, contre 0,24 Wh pour un message de chat médian mesuré par Google en 2025 : un ordre de grandeur, les deux mesures n'ayant pas le même périmètre. Il annonce lui-même une incertitude d'un facteur 2. Détail frappant : **96 % des jetons servent à relire le contexte**, 3,6 % au contenu neuf, 0,4 % à la réponse visible."
             },
             {
               "emoji": "📉",
