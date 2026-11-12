@@ -98,7 +98,7 @@ body { display: flex; }
   inset: 0;
   /* La source est dans le flux, poussée en bas : le contenu ne peut pas
      passer dessous, il rétrécit ou le contrôle le signale. */
-  padding: 7.4cqw 7cqw 3cqw;
+  padding: 7.4cqw 7cqw 4.4cqw;
   display: flex;
   flex-direction: column;
   gap: 1.1em;

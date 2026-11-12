@@ -16,11 +16,13 @@
   </div>
 
   <section class="slide titre">
+    <p class="surtitre">Support 3 sur 7</p>
     <h1>Lire le <em>bilan</em> d'un duel</h1>
     <p class="chapeau">L'écran qui s'ouvre une fois que vous avez voté.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">La fiche</p>
     <h1>La fiche d'un <em>modèle</em></h1>
     <div class="fiche">
       <div class="fiche-tete"><span class="lab">Google/</span>Gemma 4 26B A4B<span class="vous">Votre choix</span></div>
@@ -41,6 +43,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">La fiche</p>
     <h1>Et celle d'en <em>face</em></h1>
     <div class="fiche">
       <div class="fiche-tete"><span class="lab">Anthropic/</span>Claude Sonnet 5</div>
@@ -61,6 +64,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">La fiche</p>
     <h1>Ce que disent ces <em>cartes</em></h1>
     <div class="cartes">
       <div class="carte">
@@ -88,6 +92,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le bilan</p>
     <h1>Le bloc <em>Bilan</em></h1>
     <div class="bilan">
       <h2>Bilan <span class="scenario">de cette discussion ⌄</span></h2>
@@ -101,26 +106,34 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le bilan</p>
     <h1>Trois <em>scénarios</em></h1>
-    <p class="chapeau">La pastille bleue ouvre un menu. On peut projeter la même question sur un usage plus lourd.</p>
-    <div class="cartes">
-      <div class="carte">
-        <h3>Cette discussion</h3>
-        <p>Ce que vous venez de faire.</p>
-      </div>
-      <div class="carte">
-        <h3>Recherche approfondie</h3>
-        <p>310 k jetons : recherches web, lecture de sources, synthèse citée.</p>
-      </div>
-      <div class="carte">
-        <h3>Session de code agentique</h3>
-        <p>500 k jetons, dont 450 k en entrée.</p>
-      </div>
-    </div>
-    <p class="source">Libellés et volumes du sélecteur de scénario de compar:IA.</p>
+    <p class="chapeau">Un menu projette le bilan sur un usage plus lourd.</p>
+    <svg class="graphe ill" viewBox="0 0 1000 316" role="img" aria-labelledby="i-scenarios">
+      <title id="i-scenarios">Trois barres à l'échelle, en jetons. Cette discussion : 1 100 jetons, trop peu pour se voir. Recherche approfondie : 310 000 jetons, dont 250 000 lus en entrée et 60 000 produits. Session de code agentique : 500 000 jetons, dont 450 000 lus en entrée et 50 000 produits. Seuls les jetons produits comptent dans l'énergie.</title>
+      <text class="i-titre" x="0" y="34">Cette discussion <tspan class="i-leg">1 100 jetons (exemple)</tspan></text>
+      <rect x="0" y="48" width="3" height="44" fill="#6a6af4"/>
+      <text class="i-leg" x="20" y="80">trop peu pour se voir ici</text>
+      <rect x="620" y="16" width="22" height="22" rx="3" fill="#cacafa"/>
+      <text class="i-leg" x="654" y="35">lu en entrée</text>
+      <rect x="620" y="58" width="22" height="22" rx="3" fill="#6a6af4"/>
+      <text class="i-leg" x="654" y="77">produit, seul compté</text>
+      <text class="i-titre" x="0" y="140">Recherche approfondie <tspan class="i-leg">310 k jetons</tspan></text>
+      <rect x="0" y="154" width="400" height="44" fill="#cacafa"/>
+      <rect x="400" y="154" width="96" height="44" fill="#6a6af4"/>
+      <text class="i-val" x="200" y="184" text-anchor="middle">250 k</text>
+      <text class="i-val i-txt-blanc" x="448" y="184" text-anchor="middle">60 k</text>
+      <text class="i-titre" x="0" y="246">Session de code agentique <tspan class="i-leg">500 k jetons</tspan></text>
+      <rect x="0" y="260" width="720" height="44" fill="#cacafa"/>
+      <rect x="720" y="260" width="80" height="44" fill="#6a6af4"/>
+      <text class="i-val" x="360" y="290" text-anchor="middle">450 k</text>
+      <text class="i-val i-txt-blanc" x="760" y="290" text-anchor="middle">50 k</text>
+    </svg>
+    <p class="source">Sélecteur de scénario et code de compar:IA : seuls les jetons produits entrent dans l'énergie. Barres à l'échelle. Discussion : exemple de la diapositive précédente.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le bilan</p>
     <h1>Deux onglets, sous le <em>bilan</em></h1>
     <div class="onglets"><span>Explication</span><span class="actif">Équivalences</span></div>
     <p>Le premier raconte d'où vient le chiffre. Le second le traduit en gestes du quotidien.</p>
@@ -133,8 +146,8 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le bilan</p>
     <h1>Une classe, de <em>A à F</em></h1>
-    <p class="chapeau">Elle se calcule pour un million de jetons produits.</p>
     <ul class="energie">
       <li class="a">A <span>moins de 100 Wh</span></li>
       <li class="b">B <span>moins de 300 Wh</span></li>
@@ -143,39 +156,54 @@
       <li class="e">E <span>moins de 10 000 Wh</span></li>
       <li class="f">F <span>10 000 Wh et au-delà</span></li>
     </ul>
-    <p class="source">Seuils compar:IA, estimation EcoLogits 0.10.2, PUE 1,2.</p>
+    <p class="source">Pour un million de jetons produits. Seuils compar:IA, estimation EcoLogits 0.10.2, PUE 1,2.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Comparer</p>
     <h1>Le résumé en une <em>phrase</em></h1>
     <div class="nuance">
       <p><strong>Claude Sonnet 5</strong> est un modèle propriétaire <strong>de très grande taille (estimée)</strong> dont l'architecture n'est pas communiquée. Compte tenu de sa taille, sa classe énergétique est <strong>E</strong>.</p>
     </div>
-    <p>Vient ensuite la comparaison chiffrée avec l'autre modèle du duel : combien de fois plus, ou combien de fois moins.</p>
-    <p class="source">Gabarit de phrase du produit, rempli avec les données réelles du modèle.</p>
+    <svg class="graphe ill" viewBox="0 0 1000 240" role="img" aria-labelledby="i-facteur">
+      <title id="i-facteur">Deux carrés dont les surfaces sont à l'échelle. Le grand : Claude Sonnet 5, 3 145 mWh. Le petit, à peine visible : Gemma 4 26B A4B, 67 mWh. Soit 46,6 fois plus d'énergie.</title>
+      <rect x="40" y="15" width="210" height="210" rx="4" fill="#6a6af4"/>
+      <text class="i-titre" x="280" y="186">Claude Sonnet 5</text>
+      <text class="i-leg" x="280" y="220">3 145 mWh</text>
+      <text class="i-grand" x="640" y="96">46,6</text>
+      <text class="i-leg" x="640" y="136">fois plus d'énergie</text>
+      <rect x="640" y="194" width="31" height="31" rx="2" fill="#6a6af4"/>
+      <text class="i-titre" x="694" y="186">Gemma 4 26B A4B</text>
+      <text class="i-leg" x="694" y="220">67 mWh</text>
+    </svg>
+    <p class="source">Gabarit de phrase du produit, suivi de la comparaison avec l'autre modèle du duel. Même réponse de 800 jetons pour les deux. Surfaces à l'échelle.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Comparer</p>
     <h1>Même éditeur, même <em>taille</em></h1>
-    <div class="compare">
-      <div>
-        <h2>Mistral Small 4</h2>
-        <p><strong>119 mds</strong>, dont 6 actifs. Mélange d'experts.</p>
-        <div class="chevron c">C</div>
-        <p>347 Wh par million de jetons.</p>
-      </div>
-      <div>
-        <h2>Mistral Medium 3.5</h2>
-        <p><strong>128 mds</strong>, tous actifs. Dense.</p>
-        <div class="chevron c">C</div>
-        <p>939 Wh par million de jetons.</p>
-      </div>
-    </div>
+    <p class="chapeau">Énergie par million de jetons produits.</p>
+    <svg class="graphe ill" viewBox="0 0 1000 310" role="img" aria-labelledby="i-mistral">
+      <title id="i-mistral">Deux barres à l'échelle sur une plage de 0 à 1 000 Wh, avec la zone de la classe C, de 300 à 1 000 Wh, en fond. Mistral Small 4, 119 milliards de paramètres dont 6 actifs, mélange d'experts : 347 Wh. Mistral Medium 3.5, 128 milliards tous actifs, dense : 939 Wh. Les deux barres finissent dans la classe C.</title>
+      <rect x="270" y="0" width="630" height="268" fill="#f4f4fe"/>
+      <text class="i-leg" x="585" y="30" text-anchor="middle">classe C, de 300 à 1 000 Wh</text>
+      <text class="i-titre" x="0" y="92">Mistral Small 4 <tspan class="i-leg">119 mds, dont 6 actifs · mélange d'experts</tspan></text>
+      <rect x="0" y="108" width="312" height="36" rx="4" fill="#6a6af4"/>
+      <text class="i-val" x="326" y="134">347 Wh</text>
+      <text class="i-titre" x="0" y="196">Mistral Medium 3.5 <tspan class="i-leg">128 mds, tous actifs · dense</tspan></text>
+      <rect x="0" y="212" width="845" height="36" rx="4" fill="#6a6af4"/>
+      <text class="i-val" x="859" y="238">939 Wh</text>
+      <line class="g-axe" x1="0" y1="268" x2="900" y2="268"/>
+      <text class="g-tick" x="0" y="294">0</text>
+      <text class="g-tick" x="270" y="294" text-anchor="middle">300</text>
+      <text class="g-tick" x="900" y="294" text-anchor="middle">1 000</text>
+    </svg>
     <p>Neuf milliards de paramètres d'écart, et un rapport de <strong>2,7</strong>. C'est l'architecture qui décide, pas la taille.</p>
-    <p class="source">Catalogue compar:IA. Les deux modèles portent la même lettre : la classe est un palier large.</p>
+    <p class="source">Catalogue compar:IA, modèles en service. Barres à l'échelle : même lettre C, car la classe est un palier large.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les limites</p>
     <h1>Une étape sur <em>six</em></h1>
     <p class="chapeau">Le chiffre affiché couvre la génération de la réponse. Rien d'autre.</p>
     <ul class="cycle">
@@ -194,6 +222,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">À retenir</p>
     <h1>Ce qu'il faut <em>retenir</em></h1>
     <ul>
       <li>La fiche dit ce qu'est le modèle. Le bilan dit ce que votre question a coûté.</li>
