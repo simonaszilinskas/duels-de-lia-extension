@@ -16,17 +16,20 @@
   </div>
 
   <section class="slide titre">
+    <p class="surtitre">Support 5 sur 7</p>
     <h1>Le poids <em>physique</em> de l'IA</h1>
     <p class="chapeau">Des machines, un bâtiment, de l'électricité, de l'eau, des métaux.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Machines et énergie</p>
     <h1>Un impact <em>invisible</em></h1>
     <p class="chapeau">Rien à l'écran ne dit ce qu'une réponse a coûté.</p>
     <p>Pour l'utilisateur, le calcul reste invisible : l'électricité est consommée à distance, dans un centre de données.</p>
     <p>C'est ce que cet atelier rend visible.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Machines et énergie</p>
     <h1>À chaque question, des <em>calculs</em></h1>
     <div class="duo">
       <div class="colonne">
@@ -38,6 +41,7 @@
     <p class="source">Schéma tiré de « A Mathematical Framework for Transformer Circuits », Anthropic, 2021.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Machines et énergie</p>
     <h1>Gros modèle, grosse <em>machine</em></h1>
     <div class="duo">
       <div class="colonne">
@@ -52,6 +56,7 @@
     <p class="source">Seuils affichés par compar:IA dans la fiche « Matériel nécessaire » de chaque modèle.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Machines et énergie</p>
     <h1>Au-delà, des <em>cartes graphiques</em></h1>
     <div class="compare">
       <div>
@@ -68,35 +73,47 @@
     <p class="source">Seuils affichés par compar:IA, fiche « Matériel nécessaire », à 80 Go par carte graphique.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Machines et énergie</p>
     <h1>Ce que consomme un <em>centre</em></h1>
-    <p>Un centre orienté IA consomme autant d'électricité que :</p>
-    <p class="chiffre">100 000 ménages</p>
-    <p>Les plus grands, en construction aujourd'hui, en consommeront <strong>20 fois plus</strong>, soit deux millions de ménages.</p>
+    <div class="duo">
+      <div class="colonne">
+        <p>Un centre orienté IA consomme autant d'électricité que :</p>
+        <p class="chiffre moyen">100 000 ménages</p>
+        <p>Les plus grands, en construction aujourd'hui, en consommeront <strong>20 fois plus</strong>, soit deux millions de ménages.</p>
+      </div>
+      <svg class="graphe ill" viewBox="0 0 560 470" role="img" aria-labelledby="i-centres">
+        <title id="i-centres">Vingt carrés de même taille. Un seul est en indigo : un centre type, soit 100 000 ménages. Les vingt ensemble : un des plus grands centres en construction, soit deux millions de ménages.</title>
+        <rect class="i-case vif" x="58" y="8" width="76" height="76" rx="6"/><rect class="i-case" x="150" y="8" width="76" height="76" rx="6"/><rect class="i-case" x="242" y="8" width="76" height="76" rx="6"/><rect class="i-case" x="334" y="8" width="76" height="76" rx="6"/><rect class="i-case" x="426" y="8" width="76" height="76" rx="6"/><rect class="i-case" x="58" y="100" width="76" height="76" rx="6"/><rect class="i-case" x="150" y="100" width="76" height="76" rx="6"/><rect class="i-case" x="242" y="100" width="76" height="76" rx="6"/><rect class="i-case" x="334" y="100" width="76" height="76" rx="6"/><rect class="i-case" x="426" y="100" width="76" height="76" rx="6"/><rect class="i-case" x="58" y="192" width="76" height="76" rx="6"/><rect class="i-case" x="150" y="192" width="76" height="76" rx="6"/><rect class="i-case" x="242" y="192" width="76" height="76" rx="6"/><rect class="i-case" x="334" y="192" width="76" height="76" rx="6"/><rect class="i-case" x="426" y="192" width="76" height="76" rx="6"/><rect class="i-case" x="58" y="284" width="76" height="76" rx="6"/><rect class="i-case" x="150" y="284" width="76" height="76" rx="6"/><rect class="i-case" x="242" y="284" width="76" height="76" rx="6"/><rect class="i-case" x="334" y="284" width="76" height="76" rx="6"/><rect class="i-case" x="426" y="284" width="76" height="76" rx="6"/>
+        <text class="i-leg" x="280" y="410" text-anchor="middle">un carré = un centre type</text>
+        <text class="i-leg" x="280" y="448" text-anchor="middle">les vingt = un des plus grands</text>
+      </svg>
+    </div>
     <p class="source">Agence internationale de l'énergie, « Energy and AI », avril 2025. Le rapport parle d'un centre « type », pas d'un centre quelconque.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Machines et énergie</p>
     <h1>Rallumer une centrale <em>nucléaire</em></h1>
     <div class="duo">
       <div class="colonne">
-        <p>Microsoft a signé un contrat d'électricité sur <strong>20 ans</strong> avec le propriétaire de Three Mile Island.</p>
-        <p class="chiffre">835 MW</p>
-        <p>de puissance, dont Microsoft achètera la production pour ses centres de données.</p>
+        <p class="chiffre moyen">835 MW</p>
+        <p>de puissance à Three Mile Island. Microsoft en achètera la production pendant <strong>20 ans</strong>, pour ses centres de données.</p>
       </div>
       <img class="visuel" src="img/pourquoi-ca-consomme-p4-7.webp" alt="Les tours de refroidissement de la centrale nucléaire de Three Mile Island, en Pennsylvanie : un panache de vapeur blanche et un drapeau américain.">
     </div>
     <div class="nuance">
-      <p>La centrale n'a pas été vendue, et le réacteur n'a pas redémarré. Constellation vise 2027, mais plusieurs autorisations et inspections de la NRC restent nécessaires.</p>
+      <p>La centrale n'a pas été vendue, et le réacteur n'a pas redémarré : Constellation vise 2027, sous réserve des autorisations de la NRC.</p>
     </div>
     <p class="source">Constellation Energy, communiqué du 20 septembre 2024 et résultats du 2e trimestre 2025. Nuclear Regulatory Commission, « Christopher M. Crane Clean Energy Center », état des procédures de redémarrage.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Le matériel</p>
     <h1>Et des matières <em>premières</em></h1>
     <div class="duo">
       <div class="colonne">
-        <p>L'essor de l'IA fera passer la part des centres de données dans la demande annuelle de cuivre :</p>
+        <p>Selon une projection de BHP, la part des centres de données dans la demande annuelle de cuivre pourrait passer :</p>
         <table>
           <tr>
-            <th>Aujourd'hui</th>
+            <th>En 2024</th>
             <th>D'ici 2050</th>
           </tr>
           <tr>
@@ -110,8 +127,9 @@
     <p class="source">Pourcentages donnés au Financial Times par la directrice financière de BHP, septembre 2024.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Le matériel</p>
     <h1>Une demande en <em>concurrence</em></h1>
-    <p>En tonnes : de 0,5 à 3 millions par an, la production cumulée des quatre plus grandes mines du monde.</p>
+    <p>En tonnes : de 0,5 à près de 3 millions par an d'ici 2050, selon BHP. La hausse correspondrait à la production des quatre plus grandes mines du monde.</p>
     <p>D'autres secteurs, notamment l'électrification des transports et de l'industrie, utilisent le même métal.</p>
     <div class="nuance">
       <p>BHP est le premier minier mondial, et il vend du cuivre.</p>
@@ -119,6 +137,7 @@
     <p class="source">BHP Insights, « Why AI tools and data centres are driving copper demand », janvier 2025.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Le matériel</p>
     <h1>Le numérique français, en <em>trois</em></h1>
     <ul class="barres">
       <li><span class="nom">Terminaux</span><span class="piste"><span class="barre" style="width: 50%"></span><span class="val">50 %</span></span></li>
@@ -129,6 +148,7 @@
     <p class="source">ADEME et Arcep, <em>Évaluation de l'impact environnemental du numérique en France</em>, rapport final, janvier 2025. Répartition de l'empreinte carbone du numérique français.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Le matériel</p>
     <h1>Fabriquer pèse plus que faire <em>tourner</em></h1>
     <div class="parts">
       <div>
@@ -146,73 +166,119 @@
         </div>
       </div>
     </div>
-    <p>Pour un appareil, l'essentiel est dépensé avant le premier allumage. Le garder deux ans de plus améliore son bilan de moitié.</p>
+    <p>Pour un appareil, l'essentiel est dépensé avant le premier allumage. Garder une tablette ou un ordinateur quatre ans au lieu de deux réduit de moitié son impact par année d'usage.</p>
     <p class="source">ADEME et Arcep, janvier 2025, pour les deux répartitions. ADEME, <em>La face cachée du numérique</em>, 2021, pour la durée d'usage : passer de deux à quatre ans améliore le bilan d'environ 50 %.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">L'eau</p>
     <h1>Prélever n'est pas <em>consommer</em></h1>
-    <div class="compare">
-      <div>
-        <h2>Prélèvement</h2>
-        <p>L'eau prise à la rivière ou au réseau. Une bonne part y retourne.</p>
-      </div>
-      <div>
-        <h2>Consommation</h2>
-        <p>La part qui ne revient pas, évaporée dans les tours de refroidissement.</p>
-      </div>
-    </div>
+    <svg class="graphe schema" viewBox="0 0 1000 290" role="img" aria-labelledby="s-eau">
+      <title id="s-eau">Schéma : le centre prélève de l'eau à la rivière ou au réseau. Une bonne part y retourne. La part évaporée dans les tours de refroidissement ne revient pas : c'est la consommation.</title>
+      <defs><marker id="fl5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
+      <rect x="0" y="230" width="1000" height="50" rx="10" fill="#cacafa"/>
+      <text class="s-sous" x="20" y="262">la rivière ou le réseau</text>
+      <path class="s-fleche" d="M250 230 V135 H393" marker-end="url(#fl5)"/>
+      <text class="s-titre" x="235" y="160" text-anchor="end">Prélèvement</text>
+      <text class="s-sous" x="235" y="186" text-anchor="end">l'eau prise</text>
+      <rect class="b-plein" x="400" y="90" width="200" height="90" rx="10"/>
+      <text class="s-titre sur-plein" x="500" y="128" text-anchor="middle">Le centre</text>
+      <text class="s-sous sur-plein" x="500" y="154" text-anchor="middle">de données</text>
+      <path class="s-fleche" d="M600 135 H750 V226" marker-end="url(#fl5)"/>
+      <text class="s-titre" x="765" y="170">Retour</text>
+      <text class="s-sous" x="765" y="196">une bonne part</text>
+      <line class="s-boucle" x1="500" y1="86" x2="500" y2="16" marker-end="url(#fl5)"/>
+      <text class="s-titre" x="520" y="40">Consommation</text>
+      <text class="s-sous" x="520" y="66">évaporée au refroidissement</text>
+    </svg>
     <p>Les deux mots sont souvent confondus. Les chiffres les plus spectaculaires portent le plus souvent sur des prélèvements.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">L'eau</p>
     <h1>L'ordre de grandeur, en <em>France</em></h1>
     <p class="chiffre">6,5 millions de m³</p>
-    <p class="chapeau">d'eau déclarés en 2024 par les centres de données français, tous usages confondus, pas seulement l'IA.</p>
-    <p>Soit la consommation annuelle moyenne d'un peu plus de 100 000 personnes, sur 68 millions d'habitants.</p>
-    <p class="source">Arcep, enquête « Pour un numérique soutenable », données 2024. L'enquête ne sépare pas prélèvement et consommation. Le volume progresse d'environ 8 % en un an.</p>
+    <p class="chapeau">d'eau en 2024 pour les 23 opérateurs de centres de données interrogés par l'Arcep, tous usages confondus, pas seulement l'IA : 575 000 m³ prélevés sur place, le reste pour produire leur électricité.</p>
+    <p>Soit la consommation annuelle moyenne d'un peu plus de 100 000 personnes. Ces opérateurs exploitent près de 160 centres, environ la moitié des centres de colocation recensés en 2020.</p>
+    <p class="source">Arcep, enquête « Pour un numérique soutenable », édition 2026, données 2024. Estimation de l'Arcep : l'eau prélevée par les centres (575 000 m³, en baisse de 15 %) plus l'eau consommée pour produire leur électricité. Ce total progresse d'environ 8 % en un an.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">L'eau</p>
     <h1>Le sujet est <em>local</em></h1>
-    <div class="nuance">
-      <p>À l'échelle d'un pays, le chiffre est limité. À l'échelle d'une commune déjà en tension sur l'eau, un centre peut contribuer à un conflit d'usage.</p>
+    <div class="duo">
+      <div class="colonne">
+        <p>À l'échelle d'un pays, le chiffre est limité.</p>
+        <p>À l'échelle d'une commune déjà en tension sur l'eau, un centre peut contribuer à un conflit d'usage.</p>
+        <p>La moyenne nationale ne suffit donc pas à décrire les effets locaux.</p>
+      </div>
+      <svg class="graphe ill" viewBox="0 0 600 470" role="img" aria-labelledby="i-local">
+        <title id="i-local">Deux cercles. Un grand, le pays, avec un petit point indigo au centre : le centre de données y pèse peu. Un petit, une commune, avec le même point : il y prend une bien plus grande place.</title>
+        <circle cx="190" cy="190" r="170" fill="#f4f4fe" stroke="#cacafa" stroke-width="3"/>
+        <circle cx="190" cy="190" r="14" fill="#6a6af4"/>
+        <circle cx="500" cy="190" r="55" fill="#f4f4fe" stroke="#ff9575" stroke-width="3"/>
+        <circle cx="500" cy="190" r="14" fill="#6a6af4"/>
+        <text class="i-titre" x="190" y="410" text-anchor="middle">un pays</text>
+        <text class="i-titre" x="500" y="410" text-anchor="middle">une commune</text>
+        <circle cx="140" cy="443" r="10" fill="#6a6af4"/>
+        <text class="i-leg" x="160" y="452">un même centre de données</text>
+      </svg>
     </div>
-    <p>La moyenne nationale ne suffit donc pas à décrire les effets locaux.</p>
-    <p class="source">Arcep et PEReN, mai 2026, qui citent les oppositions aux Pays-Bas et l'effet du changement climatique sur le cycle de l'eau.</p>
+    <p class="source">Arcep et PEReN, mai 2026, qui citent les oppositions aux Pays-Bas et l'effet du changement climatique sur le cycle de l'eau. Dessin de principe : les tailles ne sont pas mesurées.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">L'eau</p>
     <h1>Moins d'électricité, plus d'<em>eau</em></h1>
     <p class="chapeau">Les deux ressources tirent souvent en sens inverse.</p>
     <div class="compare">
       <div>
-        <h2>Refroidir par air</h2>
-        <p>Peu d'eau, beaucoup d'électricité pour la ventilation.</p>
+        <h2>Refroidir par évaporation</h2>
+        <p>Moins d'électricité, surtout par temps chaud. L'eau évaporée est consommée.</p>
       </div>
       <div>
-        <h2>Refroidir par liquide</h2>
-        <p>Jusqu'à 50 % d'électricité de refroidissement en moins, mais souvent plus d'eau.</p>
+        <h2>Refroidir à l'air, sans eau</h2>
+        <p>Pas d'eau consommée sur place, davantage d'électricité.</p>
       </div>
     </div>
-    <p class="source">Patel et coll., 2025, cités par l'Arcep, mai 2026. Un centre qui ne refroidit pas à l'eau ne consomme pas d'eau sur place.</p>
+    <p class="source">Arcep, enquête « Pour un numérique soutenable », édition 2026 : près de 20 % des centres étudiés refroidissent avec un système qui consomme de l'eau, et un quart de ceux mis en service depuis moins de quatre ans.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">L'eau</p>
     <h1>La bouteille d'eau par <em>message</em></h1>
-    <p class="chapeau">Vous entendrez ce chiffre dans la salle.</p>
-    <p>Google mesure 0,26 mL par requête médiane, Mistral AI 45 mL en comptant l'eau dépensée en amont. Selon le périmètre retenu, il faut deux mille messages pour remplir un demi-litre, ou une dizaine.</p>
-    <div class="nuance">
-      <p>Le chiffre ne dit rien sans son périmètre.</p>
+    <div class="duo">
+      <div class="colonne">
+        <p class="chapeau">Vous entendrez ce chiffre dans la salle.</p>
+        <p>Google mesure 0,26 mL par requête médiane, Mistral AI 45 mL en comptant l'eau dépensée en amont.</p>
+        <div class="nuance">
+          <p>Le chiffre ne dit rien sans son périmètre.</p>
+        </div>
+      </div>
+      <svg class="graphe ill" viewBox="0 0 600 500" role="img" aria-labelledby="i-bouteilles">
+        <title id="i-bouteilles">Deux bouteilles d'un demi-litre, à l'échelle. Celle de Mistral AI est remplie par onze tranches de 45 mL : onze messages environ. Dans celle de Google, une tranche de 0,26 mL n'est qu'un trait au fond : il faut environ deux mille messages.</title>
+        <defs><clipPath id="corps-mistral"><rect x="90" y="110" width="150" height="300" rx="18"/></clipPath><clipPath id="corps-google"><rect x="360" y="110" width="150" height="300" rx="18"/></clipPath></defs>
+        <rect x="135" y="72" width="60" height="42" fill="#f4f4fe" stroke="#cacafa" stroke-width="3"/><rect x="128" y="54" width="74" height="20" rx="4" fill="#cacafa"/><rect x="90" y="110" width="150" height="300" rx="18" fill="#f4f4fe"/><g clip-path="url(#corps-mistral)"><rect x="90" y="383" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/><rect x="90" y="356" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/><rect x="90" y="329" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/><rect x="90" y="302" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/><rect x="90" y="275" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/><rect x="90" y="248" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/><rect x="90" y="221" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/><rect x="90" y="194" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/><rect x="90" y="167" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/><rect x="90" y="140" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/><rect x="90" y="113" width="150" height="27" fill="#6a6af4" stroke="#fff" stroke-width="2"/></g><rect x="90" y="110" width="150" height="300" rx="18" fill="none" stroke="#cacafa" stroke-width="3"/>
+        <rect x="405" y="72" width="60" height="42" fill="#f4f4fe" stroke="#cacafa" stroke-width="3"/><rect x="398" y="54" width="74" height="20" rx="4" fill="#cacafa"/><rect x="360" y="110" width="150" height="300" rx="18" fill="#f4f4fe"/><g clip-path="url(#corps-google)"><rect x="360" y="409" width="150" height="1" fill="#6a6af4"/></g><rect x="360" y="110" width="150" height="300" rx="18" fill="none" stroke="#cacafa" stroke-width="3"/>
+        <text class="i-titre" x="165" y="34" text-anchor="middle">Mistral AI</text>
+        <text class="i-titre" x="435" y="34" text-anchor="middle">Google</text>
+        <text class="i-titre" x="165" y="452" text-anchor="middle">≈ 11 messages</text>
+        <text class="i-leg" x="165" y="486" text-anchor="middle">de 45 mL</text>
+        <text class="i-titre" x="435" y="452" text-anchor="middle">≈ 2 000 messages</text>
+        <text class="i-leg" x="435" y="486" text-anchor="middle">de 0,26 mL</text>
+      </svg>
     </div>
+    <p class="source">Google : Elsworth et coll., août 2025, eau de refroidissement seule. Mistral AI : analyse de cycle de vie, juillet 2025. Messages : 500 mL divisés par chacun des deux chiffres.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Le carbone</p>
     <h1>Le même kWh, pas le même <em>carbone</em></h1>
     <p class="chapeau">Grammes de CO₂ par kilowattheure, sur tout le cycle de vie.</p>
     <ul class="barres">
       <li><span class="nom">Monde</span><span class="piste"><span class="barre" style="width: 86.0%"></span><span class="val">458 g</span></span></li>
       <li><span class="nom">États-Unis</span><span class="piste"><span class="barre" style="width: 72.1%"></span><span class="val">384 g</span></span></li>
-      <li><span class="nom">Irlande</span><span class="piste"><span class="barre" style="width: 48.1%"></span><span class="val">256 g</span></span></li>
+      <li><span class="nom">Irlande</span><span class="piste"><span class="barre" style="width: 48.3%"></span><span class="val">257 g</span></span></li>
       <li><span class="nom">France</span><span class="piste"><span class="barre" style="width: 7.7%"></span><span class="val">41 g</span></span></li>
     </ul>
-    <p class="source">Table des mix électriques d'EcoLogits 0.10.2, celle qui sert au calcul, d'après Our World in Data. RTE publie 20 g pour la France en ne comptant que la combustion : le périmètre déplace le chiffre de moitié.</p>
+    <p class="source">Our World in Data, repris dans la table des mix électriques d'EcoLogits 0.10.2. Pour la France en 2025, RTE publie 19,6 g en ne comptant que la combustion et 29 g sur le cycle de vie : le périmètre change le chiffre.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">Le carbone</p>
     <h1>La localisation <em>compte</em></h1>
     <div class="duo">
       <div class="colonne">
@@ -223,6 +289,7 @@
     </div>
   </section>
   <section class="slide">
+    <p class="surtitre">Le carbone</p>
     <h1>Un mix électrique <em>bas carbone</em></h1>
     <p class="chapeau">En France, l'électricité est majoritairement produite par le nucléaire et les renouvelables.</p>
     <p>À consommation égale, un serveur situé en France est associé à moins d'émissions que dans un pays au mix plus carboné.</p>
@@ -232,12 +299,13 @@
     <p class="source">Intensité carbone : table des mix électriques d'EcoLogits 0.10.2. Raccordements : consultation de RTE citée par l'Arcep, mai 2026.</p>
   </section>
   <section class="slide">
+    <p class="surtitre">À retenir</p>
     <h1>Ce qu'il faut <em>retenir</em></h1>
     <ul>
       <li>Une réponse mobilise une machine réelle, dans un bâtiment réel, branché à un réseau réel.</li>
       <li>Les techniques de refroidissement impliquent un arbitrage entre eau et électricité.</li>
       <li>À l'échelle d'un pays, les volumes sont modestes. À l'échelle d'une commune, ils peuvent ne pas l'être.</li>
-      <li>Le bilan de compar:IA suppose le <strong>mix mondial moyen</strong>, pas celui du pays d'hébergement.</li>
+      <li>Le bilan de compar:IA donne de l'<strong>énergie</strong>, pas du carbone : le même kWh pèse plus ou moins lourd selon le pays qui le produit.</li>
     </ul>
   </section>
 

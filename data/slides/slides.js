@@ -7,6 +7,7 @@
   if (!slides.length) return;
 
   let index = 0;
+  // Numéro de page affiché en bas à droite (voir .slide[data-num] dans slides.css).
 
   const nav = document.createElement('div');
   nav.className = 'nav';

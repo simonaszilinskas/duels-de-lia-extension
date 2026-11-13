@@ -16,18 +16,36 @@
   </div>
 
   <section class="slide titre">
+    <p class="surtitre">Support 1 sur 7</p>
     <h1>C'est quoi l'<em>IA générative</em> ?</h1>
     <p class="chapeau">Ce qu'est un modèle, comment il apprend, et ce qu'on va comparer.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">L'IA</p>
     <h1>C'est quoi <em>l'IA</em> ?</h1>
-    <p class="chapeau">Faire faire à une machine des tâches qui demandent d'ordinaire de l'intelligence humaine.</p>
-    <p>Une création humaine : des instructions en entrée, un résultat en sortie.</p>
-    <p>Reconnaître un visage, produire du langage, anticiper la météo.</p>
+    <div class="duo">
+      <div class="colonne">
+        <p class="chapeau">Faire faire à une machine des tâches qui demandent d'ordinaire de l'intelligence humaine.</p>
+        <p>Une création humaine : des instructions en entrée, un résultat en sortie.</p>
+        <p>Reconnaître un visage, produire du langage, anticiper la météo.</p>
+      </div>
+      <svg class="graphe ill" viewBox="0 0 600 520" role="img" aria-labelledby="i-familles">
+        <title id="i-familles">Trois cadres emboîtés. Le plus grand : l'intelligence artificielle. Dedans, l'apprentissage automatique, qui apprend à partir d'exemples. Au cœur, l'IA générative, qui produit textes et images.</title>
+        <rect x="10" y="10" width="580" height="500" rx="28" fill="#f4f4fe" stroke="#cacafa" stroke-width="2"/>
+        <text class="i-titre" x="300" y="58" text-anchor="middle">Intelligence artificielle</text>
+        <rect x="50" y="100" width="500" height="400" rx="24" fill="#dedefc"/>
+        <text class="i-titre" x="300" y="148" text-anchor="middle">Apprentissage automatique</text>
+        <text class="i-leg" x="300" y="184" text-anchor="middle">apprend à partir d'exemples</text>
+        <rect x="110" y="220" width="380" height="260" rx="20" fill="#6a6af4"/>
+        <text class="i-titre i-txt-blanc" x="300" y="336" text-anchor="middle">IA générative</text>
+        <text class="i-leg i-txt-blanc" x="300" y="376" text-anchor="middle">produit textes et images</text>
+      </svg>
+    </div>
   </section>
 
   <section class="slide">
+    <p class="surtitre">L'IA</p>
     <h1>L'IA existait <em>avant</em></h1>
     <div class="compare">
       <div>
@@ -44,6 +62,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">L'entraînement</p>
     <h1>La <em>recette</em></h1>
     <div class="cartes">
       <div class="carte">
@@ -65,15 +84,37 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">L'entraînement</p>
     <h1>Sur quoi s'entraîne un <em>modèle</em> ?</h1>
-    <ul>
-      <li>Des pages web issues de collectes comme <strong>Common Crawl</strong>.</li>
-      <li>Des corpus ensuite <strong>nettoyés, dédupliqués et filtrés</strong>.</li>
-    </ul>
+    <div class="duo">
+      <div class="colonne">
+        <p>Surtout des <strong>pages web</strong>, collectées en masse, puis triées avant l'entraînement.</p>
+      </div>
+      <svg class="graphe schema" viewBox="0 0 560 460" role="img" aria-labelledby="s-corpus">
+        <title id="s-corpus">Schéma vertical en quatre étapes reliées par des flèches : des pages web collectées par Common Crawl, puis on extrait le texte, puis on filtre et on retire les doublons, et l'on obtient un corpus d'entraînement, par exemple FineWeb.</title>
+        <defs><marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
+        <rect class="b-clair" x="60" y="10" width="440" height="80" rx="9"/>
+        <text class="s-titre" x="280" y="44" text-anchor="middle">Des pages web</text>
+        <text class="s-sous" x="280" y="72" text-anchor="middle">collectées par Common Crawl</text>
+        <line class="s-fleche" x1="280" y1="96" x2="280" y2="124" marker-end="url(#fl)"/>
+        <rect class="b-clair" x="60" y="130" width="440" height="80" rx="9"/>
+        <text class="s-titre" x="280" y="164" text-anchor="middle">Extraire le texte</text>
+        <text class="s-sous" x="280" y="192" text-anchor="middle">sans les menus ni le reste de la page</text>
+        <line class="s-fleche" x1="280" y1="216" x2="280" y2="244" marker-end="url(#fl)"/>
+        <rect class="b-clair" x="60" y="250" width="440" height="80" rx="9"/>
+        <text class="s-titre" x="280" y="284" text-anchor="middle">Filtrer, dédupliquer</text>
+        <text class="s-sous" x="280" y="312" text-anchor="middle">langue, qualité, doublons</text>
+        <line class="s-fleche" x1="280" y1="336" x2="280" y2="364" marker-end="url(#fl)"/>
+        <rect class="b-plein" x="60" y="370" width="440" height="80" rx="9"/>
+        <text class="s-titre sur-plein" x="280" y="404" text-anchor="middle">Un corpus d'entraînement</text>
+        <text class="s-sous sur-plein" x="280" y="432" text-anchor="middle">FineWeb, par exemple</text>
+      </svg>
+    </div>
     <p class="source">Exemple : carte du jeu de données FineWeb, Hugging Face.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">L'entraînement</p>
     <h1>Un jeu de données <em>type</em></h1>
     <p class="chapeau">Exemple : FineWeb.</p>
     <p class="chiffre">51 To</p>
@@ -82,23 +123,59 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">L'entraînement</p>
     <h1>« Apprendre », pour une <em>machine</em></h1>
     <div class="duo">
       <div class="colonne">
         <p>Un modèle, c'est un empilement de formules. Apprendre, c'est en régler les chiffres, un peu mieux à chaque exemple.</p>
-        <p>Personne ne les règle à la main : la machine se corrige elle-même, des milliards de fois.</p>
+        <p>Personne ne les règle à la main : la machine se corrige elle-même, tour après tour.</p>
       </div>
-      <img class="visuel" src="img/comment-est-entraine-un-modele-p2-8.webp" alt="Un bloc de formules mathématiques décrivant une couche de transformeur : normalisation, attention, réseau à propagation avant.">
+      <svg class="graphe schema" viewBox="0 0 560 470" role="img" aria-labelledby="s-apprendre">
+        <title id="s-apprendre">Boucle en quatre étapes : le modèle devine la suite de « Le chat dort sur le », par exemple « toit » ; on compare au texte d'origine, « canapé » ; il ajuste ses chiffres ; on passe à la phrase suivante, et la boucle recommence.</title>
+        <defs><marker id="fl2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
+        <rect class="b-clair" x="10" y="60" width="230" height="110" rx="9"/>
+        <text class="s-titre" x="125" y="108" text-anchor="middle">Il devine</text>
+        <text class="s-sous" x="125" y="138" text-anchor="middle">« … sur le toit »</text>
+        <line class="s-fleche" x1="248" y1="115" x2="312" y2="115" marker-end="url(#fl2)"/>
+        <rect class="b-clair" x="320" y="60" width="230" height="110" rx="9"/>
+        <text class="s-titre" x="435" y="108" text-anchor="middle">On compare</text>
+        <text class="s-sous" x="435" y="138" text-anchor="middle">texte : « canapé »</text>
+        <line class="s-fleche" x1="435" y1="178" x2="435" y2="292" marker-end="url(#fl2)"/>
+        <rect class="b-plein" x="320" y="300" width="230" height="110" rx="9"/>
+        <text class="s-titre sur-plein" x="435" y="348" text-anchor="middle">Il ajuste</text>
+        <text class="s-sous sur-plein" x="435" y="378" text-anchor="middle">ses chiffres</text>
+        <line class="s-fleche" x1="312" y1="355" x2="248" y2="355" marker-end="url(#fl2)"/>
+        <rect class="b-clair" x="10" y="300" width="230" height="110" rx="9"/>
+        <text class="s-titre" x="125" y="348" text-anchor="middle">Phrase suivante</text>
+        <text class="s-sous" x="125" y="378" text-anchor="middle">et on recommence</text>
+        <line class="s-fleche" x1="125" y1="292" x2="125" y2="178" marker-end="url(#fl2)"/>
+      </svg>
     </div>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le modèle</p>
     <h1>Ce qu'on obtient <em>au bout</em></h1>
-    <p class="chapeau">Pas une base de connaissances, pas un moteur de recherche.</p>
-    <p>Un <strong>ensemble de chiffres</strong> qui servent à prédire la réponse <strong>la plus probable</strong> à la question posée.</p>
+    <p class="chapeau">Ni une base de connaissances, ni un moteur de recherche : un <strong>ensemble de chiffres</strong> qui donne à chaque suite possible une <strong>probabilité</strong>. La réponse se construit en tirant, mot après mot, parmi les plus probables.</p>
+    <svg class="graphe ill" viewBox="0 0 1000 320" role="img" aria-labelledby="i-suite">
+      <title id="i-suite">Exemple inventé. La phrase « Le chat dort sur le » mène à quatre mots possibles, chacun avec une barre : « canapé » a la plus longue et ressort en indigo, puis « lit », « tapis » et « toit ».</title>
+      <defs><marker id="fl3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
+      <text class="i-titre" x="10" y="170">Le chat dort sur le …</text>
+      <line x1="370" y1="160" x2="470" y2="160" stroke="#666" stroke-width="2" marker-end="url(#fl3)"/>
+      <text class="i-titre" x="600" y="57" text-anchor="end">canapé</text>
+      <rect x="620" y="24" width="360" height="48" rx="6" fill="#6a6af4"/>
+      <text class="i-leg" x="600" y="129" text-anchor="end">lit</text>
+      <rect x="620" y="96" width="220" height="48" rx="6" fill="#cacafa"/>
+      <text class="i-leg" x="600" y="201" text-anchor="end">tapis</text>
+      <rect x="620" y="168" width="130" height="48" rx="6" fill="#cacafa"/>
+      <text class="i-leg" x="600" y="273" text-anchor="end">toit</text>
+      <rect x="620" y="240" width="70" height="48" rx="6" fill="#cacafa"/>
+    </svg>
+    <p class="source">Exemple inventé : les mots et la longueur des barres sont fictifs. Ils montrent un classement, pas des valeurs mesurées.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le modèle</p>
     <h1>Ces chiffres : les <em>paramètres</em></h1>
     <p>compar:IA affiche leur nombre pour les modèles ouverts.</p>
     <p>Pour les modèles propriétaires, dont les laboratoires ne publient rien, il n'affiche qu'une classe de taille.</p>
@@ -106,6 +183,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le duel</p>
     <h1>L'arène du <em>duel</em></h1>
     <div class="duo">
       <div class="colonne">

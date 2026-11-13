@@ -16,11 +16,13 @@
   </div>
 
   <section class="slide titre">
+    <p class="surtitre">Support 6 sur 7</p>
     <h1>Le paradoxe de <em>Jevons</em></h1>
     <p class="chapeau">L'efficacité réduit le coût d'un usage. L'effet sur le total dépend aussi de l'évolution de la demande.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le paradoxe</p>
     <h1>Ce que Jevons a vu dans le <em>charbon</em></h1>
     <ul>
       <li>Au XIX<sup>e</sup> siècle, les machines à vapeur brûlent de moins en moins de charbon pour le même travail.</li>
@@ -30,29 +32,35 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le paradoxe</p>
     <h1>Un mécanisme <em>possible</em></h1>
-    <div class="cartes">
-      <div class="carte">
-        <h3>1. Modèles plus efficaces</h3>
-        <p>Chaque génération fait mieux avec moins de calcul.</p>
-      </div>
-      <div class="carte">
-        <h3>2. Coûts en baisse</h3>
-        <p>Le prix du million de jetons descend.</p>
-      </div>
-      <div class="carte">
-        <h3>3. Nouveaux usages</h3>
-        <p>La baisse du coût peut accroître la demande.</p>
-      </div>
-      <div class="carte">
-        <h3>4. Effet sur le total</h3>
-        <p>Il dépend des gains et de la demande.</p>
-      </div>
-    </div>
+    <svg class="graphe schema" viewBox="0 0 1000 370" role="img" aria-labelledby="s-jevons">
+      <title id="s-jevons">Schéma : des modèles plus efficaces font baisser le prix du million de jetons, ce qui peut faire naître plus d'usages. Le total consommé reçoit deux flèches : les gains d'efficacité le font baisser, la demande le fait monter. Il dépend des deux.</title>
+      <defs><marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
+      <rect class="b-clair" x="0" y="30" width="260" height="100" rx="9"/>
+      <text class="s-titre" x="130" y="72" text-anchor="middle">Efficacité</text>
+      <text class="s-sous" x="130" y="104" text-anchor="middle">moins de calcul par jeton</text>
+      <line class="s-fleche" x1="272" y1="80" x2="358" y2="80" marker-end="url(#fl)"/>
+      <rect class="b-clair" x="370" y="30" width="260" height="100" rx="9"/>
+      <text class="s-titre" x="500" y="72" text-anchor="middle">Prix en baisse</text>
+      <text class="s-sous" x="500" y="104" text-anchor="middle">le million de jetons</text>
+      <line class="s-fleche" x1="642" y1="80" x2="728" y2="80" marker-end="url(#fl)"/>
+      <rect class="b-clair" x="740" y="30" width="260" height="100" rx="9"/>
+      <text class="s-titre" x="870" y="72" text-anchor="middle">Plus d'usages</text>
+      <text class="s-sous" x="870" y="104" text-anchor="middle">si la demande suit</text>
+      <path class="s-boucle" d="M130 142 V300 H358" marker-end="url(#fl)"/>
+      <text class="s-sous" x="146" y="225">les gains le font baisser</text>
+      <path class="s-boucle" d="M870 142 V300 H642" marker-end="url(#fl)"/>
+      <text class="s-sous" x="854" y="225" text-anchor="end">la demande le fait monter</text>
+      <rect class="b-plein" x="370" y="250" width="260" height="100" rx="9"/>
+      <text class="s-titre sur-plein" x="500" y="292" text-anchor="middle">Le total ?</text>
+      <text class="s-sous sur-plein" x="500" y="324" text-anchor="middle">dépend des deux</text>
+    </svg>
     <p>C'est le mécanisme proposé par l'effet rebond ; son ampleur doit être mesurée.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les usages</p>
     <h1>Le calcul revient <em>moins cher</em></h1>
     <div class="duo">
       <div class="colonne">
@@ -64,6 +72,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les usages</p>
     <h1>De nouveaux <em>usages</em></h1>
     <div class="duo">
       <div class="colonne">
@@ -75,40 +84,76 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les agents</p>
     <h1>Un agent, ce n'est pas un <em>message</em></h1>
     <p class="chapeau">Vous tapez une consigne. L'agent, lui, découpe le travail.</p>
-    <p>Il lit des fichiers, appelle des outils, relit ses propres notes, se corrige, recommence. Une seule consigne déclenche des dizaines d'allers-retours avec le modèle.</p>
+    <svg class="graphe ill schema" viewBox="0 0 1000 315" role="img" aria-labelledby="s-agent">
+      <title id="s-agent">Deux chaînes. Chat : un message, un appel au modèle, une réponse. Agent : une consigne, puis une longue suite d'appels au modèle entre lesquels il lit, appelle un outil, relit, se corrige et relance, avant la réponse. Dessin indicatif : une vraie consigne déclenche des dizaines d'appels.</title>
+      <defs><marker id="fl2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
+      <text class="i-titre" x="0" y="90">Chat</text>
+      <rect class="b-clair" x="150" y="52" width="140" height="56" rx="9"/>
+      <text class="s-titre" x="220" y="88" text-anchor="middle">Message</text>
+      <line class="s-fleche" x1="290" y1="80" x2="395" y2="80" marker-end="url(#fl2)"/>
+      <circle class="i-noeud sortie" cx="342" cy="80" r="18"/>
+      <rect class="b-clair" x="405" y="52" width="140" height="56" rx="9"/>
+      <text class="s-titre" x="475" y="88" text-anchor="middle">Réponse</text>
+      <text class="i-titre" x="0" y="210">Agent</text>
+      <rect class="b-clair" x="150" y="172" width="140" height="56" rx="9"/>
+      <text class="s-titre" x="220" y="208" text-anchor="middle">Consigne</text>
+      <line class="s-fleche" x1="290" y1="200" x2="850" y2="200" marker-end="url(#fl2)"/>
+      <circle class="i-noeud sortie" cx="330" cy="200" r="18"/><circle class="i-noeud sortie" cx="376" cy="200" r="18"/><circle class="i-noeud sortie" cx="422" cy="200" r="18"/><circle class="i-noeud sortie" cx="468" cy="200" r="18"/><circle class="i-noeud sortie" cx="514" cy="200" r="18"/><circle class="i-noeud sortie" cx="560" cy="200" r="18"/><circle class="i-noeud sortie" cx="606" cy="200" r="18"/><circle class="i-noeud sortie" cx="652" cy="200" r="18"/><circle class="i-noeud sortie" cx="698" cy="200" r="18"/><circle class="i-noeud sortie" cx="744" cy="200" r="18"/><circle class="i-noeud sortie" cx="790" cy="200" r="18"/>
+      <text class="s-sous" x="376" y="248" text-anchor="middle">lit</text>
+      <text class="s-sous" x="468" y="248" text-anchor="middle">outil</text>
+      <text class="s-sous" x="560" y="248" text-anchor="middle">relit</text>
+      <text class="s-sous" x="652" y="248" text-anchor="middle">corrige</text>
+      <text class="s-sous" x="744" y="248" text-anchor="middle">relance</text>
+      <rect class="b-clair" x="860" y="172" width="140" height="56" rx="9"/>
+      <text class="s-titre" x="930" y="208" text-anchor="middle">Réponse</text>
+      <circle class="i-noeud sortie" cx="159" cy="292" r="9"/>
+      <text class="s-sous" x="178" y="298">un rond = un appel au modèle. Une vraie consigne en déclenche des dizaines.</text>
+    </svg>
     <p>Chacun de ces allers-retours est facturé en jetons, et donc en électricité.</p>
   </section>
 
   <section class="slide">
-    <h1>Un cas d'usage <em>mesuré</em></h1>
+    <p class="surtitre">Les agents</p>
+    <h1>Un cas d'usage <em>estimé</em></h1>
     <div class="compare">
       <div>
         <h2>Un message de chat</h2>
         <p class="chiffre">0,24 Wh</p>
-        <p>médiane mesurée par Google.</p>
+        <p>médiane mesurée par Google en 2025.</p>
       </div>
       <div>
         <h2>Une consigne à un agent</h2>
         <p class="chiffre">≈ 150 Wh</p>
-        <p>soit environ <strong>600 fois</strong> plus dans cet exemple.</p>
+        <p>estimés en 2026 à partir des jetons comptés, sur un autre périmètre : un ordre de grandeur, pas un rapport exact.</p>
       </div>
     </div>
-    <p class="source">Mesure publiée par le climatologue Zeke Hausfather, 2026 : huit semaines d'usage réel, 1 138 consignes, plus de 14 000 appels au modèle, environ 170 kWh. Incertitude annoncée d'un facteur 2, soit 60 à 290 Wh.</p>
+    <p class="source">Google, « Measuring the environmental impact of delivering AI at Google Scale », août 2025. Climatologue Zeke Hausfather, 2026 : huit semaines d'usage réel, 1 138 consignes, jetons comptés puis convertis en énergie, environ 170 kWh. Incertitude annoncée d'un facteur 2, soit 60 à 290 Wh.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les agents</p>
     <h1>L'agent se <em>relit</em> sans arrêt</h1>
-    <p class="chapeau">Sur ces 3,2 milliards de jetons : 96 % de relecture du contexte, 3,6 % de contenu neuf, 0,4 % de réponse visible.</p>
+    <svg class="graphe ill" viewBox="0 0 1000 134" role="img" aria-labelledby="i-relu">
+      <title id="i-relu">Une barre à l'échelle, les 3,2 milliards de jetons de la mesure. 96 % en indigo pâle : la relecture du contexte. 3,6 % en indigo : le contenu neuf. 0,4 % en corail, un mince trait au bout : la réponse visible.</title>
+      <text class="i-leg" x="0" y="30"><tspan font-weight="700">96 %</tspan> relecture du contexte</text>
+      <text class="i-leg" x="1000" y="30" text-anchor="end"><tspan font-weight="700">3,6 %</tspan> contenu neuf</text>
+      <rect class="i-reflexion" x="0" y="46" width="960" height="50"/>
+      <rect class="i-case vif" x="960" y="46" width="36" height="50"/>
+      <rect class="i-case corail" x="996" y="46" width="4" height="50"/>
+      <text class="i-leg" x="1000" y="124" text-anchor="end"><tspan font-weight="700">0,4 %</tspan> réponse visible</text>
+    </svg>
     <div class="nuance">
-      <p>Ces relectures passent par le <strong>cache</strong> : le fournisseur garde le contexte déjà calculé, le facture cinq à dix fois moins, et refait moins de calcul. Un jeton relu ne coûte donc pas un jeton neuf.</p>
+      <p>Ces relectures passent par le <strong>cache</strong> : le contexte déjà calculé est facturé beaucoup moins cher et demande moins de calcul. Un jeton relu ne coûte donc pas un jeton neuf.</p>
     </div>
     <p>Dans cette mesure, le volume total traité explique l'essentiel de la consommation, pas la seule réponse visible.</p>
-    <p class="source">Répartition mesurée par Hausfather, 2026. Les tarifs de cache sont publiés par les fournisseurs ; le gain en énergie, lui, n'est pas publié.</p>
+    <p class="source">Répartition mesurée par Hausfather, 2026, sur 3,2 milliards de jetons ; barre à l'échelle. Tarif du cache chez Anthropic : 0,1 fois le prix d'entrée, 0,05 pour ses derniers modèles. Le gain en énergie, lui, n'est pas publié.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les agents</p>
     <h1>Sur <em>compar:IA</em>, un repère</h1>
     <p class="chapeau">Le scénario « session de code agentique » compte 450 k jetons en entrée et 50 k en sortie.</p>
     <div class="nuance">
@@ -119,15 +164,17 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les échelles</p>
     <h1>Et à <em>grande échelle</em></h1>
     <p>Scénario hypothétique : 1 % de la population mondiale fait écrire cinq pages par une IA chaque jour, pendant un an, à 15,5 Wh le texte. Cela représente la production annuelle de :</p>
-    <p class="chiffre">105 éoliennes</p>
-    <p class="source">Calcul : 82 millions de personnes × 15,5 Wh × 365 jours = 464 GWh par an. Une éolienne de 2 MW à 25 % de facteur de charge produit 4,4 GWh par an. Population mondiale : ONU, <em>World Population Prospects</em> 2024. Parc éolien : RTE, bilan électrique 2025.</p>
+    <p class="chiffre">124 éoliennes</p>
+    <p class="source">Calcul : 82 millions de personnes × 15,5 Wh × 365 jours = 464 GWh par an. 15,5 Wh : GPT 5.6 Luna pour cinq pages, selon la formule de compar:IA. Hypothèse : une éolienne de 2 MW au facteur de charge de l'éolien terrestre français en 2025, 21,4 %, soit 3,75 GWh par an. Population mondiale : ONU, <em>World Population Prospects</em> 2024. Facteur de charge : RTE, bilan électrique 2025.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les échelles</p>
     <h1>Les deux faits, même <em>acteur</em></h1>
-    <p class="chapeau">Google publie les deux, sur la même année.</p>
+    <p class="chapeau">Google publie les deux, à quelques mois d'écart.</p>
     <div class="compare">
       <div>
         <h2>Par requête, ça baisse</h2>
@@ -136,40 +183,62 @@
       </div>
       <div>
         <h2>Au total, ça monte</h2>
-        <p class="chiffre">+ 37 %</p>
-        <p>d'électricité pour ses centres de données en 2025, soit environ 42 TWh.</p>
+        <p class="chiffre">+ 38 %</p>
+        <p>d'électricité pour ses centres de données en 2025 : 42 TWh, contre 31 en 2024.</p>
       </div>
     </div>
     <p class="source">Google, « Measuring the environmental impact of delivering AI at Google Scale », août 2025, et <em>Environmental Report</em> 2026.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les échelles</p>
     <h1>À l'échelle d'un <em>pays</em></h1>
-    <div class="compare">
-      <div>
-        <h2>États-Unis, 2023</h2>
-        <p class="chiffre">4,4 %</p>
-        <p>de l'électricité du pays, pour les centres de données.</p>
-      </div>
-      <div>
-        <h2>Projection 2028</h2>
-        <p class="chiffre">6,7 à 12 %</p>
-        <p>selon le scénario retenu.</p>
-      </div>
-    </div>
-    <p>De 176 TWh à une fourchette de 325 à 580 TWh. Une requête se compte en milliwattheures, un pays en térawattheures.</p>
-    <p class="source">Lawrence Berkeley National Laboratory, <em>United States Data Center Energy Usage Report</em>, décembre 2024. Ces projections couvrent tous les centres de données, pas la seule IA.</p>
+    <svg class="graphe ill" viewBox="0 0 1000 305" role="img" aria-labelledby="i-pays">
+      <title id="i-pays">Deux barres à l'échelle, l'électricité des centres de données aux États-Unis. 2023 : 176 térawattheures, 4,4 % de l'électricité du pays. Projection 2028 : de 325 à 580 térawattheures selon le scénario, soit 6,7 à 12 %.</title>
+      <text class="i-titre" x="0" y="32">États-Unis, 2023</text>
+      <rect class="i-reponse" x="0" y="48" width="246" height="52" rx="6"/>
+      <text class="i-titre" x="262" y="84">176 TWh</text>
+      <text class="i-leg" x="0" y="135">4,4 % de l'électricité du pays, pour les centres de données</text>
+      <text class="i-titre" x="0" y="190">Projection 2028</text>
+      <rect class="i-reflexion" x="0" y="206" width="812" height="52" rx="6"/>
+      <rect class="i-reponse" x="0" y="206" width="455" height="52" rx="6"/>
+      <text class="i-titre i-txt-blanc" x="439" y="242" text-anchor="end">325</text>
+      <text class="i-titre" x="828" y="242">580 TWh</text>
+      <text class="i-leg" x="0" y="293">6,7 à 12 % de l'électricité du pays, selon le scénario</text>
+    </svg>
+    <p>Une requête se compte en milliwattheures, un pays en térawattheures.</p>
+    <p class="source">Lawrence Berkeley National Laboratory, <em>United States Data Center Energy Usage Report</em>, décembre 2024. Barres à l'échelle. Ces projections couvrent tous les centres de données, pas la seule IA.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les échelles</p>
+    <h1>À l'échelle du <em>monde</em></h1>
+    <svg class="graphe ill" viewBox="0 0 1000 305" role="img" aria-labelledby="i-monde">
+      <title id="i-monde">Deux barres à l'échelle, l'électricité des centres de données dans le monde. 2025 : 485 térawattheures, en hausse de 17 % sur un an. Projection 2030 : 950 térawattheures, environ 3 % de l'électricité mondiale.</title>
+      <text class="i-titre" x="0" y="32">Monde, 2025</text>
+      <rect class="i-reponse" x="0" y="48" width="415" height="52" rx="6"/>
+      <text class="i-titre" x="431" y="84">485 TWh</text>
+      <text class="i-leg" x="0" y="135">+17 % en un an, +50 % pour les centres dédiés à l'IA</text>
+      <text class="i-titre" x="0" y="190">Projection 2030</text>
+      <rect class="i-reponse" x="0" y="206" width="812" height="52" rx="6"/>
+      <text class="i-titre" x="828" y="242">950 TWh</text>
+      <text class="i-leg" x="0" y="293">environ 3 % de l'électricité mondiale</text>
+    </svg>
+    <p>La consommation des centres doublerait en cinq ans, celle des centres dédiés à l'IA triplerait.</p>
+    <p class="source">Agence internationale de l'énergie, « Key Questions on Energy and AI », avril 2026. Barres à l'échelle. Tous les centres de données, pas la seule IA.</p>
+  </section>
+
+  <section class="slide">
+    <p class="surtitre">Les échelles</p>
     <h1>Et l'IA seule, dans <em>tout ça</em></h1>
     <p class="chiffre">0,1 à 0,2 %</p>
     <p class="chapeau">de l'électricité mondiale, pour les centres de données dédiés à l'IA en 2023.</p>
-    <p>Le chiffre est petit, et il croît vite : l'agence prévoit qu'il soit multiplié par six ou huit d'ici 2030. Les deux moitiés de la phrase comptent autant.</p>
-    <p class="source">Dérivé des estimations de l'Agence internationale de l'énergie, avril 2025 : 30 à 50 TWh en 2023 pour les centres dédiés à l'IA, 200 à 400 TWh projetés pour 2030. Calcul rapporté par Gauthier Roussilhe, Bon Pote, avril 2025.</p>
+    <p>Le chiffre est petit, et il croît vite : les auteurs l'estiment cinq à dix fois plus élevé en 2030. Les deux moitiés de la phrase comptent autant.</p>
+    <p class="source">Kamiya et Coroamă, <em>Data Centre Energy Use: Critical Review of Models and Results</em>, IEA 4E, mars 2025 : 30 à 50 TWh en 2023 pour les centres dédiés à l'IA, 200 à 400 TWh en 2030. Rapportés à une production mondiale d'électricité d'environ 30 000 TWh en 2023.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les échelles</p>
     <h1>Cinq fois <em>mille</em></h1>
     <ol class="echelle">
       <li class="p1"><b>1 mWh</b><span>Un jeton produit.</span></li>
@@ -184,15 +253,16 @@
       <li class="pas">× 1 000</li>
       <li class="p6"><b>1 TWh</b><span>Environ dix-neuf heures d'électricité pour la France entière.</span></li>
     </ol>
-    <p class="source">Ordres de grandeur. Le logement français est pris à 4,5 MWh d'électricité par an. La France consomme de l'ordre de 450 TWh par an, tous usages confondus.</p>
+    <p class="source">Ordres de grandeur : un logement français, 4,5 MWh d'électricité par an ; la France, environ 450 TWh par an.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les échelles</p>
     <h1>Deux échelles <em>d'action</em></h1>
     <div class="compare">
       <div>
         <h2>À l'échelle d'un usage</h2>
-        <p>Vos échanges de l'année tiennent dans quelques kilowattheures. Moins qu'un radiateur allumé une journée.</p>
+        <p>Vingt messages par jour à 0,24 Wh : moins de 2 kWh par an, un radiateur de 1 kW allumé deux heures. Avec un agent, au rythme du cas étudié, plus de 1 000 kWh.</p>
       </div>
       <div>
         <h2>À l'échelle du parc</h2>
@@ -200,10 +270,11 @@
       </div>
     </div>
     <p>Le choix du modèle agit sur la consommation d'un usage. Les décisions d'investissement et de capacité agissent, elles, sur l'échelle du parc.</p>
-    <p class="source">Le premier ordre de grandeur se lit sur le bilan d'un duel, le second dans les rapports annuels des fournisseurs.</p>
+    <p class="source">Calcul : 20 × 0,24 Wh × 365 jours = 1,75 kWh. 0,24 Wh : médiane Google, 2025. Agent : environ 150 Wh par consigne, cas estimé par Zeke Hausfather, 2026 : 1 138 consignes en huit semaines, soit environ 1 100 kWh sur un an. Le parc se lit dans les rapports annuels des fournisseurs.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le débat</p>
     <h1>Un rebond <em>possible</em></h1>
     <div class="nuance">
       <p>Les gains par requête et la hausse du total sont mesurés ; la part du <strong>lien de cause à effet</strong> entre les deux ne l'est pas.</p>
@@ -213,6 +284,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Le débat</p>
     <h1>Deux affirmations à <em>vérifier</em></h1>
     <div class="compare">
       <div>
@@ -228,6 +300,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">À retenir</p>
     <h1>Ce que ça change pour le <em>débat</em></h1>
     <div class="duo">
       <div class="colonne">

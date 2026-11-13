@@ -16,17 +16,25 @@
   font-display: swap;
 }
 
-/* Palette reprise telle quelle de compar:IA : frontend/src/css/app.css pour la
-   marque, dsfr.min.css pour les gris et les couleurs d'état. */
+/* Palette de la charte compar:IA (dépôt comparia-design, brand/brand.md) :
+   l'indigo est la couleur d'action, les quatre billes du logo servent
+   d'accents, jamais de couleur de texte courant. Gris et couleurs d'état
+   repris du DSFR. */
 :root {
-  --violet: #6464f3;        /* --brand-primary */
+  --violet: #6a6af4;        /* blue-france-525 */
+  --corail: #ff9575;
+  --glycine: #a96afe;
+  --tournesol: #ffcc00;
+  --emeraude: #58b77d;
+  --contour: #e5e5e5;       /* contour de carte */
+  --gris-doux: #929292;     /* numéros de page */
   --violet-pale: #e6e6fd;   /* --brand-primary-soft */
   --violet-clair: #f4f4fe;  /* --brand-primary-softest */
   --encre: #161616;
   --gris: #666;             /* --text-mention-grey */
   --gris-fonce: #3a3a3a;
   --trait: #ddd;            /* --border-default-grey */
-  --fond: #f5f5f8;
+  --fond: #fcfcfd;
   --gris-clair: #f3f5f9;    /* --cg-light-grey */
   --info: #0063cb;
   --erreur: #ce0500;
@@ -35,7 +43,7 @@
   --jaune-tournesol: #c8aa39;
 
   --display: 3.2em;
-  --titre: 1.45em;
+  --titre: 1.6em;
   --source: 0.7em;
 }
 
@@ -62,35 +70,38 @@ body { display: flex; }
   overflow: hidden;
 }
 
-/* Bloc de marque, en haut à droite de chaque support. Un seul par fichier. */
+/* Marque, en haut à gauche de chaque diapositive, comme sur les supports
+   compar:IA. Discrète : le titre reste la première chose qu'on lit. */
 .marque {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 2.6cqw;
+  left: 7cqw;
   z-index: 2;
-  background: var(--violet);
-  color: #fff;
-  border-bottom-left-radius: 1.2cqw;
-  padding: 1.4cqw 2.2cqw 1.4cqw 1.8cqw;
   display: flex;
   align-items: center;
-  gap: 1.2cqw;
-  font-size: 1.6cqw;
+  gap: 0.7cqw;
+  font-size: 1.05cqw;
   line-height: 1.15;
+  color: var(--encre);
+  pointer-events: none;
 }
-.marque img { width: 3.4cqw; height: auto; }
-.marque strong { display: block; font-size: 1.35em; font-weight: 700; }
-.marque span { opacity: 0.85; }
+.marque img { width: 1.9cqw; height: auto; border-radius: 0.4cqw; }
+.marque div { display: flex; gap: 0.45em; align-items: baseline; }
+.marque strong { font-weight: 700; }
+.marque span { color: var(--gris); }
+/* Comme sur les supports de référence : la marque ne signe que la couverture. */
+.deck-ready .marque { display: none; }
+.deck-ready .stage:has(.slide.titre.is-current) .marque { display: flex; }
 
 .slide {
   position: absolute;
   inset: 0;
-  /* Le bas réserve la bande où .source est posée en absolu : sans cette marge,
-     une source sur deux lignes vient buter dans le contenu. */
-  padding: 6cqw 7cqw 8.5cqw;
+  /* La source est dans le flux, poussée en bas : le contenu ne peut pas
+     passer dessous, il rétrécit ou le contrôle le signale. */
+  padding: 7.4cqw 7cqw 4.4cqw;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 1.1em;
   font-size: 2.15cqw;
   line-height: 1.5;
 }
@@ -102,15 +113,12 @@ body { display: flex; }
 
 .slide h1 {
   font-size: var(--titre);
-  line-height: 1.1;
-  margin: 0;
+  line-height: 1.12;
+  margin: 0 0 0.15em;
   font-weight: 700;
   letter-spacing: -0.02em;
   max-width: 44ch;
   text-wrap: balance;
-  /* Le bloc de marque fait 25,5cqw et déborde de la marge droite : on réserve
-     juste ce qu'il faut, sinon le titre passe à deux lignes pour rien. */
-  padding-right: 19cqw;
 }
 /* Un mot en violet dans le titre, comme sur les supports d'origine. */
 .slide h1 em { font-style: normal; color: var(--violet); }
@@ -120,21 +128,23 @@ body { display: flex; }
   margin: 0;
 }
 .slide h2, .slide h3, .slide th { font-weight: 700; }
-.slide .chapeau { color: var(--gris); max-width: 44ch; }
+.slide .chapeau { color: var(--gris); max-width: 56ch; }
 .slide ul, .slide ol {
   margin: 0;
-  padding-left: 1.1em;
+  padding-left: 0;
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.6em;
+  gap: 0.75em;
   max-width: 52ch;
 }
-.slide li::marker { color: var(--violet); }
+.slide ol { padding-left: 1.2em; list-style: decimal; }
+.slide ol li::marker { color: var(--violet); font-weight: 700; }
 .slide strong { font-weight: 700; }
 .slide a { color: var(--violet); }
 
 /* Le chiffre qu'on veut voir du fond de la salle. */
-.chiffre {
+.slide .chiffre {
   font-size: var(--display) !important;
   font-weight: 700;
   color: var(--violet);
@@ -142,12 +152,10 @@ body { display: flex; }
   letter-spacing: -0.03em;
 }
 
-/* Source, toujours au même endroit, discrète. */
+/* Source, toujours en bas à gauche, discrète. */
 .source {
-  position: absolute;
-  left: 7cqw;
-  right: 7cqw;
-  bottom: 2.6cqw;
+  margin-top: auto !important;
+  padding-top: 0.6em;
   font-size: var(--source) !important;
   color: var(--gris);
   line-height: 1.4;
@@ -158,9 +166,11 @@ body { display: flex; }
 
 .slide.titre {
   justify-content: center;
-  background: var(--violet-clair);
+  background: var(--fond);
   padding-left: 9cqw;
+  overflow: hidden;
 }
+.slide.titre > * { position: relative; z-index: 1; }
 .slide.titre h1 { font-size: var(--display); letter-spacing: -0.03em; }
 .slide.titre .chapeau { font-size: 1em; max-width: 34ch; }
 
@@ -196,11 +206,11 @@ figcaption { font-size: 1em; color: var(--gris); }
 /* Un visuel se pose comme une carte, pas comme une image collée.
    flex + min-height:0 : sans ça une image haute pousse la diapositive hors cadre. */
 .visuel {
-  border-radius: 0.9cqw;
+  border-radius: 1.2cqw;
   background: #fff;
-  box-shadow: 0 0.15cqw 1.2cqw rgba(22, 22, 22, 0.1);
+  border: 1px solid #ececf0;
   object-fit: contain;
-  padding: 0.6cqw;
+  padding: 1.2cqw;
   width: 100%;
   min-height: 0;
   min-width: 0;
@@ -225,15 +235,17 @@ figcaption { font-size: 1em; color: var(--gris); }
 .compare h2 { text-align: left; }
 
 /* Cartes côte à côte. */
-.cartes { display: flex; gap: 1.4cqw; flex: 1; align-items: stretch; min-height: 0; }
+/* Colonnes nues : le chiffre en indigo, son libellé dessous, de l'air autour. */
+.cartes { display: flex; gap: 4cqw; flex: 1; align-items: stretch; min-height: 0; }
+.carte > .visuel { flex: 1 1 0; min-height: 0; align-self: stretch; }
 .carte {
   flex: 1;
-  border-top: 0.2em solid var(--violet);
-  padding-top: 0.7em;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  min-width: 0;
 }
+.carte .chiffre { font-size: 2.1em !important; }
 .carte ul { gap: 0.35em; }
 
 
@@ -250,9 +262,9 @@ figcaption { font-size: 1em; color: var(--gris); }
 
 /* Encadré : une nuance que la salle doit lire, pas une note à l'animateur. */
 .nuance {
-  border-left: 0.25em solid var(--violet);
+  border-left: 0.15em solid var(--violet);
   padding: 0.1em 0 0.1em 1em;
-  color: var(--encre);
+  color: var(--gris-fonce);
   max-width: 56ch;
 }
 
@@ -774,3 +786,48 @@ figcaption { font-size: 1em; color: var(--gris); }
 /* Tableau resserré : au-delà de cinq lignes, l'interligne par défaut fait
    déborder la diapositive dès que le navigateur impose une police plancher. */
 .slide table.serre th, .slide table.serre td { padding: 0.3em 0.7em 0.3em 0; }
+
+
+/* --- Surtitre --------------------------------------------------------------- */
+
+/* La partie du support, en petites capitales indigo, en haut à gauche. */
+.surtitre {
+  font-size: 0.62em !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--violet);
+  position: absolute;
+  top: 3.6cqw;
+  left: 7cqw;
+}
+.slide.titre .surtitre { position: static; }
+
+
+/* Chiffre de taille moyenne, quand deux chiffres s'empilent dans une colonne. */
+.chiffre.moyen { font-size: 2em !important; }
+
+/* --- Illustrations ----------------------------------------------------------
+   Même principe que les graphiques : SVG dans le flux, tailles en unités du
+   dessin. */
+
+.ill .i-noeud { fill: #fff; stroke: var(--violet); stroke-width: 3; }
+.ill .i-noeud.entree { fill: var(--violet-pale); }
+.ill .i-noeud.sortie { fill: var(--violet); }
+.ill .i-lien { stroke: #d9d9f2; stroke-width: 2; }
+.ill .i-lien.vif { stroke: var(--violet); stroke-width: 3; }
+.ill .i-pastille { fill: #fff; stroke: var(--violet); stroke-width: 2; }
+.ill .i-val { font-size: 22px; font-weight: 700; fill: var(--violet); }
+.ill .i-leg { font-size: 25px; fill: var(--gris); }
+.ill .i-titre { font-size: 28px; font-weight: 700; fill: var(--encre); }
+.ill .i-grand { font-size: 64px; font-weight: 700; fill: var(--violet); letter-spacing: -0.03em; }
+.ill .i-case { fill: #e3e3f6; }
+.ill .i-case.vif { fill: var(--violet); }
+.ill .i-case.corail { fill: var(--corail); }
+.ill .i-expert { fill: var(--gris-clair); stroke: var(--contour); stroke-width: 2; }
+.ill .i-expert.vif { fill: var(--violet); stroke: var(--violet); }
+.ill .i-lien.pointille { stroke-dasharray: 5 5; stroke: #c9c9d6; }
+.ill .i-txt-blanc { fill: #fff; }
+.ill .i-reflexion { fill: #cacafa; }
+.ill .i-reponse { fill: var(--violet); }
+.ill .i-bille { stroke: none; }

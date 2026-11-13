@@ -16,11 +16,13 @@
   </div>
 
   <section class="slide titre">
+    <p class="surtitre">Support 4 sur 7</p>
     <h1>Peut-on croire les <em>chiffres</em> ?</h1>
     <p class="chapeau">Qui publie quoi, avec quelle méthode, et ce qu'on peut en faire.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les fournisseurs</p>
     <h1>Ce que publient <em>les fournisseurs</em></h1>
     <table>
       <tr>
@@ -48,14 +50,15 @@
         <td>45 mL</td>
       </tr>
     </table>
-    <p class="source">OpenAI : Sam Altman, « The Gentle Singularity », blog personnel, juin 2025. Google : Elsworth et coll., « Measuring the environmental impact of delivering AI at Google Scale », août 2025. Mistral AI : « Our contribution to a global environmental standard for AI », juillet 2025.</p>
+    <p class="source">OpenAI : moyenne par requête, sans méthode publiée. Google : requête texte médiane, mai 2025, carbone incluant la fabrication du matériel, eau du seul refroidissement sur site. Mistral AI : réponse de 400 jetons, cycle de vie complet. Ces chiffres ne se comparent pas directement. Sources : Altman, « The Gentle Singularity », juin 2025 ; Elsworth et coll., août 2025 ; Mistral AI, juillet 2025.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les fournisseurs</p>
     <h1>Deux chiffres, deux <em>périmètres</em></h1>
-    <p class="chapeau">38 fois plus de CO₂, 170 fois plus d'eau : avant de conclure, regardez où chacun s'arrête de compter.</p>
+    <p class="chapeau">Mistral AI affiche 38 fois plus de CO₂ et 170 fois plus d'eau. Avant de conclure, regardez ce que chacun compte.</p>
       <svg class="graphe schema" viewBox="0 0 1000 340" role="img" aria-labelledby="s-per">
-      <title id="s-per">Schema : trois perimetres emboites. Google ne compte que l eau de refroidissement du centre. Mistral AI compte aussi l eau de la production d electricite et celle de la fabrication du materiel.</title>
+      <title id="s-per">Schéma : trois périmètres emboîtés. Google ne compte que l'eau de refroidissement du centre. Mistral AI compte aussi l'eau de la production d'électricité et celle de la fabrication du matériel.</title>
       <defs><marker id="fl2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
       <rect x="0" y="0" width="560" height="340" rx="10" fill="#d4d4fb" stroke="#6464f3" stroke-opacity="0.35" stroke-width="2"/>
       <text class="s-sous" x="16" y="30">Fabrication, réseau, amont</text>
@@ -66,14 +69,15 @@
       <line class="s-fleche" x1="612" y1="170" x2="476" y2="170" marker-end="url(#fl2)"/>
       <text class="s-titre" x="628" y="152">Google</text>
       <text class="g-chiffre" x="628" y="204">0,26 mL</text>
-      <line class="s-fleche" x1="612" y1="300" x2="564" y2="300" marker-end="url(#fl2)"/>
-      <text class="s-titre" x="628" y="282">Mistral AI</text>
-      <text class="g-chiffre" x="628" y="334">45 mL</text>
+      <line class="s-fleche" x1="612" y1="290" x2="564" y2="290" marker-end="url(#fl2)"/>
+      <text class="s-titre" x="628" y="270">Mistral AI</text>
+      <text class="g-chiffre" x="628" y="320">45 mL</text>
       </svg>
     <p class="source">Google : eau consommée sur site, pour le refroidissement. Mistral AI : analyse de cycle de vie, qui remonte à la production d'électricité et à la fabrication des serveurs. Périmètres reconstitués d'après les deux publications.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les fournisseurs</p>
     <h1>Trois écarts avant de <em>comparer</em></h1>
     <div class="cartes">
       <div class="carte">
@@ -93,25 +97,49 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les fournisseurs</p>
     <h1>Trois niveaux de <em>documentation</em></h1>
-    <table>
-      <tr><th></th><th>Méthode publiée</th><th>Relu par des tiers</th></tr>
-      <tr><td>OpenAI</td><td>Indications succinctes dans un billet de blog</td><td>Non</td></tr>
-      <tr><td>Google</td><td>Article technique détaillé</td><td>Non</td></tr>
-      <tr><td>Mistral AI</td><td>Analyse de cycle de vie complète</td><td>Oui</td></tr>
-    </table>
-    <p class="source">Mistral AI a fait relire son analyse par Carbone 4, l'ADEME, Resilio et Hubblo.</p>
+    <svg class="graphe ill" viewBox="0 0 1000 340" role="img" aria-labelledby="i-niveaux">
+      <title id="i-niveaux">Trois marches de plus en plus hautes. OpenAI : des indications succinctes dans un billet de blog, sans relecture. Google : un article technique détaillé, sans relecture. Mistral AI : une analyse de cycle de vie complète, relue par des tiers.</title>
+      <rect x="10" y="260" width="290" height="70" rx="8" fill="#dedefc"/>
+      <rect x="320" y="180" width="310" height="150" rx="8" fill="#aeaef8"/>
+      <rect x="650" y="100" width="340" height="230" rx="8" fill="#6a6af4"/>
+      <line class="g-axe" x1="0" y1="330" x2="1000" y2="330"/>
+      <text class="i-titre" x="22" y="200">OpenAI</text>
+      <text class="i-leg" x="22" y="240">un billet de blog</text>
+      <text class="i-leg" x="22" y="305">sans relecture</text>
+      <text class="i-titre" x="332" y="120">Google</text>
+      <text class="i-leg" x="332" y="160">un article technique</text>
+      <text class="i-leg" x="332" y="305">sans relecture</text>
+      <text class="i-titre" x="662" y="40">Mistral AI</text>
+      <text class="i-leg" x="662" y="80">analyse de cycle de vie</text>
+      <text class="i-leg i-txt-blanc" x="662" y="305">relue par des tiers</text>
+    </svg>
+    <p class="source">Mistral AI a mené son analyse avec Carbone 4 et l'ADEME. Resilio et Hubblo l'ont relue.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les limites</p>
     <h1>L'information reste <em>rare</em></h1>
-    <p class="chiffre">84 %</p>
-    <p class="chapeau">des modèles d'IA ne font l'objet d'aucune information environnementale.</p>
-    <p>Les trois colonnes précédentes sont des exceptions, pas un échantillon. Et la transparence recule depuis son pic de 2022.</p>
-    <p class="source">Arcep et PEReN, mai 2026, pour les 84 %. Luccioni et coll., « Misinformation by Omission », 2025, pour le recul depuis 2022, sur un périmètre plus étroit : les modèles marquants.</p>
+    <div class="duo">
+      <div class="colonne">
+        <p class="chiffre moyen">84 %</p>
+        <p class="chapeau">des jetons consommés via OpenRouter passent par des modèles sans aucune information environnementale.</p>
+        <p>Les trois fournisseurs vus plus haut sont des exceptions, pas un échantillon. Et la transparence recule depuis son pic de 2022.</p>
+      </div>
+      <svg class="graphe ill" viewBox="0 0 480 480" role="img" aria-labelledby="i-rare">
+        <title id="i-rare">Grille de cent carrés, un par pour cent des jetons. Quatre-vingt-quatre sont en indigo : ils passent par des modèles sans aucune information environnementale. Seize restent pâles.</title>
+        <rect class="i-case vif" x="53" y="8" width="32" height="32" rx="4"/><rect class="i-case vif" x="91" y="8" width="32" height="32" rx="4"/><rect class="i-case vif" x="129" y="8" width="32" height="32" rx="4"/><rect class="i-case vif" x="167" y="8" width="32" height="32" rx="4"/><rect class="i-case vif" x="205" y="8" width="32" height="32" rx="4"/><rect class="i-case vif" x="243" y="8" width="32" height="32" rx="4"/><rect class="i-case vif" x="281" y="8" width="32" height="32" rx="4"/><rect class="i-case vif" x="319" y="8" width="32" height="32" rx="4"/><rect class="i-case vif" x="357" y="8" width="32" height="32" rx="4"/><rect class="i-case vif" x="395" y="8" width="32" height="32" rx="4"/><rect class="i-case vif" x="53" y="46" width="32" height="32" rx="4"/><rect class="i-case vif" x="91" y="46" width="32" height="32" rx="4"/><rect class="i-case vif" x="129" y="46" width="32" height="32" rx="4"/><rect class="i-case vif" x="167" y="46" width="32" height="32" rx="4"/><rect class="i-case vif" x="205" y="46" width="32" height="32" rx="4"/><rect class="i-case vif" x="243" y="46" width="32" height="32" rx="4"/><rect class="i-case vif" x="281" y="46" width="32" height="32" rx="4"/><rect class="i-case vif" x="319" y="46" width="32" height="32" rx="4"/><rect class="i-case vif" x="357" y="46" width="32" height="32" rx="4"/><rect class="i-case vif" x="395" y="46" width="32" height="32" rx="4"/><rect class="i-case vif" x="53" y="84" width="32" height="32" rx="4"/><rect class="i-case vif" x="91" y="84" width="32" height="32" rx="4"/><rect class="i-case vif" x="129" y="84" width="32" height="32" rx="4"/><rect class="i-case vif" x="167" y="84" width="32" height="32" rx="4"/><rect class="i-case vif" x="205" y="84" width="32" height="32" rx="4"/><rect class="i-case vif" x="243" y="84" width="32" height="32" rx="4"/><rect class="i-case vif" x="281" y="84" width="32" height="32" rx="4"/><rect class="i-case vif" x="319" y="84" width="32" height="32" rx="4"/><rect class="i-case vif" x="357" y="84" width="32" height="32" rx="4"/><rect class="i-case vif" x="395" y="84" width="32" height="32" rx="4"/><rect class="i-case vif" x="53" y="122" width="32" height="32" rx="4"/><rect class="i-case vif" x="91" y="122" width="32" height="32" rx="4"/><rect class="i-case vif" x="129" y="122" width="32" height="32" rx="4"/><rect class="i-case vif" x="167" y="122" width="32" height="32" rx="4"/><rect class="i-case vif" x="205" y="122" width="32" height="32" rx="4"/><rect class="i-case vif" x="243" y="122" width="32" height="32" rx="4"/><rect class="i-case vif" x="281" y="122" width="32" height="32" rx="4"/><rect class="i-case vif" x="319" y="122" width="32" height="32" rx="4"/><rect class="i-case vif" x="357" y="122" width="32" height="32" rx="4"/><rect class="i-case vif" x="395" y="122" width="32" height="32" rx="4"/><rect class="i-case vif" x="53" y="160" width="32" height="32" rx="4"/><rect class="i-case vif" x="91" y="160" width="32" height="32" rx="4"/><rect class="i-case vif" x="129" y="160" width="32" height="32" rx="4"/><rect class="i-case vif" x="167" y="160" width="32" height="32" rx="4"/><rect class="i-case vif" x="205" y="160" width="32" height="32" rx="4"/><rect class="i-case vif" x="243" y="160" width="32" height="32" rx="4"/><rect class="i-case vif" x="281" y="160" width="32" height="32" rx="4"/><rect class="i-case vif" x="319" y="160" width="32" height="32" rx="4"/><rect class="i-case vif" x="357" y="160" width="32" height="32" rx="4"/><rect class="i-case vif" x="395" y="160" width="32" height="32" rx="4"/><rect class="i-case vif" x="53" y="198" width="32" height="32" rx="4"/><rect class="i-case vif" x="91" y="198" width="32" height="32" rx="4"/><rect class="i-case vif" x="129" y="198" width="32" height="32" rx="4"/><rect class="i-case vif" x="167" y="198" width="32" height="32" rx="4"/><rect class="i-case vif" x="205" y="198" width="32" height="32" rx="4"/><rect class="i-case vif" x="243" y="198" width="32" height="32" rx="4"/><rect class="i-case vif" x="281" y="198" width="32" height="32" rx="4"/><rect class="i-case vif" x="319" y="198" width="32" height="32" rx="4"/><rect class="i-case vif" x="357" y="198" width="32" height="32" rx="4"/><rect class="i-case vif" x="395" y="198" width="32" height="32" rx="4"/><rect class="i-case vif" x="53" y="236" width="32" height="32" rx="4"/><rect class="i-case vif" x="91" y="236" width="32" height="32" rx="4"/><rect class="i-case vif" x="129" y="236" width="32" height="32" rx="4"/><rect class="i-case vif" x="167" y="236" width="32" height="32" rx="4"/><rect class="i-case vif" x="205" y="236" width="32" height="32" rx="4"/><rect class="i-case vif" x="243" y="236" width="32" height="32" rx="4"/><rect class="i-case vif" x="281" y="236" width="32" height="32" rx="4"/><rect class="i-case vif" x="319" y="236" width="32" height="32" rx="4"/><rect class="i-case vif" x="357" y="236" width="32" height="32" rx="4"/><rect class="i-case vif" x="395" y="236" width="32" height="32" rx="4"/><rect class="i-case vif" x="53" y="274" width="32" height="32" rx="4"/><rect class="i-case vif" x="91" y="274" width="32" height="32" rx="4"/><rect class="i-case vif" x="129" y="274" width="32" height="32" rx="4"/><rect class="i-case vif" x="167" y="274" width="32" height="32" rx="4"/><rect class="i-case vif" x="205" y="274" width="32" height="32" rx="4"/><rect class="i-case vif" x="243" y="274" width="32" height="32" rx="4"/><rect class="i-case vif" x="281" y="274" width="32" height="32" rx="4"/><rect class="i-case vif" x="319" y="274" width="32" height="32" rx="4"/><rect class="i-case vif" x="357" y="274" width="32" height="32" rx="4"/><rect class="i-case vif" x="395" y="274" width="32" height="32" rx="4"/><rect class="i-case vif" x="53" y="312" width="32" height="32" rx="4"/><rect class="i-case vif" x="91" y="312" width="32" height="32" rx="4"/><rect class="i-case vif" x="129" y="312" width="32" height="32" rx="4"/><rect class="i-case vif" x="167" y="312" width="32" height="32" rx="4"/><rect class="i-case" x="205" y="312" width="32" height="32" rx="4"/><rect class="i-case" x="243" y="312" width="32" height="32" rx="4"/><rect class="i-case" x="281" y="312" width="32" height="32" rx="4"/><rect class="i-case" x="319" y="312" width="32" height="32" rx="4"/><rect class="i-case" x="357" y="312" width="32" height="32" rx="4"/><rect class="i-case" x="395" y="312" width="32" height="32" rx="4"/><rect class="i-case" x="53" y="350" width="32" height="32" rx="4"/><rect class="i-case" x="91" y="350" width="32" height="32" rx="4"/><rect class="i-case" x="129" y="350" width="32" height="32" rx="4"/><rect class="i-case" x="167" y="350" width="32" height="32" rx="4"/><rect class="i-case" x="205" y="350" width="32" height="32" rx="4"/><rect class="i-case" x="243" y="350" width="32" height="32" rx="4"/><rect class="i-case" x="281" y="350" width="32" height="32" rx="4"/><rect class="i-case" x="319" y="350" width="32" height="32" rx="4"/><rect class="i-case" x="357" y="350" width="32" height="32" rx="4"/><rect class="i-case" x="395" y="350" width="32" height="32" rx="4"/>
+        <rect class="i-case vif" x="53" y="410" width="22" height="22" rx="3"/>
+        <text class="i-leg" x="86" y="430">sans aucune information</text>
+        <text class="i-leg" x="53" y="468">un carré = 1 % des jetons</text>
+      </svg>
+    </div>
+    <p class="source">Luccioni, Gamazaychikov, Alves da Costa et Strubell, « Misinformation by Omission », prépublication, juin 2025 : trafic OpenRouter de mai 2025. Même article pour le recul depuis 2022, mesuré sur les modèles marquants.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les limites</p>
     <h1>Un chiffre sans son <em>périmètre</em></h1>
     <div class="nuance">
       <p>Faute de données, des estimations peuvent être reprises sans être distinguées de mesures.</p>
@@ -121,34 +149,53 @@
   </section>
 
   <section class="slide">
-    <h1>Un total, et sa <em>fourchette</em></h1>
-    <div class="compare">
-      <div>
-        <h2>Le chiffre annoncé</h2>
-        <p class="chiffre">29,5</p>
-        <p>millions de tonnes équivalent CO₂ pour le numérique français, soit 4,4 % de l'empreinte du pays.</p>
-      </div>
-      <div>
-        <h2>L'incertitude publiée</h2>
-        <p class="chiffre">15 à 54</p>
-        <p>La même étude donne cette fourchette. Elle est rarement citée.</p>
-      </div>
+    <p class="surtitre">Les limites</p>
+    <h1>Laboratoire ou <em>production</em> ?</h1>
+    <p class="chiffre">4 à 20 fois</p>
+    <p class="chapeau">d'écart entre un test en laboratoire, question par question, et un serveur en service.</p>
+    <p>En service : 0,31 Wh par question pour les plus grands modèles, 3,9 Wh pour un raisonnement long.</p>
+    <div class="nuance">
+      <p>Un calcul, pas une mesure, signé par huit salariés de Microsoft.</p>
     </div>
-    <p>Compter les centres de données étrangers qui servent la France relève à lui seul le total de près de moitié.</p>
-    <p class="source">ADEME et Arcep, <em>Évaluation de l'impact environnemental du numérique en France</em>, janvier 2025, données 2022. Les 4,4 % portent sur l'empreinte française au sens de la consommation, importations comprises.</p>
+    <p class="source">Oviedo et coll., <em>Joule</em>, avril 2026. Modèles de plus de 200 milliards de paramètres, refroidissement compris. Médianes : 300 jetons produits, 5 000 en raisonnement long.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Les limites</p>
+    <h1>Un total, et sa <em>fourchette</em></h1>
+    <p class="chapeau">Numérique français, en millions de tonnes équivalent CO₂.</p>
+    <svg class="graphe ill" viewBox="0 0 1000 219" role="img" aria-labelledby="i-fourchette">
+      <title id="i-fourchette">Axe de 0 à 60 millions de tonnes, à l'échelle. Le chiffre annoncé, 29,5, soit 4,4 % de l'empreinte du pays, est un point au milieu d'une barre qui va de 15 à 54 : la fourchette publiée par la même étude, rarement citée.</title>
+      <line class="g-axe" x1="40.0" y1="148" x2="960.0" y2="148"/>
+      <line class="g-axe" x1="40.0" y1="136" x2="40.0" y2="160"/>
+      <line class="g-axe" x1="960.0" y1="136" x2="960.0" y2="160"/>
+      <rect x="270.0" y="132" width="598.0" height="32" rx="16" fill="#cacafa"/>
+      <circle cx="492.3" cy="148" r="20" fill="#6a6af4" stroke="#fff" stroke-width="4"/>
+      <text class="i-leg" x="492.3" y="30" text-anchor="middle">chiffre annoncé, 4,4 % de l'empreinte du pays</text>
+      <text class="i-grand" x="492.3" y="96" text-anchor="middle">29,5</text>
+      <text class="i-leg" x="40.0" y="204" text-anchor="middle">0</text>
+      <text class="i-titre" x="270.0" y="204" text-anchor="middle">15</text>
+      <text class="i-leg" x="569.0" y="204" text-anchor="middle">fourchette publiée, rarement citée</text>
+      <text class="i-titre" x="868.0" y="204" text-anchor="middle">54</text>
+      <text class="i-leg" x="960.0" y="204" text-anchor="middle">60</text>
+    </svg>
+    <p>Compter les centres de données étrangers qui servent la France augmentait déjà de 45 % l'empreinte calculée pour 2020.</p>
+    <p class="source">ADEME et Arcep, <em>Évaluation de l'impact environnemental du numérique en France</em>, janvier 2025, données 2022, importations comprises. Hubblo, septembre 2023, pour les centres étrangers.</p>
+  </section>
+
+  <section class="slide">
+    <p class="surtitre">Les limites</p>
     <h1>Ce que cette étude ne <em>couvre pas</em></h1>
     <div class="nuance">
       <p>Ses auteurs écrivent qu'elle ne prend <strong>pas en compte le développement de l'IA générative</strong>.</p>
     </div>
-    <p>Citer ces 29,5 millions de tonnes comme « le coût de l'IA en France » est donc un contresens. C'est l'empreinte du numérique français avant l'arrivée des modèles de langage.</p>
+    <p>Citer ces 29,5 millions de tonnes comme « le coût de l'IA en France » est donc un contresens. C'est l'empreinte du numérique français en 2022, avant l'essor de l'IA générative.</p>
     <p>Les limites publiées précisent le périmètre dans lequel le résultat peut être interprété.</p>
     <p class="source">ADEME et Arcep, janvier 2025, chapitre sur les limites de l'étude. La surface des centres de données français y est également signalée comme obsolète.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">La méthode commune</p>
     <h1>Une <em>méthode commune</em></h1>
     <p>Pour obtenir des données comparables, compar:IA s'appuie sur <strong>EcoLogits</strong>, maintenu par une ONG.</p>
     <p>Le même calcul s'applique à tous les modèles. La méthode est publique : on peut la discuter, la refaire, la corriger.</p>
@@ -156,6 +203,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">La méthode commune</p>
     <h1>Ce qu'EcoLogits <em>prend en compte</em></h1>
     <div class="cartes">
       <div class="carte">
@@ -175,22 +223,37 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">La méthode commune</p>
     <h1>Qui calcule <em>quoi</em></h1>
-    <div class="compare">
-      <div>
-        <h2>EcoLogits</h2>
-        <p>Rend une <strong>énergie</strong>, en milliwattheures, à partir de la taille du modèle, de son architecture et des jetons produits.</p>
-      </div>
-      <div>
-        <h2>compar:IA</h2>
-        <p>Rapporte cette énergie à un million de jetons de sortie, puis applique <strong>ses propres seuils</strong> pour poser la lettre A à F.</p>
-      </div>
-    </div>
+    <svg class="graphe schema" viewBox="0 0 1000 220" role="img" aria-labelledby="s-chaine">
+      <title id="s-chaine">Schéma en chaîne : la taille du modèle, son architecture et les jetons produits entrent dans EcoLogits, qui rend une énergie en milliwattheures. compar:IA rapporte cette énergie à un million de jetons de sortie, puis applique ses propres seuils pour poser la classe A à F.</title>
+      <defs><marker id="fl4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#666"/></marker></defs>
+      <text class="s-sous" x="150" y="76" text-anchor="end">taille</text>
+      <text class="s-sous" x="150" y="116" text-anchor="end">architecture</text>
+      <text class="s-sous" x="150" y="156" text-anchor="end">jetons produits</text>
+      <line class="s-fleche" x1="162" y1="110" x2="200" y2="110" marker-end="url(#fl4)"/>
+      <rect class="b-plein" x="205" y="40" width="170" height="140" rx="10"/>
+      <text class="s-titre sur-plein" x="290" y="104" text-anchor="middle">EcoLogits</text>
+      <text class="s-sous sur-plein" x="290" y="134" text-anchor="middle">méthode ouverte</text>
+      <line class="s-fleche" x1="382" y1="110" x2="408" y2="110" marker-end="url(#fl4)"/>
+      <text class="s-titre" x="482" y="104" text-anchor="middle">une énergie</text>
+      <text class="s-sous" x="482" y="134" text-anchor="middle">en mWh</text>
+      <line class="s-fleche" x1="556" y1="110" x2="586" y2="110" marker-end="url(#fl4)"/>
+      <rect class="b-clair" x="592" y="40" width="226" height="140" rx="10"/>
+      <text class="s-titre" x="705" y="80" text-anchor="middle">compar:IA</text>
+      <text class="s-sous" x="705" y="112" text-anchor="middle">par million</text>
+      <text class="s-sous" x="705" y="136" text-anchor="middle">de jetons de sortie,</text>
+      <text class="s-sous" x="705" y="160" text-anchor="middle">puis ses seuils</text>
+      <line class="s-fleche" x1="826" y1="110" x2="864" y2="110" marker-end="url(#fl4)"/>
+      <text class="g-chiffre" x="930" y="122" text-anchor="middle">A–F</text>
+      <text class="s-sous" x="930" y="160" text-anchor="middle">la classe</text>
+    </svg>
     <p>La classe énergétique est donc une règle de compar:IA, pas une sortie d'EcoLogits.</p>
     <p class="source">EcoLogits 0.10.2, méthode ouverte maintenue par l'association GenAI Impact. Seuils de classe définis par compar:IA.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">La méthode commune</p>
     <h1>Le cas des modèles <em>propriétaires</em></h1>
     <div class="cartes">
       <div class="carte">
@@ -210,6 +273,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">Entraîner et utiliser</p>
     <h1>Deux ordres de <em>grandeur</em></h1>
     <div class="compare">
       <div>
@@ -218,15 +282,16 @@
         <p>ordre de grandeur dérivé des heures de calcul publiées, soit la consommation annuelle d'environ <strong>1 100 ménages</strong>.</p>
       </div>
       <div>
-        <h2>Écrire cinq pages avec GPT 5.5</h2>
+        <h2>Écrire cinq pages avec GPT 5.6 Luna</h2>
         <p class="chiffre">15,5 Wh</p>
         <p>à chaque fois, soit à peu près <strong>une charge de téléphone</strong>.</p>
       </div>
     </div>
-    <p class="source">Estimation dérivée de Meta, <em>Llama 4 Model Card</em>, 2025 : 7,4 millions d'heures de carte graphique multipliées par une puissance nominale de 700 W, pour deux modèles publiés sur trois. Ce n'est pas une consommation totale d'entraînement publiée par Meta. Catalogue compar:IA pour GPT 5.5 : 3 096 Wh par million de jetons de sortie, ici 5 000 jetons.</p>
+    <p class="source">Estimation dérivée de Meta, <em>Llama 4 Model Card</em>, 2025 : 7,4 millions d'heures de carte graphique × 700 W, pour deux modèles publiés sur trois ; Meta ne publie pas de total. GPT 5.6 Luna : 3 096 Wh par million de jetons de sortie (catalogue compar:IA), ici 5 000 jetons.</p>
   </section>
 
   <section class="slide">
+    <p class="surtitre">Entraîner et utiliser</p>
     <h1>L'analogie de la <em>voiture</em></h1>
     <div class="compare">
       <div>
@@ -243,6 +308,7 @@
   </section>
 
   <section class="slide">
+    <p class="surtitre">À retenir</p>
     <h1>Ce qu'il faut <em>retenir</em></h1>
     <ul>
       <li>Les chiffres publiés par les fournisseurs ne sont <strong>pas directement comparables</strong>.</li>
